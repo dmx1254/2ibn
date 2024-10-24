@@ -31,7 +31,7 @@ const SheetMenu = () => {
             alt="account logo"
             width={24}
             height={24}
-            className=""
+            className="mt-0.5"
           />
           <span className="sr-only">hamburger menu</span>
         </button>
@@ -39,7 +39,6 @@ const SheetMenu = () => {
       <SheetContent
         className="w-full flex items-center justify-center mx-auto rounded-tl-[30px] rounded-tr-[30px]"
         side="bottom"
-        showIcon={false}
       >
         <div className="w-full flex flex-col items-center gap-3">
           <span className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2">
@@ -55,12 +54,6 @@ const SheetMenu = () => {
             Acheter Kamas Échanger Kamas
           </span>
         </div>
-        <button
-          className="absolute sm:hidden flex items-center gap-2 top-[-22%] left-[75%] z-50 bg-white/5 p-1.5 rounded-full text-white/80 text-sm"
-          onClick={handleSetOpen}
-        >
-          Fermer <X size={16} />
-        </button>
       </SheetContent>
     </Sheet>
   );
