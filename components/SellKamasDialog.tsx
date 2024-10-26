@@ -21,10 +21,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ServerExchange, parsedDevise } from "@/lib/utils";
-import { Gift } from "lucide-react";
-import { useScopedI18n } from "@/locales/client";
+import { ServerExchange, codeGenerated, parsedDevise } from "@/lib/utils";
+import { Gift, Loader } from "lucide-react";
 import useStore from "@/lib/store-manage";
+import axios from "axios";
+import { toast } from "sonner";
 
 const SellKamasDialog = ({
   serverStatus,
@@ -33,7 +34,6 @@ const SellKamasDialog = ({
   serverStatus: string;
   server: ServerExchange;
 }) => {
-  const tScope = useScopedI18n("dialogsell");
   const { devise } = useStore();
   const [formData, setFormData] = useState({
     gameName: "",
@@ -44,6 +44,12 @@ const SellKamasDialog = ({
     paymentDetails: "",
     comments: "",
   });
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [gameNameError, setGameNameError] = useState<string>("");
+  const [amountError, setAmountError] = useState<string>("");
+  const [paymentMethodError, setPaymentMethodError] = useState<string>("");
+  const [paymentDetailsError, setPaymentDetailsError] = useState<string>("");
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -67,18 +73,18 @@ const SellKamasDialog = ({
       case "CIH Bank":
       case "Attijariwafa Bank":
       case "Barid Bank":
-        return tScope("casemaroccobank");
+        return "Complete RIB:";
       case "Western Union":
       case "Cash Plus":
-        return tScope("casewestandcash");
+        return "Your city:";
       case "Binance Pay":
       case "Payeer":
       case "Wise":
-        return tScope("casebinpaywise");
+        return "Payment email:";
       case "ADV Cash":
-        return tScope("caseadvcash");
+        return "Account number:";
       case "TRC20":
-        return tScope("casetrc20");
+        return "TRX address:";
       default:
         return "";
     }
@@ -89,18 +95,18 @@ const SellKamasDialog = ({
       case "CIH Bank":
       case "Attijariwafa Bank":
       case "Barid Bank":
-        return tScope("casemaroccobankinput");
+        return "Enter your RIB";
       case "Western Union":
       case "Cash Plus":
-        return tScope("casewestandcashinput");
+        return "Enter your city";
       case "Binance Pay":
       case "Payeer":
       case "Wise":
-        return tScope("casebinpaywiseinput");
+        return "Enter payment email";
       case "ADV Cash":
-        return tScope("caseadvcashinput");
+        return "Enter account number";
       case "TRC20":
-        return tScope("casetrc20input");
+        return "Enter TRX address";
       default:
         return "";
     }
@@ -111,13 +117,91 @@ const SellKamasDialog = ({
     const total = Number(
       ((amount * server.serverPriceDh) / devise.curencyVal).toFixed(2)
     );
-    const bonus = total > 3000 ? (50 / devise.curencyVal).toFixed(2) : 0;
+    const bonusNoParsed =
+      total > 3000 ? (50 / devise.curencyVal).toFixed(2) : 0;
+    const bonus = Number(bonusNoParsed);
     return { total, bonus };
   };
 
-  const handleSubmit = () => {
-    console.log("Form submitted:", formData);
-    // Add your submission logic here
+  const handleSubmit = async () => {
+    // console.log("Form submitted:", formData);
+    let paymentInfoDetails = `${formData.paymentMethod}<br/>${formData.paymentDetails}`;
+
+    let qty = Number(formData.amount);
+
+    let unitPrice = ((server?.serverPriceDh || 1) / devise.curencyVal).toFixed(
+      2
+    );
+
+    if (
+      !formData.gameName ||
+      !formData.amount ||
+      !formData.paymentMethod ||
+      !formData.paymentDetails
+    ) {
+      if (!formData.gameName) {
+        setGameNameError("In-game name is required");
+      } else {
+        setGameNameError("");
+      }
+
+      if (!formData.amount) {
+        setAmountError("Amount is required");
+      } else {
+        setAmountError("");
+      }
+
+      if (!formData.paymentMethod) {
+        setPaymentMethodError("Payment method is required");
+      } else {
+        setPaymentMethodError("");
+      }
+
+      if (!formData.paymentDetails) {
+        setPaymentDetailsError("This field is required");
+      } else {
+        setPaymentDetailsError("");
+      }
+    } else {
+      const data = {
+        userId: "63c52df8f1adcc81fad062b3",
+        numBuy: codeGenerated(),
+        jeu: server?.serverCategory,
+        server: server?.serverName,
+        pu: unitPrice,
+        qte: qty,
+        totalPrice: calculateTotal().total + calculateTotal().bonus,
+        paymentMethod: formData.paymentMethod,
+        gameName: formData.gameName,
+        paymentInfoDetails: paymentInfoDetails,
+        comments: formData.comments,
+        email: "mamadousy1254@gmail.com",
+        currencymethod: devise.currencyName,
+      };
+
+      try {
+        setIsLoading(true);
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_IBYTRADE_CLIENT_URL}/buy`,
+          data
+        );
+        if (response) {
+          toast.success(
+            "Order successfully placed. Open the chat to proceed with the exchange",
+            {
+              style: { color: "#16a34a" },
+            }
+          );
+        }
+      } catch (error) {
+        console.log(error);
+        toast.success("Something went wrong, please try again later", {
+          style: { color: "#dc2626" },
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    }
   };
 
   return (
@@ -128,34 +212,39 @@ const SellKamasDialog = ({
           className="bg-amber-500 hover:bg-amber-600 text-white border-none hover:text-white"
           disabled={serverStatus === "Stock complet"}
         >
-          {tScope("btnSell")}
+          Sell Now
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] max-h-[calc(100vh-60px)] h-full overflow-y-scroll scroll-thumb">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-amber-900">
-            {tScope("title", { server: server.serverName })}
+            {`Sell Kamas on ${server.serverName}`}
           </DialogTitle>
-          <DialogDescription>{tScope("desc")}</DialogDescription>
+          <DialogDescription>
+            Please fill in your details to proceed with the sale.
+          </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="gameName">{tScope("IngameName")}</Label>
+              <Label htmlFor="gameName">In-game name</Label>
               <Input
                 id="gameName"
-                placeholder={tScope("IngameInput")}
+                placeholder="Enter your game name"
                 value={formData.gameName}
                 onChange={(e) => handleInputChange("gameName", e.target.value)}
                 className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               />
+              {gameNameError && (
+                <span className="text-sm text-red-500">{gameNameError}</span>
+              )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">{tScope("contactEmail")}</Label>
+              <Label htmlFor="email">Contact email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder={tScope("contactEmailInput")}
+                placeholder="Enter your email"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
                 className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -164,29 +253,32 @@ const SellKamasDialog = ({
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="fullName">{tScope("fullname")}</Label>
+              <Label htmlFor="fullName">Full name</Label>
               <Input
                 id="fullName"
-                placeholder={tScope("fullnameInput")}
+                placeholder="Enter your full name"
                 value={formData.fullName}
                 onChange={(e) => handleInputChange("fullName", e.target.value)}
                 className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="amount">{tScope("qtyOfKamas")}</Label>
+              <Label htmlFor="amount">Quantity of kamas (M)</Label>
               <Input
                 id="amount"
                 type="number"
-                placeholder={tScope("qtyOfKamasInput")}
+                placeholder="Enter amount"
                 value={formData.amount}
                 onChange={(e) => handleInputChange("amount", e.target.value)}
                 className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               />
+              {amountError && (
+                <span className="text-sm text-red-500">{amountError}</span>
+              )}
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="paymentMethod">{tScope("paymentMethod")}</Label>
+            <Label htmlFor="paymentMethod">Payment method</Label>
             <Select
               value={formData.paymentMethod}
               onValueChange={(value) =>
@@ -194,7 +286,7 @@ const SellKamasDialog = ({
               }
             >
               <SelectTrigger className="outline-none focus:outline-none focus:ring-0">
-                <SelectValue placeholder={tScope("paymentMethodDesc")} />
+                <SelectValue placeholder="Select payment method" />
               </SelectTrigger>
               <SelectContent>
                 {paymentMethods.map((method) => (
@@ -204,6 +296,9 @@ const SellKamasDialog = ({
                 ))}
               </SelectContent>
             </Select>
+            {paymentMethodError && (
+              <span className="text-sm text-red-500">{paymentMethodError}</span>
+            )}
           </div>
           {formData.paymentMethod && (
             <div className="space-y-2">
@@ -218,13 +313,18 @@ const SellKamasDialog = ({
                 }
                 className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               />
+              {paymentDetailsError && (
+                <span className="text-sm text-red-500">
+                  {paymentDetailsError}
+                </span>
+              )}
             </div>
           )}
           <div className="space-y-2">
-            <Label htmlFor="comments">{tScope("comments")}</Label>
+            <Label htmlFor="comments">Comments</Label>
             <Textarea
               id="comments"
-              placeholder={tScope("commentsInput")}
+              placeholder="Add any additional comments"
               value={formData.comments}
               onChange={(e) => handleInputChange("comments", e.target.value)}
               className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -232,14 +332,14 @@ const SellKamasDialog = ({
           </div>
           <div className="bg-amber-50 p-4 rounded-lg space-y-2">
             <div className="flex justify-between text-sm">
-              <span>{tScope("pricedesc")}:</span>
+              <span>Price per million:</span>
               <span className="font-semibold text-amber-700">
                 {(server.serverPriceDh / devise.curencyVal).toFixed(2)}{" "}
                 {parsedDevise(devise.currencyName)}
               </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span>{tScope("total")}:</span>
+              <span>Total:</span>
               <span className="font-semibold text-amber-700">
                 {calculateTotal().total} {parsedDevise(devise.currencyName)}
               </span>
@@ -248,23 +348,31 @@ const SellKamasDialog = ({
             <div className="flex items-center gap-2 text-sm text-amber-700">
               <Gift className="h-4 w-4" />
               <span>
-                {tScope("bonus", {
-                  bonus1: (50 / devise.curencyVal).toFixed(2),
-                  cur: parsedDevise(devise.currencyName),
-                  totalbonus: (3000 / devise.curencyVal).toFixed(2),
-                })}
+                {`Bonus ${(50 / devise.curencyVal).toFixed(2)}${parsedDevise(
+                  devise.currencyName
+                )} (orders over ${(3000 / devise.curencyVal).toFixed(
+                  2
+                )}${parsedDevise(devise.currencyName)})`}
               </span>
             </div>
           </div>
         </div>
-        {/* "dialogsell.bonus":"Bonus: +{bonus1} {cur} (orders over {totalbonus} {cur})", */}
+
         <DialogFooter>
           <Button
             type="submit"
             className="bg-amber-500 hover:bg-amber-600 text-white"
             onClick={handleSubmit}
+            disabled={isLoading}
           >
-            {tScope("btn")}
+            {isLoading ? (
+              <span className="flex items-center gap-1">
+                <Loader className="animate-spin" size={24} />
+                Order in progress...
+              </span>
+            ) : (
+              "Place Order"
+            )}
           </Button>
         </DialogFooter>
       </DialogContent>

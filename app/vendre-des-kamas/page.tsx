@@ -15,10 +15,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { ServerExchange } from "@/lib/utils";
 import SellKamasDialog from "@/components/SellKamasDialog";
-import { useScopedI18n } from "@/locales/client";
 
 const VendreKamas = () => {
-  const tScope = useScopedI18n("sellkamas");
   const [serversSell, setServersSell] = useState<ServerExchange[] | null>(null);
   const [selectedServer, setSelectedServer] = useState("");
   const [serverPriceEuro, setServerPriceEuro] = useState<number | null>();
@@ -108,17 +106,17 @@ const VendreKamas = () => {
       <Card className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-amber-900">
-            {tScope("headertitle")}
+            Sell Dofus Server
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="text-sm font-medium text-amber-900">
-                {tScope("headertitleDescServ")}:
+                Server:
               </label>
               <Input
-                value={tScope("headertitleDescServContent")}
+                value="Only available servers can be sold"
                 className="border-amber-200 focus:border-amber-400 pointer-events-none"
                 placeholder="Enter amount"
                 readOnly
@@ -126,10 +124,10 @@ const VendreKamas = () => {
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-amber-900">
-                {tScope("headertitleDescQty")}:
+                Quantity of Kamas:
               </label>
               <Input
-                value={tScope("headertitleDescQtyContent")}
+                value="The minimum quantity of kamas to sell is 5M"
                 className="border-amber-200 focus:border-amber-400 pointer-events-none"
                 placeholder="Enter amount"
                 readOnly
@@ -141,23 +139,21 @@ const VendreKamas = () => {
             <Table>
               <TableHeader>
                 <TableRow className="bg-amber-100">
-                  <TableHead className="text-amber-900">
-                    {tScope("headertableServ")}
+                  <TableHead className="text-amber-900">Server</TableHead>
+                  <TableHead className="text-amber-900 text-right">
+                    Price (DH/M)
                   </TableHead>
                   <TableHead className="text-amber-900 text-right">
-                    {tScope("headertablePriceDH")}
+                    Price (€/M)
                   </TableHead>
                   <TableHead className="text-amber-900 text-right">
-                    {tScope("headertablePriceEUR")}
+                    Price ($/M)
                   </TableHead>
                   <TableHead className="text-amber-900 text-right">
-                    {tScope("headertablePriceUSD")}
+                    Status
                   </TableHead>
                   <TableHead className="text-amber-900 text-right">
-                    {tScope("headertableStatus")}
-                  </TableHead>
-                  <TableHead className="text-amber-900 text-right">
-                    {tScope("headertableAction")}
+                    Action
                   </TableHead>
                 </TableRow>
               </TableHeader>
@@ -189,11 +185,9 @@ const VendreKamas = () => {
                             : "bg-red-100 text-red-800"
                         }`}
                       >
-                        {server.serverStatus 
-                        === "Disponible"
-                          ? tScope("headertableStatusInTableAva")
-                          : tScope("headertableStatusInTableComp")
-                          }
+                        {server.serverStatus === "Disponible"
+                          ? "Available"
+                          : "Full Stock"}
                       </span>
                     </TableCell>
                     <TableCell className="text-right">
@@ -207,12 +201,6 @@ const VendreKamas = () => {
               </TableBody>
             </Table>
           </div>
-
-          {/* <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <p className="text-sm text-amber-800">
-              Bonus: +50dhs if order more than 3000dhs
-            </p>
-          </div> */}
         </CardContent>
       </Card>
     </div>

@@ -37,6 +37,10 @@ export default {
   "cartpage.subtotal": "Subtotal",
   "cartpage.shipping": "Envío",
   "cartpage.checkout": "Pagar",
+  "cartpage.checkoutLoadingBtn": "En curso...",
+  "cartpage.success":
+    "Pedido realizado con éxito. Abre el chat para proceder con el intercambio",
+  "cartpage.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
 
   "infosect.desctitle": "Comprar y vender Kamas Dofus",
   "infosect.descdesc":
@@ -87,6 +91,7 @@ export default {
   "exchange.exchangeCodeErr": "El código de intercambio es obligatorio",
   "exchange.success":
     "Solicitud de intercambio enviada con éxito. Abra el chat para proceder con el intercambio.",
+  "exchange.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
 
   "sellkamas.headertitle": "Vender Servidor Dofus",
   "sellkamas.headertitleDescServ": "Servidor",
@@ -135,4 +140,30 @@ export default {
   "dialogsell.casetrc20input": "Ingrese la dirección TRX",
   "dialogsell.bonus":
     "Bono: +{bonus1} {cur} (pedidos superiores a {totalbonus} {cur})",
+  "dialogsell.gameNameError": "El nombre en el juego es obligatorio",
+  "dialogsell.amountError": "La cantidad es obligatoria",
+  "dialogsell.paymentMethodError": "El método de pago es obligatorio",
+  "dialogsell.paymentDetailsError": "Este campo es obligatorio",
+  "dialogsell.btnLoading": "Pedido en curso...",
+  "dialogsell.success":
+    "Pedido realizado con éxito. Abre el chat para proceder con el intercambio",
+  "dialogsell.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
+
+  "emptycart.title": "Tu carrito está vacío",
+  "emptycart.desc":
+    "Parece que aún no has agregado ningún artículo a tu carrito.",
+  "emptycart.btn": "Comenzar a comprar",
+
+  "login.title": "Bienvenido de nuevo",
+  "login.desc": "Introduce tus credenciales para acceder a tu cuenta",
+  "login.mail": "Dirección de correo electrónico",
+  "login.password": "Contraseña",
+  "login.passwordPlaceholder": "Ingresa tu contraseña",
+  "login.forgopassword": "¿Olvidaste tu contraseña?",
+  "login.btnlogin": "Iniciar sesión",
+  "login.btnloginLoader": "Iniciando sesión...",
+  "login.bottomDesc": "¿No tienes una cuenta?",
+  "login.bottomSignup": "¿Crear una cuenta?",
+  "login.emailError": "Dirección de correo electrónico incorrecta",
+  "login.passwordError": "Contraseña incorrecta",
 } as const;

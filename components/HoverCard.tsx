@@ -7,12 +7,10 @@ import {
 } from "@/components/ui/hover-card";
 import useStore from "@/lib/store-manage";
 import { parsedDevise } from "@/lib/utils";
-import { useI18n } from "@/locales/client";
 import Image from "next/image";
 import Link from "next/link";
 
 const CardHoverCon = () => {
-  const t = useI18n();
   const { totalItems, carts } = useStore();
   const totalPrice = carts.reduce((acc, item) => acc + item.totalPrice, 0);
   return (
@@ -44,7 +42,7 @@ const CardHoverCon = () => {
             href="/cart"
             className="w-full outline-none text-base p-2 rounded bg-yellow-500 text-white transition-colors hover:opacity-90"
           >
-            {t("cart.goToCart")}
+            Go to cart
           </Link>
         </div>
       </HoverCardContent>

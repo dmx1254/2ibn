@@ -11,18 +11,16 @@ import { CurrencyItem, Language, cn, currencies, languages } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import useStore from "@/lib/store-manage";
 import { CUR } from "@/lib/types/types";
-import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 import { LocaleSelect } from "./LocaleSelect";
+import Image from "next/image";
 
 const LanguageAndCurrency = () => {
-  const tScope = useScopedI18n("languageandcur");
-
   const { addNewDevise, devise } = useStore();
-  const locale = useCurrentLocale();
 
   const [isActiveCurrency, setIsActiveCurrency] = useState<string>("euro");
   const [language, setLanguage] = useState(languages[0]);
   const [currency, setCurrency] = useState(currencies[0]);
+  const [activeCode, setActiveCode] = useState<"en" | "fr" | "es">("en");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLanguageChange = (lang: Language) => {
@@ -68,8 +66,8 @@ const LanguageAndCurrency = () => {
   }, [data, addNewDevise]);
 
   const getLocaleLanguage = () => {
-    const language = languages.find((l) => l.code === locale);
-    return language;
+    const languageGet = languages.find((l) => l.code === activeCode);
+    return languageGet;
   };
   const getActualCurrency = () => {
     const curr = currencies.find((c) => c.slug === devise.currencyName);
@@ -100,11 +98,38 @@ const LanguageAndCurrency = () => {
       >
         <div className="grid divide-y divide-gray-100">
           <div className="p-4 space-y-3">
-            <h4 className="font-semibold text-lg text-gray-800">{tScope("language")}</h4>
-            <LocaleSelect />
+            <h4 className="font-semibold text-lg text-gray-800">Language</h4>
+            <div className="space-y-1">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  className={cn(
+                    "w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors",
+                    activeCode === lang.code
+                      ? "bg-yellow-50 text-yellow-700"
+                      : "hover:bg-gray-50 text-gray-700"
+                  )}
+                  onClick={() => setActiveCode(lang.code as "en" | "fr" | "es")}
+                >
+                  <Image
+                    src={lang.flag}
+                    alt={lang.name}
+                    width={20}
+                    height={20}
+                    className="rounded-sm"
+                  />
+                  <span className="flex-grow text-left text-sm font-medium">
+                    {lang.name}
+                  </span>
+                  {activeCode === lang.code && (
+                    <Check size={18} className="text-yellow-600" />
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
           <div className="p-4 space-y-3">
-            <h4 className="font-semibold text-lg text-gray-800">{tScope("currency")}</h4>
+            <h4 className="font-semibold text-lg text-gray-800">Currency</h4>
             <div className="space-y-1">
               {currencies.map((curr) => (
                 <button

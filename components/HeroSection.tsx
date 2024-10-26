@@ -23,14 +23,12 @@ import { FaCircleQuestion } from "react-icons/fa6";
 import { IoIosFlash } from "react-icons/io";
 import { ServerBuy, dofusItem, parsedDevise } from "@/lib/utils";
 import useStore from "@/lib/store-manage";
-import { useScopedI18n } from "@/locales/client";
 import clsx from "clsx";
 import { toast } from "sonner";
 
 const HeroSection = () => {
   const { devise, activeServerRequest, addToActiveServerRequest, addToCart } =
     useStore();
-  const tScope = useScopedI18n("hero");
   const { servers } = useStore();
   const [dofusChange, setDofusChange] = useState<string>(activeServerRequest);
   const [serverChange, setServerChange] = useState<string>("");
@@ -87,25 +85,25 @@ const HeroSection = () => {
       character: character,
     };
     addToCart(cart);
-    toast.success(
-      tScope("added.cart", { serverName: activeServer?.serverName }),
-      {
-        style: { color: "#16a34a" },
-      }
-    );
+    toast.success(`${activeServer?.serverName} is successfully added to cart`, {
+      style: { color: "#16a34a" },
+    });
   };
 
   return (
     <section className="w-full max-w-6xl font-poppins flex max-lg:flex-col items-center justify-between gap-10 lg:gap-20 m-0 p-0">
       <Card className="w-full max-lg:max-w-[450px] lg:w-2/4 flex flex-col items-center lg:items-start gap-2 shadow-none bg-transparent border-none">
         <div className="full text-4xl lg:text-5xl font-bold leading-[45px] lg:leading-[50px] max-lg:text-center">
-          {tScope("titlefirst")} <span className="text-yellow-500">Dofus</span>{" "}
-          {tScope("titlesecond")}
+          Buy Kamas <span className="text-yellow-500">Dofus</span> Secure, Fast
+          with the Best Prices
         </div>
-        <p className="w-full text-lg max-lg:hidden">{tScope("desc")}</p>
+        <p className="w-full text-lg max-lg:hidden">
+          Experience the trust of more than 100,000 satisfied customers with the
+          leading Kamas provider for over 4 years, here to serve you.
+        </p>
         <div className="w-full flex flex-col items-center lg:items-start lg:mt-2">
           <div className="flex items-center text-sm">
-            <span className="font-semibold"> {tScope("reviewsnote")}</span>
+            <span className="font-semibold">Rated 4.9 / 5</span>
             <Separator className="w-0.5 h-5 mx-1.5 bg-gray-300" />
             <Image
               src="/assets/stars.svg"
@@ -115,7 +113,7 @@ const HeroSection = () => {
               className=""
             />
           </div>
-          <p className="text-xs mt-0.5">{tScope("reviewsdesc")}</p>
+          <p className="text-xs mt-0.5">Based on 932.15 reviews</p>
         </div>
       </Card>
       <Card
@@ -126,10 +124,10 @@ const HeroSection = () => {
         }}
       >
         <div className="w-full flex flex-col items-start gap-3">
-          <Label>{tScope("game")}</Label>
+          <Label>Select the game</Label>
           <Select value={dofusChange} onValueChange={handleDofusChange}>
             <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#EDEDED] px-5 py-7 rounded-[10px] text-base">
-              <SelectValue placeholder="Selectionner un jeu" />
+              <SelectValue placeholder="Select the game" />
             </SelectTrigger>
             <SelectContent className="bg-[#EDEDED]">
               <SelectGroup>
@@ -156,14 +154,14 @@ const HeroSection = () => {
           </Select>
         </div>
         <div className="w-full flex flex-col items-start gap-3">
-          <Label>{tScope("server")}</Label>
+          <Label>Select the server</Label>
           <Select value={serverChange} onValueChange={setServerChange}>
             <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#EDEDED] px-5 py-7 rounded-[10px] text-base">
               <SelectValue placeholder="Sélectionnez le serveur" />
             </SelectTrigger>
             <SelectContent className="bg-[#EDEDED]">
               <SelectGroup>
-                <SelectLabel>{tScope("serverdesc")}</SelectLabel>
+                <SelectLabel>Servers</SelectLabel>
                 {serverSelected?.map((server) => (
                   <SelectItem
                     key={server._id}
@@ -178,7 +176,7 @@ const HeroSection = () => {
           </Select>
         </div>
         <div className="w-full flex flex-col items-start gap-3">
-          <Label>{tScope("needkamas")}</Label>
+          <Label>How many kamas do you need?</Label>
           <div className="flex items-center">
             <div className="relative flex items-center">
               <Input
@@ -220,7 +218,7 @@ const HeroSection = () => {
         </div>
         <div className="w-full flex flex-col items-start gap-3">
           <Label className="flex items-center gap-2">
-            {tScope("character")}
+            Your in-game name
             <FaCircleQuestion className="text-[#a1a0a0]" />
           </Label>
           <Input
@@ -261,11 +259,11 @@ const HeroSection = () => {
           )}
           onClick={handleAddToCart}
         >
-          {tScope("btn")}
+          Add to cart
         </button>
         <span className="flex items-center text-xs self-center text-green-500">
           <IoIosFlash size={20} />
-          {tScope("bottomdesc")}
+          Delivery in a few minutes and 100% secure
         </span>
       </Card>
     </section>

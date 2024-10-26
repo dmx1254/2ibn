@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { CURRENCY, ServerBuy } from "./utils";
-import { Cart } from "./types/types";
+import { Cart, USERLOGINRESPONSE } from "./types/types";
 
 interface MyStore {
   servers: ServerBuy[];
@@ -16,11 +16,15 @@ interface MyStore {
   totalItems: number;
   activeServerRequest: string;
   addToActiveServerRequest: (serverActive: string) => void;
+  user: USERLOGINRESPONSE | null;
+  addUser: (user: USERLOGINRESPONSE) => void;
+  deleteUser: () => void;
 }
 
 const useStore = create<MyStore>()(
   persist(
     (set) => ({
+      user: null,
       servers: [],
       devise: { currencyName: "mad", curencyVal: 1 },
       carts: [],
@@ -30,6 +34,8 @@ const useStore = create<MyStore>()(
       addToActiveServerRequest: (serverActive) =>
         set({ activeServerRequest: serverActive }),
       addNewDevise: (dev) => set({ devise: dev }),
+      addUser: (userLogin) => set({ user: userLogin }),
+      deleteUser: () => set({ user: null }),
       addToCart: (cart) =>
         set((state) => {
           const updateCart = state.carts.map((crt) => {

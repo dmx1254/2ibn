@@ -37,6 +37,11 @@ export default {
   "cartpage.subtotal": "Sous-total",
   "cartpage.shipping": "Livraison",
   "cartpage.checkout": "Passer à la caisse",
+  "cartpage.checkoutLoadingBtn": "En cours...",
+  "cartpage.success":
+    "Commande validée avec succès. Ouvrez le chat pour procéder à l'échange",
+  "cartpage.error":
+    "Quelque chose s'est mal passée, veuillez réessayer plus tard",
 
   "infosect.desctitle": "Acheter et vendre des Kamas Dofus",
   "infosect.descdesc":
@@ -88,6 +93,8 @@ export default {
   "exchange.exchangeCodeErr": "Code d'échange est requis",
   "exchange.success":
     "Demande d'échange envoyée avec succès. Ouvrez le chat pour procéder à l'échange.",
+  "exchange.error":
+    "Quelque chose s'est mal passé, veuillez réessayer plus tard",
 
   "sellkamas.headertitle": "Vendre Serveur Dofus",
   "sellkamas.headertitleDescServ": "Serveur",
@@ -135,6 +142,33 @@ export default {
   "dialogsell.casebinpaywiseinput": "Entrez l'email de paiement",
   "dialogsell.caseadvcashinput": "Entrez le numéro de compte",
   "dialogsell.casetrc20input": "Entrez l'adresse TRX",
-  "dialogsell.bonus": "Bonus : +{bonus1} {cur} (commandes supérieures à {totalbonus} {cur})"
+  "dialogsell.bonus":
+    "Bonus : +{bonus1} {cur} (commandes supérieures à {totalbonus} {cur})",
+  "dialogsell.gameNameError": "Le nom dans le jeu est requis",
+  "dialogsell.amountError": "La quantité est requise",
+  "dialogsell.paymentMethodError": "La méthode de paiement est requise",
+  "dialogsell.paymentDetailsError": "Ce champ est requis",
+  "dialogsell.btnLoading": "Commande en cours...",
+  "dialogsell.success":
+    "Commande validée avec succès. Ouvrez le chat pour procéder à l'échange",
+  "dialogsell.error":
+    "Quelque chose s'est mal passée, veuillez réessayer plus tard",
 
+  "emptycart.title": "Votre panier est vide",
+  "emptycart.desc":
+    "On dirait que vous n'avez pas encore ajouté d'articles à votre panier.",
+  "emptycart.btn": "Commencer vos achats",
+
+  "login.title": "Bon retour",
+  "login.desc": "Entrez vos identifiants pour accéder à votre compte",
+  "login.mail": "Adresse e-mail",
+  "login.password": "Mot de passe",
+  "login.passwordPlaceholder": "Entrez votre mot de passe",
+  "login.forgopassword": "Mot de passe oublié ?",
+  "login.btnlogin": "Se connecter",
+  "login.btnloginLoader": "Connexion en cours...",
+  "login.bottomDesc": "Vous n'avez pas de compte ?",
+  "login.bottomSignup": "Créer un compte ?",
+  "login.emailError": "Adresse E-mail incorrect",
+  "login.passwordError": "Mot de passe incorrect",
 } as const;
