@@ -45,3 +45,23 @@ export interface USERLOGINRESPONSE {
   phone: string;
   profil: string;
 }
+
+export interface UserRegister {
+  lastname: string;
+  firstname: string;
+  email: string;
+  phone: string;
+  country: string;
+  city: string;
+  address: string;
+  postalCode: string;
+  code: string;
+  password: string;
+}
+
+declare module "mongoose" {
+  interface Mongoose {
+    goapiDB?: mongoose.Connection;
+    ibenDB?: mongoose.Connection;
+  }
+}
