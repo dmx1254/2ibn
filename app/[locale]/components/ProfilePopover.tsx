@@ -1,12 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
+
 import Link from "next/link";
 import {
   User,
@@ -16,10 +11,13 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
-import axios from "axios";
-import { toast } from "sonner";
+
 import Image from "next/image";
 import { FaSortDown } from "react-icons/fa6";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { Button } from "./ui/button";
+
+import { signOut } from "next-auth/react";
 
 const ProfilePopover = () => {
   const menuItems = [
@@ -35,23 +33,7 @@ const ProfilePopover = () => {
   ];
 
   const handleLogout = async () => {
-    await axios({
-      method: "get",
-      url: `${process.env.NEXT_PUBLIC_IBENDOUMA_CLIENT_URL}/users/logout`,
-      withCredentials: true,
-    })
-      .then((response) => {
-        if (response?.data?.message) {
-          toast.info(response?.data?.message);
-
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    await signOut();
   };
 
   return (

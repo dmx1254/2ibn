@@ -61,6 +61,89 @@ async function initializeModels(): Promise<any> {
     address: string;
   }
 
+  interface ICode extends Document {
+    code: string;
+  }
+
+  interface IUser extends Document {
+    lastname: string;
+    firstname: string;
+    email: string;
+    password: string;
+    isAdmin: boolean;
+    moderator: boolean;
+    profil: string;
+    phone: string;
+    address: string;
+    country: string;
+    city: string;
+    postalCode: string;
+  }
+
+  const userSchema: Schema = new Schema(
+    {
+      email: {
+        type: String,
+        required: true,
+        lowercase: true,
+        unique: true,
+        trim: true,
+      },
+      password: {
+        type: String,
+        required: true,
+        minlength: 6,
+        max: 1024,
+      },
+
+      isAdmin: {
+        type: Boolean,
+        default: false,
+      },
+
+      moderator: {
+        type: Boolean,
+        default: false,
+      },
+
+      profil: {
+        type: String,
+        default: "",
+      },
+      lastname: {
+        type: String,
+        default: "",
+      },
+      firstname: {
+        type: String,
+        default: "",
+      },
+      phone: {
+        type: String,
+        default: "",
+      },
+      address: {
+        type: String,
+        default: "",
+      },
+      country: {
+        type: String,
+        default: "",
+      },
+      city: {
+        type: String,
+        default: "",
+      },
+      postalCode: {
+        type: String,
+        default: "",
+      },
+    },
+    {
+      timestamps: true,
+    }
+  );
+
   const orderSchema: Schema = new Schema(
     {
       userId: {
@@ -210,6 +293,19 @@ async function initializeModels(): Promise<any> {
     }
   );
 
+  const codeSchema: Schema = new Schema(
+    {
+      code: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+    },
+    {
+      timestamps: true,
+    }
+  );
+
   // Créer les modèles si ils n'existent pas déjà
   const ServerModelIben =
     ibendDB.models.server || ibendDB.model<IServer>("server", serverSchema);
@@ -223,6 +319,10 @@ async function initializeModels(): Promise<any> {
     ibendDB.models.madStore || ibendDB.model<IMad>("madStore", madSchema);
   const OrderModelIben =
     ibendDB.models.order || ibendDB.model<IOrder>("order", orderSchema);
+  const CodeIbenModel =
+    ibendDB.models.code || ibendDB.model<ICode>("code", codeSchema);
+  const UserIbenModel =
+    ibendDB.models.user || ibendDB.model<IUser>("user", userSchema);
 
   return {
     ServerModelIben,
@@ -231,6 +331,8 @@ async function initializeModels(): Promise<any> {
     CadModelIben,
     MadModelIben,
     OrderModelIben,
+    CodeIbenModel,
+    UserIbenModel,
   };
 }
 

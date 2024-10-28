@@ -1,16 +1,12 @@
 "use client";
 
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 import useStore from "@/lib/store-manage";
 import { Cart } from "@/lib/types/types";
 import { parsedDevise } from "@/lib/utils";
 import { useI18n } from "@/locales/client";
 import Image from "next/image";
 import Link from "next/link";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 const CardHoverCon = () => {
   const t = useI18n();

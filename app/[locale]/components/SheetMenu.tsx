@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
-
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const SheetMenu = () => {
   return (

@@ -6,7 +6,14 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
+
+import { useQuery } from "@tanstack/react-query";
+import { ServerExchange } from "@/lib/utils";
+import axios from "axios";
+import { toast } from "sonner";
+import { useScopedI18n } from "@/locales/client";
+import { Card, CardContent } from "../components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert";
 import {
   Form,
   FormControl,
@@ -14,22 +21,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "../components/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Card, CardContent } from "@/components/ui/card";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { useQuery } from "@tanstack/react-query";
-import { ServerExchange } from "@/lib/utils";
-import axios from "axios";
-import { toast } from "sonner";
-import { useScopedI18n } from "@/locales/client";
+} from "../components/ui/select";
+import { Input } from "../components/ui/input";
+import { Button } from "../components/ui/button";
 
 const EchangeDeKamas = () => {
   const tScope = useScopedI18n("exchange");

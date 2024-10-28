@@ -2,20 +2,13 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 
-import { Input } from "@/components/ui/input";
 import { ServerExchange } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 import SellKamasDialog from "../components/SellKamasDialog";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { Input } from "../components/ui/input";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table";
 
 const VendreKamas = () => {
   const tScope = useScopedI18n("sellkamas");

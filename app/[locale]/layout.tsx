@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 import { Providers } from "./providers";
 import QueryProvider from "./components/QueryProvider";
 import Navbar from "./components/Navbar";
+import { ProviderSession } from "./components/session-providers";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -37,9 +38,11 @@ export default function RootLayout({
         <div className="relative w-full h-full home-all">
           <Providers locale={params.locale}>
             <QueryProvider>
-              <Navbar />
-              <Toaster />
-              {children}
+              <ProviderSession>
+                <Navbar />
+                <Toaster />
+                {children}
+              </ProviderSession>
             </QueryProvider>
           </Providers>
         </div>

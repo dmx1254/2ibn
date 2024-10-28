@@ -2,26 +2,19 @@
 
 import React, { useState, ChangeEvent } from "react";
 import { ArrowRight, Mail, Lock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useCurrentLocale, useScopedI18n } from "@/locales/client";
-import axios from "axios";
-import useStore from "@/lib/store-manage";
+
+import { useScopedI18n } from "@/locales/client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+import { signIn } from "next-auth/react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+
 const LoginForm = () => {
-  const currentLocale = useCurrentLocale();
   const router = useRouter();
-  const { addUser } = useStore();
   const tScope = useScopedI18n("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,56 +25,32 @@ const LoginForm = () => {
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
-      await axios
-        .post(
-          `${process.env.NEXT_PUBLIC_IBENDOUMA_CLIENT_URL}/users/login`,
-          {
-            email,
-            password,
-          },
-          {
-            withCredentials: true,
-          }
-        )
-        .then((response) => {
-          if (response.data.person) {
-            addUser(response.data.person);
-            router.push(`/${currentLocale}`);
-          }
-        });
+      const response = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (!response?.ok) {
+        if (response?.error?.includes("Adresse E-mail incorrect")) {
+          setEmaiError(tScope("emailError"));
+        } else {
+          setEmaiError("");
+        }
+        if (response?.error?.includes("Mot de passe incorrect")) {
+          setPasswordError(tScope("passwordError"));
+        } else {
+          setPasswordError("");
+        }
+      }else{
+        router.push("/")
+      }
     } catch (error: any) {
-      const emailErr = error?.response?.data?.emailError;
-      const passwordErr = error?.response?.data?.passwordError;
-      if (emailErr) {
-        setEmaiError(tScope("emailError"));
-      } else {
-        setEmaiError("");
-      }
-      if (passwordErr) {
-        setPasswordError(tScope("passwordError"));
-      } else {
-        setPasswordError("");
-      }
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
   };
-
-  // const checkToken = async () => {
-  //   try {
-  //     await axios
-  //       .get(`${process.env.NEXT_PUBLIC_IBENDOUMA_CLIENT_URL}/checkToken`, {
-  //         withCredentials: true,
-  //       })
-  //       .then((response) => {
-  //         console.log(response);
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //     console.log("error.response: " + error.response);
-  //     console.log("error.status: " + error.status);
-  //   }
-  // };
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center">
@@ -188,12 +157,6 @@ const LoginForm = () => {
             <Link href="/signup">{tScope("bottomSignup")}</Link>
           </Button>
         </CardContent>
-        {/* <button
-          onClick={checkToken}
-          className="bg-yellow-600 text-white p-3 rounded"
-        >
-          checkToken
-        </button> */}
       </Card>
     </div>
   );

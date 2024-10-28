@@ -1,21 +1,9 @@
 "use client";
 
 import React, { ChangeEvent, useEffect, useMemo, useState } from "react";
-import { Card } from "./ui/card";
-import { Separator } from "./ui/separator";
-import Image from "next/image";
-import { Label } from "./ui/label";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Input } from "./ui/input";
+import Image from "next/image";
+
 
 import { Plus } from "lucide-react";
 
@@ -26,6 +14,11 @@ import useStore from "@/lib/store-manage";
 import { useScopedI18n } from "@/locales/client";
 import clsx from "clsx";
 import { toast } from "sonner";
+import { Card } from "./ui/card";
+import { Separator } from "./ui/separator";
+import { Label } from "./ui/label";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select";
+import { Input } from "./ui/input";
 
 const HeroSection = () => {
   const { devise, activeServerRequest, addToActiveServerRequest, addToCart } =

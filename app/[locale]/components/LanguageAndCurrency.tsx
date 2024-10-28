@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 import { Check, ChevronDown, Globe } from "lucide-react";
 import { CurrencyItem, Language, cn, currencies, languages } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
@@ -13,6 +9,7 @@ import useStore from "@/lib/store-manage";
 import { CUR } from "@/lib/types/types";
 import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 import { LocaleSelect } from "./LocaleSelect";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 const LanguageAndCurrency = () => {
   const tScope = useScopedI18n("languageandcur");

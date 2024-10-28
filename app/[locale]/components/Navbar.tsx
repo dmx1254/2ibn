@@ -3,12 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-
 import { FaSortDown } from "react-icons/fa";
 import SheetMenu from "./SheetMenu";
 
@@ -16,12 +10,21 @@ import { useQuery } from "@tanstack/react-query";
 import { dofusItemNav } from "@/lib/utils";
 import useStore from "@/lib/store-manage";
 import LanguageAndCurrency from "./LanguageAndCurrency";
-import { useCurrentLocale, useScopedI18n } from "@/locales/client";
+import { useScopedI18n } from "@/locales/client";
 import CardHoverCon from "./HoverCard";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+
+import { useSession } from "next-auth/react";
+import ProfilePopover from "./ProfilePopover";
 
 const Navbar = () => {
+  const { data: session, status } = useSession();
+
+  // console.log(session);
+  // console.log(status);
+
   const tScope = useScopedI18n("navbar.popover");
   const pathname = usePathname();
   const { addSevers, activeServerRequest, addToActiveServerRequest } =
@@ -53,7 +56,6 @@ const Navbar = () => {
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }
-
 
     return response.json();
   };
@@ -128,29 +130,35 @@ const Navbar = () => {
             </Link> */}
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
-            <Link
-              href="/signin"
-              className="hidden sm:inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
-            >
-              <Image
-                src="/assets/locker.svg"
-                alt="account logo"
-                width={20}
-                height={20}
-                className="-mt-0.5"
-              />
-              <span className="text-base">{tScope("account")}</span>
-            </Link>
-            <div className="inline-flex sm:hidden items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link">
-              <Image
-                src="/assets/circle-user.svg"
-                alt="account logo"
-                width={22}
-                height={22}
-                className=""
-              />
-              <span className="sr-only">language and currency</span>
-            </div>
+            {session && status === "authenticated" ? (
+              <ProfilePopover />
+            ) : (
+              <Link
+                href="/signin"
+                className="hidden sm:inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
+              >
+                <Image
+                  src="/assets/locker.svg"
+                  alt="account logo"
+                  width={20}
+                  height={20}
+                  className="-mt-0.5"
+                />
+                <span className="text-base">{tScope("account")}</span>
+              </Link>
+            )}
+            {(!session || status !== "authenticated") && (
+              <div className="inline-flex sm:hidden items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link">
+                <Image
+                  src="/assets/circle-user.svg"
+                  alt="account logo"
+                  width={22}
+                  height={22}
+                  className=""
+                />
+                <span className="sr-only">language and currency</span>
+              </div>
+            )}
             <LanguageAndCurrency />
             <CardHoverCon />
           </div>
