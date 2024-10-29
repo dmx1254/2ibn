@@ -59,9 +59,8 @@ export interface UserRegister {
   password: string;
 }
 
-declare module "mongoose" {
-  interface Mongoose {
-    goapiDB?: mongoose.Connection;
-    ibenDB?: mongoose.Connection;
-  }
+export interface ValidToken {
+  userId: string;
+  iat: number;
+  exp: number;
 }
