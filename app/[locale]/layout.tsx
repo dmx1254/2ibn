@@ -32,7 +32,7 @@ export default function RootLayout({
       <body
         className={clsx(
           poppins.variable,
-          "w-full h-full antialiased font-sans"
+          "w-full h-full antialiased font-sans bg-gray-50"
         )}
       >
         <div className="relative w-full h-full home-all">

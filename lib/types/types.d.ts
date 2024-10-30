@@ -64,3 +64,83 @@ export interface ValidToken {
   iat: number;
   exp: number;
 }
+
+export interface OrderLength {
+  ordersBuysLength: number;
+  ordersSellLength: number;
+  exchangeLength: number;
+}
+
+export interface ExchangeKamas {
+  userId: string;
+  serverOut: string;
+  qtyToPay: number;
+  characterToPay: string;
+  serverIn: string;
+  qtyToReceive: number;
+  characterToReceive: string;
+  codeToExchange: string;
+  status: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface OrderSell {
+  userId: string;
+  numBuy: string;
+  jeu: string;
+  server: string;
+  pu: number;
+  qte: number;
+  totalPrice: number;
+  paymentMethod: string;
+  gameName: string;
+  paymentInfoDetails: string;
+  currencymethod: string;
+  status: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Product {
+  productId: string;
+  category: string;
+  server: string;
+  qty: number;
+  amount: number;
+  price: number;
+  character: string;
+  totalPrice: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface OrderBuy {
+  userId: string;
+  orderNum: string;
+  products: Product[];
+  totalPrice: number;
+  paymentMethod: string;
+  orderIdPaid: string;
+  cur: string;
+  valCurency: number;
+  status: string;
+  address: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface UserProfile {
+  lastname: string;
+  firstname: string;
+  email: string;
+  isAdmin: boolean;
+  moderator: boolean;
+  phone: string;
+  address: string;
+  country: string;
+  city: string;
+  postalCode: string;
+  createdAt: Date;
+  updatedAt: Date;
+}

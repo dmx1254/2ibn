@@ -22,11 +22,15 @@ export async function middleware(request: NextRequest) {
 
     if (!token) {
       // Redirige vers la page de connexion en préservant la locale
-      const locale = request.nextUrl.pathname.split('/')[1] || 'en';
+      const locale = request.nextUrl.pathname.split("/")[1] || "en";
       const loginUrl = new URL(`/${locale}/signin`, request.url);
       // Ajoute l'URL de callback pour rediriger après la connexion
-      loginUrl.searchParams.set('callbackUrl', request.url);
+      loginUrl.searchParams.set("callbackUrl", request.url);
       return NextResponse.redirect(loginUrl);
+    }
+
+    if (token && request.nextUrl.pathname.includes("reset-password")) {
+      return NextResponse.redirect("/");
     }
   }
 
@@ -38,8 +42,8 @@ export const config = {
   // Matcher mis à jour pour inclure toutes les routes localisées et protégées
   matcher: [
     // Routes protégées
-    '/(en|fr|es)/profile/:path*',
+    "/(en|fr|es)/profile/:path*",
     // Routes i18n (exclut les fichiers statiques et les API)
-    '/((?!api|_next|static|.*\\..*|favicon.ico|robots.txt).*)',
+    "/((?!api|_next|static|.*\\..*|favicon.ico|robots.txt).*)",
   ],
 };

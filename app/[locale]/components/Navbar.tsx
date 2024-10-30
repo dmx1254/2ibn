@@ -74,6 +74,8 @@ const Navbar = () => {
   return (
     !pathname.includes("signin") &&
     !pathname.includes("signup") &&
+    !pathname.includes("reset-password") &&
+    !pathname.includes("profile") &&
     !pathname.includes("resetpassword") && (
       <div
         className="z-50 font-poppins sticky top-0 left-0 right-0 w-full flex items-center justify-center bg-transparent text-center px-4"

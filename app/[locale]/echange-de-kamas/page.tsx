@@ -31,8 +31,10 @@ import {
 } from "../components/ui/select";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
+import { useSession } from "next-auth/react";
 
 const EchangeDeKamas = () => {
+  const { data: session, status } = useSession();
   const tScope = useScopedI18n("exchange");
   const [serversExchange, setServersExchange] = useState<
     ServerExchange[] | null
@@ -91,7 +93,7 @@ const EchangeDeKamas = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const data = {
-      userId: "63c52df8f1adcc81fad062b3",
+      userId: session?.user.id,
       serverOut: values.serverToPay,
       serverIn: values.serverToReceive,
       codeToExchange: values.exchangeCode,
@@ -376,7 +378,7 @@ const EchangeDeKamas = () => {
                   <Button
                     type="submit"
                     className="w-full h-12 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-lg transition-colors duration-200"
-                    disabled={loadingExchange}
+                    disabled={loadingExchange || !session?.user.id}
                   >
                     {loadingExchange ? (
                       <span className="flex items-center justify-center gap-2">

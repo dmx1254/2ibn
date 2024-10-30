@@ -2,8 +2,18 @@
 
 import Image from "next/image";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { useScopedI18n } from "@/locales/client";
+import useStore from "@/lib/store-manage";
+import Link from "next/link";
+import { dofusItemNavSheetMenu } from "@/lib/utils";
 
 const SheetMenu = () => {
+  const { addToActiveServerRequest } = useStore();
+  const tScope = useScopedI18n("menu");
+  const handleActiveJeu = (slug: string) => {
+    addToActiveServerRequest(slug);
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -23,18 +33,28 @@ const SheetMenu = () => {
         side="bottom"
       >
         <div className="w-full flex flex-col items-center gap-3">
-          <span className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2">
-            Buy Kamas Dofus 2.0 (PC)
-          </span>
-          <span className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2">
-            Buy Kamas Dofus Touch
-          </span>
-          <span className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2">
-            Buy Kamas Dofus Retro
-          </span>
-          <span className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2">
-            Buy Kamas Exchange Kamas
-          </span>
+          {dofusItemNavSheetMenu.map((item, index) => (
+            <button
+              key={item.id + index}
+              className="outline-none w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
+              onClick={() => handleActiveJeu(item.slug)}
+            >
+              {tScope(item.typeslug as "kamas" | "touch" | "retro")}
+            </button>
+          ))}
+
+          <Link
+            href="/echange-de-kamas"
+            className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
+          >
+            {tScope("exchange")}
+          </Link>
+          <Link
+            href="/vendre-des-kamas"
+            className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
+          >
+            {tScope("sell")}
+          </Link>
         </div>
       </SheetContent>
     </Sheet>

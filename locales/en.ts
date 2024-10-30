@@ -162,4 +162,106 @@ export default {
   "login.bottomSignup": "Create an account?",
   "login.emailError": "Incorrect email address",
   "login.passwordError": "Incorrect password",
+
+  "menu.kamas": "Buy Kamas Dofus 2.0 (PC)",
+  "menu.touch": "Buy Kamas Dofus Touch",
+  "menu.retro": "Buy Kamas Dofus Retro",
+  "menu.exchange": "Exchange Kamas",
+  "menu.sell": "Sell ​​your Kamas",
+
+  "signup.renderStep1.lastname": "Last Name",
+  "signup.renderStep1.firstname": "First name",
+  "signup.renderStep1.email": "Email",
+  "signup.renderStep1.emailPlace": "Enter your adress mail",
+  "signup.renderStep1.phone": "Phone",
+  "signup.renderStep1.phonePlace": "Phone number",
+  "signup.renderStep1.btnNext": "Next",
+  "signup.renderStep1.btnBack": "Back",
+  "signup.renderStep1.createMyAccount": "Create my account",
+  "signup.renderStep.step1": "Create your account",
+  "signup.renderStep.step2": "Verification",
+  "signup.renderStep.step3": "Finalize your registration",
+
+  "signup.renderStep2.title": "Check your email",
+  "signup.renderStep2.subTitle": "We have sent a verification code to",
+  "signup.renderStep2.codeText": "Verification code",
+
+  "signup.renderStep3.country": "Country",
+  "signup.renderStep3.countryPlace": "Your country",
+  "signup.renderStep3.city": "City",
+  "signup.renderStep3.cityPlace": "Your city",
+  "signup.renderStep3.address": "Address",
+  "signup.renderStep3.addressPlace": "Your address",
+  "signup.renderStep3.postalCode": "Postal code",
+  "signup.renderStep3.password": "Password",
+  "signup.renderStep3.confirmPassword": "Confirm password",
+  "signup.error.countCitAddr": "This field is required",
+  "signup.error.password": "The password must contain 8 characters",
+  "signup.error.confirmPassword": "Passwords do not match",
+  "signup.error.postalCode": "postal code format is invalid",
+  "signup.error.emailFormat": "Invalid email format",
+  "signup.error.codeLength": "The code must be exactly 6 characters",
+  "signup.serverError.codeError": "The code you entered is invalid",
+  "signup.serverSuccess.successMessage": "Your account has been created",
+  "signup.serverError.userError":
+    "This user with this email is already registered",
+
+  "resetPaasowrdLink.title": "Reset Password",
+  "resetPaasowrdLink.subtitle": "Enter your email to receive a reset link",
+  "resetPaasowrdLink.placeholder": "Enter address your email",
+  "resetPaasowrdLink.btn": "Send link",
+  "resetPaasowrdLink.btnBack": "Back",
+  "resetPaasowrdLink.successMessage":
+    "If an account exists with this email, you will receive a reset link.",
+  "resetPaasowrdLink.errorServerMessage": "User does not exist",
+
+  "resetPasswordPage.title": "Password reset",
+  "resetPasswordPage.subtitle": "Please enter your new password",
+  "resetPasswordPage.password": "New Password",
+  "resetPasswordPage.passwordPlace": "Enter your new password",
+  "resetPasswordPage.confirmPassword": "Confirm password",
+  "resetPasswordPage.confirmPasswordPlace": "Confirm your new password",
+  "resetPasswordPage.btn": "Reset Password",
+  "resetPasswordPage.success": "Your password has been successfully reset.",
+  "resetPasswordPage.passwordError":
+    "the password must contain at least 8 characters",
+  "resetPasswordPage.confirmPasswordError": "Passwords do not match",
+  "resetPasswordPage.invalidTokenError": "Invalid token",
+  "resetPasswordPage.expiresTokenError": "Token expires",
+  "resetPasswordPage.successResetPassword": "Password reset successfully",
+
+  "notFound.title": "Page Not Found",
+  "notFound.subtitle": "Oops! The page you're looking for doesn't exist.",
+  "notFound.backHome": "Return Home",
+  "notFound.desc": "If you believe this is a mistake, please contact support.",
+
+  "emailtemplate.title": "Verification Code",
+  "emailtemplate.subtitle":
+    "To complete your verification, please use the following code",
+  "emailtemplate.codeExpireText": "This code will expire in",
+  "emailtemplate.codeExpireTime": "30 minutes",
+  "emailtemplate.notice":
+    "If you did not request this code, please ignore this email.",
+  "emailtemplate.secureTitle": "Security Tips",
+  "emailtemplate.secureDesc":
+    "Never share this code with anyone. The 2IBN team will never ask for your verification code.",
+  "emailtemplate.copyright": "All rights reserved",
+  "emailtemplate.peopleSendTo": "This email was sent to",
+  "emailtemplate.website": "Website",
+  "emailtemplate.exchangeLink": "Kamas Exchange",
+  "emailtemplate.sellLink": "Sell Your Kamas",
+  "emailtemplate.bottomSpam":
+    "This email was sent by 2IBN. To ensure you receive our emails, please add verification@2ibn.com to your contacts.",
+
+  "resetlinktemplate.title": "Hello",
+  "resetlinktemplate.subtitle":
+    "We received a request to reset your password. If this request is from you, please click the link below to create a new password",
+  "resetlinktemplate.resetPasstitle": "Reset my password",
+  "resetlinktemplate.resetDesc1": "This link will expire in",
+  "resetlinktemplate.resetDesc2": "30 minutes",
+  "resetlinktemplate.resetDesc3":
+    "If you did not request this reset, you can ignore this email",
+  "resetlinktemplate.copyright": "All rights reserved",
+  "resetlinktemplate.peopleToSend":
+    "This email was sent at your request. If you have any questions, contact us at",
 } as const;

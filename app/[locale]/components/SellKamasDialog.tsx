@@ -7,11 +7,26 @@ import { useScopedI18n } from "@/locales/client";
 import useStore from "@/lib/store-manage";
 import axios from "axios";
 import { toast } from "sonner";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import { useSession } from "next-auth/react";
 
 const SellKamasDialog = ({
   serverStatus,
@@ -20,6 +35,7 @@ const SellKamasDialog = ({
   serverStatus: string;
   server: ServerExchange;
 }) => {
+  const { data: session, status } = useSession();
   const tScope = useScopedI18n("dialogsell");
   const { devise } = useStore();
   const [formData, setFormData] = useState({
@@ -148,7 +164,7 @@ const SellKamasDialog = ({
       }
     } else {
       const data = {
-        userId: "63c52df8f1adcc81fad062b3",
+        userId: session?.user.id,
         numBuy: codeGenerated(),
         jeu: server?.serverCategory,
         server: server?.serverName,
@@ -170,7 +186,7 @@ const SellKamasDialog = ({
           });
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         toast.success(tScope("error"), {
           style: { color: "#dc2626" },
         });
@@ -306,7 +322,7 @@ const SellKamasDialog = ({
             type="submit"
             className="bg-amber-500 hover:bg-amber-600 text-white"
             onClick={handleSubmit}
-            disabled={isLoading}
+            disabled={isLoading || !session?.user.id}
           >
             {isLoading ? (
               <span className="flex items-center gap-1">

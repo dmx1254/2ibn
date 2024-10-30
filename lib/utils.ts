@@ -3,7 +3,6 @@ import dofk from "@/public/dofus-images/dofus-k.png";
 import dofr from "@/public/dofus-images/dofus-r.png";
 import doft from "@/public/dofus-images/dofus-t.png";
 
-
 import es from "@/public/flags/spain.png";
 import fr from "@/public/flags/fr.png";
 import en from "@/public/flags/en.png";
@@ -55,6 +54,26 @@ export const dofusItemNav: DofusItemNav[] = [
     slug: "dofus-kamas",
   },
 ];
+export const dofusItemNavSheetMenu: SheetMenuNav[] = [
+  {
+    id: "bqoa71",
+    name: "Dofus Touch",
+    slug: "dofus-touch",
+    typeslug: "touch",
+  },
+  {
+    id: "kopa68",
+    name: "Dofus Retro",
+    slug: "dofus-retro",
+    typeslug: "retro",
+  },
+  {
+    id: "erst14",
+    name: "Dofus 2.0 (pc)",
+    slug: "dofus-kamas",
+    typeslug: "kamas",
+  },
+];
 
 export interface ServerBuy {
   _id: string;
@@ -66,7 +85,6 @@ export interface ServerBuy {
   createdAt: Date;
   updatedAt: Date;
 }
-
 
 export interface ServerExchange {
   _id: string;
@@ -89,6 +107,10 @@ interface DofusItemNav {
   id: string;
   name: string;
   slug: string;
+}
+
+interface SheetMenuNav extends DofusItemNav {
+  typeslug: string;
 }
 
 export interface CURRENCY {
@@ -166,7 +188,6 @@ export const imageReturn = (slug: string): string => {
   return img;
 };
 
-
 export const codeGenerated = () => {
   const generateRandomCode =
     "0123456789abcdefghijklmnopkrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -179,7 +200,6 @@ export const codeGenerated = () => {
   return myCode;
 };
 
-
 export const orderBuyNumGenerated = () => {
   const generateOrderNum = "0123456789";
 
@@ -190,4 +210,3 @@ export const orderBuyNumGenerated = () => {
   }
   return myCode;
 };
-

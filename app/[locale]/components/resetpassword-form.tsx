@@ -17,8 +17,10 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import axios from "axios";
 import { toast } from "sonner";
+import { useScopedI18n } from "@/locales/client";
 
 const ResetPasswordPage = () => {
+  const tScope = useScopedI18n("resetPaasowrdLink");
   const [email, setEmail] = useState<string>("");
   const [emailError, setEmailError] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
@@ -42,13 +44,13 @@ const ResetPasswordPage = () => {
           .post("/api/iben/user/resetpasswordLink", { email: email })
           .then((response) => {
             if (response.data.successMessage) {
-              console.log(response);
+              //   console.log(response);
               setIsSuccess(true);
             }
           });
       } catch (error: any) {
         if (error?.response?.data?.errorMessage) {
-          toast.error(error?.response?.data?.errorMessage, {
+          toast.error(tScope("errorServerMessage"), {
             style: { color: "#dc2626" },
           });
         }
@@ -68,18 +70,17 @@ const ResetPasswordPage = () => {
             </div>
           </div>
           <CardTitle className="text-2xl font-bold text-center">
-            Reset Password
+            {tScope("title")}
           </CardTitle>
           <CardDescription className="text-center">
-            Enter your email to receive a reset link
+            {tScope("subtitle")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           {isSuccess ? (
             <Alert className="bg-green-50 border-green-200">
               <AlertDescription className="text-green-800">
-                If an account exists with this email, you will receive a reset
-                link.
+                {tScope("successMessage")}
               </AlertDescription>
             </Alert>
           ) : (
@@ -89,7 +90,7 @@ const ResetPasswordPage = () => {
                   <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                   <Input
                     type="email"
-                    placeholder="johndoe@exemple.com"
+                    placeholder={tScope("placeholder")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -116,7 +117,7 @@ const ResetPasswordPage = () => {
                   </div>
                 ) : (
                   <div className="flex items-center justify-center">
-                    Send link
+                    {tScope("btn")}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </div>
                 )}
@@ -130,7 +131,7 @@ const ResetPasswordPage = () => {
             className="text-sm text-gray-600"
             onClick={() => window.history.back()}
           >
-            Back
+            {tScope("btnBack")}
           </Button>
         </CardFooter>
       </Card>

@@ -13,8 +13,10 @@ import axios from "axios";
 import { toast } from "sonner";
 import InfoSection from "../components/InfoSection";
 import EmptyCart from "../components/EmptyCart";
+import { useSession } from "next-auth/react";
 
 const CartPage: React.FC = () => {
+  const { data: session, status } = useSession();
   const tScope = useScopedI18n("cartpage");
   const { carts, removeFromCart, updateToCart, clearCart } = useStore();
   const [activePaymentMethod, setActivePaymentMethod] = useState("");
@@ -38,10 +40,10 @@ const CartPage: React.FC = () => {
       };
     });
     const data = {
-      userId: "63c52df8f1adcc81fad062b3",
+      userId: session?.user.id,
       orderNum: orderBuyNumGenerated(),
       products: products,
-      address: "Casablanca Ain sbaa",
+      address: "",
       status: "En attente",
       totalPrice: total.toFixed(2),
       paymentMethod: activePaymentMethod,
@@ -219,11 +221,20 @@ const CartPage: React.FC = () => {
               className={clsx(
                 "w-full bg-green-400 text-indigo-800 py-4 rounded-xl font-semibold text-lg hover:bg-green-300 transition-colors flex items-center justify-center",
                 {
-                  "opacity-75": total <= 0 || isOrderLoading,
+                  "opacity-75":
+                    total <= 0 ||
+                    isOrderLoading ||
+                    !activePaymentMethod ||
+                    !session?.user.id,
                 }
               )}
               onClick={handleCheckout}
-              disabled={total <= 0 || isOrderLoading || !activePaymentMethod}
+              disabled={
+                total <= 0 ||
+                isOrderLoading ||
+                !activePaymentMethod ||
+                !session?.user.id
+              }
             >
               {isOrderLoading ? (
                 <span className="flex items-center gap-1">

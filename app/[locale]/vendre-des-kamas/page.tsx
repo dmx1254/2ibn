@@ -92,7 +92,7 @@ const VendreKamas = () => {
 
   return (
     <div className="container mx-auto p-6 space-y-6 max-w-4xl min-h-screen">
-      <Card className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200">
+      <Card className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200 mt-6">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-amber-900">
             {tScope("headertitle")}

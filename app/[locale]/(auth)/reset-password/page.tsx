@@ -1,6 +1,11 @@
 "use client";
 
-import React, { ChangeEvent, FormEvent, useEffect } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 
 import { useState } from "react";
 import { Eye, EyeOff, Lock } from "lucide-react";
@@ -8,9 +13,13 @@ import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import axios from "axios";
 import { toast } from "sonner";
-import { ValidToken } from "@/lib/types/types";
-
+import NotFound from "./not-found";
+import { useScopedI18n } from "@/locales/client";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 const page = ({ searchParams }: { searchParams: { token: string } }) => {
+  const { data: session, status } = useSession();
+  const tScope = useScopedI18n("resetPasswordPage");
   const token = searchParams.token;
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -25,8 +34,10 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
   const [errorMessageToken, setErrorMessageToken] = useState<string>("");
   const [userTokenId, setUserTokenId] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  //   console.log("userIdToken: " + userTokenId);
-  //   console.log("isTokenValid: " + isTokenValid);
+
+  useLayoutEffect(() => {
+    if (!session || status !== "authenticated") redirect("/");
+  }, [status, session]);
 
   const showToastError = (name: string) =>
     toast.error(name, { style: { color: "#dc2626" }, duration: 20000 });
@@ -44,14 +55,13 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
       } catch (error: any) {
         if (error?.response?.data?.name) {
           if (error?.response?.data?.name === "JsonWebTokenError") {
-            showToastError("Invalid token");
+            showToastError(tScope("invalidTokenError"));
           } else if (error?.response?.data?.name === "TokenExpiredError") {
-            showToastError("Token expires");
+            showToastError(tScope("expiresTokenError"));
           } else {
             setErrorMessageToken("");
           }
         }
-        setIsTokenValid(true);
       }
     };
 
@@ -65,13 +75,13 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
 
     if (password.length < 8 || password !== confirmPassword) {
       if (password.length < 8) {
-        setPasswordError("the password must contain at least 8 characters");
+        setPasswordError(tScope("passwordError"));
       } else {
         setPasswordError("");
       }
 
       if (password !== confirmPassword) {
-        setConfirmPasswordError("Passwords do not match");
+        setConfirmPasswordError(tScope("confirmPasswordError"));
       } else {
         setConfirmPasswordError("");
       }
@@ -87,7 +97,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
           })
           .then((response) => {
             if (response.data.successMessage) {
-              toast.success(response.data.successMessage, {
+              toast.success(tScope("successResetPassword"), {
                 style: { color: "#22c55e" },
               });
               setIsLoading(false);
@@ -101,16 +111,16 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
     }
   };
 
+  if (!token) return <NotFound />;
+
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-6 shadow-md">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-            Password reset
+            {tScope("title")}
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Please enter your new password
-          </p>
+          <p className="mt-2 text-sm text-gray-600">{tScope("subtitle")}</p>
         </div>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div>
@@ -118,7 +128,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
               htmlFor="password"
               className="block text-sm font-medium text-gray-700"
             >
-              New Password
+              {tScope("password")}
             </label>
             <div className="relative mt-1">
               <Input
@@ -129,7 +139,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
                   setPassword(e.target.value)
                 }
                 className="block w-full p-5 rounded-md border-gray-300 fucus:ring-0 focus:outline-none focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
-                placeholder="Enter your new password"
+                placeholder={tScope("passwordPlace")}
                 required
               />
 
@@ -154,7 +164,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
               htmlFor="confirmPassword"
               className="block text-sm font-medium text-gray-700"
             >
-              Confirm password
+              {tScope("confirmPassword")}
             </label>
             <div className="relative mt-1">
               <Input
@@ -165,7 +175,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
                   setConfirmPassword(e.target.value)
                 }
                 className="block w-full p-5 rounded-md border-gray-300 fucus:ring-0 focus:outline-none focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
-                placeholder="Confirm your new password"
+                placeholder={tScope("confirmPasswordPlace")}
                 required
               />
 
@@ -194,18 +204,18 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
           )}
           {success && (
             <p className="mt-2 text-sm text-green-600" role="alert">
-              Your password has been successfully reset.
+              {tScope("success")}
             </p>
           )}
 
-          <Button type="submit" className="w-full" disabled={isTokenValid}>
+          <Button type="submit" className="w-full" disabled={!userTokenId}>
             {isLoading ? (
               <div className="flex items-center justify-center">
                 <div className="w-5 h-5 border-t-2 border-b-2 border-white rounded-full animate-spin" />
               </div>
             ) : (
               <div className="flex items-center justify-center">
-                <Lock className="mr-2 h-4 w-4" /> Reset Password
+                <Lock className="mr-2 h-4 w-4" /> {tScope("btn")}
               </div>
             )}
           </Button>

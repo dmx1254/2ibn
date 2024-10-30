@@ -171,4 +171,112 @@ export default {
   "login.bottomSignup": "Créer un compte ?",
   "login.emailError": "Adresse E-mail incorrect",
   "login.passwordError": "Mot de passe incorrect",
+
+  "menu.kamas": "Acheter des Kamas Dofus 2.0 (PC)",
+  "menu.touch": "Acheter des Kamas Dofus Touch",
+  "menu.retro": "Acheter des Kamas Dofus Retro",
+  "menu.exchange": "Échanger des Kamas",
+  "menu.sell": "Vendre vos Kamas",
+
+  "signup.renderStep1.lastname": "Nom",
+  "signup.renderStep1.firstname": "Prénom",
+  "signup.renderStep1.email": "E-mail",
+  "signup.renderStep1.emailPlace": "Entrez votre adresse e-mail",
+  "signup.renderStep1.phone": "Téléphone",
+  "signup.renderStep1.phonePlace": "Numéro de téléphone",
+  "signup.renderStep1.btnNext": "Suivant",
+  "signup.renderStep1.btnBack": "Retour",
+  "signup.renderStep1.createMyAccount": "Créer mon compte",
+  "signup.renderStep.step1": "Créer votre compte",
+  "signup.renderStep.step2": "Vérification",
+  "signup.renderStep.step3": "Finalisez votre inscription",
+
+  "signup.renderStep2.title": "Vérifiez votre e-mail",
+  "signup.renderStep2.subTitle": "Nous avons envoyé un code de vérification à",
+  "signup.renderStep2.codeText": "Code de vérification",
+
+  "signup.renderStep3.country": "Pays",
+  "signup.renderStep3.countryPlace": "Votre pays",
+  "signup.renderStep3.city": "Ville",
+  "signup.renderStep3.cityPlace": "Votre ville",
+  "signup.renderStep3.address": "Adresse",
+  "signup.renderStep3.addressPlace": "Votre adresse",
+  "signup.renderStep3.postalCode": "Code postal",
+  "signup.renderStep3.password": "Mot de passe",
+  "signup.renderStep3.confirmPassword": "Confirmez le mot de passe",
+  "signup.error.countCitAddr": "Ce champ est requis",
+  "signup.error.password": "Le mot de passe doit contenir 8 caractères",
+  "signup.error.confirmPassword": "Les mots de passe ne correspondent pas",
+  "signup.error.postalCode": "Le format du code postal est invalide",
+  "signup.error.emailFormat": "Format d'e-mail invalide",
+  "signup.error.codeLength": "Le code doit comporter exactement 6 caractères",
+  "signup.serverError.codeError": "Le code que vous avez entré est invalide",
+  "signup.serverSuccess.successMessage": "Votre compte a été créé",
+  "signup.serverError.userError":
+    "Un utilisateur avec cet e-mail est déjà enregistré",
+
+  "resetPaasowrdLink.title": "Réinitialiser le mot de passe",
+  "resetPaasowrdLink.subtitle":
+    "Entrez votre e-mail pour recevoir un lien de réinitialisation",
+  "resetPaasowrdLink.placeholder": "Entrez votre adresse e-mail",
+  "resetPaasowrdLink.btn": "Envoyer le lien",
+  "resetPaasowrdLink.btnBack": "Retour",
+  "resetPaasowrdLink.successMessage":
+    "Si un compte existe avec cet e-mail, vous recevrez un lien de réinitialisation.",
+  "resetPaasowrdLink.errorServerMessage": "L'utilisateur n'existe pas",
+
+  "resetPasswordPage.title": "Réinitialisation du mot de passe",
+  "resetPasswordPage.subtitle": "Veuillez entrer votre nouveau mot de passe",
+  "resetPasswordPage.password": "Nouveau mot de passe",
+  "resetPasswordPage.passwordPlace": "Entrez votre nouveau mot de passe",
+  "resetPasswordPage.confirmPassword": "Confirmez le mot de passe",
+  "resetPasswordPage.confirmPasswordPlace":
+    "Confirmez votre nouveau mot de passe",
+  "resetPasswordPage.btn": "Réinitialiser le mot de passe",
+  "resetPasswordPage.success":
+    "Votre mot de passe a été réinitialisé avec succès.",
+  "resetPasswordPage.passwordError":
+    "Le mot de passe doit contenir au moins 8 caractères",
+  "resetPasswordPage.confirmPasswordError":
+    "Les mots de passe ne correspondent pas",
+  "resetPasswordPage.invalidTokenError": "Token invalide",
+  "resetPasswordPage.expiresTokenError": "Le token a expiré",
+  "resetPasswordPage.successResetPassword":
+    "Mot de passe réinitialisé avec succès",
+
+  "notFound.title": "Page non trouvée",
+  "notFound.subtitle": "Oups ! La page que vous recherchez n'existe pas.",
+  "notFound.backHome": "Retour à l'accueil",
+  "notFound.desc":
+    "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter le support.",
+
+  "emailtemplate.title": "Code de vérification",
+  "emailtemplate.subtitle":
+    "Pour finaliser votre vérification, veuillez utiliser le code suivant",
+  "emailtemplate.codeExpireText": "Ce code expirera dans",
+  "emailtemplate.codeExpireTime": "30 minutes",
+  "emailtemplate.notice":
+    "Si vous n'avez pas demandé ce code, veuillez ignorer cet email.",
+  "emailtemplate.secureTitle": "Conseils de sécurité",
+  "emailtemplate.secureDesc":
+    "Ne partagez jamais ce code avec qui que ce soit. L'équipe 2IBN ne vous demandera jamais votre code de vérification.",
+  "emailtemplate.copyright": "Tous droits réservés",
+  "emailtemplate.peopleSendTo": "Cet email a été envoyé à",
+  "emailtemplate.website": "Site web",
+  "emailtemplate.exchangeLink": "Echange de kamas",
+  "emailtemplate.sellLink": "Vendre vos kamas",
+  "emailtemplate.bottomSpam":
+    "Cet email a été envoyé par 2IBN. Pour vous assurer de recevoir nos emails, ajoutez verification@2ibn.com à votre liste de contacts.",
+
+  "resetlinktemplate.title": "Bonjour",
+  "resetlinktemplate.subtitle":
+    "Nous avons reçu une demande de réinitialisation de votre mot de passe. Si cette demande est de votre part, veuillez cliquer sur le lien ci-dessous pour créer un nouveau mot de passe",
+  "resetlinktemplate.resetPasstitle": "Réinitialiser mon mot de passe",
+  "resetlinktemplate.resetDesc1": "Ce lien expirera dans",
+  "resetlinktemplate.resetDesc2": "30 minutes",
+  "resetlinktemplate.resetDesc3":
+    "Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer cet email",
+  "resetlinktemplate.copyright": "Tous droits réservés",
+  "resetlinktemplate.peopleToSend":
+    "Cet email a été envoyé à votre demande. Si vous avez des questions, contactez-nous à",
 } as const;

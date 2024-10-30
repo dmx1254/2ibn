@@ -166,4 +166,107 @@ export default {
   "login.bottomSignup": "¿Crear una cuenta?",
   "login.emailError": "Dirección de correo electrónico incorrecta",
   "login.passwordError": "Contraseña incorrecta",
+
+  "menu.kamas": "Comprar Kamas Dofus 2.0 (PC)",
+  "menu.touch": "Comprar Kamas Dofus Touch",
+  "menu.retro": "Comprar Kamas Dofus Retro",
+  "menu.exchange": "Intercambiar Kamas",
+  "menu.sell": "Vende tus Kamas",
+
+  "signup.renderStep1.lastname": "Apellido",
+  "signup.renderStep1.firstname": "Nombre",
+  "signup.renderStep1.email": "Correo electrónico",
+  "signup.renderStep1.emailPlace": "Ingrese su dirección de correo",
+  "signup.renderStep1.phone": "Teléfono",
+  "signup.renderStep1.phonePlace": "Número de teléfono",
+  "signup.renderStep1.btnNext": "Siguiente",
+  "signup.renderStep1.btnBack": "Atrás",
+  "signup.renderStep1.createMyAccount": "Crear mi cuenta",
+  "signup.renderStep.step1": "Crea tu cuenta",
+  "signup.renderStep.step2": "Verificación",
+  "signup.renderStep.step3": "Finaliza tu registro",
+
+  "signup.renderStep2.title": "Revisa tu correo",
+  "signup.renderStep2.subTitle": "Hemos enviado un código de verificación a",
+  "signup.renderStep2.codeText": "Código de verificación",
+
+  "signup.renderStep3.country": "País",
+  "signup.renderStep3.countryPlace": "Tu país",
+  "signup.renderStep3.city": "Ciudad",
+  "signup.renderStep3.cityPlace": "Tu ciudad",
+  "signup.renderStep3.address": "Dirección",
+  "signup.renderStep3.addressPlace": "Tu dirección",
+  "signup.renderStep3.postalCode": "Código postal",
+  "signup.renderStep3.password": "Contraseña",
+  "signup.renderStep3.confirmPassword": "Confirmar contraseña",
+  "signup.error.countCitAddr": "Este campo es obligatorio",
+  "signup.error.password": "La contraseña debe contener 8 caracteres",
+  "signup.error.confirmPassword": "Las contraseñas no coinciden",
+  "signup.error.postalCode": "El formato del código postal es inválido",
+  "signup.error.emailFormat": "Formato de correo inválido",
+  "signup.error.codeLength": "El código debe tener exactamente 6 caracteres",
+  "signup.serverError.codeError": "El código ingresado es inválido",
+  "signup.serverSuccess.successMessage": "Tu cuenta ha sido creada",
+  "signup.serverError.userError": "Este correo ya está registrado",
+
+  "resetPaasowrdLink.title": "Restablecer contraseña",
+  "resetPaasowrdLink.subtitle":
+    "Ingrese su correo para recibir un enlace de restablecimiento",
+  "resetPaasowrdLink.placeholder": "Ingrese su dirección de correo",
+  "resetPaasowrdLink.btn": "Enviar enlace",
+  "resetPaasowrdLink.btnBack": "Atrás",
+  "resetPaasowrdLink.successMessage":
+    "Si existe una cuenta con este correo, recibirá un enlace de restablecimiento.",
+  "resetPaasowrdLink.errorServerMessage": "El usuario no existe",
+
+  "resetPasswordPage.title": "Restablecimiento de contraseña",
+  "resetPasswordPage.subtitle": "Por favor, ingrese su nueva contraseña",
+  "resetPasswordPage.password": "Nueva contraseña",
+  "resetPasswordPage.passwordPlace": "Ingrese su nueva contraseña",
+  "resetPasswordPage.confirmPassword": "Confirme la contraseña",
+  "resetPasswordPage.confirmPasswordPlace": "Confirme su nueva contraseña",
+  "resetPasswordPage.btn": "Restablecer contraseña",
+  "resetPasswordPage.success": "Su contraseña ha sido restablecida con éxito.",
+  "resetPasswordPage.passwordError":
+    "La contraseña debe contener al menos 8 caracteres",
+  "resetPasswordPage.confirmPasswordError": "Las contraseñas no coinciden",
+  "resetPasswordPage.invalidTokenError": "Token inválido",
+  "resetPasswordPage.expiresTokenError": "El token ha expirado",
+  "resetPasswordPage.successResetPassword": "Contraseña restablecida con éxito",
+
+  "notFound.title": "Página no encontrada",
+  "notFound.subtitle": "¡Ups! La página que buscas no existe.",
+  "notFound.backHome": "Volver al inicio",
+  "notFound.desc":
+    "Si cree que esto es un error, por favor contacte al soporte.",
+
+  "emailtemplate.title": "Código de verificación",
+  "emailtemplate.subtitle":
+    "Para completar su verificación, utilice el siguiente código",
+  "emailtemplate.codeExpireText": "Este código expirará en",
+  "emailtemplate.codeExpireTime": "30 minutos",
+  "emailtemplate.notice":
+    "Si no solicitó este código, ignore este correo electrónico.",
+  "emailtemplate.secureTitle": "Consejos de seguridad",
+  "emailtemplate.secureDesc":
+    "Nunca comparta este código con nadie. El equipo de 2IBN nunca le pedirá su código de verificación.",
+  "emailtemplate.copyright": "Todos los derechos reservados",
+  "emailtemplate.peopleSendTo": "Este correo electrónico fue enviado a",
+  "emailtemplate.website": "Sitio web",
+  "emailtemplate.exchangeLink": "Intercambio de Kamas",
+  "emailtemplate.sellLink": "Vende tus Kamas",
+  "emailtemplate.bottomSpam":
+    "Este correo fue enviado por 2IBN. Para asegurarte de recibir nuestros correos, agrega verification@2ibn.com a tus contactos.",
+
+  "resetlinktemplate.title": "Hola",
+  "resetlinktemplate.subtitle":
+    "Hemos recibido una solicitud para restablecer su contraseña. Si esta solicitud es suya, haga clic en el enlace a continuación para crear una nueva contraseña",
+  "resetlinktemplate.resetPasstitle": "Restablecer mi contraseña",
+  "resetlinktemplate.resetDesc1": "Este enlace expirará en",
+  "resetlinktemplate.resetDesc2": "30 minutos",
+  "resetlinktemplate.resetDesc3":
+    "Si no solicitó este restablecimiento, puede ignorar este correo electrónico",
+  "resetlinktemplate.copyright": "Todos los derechos reservados",
+  "resetlinktemplate.peopleToSend":
+    "Este correo electrónico fue enviado a su solicitud. Si tiene alguna pregunta, contáctenos en",
 } as const;
