@@ -66,6 +66,7 @@ export interface ValidToken {
 }
 
 export interface OrderLength {
+  lastOrder: OrderSell[];
   ordersBuysLength: number;
   ordersSellLength: number;
   exchangeLength: number;
@@ -111,8 +112,6 @@ export interface Product {
   price: number;
   character: string;
   totalPrice: number;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export interface OrderBuy {

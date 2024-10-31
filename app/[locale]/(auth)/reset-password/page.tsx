@@ -4,7 +4,6 @@ import React, {
   ChangeEvent,
   FormEvent,
   useEffect,
-  useLayoutEffect,
 } from "react";
 
 import { useState } from "react";
@@ -16,9 +15,7 @@ import { toast } from "sonner";
 import NotFound from "./not-found";
 import { useScopedI18n } from "@/locales/client";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 const page = ({ searchParams }: { searchParams: { token: string } }) => {
-  const { data: session, status } = useSession();
   const tScope = useScopedI18n("resetPasswordPage");
   const token = searchParams.token;
   const [password, setPassword] = useState<string>("");
@@ -34,10 +31,6 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
   const [errorMessageToken, setErrorMessageToken] = useState<string>("");
   const [userTokenId, setUserTokenId] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useLayoutEffect(() => {
-    if (!session || status !== "authenticated") redirect("/");
-  }, [status, session]);
 
   const showToastError = (name: string) =>
     toast.error(name, { style: { color: "#dc2626" }, duration: 20000 });

@@ -12,6 +12,9 @@ export async function GET(
   try {
     const { userId } = params;
     // console.log("userId: " + userId);
+    const recentOrder = await BuyModel.find({ userId: userId })
+      .sort({ createdAt: -1 })
+      .limit(1);
     const ordersBuysLength = await OrderModelIben.countDocuments({
       userId: userId,
     });
@@ -23,6 +26,7 @@ export async function GET(
     });
     return NextResponse.json(
       {
+        lastOrder: recentOrder,
         ordersBuysLength: ordersBuysLength,
         ordersSellLength: ordersSellLength,
         exchangeLength: exchangeLength,

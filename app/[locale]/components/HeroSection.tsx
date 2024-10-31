@@ -4,7 +4,6 @@ import React, { ChangeEvent, useEffect, useMemo, useState } from "react";
 
 import Image from "next/image";
 
-
 import { Plus } from "lucide-react";
 
 import { FaCircleQuestion } from "react-icons/fa6";
@@ -17,8 +16,17 @@ import { toast } from "sonner";
 import { Card } from "./ui/card";
 import { Separator } from "./ui/separator";
 import { Label } from "./ui/label";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 import { Input } from "./ui/input";
+import TestimonialsCard from "./TestimonialsCard";
 
 const HeroSection = () => {
   const { devise, activeServerRequest, addToActiveServerRequest, addToCart } =
@@ -93,28 +101,11 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="w-full max-w-6xl font-poppins flex max-lg:flex-col items-center justify-between gap-10 lg:gap-20 m-0 p-0">
-      <Card className="w-full max-lg:max-w-[450px] lg:w-2/4 flex flex-col items-center lg:items-start gap-2 shadow-none bg-transparent border-none">
-        <div className="full text-4xl lg:text-5xl font-bold leading-[45px] lg:leading-[50px] max-lg:text-center">
-          {tScope("titlefirst")} <span className="text-yellow-500">Dofus</span>{" "}
-          {tScope("titlesecond")}
-        </div>
-        <p className="w-full text-lg max-lg:hidden">{tScope("desc")}</p>
-        <div className="w-full flex flex-col items-center lg:items-start lg:mt-2">
-          <div className="flex items-center text-sm">
-            <span className="font-semibold"> {tScope("reviewsnote")}</span>
-            <Separator className="w-0.5 h-5 mx-1.5 bg-gray-300" />
-            <Image
-              src="/assets/stars.svg"
-              alt="truspilot reviews"
-              width={100}
-              height={100}
-              className=""
-            />
-          </div>
-          <p className="text-xs mt-0.5">{tScope("reviewsdesc")}</p>
-        </div>
-      </Card>
+    <section
+      id="home"
+      className="w-full max-w-6xl font-poppins flex max-lg:flex-col items-center justify-between gap-10 lg:gap-20 m-0 p-0"
+    >
+      <TestimonialsCard />
       <Card
         className="full max-lg:max-w-[450px] lg:w-1/3 flex flex-col items-start gap-4 shadow-none bg-white p-4 rounded-[10px] border-none"
         style={{

@@ -2,17 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import {
-  User,
   Package,
-  ShoppingCart,
-  CreditCard,
-  MapPin,
-  Bell,
   Settings,
   ChevronRight,
-  Heart,
-  Clock,
-  Shield,
   ShoppingBag,
   TrendingUp,
   BarChart2,
@@ -24,6 +16,8 @@ import { Skeleton } from "../components/ui/skeleton";
 import axios from "axios";
 import { OrderLength } from "@/lib/types/types";
 import { useSession } from "next-auth/react";
+import { useScopedI18n } from "@/locales/client";
+import { formatTimeAgo } from "@/lib/utils";
 
 interface USERLOGINRESPONSE {
   _id: string;
@@ -39,11 +33,35 @@ interface USERLOGINRESPONSE {
 }
 
 const ProfilePage = () => {
+  const tScope = useScopedI18n("profile");
+  const optionsHours = {
+    hourText: tScope("acountDetail.parsedTimeHourText"),
+    minuteText: tScope("acountDetail.parsedTimeMinuteText"),
+    suffix: tScope("acountDetail.parsedTimesuffix"),
+    dayText: tScope("acountDetail.parsedTimedayText"),
+    monthText: tScope("acountDetail.parsedTimemonthText"),
+    yearText: tScope("acountDetail.parsedTimeyearText"),
+  };
   const { data: session, status } = useSession();
   const [user, setUser] = useState<USERLOGINRESPONSE | null>(null);
   const [ordersL, setOrdersL] = useState<OrderLength | null>(null);
   const [ordersLoading, setOrdersLoading] = useState<boolean>(false);
   // console.log(ordersL);
+
+  const getStatusColor = (status: string) => {
+    switch (status.toLowerCase()) {
+      case "payée":
+        return "bg-green-500 rounded p-1 text-sm text-black/80";
+      case "en attente":
+        return "bg-yellow-500 rounded p-1 text-sm text-black/80";
+      case "en cours de payment":
+        return "bg-blue-500 rounded p-1 text-sm text-black/80";
+      case "annulée":
+        return "bg-red-500 rounded p-1 text-sm text-black/80";
+      default:
+        return "bg-gray-500 rounded p-1 text-sm text-black/80";
+    }
+  };
 
   const getUser = async () => {
     const response = await axios.get(`/api/iben/user/${session?.user.id}`);
@@ -98,7 +116,7 @@ const ProfilePage = () => {
   }) => (
     <Link href={link} className="block">
       <Card className="hover:bg-gray-50 transition-colors">
-        <CardContent className="p-4">
+        <CardContent className="p-3 sm:p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="p-2 rounded-lg bg-yellow-50">
@@ -137,41 +155,39 @@ const ProfilePage = () => {
   );
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-2 sm:p-6">
       {/* Welcome Section */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900">
-          Welcome back, {user?.firstname}!
+          {tScope("headerTitle")}, {user?.firstname}!
         </h1>
-        <p className="text-gray-500">
-          Manage your account and view your recent activity
-        </p>
+        <p className="text-gray-500">{tScope("headerDesc")}</p>
       </div>
 
       {/* Stats Overview */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <Stat
-              label="Orders Sell"
+              label={tScope("cardSell")}
               value={ordersL?.ordersSellLength || 0}
               loader={ordersLoading}
             />
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <Stat
-              label="Orders buy"
+              label={tScope("cardBuy")}
               value={ordersL?.ordersBuysLength || 0}
               loader={ordersLoading}
             />
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <Stat
-              label="Total Orders"
+              label={tScope("cardTotal")}
               value={
                 (ordersL?.ordersSellLength || 0) +
                 (ordersL?.ordersBuysLength || 0) +
@@ -182,9 +198,9 @@ const ProfilePage = () => {
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <Stat
-              label="Order exchange"
+              label={tScope("cardExchange")}
               value={ordersL?.exchangeLength || 0}
               loader={ordersLoading}
             />
@@ -196,26 +212,26 @@ const ProfilePage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         <QuickAction
           icon={ShoppingBag}
-          title="Orders Buy"
-          description="View and track your recent kamas purchases"
+          title={tScope("orderBuyLinkTitle")}
+          description={tScope("orderBuyLinkDesc")}
           link="/profile/orders-buys"
         />
         <QuickAction
           icon={TrendingUp}
-          title="Orders Sell"
-          description="Track your recent kamas sales"
+          title={tScope("orderSellLinkTitle")}
+          description={tScope("orderSellLinkDesc")}
           link="/profile/order-sell"
         />
         <QuickAction
           icon={BarChart2}
-          title="Orders Exchange"
-          description="Manage your kamas exchanges"
+          title={tScope("orderExchangeLinkTitle")}
+          description={tScope("orderExchangeLinkDesc")}
           link="/profile/exchange"
         />
         <QuickAction
           icon={Settings}
-          title="Update Profile"
-          description="Manage your profile information and settings"
+          title={tScope("orderupadteProfileLinkTitle")}
+          description={tScope("orderupadteProfileLinkDesc")}
           link="/profile/update-profile"
         />
       </div>
@@ -224,17 +240,21 @@ const ProfilePage = () => {
       <Card className="mb-8">
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold">Account Details</h2>
+            <h2 className="text-lg font-semibold">
+              {tScope("acountDetail.title")}
+            </h2>
             <Link
               href="/profile/update-profile"
               className="text-yellow-600 hover:text-yellow-700 text-sm"
             >
-              Edit Profile
+              {tScope("acountDetail.link")}
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <p className="text-sm text-gray-500 mb-1">Full Name</p>
+              <p className="text-sm text-gray-500 mb-1">
+                {tScope("acountDetail.fullName")}
+              </p>
               {isLoading ? (
                 <div className="flex items-center gap-2">
                   <Skeleton className="w-[50px] h-[20px]" />
@@ -247,7 +267,9 @@ const ProfilePage = () => {
               )}
             </div>
             <div>
-              <p className="text-sm text-gray-500 mb-1">Email</p>
+              <p className="text-sm text-gray-500 mb-1">
+                {tScope("acountDetail.email")}
+              </p>
               {isLoading ? (
                 <Skeleton className="w-[100px] h-[20px]" />
               ) : (
@@ -255,7 +277,9 @@ const ProfilePage = () => {
               )}
             </div>
             <div>
-              <p className="text-sm text-gray-500 mb-1">Phone</p>
+              <p className="text-sm text-gray-500 mb-1">
+                {tScope("acountDetail.phone")}
+              </p>
               {isLoading ? (
                 <Skeleton className="w-[100px] h-[20px]" />
               ) : (
@@ -263,7 +287,9 @@ const ProfilePage = () => {
               )}
             </div>
             <div>
-              <p className="text-sm text-gray-500 mb-1">Location</p>
+              <p className="text-sm text-gray-500 mb-1">
+                {tScope("acountDetail.location")}
+              </p>
               {isLoading ? (
                 <div className="flex items-center gap-2">
                   <Skeleton className="w-[50px] h-[20px]" />
@@ -282,18 +308,50 @@ const ProfilePage = () => {
       {/* Recent Activity */}
       <Card>
         <CardContent className="p-6">
-          <h2 className="text-lg font-semibold mb-4">Recent Activity</h2>
+          <h2 className="text-lg font-semibold mb-4">
+            {tScope("acountDetail.orderRecentTitle")}
+          </h2>
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="p-2 rounded-full bg-green-50">
-                <Package className="w-4 h-4 text-green-600" />
+            {ordersL?.lastOrder ? (
+              <div className="flex items-center space-x-3">
+                <div className="p-2 rounded-full bg-green-50">
+                  <Package className="w-4 h-4 text-green-600" />
+                </div>
+
+                <div className="">
+                  <div className="font-medium">
+                    {ordersL?.lastOrder &&
+                      tScope("acountDetail.lastOrder", {
+                        orderNum: ordersL?.lastOrder[0].numBuy,
+                      })}
+                    <span
+                      className={`${getStatusColor(
+                        ordersL?.lastOrder[0].status || ""
+                      )}`}
+                    >
+                      {ordersL?.lastOrder[0].status === "En attente" &&
+                        tScope("acountDetail.lastOrderStatusEnt")}
+                      {ordersL?.lastOrder[0].status === "Payée" &&
+                        tScope("acountDetail.lastOrderStatusD")}
+                      {ordersL?.lastOrder[0].status === "En Cours de payment" &&
+                        tScope("acountDetail.lastOrderStatusEnc")}
+                      {ordersL?.lastOrder[0].status === "Annulée" &&
+                        tScope("acountDetail.lastOrderStatusAnn")}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-500 max-sm:mt-2">
+                    {formatTimeAgo(
+                      new Date(ordersL?.lastOrder[0].createdAt!),
+                      optionsHours
+                    )}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="font-medium">Order #12345 delivered</p>
-                <p className="text-sm text-gray-500">2 hours ago</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
+            ) : (
+              ""
+            )}
+
+            {/* <div className="flex items-center space-x-3">
               <div className="p-2 rounded-full bg-blue-50">
                 <Heart className="w-4 h-4 text-yellow-600" />
               </div>
@@ -301,8 +359,8 @@ const ProfilePage = () => {
                 <p className="font-medium">Added item to wishlist</p>
                 <p className="text-sm text-gray-500">Yesterday</p>
               </div>
-            </div>
-            <div className="flex items-center space-x-3">
+            </div> */}
+            {/* <div className="flex items-center space-x-3">
               <div className="p-2 rounded-full bg-purple-50">
                 <CreditCard className="w-4 h-4 text-purple-600" />
               </div>
@@ -310,7 +368,7 @@ const ProfilePage = () => {
                 <p className="font-medium">Updated payment method</p>
                 <p className="text-sm text-gray-500">3 days ago</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </CardContent>
       </Card>

@@ -13,8 +13,6 @@ export async function POST(request: Request) {
         { status: 500 }
       );
 
-    console.log(code);
-
     return NextResponse.json(codeFind);
   } catch (error: any) {
     return NextResponse.json({ error: error.message });

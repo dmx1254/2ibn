@@ -1,6 +1,6 @@
 "use client";
 
-import { useCurrentLocale } from "@/locales/client";
+import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 import clsx from "clsx";
 import {
   BarChart2,
@@ -21,19 +21,46 @@ export default function ProfileLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const tScope = useScopedI18n("sidebar");
   const pathname = usePathname();
   const locale = useCurrentLocale();
 
   //   console.log(pathname)
   const profileItems = [
-    { href: "/profile", label: "Profile", icon: User },
-    { href: "/profile/orders-buys", label: "Orders Buy", icon: ShoppingBag },
-    { href: "/profile/order-sell", label: "Orders Sell", icon: TrendingUp },
-    { href: "/profile/exchange", label: "Exchange", icon: BarChart2 },
+    {
+      href: "/profile",
+      label: "Profile",
+      icon: User,
+      traduct: "profile",
+      size: 24,
+    },
+    {
+      href: "/profile/orders-buys",
+      label: "Orders Buy",
+      icon: ShoppingBag,
+      traduct: "ordersBuy",
+      size: 22,
+    },
+    {
+      href: "/profile/order-sell",
+      label: "Orders Sell",
+      icon: TrendingUp,
+      traduct: "ordersSell",
+      size: 24,
+    },
+    {
+      href: "/profile/exchange",
+      label: "Exchange",
+      icon: BarChart2,
+      traduct: "exchange",
+      size: 24,
+    },
     {
       href: "/profile/update-profile",
       label: "Update Profile",
       icon: Settings,
+      traduct: "updateProfile",
+      size: 24,
     },
   ];
 
@@ -44,7 +71,7 @@ export default function ProfileLayout({
   return (
     <div className="flex h-screen font-poppins">
       {/* Barre latérale */}
-      <div className="h-full flex flex-col items-start justify-between bg-[#1A1D21] text-white px-6 border-r border-gray-700 w-64">
+      <div className="h-full flex flex-col items-start justify-between bg-[#1A1D21] text-white px-6 border-r border-gray-700 w-20 sm:w-64">
         <div>
           <Link href="/" className="flex items-center gap-2 -ml-4">
             <Image
@@ -52,7 +79,7 @@ export default function ProfileLayout({
               alt="ibendouma logo"
               height={70}
               width={70}
-              className=""
+              className="max-sm:w-[60px] max-sm:h-[60px] object-cover"
             />
             <span className="sr-only">2Iben logo</span>
             <span className="max-sm:hidden text-2xl font-extrabold -ml-3 text-gray-300">
@@ -70,8 +97,16 @@ export default function ProfileLayout({
                 })}
                 href={item.href}
               >
-                <item.icon className="" />
-                {item.label}
+                <item.icon className="" size={item.size} />
+                <span className="max-sm:hidden">
+                  {tScope(
+                    (item.traduct as "profile") ||
+                      "ordersBuy" ||
+                      "ordersSell" ||
+                      "exchange" ||
+                      "updateProfile"
+                  )}
+                </span>
               </Link>
             ))}
           </div>
@@ -80,13 +115,13 @@ export default function ProfileLayout({
           className="flex items-center gap-2 text-gray-300 bottom-0 py-6 px-2 transition-colors hover:opacity-75"
           onClick={handleLogout}
         >
-          <LogOut size={20} />
-          Logout
+          <LogOut size={24} />
+          <span className="max-sm:hidden">{tScope("logout")}</span>
         </button>
       </div>
 
       {/* Contenu principal */}
-      <div className="flex-1 p-6 overflow-y-auto">{children}</div>
+      <div className="flex-1 p-2 sm:p-6 overflow-y-auto profile-user">{children}</div>
     </div>
   );
 }

@@ -22,8 +22,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "../../components/ui/skeleton";
 import { ExchangeKamas } from "@/lib/types/types";
+import { useScopedI18n } from "@/locales/client";
 
 const StatusBadge = ({ status }: { status: string }) => {
+  const tScope = useScopedI18n("exchangeKamas");
   const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {
       case "terminée":
@@ -38,7 +40,15 @@ const StatusBadge = ({ status }: { status: string }) => {
   };
 
   return (
-    <Badge className={`${getStatusStyle(status)} font-medium hover:bg-yellow-100 hover:text-yellow-700`}>{status}</Badge>
+    <Badge
+      className={`${getStatusStyle(
+        status
+      )} font-medium hover:bg-yellow-100 hover:text-yellow-700`}
+    >
+      {status === "Terminée" && tScope("completed")}
+      {status === "En attente" && tScope("pending")}
+      {status === "Annulée" && tScope("cancelled")}
+    </Badge>
   );
 };
 
@@ -55,35 +65,41 @@ const LoadingSkeleton = () => (
   </div>
 );
 
-const NoExchanges = () => (
-  <Card className="text-center p-6">
-    <div className="flex flex-col items-center gap-2">
-      <ArrowLeftRight className="h-8 w-8 text-gray-400" />
-      <h3 className="text-lg font-semibold">Aucun échange trouvé</h3>
-      <p className="text-gray-500">
-        Vous n'avez pas encore effectué d'échange de Kamas
-      </p>
-    </div>
-  </Card>
-);
+const NoExchanges = () => {
+  const tScope = useScopedI18n("exchangeKamas");
+  return (
+    <Card className="text-center p-6">
+      <div className="flex flex-col items-center gap-2">
+        <ArrowLeftRight className="h-8 w-8 text-gray-400" />
+        <h3 className="text-lg font-semibold">{tScope("noExchangeTitle")}</h3>
+        <p className="text-gray-500">{tScope("noExchangeDesc")}</p>
+      </div>
+    </Card>
+  );
+};
 
 const ExchangeTable = ({ exchanges }: { exchanges: ExchangeKamas[] }) => {
+  const tScope = useScopedI18n("exchangeKamas");
   return (
     <div className="rounded-md border">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Code</TableHead>
-            <TableHead>Server Out</TableHead>
-            <TableHead>Amount Out</TableHead>
+            <TableHead>{tScope("code")}</TableHead>
+            <TableHead>{tScope("serverOut")}</TableHead>
+            <TableHead>{tScope("amountOut")}</TableHead>
             <TableHead className="hidden md:table-cell">
-              Character Out
+              {tScope("charactertOut")}
             </TableHead>
-            <TableHead>Server In</TableHead>
-            <TableHead>Amount In</TableHead>
-            <TableHead className="hidden md:table-cell">Character In</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="hidden lg:table-cell">Date</TableHead>
+            <TableHead>{tScope("serverIn")}</TableHead>
+            <TableHead>{tScope("amountIn")}</TableHead>
+            <TableHead className="hidden md:table-cell">
+              {tScope("characterIn")}
+            </TableHead>
+            <TableHead>{tScope("status")}</TableHead>
+            <TableHead className="hidden lg:table-cell">
+              {tScope("date")}
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -94,8 +110,8 @@ const ExchangeTable = ({ exchanges }: { exchanges: ExchangeKamas[] }) => {
                 day: "2-digit",
                 month: "short",
                 year: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
+                // hour: "2-digit",
+                // minute: "2-digit",
               }
             );
 
@@ -137,6 +153,7 @@ const ExchangeTable = ({ exchanges }: { exchanges: ExchangeKamas[] }) => {
 };
 
 const ProfileExchangePage = () => {
+  const tScope = useScopedI18n("exchangeKamas");
   const { data: session, status } = useSession();
   const {
     isLoading,
@@ -156,7 +173,7 @@ const ProfileExchangePage = () => {
   if (status === "loading" || isLoading) {
     return (
       <div className="container mx-auto p-6">
-        <h1 className="text-2xl font-semibold mb-6">Vos échanges</h1>
+        <h1 className="text-2xl font-semibold mb-6">{tScope("title")}</h1>
         <LoadingSkeleton />
       </div>
     );
@@ -165,10 +182,10 @@ const ProfileExchangePage = () => {
   if (error) {
     return (
       <div className="container mx-auto p-6">
-        <h1 className="text-2xl font-semibold mb-6">Vos échanges</h1>
+        <h1 className="text-2xl font-semibold mb-6">{tScope("title")}</h1>
         <Card className="bg-red-50 dark:bg-red-900/20 p-6">
           <p className="text-red-600 dark:text-red-400 text-center">
-            Erreur lors du chargement des échanges
+            {tScope("errorLoadingExchange")}
           </p>
         </Card>
       </div>
@@ -179,7 +196,7 @@ const ProfileExchangePage = () => {
     <div className="container mx-auto p-6">
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold">Vos échanges</h1>
+          <h1 className="text-2xl font-semibold">{tScope("title")}</h1>
         </div>
 
         {exchanges?.length ? (

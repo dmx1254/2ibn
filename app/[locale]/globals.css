@@ -21,6 +21,7 @@ body {
   background-repeat: no-repeat;
   position: relative;
   z-index: 20;
+  scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar {
@@ -53,6 +54,18 @@ body::-webkit-scrollbar-thumb {
   }
   .scroll-thumb::-webkit-scrollbar {
     display: none !important;
+  }
+  .profile-user::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .hide-scrollbar, .profile-user, .scroll-thumb {
+    -ms-overflow-style: none;  /* Pour Internet Explorer et Edge */
+    scrollbar-width: none;  /* Pour Firefox */
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;  /* Pour Chrome, Safari et Opera */
   }
 }
 

@@ -32,8 +32,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { parsedDevise } from "@/lib/utils";
+import { useScopedI18n } from "@/locales/client";
 
 const ProfileBuyPage = () => {
+  const tScope = useScopedI18n("ordersBuyKamas");
   const { devise } = useStore();
   const { data: session } = useSession();
   const [expandedOrder, setExpandedOrder] = useState<string | null>(null);
@@ -61,7 +63,7 @@ const ProfileBuyPage = () => {
     );
   }
 
-    // console.log(ordersBuy);
+  // console.log(ordersBuy);
 
   const toggleOrderExpansion = (orderNum: string) => {
     setExpandedOrder(expandedOrder === orderNum ? null : orderNum);
@@ -93,12 +95,14 @@ const ProfileBuyPage = () => {
 
   return (
     <div className="min-h-screen p-6 space-y-8">
-      <h1 className="text-4xl font-bold text-black mb-8">Your Orders</h1>
+      <h1 className="text-4xl font-bold text-black mb-8">{tScope("title")}</h1>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg font-medium">Total Sales</CardTitle>
+            <CardTitle className="text-lg font-medium">
+              {tScope("cardTotalSales")}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center space-x-2">
@@ -114,7 +118,9 @@ const ProfileBuyPage = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg font-medium">Total Orders</CardTitle>
+            <CardTitle className="text-lg font-medium">
+              {tScope("cardTotalOrders")}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{ordersBuy?.length || 0}</div>
@@ -124,7 +130,7 @@ const ProfileBuyPage = () => {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg font-medium">
-              Average Order Value
+              {tScope("cardAverage")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -153,7 +159,7 @@ const ProfileBuyPage = () => {
             >
               <div className="flex justify-between items-center">
                 <CardTitle className="text-xl font-bold text-black/90">
-                  Order #{order.orderNum}
+                  {tScope("cardOrderTitle")} #{order.orderNum}
                 </CardTitle>
                 <div className="flex items-center space-x-4">
                   <Badge
@@ -161,7 +167,11 @@ const ProfileBuyPage = () => {
                       order.status
                     )} text-white hover:bg-yellow-500`}
                   >
-                    {order.status}
+                    {order.status === "Terminée" && tScope("completed")}
+                    {order.status === "En attente" && tScope("pending")}
+                    {order.status === "Annulée" && tScope("cancelled")}
+                    {order.status === "En Cours de payment" &&
+                      tScope("processing")}
                   </Badge>
                   {expandedOrder === order.orderNum ? (
                     <ChevronUp size={20} className="text-gray-500" />
@@ -222,18 +232,18 @@ const ProfileBuyPage = () => {
                     </div>
                     <div className="mt-4 flex justify-between items-center">
                       <p className="text-base bg-yellow-600 text-black font-semibold rounded-[10px] p-2">
-                        Payment Method: {order.paymentMethod}
+                        {tScope("paymentMethod")}: {order.paymentMethod}
                       </p>
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Button variant="outline" size="sm">
                               <Package className="w-4 h-4 mr-2" />
-                              Track Order
+                              {tScope("track")}
                             </Button>
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Order tracking will be available soon</p>
+                            <p>{tScope("trackTooltip")}</p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
@@ -249,15 +259,15 @@ const ProfileBuyPage = () => {
       {ordersBuy?.length === 0 && (
         <Card className="bg-white/80 backdrop-blur-sm shadow-xl p-8 text-center">
           <AlertCircle className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
-          <p className="text-xl font-semibold text-black">No orders found</p>
-          <p className="text-gray-600 mt-2">
-            Looks like you haven't made any purchases yet.
+          <p className="text-xl font-semibold text-black">
+            {tScope("notFoundTitle")}
           </p>
+          <p className="text-gray-600 mt-2">{tScope("notFoundDesc")}</p>
           <Button
             className="mt-4"
             onClick={() => (window.location.href = "/vendre-des-kamas")}
           >
-            Start Shopping
+            {tScope("notFoundLink")}
           </Button>
         </Card>
       )}

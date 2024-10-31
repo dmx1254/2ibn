@@ -210,3 +210,23 @@ export const orderBuyNumGenerated = () => {
   }
   return myCode;
 };
+
+export function formatTimeAgo(
+  date: Date,
+  options: { hourText: string; minuteText: string; suffix: string }
+): string {
+  if (!(date instanceof Date) || isNaN(date.getTime())) {
+    return "";
+  }
+
+  const now = new Date();
+  const diffInMs = now.getTime() - date.getTime();
+  const diffInMinutes = Math.floor(diffInMs / 60000);
+  const diffInHours = Math.floor(diffInMinutes / 60);
+
+  if (diffInHours > 0) {
+    return `${diffInHours} ${options.hourText} ${options.suffix}`;
+  } else {
+    return `${diffInMinutes} ${options.minuteText} ${options.suffix}`;
+  }
+}

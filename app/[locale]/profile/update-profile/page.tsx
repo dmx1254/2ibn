@@ -14,6 +14,7 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Separator } from "../../components/ui/separator";
 import { toast } from "sonner";
+import { useScopedI18n } from "@/locales/client";
 
 const profileSchema = z.object({
   lastname: z.string(),
@@ -43,6 +44,7 @@ type ProfileFormData = z.infer<typeof profileSchema>;
 type PasswordFormData = z.infer<typeof passwordSchema>;
 
 const UpdateProfilePage = () => {
+  const tScope = useScopedI18n("updateKamasProfile");
   const [isPasswordResetLoading, setIsPasswordResetLoading] =
     useState<boolean>(false);
   const { data: session } = useSession();
@@ -83,7 +85,7 @@ const UpdateProfilePage = () => {
       !data.city &&
       !data.postalCode
     ) {
-      toast.error("Please fill out a field", {
+      toast.error(tScope("emptyFieldError"), {
         style: { color: "#dc2626" },
       });
     } else {
@@ -93,7 +95,7 @@ const UpdateProfilePage = () => {
           .post(`/api/iben/user/userInfo/${session?.user.id}`, data)
           .then((response) => {
             if (response.data.successMessage) {
-              toast.success(response.data.successMessage, {
+              toast.success(tScope("successMessage"), {
                 style: { color: "#16a34a" },
               });
             }
@@ -101,11 +103,10 @@ const UpdateProfilePage = () => {
         // Handle success (e.g., show a success message)
       } catch (error: any) {
         if (error?.response?.data?.errorMessage) {
-          toast.error(error?.response?.data?.errorMessage, {
+          toast.error(tScope("errorMessage"), {
             style: { color: "#dc2626" },
           });
         }
-        console.log(error);
       } finally {
         setIsLoading(false);
       }
@@ -122,7 +123,7 @@ const UpdateProfilePage = () => {
         })
         .then((response) => {
           if (response.data.successMessage) {
-            toast.success(response.data.successMessage, {
+            toast.success(tScope("changePasswordSuccessMessage"), {
               style: { color: "#16a34a" },
             });
             passwordForm.reset();
@@ -130,7 +131,7 @@ const UpdateProfilePage = () => {
         });
     } catch (error: any) {
       if (error?.response?.data?.errorMessage) {
-        toast.error(error?.response?.data?.errorMessage, {
+        toast.error(tScope("changePasswordErrorMessage"), {
           style: { color: "#dc2626" },
         });
       }
@@ -147,13 +148,13 @@ const UpdateProfilePage = () => {
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-3xl font-bold mb-8 text-gray-800">
-          Account Settings
+          {tScope("title")}
         </h1>
 
         <div className="space-y-12">
           <section>
             <h2 className="text-2xl font-semibold mb-6 text-gray-700 flex items-center">
-              <User className="mr-2" /> Personal Information
+              <User className="mr-2" /> {tScope("personalInfoTitle")}
             </h2>
             <form
               onSubmit={profileForm.handleSubmit(onProfileSubmit)}
@@ -161,7 +162,7 @@ const UpdateProfilePage = () => {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="firstname">First Name</Label>
+                  <Label htmlFor="firstname">{tScope("firstname")}</Label>
                   <Input
                     id="firstname"
                     {...profileForm.register("firstname")}
@@ -174,7 +175,7 @@ const UpdateProfilePage = () => {
                   )}
                 </div>
                 <div>
-                  <Label htmlFor="lastname">Last Name</Label>
+                  <Label htmlFor="lastname">{tScope("lastname")}</Label>
                   <Input
                     id="lastname"
                     {...profileForm.register("lastname")}
@@ -187,7 +188,7 @@ const UpdateProfilePage = () => {
                   )}
                 </div>
                 <div>
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">{tScope("email")}</Label>
                   <Input
                     id="email"
                     type="email"
@@ -201,7 +202,7 @@ const UpdateProfilePage = () => {
                   )}
                 </div>
                 <div>
-                  <Label htmlFor="phone">Phone</Label>
+                  <Label htmlFor="phone">{tScope("phone")}</Label>
                   <Input
                     id="phone"
                     {...profileForm.register("phone")}
@@ -210,7 +211,7 @@ const UpdateProfilePage = () => {
                 </div>
               </div>
               <div>
-                <Label htmlFor="address">Address</Label>
+                <Label htmlFor="address">{tScope("address")}</Label>
                 <Input
                   id="address"
                   {...profileForm.register("address")}
@@ -219,7 +220,7 @@ const UpdateProfilePage = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                  <Label htmlFor="city">City</Label>
+                  <Label htmlFor="city">{tScope("city")}</Label>
                   <Input
                     id="city"
                     {...profileForm.register("city")}
@@ -227,7 +228,7 @@ const UpdateProfilePage = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="country">Country</Label>
+                  <Label htmlFor="country">{tScope("country")}</Label>
                   <Input
                     id="country"
                     {...profileForm.register("country")}
@@ -235,7 +236,7 @@ const UpdateProfilePage = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="postalCode">Postal Code</Label>
+                  <Label htmlFor="postalCode">{tScope("postalCode")}</Label>
                   <Input
                     id="postalCode"
                     {...profileForm.register("postalCode")}
@@ -251,12 +252,12 @@ const UpdateProfilePage = () => {
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Updating...
+                    {tScope("btnSaveLoading")}
                   </>
                 ) : (
                   <>
                     <Save className="mr-2 h-4 w-4" />
-                    Save Changes
+                    {tScope("btnSave")}
                   </>
                 )}
               </Button>
@@ -267,14 +268,16 @@ const UpdateProfilePage = () => {
 
           <section>
             <h2 className="text-2xl font-semibold mb-6 text-gray-700 flex items-center">
-              <Lock className="mr-2" /> Change Password
+              <Lock className="mr-2" /> {tScope("changePasswordTitle")}
             </h2>
             <form
               onSubmit={passwordForm.handleSubmit(onPasswordSubmit)}
               className="space-y-6"
             >
               <div>
-                <Label htmlFor="currentPassword">Current Password</Label>
+                <Label htmlFor="currentPassword">
+                  {tScope("changePasswordCurrent")}
+                </Label>
                 <Input
                   id="currentPassword"
                   type="password"
@@ -288,7 +291,9 @@ const UpdateProfilePage = () => {
                 )}
               </div>
               <div>
-                <Label htmlFor="newPassword">New Password</Label>
+                <Label htmlFor="newPassword">
+                  {tScope("changePasswordNew")}
+                </Label>
                 <Input
                   id="newPassword"
                   type="password"
@@ -302,7 +307,9 @@ const UpdateProfilePage = () => {
                 )}
               </div>
               <div>
-                <Label htmlFor="confirmPassword">Confirm New Password</Label>
+                <Label htmlFor="confirmPassword">
+                  {tScope("changePasswordConfirm")}
+                </Label>
                 <Input
                   id="confirmPassword"
                   type="password"
@@ -323,12 +330,12 @@ const UpdateProfilePage = () => {
                 {isPasswordResetLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Updating...
+                    {tScope("changePasswordBtnLoading")}
                   </>
                 ) : (
                   <>
                     <Lock className="mr-2 h-4 w-4" />
-                    Update Password
+                    {tScope("changePasswordBtn")}
                   </>
                 )}
               </Button>

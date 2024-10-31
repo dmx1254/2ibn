@@ -6,9 +6,22 @@ import { useQuery } from "@tanstack/react-query";
 import { ServerExchange } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 import SellKamasDialog from "../components/SellKamasDialog";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Input } from "../components/ui/input";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../components/ui/table";
+import ServerSkeleton from "@/components/ui/skeletons/skeletons";
 
 const VendreKamas = () => {
   const tScope = useScopedI18n("sellkamas");
@@ -89,6 +102,8 @@ const VendreKamas = () => {
       setServerPriceDollar(dollarData[0]?.dollar);
     }
   }, [dollarData]);
+
+  if (isLoading) return <ServerSkeleton />;
 
   return (
     <div className="container mx-auto p-6 space-y-6 max-w-4xl min-h-screen">

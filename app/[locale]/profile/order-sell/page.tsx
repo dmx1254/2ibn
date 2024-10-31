@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Loader2, Calendar, Server } from "lucide-react";
 import { parsedDevise } from "@/lib/utils";
 import useStore from "@/lib/store-manage";
+import { useScopedI18n } from "@/locales/client";
 
 interface OrderSell {
   userId: string;
@@ -33,6 +34,7 @@ interface OrderSell {
 }
 
 const ProfileSellPage = () => {
+  const tScope = useScopedI18n("ordersSellKamas");
   const { devise } = useStore();
   const { data: session, status } = useSession();
   const {
@@ -93,7 +95,9 @@ const ProfileSellPage = () => {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg font-medium">Total Sales</CardTitle>
+            <CardTitle className="text-lg font-medium">
+              {tScope("cardTotalSales")}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center space-x-2">
@@ -107,7 +111,9 @@ const ProfileSellPage = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg font-medium">Total Orders</CardTitle>
+            <CardTitle className="text-lg font-medium">
+              {tScope("cardTotalOrders")}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{ordersSell?.length || 0}</div>
@@ -117,7 +123,7 @@ const ProfileSellPage = () => {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg font-medium">
-              Average Order Value
+              {tScope("cardAverage")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -136,7 +142,7 @@ const ProfileSellPage = () => {
 
       <Card className="font-poppins">
         <CardHeader>
-          <CardTitle>Recent Orders</CardTitle>
+          <CardTitle>{tScope("recentOrder")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -148,14 +154,14 @@ const ProfileSellPage = () => {
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                   <div>
                     <p className="text-sm font-medium text-gray-500">
-                      Order ID
+                      {tScope("orderId")}
                     </p>
                     <p className="font-medium">{order.numBuy}</p>
                   </div>
 
                   <div>
                     <p className="text-sm font-medium text-gray-500">
-                      Game Details
+                      {tScope("gameDetails")}
                     </p>
                     <div className="flex items-center space-x-2">
                       <Server className="h-4 w-4" />
@@ -167,7 +173,7 @@ const ProfileSellPage = () => {
 
                   <div>
                     <p className="text-sm font-medium text-gray-500">
-                      Payment method
+                      {tScope("paymentMethod")}
                     </p>
                     <div className="flex items-center space-x-2">
                       <span>{order.paymentMethod}</span>
@@ -176,7 +182,9 @@ const ProfileSellPage = () => {
                   </div>
 
                   <div>
-                    <p className="text-sm font-medium text-gray-500">Amount</p>
+                    <p className="text-sm font-medium text-gray-500">
+                      {tScope("totalPrice")}
+                    </p>
                     <div className="flex items-center space-x-2">
                       <span className="font-medium">
                         {order.totalPrice}
@@ -185,7 +193,11 @@ const ProfileSellPage = () => {
                           : parsedDevise(devise.currencyName)}
                       </span>
                       <Badge className={getStatusColor(order.status)}>
-                        {order.status}
+                        {order.status === "Payée" && tScope("completed")}
+                        {order.status === "En attente" && tScope("pending")}
+                        {order.status === "Annulée" && tScope("cancelled")}
+                        {order.status === "En Cours de payment" &&
+                          tScope("processing")}
                       </Badge>
                     </div>
                   </div>

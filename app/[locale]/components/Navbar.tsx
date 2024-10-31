@@ -29,25 +29,25 @@ const Navbar = () => {
   const pathname = usePathname();
   const { addSevers, activeServerRequest, addToActiveServerRequest } =
     useStore();
-  const [scrollPosition, setScrollPosition] = useState<number>(0);
+  // const [scrollPosition, setScrollPosition] = useState<number>(0);
 
   const handleActiveJeu = (slug: string) => {
     addToActiveServerRequest(slug);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolling = window.scrollY;
-      setScrollPosition(scrolling);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrolling = window.scrollY;
+  //     setScrollPosition(scrolling);
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   // Clean up the event listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   const fetchCurrency = async () => {
     // const currency = queryKey[1];
@@ -77,14 +77,7 @@ const Navbar = () => {
     !pathname.includes("reset-password") &&
     !pathname.includes("profile") &&
     !pathname.includes("resetpassword") && (
-      <div
-        className="z-50 font-poppins sticky top-0 left-0 right-0 w-full flex items-center justify-center bg-transparent text-center px-4"
-        style={{
-          backgroundColor: scrollPosition >= 70 ? "white" : "transparent",
-          boxShadow:
-            scrollPosition >= 70 ? "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px" : "",
-        }}
-      >
+      <div className="z-50 font-poppins sticky top-0 left-0 right-0 w-full flex items-center justify-center bg-transparent text-center px-4 bg-white border-b border-gray-100">
         <div className="w-full max-w-6xl flex items-center justify-between">
           <div className="flex items-center gap-0">
             <SheetMenu />
