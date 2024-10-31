@@ -26,6 +26,9 @@ import { useScopedI18n } from "@/locales/client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+import { FaFacebookF, FaInstagram, FaSkype } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
 const Footer = () => {
   const pathname = usePathname();
   const tScope = useScopedI18n("footer");
@@ -189,7 +192,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="terms-and-conditions"
+                    href="/terms-and-conditions"
                     className="text-gray-300 hover:text-white"
                   >
                     {tScope("info3")}
@@ -295,6 +298,37 @@ const Footer = () => {
                 alt="Marocco bank"
                 className="object-cover"
               />
+            </div>
+            <div className="sm:hidden flex  items-center justify-center gap-4 max-sm:flex-col self-center">
+              <span className="text-white/80">Follow us</span>
+              <div className="flex space-x-4">
+                <Link
+                  href="#"
+                  className="flex items-center justify-center p-2 rounded-full border border-zinc-500 text-blue-600 hover:border-zinc-800"
+                >
+                  <FaFacebookF size={18} />
+                </Link>
+
+                <Link
+                  href="#"
+                  className="flex items-center justify-center p-2 rounded-full border border-zinc-500 hover:border-zinc-800 text-pink-600"
+                >
+                  <FaInstagram size={18} />
+                </Link>
+
+                <Link
+                  href="#"
+                  className="flex items-center justify-center p-2 rounded-full border border-zinc-500 text-black hover:border-zinc-800"
+                >
+                  <FaXTwitter size={18} />
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center justify-center p-2 rounded-full border border-zinc-500 text-blue-600 hover:border-zinc-800"
+                >
+                  <FaSkype size={18} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 
 import { FaSortDown } from "react-icons/fa";
@@ -18,6 +18,9 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 import { useSession } from "next-auth/react";
 import ProfilePopover from "./ProfilePopover";
+
+import { FaFacebookF, FaFlipboard, FaInstagram, FaSkype } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
@@ -156,6 +159,34 @@ const Navbar = () => {
             )}
             <LanguageAndCurrency />
             <CardHoverCon />
+            <div className="flex space-x-4 max-lg:hidden">
+              <Link
+                href="#"
+                className="flex items-center justify-center p-1.5 rounded-full border border-zinc-500 text-blue-600 hover:border-zinc-800"
+              >
+                <FaFacebookF size={15} />
+              </Link>
+
+              <Link
+                href="#"
+                className="flex items-center justify-center p-1.5 rounded-full border border-zinc-500 hover:border-zinc-800 text-pink-600"
+              >
+                <FaInstagram size={15} />
+              </Link>
+
+              <Link
+                href="#"
+                className="flex items-center justify-center p-1.5 rounded-full border border-zinc-500 text-black hover:border-zinc-800"
+              >
+                <FaXTwitter size={14} />
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center justify-center p-1.5 rounded-full border border-zinc-500 text-blue-600 hover:border-zinc-800"
+              >
+                <FaSkype size={15} />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

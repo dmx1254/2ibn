@@ -101,7 +101,7 @@ export const TestimonialsCardSkeleton: React.FC = () => {
     <div className="w-full h-[300px] max-sm:my-5 sm:h-[600px] sm:w-[500px] bg-gray-100 rounded-lg p-4 overflow-hidden">
       <div className="space-y-6">
         {skeletonItems.map((_, index) => (
-          <div>
+          <div key={index}>
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gray-200 rounded-full animate-pulse" />
               <div className="flex-1 space-y-2">

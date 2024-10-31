@@ -442,4 +442,220 @@ export default {
   "statistic.timeDelivery": "Tiempo de Entrega",
   "statistic.average": "Calificación Promedio",
   "statistic.transactions": "Transacciones Seguras",
+
+  "faq.title": "Dofus: Preguntas Frecuentes",
+  "faq.desc":
+    "Seguramente encontrará la respuesta que busca y, si no es así, puede contactar con nuestro servicio en línea disponible las 24/7.",
+  "faq.guaranteTitle": "Garantía de Pedido",
+  "faq.guaranteDesc":
+    "Cualquier pedido en este sitio será entregado a tiempo o reembolsado si es necesario. Sin embargo, pueden ocurrir errores humanos. No dude en contactarnos si cree que ha habido un error. Mantenemos todos los registros necesarios en caso de error o disputa falsa.",
+  "faq.processTitle": "Proceso de Entrega",
+  "faq.processDesc":
+    "Una vez pagado el pedido, nuestro agente le dará el punto de encuentro (mapa en el juego) donde entregará los kamas. Vaya a las coordenadas indicadas donde nuestro repartidor hará el intercambio para darle sus kamas. NB: Por favor, manténgase en línea en el chat para recibir las coordenadas del mapa.",
+  "faq.scamTitle": "Prevención de Fraudes",
+  "faq.scamDesc":
+    "Cualquiera que le pida en el juego que devuelva kamas por cualquier motivo es un estafador. Un agente de 2IBN nunca hará este tipo de solicitud, ya que toda la comunicación se realizará en el chat en línea. No dude en bloquear a la persona si recibe este tipo de mensaje.",
+  "faq.roolbackTitle": "Situaciones de Rollback",
+  "faq.rollbackDesc":
+    "Si sus kamas fueron entregados durante un rollback, por favor contacte al soporte para una nueva entrega.",
+  "faq.supportTitle": "Soporte al Cliente 24/7",
+  "faq.supportDesc":
+    "Nuestro servicio en línea está disponible las 24/7. Si no encuentra la respuesta a su pregunta, nuestro equipo de soporte siempre está listo para ayudarle.",
+  "faq.paymentTitle": "Seguridad de Pago",
+  "faq.paymentDesc":
+    "Utilizamos métodos de pago seguros para garantizar la seguridad de su transacción. Toda la información personal y financiera está encriptada y protegida.",
+  "faq.safetyTitle": "Seguridad de la Cuenta",
+  "faq.safetyDesc":
+    "Garantizamos que la entrega de sus kamas no comprometerá la seguridad de su cuenta. Nuestros agentes profesionales siguen estrictos protocolos para asegurar una transacción segura.",
+  "faq.exchangeTitle": "Proceso de Intercambio de Kamas",
+  "faq.exchangeDesc":
+    "Nuestro servicio de intercambio de kamas le permite intercambiar kamas entre diferentes servidores de Dofus de forma segura y eficiente. Garantizamos un intercambio seguro con tarifas competitivas, tarifas de transacción mínimas y transferencias instantáneas. Simplemente seleccione su servidor de origen y de destino, especifique el monto, y nuestro sistema se encargará del resto. Todas las transacciones están monitoreadas para prevenir fraudes y garantizar una transacción fluida.",
+
+  "termsandconditions.title": "Términos y Condiciones",
+  "termsandconditions.companyInfo":
+    "Este sitio (2ibn.com) es propiedad y está operado por IJBK Services INTERNATIONAL FZ-LLC, Compass Building, Al Shohada Road, Al Hamra Industrial Zone-FZ, Ras Al Khaimah, Emiratos Árabes Unidos, JBIK INTERNATIONAL CO., LIMITED (procesamiento de pagos para Cardpay). Dirección registrada: ROOMS 1318-20, HOLLYWOOD PLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON y sus subsidiarias (colectivamente, la 'Compañía'), y le proporciona sus servicios bajo los siguientes términos y condiciones. Al visitar o comprar en www.2ibn.com, usted acepta estos términos. El uso continuo del sitio constituye la aceptación de estos términos y condiciones. La Compañía se reserva el derecho de modificar los términos de uso y avisos bajo los cuales se ofrecen sus sitios y servicios, incluidos, entre otros, los cargos asociados con el uso de sus sitios y servicios. Usted es responsable de revisar estos términos y condiciones regularmente y cualquier otro término adicional. Su uso continuo de los sitios y servicios de la Compañía constituye su aceptación de todos estos términos (ver TÉRMINOS Y CONDICIONES y POLÍTICA DE PRIVACIDAD). Por favor, léalos atentamente.",
+  "termsandconditions.privacyTitle": "1. PRIVACIDAD",
+  "termsandconditions.privacyDesc":
+    "Consulte nuestra POLÍTICA DE PRIVACIDAD, que también rige su visita a los sitios de la Compañía.",
+  "termsandconditions.communicationTitle": "2. COMUNICACIONES ELECTRÓNICAS",
+  "termsandconditions.communicationDesc":
+    "Cuando visita los sitios de la Compañía o nos envía correos electrónicos, se está comunicando con nosotros electrónicamente. Usted da su consentimiento para recibir comunicaciones de nuestra parte electrónicamente. Nos comunicaremos con usted por correo electrónico o publicando avisos en este sitio. Usted acepta que todos los acuerdos, avisos, divulgaciones y otras comunicaciones que le proporcionemos electrónicamente cumplen con los requisitos legales de comunicaciones por escrito.",
+  "termsandconditions.copyrightTitle": "3. DERECHOS DE AUTOR",
+  "termsandconditions.copyrightDesc":
+    "Todo el contenido de este sitio, como texto, gráficos, logotipos, iconos de botones, imágenes, clips de audio, descargas digitales, compilaciones de datos y software, es propiedad de la Compañía o de sus proveedores de contenido y está protegido por leyes nacionales e internacionales de derechos de autor. La compilación de todo el contenido de este sitio es propiedad exclusiva de la Compañía y está protegida por leyes nacionales e internacionales de derechos de autor. Todo el software utilizado en este sitio es propiedad de la Compañía o de sus proveedores de software y está protegido por leyes nacionales e internacionales de derechos de autor.",
+  "termsandconditions.licenceTitle": "4. LICENCIA Y ACCESO AL SITIO",
+  "termsandconditions.licenceDesc":
+    "La Compañía le concede una licencia limitada para acceder y hacer uso personal de este sitio y no para descargarlo (que no sea el almacenamiento en caché de la página) o modificarlo, en su totalidad o en parte, excepto con el consentimiento expreso por escrito de la Compañía. Esta licencia no incluye la reventa o el uso comercial de este sitio o de su contenido; la recopilación y uso de listas de productos, descripciones o precios; cualquier uso derivado de este sitio o su contenido; la descarga o copia de información de cuentas para el beneficio de otro comerciante; o el uso de robots, o servicios de recopilación y extracción de datos similares. Este sitio o cualquier porción de este sitio no puede ser reproducido, duplicado, copiado, vendido, revendido, visitado o explotado con fines comerciales sin el consentimiento expreso por escrito de la Compañía. El uso de spiders, robots, scrapers o cualquier otro medio, ya sea un software automatizado o un sistema físico o mecánico, está estrictamente prohibido.<br></br> No puede encuadrar o utilizar técnicas de encuadre para incluir cualquier marca, logotipo u otra información exclusiva (incluidas imágenes, texto, diseño o forma) de la Compañía y sus afiliados sin el consentimiento expreso por escrito. No puede utilizar metaetiquetas o cualquier otro 'texto oculto' utilizando el nombre o las marcas de la Compañía sin el consentimiento expreso por escrito de la Compañía. Cualquier uso no autorizado termina el permiso o la licencia otorgada por la Compañía. No puede utilizar logotipos de la Compañía u otros gráficos o marcas registradas como parte del enlace sin una autorización expresa por escrito.",
+  "termsandconditions.accountTitle": "5. SU CUENTA",
+  "termsandconditions.accountDesc":
+    "Si utiliza este sitio, es responsable de mantener la confidencialidad de su cuenta y contraseña y de restringir el acceso a su computadora, y acepta la responsabilidad de todas las actividades realizadas bajo su cuenta o contraseña. Si es menor de 18 años, puede usar los servicios de la Compañía solo con la participación de un padre o tutor. La Compañía y sus afiliados se reservan el derecho de rechazar el servicio, cancelar cuentas, eliminar o modificar contenido, o cancelar pedidos a su entera discreción.",
+  "termsandconditions.pricingTitle": "6. PRECIOS",
+  "termsandconditions.pricingDesc":
+    "Los precios de los sitios cambian según la oferta y la demanda. Si encuentra un mejor precio en otra tienda en línea, haremos nuestro mejor esfuerzo para superarlo.",
+  "termsandconditions.refundTitle": "7. POLÍTICA DE REEMBOLSO",
+  "termsandconditions.refundDesc":
+    "2IBN se compromete a reembolsar a los clientes insatisfechos en la medida de lo razonable. Tenga en cuenta que el soporte puede solicitarle que proporcione una prueba de pago. El cliente tiene derecho a solicitar un reembolso en los siguientes casos. Productos virtuales no recibidos: En caso de que los productos virtuales no se hayan entregado al cliente dentro del tiempo de entrega previsto, el cliente puede solicitar un reembolso. Pago duplicado: En caso de que el cliente haya realizado un pago repetido por un pedido, debe ponerse en contacto con el soporte para obtener un reembolso lo antes posible. Por cualquier motivo diferente a los enumerados anteriormente, explique su situación al soporte. Su solicitud de reembolso se verificará después de enviar el número de pedido y el motivo del reembolso. Si la solicitud es aprobada, el reembolso se devolverá a la cuenta o tarjeta de crédito del cliente. En los siguientes casos, no podemos reembolsar a los clientes: Entrega completa: los productos se han entregado al cliente según lo acordado y descrito. Pedido impago: el cliente no tiene derecho a solicitar un reembolso por un pedido impago.",
+  "termsandconditions.thirdPartyTitle": "8. TERCEROS",
+  "termsandconditions.thirdPartyDesc":
+    "La Compañía también puede proporcionar enlaces y referencias a sitios web operados por terceros. Ni la Compañía, ni sus empresas matrices o subsidiarias, ni sus afiliados, operan ni controlan de ninguna manera la información, productos o servicios en estos sitios de terceros. No somos responsables de revisar o evaluar, ni garantizamos las ofertas de estas empresas o individuos ni el contenido de sus sitios web. La Compañía no asume responsabilidad alguna por las acciones, productos y contenidos de todos estos terceros y de cualquier otro tercero. Usted debe leer cuidadosamente sus declaraciones de privacidad y otros términos de uso. El material en este sitio y en sitios de terceros se proporciona 'tal cual' y sin garantía de ningún tipo, expresa o implícita. En la máxima medida permitida por la ley aplicable, la Compañía renuncia a todas las garantías, expresas o implícitas, incluidas, entre otras, las garantías implícitas de comerciabilidad y adecuación para un propósito particular. La Compañía no reclama título alguno sobre cuentas u objetos virtuales comprados o vendidos en este sitio.",
+  "termsandconditions.deliveryPolicyTitle": "9. POLÍTICA DE ENTREGA",
+  "termsandconditions.deliveryPolicyDesc":
+    "La entrega de todos los productos está incluida en la oferta (a menos que se indique lo contrario). Si no se cumple el plazo de entrega, el cliente tiene derecho a solicitar un reembolso (consultar la política de reembolso 7).",
+  "termsandconditions.policyModifTitle":
+    "10. POLÍTICAS, MODIFICACIÓN Y SEPARABILIDAD",
+  "termsandconditions.policyModifDesc":
+    "Consulte nuestras otras políticas, como nuestra Política de Privacidad, publicadas en este sitio. Estas políticas también rigen su visita a los sitios de la Compañía. Nos reservamos el derecho de modificar nuestro sitio y los Términos y Condiciones en cualquier momento. Si alguna de estas condiciones se considera inválida, nula o inaplicable por cualquier motivo, esa condición se considerará separable y no afectará la validez y aplicabilidad de las demás condiciones.",
+
+  "termsandconditions.bottomDesc": "Última actualización: Octubre de 2024.",
+  "termsandconditions.bottomDescAllRight": "Reservados todos los derechos.",
+
+  "privacyandpolicy.title": "Política de Privacidad",
+  "privacyandpolicy.intro":
+    "www.2ibn.com y sus empresas afiliadas (colectivamente, la 'Compañía') respetan sus derechos de privacidad y reconocen la importancia de proteger la Información Personal (como se define a continuación) que usted nos proporciona. Esta Política de Privacidad describe cómo la Compañía recopila, almacena y utiliza la Información Personal que usted nos proporciona a través de los sitios web de la Compañía y mediante comunicaciones telefónicas o por correo electrónico que pueda tener con nosotros. Esta Política de Privacidad también describe las opciones disponibles para usted respecto al uso de la Información Personal que nos proporciona y las acciones que puede tomar para acceder a esta información y solicitar que la Compañía la corrija. Se requiere que proporcione Información Personal, que puede incluir nombre, dirección de facturación, dirección de envío, número de teléfono y dirección de correo electrónico. Usamos esta información para contactarlo sobre los servicios y productos en el(los) sitio(s) en los que ha expresado interés o solicitado y para facilitar la finalización de un pedido.",
+
+  "privacyandpolicy.consent.title": "1 Consentimiento",
+  "privacyandpolicy.consent":
+    "Al usar los sitios web de la Compañía, usted reconoce que ha leído esta Política de Privacidad y consiente las prácticas descritas aquí con respecto a la recopilación, uso y divulgación de la Información Personal que nos proporciona. Esta es la Política de Privacidad completa y exclusiva de la Compañía, y reemplaza cualquier versión anterior. Nos reservamos el derecho de cambiar esta Política de Privacidad de acuerdo con los términos aquí establecidos en cualquier momento, por lo que le recomendamos que visite esta página con frecuencia, revise esta Política de Privacidad a menudo y se mantenga informado sobre cualquier cambio en ella. Si, después de revisar, aún tiene preguntas sobre alguna parte de esta Política de Privacidad, comuníquese con la Compañía utilizando la información de contacto proporcionada al final de esta Política de Privacidad.",
+
+  "privacyandpolicy.informationCollectionAndUse.title":
+    "2 Recopilación de Información y Uso de Información Personal",
+  "privacyandpolicy.informationCollectionAndUse":
+    "La Información Personal significa información que puede identificarlo como una persona específica, como su nombre, dirección, número de teléfono, dirección de correo electrónico u otra información de contacto, ya sea en el trabajo o en casa. En todos los sitios web de la Compañía que recopilan Información Personal, describimos específicamente qué información se requiere para proporcionarle el producto, servicio o función que ha solicitado. Recopilamos Información Personal cuando se comunica con nosotros, cuando se registra con nosotros, cuando utiliza nuestros productos y servicios, cuando envía un pedido con nosotros, cuando visita nuestros sitios web o los sitios web de ciertos socios de la Compañía, y cuando ingresa a promociones y sorteos.",
+
+  "privacyandpolicy.registration.title": "3 Registro",
+  "privacyandpolicy.registration":
+    "Cuando se registra con nosotros en este sitio, primero completa el formulario de registro en línea, que requiere que cree un nombre de usuario y una contraseña. Durante el registro, también se le requiere proporcionar Información Personal, que puede incluir nombre, dirección de facturación, dirección de envío, número de teléfono y dirección de correo electrónico. Usamos esta información para contactarlo sobre los servicios y productos en el(los) sitio(s) en los que ha expresado interés o solicitado y para facilitar la finalización de un pedido.",
+
+  "privacyandpolicy.promotions.title": "4 Promociones, Concursos y Sorteos",
+  "privacyandpolicy.promotions":
+    "De vez en cuando, la Compañía puede ofrecerle la oportunidad de participar en promociones, concursos o sorteos en su(s) sitio(s) web. Dichas promociones, concursos y sorteos también estarán regidos por las reglas y regulaciones publicadas con tales promociones, concursos y sorteos. Si participa, se le requerirá registrarse con la Compañía, lo que requerirá que proporcione cierta Información Personal. La participación en estas promociones, concursos y sorteos es completamente voluntaria, por lo que tiene la opción de registrarse o no y proporcionar su Información Personal. La información solicitada típicamente incluye información de contacto, como nombre, dirección de envío, dirección de correo electrónico y número de teléfono. Usaremos esta información para notificar a los ganadores y otorgar premios. Además, durante su proceso de registro, puede optar por recibir comunicaciones adicionales relacionadas de nuestra parte. Si decide optar, utilizaremos la información proporcionada para enviarle comunicaciones descritas en toda esta Política de Privacidad.",
+
+  "privacyandpolicy.otherInfoCollected.title": "5 Otra Información Recopilada",
+  "privacyandpolicy.otherInfoCollected":
+    "Se puede recopilar automáticamente cierta información cada vez que visite los sitios web de la Compañía, como cookies e información de computadora. Además, se puede recopilar información de otras fuentes independientes de terceros. También recopilamos información sobre qué páginas visita dentro de este sitio. Estos datos de visita del sitio se identifican solo por una URL única.",
+
+  "privacyandpolicy.newsletters.title": "6 Boletines",
+  "privacyandpolicy.newsletters":
+    "Si desea suscribirse al(los) boletín(es) de la Compañía, utilizaremos su nombre y dirección de correo electrónico para enviarle los boletines.",
+
+  "privacyandpolicy.cookies.title": "7 Cookies",
+  "privacyandpolicy.cookies":
+    "La Compañía utiliza tanto cookies de sesión como cookies persistentes como parte de su interacción con su navegador. Una cookie es un identificador alfanumérico (un archivo) que los sitios web de la Compañía transfieren al disco duro de su computadora a través de un navegador web para permitir que sus sistemas reconozcan su navegador con fines de mantenimiento de registros. Una cookie de sesión expira cuando cierra su navegador, mientras que una cookie persistente permanece en su disco duro durante un período prolongado. Usamos cookies de sesión para facilitar la navegación en nuestros sitios web. Usamos cookies persistentes para identificar y rastrear qué secciones de nuestro sitio web visita con más frecuencia. También usamos cookies persistentes en áreas de nuestro sitio web donde debe registrarse y puede personalizar la información que ve para que no tenga que ingresar sus preferencias más de una vez. Al configurar las opciones en su navegador, puede controlar cómo se procesan las cookies en su sistema. Sin embargo, si rechaza el uso de cookies, es posible que no pueda utilizar ciertas funciones de este sitio y se le puede requerir volver a ingresar la información necesaria para completar un pedido durante nuevas o interrumpidas sesiones del navegador. Algunos de los socios comerciales de la Compañía (por ejemplo, anunciantes) utilizan cookies en el sitio. No tenemos acceso ni control sobre estas cookies. En consecuencia, esta Política de Privacidad cubre el uso de cookies por parte de la Compañía solamente y no cubre el uso de cookies por parte de ningún anunciante.",
+
+  "privacyandpolicy.logFiles.title": "8 Archivos de Registro",
+  "privacyandpolicy.logFiles":
+    "Como es cierto en la mayoría de los sitios web, la Compañía recopila automáticamente cierta información y la almacena en archivos de registro. Esta información incluye direcciones de protocolo de Internet (IP), tipo de navegador, proveedor de servicios de Internet (ISP), páginas de referencia/salida, sistema operativo, fecha/hora y datos de flujo de clics. La Compañía utiliza esta información para analizar tendencias, detectar fraudes, administrar los sitios de la Compañía, rastrear los movimientos de los usuarios en los sitios web y recopilar información demográfica sobre la base de usuarios de la Compañía en su conjunto.",
+
+  "privacyandpolicy.clearGifs.title":
+    "9 Gifs Transparentes (Web Beacons/Web Bugs)",
+  "privacyandpolicy.clearGifs":
+    "La Compañía emplea una tecnología de software llamada gifs transparentes (también conocidos como Web Beacons/Web Bugs), que la ayuda a gestionar mejor el contenido en sus sitios web al informarle qué contenido es efectivo. Los gifs transparentes son gráficos diminutos con un identificador único, similar en función a las cookies, y se utilizan para rastrear los movimientos en línea de los usuarios de la web. A diferencia de las cookies, que se almacenan en el disco duro de una computadora del usuario, los gifs transparentes están incrustados de manera invisible en las páginas web y tienen aproximadamente el tamaño del punto final de esta oración. La Compañía utiliza gifs transparentes en sus correos electrónicos basados en HTML para informarse sobre qué correos electrónicos han sido abiertos por usted. Esto permite a la Compañía evaluar la efectividad de ciertas comunicaciones y la efectividad de las campañas de marketing de la Compañía. Si desea optar por no recibir estos correos electrónicos, consulte la sección 'Opción y Exclusión' de esta Política de Privacidad.",
+
+  "privacyandpolicy.thirdPartySources.title":
+    "10 Información de Fuentes de Terceros",
+  "privacyandpolicy.thirdPartySources":
+    "Para mejorar los servicios y fortalecer la personalización, la Compañía puede obtener periódicamente información de otras fuentes independientes de terceros y agregarla a nuestra información de cuenta. Por ejemplo, cuando visitas un sitio donde la Compañía hace publicidad y haces clic en este anuncio, la Compañía puede colocar cookies en tu computadora.",
+
+  "privacyandpolicy.thirdPartyAdvertising.title": "11 Publicidad de Terceros",
+  "privacyandpolicy.thirdPartyAdvertising":
+    "Los anuncios que aparecen de vez en cuando en los sitios web de la Compañía son proporcionados por un tercero. La información sobre tus visitas a los sitios, como la cantidad de veces que has visto un anuncio (pero no tu nombre, dirección u otra Información Personal), se utiliza para mostrarte anuncios.",
+
+  "privacyandpolicy.specialOffers.title":
+    "12 Ofertas Especiales y Actualizaciones",
+  "privacyandpolicy.specialOffers":
+    "La Compañía recopila información sobre las secciones de su sitio web que visitas con más frecuencia, con el fin de poder enviarte nuestro boletín y información sobre ofertas, promociones, concursos y sorteos relevantes que podrían interesarte. Por lo tanto, la Compañía te enviará ocasionalmente información sobre productos, servicios, ofertas especiales, promociones y sorteos.",
+
+  "privacyandpolicy.serviceAnnouncements.title":
+    "13 Anuncios Relacionados con los Servicios",
+  "privacyandpolicy.serviceAnnouncements":
+    "La Compañía puede, pero no está obligada, a enviarte anuncios estrictamente relacionados con los servicios en raras ocasiones cuando sea necesario. Por ejemplo, si nuestro servicio se suspende temporalmente para mantenimiento, podríamos enviarte un correo electrónico. En general, no puedes darte de baja de estas comunicaciones, ya que no son de naturaleza promocional. Si no deseas recibirlas, podrías tener la opción de desactivar tu cuenta.",
+
+  "privacyandpolicy.research.title": "14 Investigación",
+  "privacyandpolicy.research":
+    "También recopilamos información con fines de investigación y para proporcionar informes anónimos para clientes internos y externos. La Compañía utiliza la información recopilada para sus propios estudios de marketing interno y demográficos con el fin de mejorar el servicio al cliente y las ofertas de productos.",
+
+  "privacyandpolicy.customerService.title": "15 Servicio al Cliente",
+  "privacyandpolicy.customerService":
+    "Nos comunicaremos contigo en respuesta a tus solicitudes, para proporcionar los productos y servicios que solicitas, y para gestionar tu cuenta. Nos comunicaremos contigo por correo electrónico, chat en vivo o teléfono, de acuerdo a tus deseos.",
+
+  "privacyandpolicy.preferences.title": "16 Preferencias",
+  "privacyandpolicy.preferences":
+    "La Compañía almacena información que recopila a través de cookies, archivos de registro y fuentes de terceros para crear un perfil de tus preferencias, con el fin de mejorar el contenido del sitio web de la Compañía para ti.",
+
+  "privacyandpolicy.informationSharing.title":
+    "17 Compartir y Divulgar Información",
+  "privacyandpolicy.informationSharing":
+    "La Compañía no vende ni alquila ninguna de las informaciones recopiladas a terceros para ningún propósito, pero comparte información con terceros como se describe a continuación.",
+
+  "privacyandpolicy.serviceProviders.title": "18 Proveedores de Servicios",
+  "privacyandpolicy.serviceProviders":
+    "La Compañía divulga la información recopilada a proveedores de servicios externos necesarios para facilitar las operaciones externalizadas siguientes: verificación de dirección, detección de fraude y envío de pedidos.",
+
+  "privacyandpolicy.otherThirdParties.title": "19 Otros Terceros",
+  "privacyandpolicy.otherThirdParties":
+    "La Compañía comparte información, incluida Información Personal, con socios de terceros de confianza para que los clientes puedan recibir información sobre ofertas y promociones de terceros que puedan interesarles. Estos socios de terceros no tienen derechos independientes para compartir la información que les proporcionamos.",
+
+  "privacyandpolicy.compliance.title":
+    "20 Cumplimiento con Autoridades Legales",
+  "privacyandpolicy.compliance":
+    "Según lo exija la ley, y para hacer cumplir los derechos legales de los clientes o de la Compañía, y para cumplir con la ley local, estatal, federal e internacional, la Compañía puede divulgar información a agencias de aplicación de la ley.",
+
+  "privacyandpolicy.choiceOptOut.title": "21 Elección y Exclusión",
+  "privacyandpolicy.choiceOptOut":
+    "Si ya no desea recibir las comunicaciones promocionales de la Compañía, puede 'excluirse' de recibirlas siguiendo las instrucciones incluidas en cada comunicación o enviando un correo electrónico a la Compañía a support@2ibn.com.",
+
+  "privacyandpolicy.links.title": "22 Enlaces a Otros Sitios Web",
+  "privacyandpolicy.links":
+    "Hay varios lugares en los sitios web de la Compañía que pueden enlazarlo a otros sitios web que no operan bajo esta Política de Privacidad. Cuando haga clic en estos sitios web, esta Política de Privacidad ya no se aplica. La Compañía recomienda que examine las declaraciones de privacidad de todos los sitios web de terceros para comprender sus procedimientos de recopilación, uso y divulgación de su Información Personal.",
+
+  "privacyandpolicy.storageSecurity.title":
+    "23 Almacenamiento y Seguridad de la Información Personal",
+  "privacyandpolicy.storageSecurity":
+    "La Compañía almacena la información que recopila en computadoras ubicadas en una instalación controlada y segura protegida contra el acceso, uso o divulgación no autorizados, ya sea físico o electrónico.",
+
+  "privacyandpolicy.security.title": "24 Seguridad",
+  "privacyandpolicy.security":
+    "La Compañía protege la privacidad e integridad de la información que recopila mediante la aplicación de protocolos administrativos apropiados, salvaguardias técnicas y controles de seguridad física diseñados para limitar el acceso, detectar y prevenir el acceso no autorizado, la divulgación inadecuada, la alteración o la destrucción de la información bajo su control. La Compañía transmite la información utilizada por sus proveedores de servicios externos para las operaciones subcontratadas específicas mencionadas anteriormente a través de redes públicas y privadas mediante tecnologías de encriptación reconocidas, como el uso de software Secure Sockets Layer (SSL), que encripta la información que usted ingresa. Aunque la Compañía sigue los procedimientos establecidos anteriormente para proteger la Información Personal enviada a la Compañía, ningún método de transmisión a través de Internet, o método de almacenamiento electrónico, es 100% seguro. Por lo tanto, aunque la Compañía se esfuerza por utilizar medios comercialmente aceptables para proteger su Información Personal, la Compañía no puede garantizar su seguridad absoluta. Si tiene alguna pregunta sobre la seguridad de la Compañía en sus sitios web, no dude en enviarnos un correo electrónico a support@2ibn.com.",
+
+  "privacyandpolicy.internetFraud.title": "25 Fraude en Internet",
+  "privacyandpolicy.internetFraud":
+    "La Compañía tiene una política de CERO TOLERANCIA para el fraude en Internet o cualquier intento de acceder o adquirir información de clientes u otra información en sus sitios web a través de medios ilegales o furtivos. La Compañía trabaja con agencias de investigación de fraudes locales, nacionales e internacionales y emplea una variedad de medios electrónicos y otros para desalentar, detectar e interceptar actividades fraudulentas. La Compañía persigue agresivamente, hasta el máximo permitido por la ley, a aquellos perpetradores detenidos realizando actividades fraudulentas en su sitio web. Las agencias con las que la Compañía coopera son: autoridades policiales estatales y locales, el Buró Federal de Investigación de los Estados Unidos, agencias de aduanas de EE. UU. e internacionales, y la Interpol.",
+
+  "privacyandpolicy.internationalTransfer.title":
+    "26 Transferencia Internacional",
+  "privacyandpolicy.internationalTransfer":
+    "La Información Personal recopilada por la Compañía puede ser almacenada y procesada en los Estados Unidos o en cualquier otro país en el que la Compañía o sus afiliados, subsidiarias o agentes mantengan instalaciones, y al utilizar los sitios web de la Compañía, usted consiente cualquier transferencia de Información Personal fuera de su país.",
+
+  "privacyandpolicy.children.title": "27 Niños",
+  "privacyandpolicy.children":
+    "Los sitios de la Compañía no están destinados ni dirigidos a personas menores de 13 años. La Compañía no compra ni vende productos o servicios a niños. Cualquier persona que proporcione su información a la Compañía a través de los sitios web de la Compañía representa a la Compañía que tiene 13 años o más.",
+
+  "privacyandpolicy.changes.title": "28 Cambios a esta Declaración",
+  "privacyandpolicy.changes":
+    "La Compañía actualizará de vez en cuando esta Política de Privacidad, revisando cada vez la fecha de la última actualización en la parte superior de la Política de Privacidad e indicando la naturaleza de las revisiones dentro de la declaración. La Compañía notificará a los clientes sobre cambios materiales a esta declaración por correo electrónico o colocando un aviso prominente en su sitio web.",
+
+  "privacyandpolicy.contactInformation.title": "29 Información de Contacto",
+  "privacyandpolicy.contactInformation":
+    "Puede contactar a la Compañía por correo electrónico a support@2ibn.com.",
+  "privacyandpolicy.bottomDesc": "Última Actualización: Octubre 2024",
+  "privacyandpolicy.bottomDescAllRight": "Todos los Derechos Reservados.",
+
+  "contact.title": "Póngase en Contacto",
+  "contact.desc":
+    "Estamos aquí para ayudarle y responder a cualquier pregunta que pueda tener. ¡Esperamos saber de usted!",
+  "contact.email": "Correo Electrónico",
+  "contact.phone": "Teléfono",
+  "contact.address": "Dirección",
+  "contact.formTitle": "Formulario de Contacto",
+  "contact.formName": "Nombre",
+  "contact.formEmail": "Correo Electrónico",
+  "contact.formSubject": "Asunto",
+  "contact.formMessage": "Mensaje",
+  "contact.btn": "Enviar Mensaje",
+  "contact.formResponse": "Tiempo de Respuesta",
+  "contact.formWithin": "Dentro de 24 horas",
+  "contact.successTitle": "¡Mensaje Enviado!",
+  "contact.successDesc":
+    "Gracias por ponerse en contacto. Nos pondremos en contacto con usted lo antes posible.",
+  "contact.successSuggest": "Enviar Otro Mensaje",
 } as const;
