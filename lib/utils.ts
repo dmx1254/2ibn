@@ -213,7 +213,14 @@ export const orderBuyNumGenerated = () => {
 
 export function formatTimeAgo(
   date: Date,
-  options: { hourText: string; minuteText: string; suffix: string }
+  options: {
+    hourText: string;
+    minuteText: string;
+    dayText: string;
+    monthText: string;
+    yearText: string;
+    suffix: string;
+  }
 ): string {
   if (!(date instanceof Date) || isNaN(date.getTime())) {
     return "";
@@ -223,10 +230,20 @@ export function formatTimeAgo(
   const diffInMs = now.getTime() - date.getTime();
   const diffInMinutes = Math.floor(diffInMs / 60000);
   const diffInHours = Math.floor(diffInMinutes / 60);
+  const diffInDays = Math.floor(diffInHours / 24);
+  const diffInMonths = Math.floor(diffInDays / 30); // Approximation de 30 jours par mois
+  const diffInYears = Math.floor(diffInDays / 365); // Approximation de 365 jours par an
 
-  if (diffInHours > 0) {
+  if (diffInYears > 0) {
+    return `${diffInYears} ${options.yearText} ${options.suffix}`;
+  } else if (diffInMonths > 0) {
+    return `${diffInMonths} ${options.monthText} ${options.suffix}`;
+  } else if (diffInDays > 0) {
+    return `${diffInDays} ${options.dayText} ${options.suffix}`;
+  } else if (diffInHours > 0) {
     return `${diffInHours} ${options.hourText} ${options.suffix}`;
   } else {
     return `${diffInMinutes} ${options.minuteText} ${options.suffix}`;
   }
 }
+

@@ -1,7 +1,5 @@
-import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import OurServices from "./components/OurServices";
-import Statistics from "./components/Statistics";
 import WhyChooseUs from "./components/WhyChooseUs";
 
 export default async function Home() {
@@ -11,7 +9,6 @@ export default async function Home() {
         <HeroSection />
         <WhyChooseUs />
         <OurServices />
-        <Statistics />
       </main>
     </div>
   );

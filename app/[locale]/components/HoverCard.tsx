@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import useStore from "@/lib/store-manage";
 import { Cart } from "@/lib/types/types";
 import { parsedDevise } from "@/lib/utils";
@@ -9,13 +10,25 @@ import Link from "next/link";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 const CardHoverCon = () => {
+  const [open, setOpen] = useState<boolean>(false);
   const t = useI18n();
   const { totalItems, carts } = useStore();
-  const totalPrice = carts.reduce((acc: number, item: Cart) => acc + item.totalPrice, 0);
+  const totalPrice = carts.reduce(
+    (acc: number, item: Cart) => acc + item.totalPrice,
+    0
+  );
+
+  const handleOpen = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
   return (
-    <HoverCard>
+    <HoverCard open={open} onOpenChange={handleOpen}>
       <HoverCardTrigger asChild>
-        <button className="relative outline-none inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link">
+        <button
+          className="relative outline-none inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
+          onClick={handleOpen}
+        >
           <Image
             src="/assets/cart.svg"
             alt="account logo"

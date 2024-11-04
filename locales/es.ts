@@ -11,6 +11,10 @@ export default {
   "languageandcur.fr": "Francés",
   "languageandcur.es": "Español",
 
+  "languageandcur.title": "Idioma y moneda",
+  "languageandcur.desc":
+    "Tenga en cuenta que algunos métodos de pago pueden no admitir su moneda local. En la página de pago, podemos convertir el precio a USD o EUR.",
+
   "hero.titlefirst": "Comprar Kamas",
   "hero.titlesecond": "Seguro, Rápido con el Mejor Precio",
   "hero.desc":
@@ -93,6 +97,11 @@ export default {
     "Solicitud de intercambio enviada con éxito. Abra el chat para proceder con el intercambio.",
   "exchange.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
 
+  "exchange.desc1":
+    "¿Tienes kamas en otros servidores de Dofus o Dofus Touch? ¿O tienes kamas en Dofus Touch y quieres transferirlos a otros servidores? ¡No hay problema! 2ibn también asegura la transferencia de kamas de un servidor a otro.",
+  "exchange.desc2":
+    "Puedes intercambiar tus kamas con nosotros entre los servidores de cuenta única Draconiros, así como los servidores clásicos de Dofus Imagiro, Orukam, Ombre, TalKasha, HellMina y Tylezia. Para Dofus Retro, también cubrimos Eratz, Henual, Crail, Galgarion y Boune, así como Dofus Touch con Oshimo, Herdegrize, Terra Cogita, Epsilon, Talok y Tiliwan.",
+
   "sellkamas.headertitle": "Vender Servidor Dofus",
   "sellkamas.headertitleDescServ": "Servidor",
   "sellkamas.headertitleDescQty": "Cantidad de Kamas",
@@ -109,6 +118,24 @@ export default {
   "sellkamas.headertableBtn": "Vender Ahora",
   "sellkamas.headertableStatusInTableAva": "Disponible",
   "sellkamas.headertableStatusInTableComp": "Stock Completo",
+
+  "sellkamas.descTitle": "Vender Kamas | Venta de Kamas",
+  "sellkamas.desc1":
+    "Vende tus Kamas de Dofus a los mejores precios. No dudes en contactarnos si deseas vender tus kamas.",
+  "sellkamas.desc2":
+    "Cantidad: Valor mínimo de 200DH en kamas (CIH, ATTIJARI y BARID banco).",
+  "sellkamas.desc3":
+    "Todas tus ventas registradas en la misma cuenta de pago se combinarán y se enviarán en un solo pago.",
+  "sellkamas.desc4":
+    "Métodos de pago: Transferencias bancarias y CashPlus, WafaCash [Marruecos]. Pago enviado dentro de las 24 horas posteriores a la entrega de kamas. (Mínimo de {price} en kamas)",
+  "sellkamas.desc5":
+    "Recibes automáticamente un bono de {bonus} por cada pedido vendido por encima de {total}.",
+  "sellkamas.desc6":
+    "El bono se calcula según la suma total de cada pedido vendido (por ejemplo, {total} ==> {totalPlusBonus}; {exemplePrice1} ==> {exempleBonus1}; {exemplePrice2} ==> {exempleBonus2}).",
+  "sellkamas.desc7":
+    "El bono no se aplica al total de varios pedidos diferentes.",
+  "sellkamas.desc8": "No vendo Kamas, quiero un intercambio entre servidores.",
+  "sellkamas.linkdofs": "Haga clic aquí para el intercambio de Kamas",
 
   "dialogsell.btnSell": "Vender Ahora",
   "dialogsell.title": "Vender Kamas en {server}",
@@ -148,6 +175,10 @@ export default {
   "dialogsell.success":
     "Pedido realizado con éxito. Abre el chat para proceder con el intercambio",
   "dialogsell.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
+  "dialogsell.serverError": "Seleccionar un servidor",
+
+  "dialogsell.server": "Servidor",
+  "dialogsell.selectServer": "Seleccionar un servidor",
 
   "emptycart.title": "Tu carrito está vacío",
   "emptycart.desc":
@@ -658,4 +689,6 @@ export default {
   "contact.successDesc":
     "Gracias por ponerse en contacto. Nos pondremos en contacto con usted lo antes posible.",
   "contact.successSuggest": "Enviar Otro Mensaje",
+
+  "shadcndialog.close": "Cerca",
 } as const;

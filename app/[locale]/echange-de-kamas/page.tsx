@@ -134,22 +134,22 @@ const EchangeDeKamas = () => {
   }, [data]);
 
   return (
-    <div className="p-4 md:p-8 min-h-screen">
+    <div className="font-poppins p-4 md:p-8 min-h-screen">
       <div className="max-w-6xl mx-auto space-y-6">
         <div className="text-center space-y-2 mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent">
+          <h1 className="text-xl md:text-3xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent">
             {tScope("headeartitle")}
           </h1>
-          <p className="text-gray-600 text-lg">{tScope("info")}</p>
+          <p className="text-gray-600 text-base">{tScope("info")}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-4">
             <Card className="border-none shadow-lg bg-white/90 backdrop-blur-sm">
-              <CardContent className="p-6">
+              <CardContent className="p-3">
                 <Alert
                   variant="default"
-                  className="bg-green-50 border-green-200 mb-4"
+                  className="bg-green-50 border-green-200 mb-2"
                 >
                   <Coins className="h-4 w-4 text-green-600" />
                   <AlertDescription className="text-green-700">
@@ -185,13 +185,13 @@ const EchangeDeKamas = () => {
           </div>
 
           <Card className="border-none shadow-xl bg-white/90 backdrop-blur-sm">
-            <CardContent className="p-6">
+            <CardContent className="p-3">
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="space-y-6"
                 >
-                  <div className="space-y-4">
+                  <div className="space-y-2">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
@@ -206,7 +206,7 @@ const EchangeDeKamas = () => {
                               defaultValue={field.value}
                             >
                               <FormControl>
-                                <SelectTrigger className="h-12 bg-white">
+                                <SelectTrigger className="h-11 bg-white">
                                   <SelectValue
                                     placeholder={tScope("placeholderServer")}
                                   />
@@ -239,7 +239,7 @@ const EchangeDeKamas = () => {
                             <FormControl>
                               <div className="relative">
                                 <Input
-                                  className="h-12 bg-white pl-4 pr-20"
+                                  className="h-11 bg-white pl-4 pr-20"
                                   type="number"
                                   placeholder="0"
                                   {...field}
@@ -264,7 +264,7 @@ const EchangeDeKamas = () => {
                             {tScope("characterToPay")}
                           </FormLabel>
                           <FormControl>
-                            <Input className="h-12 bg-white" {...field} />
+                            <Input className="h-11 bg-white" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -292,7 +292,7 @@ const EchangeDeKamas = () => {
                               defaultValue={field.value}
                             >
                               <FormControl>
-                                <SelectTrigger className="h-12 bg-white">
+                                <SelectTrigger className="h-11 bg-white">
                                   <SelectValue
                                     placeholder={tScope("placeholderServer")}
                                   />
@@ -325,7 +325,7 @@ const EchangeDeKamas = () => {
                             <FormControl>
                               <div className="relative">
                                 <Input
-                                  className="h-12 bg-white/50 pl-4 pr-20"
+                                  className="h-11 bg-white/50 pl-4 pr-20"
                                   type="number"
                                   placeholder="0"
                                   {...field}
@@ -351,7 +351,7 @@ const EchangeDeKamas = () => {
                             {tScope("characterToReceive")}
                           </FormLabel>
                           <FormControl>
-                            <Input className="h-12 bg-white" {...field} />
+                            <Input className="h-11 bg-white" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -367,7 +367,7 @@ const EchangeDeKamas = () => {
                             {tScope("exchangeCode")}
                           </FormLabel>
                           <FormControl>
-                            <Input className="h-12 bg-white" {...field} />
+                            <Input className="h-11 bg-white" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -377,7 +377,7 @@ const EchangeDeKamas = () => {
 
                   <Button
                     type="submit"
-                    className="w-full h-12 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-lg transition-colors duration-200"
+                    className="w-full h-11 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-lg transition-colors duration-200"
                     disabled={loadingExchange || !session?.user.id}
                   >
                     {loadingExchange ? (
@@ -395,6 +395,10 @@ const EchangeDeKamas = () => {
           </Card>
         </div>
       </div>
+      <Card className="w-full flex flex-col items-center justify-center mx-auto my-10 gap-4 max-w-6xl p-6 self-center bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200">
+        <p className="text-base text-gray-700">{tScope("desc1")}</p>
+        <p className="text-base text-gray-700">{tScope("desc2")}</p>
+      </Card>
     </div>
   );
 };

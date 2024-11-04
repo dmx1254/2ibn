@@ -10,6 +10,17 @@ import { CUR } from "@/lib/types/types";
 import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 import { LocaleSelect } from "./LocaleSelect";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const LanguageAndCurrency = () => {
   const tScope = useScopedI18n("languageandcur");
@@ -27,16 +38,18 @@ const LanguageAndCurrency = () => {
     setIsOpen(false);
   };
 
-  const handleCurrencyChange = (curr: CurrencyItem) => {
-    setIsActiveCurrency(curr.slug);
-    setCurrency(curr);
-    setIsOpen(false);
+  const handleCurrencyChange = (valCur: string) => {
+    const currencySelected = currencies.find((c) => c.slug === valCur);
+
+    if (currencySelected) {
+      setIsActiveCurrency(currencySelected.slug);
+      setCurrency(currencySelected);
+      setIsOpen(false);
+    }
   };
 
   const fetchCurrency = async (currency: string): Promise<CUR[]> => {
-    const response = await fetch(
-      `/api/iben/currency/${currency}`
-    );
+    const response = await fetch(`/api/iben/currency/${currency}`);
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }
@@ -74,9 +87,9 @@ const LanguageAndCurrency = () => {
   };
 
   return (
-    <Popover open={isOpen} onOpenChange={setIsOpen}>
-      <PopoverTrigger asChild>
-        <button className="outline-none inline-flex items-center gap-2 px-3 py-2 transition-all duration-200 cursor-pointer rounded-full hover:bg-gray-100 border border-gray-200 focus:ring-2 focus:ring-yellow-500">
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <button className="outline-none inline-flex items-center gap-2 px-3 py-2 transition-all duration-200 cursor-pointer rounded-full hover:bg-gray-100 border border-gray-200 focus:ring-2 focus:ring-yellow-500 bg-white">
           <Globe size={18} className="text-gray-600" />
           <span className="text-sm font-medium text-gray-700">
             {getLocaleLanguage()?.code.toUpperCase()} /{" "}
@@ -90,46 +103,67 @@ const LanguageAndCurrency = () => {
             )}
           />
         </button>
-      </PopoverTrigger>
-      <PopoverContent
-        className="w-72 p-0 bg-white rounded-xl shadow-xl border border-gray-200"
-        align="end"
+      </DialogTrigger>
+      <DialogContent
+        showIcon={false}
+        className="font-poppins w-full max-w-[450px] rounded-[20px] p-0 bg-white shadow-xl border border-gray-200"
       >
-        <div className="grid divide-y divide-gray-100">
+        <div className="w-full grid divide-gray-100">
+          <h2 className="px-4 pt-4 text-lg text-gray-800 font-semibold">
+            {tScope("title")}
+          </h2>
           <div className="p-4 space-y-3">
-            <h4 className="font-semibold text-lg text-gray-800">{tScope("language")}</h4>
+            <h4 className="font-semibold text-lg text-gray-800">
+              {tScope("language")}
+            </h4>
             <LocaleSelect />
           </div>
-          <div className="p-4 space-y-3">
-            <h4 className="font-semibold text-lg text-gray-800">{tScope("currency")}</h4>
+          <div className="p-4 space-y-2">
+            <h4 className="font-semibold text-lg text-gray-800">
+              {tScope("currency")}
+            </h4>
             <div className="space-y-1">
-              {currencies.map((curr) => (
-                <button
-                  key={curr.code}
-                  className={cn(
-                    "w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors",
-                    devise.currencyName === curr.slug
-                      ? "bg-yellow-50 text-yellow-700"
-                      : "hover:bg-gray-50 text-gray-700"
-                  )}
-                  onClick={() => handleCurrencyChange(curr)}
-                >
-                  <span className="text-base font-semibold w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
-                    {curr.symbol}
-                  </span>
-                  <span className="flex-grow text-left text-sm font-medium">
-                    {curr.name}
-                  </span>
-                  {devise.currencyName === curr.code && (
-                    <Check size={18} className="text-yellow-600" />
-                  )}
-                </button>
-              ))}
+              <Select onValueChange={(value) => handleCurrencyChange(value)}>
+                <SelectTrigger className="w-full outline-none focus:outline-none focus:ring-0 focus:ring-offset-0">
+                  <SelectValue
+                    placeholder={
+                      <div className="flex items-center gap-2">
+                        <span className="flex-grow text-left text-sm font-medium -mt-0.5">
+                          {getActualCurrency()?.symbol}
+                        </span>
+                        <span className="flex-grow text-left text-sm font-medium -mt-0.5">
+                          {getActualCurrency()?.name}
+                        </span>
+                      </div>
+                    }
+                  />
+                </SelectTrigger>
+                <SelectContent className="w-full">
+                  <SelectGroup className="w-full">
+                    {currencies.map((curr) => (
+                      <SelectItem key={curr.code} value={curr.slug}>
+                        <div className="flex items-center gap-2">
+                          <span className="text-base font-semibold w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full">
+                            {curr.symbol}
+                          </span>
+                          <span className="flex-grow text-left text-sm font-medium">
+                            {curr.name}
+                          </span>
+                          {/* {devise.currencyName === curr.code && (
+                      <Check size={18} className="text-yellow-600" />
+                    )} */}
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
+            <p className="w-full text-sm p-2 text-gray-800">{tScope("desc")}</p>
           </div>
         </div>
-      </PopoverContent>
-    </Popover>
+      </DialogContent>
+    </Dialog>
   );
 };
 

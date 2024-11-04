@@ -29,35 +29,35 @@ export default function ProfileLayout({
   const profileItems = [
     {
       href: "/profile",
-      label: "Profile",
+      label: tScope("profile"),
       icon: User,
       traduct: "profile",
       size: 24,
     },
     {
       href: "/profile/orders-buys",
-      label: "Orders Buy",
+      label: tScope("ordersBuy"),
       icon: ShoppingBag,
       traduct: "ordersBuy",
       size: 22,
     },
     {
       href: "/profile/order-sell",
-      label: "Orders Sell",
+      label: tScope("ordersSell"),
       icon: TrendingUp,
       traduct: "ordersSell",
       size: 24,
     },
     {
       href: "/profile/exchange",
-      label: "Exchange",
+      label: tScope("exchange"),
       icon: BarChart2,
       traduct: "exchange",
       size: 24,
     },
     {
       href: "/profile/update-profile",
-      label: "Update Profile",
+      label: tScope("updateProfile"),
       icon: Settings,
       traduct: "updateProfile",
       size: 24,
@@ -98,15 +98,7 @@ export default function ProfileLayout({
                 href={item.href}
               >
                 <item.icon className="" size={item.size} />
-                <span className="max-sm:hidden">
-                  {tScope(
-                    (item.traduct as "profile") ||
-                      "ordersBuy" ||
-                      "ordersSell" ||
-                      "exchange" ||
-                      "updateProfile"
-                  )}
-                </span>
+                <span className="max-sm:hidden">{item.label}</span>
               </Link>
             ))}
           </div>
@@ -121,7 +113,9 @@ export default function ProfileLayout({
       </div>
 
       {/* Contenu principal */}
-      <div className="flex-1 p-2 sm:p-6 overflow-y-auto profile-user">{children}</div>
+      <div className="flex-1 p-2 sm:p-6 overflow-y-auto profile-user">
+        {children}
+      </div>
     </div>
   );
 }

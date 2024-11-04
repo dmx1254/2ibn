@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import { FaSortDown } from "react-icons/fa";
 import SheetMenu from "./SheetMenu";
+import { CiUser } from "react-icons/ci";
 
 import { useQuery } from "@tanstack/react-query";
 import { dofusItemNav } from "@/lib/utils";
@@ -19,7 +20,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { useSession } from "next-auth/react";
 import ProfilePopover from "./ProfilePopover";
 
-import { FaFacebookF, FaFlipboard, FaInstagram, FaSkype } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaSkype } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 const Navbar = () => {
@@ -80,7 +81,7 @@ const Navbar = () => {
     !pathname.includes("reset-password") &&
     !pathname.includes("profile") &&
     !pathname.includes("resetpassword") && (
-      <div className="z-50 font-poppins sticky top-0 left-0 right-0 w-full flex items-center justify-center bg-transparent text-center px-4 bg-white border-b border-gray-100">
+      <div className="z-50 font-poppins sticky top-0 left-0 right-0 w-full flex items-center justify-center text-center px-4 bg-[#18191A] border-b border-gray-100">
         <div className="w-full max-w-6xl flex items-center justify-between">
           <div className="flex items-center gap-0">
             <SheetMenu />
@@ -90,21 +91,21 @@ const Navbar = () => {
                 alt="ibendouma logo"
                 height={70}
                 width={70}
-                className="-ml-4 lg:-ml-2"
+                className="-ml-4 lg:-ml-2 lg:-mt-1"
               />
               <span className="sr-only">Ibendouma logo</span>
-              <span className="max-sm:hidden text-2xl font-extrabold -ml-3">
+              <span className="max-sm:hidden text-2xl font-extrabold -ml-3 text-white">
                 2Ibn
               </span>
             </Link>
           </div>
           <div className="flex items-center gap-4 max-lg:hidden">
             <Popover>
-              <PopoverTrigger className="flex items-center text-base">
-                {tScope("title")} <FaSortDown className="-mt-1.5 text-black" />
+              <PopoverTrigger className="flex items-center text-base text-white">
+                {tScope("title")} <FaSortDown className="-mt-1.5 text-white" />
               </PopoverTrigger>
               <PopoverContent className="max-w-36 shadow-none p-2">
-                <div className="flex flex-col items-start text-base text-[#212529BF] font-semibold">
+                <div className="flex flex-col items-start text-base  font-semibold">
                   {dofusItemNav.map((dofs, index) => (
                     <button
                       key={dofs.id + index}
@@ -117,10 +118,10 @@ const Navbar = () => {
                 </div>
               </PopoverContent>
             </Popover>
-            <Link href="/echange-de-kamas" className="text-base">
+            <Link href="/echange-de-kamas" className="text-base text-white">
               {tScope("link1")}
             </Link>
-            <Link href="/vendre-des-kamas" className="text-base">
+            <Link href="/vendre-des-kamas" className="text-base text-white">
               {tScope("link2")}
             </Link>
             {/* <Link href="/paysafecard" className="text-base">
@@ -135,14 +136,17 @@ const Navbar = () => {
                 href="/signin"
                 className="hidden sm:inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
               >
-                <Image
-                  src="/assets/locker.svg"
+                {/* <Image
+                  src="/user.svg"
                   alt="account logo"
                   width={20}
                   height={20}
                   className="-mt-0.5"
-                />
-                <span className="text-base">{tScope("account")}</span>
+                /> */}
+                <CiUser size={24} className="-mt-1 text-white" />
+                <span className="text-base text-white">
+                  {tScope("account")}
+                </span>
               </Link>
             )}
             {(!session || status !== "authenticated") && (
@@ -162,27 +166,27 @@ const Navbar = () => {
             <div className="flex space-x-4 max-lg:hidden">
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-zinc-500 text-blue-600 hover:border-zinc-800"
+                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-blue-600 hover:border-white/100"
               >
                 <FaFacebookF size={15} />
               </Link>
 
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-zinc-500 hover:border-zinc-800 text-pink-600"
+                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 hover:border-white/100 text-pink-600"
               >
                 <FaInstagram size={15} />
               </Link>
 
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-zinc-500 text-black hover:border-zinc-800"
+                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-gray-500 hover:border-white/100"
               >
                 <FaXTwitter size={14} />
               </Link>
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-zinc-500 text-blue-600 hover:border-zinc-800"
+                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-blue-600 hover:border-white/100"
               >
                 <FaSkype size={15} />
               </Link>
