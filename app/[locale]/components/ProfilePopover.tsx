@@ -50,7 +50,7 @@ const ProfilePopover = () => {
             height={22}
             className="-mt-0.5"
           />
-          <FaSortDown className="-mt-1.5 text-black/40" />
+          <FaSortDown className="-mt-1.5 text-white -ml-0.5" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-64 p-2">
