@@ -98,21 +98,21 @@ export const TestimonialsCardSkeleton: React.FC = () => {
   const skeletonItems = Array(5).fill(null);
 
   return (
-    <div className="w-full h-[300px] max-sm:my-5 sm:h-[600px] sm:w-[500px] bg-gray-100 rounded-lg p-4 overflow-hidden">
+    <div className="w-full h-[300px] max-sm:my-5 sm:h-[600px] sm:w-[500px] bg-[#1A1D21] rounded-lg p-4 overflow-hidden">
       <div className="space-y-6">
         {skeletonItems.map((_, index) => (
           <div key={index}>
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gray-200 rounded-full animate-pulse" />
+              <div className="w-12 h-12 bg-[#363A3D] rounded-full animate-pulse" />
               <div className="flex-1 space-y-2">
-                <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse" />
-                <div className="h-3 bg-gray-200 rounded w-1/2 animate-pulse" />
+                <div className="h-4 bg-[#363A3D] rounded w-3/4 animate-pulse" />
+                <div className="h-3 bg-[#363A3D] rounded w-1/2 animate-pulse" />
               </div>
             </div>
             <div className="mt-4 space-y-2">
-              <div className="h-4 bg-gray-200 rounded w-full animate-pulse" />
-              <div className="h-4 bg-gray-200 rounded w-5/6 animate-pulse" />
-              <div className="h-4 bg-gray-200 rounded w-4/6 animate-pulse" />
+              <div className="h-4 bg-[#363A3D] rounded w-full animate-pulse" />
+              <div className="h-4 bg-[#363A3D] rounded w-5/6 animate-pulse" />
+              <div className="h-4 bg-[#363A3D] rounded w-4/6 animate-pulse" />
             </div>
           </div>
         ))}

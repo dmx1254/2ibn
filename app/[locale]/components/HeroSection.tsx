@@ -107,19 +107,19 @@ const HeroSection = () => {
     >
       <TestimonialsCard />
       <Card
-        className="full max-lg:max-w-[450px] lg:w-1/3 flex flex-col items-start gap-4 shadow-none bg-white p-4 rounded-[10px] border-none"
+        className="full max-lg:max-w-[450px] lg:w-1/3 flex flex-col items-start gap-4 shadow-none bg-[#363A3D] p-4 rounded-[10px] border-none"
         style={{
           boxShadow:
             "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
         }}
       >
         <div className="w-full flex flex-col items-start gap-3">
-          <Label>{tScope("game")}</Label>
+          <Label className="text-white">{tScope("game")}</Label>
           <Select value={dofusChange} onValueChange={handleDofusChange}>
-            <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#EDEDED] px-5 py-7 rounded-[10px] text-base">
+            <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#45494e] text-white px-5 py-7 rounded-[10px] text-base">
               <SelectValue placeholder="Selectionner un jeu" />
             </SelectTrigger>
-            <SelectContent className="bg-[#EDEDED]">
+            <SelectContent className="bg-[#363A3D] text-white border-[#45494e]">
               <SelectGroup>
                 <SelectLabel>Dofus</SelectLabel>
                 {dofusItem.map((dofus) => (
@@ -144,12 +144,12 @@ const HeroSection = () => {
           </Select>
         </div>
         <div className="w-full flex flex-col items-start gap-3">
-          <Label>{tScope("server")}</Label>
+          <Label className="text-white">{tScope("server")}</Label>
           <Select value={serverChange} onValueChange={setServerChange}>
-            <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#EDEDED] px-5 py-7 rounded-[10px] text-base">
+            <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#45494e] text-white px-5 py-7 rounded-[10px] text-base">
               <SelectValue placeholder="Sélectionnez le serveur" />
             </SelectTrigger>
-            <SelectContent className="bg-[#EDEDED]">
+            <SelectContent className="bg-[#363A3D] text-white border-[#45494e]">
               <SelectGroup>
                 <SelectLabel>{tScope("serverdesc")}</SelectLabel>
                 {serverSelected
@@ -170,11 +170,11 @@ const HeroSection = () => {
           </Select>
         </div>
         <div className="w-full flex flex-col items-start gap-3">
-          <Label>{tScope("needkamas")}</Label>
+          <Label className="text-white">{tScope("needkamas")}</Label>
           <div className="flex items-center">
             <div className="relative flex items-center">
               <Input
-                className="w-full bg-[#EDEDED] text-base px-5 py-7 rounded-tl-[10px] rounded-bl-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="w-full bg-[#45494e] border-[#45494e] text-white text-base px-5 py-7 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 placeholder="0"
                 type="number"
                 value={amount}
@@ -191,7 +191,7 @@ const HeroSection = () => {
             </span>
             <div className="relative">
               <Input
-                className="bg-[#EDEDED] text-base px-5 py-7 w-28 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 pointer-events-none"
+                className="bg-[#45494e] border-[#45494e] text-white text-base px-5 py-7 w-28 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 pointer-events-none"
                 placeholder="0"
                 type="number"
                 value={bonus}
@@ -211,12 +211,12 @@ const HeroSection = () => {
           </div>
         </div>
         <div className="w-full flex flex-col items-start gap-3">
-          <Label className="flex items-center gap-2">
+          <Label className="flex items-center gap-2 text-white">
             {tScope("character")}
             <FaCircleQuestion className="text-[#a1a0a0]" />
           </Label>
           <Input
-            className="w-full bg-[#EDEDED] text-base px-5 py-7 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="w-full bg-[#45494e] border-[#45494e] text-white text-base px-5 py-7 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
             placeholder=""
             type="text"
             value={character}
@@ -226,10 +226,10 @@ const HeroSection = () => {
           />
         </div>
         <div className="w-full flex items-center justify-center my-5">
-          <span className="text-sm">Total</span>
+          <span className="text-sm text-white">Total</span>
           <div className="w-full flex flex-col items-end">
             <div className="flex items-center gap-1">
-              <span className="text-sm">
+              <span className="text-sm text-white">
                 {parsedDevise(devise.currencyName)}
                 {returTotalValue}
               </span>
@@ -237,7 +237,7 @@ const HeroSection = () => {
                 -36%
               </span>
             </div>
-            <span className="text-sm text-[#a1a0a0] line-through">
+            <span className="text-sm text-white line-through">
               {parsedDevise(devise.currencyName)}0.00
             </span>
           </div>

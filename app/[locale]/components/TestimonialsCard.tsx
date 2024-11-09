@@ -4,16 +4,18 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { motion, useAnimationControls } from "framer-motion";
 import axios from "axios";
-import { UserCircle2 } from "lucide-react";
+import { AlertTriangle, Coins, ShieldCheck, UserCircle2 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import { TestimonialsCardSkeleton } from "@/components/ui/skeletons/skeletons";
-import { Card } from "./ui/card";
+import { Card, CardContent } from "./ui/card";
 import Link from "next/link";
 import { useScopedI18n } from "@/locales/client";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 const TestimonialsCard = () => {
   const tScope = useScopedI18n("testimonials");
+  const tScope2 = useScopedI18n("exchange");
   const [reviews, setReviews] = useState<any>();
   const [containerHeight, setContainerHeight] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -133,18 +135,58 @@ const TestimonialsCard = () => {
   //     return <div className="text-sm text-red-500">Error loading reviews</div>;
 
   return filteredReviews?.length ? (
-    <div className="max-lg:-mt-8 relative font-poppins">
-      <Card className="absolute w-full z-20 bg-gray-50 shadow-none border-none p-4 flex items-center gap-2">
-        <Image
-          className="object-cover object-center"
-          src="/trustpilot1start.svg"
-          alt="Trustpilot ibendouma review"
-          width={30}
-          height={30}
-        />
-        <span className="font-semibold text-lg mt-1">Truspilot</span>
+    <div className="mt-0 lg:-mt-8 relative font-poppins">
+      <Card className="max-lg:hidden absolute w-full z-20 bg-[#363A3D] shadow-none p-4 flex items-center justify-between gap-2 border border-[#45494e]">
+        <div className="flex flex-col items-start gap-3">
+          <Image
+            className="object-cover object-center"
+            src="/reviewT.png"
+            alt="Trustpilot ibendouma reviews"
+            width={200}
+            height={200}
+          />
+
+          <div className="flex items-center gap-2">
+            <Image
+              className="object-contain object-center"
+              src="/secure.png"
+              alt="2ibn secure"
+              width={20}
+              height={20}
+            />
+            <span className="uppercase text-white text-sm">
+              100% Sécurisé garanti
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col items-start gap-3">
+          <div className="flex items-center gap-2">
+            <Image
+              className="object-contain object-center"
+              src="/delivery.png"
+              alt="2ibn delivery"
+              width={20}
+              height={20}
+            />
+            <span className="uppercase text-white text-sm">
+              livraison facile et instantanée
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Image
+              className="object-contain object-center"
+              src="/secure.png"
+              alt="2ibn refund"
+              width={20}
+              height={20}
+            />
+            <span className="uppercase text-white text-sm">
+              Remboursement garanti
+            </span>
+          </div>
+        </div>
       </Card>
-      <ScrollArea className="w-full z-10 h-[300px] lg:h-[600px] max-lg:max-w-[450px] lg:w-2/4 shadow-none bg-transparent border-none hide-scrollbar relative before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-20 before:bg-gradient-to-b before:from-background before:to-transparent before:z-10 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-20 after:bg-gradient-to-t after:from-background after:to-transparent after:z-10">
+      <ScrollArea className="w-full z-10 h-[300px] lg:h-[600px] max-lg:max-w-[450px] lg:w-2/4 shadow-none bg-transparent border-none hide-scrollbar relative overflow-hidden">
         <div ref={scrollRef} className="overflow-hidden">
           <motion.div
             animate={controls}
@@ -156,7 +198,7 @@ const TestimonialsCard = () => {
                 href="https://fr.trustpilot.com/review/ibendouma.com"
                 target="_blank"
                 key={review.id}
-                className="w-full p-4 bg-white/5 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
+                className="w-full p-4 bg-[#363A3D] rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
               >
                 {/* Review content */}
                 <div className="flex flex-col gap-2">
@@ -166,62 +208,39 @@ const TestimonialsCard = () => {
                       name={review.consumer.displayName}
                     />
                     <div className="flex flex-col">
-                      <span className="font-medium">
+                      <span className="font-medium text-white">
                         {review.consumer.displayName}
                       </span>
                       <div className="flex items-center gap-2">
                         {renderStars(review.rating)}
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-white">
                           {formatDate(review.dates.publishedDate)}
                         </span>
                       </div>
                     </div>
                   </div>
                   <div className="mt-2">
-                    <p className="font-medium">{review.title}</p>
-                    <p className="text-sm text-gray-600 mt-1">{review.text}</p>
+                    <p className="font-medium text-white">{review.title}</p>
+                    <p className="text-sm text-white mt-1">{review.text}</p>
                   </div>
                 </div>
               </Link>
             ))}
-
-            {/* Duplicate reviews */}
-            {filteredReviews.map((review: any) => (
-              <div
-                key={`${review.id}-duplicate`}
-                className="w-full p-4 bg-white/5 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
-              >
-                {/* Same review content structure */}
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-3">
-                    <UserAvatar
-                      imageUrl={review.consumer?.imageUrl}
-                      name={review.consumer.displayName}
-                    />
-                    <div className="flex flex-col">
-                      <span className="font-medium">
-                        {review.consumer.displayName}
-                      </span>
-                      <div className="flex items-center gap-2">
-                        {renderStars(review.rating)}
-                        <span className="text-xs text-gray-500">
-                          {formatDate(review.dates.publishedDate)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-2">
-                    <p className="font-medium">{review.title}</p>
-                    <p className="text-sm text-gray-600 mt-1">{review.text}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </motion.div>
         </div>
       </ScrollArea>
-      <Card className="absolute max-lg:hidden w-full z-20 bg-gray-50 bottom-[-6%] border-none p-4 flex items-center gap-2 shadow-none text-gray-600">
-        <p className="w-full text-sm text-justify">{tScope("desc")}</p>
+      <Card className="absolute max-lg:hidden w-full z-20 bg-[#363A3D] bottom-[-6%] border-[#45494e] p-0 flex items-center gap-2 shadow-none text-gray-600">
+        <CardContent className="p-0">
+          <Alert variant="destructive" className="border-none">
+            <AlertTriangle className="h-4 w-4" />
+            <AlertTitle className="font-semibold text-red-500">
+              {tScope2("title")}
+            </AlertTitle>
+            <AlertDescription className="text-red-500">
+              {tScope2("notice")}
+            </AlertDescription>
+          </Alert>
+        </CardContent>
       </Card>
     </div>
   ) : null;

@@ -76,7 +76,7 @@ export default {
     "Nous vous enverrons des messages privés en jeu avec le code d'échange que vous aviez fourni, afin de confirmer que le destinataire qui échange avec vous fait partie de notre staff.",
   "exchange.title": "Attention",
   "exchange.notice":
-    "Ne dites à personne d'autre votre code. Si quelqu'un vous donne un Code incorrecte, bloquez le!!",
+    "M=1,000,000 Kamas.Attention: 2iBn ne vous demandera jamais de rendre vos kamas ou objets dofus dans le jeu, nous vous demanderons toujours de venir sur le « Chat en Direct » pour discuter de n’importe quel problème. Ne donnez jamais vos kamas ou objets dofus à quelqu’un qui prétend être 2iBn.",
   "exchange.headeartitle": "ECHANGE DE KAMAS",
   "exchange.serverToPay": "Serveur à payer",
   "exchange.qtyToPay": "Quantité à payer(M)",
@@ -434,7 +434,7 @@ export default {
 
   "whychooseus.title": "Pourquoi choisir 2IBN ?",
   "whychooseus.desc":
-    "Avec 2IBN, profitez d'un service rapide et fiable pour acheter, vendre ou échanger vos kamas en toute sécurité. De l'inscription à la finalisation, notre équipe vous accompagne pour une expérience fluide et sans souci.",
+    "Ibendouma est une plateforme de vente de Kamas pour Dofus qui garantit des livraisons ultra-rapides en 3 à 15 minutes pour 99% des commandes, avec un service disponible 24h/24. Le site se démarque par ses prix compétitifs et maintient des stocks sur tous les serveurs Dofus, s'engageant à proposer les meilleurs tarifs du marché. Le processus d'achat est simplifié : après la commande, un agent prend directement contact avec le client pour organiser le paiement et la livraison en jeu via un point de rencontre, assurant ainsi une transaction rapide et sécurisée.",
   "whychooseus.delivery": "Livraison rapide",
   "whychooseus.secure": "Livraison 100% Sécurisé",
   "whychooseus.bestPrice": "Meilleurs prix",
