@@ -65,7 +65,7 @@ export default {
   "infosect.howtoreciveyourkamas1":
     'The "Face to Face" delivery method is used by 2ibn to deliver all orders Dofus (which means you must be connected at the same time as us to receive your Dofus Kamas).',
   "infosect.howtoreciveyourkamas2":
-    'The process is simple: after placing your order, please contact us via our 24/7 live chat support. If you know our Dofus appointment point, you can go there and use the "I\'m online" function on iBendouma to let us know that you are expecting the exchange.',
+    'The process is simple: after placing your order, please contact us via our 24/7 live chat support. If you know our Dofus appointment point, you can go there and use the "I\'m online" function on 2ibn to let us know that you are expecting the exchange.',
   "infosect.bottomtitle": "Ready to rule the World of Twelve?",
   "infosect.btn": "Collect Your Kamas Now!",
 
@@ -413,7 +413,7 @@ export default {
 
   "whychooseus.title": "Why choose 2IBN?",
   "whychooseus.desc":
-    "Ibendouma is a Kamas-selling platform for Dofus that guarantees ultra-fast deliveries in 3 to 15 minutes for 99% of orders, with service available 24/7. The site stands out for its competitive prices and maintains stock on all Dofus servers, committed to offering the best rates on the market. The purchasing process is simplified: after placing an order, an agent directly contacts the customer to arrange payment and in-game delivery at a meeting point, ensuring a fast and secure transaction.",
+    "2ibn is a Kamas-selling platform for Dofus that guarantees ultra-fast deliveries in 3 to 15 minutes for 99% of orders, with service available 24/7. The site stands out for its competitive prices and maintains stock on all Dofus servers, committed to offering the best rates on the market. The purchasing process is simplified: after placing an order, an agent directly contacts the customer to arrange payment and in-game delivery at a meeting point, ensuring a fast and secure transaction.",
 
   "whychooseus.delivery": "Fast delivery",
   "whychooseus.secure": "100% Secure Delivery",
@@ -684,7 +684,7 @@ export default {
   "shadcndialog.close": "Close",
 
   "testimonials.desc":
-    "ibendouma is a Kamas-selling platform for Dofus that guarantees ultra-fast deliveries in 3 to 15 minutes for 99% of orders, with a 24/7 available service. The site stands out for its competitive prices and maintains stock on all Dofus servers, committed to offering the best rates in the market. The purchasing process is simple: after placing an order, an agent directly contacts the customer to arrange payment and in-game delivery via a meeting point, ensuring a fast and secure transaction.",
+    "2ibn is a Kamas-selling platform for Dofus that guarantees ultra-fast deliveries in 3 to 15 minutes for 99% of orders, with a 24/7 available service. The site stands out for its competitive prices and maintains stock on all Dofus servers, committed to offering the best rates in the market. The purchasing process is simple: after placing an order, an agent directly contacts the customer to arrange payment and in-game delivery via a meeting point, ensuring a fast and secure transaction.",
   "testimonials.delivery": "Easy and instant delivery",
   "testimonials.guarantee": "100% Secure guaranteed",
   "testimonials.refund": "Refund guaranteed",

@@ -421,7 +421,7 @@ export default {
 
   "whychooseus.title": "¿Por qué elegir 2IBN?",
   "whychooseus.desc":
-    "Ibendouma es una plataforma de venta de Kamas para Dofus que garantiza entregas ultrarrápidas en 3 a 15 minutos para el 99% de los pedidos, con un servicio disponible las 24 horas del día. El sitio se destaca por sus precios competitivos y mantiene stock en todos los servidores de Dofus, comprometido a ofrecer las mejores tarifas del mercado. El proceso de compra es sencillo: después de realizar el pedido, un agente se pone en contacto directamente con el cliente para organizar el pago y la entrega en el juego en un punto de encuentro, asegurando una transacción rápida y segura.",
+    "2ibn es una plataforma de venta de Kamas para Dofus que garantiza entregas ultrarrápidas en 3 a 15 minutos para el 99% de los pedidos, con un servicio disponible las 24 horas del día. El sitio se destaca por sus precios competitivos y mantiene stock en todos los servidores de Dofus, comprometido a ofrecer las mejores tarifas del mercado. El proceso de compra es sencillo: después de realizar el pedido, un agente se pone en contacto directamente con el cliente para organizar el pago y la entrega en el juego en un punto de encuentro, asegurando una transacción rápida y segura.",
 
   "whychooseus.delivery": "Entrega rápida",
   "whychooseus.secure": "Entrega 100% Segura",
@@ -694,7 +694,7 @@ export default {
 
   "shadcndialog.close": "Cerca",
   "testimonials.desc":
-    "ibendouma es una plataforma de venta de Kamas para Dofus que garantiza entregas ultrarrápidas en 3 a 15 minutos para el 99% de los pedidos, con un servicio disponible las 24 horas del día. El sitio se destaca por sus precios competitivos y mantiene stock en todos los servidores de Dofus, comprometido a ofrecer las mejores tarifas del mercado. El proceso de compra es sencillo: después de realizar el pedido, un agente se pone en contacto directamente con el cliente para organizar el pago y la entrega en el juego a través de un punto de encuentro, asegurando una transacción rápida y segura.",
+    "2ibn es una plataforma de venta de Kamas para Dofus que garantiza entregas ultrarrápidas en 3 a 15 minutos para el 99% de los pedidos, con un servicio disponible las 24 horas del día. El sitio se destaca por sus precios competitivos y mantiene stock en todos los servidores de Dofus, comprometido a ofrecer las mejores tarifas del mercado. El proceso de compra es sencillo: después de realizar el pedido, un agente se pone en contacto directamente con el cliente para organizar el pago y la entrega en el juego a través de un punto de encuentro, asegurando una transacción rápida y segura.",
   "testimonials.delivery": "Entrega fácil e instantánea",
   "testimonials.guarantee": "100% Seguro garantizado",
   "testimonials.refund": "Reembolso garantizado",
