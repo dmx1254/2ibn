@@ -20,7 +20,16 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { useSession } from "next-auth/react";
 import ProfilePopover from "./ProfilePopover";
 
-import { FaFacebookF, FaInstagram, FaSkype } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaSkype,
+  FaTiktok,
+  FaDiscord,
+  FaTelegram,
+  FaWhatsapp,
+  FaTelegramPlane,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 const Navbar = () => {
@@ -111,6 +120,7 @@ const Navbar = () => {
                       key={dofs.id + index}
                       onClick={() => handleActiveJeu(dofs.slug)}
                       className="outline-none text-left w-full cursor-pointer p-1.5 transition-all rounded-[10px] hover:bg-zinc-50"
+                      aria-label="Server dofus selection"
                     >
                       {dofs.name}
                     </button>
@@ -173,16 +183,27 @@ const Navbar = () => {
 
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 hover:border-white/100 text-pink-600"
+                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-sky-600 hover:border-white/100"
               >
-                <FaInstagram size={15} />
+                <FaTelegramPlane size={14} />
               </Link>
-
+              <Link
+                href="#"
+                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 hover:border-white/100 text-green-600"
+              >
+                <FaWhatsapp size={15} />
+              </Link>
               <Link
                 href="#"
                 className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-gray-500 hover:border-white/100"
               >
-                <FaXTwitter size={14} />
+                <FaTiktok size={14} />
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-violet-500 hover:border-white/100"
+              >
+                <FaDiscord size={14} />
               </Link>
               <Link
                 href="#"

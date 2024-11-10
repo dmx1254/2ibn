@@ -237,7 +237,7 @@ const ProfileBuyPage = () => {
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Button variant="outline" size="sm">
+                            <Button variant="outline" size="sm" aria-label="track order button">
                               <Package className="w-4 h-4 mr-2" />
                               {tScope("track")}
                             </Button>
@@ -266,6 +266,7 @@ const ProfileBuyPage = () => {
           <Button
             className="mt-4"
             onClick={() => (window.location.href = "/vendre-des-kamas")}
+            aria-label="sell kamas page link"
           >
             {tScope("notFoundLink")}
           </Button>

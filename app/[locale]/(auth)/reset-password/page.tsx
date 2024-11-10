@@ -140,6 +140,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
                 type="button"
                 className="absolute inset-y-0 right-0 flex items-center pr-3"
                 onClick={() => setShowPassword(!showPassword)}
+                aria-label="show password"
               >
                 {showPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400" />
@@ -176,6 +177,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
                 type="button"
                 className="absolute inset-y-0 right-0 flex items-center pr-3"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                aria-label="show password"
               >
                 {showConfirmPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400" />
@@ -201,7 +203,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
             </p>
           )}
 
-          <Button type="submit" className="w-full" disabled={!userTokenId}>
+          <Button aria-label="submit reset password" type="submit" className="w-full" disabled={!userTokenId}>
             {isLoading ? (
               <div className="flex items-center justify-center">
                 <div className="w-5 h-5 border-t-2 border-b-2 border-white rounded-full animate-spin" />

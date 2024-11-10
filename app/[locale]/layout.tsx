@@ -17,14 +17,68 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "2ibn",
+  title: "2ibn - Achat, Vente et Échange de Kamas Dofus | Plateforme Sécurisée",
   description:
-    "Acheter, vendre et echanger vos kamas dofus, dofus touch et dofus retro sur 2ibn",
+    "La référence pour acheter, vendre et échanger vos kamas Dofus, Dofus Touch et Dofus Retro. ✓ Paiement Sécurisé ✓ Livraison Express ✓ Service Client 24/7 ✓ Meilleurs Prix Garantis",
   icons: {
     icon: "/ibennewapp-logo.png",
     shortcut: "/ibennewapp-logo.png",
     apple: "/ibennewapp-logo.png",
   },
+  robots: {
+    index: true,
+    follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: "https://2ibn.com",
+    siteName: "2ibn",
+    title: "2ibn - Plateforme d'Achat, Vente et Échange de Kamas Dofus",
+    description:
+      "Votre marketplace de confiance pour les kamas Dofus. Transactions sécurisées, prix compétitifs et service client réactif.",
+    images: [
+      {
+        url: "/dofus-images/dofus-kamas.png", // Assurez-vous d'avoir cette image
+        width: 1200,
+        height: 630,
+        alt: "Plateforme 2ibn - Marketplace de Kamas Dofus",
+      },
+    ],
+  },
+  // Twitter Card
+  twitter: {
+    card: "summary_large_image",
+    site: "@2ibn",
+    creator: "@2ibn",
+    title: "2ibn - Marketplace de Kamas Dofus",
+    description:
+      "Achetez, vendez et échangez vos kamas Dofus en toute sécurité sur 2ibn. Prix compétitifs et livraison rapide.",
+    images: ["/dofus-images/dofus-kamas.png"],
+  },
+  alternates: {
+    canonical: "https://2ibn.com",
+    languages: {
+      "en-US": "https://2ibn.com/en",
+      "fr-FR": "https://2ibn.com/fr",
+      "es-ES": "https://2ibn.com/es",
+    },
+  },
+  category: 'marketplace',
+  referrer: 'origin-when-cross-origin',
+  authors: [{ name: '2ibn' }],
+  creator: '2ibn',
+  publisher: '2ibn',
 };
 
 export default function RootLayout({

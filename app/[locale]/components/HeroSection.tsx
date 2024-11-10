@@ -105,9 +105,11 @@ const HeroSection = () => {
       id="home"
       className="w-full max-w-6xl font-poppins flex max-lg:flex-col items-center justify-between gap-10 lg:gap-20 m-0 p-0"
     >
+      <div className="full max-lg:max-w-[450px] lg:w-3/5">
       <TestimonialsCard />
+      </div>
       <Card
-        className="full max-lg:max-w-[450px] lg:w-1/3 flex flex-col items-start gap-4 shadow-none bg-[#363A3D] p-4 rounded-[10px] border-none"
+        className="full lg:min-w-72 max-lg:max-w-[450px] lg:w-1/3 flex flex-col items-start gap-4 shadow-none bg-[#363A3D] p-4 rounded-[10px] border-none"
         style={{
           boxShadow:
             "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
@@ -182,7 +184,7 @@ const HeroSection = () => {
                   setAmount(e.target.value)
                 }
               />
-              <span className="absolute text-[#a1a0a0] left-[50%] z-20 py-[18px] rounded-tr-[10px] rounded-br-[10px]">
+              <span className="absolute text-[#a1a0a0] left-[50%] z-20 py-[18px] rounded-tr-[10px] rounded-br-[10px] text-sm">
                 M Kamas
               </span>
             </div>
@@ -252,11 +254,12 @@ const HeroSection = () => {
             }
           )}
           onClick={handleAddToCart}
+          aria-label="Add to Cart"
         >
           {tScope("btn")}
         </button>
-        <span className="flex items-center text-xs self-center text-green-500">
-          <IoIosFlash size={20} />
+        <span className="flex items-start text-xs self-center text-green-500">
+          <IoIosFlash size={20} className="mt-[-1px]" />
           {tScope("bottomdesc")}
         </span>
       </Card>

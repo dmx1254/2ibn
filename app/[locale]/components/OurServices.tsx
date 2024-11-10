@@ -110,6 +110,7 @@ const OurServices = () => {
                 <Button
                   className="w-full inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white bg-yellow-600 rounded-lg hover:bg-yellow-700 transition-colors duration-300"
                   asChild
+                  aria-label="Service link button"
                 >
                   <Link href={category.buttonHref}>
                     {tScope("btn")}

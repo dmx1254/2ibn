@@ -248,6 +248,7 @@ const UpdateProfilePage = () => {
                 type="submit"
                 disabled={isLoading}
                 className="w-full md:w-auto"
+                aria-label="personnal information updates"
               >
                 {isLoading ? (
                   <>
@@ -326,6 +327,7 @@ const UpdateProfilePage = () => {
                 type="submit"
                 disabled={isLoading}
                 className="w-full md:w-auto"
+                aria-label="passowrd update"
               >
                 {isPasswordResetLoading ? (
                   <>

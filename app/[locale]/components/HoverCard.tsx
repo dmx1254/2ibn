@@ -28,6 +28,7 @@ const CardHoverCon = () => {
         <button
           className="relative outline-none inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
           onClick={handleOpen}
+          aria-label="Cart open"
         >
           <Image
             src="/assets/cart.svg"

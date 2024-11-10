@@ -128,6 +128,7 @@ const CartPage: React.FC = () => {
                             )
                           }
                           className="text-current hover:opacity-75 focus:outline-none bg-indigo-200 rounded-full p-2 transition-colors duration-200 shadow-sm"
+                          aria-label="Decrease cart amount"
                         >
                           <Minus size={16} className="text-black/90" />
                         </button>
@@ -137,6 +138,7 @@ const CartPage: React.FC = () => {
                             updateToCart(item.productId, item.amount + 1)
                           }
                           className="text-current hover:opacity-75 focus:outline-none bg-indigo-200 rounded-full p-2 transition-colors duration-200 shadow-sm"
+                          aria-label="Increase cart amount"
                         >
                           <Plus size={16} className="text-black/90" />
                         </button>
@@ -148,6 +150,7 @@ const CartPage: React.FC = () => {
                       <button
                         onClick={() => removeFromCart(item.productId)}
                         className="text-current hover:opacity-75 text-indigo-200 rounded-full p-2 transition-colors duration-200 shadow-sm"
+                        aria-label="Remove from cart"
                       >
                         <Trash2 size={20} className="text-black/60" />
                       </button>
@@ -177,6 +180,7 @@ const CartPage: React.FC = () => {
                           : "bg-indigo-700 hover:bg-indigo-500"
                       )}
                       onClick={() => setActivePaymentMethod(method)}
+                      aria-label="payment method"
                     >
                       <Image
                         src={`/pay/${method}.png`}
@@ -235,6 +239,7 @@ const CartPage: React.FC = () => {
                 !activePaymentMethod ||
                 !session?.user.id
               }
+              aria-label="Checkout button"
             >
               {isOrderLoading ? (
                 <span className="flex items-center gap-1">

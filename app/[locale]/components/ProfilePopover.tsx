@@ -42,7 +42,11 @@ const ProfilePopover = () => {
         asChild
         className="border-none p-0 outline-none bg-transparent hover:bg-transparent"
       >
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full mr-2">
+        <Button
+          aria-label="profile popover selection"
+          variant="ghost"
+          className="relative h-8 w-8 rounded-full mr-2"
+        >
           <Image
             src="/avatar-image.png"
             alt="account logo"
@@ -71,6 +75,7 @@ const ProfilePopover = () => {
           <button
             onClick={handleLogout}
             className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-red-500 transition-colors hover:bg-red-50 dark:hover:bg-red-950"
+            aria-label="logout button"
           >
             <LogOut className="h-4 w-4" />
             <span>Logout</span>

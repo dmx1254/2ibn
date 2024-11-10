@@ -23,7 +23,7 @@ const EmptyCart = () => {
       </CardContent>
       <CardFooter className="flex justify-center">
         <Link href="/">
-          <Button className="flex items-center bg-yellow-600 hover:bg-yellow-600 hover:opacity-90">
+          <Button aria-label="Return home" className="flex items-center bg-yellow-600 hover:bg-yellow-600 hover:opacity-90">
             {tScope("btn")}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

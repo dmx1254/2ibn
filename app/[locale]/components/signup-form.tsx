@@ -523,6 +523,7 @@ const SignUpForm = () => {
                   variant="outline"
                   onClick={handlePrevStep}
                   className="flex items-center gap-2"
+                  aria-label="signup button"
                 >
                   <ArrowLeft className="w-4 h-4" />{" "}
                   {tScope("renderStep1.btnBack")}
@@ -535,6 +536,7 @@ const SignUpForm = () => {
                   step === 1 ? "ml-auto" : ""
                 }`}
                 disabled={loading}
+                aria-label="signup button"
               >
                 {loading ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

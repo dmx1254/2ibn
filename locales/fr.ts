@@ -707,4 +707,7 @@ export default {
 
   "testimonials.desc":
     "ibendouma est une plateforme de vente de Kamas pour Dofus qui garantit des livraisons ultra-rapides en 3 à 15 minutes pour 99% des commandes, avec un service disponible 24h/24. Le site se démarque par ses prix compétitifs et maintient des stocks sur tous les serveurs Dofus, s'engageant à proposer les meilleurs tarifs du marché. Le processus d'achat est simplifié : après la commande, un agent prend directement contact avec le client pour organiser le paiement et la livraison en jeu via un point de rencontre, assurant ainsi une transaction rapide et sécurisée.",
+  "testimonials.delivery": "livraison facile et instantanée",
+  "testimonials.guarantee": "100% Sécurisé garanti",
+  "testimonials.refund": "Remboursement garanti",
 } as const;

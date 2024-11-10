@@ -110,6 +110,7 @@ const ResetPasswordPage = () => {
                 type="submit"
                 className="w-full"
                 disabled={isLoading || !email}
+                aria-label="confirm reset password email"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
@@ -130,6 +131,7 @@ const ResetPasswordPage = () => {
             variant="link"
             className="text-sm text-gray-600"
             onClick={() => window.history.back()}
+            aria-label="return to the previous page"
           >
             {tScope("btnBack")}
           </Button>

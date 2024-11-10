@@ -89,7 +89,7 @@ const LanguageAndCurrency = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <button className="outline-none inline-flex items-center gap-2 px-3 py-2 transition-all duration-200 cursor-pointer rounded-full hover:bg-gray-100 border border-gray-200 focus:ring-2 focus:ring-yellow-500 bg-white">
+        <button aria-label="Language and currency" className="outline-none inline-flex items-center gap-2 px-3 py-2 transition-all duration-200 cursor-pointer rounded-full hover:bg-gray-100 border border-gray-200 focus:ring-2 focus:ring-yellow-500 bg-white">
           <Globe size={18} className="text-gray-600" />
           <span className="text-sm font-medium text-gray-700">
             {getLocaleLanguage()?.code.toUpperCase()} /{" "}

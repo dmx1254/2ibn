@@ -685,4 +685,7 @@ export default {
 
   "testimonials.desc":
     "ibendouma is a Kamas-selling platform for Dofus that guarantees ultra-fast deliveries in 3 to 15 minutes for 99% of orders, with a 24/7 available service. The site stands out for its competitive prices and maintains stock on all Dofus servers, committed to offering the best rates in the market. The purchasing process is simple: after placing an order, an agent directly contacts the customer to arrange payment and in-game delivery via a meeting point, ensuring a fast and secure transaction.",
+  "testimonials.delivery": "Easy and instant delivery",
+  "testimonials.guarantee": "100% Secure guaranteed",
+  "testimonials.refund": "Refund guaranteed",
 } as const;

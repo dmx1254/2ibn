@@ -95,6 +95,7 @@ const WhyChooseUs = () => {
           <Button
             className="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-yellow-600 rounded-lg hover:bg-yellow-700 transition-colors duration-300"
             asChild
+            aria-label="start now button"
           >
             <Link href="/vendre-des-kamas">
               {tScope("startNow")}

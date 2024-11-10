@@ -135,7 +135,7 @@ const TestimonialsCard = () => {
   //     return <div className="text-sm text-red-500">Error loading reviews</div>;
 
   return filteredReviews?.length ? (
-    <div className="mt-0 lg:-mt-8 relative font-poppins">
+    <div className="mt-0 lg:-mt-8 relative font-poppins w-full">
       <Card className="max-lg:hidden absolute w-full z-20 bg-[#363A3D] shadow-none p-4 flex items-center justify-between gap-2 border border-[#45494e]">
         <div className="flex flex-col items-start gap-3">
           <Image
@@ -155,7 +155,7 @@ const TestimonialsCard = () => {
               height={20}
             />
             <span className="uppercase text-white text-sm">
-              100% Sécurisé garanti
+              {tScope("guarantee")}
             </span>
           </div>
         </div>
@@ -169,64 +169,107 @@ const TestimonialsCard = () => {
               height={20}
             />
             <span className="uppercase text-white text-sm">
-              livraison facile et instantanée
+              {tScope("delivery")}
             </span>
           </div>
           <div className="flex items-center gap-2">
             <Image
               className="object-contain object-center"
-              src="/secure.png"
+              src="/refund.png"
               alt="2ibn refund"
               width={20}
               height={20}
             />
             <span className="uppercase text-white text-sm">
-              Remboursement garanti
+              {tScope("refund")}
             </span>
           </div>
         </div>
       </Card>
-      <ScrollArea className="w-full z-10 h-[300px] lg:h-[600px] max-lg:max-w-[450px] lg:w-2/4 shadow-none bg-transparent border-none hide-scrollbar relative overflow-hidden">
-        <div ref={scrollRef} className="overflow-hidden">
-          <motion.div
-            animate={controls}
-            className="space-y-4 flex flex-col items-center lg:items-start"
-          >
-            {/* Original reviews */}
-            {filteredReviews.map((review: any) => (
-              <Link
-                href="https://fr.trustpilot.com/review/ibendouma.com"
-                target="_blank"
-                key={review.id}
-                className="w-full p-4 bg-[#363A3D] rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
-              >
-                {/* Review content */}
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-3">
-                    <UserAvatar
-                      imageUrl={review.consumer?.imageUrl}
-                      name={review.consumer.displayName}
-                    />
-                    <div className="flex flex-col">
-                      <span className="font-medium text-white">
-                        {review.consumer.displayName}
-                      </span>
-                      <div className="flex items-center gap-2">
-                        {renderStars(review.rating)}
-                        <span className="text-xs text-white">
-                          {formatDate(review.dates.publishedDate)}
+      <ScrollArea className="w-full z-10 h-[300px] lg:h-[600px] max-lg:max-w-[450px] lg:w-full shadow-none bg-transparent border-none hide-scrollbar relative overflow-hidden">
+        <div className="w-full flex items-center justify-between gap-4">
+          <div ref={scrollRef} className="w-full overflow-hidden">
+            <motion.div
+              animate={controls}
+              className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4"
+            >
+              {/* Original reviews */}
+              {filteredReviews?.map((review: any) => (
+                <Link
+                  href="https://fr.trustpilot.com/review/ibendouma.com"
+                  target="_blank"
+                  key={review.id}
+                  className="w-full h-full p-3 bg-[#363A3D] rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div className="flex flex-col gap-2 h-full">
+                    <div className="flex items-start gap-3">
+                      <UserAvatar
+                        imageUrl={review.consumer?.imageUrl}
+                        name={review.consumer.displayName}
+                      />
+                      <div className="flex flex-col flex-grow">
+                        <span className="font-medium text-white/90 text-sm">
+                          {review.consumer.displayName}
                         </span>
+                        <div className="flex items-center gap-2">
+                          {renderStars(review.rating)}
+                          <span className="text-xs text-white">
+                            {formatDate(review.dates.publishedDate)}
+                          </span>
+                        </div>
                       </div>
                     </div>
+                    <div className="mt-2 flex-grow">
+                      <p className="font-medium text-white text-sm">
+                        {review.title}
+                      </p>
+                      <p className="text-sm text-white mt-1">{review.text}</p>
+                    </div>
                   </div>
-                  <div className="mt-2">
-                    <p className="font-medium text-white">{review.title}</p>
-                    <p className="text-sm text-white mt-1">{review.text}</p>
+                </Link>
+              ))}
+            </motion.div>
+            {/* Duplicate reviews with same styling */}
+            <motion.div
+              animate={controls}
+              className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4"
+            >
+              {filteredReviews?.map((review: any) => (
+                <Link
+                  href="https://fr.trustpilot.com/review/ibendouma.com"
+                  target="_blank"
+                  key={review.id}
+                  className="w-full h-full p-3 bg-[#363A3D] rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div className="flex flex-col gap-2 h-full">
+                    <div className="flex items-start gap-3">
+                      <UserAvatar
+                        imageUrl={review.consumer?.imageUrl}
+                        name={review.consumer.displayName}
+                      />
+                      <div className="flex flex-col flex-grow">
+                        <span className="font-medium  text-white/90 text-sm">
+                          {review.consumer.displayName}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          {renderStars(review.rating)}
+                          <span className="text-xs text-white">
+                            {formatDate(review.dates.publishedDate)}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-2 flex-grow">
+                      <p className="font-medium text-white text-sm">
+                        {review.title}
+                      </p>
+                      <p className="text-sm text-white mt-1">{review.text}</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
-          </motion.div>
+                </Link>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </ScrollArea>
       <Card className="absolute max-lg:hidden w-full z-20 bg-[#363A3D] bottom-[-6%] border-[#45494e] p-0 flex items-center gap-2 shadow-none text-gray-600">

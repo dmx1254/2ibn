@@ -124,6 +124,7 @@ const LoginForm = () => {
             onClick={handleSubmit}
             disabled={isLoading}
             className="w-full h-12 bg-yellow-600 hover:bg-yellow-700 text-white font-medium rounded-lg transition-colors"
+            aria-label="Submit login button"
           >
             {isLoading ? (
               <div className="flex items-center justify-center space-x-2">
@@ -153,6 +154,7 @@ const LoginForm = () => {
             variant="outline"
             className="w-full h-12 border-gray-200 hover:border-gray-300 hover:bg-gray-50 font-medium transition-colors"
             asChild
+            aria-label="go to signup"
           >
             <Link href="/signup">{tScope("bottomSignup")}</Link>
           </Button>

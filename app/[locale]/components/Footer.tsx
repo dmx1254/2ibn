@@ -10,6 +10,8 @@ import mastercard from "../../../assets/iben/mastercard.webp";
 import neosurf from "../../../assets/iben/neosurf.webp";
 import paysafecard from "../../../assets/iben/paysafecard.webp";
 import marocbank from "../../../assets/iben/marocbank.webp";
+import barid from "../../../assets/iben/barid.webp";
+import bnpParibas from "../../../assets/iben/bnpParibas.jpg";
 import paypal from "../../../assets/iben/paypal.png";
 import crd_agricole from "../../../assets/iben/crd_agricole.png";
 import sg from "../../../assets/iben/sg.png";
@@ -26,7 +28,15 @@ import { useScopedI18n } from "@/locales/client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { FaFacebookF, FaInstagram, FaSkype } from "react-icons/fa";
+import {
+  FaDiscord,
+  FaFacebookF,
+  FaInstagram,
+  FaSkype,
+  FaTelegramPlane,
+  FaTiktok,
+  FaWhatsapp,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
@@ -226,7 +236,7 @@ const Footer = () => {
             </div>
 
             {/* Payment Methods */}
-            <div className="border-t border-gray-700 pt-8 pb-8 gap-4 px-4  md:px-44">
+            <div className="border-t border-gray-700 pt-8 pb-8 gap-4 px-4 md:px-56">
               <p className="text-xs text-gray-400 text-center">
                 &copy; 2024 JBK Services INTERNATIONAL FZ-LLC, Compass Building,
                 Al Shohada Road, AL Hamra Industrial Zone-FZ, Ras Al Khaimah,
@@ -294,8 +304,8 @@ const Footer = () => {
 
                 <Image
                   src={crd_agricole}
-                  width={100}
-                  height={50}
+                  width={120}
+                  height={60}
                   alt="Marocco bank"
                   className="object-cover"
                 />
@@ -307,41 +317,67 @@ const Footer = () => {
                   className="object-cover"
                 />
                 <Image
+                  src={barid}
+                  width={35}
+                  height={35}
+                  alt="Barid bank"
+                  className="object-cover rounded"
+                />
+                <Image
                   src={cdmaroc}
                   width={70}
                   height={70}
                   alt="Marocco bank"
                   className="object-cover"
                 />
+
+                <Image
+                  src={bnpParibas}
+                  width={35}
+                  height={35}
+                  alt="Barid bank"
+                  className="object-cover rounded"
+                />
               </div>
               <div className="sm:hidden flex  items-center justify-center gap-4 max-sm:flex-col self-center max-md:mb-4">
                 <span className="text-white/80">Follow us</span>
-                <div className="flex space-x-4">
+                <div className="flex space-x-4 flex-wrap">
                   <Link
                     href="#"
-                    className="flex items-center justify-center p-2 rounded-full border border-zinc-500 text-blue-600 hover:border-zinc-800"
+                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-blue-600 hover:border-white/100"
                   >
-                    <FaFacebookF size={18} />
+                    <FaFacebookF size={15} />
                   </Link>
 
                   <Link
                     href="#"
-                    className="flex items-center justify-center p-2 rounded-full border border-zinc-500 hover:border-zinc-800 text-pink-600"
+                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-sky-600 hover:border-white/100"
                   >
-                    <FaInstagram size={18} />
-                  </Link>
-
-                  <Link
-                    href="#"
-                    className="flex items-center justify-center p-2 rounded-full border border-zinc-500 text-black hover:border-zinc-800"
-                  >
-                    <FaXTwitter size={18} />
+                    <FaTelegramPlane size={14} />
                   </Link>
                   <Link
                     href="#"
-                    className="flex items-center justify-center p-2 rounded-full border border-zinc-500 text-blue-600 hover:border-zinc-800"
+                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 hover:border-white/100 text-green-600"
                   >
-                    <FaSkype size={18} />
+                    <FaWhatsapp size={15} />
+                  </Link>
+                  <Link
+                    href="#"
+                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-gray-500 hover:border-white/100"
+                  >
+                    <FaTiktok size={14} />
+                  </Link>
+                  <Link
+                    href="#"
+                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-violet-500 hover:border-white/100"
+                  >
+                    <FaDiscord size={14} />
+                  </Link>
+                  <Link
+                    href="#"
+                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-blue-600 hover:border-white/100"
+                  >
+                    <FaSkype size={15} />
                   </Link>
                 </div>
               </div>

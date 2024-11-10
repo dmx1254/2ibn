@@ -106,6 +106,7 @@ export default function ProfileLayout({
         <button
           className="flex items-center gap-2 text-gray-300 bottom-0 py-6 px-2 transition-colors hover:opacity-75"
           onClick={handleLogout}
+          aria-label="logout button"
         >
           <LogOut size={24} />
           <span className="max-sm:hidden">{tScope("logout")}</span>
