@@ -109,119 +109,160 @@ const VendreKamasClient = () => {
   const currency = parsedDevise(devise.currencyName);
 
   if (isLoading) return <ServerSkeleton />;
-  
 
   return (
     <div className="container font-poppins mx-auto p-6 space-y-6 max-w-4xl min-h-screen">
-      <Card className="w-full bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200 my-6 p-6">
-        <div className="w-full flex flex-col items-center">
-          <p className="text-2xl font-semibold text-[#374151] mb-2">
-            {tScope("descTitle")}
-          </p>
-          <div className="flex flex-col items-start gap-2 text-base text-[#374151]">
-            <p>{tScope("desc1")}</p>
-            <p>
-              {tScope("desc2", {
-                minVal: `${(200 / devise.curencyVal).toFixed(2)} ${currency}`,
-              })}
-            </p>
-            <p>{tScope("desc3")}</p>
-            <p>
-              {tScope("desc4", {
-                price: `${(300 / devise.curencyVal).toFixed(2)} ${currency}`,
-              })}
-            </p>
-            <p>
-              {tScope("desc5", {
-                bonus: `${(50 / devise.curencyVal).toFixed(2)} ${currency}`,
-                total: `${(3000 / devise.curencyVal).toFixed(2)} ${currency}`,
-              })}
-            </p>
-            <p className="uppercase">
-              {tScope("desc6", {
-                total: `${(3000 / devise.curencyVal).toFixed(2)} ${currency}`,
-                totalPlusBonus: `${(3050 / devise.curencyVal).toFixed(
-                  2
-                )} ${currency}`,
-                exemplePrice1: `${(8000 / devise.curencyVal).toFixed(
-                  2
-                )} ${currency}`,
-                exempleBonus1: `${(8050 / devise.curencyVal).toFixed(
-                  2
-                )} ${currency}`,
-                exemplePrice2: `${(10000 / devise.curencyVal).toFixed(
-                  2
-                )} ${currency}`,
-                exempleBonus2: `${(10050 / devise.curencyVal).toFixed(
-                  2
-                )} ${currency}`,
-              })}
-            </p>
-            <p className="uppercase">{tScope("desc7")}</p>
+      <Card className="w-full bg-[#1A1D21] my-6 p-6">
+        <div className="bg-[#1A1D21] rounded-lg">
+          <div className="flex flex-col items-center">
+            <h2 className="text-2xl font-bold text-white/90 mb-4">
+              {tScope("descTitle")}
+            </h2>
+            <div className="flex flex-col items-start gap-3 text-base text-white/90">
+              <p>
+                {tScope("desc2", {
+                  minVal: `${(200 / devise.curencyVal).toFixed(2)} ${currency}`,
+                })}
+              </p>
+              <p>
+                {tScope("qtyDesc")}: {tScope("desc1min")}
+              </p>
+              <p>{tScope("desc2min")}</p>
+              <p>{tScope("desc3")}</p>
 
-            <p>
-              {tScope("desc8")}{" "}
-              <Link
-                href="/echange-de-kamas"
-                className="underline text-yellow-600"
-              >
-                {" "}
-                {tScope("linkdofs")}
-              </Link>
-            </p>
+              <div className="border-t border-white/20 pt-3">
+                <p className="mb-2">
+                  <strong>{tScope("paymentMethodSell")}:</strong>
+                </p>
+                <div className="flex flex-col gap-2">
+                  <p>
+                    <strong className="text-amber-600">Paypal:</strong>{" "}
+                    {tScope("paymentMethodSellPaypal")}
+                  </p>
+                  <p>
+                    <strong className="text-amber-600">Skrill:</strong>{" "}
+                    {tScope("paymentMethodSellSkrill")}
+                  </p>
+                  <p>
+                    <strong className="text-amber-600">Sepa:</strong>{" "}
+                    {tScope("paymentMethodSellSepa")}
+                  </p>
+                  <p>
+                    <strong className="text-amber-600">Bitcoin:</strong>{" "}
+                    {tScope("paymentMethodSellBitcoin")}
+                  </p>
+                  <p>
+                    <strong className="text-amber-600">Usdt:</strong>{" "}
+                    {tScope("paymentMethodSellUsdt")}
+                  </p>
+                  <p>
+                    <strong className="text-amber-600">
+                      {tScope("qtyDescBankTransfer")}:
+                    </strong>{" "}
+                    {tScope("paymentMethodSellBankTransfer")}
+                  </p>
+                </div>
+              </div>
+              <p>
+                {tScope("desc4", {
+                  price: `${(300 / devise.curencyVal).toFixed(2)} ${currency}`,
+                })}
+              </p>
+              <p>
+                {tScope("desc5", {
+                  bonus: `${(50 / devise.curencyVal).toFixed(2)} ${currency}`,
+                  total: `${(3000 / devise.curencyVal).toFixed(2)} ${currency}`,
+                })}
+              </p>
+              <p className="uppercase">
+                <strong className="text-amber-600 uppercase">I:</strong>{" "}
+                {tScope("desc6", {
+                  total: `${(3000 / devise.curencyVal).toFixed(2)} ${currency}`,
+                  totalPlusBonus: `${(3050 / devise.curencyVal).toFixed(
+                    2
+                  )} ${currency}`,
+                  exemplePrice1: `${(8000 / devise.curencyVal).toFixed(
+                    2
+                  )} ${currency}`,
+                  exempleBonus1: `${(8050 / devise.curencyVal).toFixed(
+                    2
+                  )} ${currency}`,
+                  exemplePrice2: `${(10000 / devise.curencyVal).toFixed(
+                    2
+                  )} ${currency}`,
+                  exempleBonus2: `${(10050 / devise.curencyVal).toFixed(
+                    2
+                  )} ${currency}`,
+                })}
+              </p>
+              <p className="uppercase">
+                <strong className="text-amber-600 uppercase">II:</strong>{" "}
+                {tScope("desc7")}
+              </p>
+              <p>
+                {tScope("desc8")}{" "}
+                <Link
+                  href="/echange-de-kamas"
+                  className="underline text-yellow-600"
+                >
+                  {tScope("linkdofs")}
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </Card>
-      <Card className="w-full bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200 my-6">
+      <Card className="w-full bg-[#1A1D21] my-6">
         <SellKamasComponents servers={serversSell} />
       </Card>
-      <Card className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200 mt-6">
-        <CardContent className="space-y-4">
-          <div className="bg-white flex flex-col items-center gap-3 rounded-lg shadow-md overflow-hidden mt-6">
-            <p className="text-2xl font-semibold pt-2">Dofus Kamas</p>
-            <Table>
+      <Card className="w-full mt-6 bg-transparent border-none">
+        <CardContent className="w-full space-y-4 p-0">
+          <div className="bg-[#363A3D] flex flex-col items-center gap-3 rounded-lg shadow-md overflow-hidden mt-6">
+            <p className="text-2xl font-semibold pt-2 text-white/80">
+              Dofus Kamas
+            </p>
+            <Table className="text-white/90">
               <TableHeader>
-                <TableRow className="bg-amber-100">
-                  <TableHead className="text-amber-900">
+                <TableRow className="bg-[#151d20] border-[#76828D]">
+                  <TableHead className="text-amber-600">
                     {tScope("headertableServ")}
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
+                  <TableHead className="text-amber-600 text-right">
                     {tScope("headertablePriceDH")}
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
-                    {tScope("headertablePriceEUR")}
+                  <TableHead className="text-amber-600 text-right">
+                    Paypal/Skrill/Sepa
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
-                    {tScope("headertablePriceUSD")}
+                  <TableHead className="text-amber-600 text-right">
+                    Usdt(TRC20/ERC20)
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
+                  <TableHead className="text-amber-600 text-right">
                     {tScope("headertableStatus")}
                   </TableHead>
-                  {/* <TableHead className="text-amber-900 text-right">
-                    {tScope("headertableAction")}
-                  </TableHead> */}
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {serversSell
                   ?.filter((item) => item.serverCategory === "dofus-kamas")
                   ?.map((server) => (
-                    <TableRow key={server._id} className="hover:bg-amber-50">
+                    <TableRow key={server._id} className="border-[#76828D]">
                       <TableCell className="font-medium">
                         {server.serverName}
                       </TableCell>
                       <TableCell className="text-right">
-                        {server.serverPriceDh.toFixed(2)}
+                        {server.serverPriceDh.toFixed(2)} DH/M
                       </TableCell>
                       <TableCell className="text-right">
                         {(
                           server.serverPriceDh / (serverPriceEuro || 1)
-                        ).toFixed(2)}
+                        ).toFixed(2)}{" "}
+                        €/M
                       </TableCell>
                       <TableCell className="text-right">
                         {(
                           server.serverPriceDh / (serverPriceDollar || 1)
-                        ).toFixed(2)}
+                        ).toFixed(3)}{" "}
+                        Usdt/M
                       </TableCell>
 
                       <TableCell className="text-right">
@@ -237,62 +278,57 @@ const VendreKamasClient = () => {
                             : tScope("headertableStatusInTableComp")}
                         </span>
                       </TableCell>
-                      {/* <TableCell className="text-right">
-                        <SellKamasDialog
-                          serverStatus={server.serverStatus}
-                          server={server}
-                        />
-                      </TableCell> */}
                     </TableRow>
                   ))}
               </TableBody>
             </Table>
           </div>
-          <div className="bg-white rounded-lg  flex flex-col items-center gap-3 shadow-md overflow-hidden mt-6">
-            <p className="text-2xl font-semibold pt-2">Dofus Retro</p>
-            <Table>
+          <div className="bg-[#363A3D] rounded-lg  flex flex-col items-center gap-3 shadow-md overflow-hidden mt-6">
+            <p className="text-2xl font-semibold pt-2 text-white/80">
+              Dofus Retro
+            </p>
+            <Table className="text-white/90">
               <TableHeader>
-                <TableRow className="bg-amber-100">
-                  <TableHead className="text-amber-900">
+                <TableRow className="bg-[#151d20] border-[#76828D]">
+                  <TableHead className="text-amber-600">
                     {tScope("headertableServ")}
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
+                  <TableHead className="text-amber-600 text-right">
                     {tScope("headertablePriceDH")}
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
-                    {tScope("headertablePriceEUR")}
+                  <TableHead className="text-amber-600 text-right">
+                    Paypal/Skrill/Sepa
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
-                    {tScope("headertablePriceUSD")}
+                  <TableHead className="text-amber-600 text-right">
+                    Usdt(TRC20/ERC20)
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
+                  <TableHead className="text-amber-600 text-right">
                     {tScope("headertableStatus")}
                   </TableHead>
-                  {/* <TableHead className="text-amber-900 text-right">
-                    {tScope("headertableAction")}
-                  </TableHead> */}
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {serversSell
                   ?.filter((item) => item.serverCategory === "dofus-retro")
                   ?.map((server) => (
-                    <TableRow key={server._id} className="hover:bg-amber-50">
+                    <TableRow key={server._id} className="border-[#76828D]">
                       <TableCell className="font-medium">
                         {server.serverName}
                       </TableCell>
                       <TableCell className="text-right">
-                        {server.serverPriceDh.toFixed(2)}
+                        {server.serverPriceDh.toFixed(2)} DH/M
                       </TableCell>
                       <TableCell className="text-right">
                         {(
                           server.serverPriceDh / (serverPriceEuro || 1)
-                        ).toFixed(2)}
+                        ).toFixed(2)}{" "}
+                        €/M
                       </TableCell>
                       <TableCell className="text-right">
                         {(
                           server.serverPriceDh / (serverPriceDollar || 1)
-                        ).toFixed(2)}
+                        ).toFixed(3)}{" "}
+                        Usdt/M
                       </TableCell>
 
                       <TableCell className="text-right">
@@ -308,62 +344,57 @@ const VendreKamasClient = () => {
                             : tScope("headertableStatusInTableComp")}
                         </span>
                       </TableCell>
-                      {/* <TableCell className="text-right">
-                        <SellKamasDialog
-                          serverStatus={server.serverStatus}
-                          server={server}
-                        />
-                      </TableCell> */}
                     </TableRow>
                   ))}
               </TableBody>
             </Table>
           </div>
-          <div className="bg-white rounded-lg  flex flex-col items-center gap-3 shadow-md overflow-hidden mt-6">
-            <p className="text-2xl font-semibold pt-2">Dofus Touch</p>
-            <Table>
+          <div className="bg-[#363A3D] rounded-lg  flex flex-col items-center gap-3 shadow-md overflow-hidden mt-6">
+            <p className="text-2xl font-semibold pt-2 text-white/80">
+              Dofus Touch
+            </p>
+            <Table className="text-white/90">
               <TableHeader>
-                <TableRow className="bg-amber-100">
-                  <TableHead className="text-amber-900">
+                <TableRow className="bg-[#151d20] border-[#76828D]">
+                  <TableHead className="text-amber-600">
                     {tScope("headertableServ")}
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
+                  <TableHead className="text-amber-600 text-right">
                     {tScope("headertablePriceDH")}
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
-                    {tScope("headertablePriceEUR")}
+                  <TableHead className="text-amber-600 text-right">
+                    Paypal/Skrill/Sepa
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
-                    {tScope("headertablePriceUSD")}
+                  <TableHead className="text-amber-600 text-right">
+                    Usdt(TRC20/ERC20)
                   </TableHead>
-                  <TableHead className="text-amber-900 text-right">
+                  <TableHead className="text-amber-600 text-right">
                     {tScope("headertableStatus")}
                   </TableHead>
-                  {/* <TableHead className="text-amber-900 text-right">
-                    {tScope("headertableAction")}
-                  </TableHead> */}
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {serversSell
                   ?.filter((item) => item.serverCategory === "dofus-touch")
                   ?.map((server) => (
-                    <TableRow key={server._id} className="hover:bg-amber-50">
+                    <TableRow key={server._id} className="border-[#76828D]">
                       <TableCell className="font-medium">
                         {server.serverName}
                       </TableCell>
                       <TableCell className="text-right">
-                        {server.serverPriceDh.toFixed(2)}
+                        {server.serverPriceDh.toFixed(2)} DH/M
                       </TableCell>
                       <TableCell className="text-right">
                         {(
                           server.serverPriceDh / (serverPriceEuro || 1)
-                        ).toFixed(2)}
+                        ).toFixed(2)}{" "}
+                        €/M
                       </TableCell>
                       <TableCell className="text-right">
                         {(
                           server.serverPriceDh / (serverPriceDollar || 1)
-                        ).toFixed(2)}
+                        ).toFixed(2)}{" "}
+                        Usdt/M
                       </TableCell>
 
                       <TableCell className="text-right">
@@ -371,7 +402,7 @@ const VendreKamasClient = () => {
                           className={`px-2 py-1 rounded-full text-xs ${
                             server.serverStatus === "Disponible"
                               ? "text-green-600"
-                              : "text-red-600"
+                              : "text-red-500"
                           }`}
                         >
                           {server.serverStatus === "Disponible"

@@ -111,7 +111,7 @@ const EchangeKamasClient = () => {
         });
       }
     } catch (error) {
-      console.log(error);
+      //   console.log(error);
       toast.success(tScope("error"), {
         style: { color: "#dc2626" },
       });
@@ -135,23 +135,23 @@ const EchangeKamasClient = () => {
 
   return (
     <div className="font-poppins p-4 md:p-8 min-h-screen">
-      <div className="max-w-6xl mx-auto space-y-6">
-        <div className="text-center space-y-2 mb-8">
-          <h1 className="text-xl md:text-3xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent">
+      <div className="max-w-6xl mx-auto space-y-4 bg-[#1A1D21] p-4 rounded-[10px]">
+        <div className="text-center space-y-2 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent">
             {tScope("headeartitle")}
           </h1>
-          <p className="text-gray-600 text-base">{tScope("info")}</p>
+          <p className="text-white/90 text-sm">{tScope("info")}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <Card className="border-none shadow-lg bg-white/90 backdrop-blur-sm">
-              <CardContent className="p-3">
+            <Card className="border-none shadow-lg backdrop-blur-sm">
+              <CardContent className="p-0 bg-[#1A1D21]">
                 <Alert
-                  variant="default"
-                  className="bg-green-50 border-green-200 mb-2"
+                  variant="success"
+                  className="bg-[#363A3D] border-[#45494e] mb-2 p-2"
                 >
-                  <Coins className="h-4 w-4 text-green-600" />
+                  <Coins className="h-4 w-4 text-green-500 -mt-2 -ml-0.5" />
                   <AlertDescription className="text-green-700">
                     {tScope("info")}
                   </AlertDescription>
@@ -159,13 +159,13 @@ const EchangeKamasClient = () => {
 
                 <Alert
                   variant="destructive"
-                  className="bg-red-50 border-red-200"
+                  className="bg-[#363A3D] border-[#45494e] p-2"
                 >
-                  <AlertTriangle className="h-4 w-4" />
+                  <AlertTriangle className="h-4 w-4 -mt-2 -ml-0.5" />
                   <AlertTitle className="font-semibold">
                     {tScope("title")}
                   </AlertTitle>
-                  <AlertDescription className="text-red-700">
+                  <AlertDescription className="text-red-500">
                     {tScope("notice")}
                   </AlertDescription>
                 </Alert>
@@ -184,7 +184,7 @@ const EchangeKamasClient = () => {
             </div>
           </div>
 
-          <Card className="border-none shadow-xl bg-white/90 backdrop-blur-sm">
+          <Card className="border-none shadow-xl bg-[#363A3D] backdrop-blur-sm">
             <CardContent className="p-3">
               <Form {...form}>
                 <form
@@ -198,7 +198,7 @@ const EchangeKamasClient = () => {
                         name="serverToPay"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="text-white/90 font-medium">
                               {tScope("serverToPay")}
                             </FormLabel>
                             <Select
@@ -206,13 +206,13 @@ const EchangeKamasClient = () => {
                               defaultValue={field.value}
                             >
                               <FormControl>
-                                <SelectTrigger className="h-11 bg-white">
+                                <SelectTrigger className="h-11 bg-[#1A1D21] text-white/90 border-[#45494e] focus:ring-0 focus:ring-offset-0">
                                   <SelectValue
                                     placeholder={tScope("placeholderServer")}
                                   />
                                 </SelectTrigger>
                               </FormControl>
-                              <SelectContent>
+                              <SelectContent className="bg-[#1A1D21] border-[#45494e] text-white">
                                 {serversExchange?.map((s) => (
                                   <SelectItem
                                     key={s.serverName}
@@ -233,13 +233,13 @@ const EchangeKamasClient = () => {
                         name="quantityToPay"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="text-white/90  font-medium">
                               {tScope("qtyToPay")}
                             </FormLabel>
                             <FormControl>
                               <div className="relative">
                                 <Input
-                                  className="h-11 bg-white pl-4 pr-20"
+                                  className="h-11 bg-[#1A1D21] text-white/90 border-[#45494e] pl-4 pr-20 outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                                   type="number"
                                   placeholder="0"
                                   {...field}
@@ -260,11 +260,14 @@ const EchangeKamasClient = () => {
                       name="characterToPay"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-700 font-medium">
+                          <FormLabel className="text-white/90 font-medium">
                             {tScope("characterToPay")}
                           </FormLabel>
                           <FormControl>
-                            <Input className="h-11 bg-white" {...field} />
+                            <Input
+                              className="h-11 bg-[#1A1D21] text-white/90  border-[#45494e] outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -272,10 +275,10 @@ const EchangeKamasClient = () => {
                     />
 
                     <div className="relative py-4">
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-500 rounded-full p-2">
-                        <ArrowRightLeft className="h-6 w-6 text-white" />
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#1A1D21] text-yellow-500 rounded-full p-2">
+                        <ArrowRightLeft className="h-6 w-6 text-yellow-500" />
                       </div>
-                      <hr className="border-gray-200" />
+                      <hr className="border-[#5c5f63] " />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -284,7 +287,7 @@ const EchangeKamasClient = () => {
                         name="serverToReceive"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="text-white/90 font-medium">
                               {tScope("serverToReceive")}
                             </FormLabel>
                             <Select
@@ -292,13 +295,13 @@ const EchangeKamasClient = () => {
                               defaultValue={field.value}
                             >
                               <FormControl>
-                                <SelectTrigger className="h-11 bg-white">
+                                <SelectTrigger className="h-11 bg-[#1A1D21] text-white/90 border-[#45494e] focus:ring-0 focus:ring-offset-0">
                                   <SelectValue
                                     placeholder={tScope("placeholderServer")}
                                   />
                                 </SelectTrigger>
                               </FormControl>
-                              <SelectContent>
+                              <SelectContent className="bg-[#1A1D21] border-[#45494e] text-white">
                                 {serversExchange?.map((s) => (
                                   <SelectItem
                                     key={s.serverName}
@@ -319,13 +322,13 @@ const EchangeKamasClient = () => {
                         name="quantityToReceive"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="text-white/90 font-medium">
                               {tScope("qtyToReceive")}
                             </FormLabel>
                             <FormControl>
                               <div className="relative">
                                 <Input
-                                  className="h-11 bg-white/50 pl-4 pr-20"
+                                  className="h-11 bg-[#1A1D21] text-white/90 border-[#45494e] pl-4 pr-20 outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                                   type="number"
                                   placeholder="0"
                                   {...field}
@@ -347,11 +350,14 @@ const EchangeKamasClient = () => {
                       name="characterToReceive"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-700 font-medium">
+                          <FormLabel className="text-white/90 font-medium">
                             {tScope("characterToReceive")}
                           </FormLabel>
                           <FormControl>
-                            <Input className="h-11 bg-white" {...field} />
+                            <Input
+                              className="h-11 bg-[#1A1D21] text-white/90 border-[#45494e] outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -363,11 +369,14 @@ const EchangeKamasClient = () => {
                       name="exchangeCode"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-700 font-medium">
+                          <FormLabel className="text-white/90 font-medium">
                             {tScope("exchangeCode")}
                           </FormLabel>
                           <FormControl>
-                            <Input className="h-11 bg-white" {...field} />
+                            <Input
+                              className="h-11 bg-[#1A1D21] text-white/90 border-[#45494e] outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -396,9 +405,9 @@ const EchangeKamasClient = () => {
           </Card>
         </div>
       </div>
-      <Card className="w-full flex flex-col items-center justify-center mx-auto my-10 gap-4 max-w-6xl p-6 self-center bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200">
-        <p className="text-base text-gray-700">{tScope("desc1")}</p>
-        <p className="text-base text-gray-700">{tScope("desc2")}</p>
+      <Card className="w-full flex flex-col items-center justify-center mx-auto my-10 gap-4 max-w-6xl p-6 self-center bg-[#1A1D21] border-[#45494e]">
+        <p className="text-base text-white/90">{tScope("desc1")}</p>
+        <p className="text-base text-white/90">{tScope("desc2")}</p>
       </Card>
     </div>
   );

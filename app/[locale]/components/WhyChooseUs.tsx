@@ -58,13 +58,13 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <div className="py-16 px-4 md:px-6 lg:px-8 bg-white lg:my-20">
+    <div className="p-5 bg-transparent">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {tScope("title")}
           </h2>
-          <p className="text-base text-justify text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-justify text-white max-w-2xl mx-auto">
             {tScope("desc")}
           </p>
         </div>
@@ -79,12 +79,14 @@ const WhyChooseUs = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="flex flex-col items-center text-center p-6 rounded-2xl transition-all duration-300 hover:shadow-lg"
+              className="flex flex-col items-center text-center p-6 rounded-2xl bg-[#363A3D] transition-all duration-300 hover:shadow-lg"
             >
-              <div className={`${feature.color} p-4 rounded-full mb-4`}>
+              <div
+                className={`p-4 rounded-full mb-4 bg-[#1A1D21]`}
+              >
                 <feature.icon className={`w-8 h-8 ${feature.iconColor}`} />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-white mb-2">
                 {feature.title}
               </h3>
             </motion.div>

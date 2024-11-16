@@ -35,7 +35,7 @@ const OurServices = () => {
       title: tScope("achatKamasTitle"),
       description: tScope("achatKamasDesc"),
       icon: CreditCard,
-      color: "bg-violet-100",
+      color: "#363A3D",
       iconColor: "text-violet-600",
       buttonHref: "#home",
       gradientFrom: "from-violet-500",
@@ -45,7 +45,7 @@ const OurServices = () => {
       title: tScope("vendKamasTitle"),
       description: tScope("vendKamasDesc"),
       icon: Wallet,
-      color: "bg-blue-100",
+      color: "#363A3D",
       iconColor: "text-blue-600",
       buttonHref: "/vendre-des-kamas",
       gradientFrom: "from-blue-500",
@@ -55,7 +55,7 @@ const OurServices = () => {
       title: tScope("echangeKamasTitle"),
       description: tScope("echangeKamasDesc"),
       icon: ArrowLeftRight,
-      color: "bg-amber-100",
+      color: "#363A3D",
       iconColor: "text-amber-600",
       buttonHref: "/echange-de-kamas",
       gradientFrom: "from-amber-500",
@@ -64,19 +64,19 @@ const OurServices = () => {
   ];
 
   return (
-    <div className="py-16 px-4 md:px-6 lg:px-8 bg-white">
+    <div className="p-5 bg-transparent">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {tScope("title")}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             {tScope("desc")}
           </p>
         </div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-5"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -85,7 +85,7 @@ const OurServices = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl"
+              className="group relative overflow-hidden rounded-2xl bg-[#363A3D] p-8 shadow-lg transition-all duration-300 hover:shadow-xl"
             >
               {/* Gradient background overlay */}
               <div
@@ -94,18 +94,16 @@ const OurServices = () => {
 
               <div className="relative">
                 <div
-                  className={`${category.color} p-4 rounded-full inline-flex mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  className={`bg-[#1A1D21] p-4 rounded-full inline-flex mb-6 group-hover:scale-110 transition-transform duration-300`}
                 >
                   <category.icon className={`w-8 h-8 ${category.iconColor}`} />
                 </div>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   {category.title}
                 </h3>
 
-                <p className="text-gray-600 mb-8 h-24">
-                  {category.description}
-                </p>
+                <p className="text-white mb-8 h-24">{category.description}</p>
 
                 <Button
                   className="w-full inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white bg-yellow-600 rounded-lg hover:bg-yellow-700 transition-colors duration-300"

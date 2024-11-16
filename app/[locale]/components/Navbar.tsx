@@ -26,11 +26,9 @@ import {
   FaSkype,
   FaTiktok,
   FaDiscord,
-  FaTelegram,
   FaWhatsapp,
   FaTelegramPlane,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
@@ -113,13 +111,13 @@ const Navbar = () => {
               <PopoverTrigger className="flex items-center text-base text-white">
                 {tScope("title")} <FaSortDown className="-mt-1.5 text-white" />
               </PopoverTrigger>
-              <PopoverContent className="max-w-36 shadow-none p-2">
-                <div className="flex flex-col items-start text-base  font-semibold">
+              <PopoverContent className="max-w-36 shadow-none p-2 bg-[#1A1D21] border-[#45494e]">
+                <div className="flex flex-col items-start text-base font-semibold">
                   {dofusItemNav.map((dofs, index) => (
                     <button
                       key={dofs.id + index}
                       onClick={() => handleActiveJeu(dofs.slug)}
-                      className="outline-none text-left w-full cursor-pointer p-1.5 transition-all rounded-[10px] hover:bg-zinc-50"
+                      className="outline-none text-left w-full text-white cursor-pointer p-1.5 transition-all rounded-[10px] hover:bg-[#363A3D] hover:text-white"
                       aria-label="Server dofus selection"
                     >
                       {dofs.name}
@@ -173,43 +171,49 @@ const Navbar = () => {
             )}
             <LanguageAndCurrency />
             <CardHoverCon />
-            <div className="flex space-x-4 max-lg:hidden">
+            <div className="flex space-x-2 max-lg:hidden">
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-blue-600 hover:border-white/100"
+                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
               >
-                <FaFacebookF size={15} />
+                <FaFacebookF size={14} />
               </Link>
 
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-sky-600 hover:border-white/100"
+                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-sky-600 hover:opacity-80"
               >
-                <FaTelegramPlane size={14} />
+                <FaTelegramPlane size={13} />
               </Link>
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 hover:border-white/100 text-green-600"
+                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-green-600 hover:opacity-80"
               >
-                <FaWhatsapp size={15} />
+                <FaWhatsapp size={14} />
               </Link>
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-gray-500 hover:border-white/100"
+                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-gray-500 hover:opacity-80"
               >
-                <FaTiktok size={14} />
+                <FaTiktok size={13} />
               </Link>
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-violet-500 hover:border-white/100"
+                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-violet-500 hover:opacity-80"
               >
-                <FaDiscord size={14} />
+                <FaDiscord size={13} />
               </Link>
               <Link
                 href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-blue-600 hover:border-white/100"
+                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-[#E1306C] hover:opacity-80"
               >
-                <FaSkype size={15} />
+                <FaInstagram size={13} />
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
+              >
+                <FaSkype size={14} />
               </Link>
             </div>
           </div>

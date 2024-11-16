@@ -339,43 +339,49 @@ const Footer = () => {
                   className="object-cover rounded"
                 />
               </div>
-              <div className="sm:hidden flex  items-center justify-center gap-4 max-sm:flex-col self-center max-md:mb-4">
+              <div className="sm:hidden flex items-center justify-center gap-4 max-sm:flex-col self-center my-4">
                 <span className="text-white/80">Follow us</span>
                 <div className="flex space-x-4 flex-wrap">
                   <Link
                     href="#"
-                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-blue-600 hover:border-white/100"
+                    className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
                   >
                     <FaFacebookF size={15} />
                   </Link>
 
                   <Link
                     href="#"
-                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-sky-600 hover:border-white/100"
+                    className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-sky-600 hover:opacity-80"
                   >
                     <FaTelegramPlane size={14} />
                   </Link>
                   <Link
                     href="#"
-                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 hover:border-white/100 text-green-600"
+                    className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-green-600 hover:opacity-80"
                   >
                     <FaWhatsapp size={15} />
                   </Link>
                   <Link
                     href="#"
-                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-gray-500 hover:border-white/100"
+                    className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-gray-500 hover:opacity-80"
                   >
                     <FaTiktok size={14} />
                   </Link>
                   <Link
                     href="#"
-                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-violet-500 hover:border-white/100"
+                    className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-violet-500 hover:opacity-80"
                   >
                     <FaDiscord size={14} />
                   </Link>
                   <Link
                     href="#"
-                    className="flex items-center justify-center p-1.5 rounded-full border border-white/50 text-blue-600 hover:border-white/100"
+                    className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-[#E1306C] hover:opacity-80"
+                  >
+                    <FaInstagram size={14} />
+                  </Link>
+                  <Link
+                    href="#"
+                    className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
                   >
                     <FaSkype size={15} />
                   </Link>

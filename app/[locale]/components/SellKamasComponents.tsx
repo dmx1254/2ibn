@@ -33,10 +33,14 @@ const SellKamasComponents = ({
     amount: "",
     paymentMethod: "",
     paymentDetails: "",
+    lastname: "",
+    firstname: "",
   });
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [gameNameError, setGameNameError] = useState<string>("");
+  const [lastnameError, setLastnameError] = useState<string>("");
+  const [firstnameError, setFirstnameError] = useState<string>("");
   const [amountError, setAmountError] = useState<string>("");
   const [paymentMethodError, setPaymentMethodError] = useState<string>("");
   const [paymentDetailsError, setPaymentDetailsError] = useState<string>("");
@@ -130,6 +134,8 @@ const SellKamasComponents = ({
       !formData.amount ||
       !formData.paymentMethod ||
       !formData.paymentDetails ||
+      !formData.lastname ||
+      !formData.firstname ||
       !server
     ) {
       if (!formData.gameName) {
@@ -155,6 +161,16 @@ const SellKamasComponents = ({
       } else {
         setPaymentDetailsError("");
       }
+      if (!formData.lastname) {
+        setLastnameError(tScope("lastnameError"));
+      } else {
+        setLastnameError("");
+      }
+      if (!formData.firstname) {
+        setFirstnameError(tScope("firstnameError"));
+      } else {
+        setFirstnameError("");
+      }
       if (!server) {
         setServerError(tScope("serverError"));
       } else {
@@ -166,6 +182,8 @@ const SellKamasComponents = ({
       setPaymentMethodError("");
       setPaymentDetailsError("");
       setServerError("");
+      setLastnameError("");
+      setFirstnameError("");
       const data = {
         userId: session?.user.id,
         numBuy: codeGenerated(),
@@ -178,6 +196,8 @@ const SellKamasComponents = ({
         gameName: formData.gameName,
         paymentInfoDetails: paymentInfoDetails,
         currencymethod: devise.currencyName,
+        lastname: formData.lastname,
+        firstname: formData.firstname,
       };
 
       try {
@@ -214,15 +234,17 @@ const SellKamasComponents = ({
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="server">{tScope("server")}</Label>
+              <Label htmlFor="server" className="text-white/90">
+                {tScope("server")}
+              </Label>
               <Select
                 value={server?.serverName || ""}
                 onValueChange={(value) => handleServerChange(value)}
               >
-                <SelectTrigger className="outline-none focus:outline-none focus:ring-0">
+                <SelectTrigger className="outline-none bg-[#363A3D] text-white/80 border-[#363A3D] focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0">
                   <SelectValue placeholder={tScope("selectServer")} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-[#1A1D21] border-[#45494e] text-white">
                   {servers?.map((server) => (
                     <SelectItem key={server._id} value={server.serverName}>
                       {server.serverName}
@@ -235,13 +257,15 @@ const SellKamasComponents = ({
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="gameName">{tScope("IngameName")}</Label>
+              <Label htmlFor="gameName" className="text-white/90">
+                {tScope("IngameName")}
+              </Label>
               <Input
                 id="gameName"
                 placeholder={tScope("IngameInput")}
                 value={formData.gameName}
                 onChange={(e) => handleInputChange("gameName", e.target.value)}
-                className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="outline-none bg-[#363A3D] text-white/80 border-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               />
               {gameNameError && (
                 <span className="text-sm text-red-500">{gameNameError}</span>
@@ -250,14 +274,16 @@ const SellKamasComponents = ({
           </div>
           <div className="grid grid-cols-1 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="amount">{tScope("qtyOfKamas")}</Label>
+              <Label htmlFor="amount" className="text-white/90">
+                {tScope("qtyOfKamas")}
+              </Label>
               <Input
                 id="amount"
                 type="number"
                 placeholder={tScope("qtyOfKamasInput")}
                 value={formData.amount}
                 onChange={(e) => handleInputChange("amount", e.target.value)}
-                className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="outline-none bg-[#363A3D] text-white/80 border-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               />
               {amountError && (
                 <span className="text-sm text-red-500">{amountError}</span>
@@ -265,17 +291,19 @@ const SellKamasComponents = ({
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="paymentMethod">{tScope("paymentMethod")}</Label>
+            <Label htmlFor="paymentMethod" className="text-white/90">
+              {tScope("paymentMethod")}
+            </Label>
             <Select
               value={formData.paymentMethod}
               onValueChange={(value) =>
                 handleInputChange("paymentMethod", value)
               }
             >
-              <SelectTrigger className="outline-none focus:outline-none focus:ring-0">
+              <SelectTrigger className="outline-none bg-[#363A3D] border-[#363A3D] text-white/80 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0">
                 <SelectValue placeholder={tScope("paymentMethodDesc")} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-[#1A1D21] border-[#45494e] text-white">
                 {paymentMethods.map((method) => (
                   <SelectItem key={method} value={method}>
                     {method}
@@ -289,7 +317,9 @@ const SellKamasComponents = ({
           </div>
           {formData.paymentMethod && (
             <div className="space-y-2">
-              <Label>{getPaymentDetailsLabel(formData.paymentMethod)}</Label>
+              <Label className="text-white/90">
+                {getPaymentDetailsLabel(formData.paymentMethod)}
+              </Label>
               <Input
                 placeholder={getPaymentDetailsPlaceholder(
                   formData.paymentMethod
@@ -298,7 +328,7 @@ const SellKamasComponents = ({
                 onChange={(e) =>
                   handleInputChange("paymentDetails", e.target.value)
                 }
-                className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="outline-none bg-[#363A3D] text-white/80 border-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               />
               {paymentDetailsError && (
                 <span className="text-sm text-red-500">
@@ -307,22 +337,54 @@ const SellKamasComponents = ({
               )}
             </div>
           )}
-          <div className="bg-amber-50 p-4 rounded-lg space-y-2">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="lastname" className="text-white/90">
+                {tScope("lastname")}
+              </Label>
+              <Input
+                id="lastname"
+                placeholder={tScope("lastnameInput")}
+                value={formData.lastname}
+                onChange={(e) => handleInputChange("lastname", e.target.value)}
+                className="outline-none bg-[#363A3D] text-white/80 border-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              />
+              {lastnameError && (
+                <span className="text-sm text-red-500">{lastnameError}</span>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="firstname" className="text-white/90">
+                {tScope("firstname")}
+              </Label>
+              <Input
+                id="firstname"
+                placeholder={tScope("firstnameInput")}
+                value={formData.firstname}
+                onChange={(e) => handleInputChange("firstname", e.target.value)}
+                className="outline-none bg-[#363A3D] text-white/80 border-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              />
+              {firstnameError && (
+                <span className="text-sm text-red-500">{firstnameError}</span>
+              )}
+            </div>
+          </div>
+          <div className="bg-[#363A3D] text-white/80 border-none p-4 rounded-lg space-y-2">
             <div className="flex justify-between text-sm">
               <span>{tScope("pricedesc")}:</span>
-              <span className="font-semibold text-amber-700">
+              <span className="font-semibold text-amber-600">
                 {((server?.serverPriceDh || 0) / devise.curencyVal).toFixed(2)}{" "}
                 {parsedDevise(devise.currencyName)}
               </span>
             </div>
             <div className="flex justify-between text-sm">
               <span>{tScope("total")}:</span>
-              <span className="font-semibold text-amber-700">
+              <span className="font-semibold text-amber-600">
                 {calculateTotal().total} {parsedDevise(devise.currencyName)}
               </span>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-amber-700">
+            <div className="flex items-center gap-2 text-sm text-amber-600">
               <Gift className="h-4 w-4" />
               <span>
                 {tScope("bonus", {

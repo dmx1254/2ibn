@@ -53,6 +53,8 @@ async function initializeModels(): Promise<any> {
     gameName: string; // Optionnel
     paymentInfoDetails: string; // Optionnel
     currencymethod: string; // Optionnel
+    lastname: string;
+    firstname: string;
     status: string;
   }
 
@@ -70,6 +72,8 @@ async function initializeModels(): Promise<any> {
       gameName: { type: String },
       paymentInfoDetails: { type: String },
       currencymethod: { type: String },
+      lastname: { type: String },
+      firstname: { type: String },
       status: { type: String, default: "En attente" },
     },
     { timestamps: true }

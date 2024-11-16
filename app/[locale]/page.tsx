@@ -9,8 +9,12 @@ export default async function Home() {
         <div className="bg-[#1A1D21] p-2 lg:p-8 rounded-[10px] max-lg:-mt-4">
           <HeroSection />
         </div>
-        <WhyChooseUs />
-        <OurServices />
+        <div className="bg-[#1A1D21] rounded-[10px]">
+          <OurServices />
+        </div>
+        <div className="bg-[#1A1D21] p-4 rounded-[10px]">
+          <WhyChooseUs />
+        </div>
       </main>
     </div>
   );

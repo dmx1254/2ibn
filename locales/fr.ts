@@ -113,18 +113,36 @@ export default {
   "sellkamas.headertitleDescQtyContent":
     "La quantité minimale de kamas à vendre est de 5M",
   "sellkamas.headertableServ": "Serveur",
-  "sellkamas.headertablePriceDH": "Prix (DH/M)",
+  "sellkamas.headertablePriceDH": "Maroc(DH)",
   "sellkamas.headertablePriceEUR": "Prix (€/M)",
   "sellkamas.headertablePriceUSD": "Prix ($/M)",
   "sellkamas.headertableStatus": "Statut",
   "sellkamas.headertableAction": "Action",
   "sellkamas.headertableBtn": "Vendre Maintenant",
-  "sellkamas.headertableStatusInTableAva": "Disponible",
+  "sellkamas.headertableStatusInTableAva": "Incomplet",
   "sellkamas.headertableStatusInTableComp": "Stock Complet",
 
   "sellkamas.descTitle": "Vendre des Kamas | Vente de Kamas",
-  "sellkamas.desc1":
-    "Vendez vos Kamas Dofus aux meilleurs prix. N'hésitez pas à nous contacter si vous souhaitez vendre vos kamas.",
+  "sellkamas.qtyDesc": "Quantité",
+  "sellkamas.qtyDescBankTransfer":
+    "Virements bancaires et CashPlus, WafaCash [Maroc]",
+  "sellkamas.desc1min":
+    "20 EUR minimum de valeur en kamas (paypal, skrill et Bitcoin) ",
+  "sellkamas.desc2min":
+    "200 DHS minimum de valeur en kamas (virements bancaires et CashPlus, WafaCash[Maroc])",
+  "sellkamas.paymentMethodSell": "Méthodes de paiement",
+  "sellkamas.paymentMethodSellPaypal":
+    "Paiement entre 6 et 24 heures après la livraison des kamas. (PayPal vous taxe selon votre montant et votre pays)",
+  "sellkamas.paymentMethodSellSkrill":
+    "Paiement entre 6 et 24 heures après la livraison des kamas.",
+  "sellkamas.paymentMethodSellSepa":
+    "Paiement entre 24 et 48 heures après la livraison des kamas.(100 EUR de kamas au minimum)",
+  "sellkamas.paymentMethodSellBitcoin":
+    "Paiement entre 6 et 24 heures après la livraison des kamas.",
+  "sellkamas.paymentMethodSellUsdt":
+    "Paiement entre 6 et 24 heures après la livraison des kamas.(TRC20 / ERC20 frais : 1 usdt/transaction)",
+  "sellkamas.paymentMethodSellBankTransfer":
+    "Paiement envoyé en 24 heures après la livraison des kamas.",
   "sellkamas.desc2":
     "Quantité : Valeur minimum de 200DH en kamas (CIH, ATTIJARI et BARID banque).",
   "sellkamas.desc3":
@@ -151,6 +169,10 @@ export default {
   "dialogsell.contactEmailInput": "Entrez votre email",
   "dialogsell.fullname": "Nom complet",
   "dialogsell.fullnameInput": "Entrez votre nom complet",
+  "dialogsell.lastname": "Prénom",
+  "dialogsell.lastnameInput": "Entrez votre prénom",
+  "dialogsell.firstname": "Nom",
+  "dialogsell.firstnameInput": "Entrez votre nom",
   "dialogsell.qtyOfKamas": "Quantité de kamas (M)",
   "dialogsell.qtyOfKamasInput": "Entrez la quantité",
   "dialogsell.paymentMethod": "Méthode de paiement",
@@ -176,6 +198,8 @@ export default {
   "dialogsell.amountError": "La quantité est requise",
   "dialogsell.paymentMethodError": "La méthode de paiement est requise",
   "dialogsell.paymentDetailsError": "Ce champ est requis",
+  "dialogsell.lastnameError": "Ce champ est requis",
+  "dialogsell.firstnameError": "Ce champ est requis",
   "dialogsell.btnLoading": "Commande en cours...",
   "dialogsell.success":
     "Commande validée avec succès. Ouvrez le chat pour procéder à l'échange",

@@ -109,18 +109,37 @@ export default {
   "sellkamas.headertitleDescQtyContent":
     "The minimum quantity of kamas to sell is 5M",
   "sellkamas.headertableServ": "Server",
-  "sellkamas.headertablePriceDH": "Price (DH/M)",
+  "sellkamas.headertablePriceDH": "Morocco(DH)",
   "sellkamas.headertablePriceEUR": "Price (€/M)",
   "sellkamas.headertablePriceUSD": "Price ($/M)",
   "sellkamas.headertableStatus": "Status",
   "sellkamas.headertableAction": "Action",
   "sellkamas.headertableBtn": "Sell Now",
-  "sellkamas.headertableStatusInTableAva": "Available",
+  "sellkamas.headertableStatusInTableAva": "Incomplete",
   "sellkamas.headertableStatusInTableComp": "Full Stock",
 
   "sellkamas.descTitle": "Sell Kamas | Kamas Sale",
-  "sellkamas.desc1":
-    "Sell your Dofus Kamas at the best prices. Feel free to contact us if you want to sell your kamas.",
+  "sellkamas.qtyDesc": "Quantity",
+  "sellkamas.qtyDescBankTransfer": "Bank transfers and CashPlus, WafaCash [Morocco]",
+
+  "sellkamas.desc1min":
+    "20 EUR minimum value in kamas (PayPal, Skrill, and Bitcoin)",
+  "sellkamas.desc2min":
+    "200 DHS minimum value in kamas (bank transfers, CashPlus, WafaCash [Morocco])",
+  "sellkamas.paymentMethodSell": "Payment Methods",
+  "sellkamas.paymentMethodSellPaypal":
+    "Payment within 6 to 24 hours after kamas delivery. (PayPal charges based on amount and country)",
+  "sellkamas.paymentMethodSellSkrill":
+    "Payment within 6 to 24 hours after kamas delivery.",
+  "sellkamas.paymentMethodSellSepa":
+    "Payment within 24 to 48 hours after kamas delivery. (Minimum 100 EUR in kamas)",
+  "sellkamas.paymentMethodSellBitcoin":
+    "Payment within 6 to 24 hours after kamas delivery.",
+  "sellkamas.paymentMethodSellUsdt":
+    "Payment within 6 to 24 hours after kamas delivery. (TRC20 / ERC20 fees: 1 USDT/transaction)",
+  "sellkamas.paymentMethodSellBankTransfer":
+    "Payment sent within 24 hours after kamas delivery.",
+
   "sellkamas.desc2":
     "Quantity: Minimum value of {minVal} in kamas (CIH, ATTIJARI, and BARID bank).",
   "sellkamas.desc3":
@@ -145,6 +164,11 @@ export default {
   "dialogsell.contactEmailInput": "Enter your email",
   "dialogsell.fullname": "Full name",
   "dialogsell.fullnameInput": "Enter your full name",
+  "dialogsell.lastname": "First Name",
+  "dialogsell.lastnameInput": "Enter your first name",
+  "dialogsell.firstname": "Last Name",
+  "dialogsell.firstnameInput": "Enter your last name",
+
   "dialogsell.qtyOfKamas": "Quantity of kamas (M)",
   "dialogsell.qtyOfKamasInput": "Enter amount",
   "dialogsell.paymentMethod": "Payment method",
@@ -169,6 +193,8 @@ export default {
   "dialogsell.amountError": "Amount is required",
   "dialogsell.paymentMethodError": "Payment method is required",
   "dialogsell.paymentDetailsError": "This field is required",
+  "dialogsell.lastnameError": "This field is required",
+  "dialogsell.firstnameError": "This field is required",
   "dialogsell.btnLoading": "Order in progress...",
   "dialogsell.success":
     "Order successfully placed. Open the chat to proceed with the exchange",

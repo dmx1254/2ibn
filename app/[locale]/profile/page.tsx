@@ -322,26 +322,26 @@ const ProfilePage = () => {
                   <div className="font-medium">
                     {ordersL?.lastOrder &&
                       tScope("acountDetail.lastOrder", {
-                        orderNum: ordersL?.lastOrder[0].numBuy,
+                        orderNum: ordersL?.lastOrder[0]?.numBuy,
                       })}
                     <span
                       className={`${getStatusColor(
-                        ordersL?.lastOrder[0].status || ""
+                        ordersL?.lastOrder[0]?.status || ""
                       )}`}
                     >
-                      {ordersL?.lastOrder[0].status === "En attente" &&
+                      {ordersL?.lastOrder[0]?.status === "En attente" &&
                         tScope("acountDetail.lastOrderStatusEnt")}
-                      {ordersL?.lastOrder[0].status === "Payée" &&
+                      {ordersL?.lastOrder[0]?.status === "Payée" &&
                         tScope("acountDetail.lastOrderStatusD")}
-                      {ordersL?.lastOrder[0].status === "En Cours de payment" &&
+                      {ordersL?.lastOrder[0]?.status === "En Cours de payment" &&
                         tScope("acountDetail.lastOrderStatusEnc")}
-                      {ordersL?.lastOrder[0].status === "Annulée" &&
+                      {ordersL?.lastOrder[0]?.status === "Annulée" &&
                         tScope("acountDetail.lastOrderStatusAnn")}
                     </span>
                   </div>
                   <p className="text-sm text-gray-500 max-sm:mt-2">
                     {formatTimeAgo(
-                      new Date(ordersL?.lastOrder[0].createdAt!),
+                      new Date(ordersL?.lastOrder[0]?.createdAt!),
                       optionsHours
                     )}
                   </p>
