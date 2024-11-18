@@ -119,11 +119,7 @@ const VendreKamasClient = () => {
               {tScope("descTitle")}
             </h2>
             <div className="flex flex-col items-start gap-3 text-base text-white/90">
-              <p>
-                {tScope("desc2", {
-                  minVal: `${(200 / devise.curencyVal).toFixed(2)} ${currency}`,
-                })}
-              </p>
+              <p>{tScope("desc2")}</p>
               <p>
                 {tScope("qtyDesc")}: {tScope("desc1min")}
               </p>
@@ -163,37 +159,10 @@ const VendreKamasClient = () => {
                   </p>
                 </div>
               </div>
-              <p>
-                {tScope("desc4", {
-                  price: `${(300 / devise.curencyVal).toFixed(2)} ${currency}`,
-                })}
-              </p>
-              <p>
-                {tScope("desc5", {
-                  bonus: `${(50 / devise.curencyVal).toFixed(2)} ${currency}`,
-                  total: `${(3000 / devise.curencyVal).toFixed(2)} ${currency}`,
-                })}
-              </p>
+              <p>{tScope("desc5")}</p>
               <p className="uppercase">
                 <strong className="text-amber-600 uppercase">I:</strong>{" "}
-                {tScope("desc6", {
-                  total: `${(3000 / devise.curencyVal).toFixed(2)} ${currency}`,
-                  totalPlusBonus: `${(3050 / devise.curencyVal).toFixed(
-                    2
-                  )} ${currency}`,
-                  exemplePrice1: `${(8000 / devise.curencyVal).toFixed(
-                    2
-                  )} ${currency}`,
-                  exempleBonus1: `${(8050 / devise.curencyVal).toFixed(
-                    2
-                  )} ${currency}`,
-                  exemplePrice2: `${(10000 / devise.curencyVal).toFixed(
-                    2
-                  )} ${currency}`,
-                  exempleBonus2: `${(10050 / devise.curencyVal).toFixed(
-                    2
-                  )} ${currency}`,
-                })}
+                {tScope("desc6")}
               </p>
               <p className="uppercase">
                 <strong className="text-amber-600 uppercase">II:</strong>{" "}
@@ -231,7 +200,13 @@ const VendreKamasClient = () => {
                     {tScope("headertablePriceDH")}
                   </TableHead>
                   <TableHead className="text-amber-600 text-right">
-                    Paypal/Skrill/Sepa
+                    Paypal
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right">
+                    Skrill
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right">
+                    Sepa
                   </TableHead>
                   <TableHead className="text-amber-600 text-right">
                     Usdt(TRC20/ERC20)
@@ -251,6 +226,18 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-right">
                         {server.serverPriceDh.toFixed(2)} DH/M
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {(
+                          server.serverPriceDh / (serverPriceEuro || 1)
+                        ).toFixed(2)}{" "}
+                        €/M
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {(
+                          server.serverPriceDh / (serverPriceEuro || 1)
+                        ).toFixed(2)}{" "}
+                        €/M
                       </TableCell>
                       <TableCell className="text-right">
                         {(
@@ -297,7 +284,13 @@ const VendreKamasClient = () => {
                     {tScope("headertablePriceDH")}
                   </TableHead>
                   <TableHead className="text-amber-600 text-right">
-                    Paypal/Skrill/Sepa
+                    Paypal
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right">
+                    Skrill
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right">
+                    Sepa
                   </TableHead>
                   <TableHead className="text-amber-600 text-right">
                     Usdt(TRC20/ERC20)
@@ -317,6 +310,18 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-right">
                         {server.serverPriceDh.toFixed(2)} DH/M
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {(
+                          server.serverPriceDh / (serverPriceEuro || 1)
+                        ).toFixed(2)}{" "}
+                        €/M
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {(
+                          server.serverPriceDh / (serverPriceEuro || 1)
+                        ).toFixed(2)}{" "}
+                        €/M
                       </TableCell>
                       <TableCell className="text-right">
                         {(
@@ -363,7 +368,13 @@ const VendreKamasClient = () => {
                     {tScope("headertablePriceDH")}
                   </TableHead>
                   <TableHead className="text-amber-600 text-right">
-                    Paypal/Skrill/Sepa
+                    Paypal
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right">
+                    Skrill
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right">
+                    Sepa
                   </TableHead>
                   <TableHead className="text-amber-600 text-right">
                     Usdt(TRC20/ERC20)
@@ -383,6 +394,18 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-right">
                         {server.serverPriceDh.toFixed(2)} DH/M
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {(
+                          server.serverPriceDh / (serverPriceEuro || 1)
+                        ).toFixed(2)}{" "}
+                        €/M
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {(
+                          server.serverPriceDh / (serverPriceEuro || 1)
+                        ).toFixed(2)}{" "}
+                        €/M
                       </TableCell>
                       <TableCell className="text-right">
                         {(

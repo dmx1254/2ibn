@@ -150,9 +150,10 @@ export default {
   "sellkamas.desc4":
     "Métodos de pago: Transferencias bancarias y CashPlus, WafaCash [Marruecos]. Pago enviado dentro de las 24 horas posteriores a la entrega de kamas. (Mínimo de {price} en kamas)",
   "sellkamas.desc5":
-    "Recibes automáticamente un bono de {bonus} por cada pedido vendido por encima de {total}.",
+    "Obtienes automáticamente un bono de 50 Dhs por cada pedido vendido por encima de 3000 Dhs.",
   "sellkamas.desc6":
-    "El bono se calcula según la suma total de cada pedido vendido (por ejemplo, {total} ==> {totalPlusBonus}; {exemplePrice1} ==> {exempleBonus1}; {exemplePrice2} ==> {exempleBonus2}).",
+    "El bono se calcula en función del monto total de cada pedido vendido (por ejemplo, 3000dh ==> 3050dh; 8000dh ==> 8050dh; 10000dh ==> 10050dh).",
+
   "sellkamas.desc7":
     "El bono no se aplica al total de varios pedidos diferentes.",
   "sellkamas.desc8": "No vendo Kamas, quiero un intercambio entre servidores.",
@@ -191,8 +192,8 @@ export default {
   "dialogsell.casebinpaywiseinput": "Ingrese el correo de pago",
   "dialogsell.caseadvcashinput": "Ingrese el número de cuenta",
   "dialogsell.casetrc20input": "Ingrese la dirección TRX",
-  "dialogsell.bonus":
-    "Bono: +{bonus1} {cur} (pedidos superiores a {totalbonus} {cur})",
+  "dialogsell.bonus": "Bono: +50 Dhs (pedidos superiores a 3000 Dhs)",
+
   "dialogsell.gameNameError": "El nombre en el juego es obligatorio",
   "dialogsell.amountError": "La cantidad es obligatoria",
   "dialogsell.paymentMethodError": "El método de pago es obligatorio",

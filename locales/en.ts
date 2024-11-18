@@ -120,7 +120,8 @@ export default {
 
   "sellkamas.descTitle": "Sell Kamas | Kamas Sale",
   "sellkamas.qtyDesc": "Quantity",
-  "sellkamas.qtyDescBankTransfer": "Bank transfers and CashPlus, WafaCash [Morocco]",
+  "sellkamas.qtyDescBankTransfer":
+    "Bank transfers and CashPlus, WafaCash [Morocco]",
 
   "sellkamas.desc1min":
     "20 EUR minimum value in kamas (PayPal, Skrill, and Bitcoin)",
@@ -141,15 +142,16 @@ export default {
     "Payment sent within 24 hours after kamas delivery.",
 
   "sellkamas.desc2":
-    "Quantity: Minimum value of {minVal} in kamas (CIH, ATTIJARI, and BARID bank).",
+    "Quantity: Minimum value of 200DH in kamas (CIH, ATTIJARI, and BARID bank).",
   "sellkamas.desc3":
     "All your sales recorded on the same payment account will be combined and sent in a single payment.",
-  "sellkamas.desc4":
-    "Payment methods: Bank transfers and CashPlus, WafaCash [Morocco]. Payment sent within 24 hours after the delivery of kamas. (Minimum of {price} in kamas)",
+  // "sellkamas.desc4":
+  //   "Payment methods: Bank transfers and CashPlus, WafaCash [Morocco]. Payment sent within 24 hours after the delivery of kamas. (Minimum of {price} in kamas)",
   "sellkamas.desc5":
-    "You automatically get a bonus of {bonus} on each order sold over {total}.",
+    "You automatically get a bonus of 50 Dhs for every order sold above 3000 Dhs.",
   "sellkamas.desc6":
-    "The bonus is calculated according to the total sum of each order sold (e.g., {total} ==> {totalPlusBonus}; {exemplePrice1} ==> {exempleBonus1}; {exemplePrice2} ==> {exempleBonus2}).",
+    "The bonus is calculated based on the total amount of each order sold (for example, 3000dh ==> 3050dh; 8000dh ==> 8050dh; 10000dh ==> 10050dh).",
+
   "sellkamas.desc7":
     "The bonus does not apply to the total of several different orders.",
   "sellkamas.desc8": "I don't sell Kamas, I want an exchange between servers.",
@@ -188,7 +190,8 @@ export default {
   "dialogsell.casebinpaywiseinput": "Enter payment email",
   "dialogsell.caseadvcashinput": "Enter account number",
   "dialogsell.casetrc20input": "Enter TRX address",
-  "dialogsell.bonus": "Bonus: +{bonus1} {cur} (orders over {totalbonus} {cur})",
+  "dialogsell.bonus": "Bonus: +50 Dhs (orders over 3000 Dhs)",
+
   "dialogsell.gameNameError": "In-game name is required",
   "dialogsell.amountError": "Amount is required",
   "dialogsell.paymentMethodError": "Payment method is required",

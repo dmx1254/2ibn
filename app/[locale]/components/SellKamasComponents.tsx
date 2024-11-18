@@ -54,32 +54,46 @@ const SellKamasComponents = ({
   const paymentMethods = [
     "CIH Bank",
     "Attijariwafa Bank",
-    "Barid Bank",
-    "Western Union",
+    "Bmce",
+    "BMCI",
+    "Crédit du maroc",
+    "Crédit agricole",
+    "Cfg",
+    "Société générale",
     "Cash Plus",
-    "ADV Cash",
-    "Binance Pay",
-    "Payeer",
-    "Wise",
-    "TRC20",
+    "Wafacash",
+    "Paypal",
+    "Skrill",
+    "Usdt",
+    // "Binance Pay",
+    // "Payeer",
+    // "Wise",
+    // "TRC20",
   ];
 
   const getPaymentDetailsLabel = (method: string) => {
     switch (method) {
       case "CIH Bank":
       case "Attijariwafa Bank":
-      case "Barid Bank":
+      case "Bmce":
+      case "BMCI":
+      case "Crédit du maroc":
+      case "Crédit agricole":
+      case "Cfg":
+      case "Société générale":
+      case "Cash Plus":
+      case "Wafacash":
         return tScope("casemaroccobank");
       case "Western Union":
       case "Cash Plus":
         return tScope("casewestandcash");
       case "Binance Pay":
-      case "Payeer":
-      case "Wise":
+      case "Paypal":
+      case "Skrill":
         return tScope("casebinpaywise");
       case "ADV Cash":
         return tScope("caseadvcash");
-      case "TRC20":
+      case "Usdt":
         return tScope("casetrc20");
       default:
         return "";
@@ -386,13 +400,7 @@ const SellKamasComponents = ({
 
             <div className="flex items-center gap-2 text-sm text-amber-600">
               <Gift className="h-4 w-4" />
-              <span>
-                {tScope("bonus", {
-                  bonus1: (50 / devise.curencyVal).toFixed(2),
-                  cur: parsedDevise(devise.currencyName),
-                  totalbonus: (3000 / devise.curencyVal).toFixed(2),
-                })}
-              </span>
+              <span>{tScope("bonus")}</span>
             </div>
           </div>
         </div>

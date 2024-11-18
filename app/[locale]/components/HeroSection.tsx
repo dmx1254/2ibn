@@ -41,8 +41,8 @@ const HeroSection = () => {
 
   const [activeServer, setActiveServer] = useState<ServerBuy | null>(null);
   const [character, setCharacter] = useState<string>("");
-  const [amount, setAmount] = useState<number | string>(0);
-  const [bonus, setBonus] = useState<number | string>(0);
+  const [amount, setAmount] = useState<number | string>();
+  const [bonus, setBonus] = useState<number | string>();
 
   const handleDofusChange = (slug: string) => {
     addToActiveServerRequest(slug);

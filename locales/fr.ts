@@ -147,12 +147,12 @@ export default {
     "Quantité : Valeur minimum de 200DH en kamas (CIH, ATTIJARI et BARID banque).",
   "sellkamas.desc3":
     "Toutes vos ventes enregistrées sur le même compte de paiement seront combinées et envoyées dans un seul paiement.",
-  "sellkamas.desc4":
-    "Méthodes de paiement : Virements bancaires et CashPlus, WafaCash [Maroc]. Paiement envoyé dans les 24 heures suivant la livraison des kamas. (Minimum de {price} en kamas)",
+  // "sellkamas.desc4":
+  //   "Méthodes de paiement : Virements bancaires et CashPlus, WafaCash [Maroc]. Paiement envoyé dans les 24 heures suivant la livraison des kamas. (Minimum de {price} en kamas)",
   "sellkamas.desc5":
-    "Vous obtenez automatiquement un bonus de {bonus} sur chaque commande vendue au-dessus de {total}.",
+    "Vous obtenez automatiquement un bonus de 50 Dhs sur chaque commande vendue au plus de 3000 Dhs.",
   "sellkamas.desc6":
-    "Le bonus est calculé en fonction de la somme totale de chaque commande vendue (par exemple, {total} ==> {totalPlusBonus}; {exemplePrice1} ==> {exempleBonus1}; {exemplePrice2} ==> {exempleBonus2}).",
+    "Le bonus est calculé en fonction de la somme totale de chaque commande vendue (par exemple, 3000dh ==> 3050dh; 8000dh ==> 8050dh; 10000dh ==> 10050dh).",
   "sellkamas.desc7":
     "Le bonus ne s'applique pas au total de plusieurs commandes différentes.",
   "sellkamas.desc8":
@@ -193,7 +193,7 @@ export default {
   "dialogsell.caseadvcashinput": "Entrez le numéro de compte",
   "dialogsell.casetrc20input": "Entrez l'adresse TRX",
   "dialogsell.bonus":
-    "Bonus : +{bonus1} {cur} (commandes supérieures à {totalbonus} {cur})",
+    "Bonus : +50 Dhs (commandes supérieures à 3000 Dhs)",
   "dialogsell.gameNameError": "Le nom dans le jeu est requis",
   "dialogsell.amountError": "La quantité est requise",
   "dialogsell.paymentMethodError": "La méthode de paiement est requise",
