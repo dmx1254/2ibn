@@ -222,6 +222,7 @@ const SignUpForm = () => {
         country: formData.country,
         city: formData.city,
         postalCode: formData.postalCode,
+        isEmailVerified: true,
       };
 
       try {

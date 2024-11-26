@@ -247,3 +247,75 @@ export function formatTimeAgo(
   }
 }
 
+type BankPayment = {
+  id: string;
+  title: string;
+  imgPay: string;
+  fee?: number;
+};
+
+export const paymentMethod: BankPayment[] = [
+  {
+    id: "JUK51L",
+    title: "visa-google-pay",
+    imgPay: "/payMethod/creditcardgooglepay.webp",
+  },
+  {
+    id: "LPA27P",
+    title: "visa-and-jcb",
+    imgPay: "/payMethod/creditcard_pay.webp",
+  },
+  {
+    id: "YHA4KO",
+    title: "google-pay",
+    imgPay: "/payMethod/google_pay.webp",
+  },
+  {
+    id: "BQXP46",
+    title: "paypal",
+    imgPay: "/payMethod/paypals.webp",
+    fee: 3,
+  },
+  {
+    id: "AWB8YT",
+    title: "paysafecard",
+    imgPay: "/payMethod/paysafecard.webp",
+    fee: 3,
+  },
+  {
+    id: "OPLAW1",
+    title: "crypto",
+    imgPay: "/payMethod/crypto.webp",
+  },
+  {
+    id: "RTFL43",
+    title: "morocco-local-banks",
+    imgPay: "/payMethod/moroccolocalbanks.webp",
+  },
+];
+
+export type Billing = {
+  lastname: string;
+  firstname: string;
+  address: string;
+  city: string;
+  codePostal: string;
+  country: string;
+  departement?: string;
+};
+
+
+export function maskDisplayName(name: string) {
+  if (!name || name.length < 3) {
+    // Si le nom est trop court, ne pas le masquer complètement
+    return name;
+  }
+  
+  const firstChar = name[0]; // Premier caractère
+  const lastChar = name[name.length - 1]; // Dernier caractère
+  
+  // Remplir les caractères intermédiaires par des étoiles
+  const maskedPart = "*".repeat(name.length - 2);
+  
+  return `${firstChar}${maskedPart}${lastChar}`;
+}

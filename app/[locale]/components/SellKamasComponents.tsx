@@ -81,12 +81,12 @@ const SellKamasComponents = ({
       case "Crédit agricole":
       case "Cfg":
       case "Société générale":
-      case "Cash Plus":
-      case "Wafacash":
         return tScope("casemaroccobank");
       case "Western Union":
-      case "Cash Plus":
         return tScope("casewestandcash");
+      case "Cash Plus":
+      case "Wafacash":
+        return tScope("casemaroccobankCashAndWafa");
       case "Binance Pay":
       case "Paypal":
       case "Skrill":
@@ -107,12 +107,14 @@ const SellKamasComponents = ({
       case "Barid Bank":
         return tScope("casemaroccobankinput");
       case "Western Union":
-      case "Cash Plus":
         return tScope("casewestandcashinput");
       case "Binance Pay":
       case "Payeer":
       case "Wise":
         return tScope("casebinpaywiseinput");
+      case "Cash Plus":
+      case "Wafacash":
+        return tScope("casemaroccobankCashAndWafa");
       case "ADV Cash":
         return tScope("caseadvcashinput");
       case "TRC20":

@@ -18,17 +18,57 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 
 import { signOut } from "next-auth/react";
+import { useScopedI18n } from "@/locales/client";
 
 const ProfilePopover = () => {
+  const tScope = useScopedI18n("sidebar");
+  // const menuItems = [
+  //   { href: "/profile", label: "Profile", icon: User },
+  //   { href: "/profile/orders-buys", label: "Orders Buy", icon: ShoppingBag },
+  //   { href: "/profile/order-sell", label: "Orders Sell", icon: TrendingUp },
+  //   { href: "/profile/exchange", label: "Exchange", icon: BarChart2 },
+  //   {
+  //     href: "/profile/update-profile",
+  //     label: "Update Profile",
+  //     icon: Settings,
+  //   },
+  // ];
+
   const menuItems = [
-    { href: "/profile", label: "Profile", icon: User },
-    { href: "/profile/orders-buys", label: "Orders Buy", icon: ShoppingBag },
-    { href: "/profile/order-sell", label: "Orders Sell", icon: TrendingUp },
-    { href: "/profile/exchange", label: "Exchange", icon: BarChart2 },
+    {
+      href: "/profile",
+      label: tScope("profile"),
+      icon: User,
+      traduct: "profile",
+      size: 24,
+    },
+    {
+      href: "/profile/orders-buys",
+      label: tScope("ordersBuy"),
+      icon: ShoppingBag,
+      traduct: "ordersBuy",
+      size: 22,
+    },
+    {
+      href: "/profile/order-sell",
+      label: tScope("ordersSell"),
+      icon: TrendingUp,
+      traduct: "ordersSell",
+      size: 24,
+    },
+    {
+      href: "/profile/exchange",
+      label: tScope("exchange"),
+      icon: BarChart2,
+      traduct: "exchange",
+      size: 24,
+    },
     {
       href: "/profile/update-profile",
-      label: "Update Profile",
+      label: tScope("updateProfile"),
       icon: Settings,
+      traduct: "updateProfile",
+      size: 24,
     },
   ];
 
@@ -78,7 +118,7 @@ const ProfilePopover = () => {
             aria-label="logout button"
           >
             <LogOut className="h-4 w-4" />
-            <span>Logout</span>
+            <span>{tScope("logout")}</span>
           </button>
         </div>
       </PopoverContent>

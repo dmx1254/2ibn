@@ -11,7 +11,7 @@ import { Button } from "./ui/button";
 const EmptyCart = () => {
   const tScope = useScopedI18n("emptycart");
   return (
-    <Card className="w-full max-w-md mx-auto border-none">
+    <Card className="w-full max-w-7xl mx-auto border-none">
       <CardHeader>
         <CardTitle className="text-2xl font-bold text-center">
           {tScope("title")}

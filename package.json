@@ -28,6 +28,8 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "country-state-city": "^3.2.1",
+    "crypto": "^1.0.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.11.9",
     "jsonwebtoken": "^9.0.2",

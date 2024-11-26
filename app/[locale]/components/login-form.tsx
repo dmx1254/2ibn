@@ -8,7 +8,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { signIn } from "next-auth/react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
@@ -42,8 +48,8 @@ const LoginForm = () => {
         } else {
           setPasswordError("");
         }
-      }else{
-        router.push("/")
+      } else {
+        router.push("/");
       }
     } catch (error: any) {
       console.log(error);
@@ -53,20 +59,23 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center">
-      <Card className="w-full max-w-sm shadow-xl">
+    <div className="w-full h-screen flex items-center justify-center">
+      <Card className="w-full max-w-sm shadow-xl bg-white/20 border-white/20">
         <CardHeader className="space-y-3">
-          <CardTitle className="text-3xl font-bold tracking-tight text-center">
+          <CardTitle className="text-3xl text-white/80 font-bold tracking-tight text-center">
             {tScope("title")}
           </CardTitle>
-          <CardDescription className="text-center text-gray-500">
+          <CardDescription className="text-center text-white/80">
             {tScope("desc")}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium">
+              <Label
+                htmlFor="email"
+                className="text-sm font-medium text-white/80"
+              >
                 {tScope("mail")}
               </Label>
               <div className="relative">
@@ -80,7 +89,7 @@ const LoginForm = () => {
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setEmail(e.target.value)
                   }
-                  className="pl-10 h-12 border-gray-200 hover:border-gray-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className="pl-10 h-12 bg-transparent text-white/80 border-gray-400 hover:border-gray-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
               </div>
               {emailError && (
@@ -90,7 +99,10 @@ const LoginForm = () => {
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="password" className="text-sm font-medium">
+                <Label
+                  htmlFor="password"
+                  className="text-sm font-medium text-white/80"
+                >
                   {tScope("password")}
                 </Label>
                 <Link
@@ -111,7 +123,7 @@ const LoginForm = () => {
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setPassword(e.target.value)
                   }
-                  className="pl-10 h-12 border-gray-200 hover:border-gray-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className="pl-10 h-12 bg-transparent text-white/80 border-gray-400 hover:border-gray-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
               </div>
               {passwordError && (
@@ -140,19 +152,21 @@ const LoginForm = () => {
           </Button>
 
           <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200" />
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">
+            {/* <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-white/10" />
+            </div> */}
+            <div className="relative flex items-center justify-center text-sm">
+              <span className="border-t border-white/10 w-1/5" />
+              <span className="px-2  text-white/80 w-3/5">
                 {tScope("bottomDesc")}
               </span>
+              <span className="border-t border-white/10 w-1/5" />
             </div>
           </div>
 
           <Button
             variant="outline"
-            className="w-full h-12 border-gray-200 hover:border-gray-300 hover:bg-gray-50 font-medium transition-colors"
+            className="w-full h-12 bg-white/20 text-white/80 border-white/20 hover:border-gray-300 hover:bg-gray-50 font-medium transition-colors"
             asChild
             aria-label="go to signup"
           >

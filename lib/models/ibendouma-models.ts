@@ -1,6 +1,34 @@
 import { Schema, Document } from "mongoose";
 import { connectDB, getConnections } from "../db";
 
+const crypto = require("crypto");
+
+const secretKey = process.env.TOKEN_SECRET_PAYMENT_CRYPT; // À stocker de manière sécurisée, par exemple dans des variables d'environnement.
+
+function encrypt(text: string) {
+  const iv = crypto.randomBytes(16); // Génère un vecteur d'initialisation aléatoire
+  const cipher = crypto.createCipheriv(
+    "aes-256-cbc",
+    Buffer.from(secretKey!),
+    iv
+  );
+  let encrypted = cipher.update(text, "utf8", "hex");
+  encrypted += cipher.final("hex");
+  return iv.toString("hex") + ":" + encrypted;
+}
+
+function decrypt(text: string) {
+  const [iv, encryptedText] = text.split(":");
+  const decipher = crypto.createDecipheriv(
+    "aes-256-cbc",
+    Buffer.from(secretKey!),
+    Buffer.from(iv, "hex")
+  );
+  let decrypted = decipher.update(encryptedText, "hex", "utf8");
+  decrypted += decipher.final("utf8");
+  return decrypted;
+}
+
 // Fonction asynchrone pour initialiser les modèles
 async function initializeModels(): Promise<any> {
   await connectDB(); // Attendre l'établissement de la connexion
@@ -65,6 +93,20 @@ async function initializeModels(): Promise<any> {
     code: string;
   }
 
+  interface Card extends Document {
+    code: string;
+    expirationDate: string;
+  }
+
+  interface IPaymentMethod extends Document {
+    userId: string;
+    method: string;
+    rib?: string;
+    trc20Address?: string;
+    email?: string;
+    cardInfo?: Card;
+  }
+
   interface IUser extends Document {
     lastname: string;
     firstname: string;
@@ -78,7 +120,52 @@ async function initializeModels(): Promise<any> {
     country: string;
     city: string;
     postalCode: string;
+    isEmailVerified?: boolean;
+    departement?: string;
   }
+
+  const paymentMethodSchema = new Schema({
+    userId: {
+      type: String,
+      required: true,
+    },
+    method: {
+      type: String,
+      required: true,
+    },
+    rib: {
+      type: String,
+      get: (val: string) => (val ? decrypt(val) : val),
+      set: (val: string) => (val ? encrypt(val) : val),
+    },
+    trc20Address: {
+      type: String,
+      get: (val: string) => (val ? decrypt(val) : val),
+      set: (val: string) => (val ? encrypt(val) : val),
+    },
+    email: {
+      type: String,
+      get: (val: string) => (val ? decrypt(val) : val),
+      set: (val: string) => (val ? encrypt(val) : val),
+    },
+    cardInfo: {
+      code: {
+        type: String,
+        get: (val: string) => (val ? decrypt(val) : val),
+        set: (val: string) => (val ? encrypt(val) : val),
+      },
+
+      expirationDate: {
+        type: String,
+        get: (val: string) => (val ? decrypt(val) : val),
+        set: (val: string) => (val ? encrypt(val) : val),
+      },
+    },
+  });
+
+  paymentMethodSchema.set("toJSON", {
+    getters: true,
+  });
 
   const userSchema: Schema = new Schema(
     {
@@ -135,6 +222,14 @@ async function initializeModels(): Promise<any> {
         default: "",
       },
       postalCode: {
+        type: String,
+        default: "",
+      },
+      isEmailVerified: {
+        type: Boolean,
+        default: false,
+      },
+      departement: {
         type: String,
         default: "",
       },
@@ -209,6 +304,10 @@ async function initializeModels(): Promise<any> {
       valCurency: {
         type: String,
         default: "",
+      },
+      billing: {
+        type: Object,
+        default: {},
       },
     },
     {
@@ -323,6 +422,9 @@ async function initializeModels(): Promise<any> {
     ibendDB.models.code || ibendDB.model<ICode>("code", codeSchema);
   const UserIbenModel =
     ibendDB.models.user || ibendDB.model<IUser>("user", userSchema);
+  const UserPaymentModel =
+    ibendDB.models.payment ||
+    ibendDB.model<IPaymentMethod>("payment", paymentMethodSchema);
 
   return {
     ServerModelIben,
@@ -333,6 +435,7 @@ async function initializeModels(): Promise<any> {
     OrderModelIben,
     CodeIbenModel,
     UserIbenModel,
+    UserPaymentModel,
   };
 }
 

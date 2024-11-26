@@ -212,6 +212,9 @@ const VendreKamasClient = () => {
                     Usdt(TRC20/ERC20)
                   </TableHead>
                   <TableHead className="text-amber-600 text-right">
+                    {tScope("headertablePriceAED")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right">
                     {tScope("headertableStatus")}
                   </TableHead>
                 </TableRow>
@@ -250,6 +253,9 @@ const VendreKamasClient = () => {
                           server.serverPriceDh / (serverPriceDollar || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {(server.serverPriceDh / 2.72).toFixed(3)} AED/M
                       </TableCell>
 
                       <TableCell className="text-right">
@@ -296,6 +302,9 @@ const VendreKamasClient = () => {
                     Usdt(TRC20/ERC20)
                   </TableHead>
                   <TableHead className="text-amber-600 text-right">
+                    {tScope("headertablePriceAED")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right">
                     {tScope("headertableStatus")}
                   </TableHead>
                 </TableRow>
@@ -335,7 +344,9 @@ const VendreKamasClient = () => {
                         ).toFixed(3)}{" "}
                         Usdt/M
                       </TableCell>
-
+                      <TableCell className="text-right">
+                        {(server.serverPriceDh / 2.72).toFixed(3)} AED/M
+                      </TableCell>
                       <TableCell className="text-right">
                         <span
                           className={`px-2 py-1 rounded-full text-xs ${
@@ -380,6 +391,9 @@ const VendreKamasClient = () => {
                     Usdt(TRC20/ERC20)
                   </TableHead>
                   <TableHead className="text-amber-600 text-right">
+                    {tScope("headertablePriceAED")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right">
                     {tScope("headertableStatus")}
                   </TableHead>
                 </TableRow>
@@ -419,7 +433,9 @@ const VendreKamasClient = () => {
                         ).toFixed(2)}{" "}
                         Usdt/M
                       </TableCell>
-
+                      <TableCell className="text-right">
+                        {(server.serverPriceDh / 2.72).toFixed(3)} AED/M
+                      </TableCell>
                       <TableCell className="text-right">
                         <span
                           className={`px-2 py-1 rounded-full text-xs ${

@@ -21,7 +21,10 @@ export async function POST(request: Request) {
         password: hashedPasspord,
       };
       await UserIbenModel.create(user);
-      await CodeIbenModel.findOneAndDelete({ code: user.code });
+      if (user.code) {
+        await CodeIbenModel.findOneAndDelete({ code: user.code });
+      }
+
       return NextResponse.json(
         { successMessage: "Your account has been created" },
         { status: 200 }

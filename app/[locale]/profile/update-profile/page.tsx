@@ -5,7 +5,16 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
-import { Loader2, Save, Lock, User, Mail, Phone, MapPin } from "lucide-react";
+import {
+  Loader2,
+  Save,
+  Lock,
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  CreditCard,
+} from "lucide-react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 
@@ -15,6 +24,7 @@ import { Label } from "../../components/ui/label";
 import { Separator } from "../../components/ui/separator";
 import { toast } from "sonner";
 import { useScopedI18n } from "@/locales/client";
+import PaymentMethod from "../../components/PaymentMethod";
 
 const profileSchema = z.object({
   lastname: z.string(),
@@ -45,6 +55,7 @@ type PasswordFormData = z.infer<typeof passwordSchema>;
 
 const UpdateProfilePage = () => {
   const tScope = useScopedI18n("updateKamasProfile");
+  const tScope2 = useScopedI18n("paymentMethod");
   const [isPasswordResetLoading, setIsPasswordResetLoading] =
     useState<boolean>(false);
   const { data: session } = useSession();
@@ -342,6 +353,13 @@ const UpdateProfilePage = () => {
                 )}
               </Button>
             </form>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-6 text-gray-700 flex items-center">
+              <CreditCard className="mr-2" /> {tScope2("title")}
+            </h2>
+            <PaymentMethod userId={session?.user.id} />
           </section>
         </div>
       </motion.div>

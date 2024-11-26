@@ -2,73 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  overflow-y: scroll;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  z-index: 20;
-  scroll-behavior: smooth;
-}
-
-body::-webkit-scrollbar {
-  width: 8px;
-}
-body::-webkit-scrollbar-thumb {
-  background-color: #eab308;
-  border-radius: 10px;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .home-all::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-image: url("../../public/bg-dofus.png"); */
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0.05;
-    z-index: -1;
-  }
-  .shadow-link {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  .scroll-thumb::-webkit-scrollbar {
-    display: none !important;
-  }
-  .profile-user::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  .hide-scrollbar, .profile-user, .scroll-thumb {
-    -ms-overflow-style: none;  /* Pour Internet Explorer et Edge */
-    scrollbar-width: none;  /* Pour Firefox */
-  }
-  
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;  /* Pour Chrome, Safari et Opera */
-  }
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -122,6 +55,84 @@ body::-webkit-scrollbar-thumb {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 20;
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #eab308;
+  border-radius: 10px;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .home-all::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: url("../../public/bg-dofus.png"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.05;
+    z-index: -1;
+  }
+  .shadow-link {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .scroll-thumb::-webkit-scrollbar {
+    display: none !important;
+  }
+  .profile-user::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .hide-scrollbar,
+  .profile-user,
+  .scroll-thumb {
+    -ms-overflow-style: none; /* Pour Internet Explorer et Edge */
+    scrollbar-width: none; /* Pour Firefox */
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Pour Chrome, Safari et Opera */
+  }
+
+  .signin-bgurl {
+    background: url("/assets/bg-2ibn.jpg");
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
   }
 }
 

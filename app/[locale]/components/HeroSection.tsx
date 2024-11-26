@@ -106,7 +106,7 @@ const HeroSection = () => {
       className="w-full max-w-6xl font-poppins flex max-lg:flex-col items-center justify-between gap-10 lg:gap-20 m-0 p-0"
     >
       <div className="full max-lg:max-w-[450px] lg:w-3/5">
-      <TestimonialsCard />
+        <TestimonialsCard />
       </div>
       <Card
         className="full lg:min-w-72 max-lg:max-w-[450px] lg:w-1/3 flex flex-col items-start gap-4 shadow-none bg-[#363A3D] p-4 rounded-[10px] border-none"
@@ -118,7 +118,7 @@ const HeroSection = () => {
         <div className="w-full flex flex-col items-start gap-3">
           <Label className="text-white">{tScope("game")}</Label>
           <Select value={dofusChange} onValueChange={handleDofusChange}>
-            <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#45494e] text-white px-5 py-7 rounded-[10px] text-base">
+            <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#45494e] text-white px-5 py-6 rounded-[10px] text-base">
               <SelectValue placeholder="Selectionner un jeu" />
             </SelectTrigger>
             <SelectContent className="bg-[#363A3D] text-white border-[#45494e]">
@@ -148,7 +148,7 @@ const HeroSection = () => {
         <div className="w-full flex flex-col items-start gap-3">
           <Label className="text-white">{tScope("server")}</Label>
           <Select value={serverChange} onValueChange={setServerChange}>
-            <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#45494e] text-white px-5 py-7 rounded-[10px] text-base">
+            <SelectTrigger className="w-full border-none outline-none focus:ring-0 focus:ring-offset-0 bg-[#45494e] text-white px-5 py-6 rounded-[10px] text-base">
               <SelectValue placeholder="Sélectionnez le serveur" />
             </SelectTrigger>
             <SelectContent className="bg-[#363A3D] text-white border-[#45494e]">
@@ -176,7 +176,7 @@ const HeroSection = () => {
           <div className="flex items-center">
             <div className="relative flex items-center">
               <Input
-                className="w-full bg-[#45494e] border-[#45494e] text-white text-base px-5 py-7 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="w-full bg-[#45494e] border-[#45494e] text-white text-base px-5 py-6 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 placeholder="0"
                 type="number"
                 value={amount}
@@ -193,7 +193,7 @@ const HeroSection = () => {
             </span>
             <div className="relative">
               <Input
-                className="bg-[#45494e] border-[#45494e] text-white text-base px-5 py-7 w-28 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 pointer-events-none"
+                className="bg-[#45494e] border-[#45494e] text-white text-base px-5 py-6 w-28 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 pointer-events-none"
                 placeholder="0"
                 type="number"
                 value={bonus}
@@ -218,7 +218,7 @@ const HeroSection = () => {
             <FaCircleQuestion className="text-[#a1a0a0]" />
           </Label>
           <Input
-            className="w-full bg-[#45494e] border-[#45494e] text-white text-base px-5 py-7 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="w-full bg-[#45494e] border-[#45494e] text-white text-base px-5 py-6 rounded-[10px] focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
             placeholder=""
             type="text"
             value={character}
@@ -227,7 +227,7 @@ const HeroSection = () => {
             }
           />
         </div>
-        <div className="w-full flex items-center justify-center my-5">
+        <div className="w-full flex items-center justify-center my-2">
           <span className="text-sm text-white">Total</span>
           <div className="w-full flex flex-col items-end">
             <div className="flex items-center gap-1">

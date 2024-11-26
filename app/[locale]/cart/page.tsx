@@ -15,8 +15,19 @@ import InfoSection from "../components/InfoSection";
 import EmptyCart from "../components/EmptyCart";
 import { useSession } from "next-auth/react";
 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../components/ui/table";
+
+import { TiDelete } from "react-icons/ti";
+
 const CartPage: React.FC = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const tScope = useScopedI18n("cartpage");
   const { carts, removeFromCart, updateToCart, clearCart } = useStore();
   const [activePaymentMethod, setActivePaymentMethod] = useState("");
@@ -25,6 +36,8 @@ const CartPage: React.FC = () => {
   const subtotal = carts.reduce((total, item) => total + item.totalPrice, 0);
   const shipping = 0.0;
   const total = subtotal + shipping;
+
+  // console.log(carts);
 
   const handleCheckout = async () => {
     const products = carts.map((cart) => {
@@ -73,53 +86,80 @@ const CartPage: React.FC = () => {
   };
 
   return (
-    <div className="py-6 sm:py-12 px-4 sm:px-6 lg:px-8  min-h-screen">
-      <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
-        <div className="lg:flex gap-8 p-6 lg:p-8">
-          <div className="lg:w-2/3 mb-8 lg:mb-0">
-            <Link href="/" className="flex items-center mb-6">
-              <ArrowLeft className="mr-2 cursor-pointer" />
-              <h1 className="text-xl font-semibold">{tScope("returnLink")}</h1>
-            </Link>
-            <h2 className="text-lg font-semibold mb-2">{tScope("subtitle")}</h2>
-            <p className="text-sm text-gray-500 mb-6">
-              {tScope("itemhave", {
-                items: carts.length,
-                item: carts.length !== 1 ? "s" : "",
-              })}
-            </p>
-            <div className="space-y-4 max-h-[calc(100vh-300px)] overflow-y-auto pr-4 -mr-4 scroll-thumb">
-              {carts.length <= 0 ? (
-                <EmptyCart />
-              ) : (
-                carts.map((item: Cart) => (
-                  <div
-                    key={item.productId}
-                    className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 rounded-xl transition-all duration-300"
+    <div className="w-full py-6 sm:py-12 px-4 sm:px-6 lg:px-8  min-h-screen">
+      {carts.length <= 0 ? (
+        <EmptyCart />
+      ) : (
+        <div className="max-w-7xl mx-auto flex flex-col items-center gap-6 overflow-hidden">
+          <div className="w-full bg-white">
+            <Table className="w-full text-black/80 text-center">
+              <TableHeader>
+                <TableRow className="bg-[#151d20] border-[#76828D]">
+                  <TableHead className="text-amber-600 text-left">
+                    {tScope("image")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center">
+                    {tScope("name")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center">
+                    {tScope("jeu")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center">
+                    {tScope("qty")}
+                  </TableHead>
+
+                  <TableHead className="text-amber-600 text-center">
+                    {tScope("unitPrice")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center">
+                    {tScope("total")}
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {carts?.map((item, index) => (
+                  <TableRow
+                    className="border-gray-200"
                     style={{
-                      boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+                      border: index === carts.length - 1 ? "none" : "",
                     }}
                   >
-                    <Image
-                      src={imageReturn(item.category)}
-                      alt={item.server}
-                      width={80}
-                      height={80}
-                      className="rounded-lg"
-                    />
-                    <div className="flex-grow text-center sm:text-left">
-                      <h3 className="font-semibold capitalize text-lg mb-1">
-                        {item.category.split("-").join(" ")}
-                      </h3>
-                      <p className="text-sm opacity-75 mb-1">
-                        {tScope("server")}: {item.server}
-                      </p>
-                      <p className="text-sm opacity-75">
-                        {tScope("character")}: {item.character}
-                      </p>
-                    </div>
-                    <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 sm:mt-0">
-                      <div className="flex items-center">
+                    <TableCell className="font-medium text-right">
+                      <Image
+                        src={imageReturn(item.category)}
+                        alt={item.server}
+                        width={60}
+                        height={60}
+                        className="rounded-lg"
+                      />
+                    </TableCell>
+                    <TableCell className="font-medium text-center">
+                      <div className="inline-flex flex-col items-start">
+                        <p className="uppercase text-yellow-600">
+                          Kamas {item.category.split("-").join(" ")}
+                        </p>
+                        <p>
+                          {tScope("server")}: {item.server}
+                        </p>
+                        <p>
+                          {tScope("deliverQty")}: {item.amount}M
+                        </p>
+                        <p>
+                          {tScope("characterName")}:{" "}
+                          <strong className="text-xl text-red-600 capitalize">
+                            {item.character}
+                          </strong>
+                        </p>
+                      </div>
+                    </TableCell>
+                    <TableCell className="font-medium">
+                      <span className="uppercase">
+                        {item.category.split("-").join(" ")}{" "}
+                      </span>
+                    </TableCell>
+                    <TableCell className="font-medium text-center">
+                      {" "}
+                      <div className="">
                         <button
                           onClick={() =>
                             updateToCart(
@@ -127,140 +167,82 @@ const CartPage: React.FC = () => {
                               Math.max(1, item.amount - 1)
                             )
                           }
-                          className="text-current hover:opacity-75 focus:outline-none bg-indigo-200 rounded-full p-2 transition-colors duration-200 shadow-sm"
+                          className="text-current hover:opacity-75 focus:outline-none bg-yellow-600 rounded-tl-full rounded-bl-full p-2 transition-colors duration-200 shadow-sm"
                           aria-label="Decrease cart amount"
                         >
-                          <Minus size={16} className="text-black/90" />
+                          <Minus size={16} className="text-black/80" />
                         </button>
                         <span className="mx-3 font-medium">{item.amount}</span>
                         <button
                           onClick={() =>
                             updateToCart(item.productId, item.amount + 1)
                           }
-                          className="text-current hover:opacity-75 focus:outline-none bg-indigo-200 rounded-full p-2 transition-colors duration-200 shadow-sm"
+                          className="text-current hover:opacity-75 focus:outline-none bg-yellow-600 rounded-tr-full rounded-br-full p-2 transition-colors duration-200 shadow-sm"
                           aria-label="Increase cart amount"
                         >
-                          <Plus size={16} className="text-black/90" />
+                          <Plus size={16} className="text-black/80" />
                         </button>
                       </div>
+                    </TableCell>
+                    <TableCell className="font-medium text-center">
                       <span className="font-semibold whitespace-nowrap">
-                        {item.totalPrice.toFixed(2)}{" "}
+                        {item.unitPrice.toFixed(2)}{" "}
                         {parsedDevise(item.currency)}
                       </span>
+                    </TableCell>
+                    <TableCell className="font-medium text-center">
+                      {item.totalPrice.toFixed(2)} {parsedDevise(item.currency)}
                       <button
                         onClick={() => removeFromCart(item.productId)}
-                        className="text-current hover:opacity-75 text-indigo-200 rounded-full p-2 transition-colors duration-200 shadow-sm"
+                        className="bg-red-600 text-white ml-1.5 rounded hover:opacity-75 p-1 transition-colors duration-200 shadow-sm"
                         aria-label="Remove from cart"
                       >
-                        <Trash2 size={20} className="text-black/60" />
+                        <TiDelete />
                       </button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+                <TableRow className="w-full border-gray-200">
+                  <TableCell
+                    className="font-medium text-end self-end"
+                    colSpan={6}
+                  >
+                    <div className="w-full text-right">
+                      <p className="w-full">
+                        {tScope("sousTotal")}:{" "}
+                        <span className="ml-12">{subtotal.toFixed(2)}</span>
+                        {parsedDevise(carts[0].currency)}
+                      </p>
+
+                      <p className="w-full mt-4">
+                        {tScope("total")}:{" "}
+                        <span className="ml-12">
+                          {total.toFixed(2)}
+                          {parsedDevise(carts[0].currency)}
+                        </span>
+                      </p>
                     </div>
-                  </div>
-                ))
-              )}
-            </div>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
-          <div className="lg:w-1/3 bg-indigo-600 p-6 rounded-2xl lg:sticky lg:top-8 self-start">
-            <h2 className="text-2xl font-semibold text-white mb-6">
-              {tScope("orderSummary")}
-            </h2>
-            <div className="mb-6">
-              <p className="text-sm text-indigo-200 mb-3">
-                {tScope("paymethod")}
-              </p>
-              <div className="space-y-3">
-                {["cards", "paypal", "crypto", "cardspay", "trc20"].map(
-                  (method) => (
-                    <button
-                      key={method}
-                      className={clsx(
-                        "w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200",
-                        activePaymentMethod === method
-                          ? "bg-indigo-500 shadow-md"
-                          : "bg-indigo-700 hover:bg-indigo-500"
-                      )}
-                      onClick={() => setActivePaymentMethod(method)}
-                      aria-label="payment method"
-                    >
-                      <Image
-                        src={`/pay/${method}.png`}
-                        alt={method}
-                        width={120}
-                        height={30}
-                        className="h-6 w-auto"
-                      />
-                      <Check
-                        size={22}
-                        className={clsx("transition-colors duration-200", {
-                          "text-green-400": activePaymentMethod === method,
-                          "text-indigo-400": activePaymentMethod !== method,
-                        })}
-                      />
-                    </button>
-                  )
-                )}
-              </div>
-            </div>
-            <div className="border-t border-indigo-500 pt-4 mb-6">
-              <div className="flex justify-between mb-2 text-indigo-200">
-                <span>{tScope("subtotal")}</span>
-                <span>
-                  {subtotal.toFixed(2)} {parsedDevise(carts[0]?.currency)}
-                </span>
-              </div>
-              <div className="flex justify-between mb-2 text-indigo-200">
-                <span>{tScope("shipping")}</span>
-                <span>
-                  {shipping.toFixed(2)} {parsedDevise(carts[0]?.currency)}
-                </span>
-              </div>
-              <div className="flex justify-between font-semibold text-white text-lg mt-4">
-                <span>Total (Tax incl.)</span>
-                <span>
-                  {total.toFixed(2)} {parsedDevise(carts[0]?.currency)}
-                </span>
-              </div>
-            </div>
-            <button
-              className={clsx(
-                "w-full bg-green-400 text-indigo-800 py-4 rounded-xl font-semibold text-lg hover:bg-green-300 transition-colors flex items-center justify-center",
-                {
-                  "opacity-75":
-                    total <= 0 ||
-                    isOrderLoading ||
-                    !activePaymentMethod ||
-                    !session?.user.id,
-                }
-              )}
-              onClick={handleCheckout}
-              disabled={
-                total <= 0 ||
-                isOrderLoading ||
-                !activePaymentMethod ||
-                !session?.user.id
-              }
-              aria-label="Checkout button"
+          <div className="w-full flex items-center justify-between p-4 border border-gray-200">
+            <Link
+              href="/"
+              className="bg-black/80 text-white/80 p-2 rounded transition-colors hover:bg-black/90"
             >
-              {isOrderLoading ? (
-                <span className="flex items-center gap-1">
-                  <Loader className="animate-spin" size={24} />
-                  {tScope("checkoutLoadingBtn")}
-                </span>
-              ) : (
-                <>
-                  <span>
-                    {total.toFixed(2)} {parsedDevise(carts[0]?.currency)}
-                  </span>
-                  <span className="ml-2">{tScope("checkout")} →</span>
-                </>
-              )}
-            </button>
+              {tScope("continueShop")}
+            </Link>
+            <Link
+              href="/checkout"
+              className="bg-black/80 text-white/80 p-2 rounded transition-colors hover:bg-black/90"
+            >
+              {tScope("order")}
+            </Link>
           </div>
         </div>
-      </div>
-      <div className="flex items-center justify-center mx-auto w-full py-5">
-        <InfoSection />
-      </div>
+      )}
     </div>
   );
 };

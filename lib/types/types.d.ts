@@ -41,6 +41,8 @@ export interface USERLOGINRESPONSE {
   isAdmin: boolean;
   moderator: boolean;
   online: boolean;
+  isEmailVerified?: boolean;
+  departement?: string;
   password: string | undefined;
   phone: string;
   profil: string;
@@ -139,7 +141,23 @@ export interface UserProfile {
   address: string;
   country: string;
   city: string;
+  departement?: string;
   postalCode: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+interface UserCard {
+  code: string;
+  expirationDate: string;
+}
+
+export interface UserPaymentMethodResponse {
+  _id: string;
+  UserId: string;
+  method: string;
+  rib?: string;
+  email?: string;
+  trc20Address?: string;
+  cardInfo?: Card;
 }

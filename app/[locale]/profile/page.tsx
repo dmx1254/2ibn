@@ -14,23 +14,15 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "../components/ui/skeleton";
 import axios from "axios";
-import { OrderLength } from "@/lib/types/types";
+import {
+  OrderLength,
+  USERLOGINRESPONSE,
+  UserPaymentMethodResponse,
+} from "@/lib/types/types";
 import { useSession } from "next-auth/react";
 import { useScopedI18n } from "@/locales/client";
 import { formatTimeAgo } from "@/lib/utils";
-
-interface USERLOGINRESPONSE {
-  _id: string;
-  address: string;
-  city: string;
-  country: string;
-  createdAt: Date;
-  updatedAt: Date;
-  email: string;
-  firstname: string;
-  lastname: string;
-  phone: string;
-}
+import PaymentMethodsCard from "../components/PaymentMethodsCard";
 
 const ProfilePage = () => {
   const tScope = useScopedI18n("profile");
@@ -46,6 +38,9 @@ const ProfilePage = () => {
   const [user, setUser] = useState<USERLOGINRESPONSE | null>(null);
   const [ordersL, setOrdersL] = useState<OrderLength | null>(null);
   const [ordersLoading, setOrdersLoading] = useState<boolean>(false);
+  const [paymentMethods, setPaymentMethods] = useState<
+    UserPaymentMethodResponse[]
+  >([]);
   // console.log(ordersL);
 
   const getStatusColor = (status: string) => {
@@ -79,6 +74,21 @@ const ProfilePage = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    const getPaymentMethods = async () => {
+      const data = { userId: session?.user.id };
+      const response = await axios.post(
+        `/api/iben/user/getPaymentMethods`,
+        data
+      );
+      if (response) {
+        setPaymentMethods(response.data);
+      }
+    };
+    if (session?.user.id) {
+      getPaymentMethods();
+    }
+  }, [session?.user.id]);
   // GET ORDERS LENGTHS
 
   useEffect(() => {
@@ -155,7 +165,7 @@ const ProfilePage = () => {
   );
 
   return (
-    <div className="max-w-6xl mx-auto p-2 sm:p-6">
+    <div className="w-full max-w-6xl mx-auto p-2 sm:p-6">
       {/* Welcome Section */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900">
@@ -306,7 +316,7 @@ const ProfilePage = () => {
       </Card>
 
       {/* Recent Activity */}
-      <Card>
+      <Card className="mb-8">
         <CardContent className="p-6">
           <h2 className="text-lg font-semibold mb-4">
             {tScope("acountDetail.orderRecentTitle")}
@@ -333,7 +343,8 @@ const ProfilePage = () => {
                         tScope("acountDetail.lastOrderStatusEnt")}
                       {ordersL?.lastOrder[0]?.status === "Payée" &&
                         tScope("acountDetail.lastOrderStatusD")}
-                      {ordersL?.lastOrder[0]?.status === "En Cours de payment" &&
+                      {ordersL?.lastOrder[0]?.status ===
+                        "En Cours de payment" &&
                         tScope("acountDetail.lastOrderStatusEnc")}
                       {ordersL?.lastOrder[0]?.status === "Annulée" &&
                         tScope("acountDetail.lastOrderStatusAnn")}
@@ -350,27 +361,11 @@ const ProfilePage = () => {
             ) : (
               ""
             )}
-
-            {/* <div className="flex items-center space-x-3">
-              <div className="p-2 rounded-full bg-blue-50">
-                <Heart className="w-4 h-4 text-yellow-600" />
-              </div>
-              <div>
-                <p className="font-medium">Added item to wishlist</p>
-                <p className="text-sm text-gray-500">Yesterday</p>
-              </div>
-            </div> */}
-            {/* <div className="flex items-center space-x-3">
-              <div className="p-2 rounded-full bg-purple-50">
-                <CreditCard className="w-4 h-4 text-purple-600" />
-              </div>
-              <div>
-                <p className="font-medium">Updated payment method</p>
-                <p className="text-sm text-gray-500">3 days ago</p>
-              </div>
-            </div> */}
           </div>
         </CardContent>
+      </Card>
+      <Card className="w-full">
+        <PaymentMethodsCard methods={paymentMethods} />
       </Card>
     </div>
   );
