@@ -34,7 +34,7 @@ const SignUpForm = () => {
   const tScope = useScopedI18n("signup");
   const router = useRouter();
   const { user } = useStore();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
   const [formData, setFormData] = useState({
     lastname: "",
     firstname: "",
@@ -287,13 +287,15 @@ const SignUpForm = () => {
     <div className="w-full space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label htmlFor="lastname">{tScope("renderStep1.lastname")}</Label>
+          <Label htmlFor="lastname" className="text-white/80">
+            {tScope("renderStep1.lastname")}
+          </Label>
           <div className="relative">
-            <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+            <User className="absolute left-3 top-3 h-4 w-4 text-white/60" />
             <Input
               id="lastname"
               name="lastname"
-              className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="pl-10 outline-none bg-transparent border-white/80 text-white/80 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-white/60"
               placeholder={tScope("renderStep1.lastname")}
               value={formData.lastname}
               onChange={handleChange}
@@ -304,13 +306,15 @@ const SignUpForm = () => {
           </div>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="firstname">{tScope("renderStep1.firstname")}</Label>
+          <Label htmlFor="firstname" className="text-white/80">
+            {tScope("renderStep1.firstname")}
+          </Label>
           <div className="relative">
-            <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+            <User className="absolute left-3 top-3 h-4 w-4 text-white/60" />
             <Input
               id="firstname"
               name="firstname"
-              className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="pl-10 outline-none bg-transparent border-white/80 text-white/80 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-white/60"
               placeholder={tScope("renderStep1.firstname")}
               value={formData.firstname}
               onChange={handleChange}
@@ -322,14 +326,16 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="email">{tScope("renderStep1.email")}</Label>
+        <Label htmlFor="email" className="text-white/80">
+          {tScope("renderStep1.email")}
+        </Label>
         <div className="relative">
-          <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+          <Mail className="absolute left-3 top-3 h-4 w-4 text-white/60" />
           <Input
             id="email"
             name="email"
             type="email"
-            className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="pl-10 outline-none bg-transparent border-white/80 text-white/80 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-white/60"
             placeholder={tScope("renderStep1.emailPlace")}
             value={formData.email}
             onChange={handleChange}
@@ -340,14 +346,16 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="phone">{tScope("renderStep1.phone")}</Label>
+        <Label htmlFor="phone" className="text-white/80">
+          {tScope("renderStep1.phone")}
+        </Label>
         <div className="relative">
-          <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+          <Phone className="absolute left-3 top-3 h-4 w-4 text-white/60" />
           <Input
             id="phone"
             name="phone"
             type="tel"
-            className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="pl-10 outline-none bg-transparent border-white/80 text-white/80 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-white/60"
             placeholder={tScope("renderStep1.phonePlace")}
             value={formData.phone}
             onChange={handleChange}
@@ -364,19 +372,21 @@ const SignUpForm = () => {
     <div className="w-full space-y-6">
       <div className="text-center">
         <Mail className="mx-auto h-12 w-12 text-yellow-500" />
-        <h3 className="mt-4 text-lg font-semibold">
+        <h3 className="mt-4 text-xl font-semibold text-white/80">
           {tScope("renderStep2.title")}
         </h3>
-        <p className="mt-2 text-sm text-gray-500">
+        <p className="mt-2 text-sm text-white/80">
           {tScope("renderStep2.subTitle")} {formData.email}
         </p>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="code">{tScope("renderStep2.codeText")}</Label>
+        <Label htmlFor="code" className="text-white/80 text-base">
+          {tScope("renderStep2.codeText")}
+        </Label>
         <Input
           id="code"
           name="code"
-          className="text-center text-2xl tracking-widest outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="text-center bg-transparent border-white/80 text-white/80 text-2xl tracking-widest outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-white/70 px-4 py-6"
           placeholder={tScope("renderStep2.codeText")}
           maxLength={6}
           value={formData.code}
@@ -391,13 +401,15 @@ const SignUpForm = () => {
     <div className="w-full space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label htmlFor="country">{tScope("renderStep3.country")}</Label>
+          <Label htmlFor="country" className="text-white/80">
+            {tScope("renderStep3.country")}
+          </Label>
           <div className="relative">
-            <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+            <MapPin className="absolute left-3 top-3 h-4 w-4 text-white/60" />
             <Input
               id="country"
               name="country"
-              className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="pl-10 outline-none bg-transparent text-white/80 border-white/80 placeholder:text-white/60 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               placeholder={tScope("renderStep3.countryPlace")}
               value={formData.country}
               onChange={handleChange}
@@ -408,13 +420,15 @@ const SignUpForm = () => {
           </div>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="city">{tScope("renderStep3.city")}</Label>
+          <Label htmlFor="city" className="text-white/80">
+            {tScope("renderStep3.city")}
+          </Label>
           <div className="relative">
             <Building className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
             <Input
               id="city"
               name="city"
-              className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="pl-10 outline-none bg-transparent text-white/80 border-white/80 placeholder:text-white/60 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               placeholder={tScope("renderStep3.cityPlace")}
               value={formData.city}
               onChange={handleChange}
@@ -426,13 +440,15 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="address">{tScope("renderStep3.address")}</Label>
+        <Label htmlFor="address" className="text-white/80">
+          {tScope("renderStep3.address")}
+        </Label>
         <div className="relative">
           <Home className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
           <Input
             id="address"
             name="address"
-            className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="pl-10 outline-none bg-transparent text-white/80 border-white/80 placeholder:text-white/60 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
             placeholder={tScope("renderStep3.addressPlace")}
             value={formData.address}
             onChange={handleChange}
@@ -443,7 +459,9 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="postalCode">{tScope("renderStep3.postalCode")}</Label>
+        <Label htmlFor="postalCode" className="text-white/80">
+          {tScope("renderStep3.postalCode")}
+        </Label>
         <Input
           id="postalCode"
           name="postalCode"
@@ -451,22 +469,24 @@ const SignUpForm = () => {
           type="text"
           value={formData.postalCode}
           onChange={handleChange}
-          className="outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="outline-none bg-transparent text-white/80 border-white/80 placeholder:text-white/60 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
         />
         {postalCodeError && (
           <span className="text-red-500 text-sm">{postalCodeError}</span>
         )}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="password">{tScope("renderStep3.password")}</Label>
+        <Label htmlFor="password" className="text-white/80">
+          {tScope("renderStep3.password")}
+        </Label>
         <div className="relative">
           <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
           <Input
             id="password"
             name="password"
             type="password"
-            className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-            placeholder="********"
+            className="pl-10 outline-none bg-transparent text-white/80 border-white/80 placeholder:text-white/60 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            placeholder={tScope("renderStep3.password")}
             value={formData.password}
             onChange={handleChange}
           />
@@ -476,7 +496,7 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="password">
+        <Label htmlFor="password" className="text-white/80">
           {tScope("renderStep3.confirmPassword")}
         </Label>
         <div className="relative">
@@ -485,8 +505,8 @@ const SignUpForm = () => {
             id="confirmPassword"
             name="confirmPassword"
             type="password"
-            className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-            placeholder="********"
+            className="pl-10 outline-none bg-transparent text-white/80 border-white/80 placeholder:text-white/60 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            placeholder={tScope("renderStep3.confirmPassword")}
             value={confirmPassword}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setConfirmPassword(e.target.value)
@@ -502,9 +522,9 @@ const SignUpForm = () => {
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full max-w-xl">
+      <Card className="w-full max-w-xl bg-white/20 border-white/20">
         <CardHeader>
-          <CardTitle className="text-center">
+          <CardTitle className="text-center text-white/80">
             {step === 1 && tScope("renderStep.step1")}
             {step === 2 && tScope("renderStep.step2")}
             {step === 3 && tScope("renderStep.step3")}
@@ -518,11 +538,22 @@ const SignUpForm = () => {
             {step === 3 && renderStep3()}
 
             <div className="flex justify-between pt-4">
-              {step > 1 && (
+              {step > 1 ? (
                 <Button
                   type="button"
                   variant="outline"
                   onClick={handlePrevStep}
+                  className="flex items-center gap-2"
+                  aria-label="signup button"
+                >
+                  <ArrowLeft className="w-4 h-4" />{" "}
+                  {tScope("renderStep1.btnBack")}
+                </Button>
+              ) : (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => window.history.back()}
                   className="flex items-center gap-2"
                   aria-label="signup button"
                 >

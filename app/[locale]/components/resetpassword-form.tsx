@@ -61,25 +61,25 @@ const ResetPasswordPage = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md">
+    <div className="w-full min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <Card className="w-full max-w-md bg-white/20 border-white/20">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-4">
-            <div className="p-3 bg-primary/10 rounded-full">
-              <KeyRound className="w-6 h-6 text-primary" />
+            <div className="p-3 bg-white/10 rounded-full">
+              <KeyRound className="w-6 h-6 text-white/50" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold text-center">
+          <CardTitle className="text-2xl font-bold text-white/80 text-center">
             {tScope("title")}
           </CardTitle>
-          <CardDescription className="text-center">
+          <CardDescription className="text-center text-white/80">
             {tScope("subtitle")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           {isSuccess ? (
             <Alert className="bg-green-50 border-green-200">
-              <AlertDescription className="text-green-800">
+              <AlertDescription className="text-green-600">
                 {tScope("successMessage")}
               </AlertDescription>
             </Alert>
@@ -87,13 +87,13 @@ const ResetPasswordPage = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <div className="relative">
-                  <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                  <Mail className="absolute left-3 top-3 h-5 w-5 text-white/60" />
                   <Input
                     type="email"
                     placeholder={tScope("placeholder")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className="pl-10 outline-none bg-transparent text-white/80 border-white/80 placeholder:text-white/60 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                     required
                   />
                   {!emailError && (
@@ -129,7 +129,7 @@ const ResetPasswordPage = () => {
         <CardFooter className="flex justify-center">
           <Button
             variant="link"
-            className="text-sm text-gray-600"
+            className="text-sm text-white/80"
             onClick={() => window.history.back()}
             aria-label="return to the previous page"
           >

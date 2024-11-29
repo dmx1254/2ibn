@@ -74,11 +74,11 @@ export const metadata: Metadata = {
       "es-ES": "https://2ibn.com/es",
     },
   },
-  category: 'marketplace',
-  referrer: 'origin-when-cross-origin',
-  authors: [{ name: '2ibn' }],
-  creator: '2ibn',
-  publisher: '2ibn',
+  category: "marketplace",
+  referrer: "origin-when-cross-origin",
+  authors: [{ name: "2ibn" }],
+  creator: "2ibn",
+  publisher: "2ibn",
 };
 
 export default function RootLayout({
@@ -88,8 +88,9 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+  const isRTL = params.locale === "ar";
   return (
-    <html lang={params.locale}>
+    <html lang={params.locale} dir={isRTL ? "rtl" : "ltr"}>
       <body
         className={clsx(
           poppins.variable,

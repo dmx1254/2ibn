@@ -125,7 +125,7 @@ const TestimonialsCard = () => {
 
   return reviews.length > 0 ? (
     <div className="mt-0 lg:-mt-7 relative font-poppins w-full">
-      <Card className="max-lg:hidden absolute lg:top-[6%] w-full z-20 bg-[#363A3D] shadow-none p-2.5 flex items-center justify-between gap-2 border border-[#45494e] rounded-bl-none rounded-br-none">
+      <Card className="max-lg:hidden absolute lg:top-[6%] w-full z-20 bg-[#363A3D] shadow-none p-2.5 flex items-center justify-between gap-2 border border-[#45494e] rounded-bl rounded-br">
         {/* Header section reste le même */}
         <div className="flex flex-col items-start gap-3">
           <Image
@@ -193,7 +193,7 @@ const TestimonialsCard = () => {
               key={`${review.id}-${index}`}
               className="w-full p-3 bg-[#363A3D] rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300 inline-flex flex-col justify-between"
             >
-              <div className="flex flex-col gap-2 h-full">
+              <div className="w-full flex flex-col gap-2 h-full">
                 <div className="flex items-start gap-3">
                   <UserAvatar
                     imageUrl={review.consumer?.imageUrl}

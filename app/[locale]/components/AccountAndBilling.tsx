@@ -21,6 +21,7 @@ import { UserProfile } from "@/lib/types/types";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "./ui/skeleton";
+import clsx from "clsx";
 
 const AccountAndBilling = ({
   onContinue,
@@ -31,6 +32,7 @@ const AccountAndBilling = ({
   loadingRegister,
   billingInfo,
   setBillingInfo,
+  invitedAccount,
 }: {
   onContinue: () => void;
   status: string;
@@ -40,6 +42,7 @@ const AccountAndBilling = ({
   loadingRegister: boolean;
   billingInfo: Billing;
   setBillingInfo: (type: Billing) => void;
+  invitedAccount: boolean;
 }) => {
   const { data: session } = useSession();
   const tScope = useScopedI18n("signup");
@@ -66,6 +69,21 @@ const AccountAndBilling = ({
   const [postalCodeSignupError, setPostalCodeSignupError] =
     useState<string>("");
   const [departementSignupError, setDepartementSignupError] =
+    useState<string>("");
+
+  // INVITED ACCOUNT
+
+  const [lastnameInvitedError, setLastnameInvitedError] = useState<string>("");
+  const [firstnameInvitedError, setFirstnameInvitedError] =
+    useState<string>("");
+  const [emailInvitedError, setEmailInvitedError] = useState<string>("");
+  const [phoneInvitedError, setPhoneInvitedError] = useState<string>("");
+  const [addressInvitedError, setAddressInvitedError] = useState<string>("");
+  const [countryInvitedError, setCountryInvitedError] = useState<string>("");
+  const [cityInvitedError, setCityInvitedError] = useState<string>("");
+  const [postalCodeInvitedError, setPostalCodeInvitedError] =
+    useState<string>("");
+  const [departementInvitedError, setDepartementInvitedError] =
     useState<string>("");
 
   // console.log(session);
@@ -182,6 +200,68 @@ const AccountAndBilling = ({
     }
   };
 
+  const handleInvitedAccountContinue = () => {
+    if (
+      !billingInfo.lastname ||
+      !billingInfo.firstname ||
+      !billingInfo.phone ||
+      !billingInfo.email ||
+      !billingInfo.address ||
+      !billingInfo.country ||
+      !billingInfo.codePostal ||
+      !billingInfo.city ||
+      !billingInfo.departement
+    ) {
+      if (!billingInfo.lastname) {
+        setLastnameInvitedError(tScopeDialog("lastnameError"));
+      } else {
+        setLastnameInvitedError("");
+      }
+      if (!billingInfo.firstname) {
+        setFirstnameInvitedError(tScopeDialog("lastnameError"));
+      } else {
+        setFirstnameInvitedError("");
+      }
+      if (!billingInfo.email) {
+        setEmailInvitedError(tScopeDialog("lastnameError"));
+      } else {
+        setEmailInvitedError("");
+      }
+      if (!billingInfo.phone) {
+        setPhoneInvitedError(tScopeDialog("lastnameError"));
+      } else {
+        setPhoneInvitedError("");
+      }
+      if (!billingInfo.address) {
+        setAddressInvitedError(tScopeDialog("lastnameError"));
+      } else {
+        setAddressInvitedError("");
+      }
+      if (!billingInfo.country) {
+        setCountryInvitedError(tScopeDialog("lastnameError"));
+      } else {
+        setCountryInvitedError("");
+      }
+      if (!billingInfo.codePostal) {
+        setPostalCodeInvitedError(tScopeDialog("lastnameError"));
+      } else {
+        setPostalCodeInvitedError("");
+      }
+      if (!billingInfo.city) {
+        setCityInvitedError(tScopeDialog("lastnameError"));
+      } else {
+        setCityInvitedError("");
+      }
+      if (!billingInfo.departement) {
+        setDepartementInvitedError(tScopeDialog("lastnameError"));
+      } else {
+        setDepartementInvitedError("");
+      }
+    } else {
+      onContinue();
+    }
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
@@ -220,15 +300,13 @@ const AccountAndBilling = ({
     } else {
       createAccount();
     }
-
-    createAccount();
   };
 
   return (
     <Card className="w-full mx-auto border-none shadow-none">
       {!session && (
-        <CardHeader>
-          <CardTitle className="text-lg">
+        <CardHeader className="w-full">
+          <CardTitle className="text-lg border-b border-dashed border-gray-400 pb-2">
             {tScope("renderStep1.personnalInformation")}
           </CardTitle>
         </CardHeader>
@@ -237,7 +315,7 @@ const AccountAndBilling = ({
         {session ? (
           <Card className="w-full border-none shadow-none flex flex-col items-start space-y-6">
             <div
-              className="flex items-center gap-2 cursor-pointer"
+              className="flex items-center gap-2 cursor-pointer mt-4"
               onClick={() => handleChangeRadioAddressDiv("exitsAddress")}
             >
               <input
@@ -253,7 +331,7 @@ const AccountAndBilling = ({
               </span>
             </div>
             {isLoading ? (
-              <div className="flex items-center gap-2 mb-4 mt-1">
+              <div className="flex items-center gap-2 mb-2 mt-1">
                 <Skeleton className="w-10 h-2" />
                 <Skeleton className="w-10 h-2" />
                 <Skeleton className="w-10 h-2" />
@@ -285,183 +363,237 @@ const AccountAndBilling = ({
             </div>
             {existAddressOrNew === "newAddress" && (
               <Card className="w-full shadow-none border-none">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="grid gap-2">
-                    <Label htmlFor="lastname" className="required">
-                      {tScope("renderStep1.firstname")}
-                    </Label>
-                    <Input
-                      id="lastname"
-                      required
-                      placeholder={tScope("renderStep1.firstname")}
-                      value={billingInfo.lastname}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                        setBillingInfo({
-                          ...billingInfo,
-                          lastname: e.target.value,
-                        })
-                      }
-                      className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                    />
-                    {lastnameError && (
-                      <span className="text-sm text-red-600">
-                        {lastnameError}
+                <div className="grid grid-cols-1 gap-6">
+                  <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                    <Label
+                      htmlFor="lastname"
+                      className="relative required lg:w-1/5"
+                    >
+                      {tScope("renderStep1.firstname")} :
+                      <span className="absolute text-red-600 text-lg top-[-56%] left-[-10%] lg:left-[-3.5%]">
+                        *
                       </span>
-                    )}
-                  </div>
-
-                  <div className="grid gap-2">
-                    <Label htmlFor="firstname" className="required">
-                      {tScope("renderStep1.lastname")}
                     </Label>
-                    <Input
-                      id="firstname"
-                      required
-                      value={billingInfo.firstname}
-                      placeholder={tScope("renderStep1.lastname")}
-                      onChange={(e) =>
-                        setBillingInfo({
-                          ...billingInfo,
-                          firstname: e.target.value,
-                        })
-                      }
-                      className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                    />
-                    {firstnameError && (
-                      <span className="text-sm text-red-600">
-                        {firstnameError}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div className="space-y-4 mt-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="grid gap-2">
-                      <Label htmlFor="adresse" className="required">
-                        {tScope("renderStep3.address")}
-                      </Label>
+                    <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
                       <Input
-                        id="adresse"
+                        id="lastname"
                         required
-                        value={billingInfo.address}
-                        placeholder={tScope("renderStep3.address")}
+                        placeholder={tScope("renderStep1.firstname")}
+                        value={billingInfo.lastname}
                         onChange={(e: ChangeEvent<HTMLInputElement>) =>
                           setBillingInfo({
                             ...billingInfo,
-                            address: e.target.value,
+                            lastname: e.target.value,
                           })
                         }
                         className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                       />
-                      {addressError && (
+                      {lastnameError && (
                         <span className="text-sm text-red-600">
-                          {addressError}
+                          {lastnameError}
                         </span>
                       )}
                     </div>
+                  </div>
 
-                    <div className="grid gap-2">
-                      <Label htmlFor="pays" className="required">
-                        {tScope("renderStep3.country")}
+                  <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                    <Label
+                      htmlFor="firstname"
+                      className="relative required lg:w-1/5"
+                    >
+                      {tScope("renderStep1.lastname")} :
+                      <span className="absolute text-red-600 text-lg top-[-56%] left-[-13%] lg:left-[-3.5%]">
+                        *
+                      </span>
+                    </Label>
+                    <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                      <Input
+                        id="firstname"
+                        required
+                        value={billingInfo.firstname}
+                        placeholder={tScope("renderStep1.lastname")}
+                        onChange={(e) =>
+                          setBillingInfo({
+                            ...billingInfo,
+                            firstname: e.target.value,
+                          })
+                        }
+                        className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                      />
+                      {firstnameError && (
+                        <span className="text-sm text-red-600">
+                          {firstnameError}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4 mt-4">
+                  <div className="grid grid-cols-1 gap-6">
+                    <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                      <Label
+                        htmlFor="adresse"
+                        className="relative required lg:w-1/5"
+                      >
+                        {tScope("renderStep3.address")} :
+                        <span className="absolute text-red-600 text-lg top-[-56%] left-[-9%] lg:left-[-3.5%]">
+                          *
+                        </span>
                       </Label>
+                      <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                        <Input
+                          id="adresse"
+                          required
+                          value={billingInfo.address}
+                          placeholder={tScope("renderStep3.address")}
+                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            setBillingInfo({
+                              ...billingInfo,
+                              address: e.target.value,
+                            })
+                          }
+                          className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                        />
+                        {addressError && (
+                          <span className="text-sm text-red-600">
+                            {addressError}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                      <Label
+                        htmlFor="pays"
+                        className="relative required lg:w-1/5"
+                      >
+                        {tScope("renderStep3.country")} :
+                        <span className="absolute text-red-600 text-lg top-[-56%] left-[-14%] lg:left-[-3.5%]">
+                          *
+                        </span>
+                      </Label>
+                      <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                        <Select
+                          value={billingInfo.country}
+                          onValueChange={(value) =>
+                            setBillingInfo({ ...billingInfo, country: value })
+                          }
+                        >
+                          <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+                            <SelectValue placeholder="Sélectionnez un pays" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {countries.map((c) => (
+                              <SelectItem key={c.name} value={c.name}>
+                                {c.name}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        {countryError && (
+                          <span className="text-sm text-red-600">
+                            {countryError}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-6">
+                    <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                      <Label htmlFor="codePostal" className="relative lg:w-1/5">
+                        {tScope("renderStep3.postalCode")} :
+                        <span className="absolute text-red-600 text-lg top-[-56%] left-[-8%] lg:left-[-3.5%]">
+                          *
+                        </span>
+                      </Label>
+                      <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                        <Input
+                          id="codePostal"
+                          value={billingInfo.codePostal}
+                          placeholder={tScope("renderStep3.postalCode")}
+                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            setBillingInfo({
+                              ...billingInfo,
+                              codePostal: e.target.value,
+                            })
+                          }
+                          className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                        />
+                        {postalCodeError && (
+                          <span className="text-sm text-red-600">
+                            {postalCodeError}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                      <Label
+                        htmlFor="city"
+                        className="relative required lg:w-1/5"
+                      >
+                        {tScope("renderStep3.city")} :
+                        <span className="absolute text-red-600 text-lg top-[-56%] left-[-15%] lg:left-[-3.5%]">
+                          *
+                        </span>
+                      </Label>
+                      <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                        <Input
+                          id="city"
+                          required
+                          value={billingInfo.city}
+                          placeholder={tScope("renderStep3.city")}
+                          onChange={(e) =>
+                            setBillingInfo({
+                              ...billingInfo,
+                              city: e.target.value,
+                            })
+                          }
+                          className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                        />
+                        {cityError && (
+                          <span className="text-sm text-red-600">
+                            {cityError}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                    <Label
+                      htmlFor="departement"
+                      className="relative required lg:w-1/5"
+                    >
+                      {tScope("renderStep3.depart")} :
+                      <span className="absolute text-red-600 text-lg top-[-56%] left-[-8%] lg:left-[-3.5%]">
+                        *
+                      </span>
+                    </Label>
+                    <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
                       <Select
-                        value={billingInfo.country}
+                        value={billingInfo.departement}
                         onValueChange={(value) =>
-                          setBillingInfo({ ...billingInfo, country: value })
+                          setBillingInfo({ ...billingInfo, departement: value })
                         }
                       >
                         <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
-                          <SelectValue placeholder="Sélectionnez un pays" />
+                          <SelectValue placeholder="--- Veuillez choisir ---" />
                         </SelectTrigger>
                         <SelectContent>
-                          {countries.map((c) => (
+                          {cityList.map((c) => (
                             <SelectItem key={c.name} value={c.name}>
                               {c.name}
                             </SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
-                      {countryError && (
+                      {departementError && (
                         <span className="text-sm text-red-600">
-                          {countryError}
+                          {departementError}
                         </span>
                       )}
                     </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="grid gap-2">
-                      <Label htmlFor="codePostal">
-                        {tScope("renderStep3.postalCode")}
-                      </Label>
-                      <Input
-                        id="codePostal"
-                        value={billingInfo.codePostal}
-                        placeholder={tScope("renderStep3.postalCode")}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                          setBillingInfo({
-                            ...billingInfo,
-                            codePostal: e.target.value,
-                          })
-                        }
-                        className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                      />
-                      {postalCodeError && (
-                        <span className="text-sm text-red-600">
-                          {postalCodeError}
-                        </span>
-                      )}
-                    </div>
-                    <div className="grid gap-2">
-                      <Label htmlFor="city" className="required">
-                        {tScope("renderStep3.city")}
-                      </Label>
-                      <Input
-                        id="city"
-                        required
-                        value={billingInfo.city}
-                        placeholder={tScope("renderStep3.city")}
-                        onChange={(e) =>
-                          setBillingInfo({
-                            ...billingInfo,
-                            city: e.target.value,
-                          })
-                        }
-                      />
-                      {cityError && (
-                        <span className="text-sm text-red-600">
-                          {cityError}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="grid gap-2">
-                    <Label htmlFor="departement" className="required">
-                      {tScope("renderStep3.depart")}
-                    </Label>
-                    <Select
-                      value={billingInfo.departement}
-                      onValueChange={(value) =>
-                        setBillingInfo({ ...billingInfo, departement: value })
-                      }
-                    >
-                      <SelectTrigger className="w-full max-w-60 focus:ring-0 focus:ring-offset-0">
-                        <SelectValue placeholder="--- Veuillez choisir ---" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {cityList.map((c) => (
-                          <SelectItem key={c.name} value={c.name}>
-                            {c.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    {departementError && (
-                      <span className="text-sm text-red-600">
-                        {departementError}
-                      </span>
-                    )}
                   </div>
                 </div>
               </Card>
@@ -474,13 +606,317 @@ const AccountAndBilling = ({
               Continuer
             </button>
           </Card>
+        ) : invitedAccount ? (
+          <Card className="w-full shadow-none border-none">
+            <div className="grid grid-cols-1 gap-6">
+              <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                <Label
+                  htmlFor="lastname"
+                  className="relative required lg:w-1/5"
+                >
+                  {tScope("renderStep1.firstname")} :
+                  <span className="absolute text-red-600 text-lg top-[-56%] left-[-10%] lg:left-[-3.5%]">
+                    *
+                  </span>
+                </Label>
+                <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                  <Input
+                    id="lastname"
+                    required
+                    placeholder={tScope("renderStep1.firstname")}
+                    value={billingInfo.lastname}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setBillingInfo({
+                        ...billingInfo,
+                        lastname: e.target.value,
+                      })
+                    }
+                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  />
+                  {lastnameInvitedError && (
+                    <span className="text-sm text-red-600">
+                      {lastnameInvitedError}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                <Label
+                  htmlFor="firstname"
+                  className="relative required lg:w-1/5"
+                >
+                  {tScope("renderStep1.lastname")} :
+                  <span className="absolute text-red-600 text-lg top-[-56%] left-[-13%] lg:left-[-3.5%]">
+                    *
+                  </span>
+                </Label>
+                <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                  <Input
+                    id="firstname"
+                    required
+                    value={billingInfo.firstname}
+                    placeholder={tScope("renderStep1.lastname")}
+                    onChange={(e) =>
+                      setBillingInfo({
+                        ...billingInfo,
+                        firstname: e.target.value,
+                      })
+                    }
+                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  />
+                  {firstnameInvitedError && (
+                    <span className="text-sm text-red-600">
+                      {firstnameInvitedError}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                <Label htmlFor="email" className="relative required lg:w-1/5">
+                  {tScope("renderStep3.email")} :
+                  <span className="absolute text-red-600 text-lg top-[-56%] left-[-9%] lg:left-[-3.5%]">
+                    *
+                  </span>
+                </Label>
+                <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                  <Input
+                    id="email"
+                    required
+                    type="email"
+                    value={billingInfo.email}
+                    placeholder={tScope("renderStep3.email")}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setBillingInfo({
+                        ...billingInfo,
+                        email: e.target.value,
+                      })
+                    }
+                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  />
+                  {emailInvitedError && (
+                    <span className="text-sm text-red-600">
+                      {emailInvitedError}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                <Label htmlFor="phone" className="relative required lg:w-1/5">
+                  {tScope("renderStep3.phone")} :
+                  <span className="absolute text-red-600 text-lg top-[-56%] left-[-9%] lg:left-[-3.5%]">
+                    *
+                  </span>
+                </Label>
+                <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                  <Input
+                    id="phone"
+                    required
+                    value={billingInfo.phone}
+                    placeholder={tScope("renderStep3.phone")}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setBillingInfo({
+                        ...billingInfo,
+                        phone: e.target.value,
+                      })
+                    }
+                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  />
+                  {phoneInvitedError && (
+                    <span className="text-sm text-red-600">
+                      {phoneInvitedError}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4 mt-4">
+              <div className="grid grid-cols-1 gap-6">
+                <h3 className="text-lg font-medium border-b border-dashed border-gray-400 pb-2">
+                  {tScope("renderStep3.addressPlace")}
+                </h3>
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label
+                    htmlFor="adresse"
+                    className="relative required lg:w-1/5"
+                  >
+                    {tScope("renderStep3.address")} :
+                    <span className="absolute text-red-600 text-lg top-[-56%] left-[-9%] lg:left-[-3.5%]">
+                      *
+                    </span>
+                  </Label>
+                  <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                    <Input
+                      id="adresse"
+                      required
+                      value={billingInfo.address}
+                      placeholder={tScope("renderStep3.address")}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        setBillingInfo({
+                          ...billingInfo,
+                          address: e.target.value,
+                        })
+                      }
+                      className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    />
+                    {addressInvitedError && (
+                      <span className="text-sm text-red-600">
+                        {addressInvitedError}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label htmlFor="pays" className="relative required lg:w-1/5">
+                    {tScope("renderStep3.country")} :
+                    <span className="absolute text-red-600 text-lg top-[-56%] left-[-14%] lg:left-[-3.5%]">
+                      *
+                    </span>
+                  </Label>
+                  <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                    <Select
+                      value={billingInfo.country}
+                      onValueChange={(value) =>
+                        setBillingInfo({ ...billingInfo, country: value })
+                      }
+                    >
+                      <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+                        <SelectValue placeholder="Sélectionnez un pays" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {countries.map((c) => (
+                          <SelectItem key={c.name} value={c.name}>
+                            {c.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {countryInvitedError && (
+                      <span className="text-sm text-red-600">
+                        {countryInvitedError}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6">
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label htmlFor="codePostal" className="relative lg:w-1/5">
+                    {tScope("renderStep3.postalCode")} :
+                    <span className="absolute text-red-600 text-lg top-[-56%] left-[-8%] lg:left-[-3.5%]">
+                      *
+                    </span>
+                  </Label>
+                  <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                    <Input
+                      id="codePostal"
+                      value={billingInfo.codePostal}
+                      placeholder={tScope("renderStep3.postalCode")}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        setBillingInfo({
+                          ...billingInfo,
+                          codePostal: e.target.value,
+                        })
+                      }
+                      className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    />
+                    {postalCodeInvitedError && (
+                      <span className="text-sm text-red-600">
+                        {postalCodeInvitedError}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label htmlFor="city" className="relative required lg:w-1/5">
+                    {tScope("renderStep3.city")} :
+                    <span className="absolute text-red-600 text-lg top-[-56%] left-[-15%] lg:left-[-3.5%]">
+                      *
+                    </span>
+                  </Label>
+                  <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                    <Input
+                      id="city"
+                      required
+                      value={billingInfo.city}
+                      placeholder={tScope("renderStep3.city")}
+                      onChange={(e) =>
+                        setBillingInfo({
+                          ...billingInfo,
+                          city: e.target.value,
+                        })
+                      }
+                      className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    />
+                    {cityInvitedError && (
+                      <span className="text-sm text-red-600">
+                        {cityInvitedError}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                <Label
+                  htmlFor="departement"
+                  className="relative required lg:w-1/5"
+                >
+                  {tScope("renderStep3.depart")} :
+                  <span className="absolute text-red-600 text-lg top-[-56%] left-[-8%] lg:left-[-3.5%]">
+                    *
+                  </span>
+                </Label>
+                <div className="w-full lg:w-4/5 flex flex-col items-start gap-1">
+                  <Select
+                    value={billingInfo.departement}
+                    onValueChange={(value) =>
+                      setBillingInfo({ ...billingInfo, departement: value })
+                    }
+                  >
+                    <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+                      <SelectValue placeholder="--- Veuillez choisir ---" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {cityList.map((c) => (
+                        <SelectItem key={c.name} value={c.name}>
+                          {c.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {departementInvitedError && (
+                    <span className="text-sm text-red-600">
+                      {departementInvitedError}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={handleInvitedAccountContinue}
+              className="text-base mt-4 px-6 py-2 rounded bg-yellow-600 text-white transition-colors hover:opacity-90"
+            >
+              Continuer
+            </button>
+          </Card>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid gap-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="lastname" className="required">
-                    {tScope("renderStep1.firstname")}
+              <div className="grid grid-cols-1 gap-6">
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label
+                    htmlFor="lastname"
+                    className="relative required lg:w-1/5"
+                  >
+                    {tScope("renderStep1.firstname")} :
+                    <span className="absolute text-red-600 text-lg top-[-50%] left-[-12%] lg:left-[-3.5%]">
+                      *
+                    </span>
                   </Label>
                   <Input
                     id="lastname"
@@ -490,31 +926,40 @@ const AccountAndBilling = ({
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFormData({ ...formData, lastname: e.target.value })
                     }
-                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className="lg:w-4/5 outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
                 </div>
 
-                <div className="grid gap-2">
-                  <Label htmlFor="firstname" className="required">
-                    {tScope("renderStep1.lastname")}
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label
+                    htmlFor="firstname"
+                    className="relative required lg:w-1/5"
+                  >
+                    {tScope("renderStep1.lastname")} :
+                    <span className="absolute text-red-600 text-lg top-[-52%] left-[-16%] lg:left-[-3.5%]">
+                      *
+                    </span>
                   </Label>
                   <Input
                     id="firstname"
                     required
                     value={formData.firstname}
                     placeholder={tScope("renderStep1.lastname")}
-                    onChange={(e) =>
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFormData({ ...formData, firstname: e.target.value })
                     }
-                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className="outline-none lg:w-4/5 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="email" className="required">
-                    {tScope("renderStep1.email")}
+              <div className="grid grid-cols-1 gap-6">
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label htmlFor="email" className="relative required lg:w-1/5">
+                    {tScope("renderStep1.email")} :
+                    <span className="absolute text-red-600 text-lg top-[-52%]  left-[-14%] lg:left-[-3.5%]">
+                      *
+                    </span>
                   </Label>
                   <Input
                     id="courriel"
@@ -525,13 +970,16 @@ const AccountAndBilling = ({
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className="outline-none lg:w-4/5 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
                 </div>
 
-                <div className="grid gap-2">
-                  <Label htmlFor="phone" className="required">
-                    {tScope("renderStep1.phone")}
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label htmlFor="phone" className="relative required lg:w-1/5">
+                    {tScope("renderStep1.phone")} :
+                    <span className="absolute text-red-600 text-lg top-[-52%]  left-[-10%] lg:left-[-3.5%]">
+                      *
+                    </span>
                   </Label>
                   <Input
                     id="phone"
@@ -542,20 +990,26 @@ const AccountAndBilling = ({
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className="outline-none lg:w-4/5 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
                 </div>
               </div>
             </div>
             {status !== "authenticated" && (
               <div className="space-y-4">
-                <h3 className="text-lg font-medium">
+                <h3 className="text-lg font-medium border-b border-dashed border-gray-400 pb-2">
                   {tScope("renderStep1.passwordDesc")}
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="grid gap-2">
-                    <Label htmlFor="password" className="required">
-                      {tScope("renderStep3.password")}
+                <div className="grid grid-cols-1 gap-6">
+                  <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                    <Label
+                      htmlFor="password"
+                      className="relative required lg:w-1/5"
+                    >
+                      {tScope("renderStep3.password")} :
+                      <span className="absolute text-red-600 text-lg top-[-52%]  left-[-8%] lg:left-[-3.5%]">
+                        *
+                      </span>
                     </Label>
                     <Input
                       id="password"
@@ -566,23 +1020,29 @@ const AccountAndBilling = ({
                       onChange={(e: ChangeEvent<HTMLInputElement>) =>
                         setFormData({ ...formData, password: e.target.value })
                       }
-                      className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                      className={clsx(
+                        "outline-none lg:w-4/5 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                        {
+                          "border-red-600": passwordError,
+                        }
+                      )}
                     />
                     {passwordError && (
-                      <span className="text-sm text-red-600">
+                      <span className="flex lg:hidden text-sm text-red-600">
                         {passwordError}
-                      </span>
-                    )}
-                    {confirmPasswordError && (
-                      <span className="text-sm invisible text-red-600">
-                        {confirmPasswordError}
                       </span>
                     )}
                   </div>
 
-                  <div className="grid gap-2">
-                    <Label htmlFor="confirmPassword" className="required">
-                      {tScope("renderStep3.confirmPassword")}
+                  <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                    <Label
+                      htmlFor="confirmPassword"
+                      className="relative required lg:w-1/5"
+                    >
+                      {tScope("renderStep3.confirmPassword")} :
+                      <span className="absolute text-red-600 text-lg top-[-52%]  left-[-4%] lg:left-[-3.5%]">
+                        *
+                      </span>
                     </Label>
                     <Input
                       id="confirmPassword"
@@ -596,10 +1056,15 @@ const AccountAndBilling = ({
                           confirmPassword: e.target.value,
                         })
                       }
-                      className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                      className={clsx(
+                        "outline-none lg:w-4/5 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                        {
+                          "border-red-600": confirmPasswordError,
+                        }
+                      )}
                     />
                     {confirmPasswordError && (
-                      <span className="text-sm text-red-600">
+                      <span className="flex lg:hidden text-sm text-red-600">
                         {confirmPasswordError}
                       </span>
                     )}
@@ -609,13 +1074,19 @@ const AccountAndBilling = ({
             )}
 
             <div className="space-y-4">
-              <h3 className="text-lg font-medium">
+              <h3 className="text-lg font-medium border-b border-dashed border-gray-400 pb-2">
                 {tScope("renderStep3.addressPlace")}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="adresse" className="required">
-                    {tScope("renderStep3.address")}
+              <div className="grid grid-cols-1 gap-6">
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label
+                    htmlFor="adresse"
+                    className="relative required lg:w-1/5"
+                  >
+                    {tScope("renderStep3.address")} :
+                    <span className="absolute text-red-600 text-lg top-[-52%]  left-[-6%] lg:left-[-3.5%]">
+                      *
+                    </span>
                   </Label>
                   <Input
                     id="adresse"
@@ -625,7 +1096,7 @@ const AccountAndBilling = ({
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFormData({ ...formData, address: e.target.value })
                     }
-                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className="outline-none lg:w-4/5 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
                   {countrySignupError && (
                     <span className="text-sm invisible text-red-600">
@@ -634,17 +1105,28 @@ const AccountAndBilling = ({
                   )}
                 </div>
 
-                <div className="grid gap-2">
-                  <Label htmlFor="pays" className="required">
-                    {tScope("renderStep3.country")}
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label htmlFor="pays" className="relative required w-1/5">
+                    {tScope("renderStep3.country")} :
+                    <span className="absolute text-red-600 text-lg top-[-52%]  left-[-8%] lg:left-[-3.5%]">
+                      *
+                    </span>
                   </Label>
                   <Select
                     value={formData.country}
                     onValueChange={(value) =>
                       setFormData({ ...formData, country: value })
                     }
+                    required
                   >
-                    <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+                    <SelectTrigger
+                      className={clsx(
+                        "lg:w-4/5 focus:ring-0 focus:ring-offset-0",
+                        {
+                          "border-red-600": countrySignupError,
+                        }
+                      )}
+                    >
                       <SelectValue placeholder="Sélectionnez un pays" />
                     </SelectTrigger>
                     <SelectContent>
@@ -656,34 +1138,43 @@ const AccountAndBilling = ({
                     </SelectContent>
                   </Select>
                   {countrySignupError && (
-                    <span className="text-sm text-red-600">{countrySignupError}</span>
+                    <span className="flex lg:hidden text-sm text-red-600">
+                      {countrySignupError}
+                    </span>
                   )}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="codePostal">
-                    {tScope("renderStep3.postalCode")}
+              <div className="grid grid-cols-1 gap-6">
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label htmlFor="codePostal" className="relative lg:w-1/5">
+                    {tScope("renderStep3.postalCode")} :
+                    <span className="absolute text-red-600 text-lg top-[-52%]  left-[-8%] lg:left-[-3.5%]">
+                      *
+                    </span>
                   </Label>
                   <Input
                     id="codePostal"
                     value={formData.codePostal}
                     placeholder={tScope("renderStep3.postalCode")}
+                    required
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFormData({ ...formData, codePostal: e.target.value })
                     }
-                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className="outline-none lg:w-4/5 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
                   {postalCodeSignupError && (
-                    <span className="text-sm  text-red-600">
+                    <span className="flex lg:hidden text-sm text-red-600">
                       {postalCodeSignupError}
                     </span>
                   )}
                 </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="city" className="required">
-                    {tScope("renderStep3.city")}
+                <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                  <Label htmlFor="city" className="relative required w-1/5">
+                    {tScope("renderStep3.city")} :
+                    <span className="absolute text-red-600 text-lg top-[-52%]  left-[-8%] lg:left-[-3.5%]">
+                      *
+                    </span>
                   </Label>
                   <Input
                     id="city"
@@ -693,27 +1184,41 @@ const AccountAndBilling = ({
                     onChange={(e) =>
                       setFormData({ ...formData, city: e.target.value })
                     }
-                    className="outline-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className={clsx(
+                      "outline-none lg:w-4/5 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                      {
+                        "border-red-600": postalCodeSignupError,
+                      }
+                    )}
                   />
-                  {postalCodeSignupError && (
-                    <span className="text-sm invisible text-red-600">
-                      {postalCodeSignupError}
-                    </span>
-                  )}
                 </div>
               </div>
 
-              <div className="grid gap-2">
-                <Label htmlFor="departement" className="required">
-                  {tScope("renderStep3.depart")}
+              <div className="w-full max-lg:items-start max-lg:flex-col flex items-center justify-between gap-2">
+                <Label
+                  htmlFor="departement"
+                  className="relative required lg:w-1/5"
+                >
+                  {tScope("renderStep3.depart")} :
+                  <span className="absolute text-red-600 text-lg top-[-52%]  left-[-6%] lg:left-[-3.5%]">
+                    *
+                  </span>
                 </Label>
                 <Select
                   value={formData.departement}
                   onValueChange={(value) =>
                     setFormData({ ...formData, departement: value })
                   }
+                  required
                 >
-                  <SelectTrigger className="w-full max-w-60 focus:ring-0 focus:ring-offset-0">
+                  <SelectTrigger
+                    className={clsx(
+                      "lg:w-4/5 focus:ring-0 focus:ring-offset-0",
+                      {
+                        "border-red-600": departementSignupError,
+                      }
+                    )}
+                  >
                     <SelectValue placeholder="--- Veuillez choisir ---" />
                   </SelectTrigger>
                   <SelectContent>
@@ -725,7 +1230,7 @@ const AccountAndBilling = ({
                   </SelectContent>
                 </Select>
                 {departementSignupError && (
-                  <span className="text-sm text-red-600">
+                  <span className="flex lg:hidden text-sm text-red-600">
                     {departementSignupError}
                   </span>
                 )}

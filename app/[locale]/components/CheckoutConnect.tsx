@@ -14,15 +14,24 @@ const CheckoutConnect = ({
   setIsNewAccount,
   setActiveStep,
   cartControl,
+  invitedAccount,
+  setInvitedAccount,
+  handleChangeNewAccount,
+  handleChangeInvitedAccount,
 }: {
   onContinue: () => void;
   isNewAccount: boolean;
   setIsNewAccount: (type: boolean) => void;
+  invitedAccount: boolean;
+  setInvitedAccount: (type: boolean) => void;
+  handleChangeNewAccount: (type: boolean) => void;
+  handleChangeInvitedAccount: (type: boolean) => void;
   setActiveStep: (step: string) => void;
   cartControl: number;
 }) => {
   const router = useRouter();
   const tScope = useScopedI18n("login");
+  const tScope2 = useScopedI18n("signup");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmaiError] = useState("");
@@ -59,22 +68,62 @@ const CheckoutConnect = ({
       setIsLoading(false);
     }
   };
+
+  const handleChangeNewAccountDiv = () => {
+    if (isNewAccount) {
+      handleChangeNewAccount(false);
+    } else {
+      handleChangeNewAccount(true);
+    }
+  };
+  const handleChangeInvitedAccountDiv = () => {
+    if (invitedAccount) {
+      handleChangeInvitedAccount(false);
+    } else {
+      handleChangeInvitedAccount(true);
+    }
+  };
+
   return (
     <div className="w-full max-sm:flex-col flex items-start justify-between gap-8">
       <div className="w-full flex flex-col items-start gap-4">
         <h2 className="w-full border-b border-dashed pb-2 text-base">
           {tScope("newClient")}
         </h2>
-        <div className="flex items-center gap-2">
+        <span className="my-2">{tScope2("renderStep3.orderOption")}</span>
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={handleChangeNewAccountDiv}
+        >
           <input
             type="radio"
             name="newAccount"
             checked={isNewAccount}
-            readOnly
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              handleChangeNewAccount(e.target.checked)
+            }
             id="newAccount"
             className="accent-blue-500"
           />
           <span className="text-base">{tScope("createNewAc")}</span>
+        </div>
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={handleChangeInvitedAccountDiv}
+        >
+          <input
+            type="radio"
+            name="invitedAccount"
+            checked={invitedAccount}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              handleChangeInvitedAccount(e.target.checked)
+            }
+            id="invitedAccount"
+            className="accent-blue-500"
+          />
+          <span className="text-base">
+            {tScope2("renderStep3.invitedTitle")}
+          </span>
         </div>
         <p className="w-full text-justify text-base">
           {tScope("createAccountDesc")}

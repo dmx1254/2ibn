@@ -18,6 +18,7 @@ import {
   orderBuyNumGenerated,
   parsedDevise,
   paymentMethod,
+  paymentMethodMorroco,
 } from "@/lib/utils";
 import Image from "next/image";
 import useStore from "@/lib/store-manage";
@@ -33,20 +34,29 @@ import axios from "axios";
 import { useScopedI18n } from "@/locales/client";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
-import { redirect, useRouter } from "next/navigation";
 
 // Composant pour l'étape de connexion
 const ConnectionStep = ({
   onContinue,
   setActiveStep,
   cartControl,
+  isNewAccount,
+  setIsNewAccount,
+  invitedAccount,
+  setInvitedAccount,
+  handleChangeNewAccount,
+  handleChangeInvitedAccount,
 }: {
   onContinue: () => void;
   setActiveStep: (step: string) => void;
   cartControl: number;
+  isNewAccount: boolean;
+  setIsNewAccount: (type: boolean) => void;
+  invitedAccount: boolean;
+  setInvitedAccount: (type: boolean) => void;
+  handleChangeNewAccount: (type: boolean) => void;
+  handleChangeInvitedAccount: (type: boolean) => void;
 }) => {
-  const [isNewAccount, setIsNewAccount] = useState(true);
-
   return (
     <CheckoutConnect
       onContinue={onContinue}
@@ -54,6 +64,10 @@ const ConnectionStep = ({
       setIsNewAccount={setIsNewAccount}
       setActiveStep={setActiveStep}
       cartControl={cartControl}
+      invitedAccount={invitedAccount}
+      setInvitedAccount={setInvitedAccount}
+      handleChangeNewAccount={handleChangeNewAccount}
+      handleChangeInvitedAccount={handleChangeInvitedAccount}
     />
   );
 };
@@ -70,35 +84,67 @@ const PaymentStep = ({
 }) => {
   const tsCope = useScopedI18n("paymentMode");
   return (
-    <Card className="w-full flex flex-col items-start border-none h-full  shadow-none">
-      <h2 className="text-base mb-6">{tsCope("title")}</h2>
-      <div className="w-full flex flex-col items-start gap-6">
-        {paymentMethod.map((p) => (
-          <div
-            aria-label={`${p.title} payment method`}
-            key={p.id}
-            className="flex items-center gap-2 cursor-pointer"
-            onClick={() => handleActivePayment(p.title)}
-          >
-            <input
-              type="radio"
-              className="cursor-pointer"
-              onChange={() => handleActivePayment(p.title)}
-              checked={isActivePayment === p.title}
-            />
-            <Image
-              className="w-full h-auto object-cover object-center"
-              src={p.imgPay}
-              width={200}
-              height={200}
-              alt="payment method"
-            />
-            {p.fee && (
-              <span className="w-full">{`${p.fee} ${tsCope("fee")}`}</span>
-            )}
-          </div>
-        ))}
-      </div>
+    <Card className="w-full flex max-md:flex-col items-start gap-8 justify-between border-none shadow-none">
+      <Card className="w-full flex flex-col items-start border-none h-full  shadow-none">
+        <h2 className="text-base mb-6 font-semibold">{tsCope("title")}</h2>
+        <div className="w-full flex flex-col items-start gap-6">
+          {paymentMethod.map((p) => (
+            <div
+              aria-label={`${p.title} payment method`}
+              key={p.id}
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={() => handleActivePayment(p.title)}
+            >
+              <input
+                type="radio"
+                className="cursor-pointer"
+                onChange={() => handleActivePayment(p.title)}
+                checked={isActivePayment === p.title}
+              />
+              <Image
+                className="w-full h-auto object-cover object-center"
+                src={p.imgPay}
+                width={200}
+                height={200}
+                alt="payment method"
+              />
+              {p.fee && (
+                <span className="w-full">{`${p.fee}% ${tsCope("fee")}`}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </Card>
+      <Card className="w-full flex flex-col items-start border-none h-full  shadow-none">
+        <h2 className="text-base mb-6 font-semibold">{tsCope("titleMorroco")}</h2>
+        <div className="w-full flex flex-col items-start gap-6">
+          {paymentMethodMorroco.map((p) => (
+            <div
+              aria-label={`${p.title} payment method`}
+              key={p.id}
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={() => handleActivePayment(p.title)}
+            >
+              <input
+                type="radio"
+                className="cursor-pointer"
+                onChange={() => handleActivePayment(p.title)}
+                checked={isActivePayment === p.title}
+              />
+              <Image
+                className="w-[136px] h-[36px] object-cover object-center"
+                src={p.imgPay}
+                width={200}
+                height={200}
+                alt="payment method"
+              />
+              {p.fee && (
+                <span className="w-full">{`${p.fee}% ${tsCope("fee")}`}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </Card>
     </Card>
   );
 };
@@ -108,10 +154,12 @@ const ConfirmationStep = ({
   isOrderLoading,
   handleCheckout,
   status,
+  invitedAccount,
 }: {
   isOrderLoading: boolean;
   handleCheckout: () => void;
   status: string;
+  invitedAccount: boolean;
 }) => {
   const tScope = useScopedI18n("checkout");
   const { carts } = useStore();
@@ -212,9 +260,9 @@ const ConfirmationStep = ({
           <button
             onClick={handleCheckout}
             className="p-3 bg-black/80 text-white rounded transition-colors hover:opacity-85"
-            disabled={status !== "authenticated"}
+            disabled={status !== "authenticated" && !invitedAccount}
             style={{
-              opacity: status !== "authenticated" ? 0.6 : 1,
+              opacity: status !== "authenticated" && !invitedAccount ? 0.6 : 1,
             }}
           >
             {isOrderLoading ? (
@@ -233,7 +281,7 @@ const ConfirmationStep = ({
 
 const Checkout = () => {
   const { data: session, status } = useSession();
-  const router = useRouter();
+
   const [formData, setFormData] = useState<any>({
     lastname: "",
     firstname: "",
@@ -252,20 +300,44 @@ const Checkout = () => {
     lastname: "",
     firstname: "",
     address: "",
+    phone: "",
+    email: "",
     city: "",
     codePostal: "",
     country: "",
     departement: "",
   });
+
+  // console.log(billingInfo);
+
   const tScope = useScopedI18n("cartpage");
   const tScopeR = useScopedI18n("signup");
   const tScopeCheck = useScopedI18n("checkout");
-  const { carts, clearCart } = useStore();
+  const { carts } = useStore();
   const isConnected = status === "authenticated" ? "facturation" : "connexion";
   const [activeStep, setActiveStep] = useState<string>(isConnected);
   const [isOrderLoading, setIsOrderLoading] = useState<boolean>(false);
   const [loadingRegister, setLoadingRegister] = useState(false);
   const [isActivePayment, setIsActivePayment] = useState<string>("");
+
+  const [isNewAccount, setIsNewAccount] = useState<boolean>(true);
+  const [invitedAccount, setInvitedAccount] = useState<boolean>(false);
+
+  const handleChangeNewAccount = (checked: boolean) => {
+    if (checked) {
+      setIsNewAccount(true);
+      setInvitedAccount(false);
+    }
+  };
+  const handleChangeInvitedAccount = (checked: boolean) => {
+    if (checked) {
+      setInvitedAccount(true);
+      setIsNewAccount(false);
+    } else {
+      setIsNewAccount(true);
+      setInvitedAccount(false);
+    }
+  };
 
   const subtotal = carts.reduce((total, item) => total + item.totalPrice, 0);
   const shipping = 0.0;
@@ -275,7 +347,7 @@ const Checkout = () => {
     setIsActivePayment(payment);
   };
 
-  // console.log(billingInfo);
+  // console.log(isActivePayment);
 
   const handleContinue = () => {
     if (activeStep === "connexion") {
@@ -345,8 +417,15 @@ const Checkout = () => {
         totalPrice: cart.totalPrice.toFixed(2),
       };
     });
+
+    const userId =
+      status === "authenticated"
+        ? session?.user.id
+        : invitedAccount
+        ? `invitedOrder-${billingInfo.phone}`
+        : "Commande invite";
     const data = {
-      userId: session?.user.id,
+      userId: userId,
       orderNum: orderBuyNumGenerated(),
       products: products,
       address: "",
@@ -381,7 +460,7 @@ const Checkout = () => {
     }
   };
 
-  return (
+  return carts.length > 0 ? (
     <div className="max-w-7xl mx-auto p-4 text-black/80">
       <div className="flex items-center justify-center text-sm text-gray-500">
         <Link href="/" className="transition-colors hover:text-yellow-600">
@@ -429,6 +508,12 @@ const Checkout = () => {
                       onContinue={() => handleContinue()}
                       setActiveStep={setActiveStep}
                       cartControl={carts.length}
+                      isNewAccount={isNewAccount}
+                      setIsNewAccount={setIsNewAccount}
+                      invitedAccount={invitedAccount}
+                      setInvitedAccount={setInvitedAccount}
+                      handleChangeNewAccount={handleChangeNewAccount}
+                      handleChangeInvitedAccount={handleChangeInvitedAccount}
                     />
                   </div>
                 </AccordionContent>
@@ -446,9 +531,12 @@ const Checkout = () => {
                     ? tScopeCheck("step2Conn", {
                         step2: status === "authenticated" ? 1 : 2,
                       })
-                    : tScopeCheck("step2NoConn", {
-                        step2: status === "unauthenticated" ? 2 : 1,
-                      })}
+                    : tScopeCheck(
+                        invitedAccount ? "step2Conn" : "step2NoConn",
+                        {
+                          step2: status === "unauthenticated" ? 2 : 1,
+                        }
+                      )}
                   <FaCaretDown className="text-white" />
                 </span>
               </AccordionTrigger>
@@ -462,16 +550,8 @@ const Checkout = () => {
                   loadingRegister={loadingRegister}
                   billingInfo={billingInfo}
                   setBillingInfo={setBillingInfo}
+                  invitedAccount={invitedAccount}
                 />
-                {/* <div className="mt-4">
-                    <button
-                      onClick={() => handleContinue()}
-                      className="bg-yellow-600 text-white px-6 py-2 rounded hover:bg-yellow-700 transition-colors"
-                    >
-                      Continuer
-                    </button>
-                  </div>
-                </div> */}
               </AccordionContent>
             </AccordionItem>
 
@@ -479,7 +559,7 @@ const Checkout = () => {
               <AccordionTrigger
                 className="px-4 bg-black/80 text-white"
                 isShowIcon={false}
-                disabled={carts.length < 1}
+                disabled={carts.length < 1 || !billingInfo.firstname}
               >
                 <span className="flex items-center gap-1">
                   {tScopeCheck("step3", {
@@ -514,7 +594,7 @@ const Checkout = () => {
               <AccordionTrigger
                 className="px-4 bg-black/80 text-white"
                 isShowIcon={false}
-                disabled={carts.length < 1}
+                disabled={carts.length < 1 || !isActivePayment}
               >
                 <span className="flex items-center gap-1">
                   {tScopeCheck("step4", {
@@ -529,6 +609,7 @@ const Checkout = () => {
                     isOrderLoading={isOrderLoading}
                     handleCheckout={handleCheckout}
                     status={status}
+                    invitedAccount={invitedAccount}
                   />
                 </div>
               </AccordionContent>
@@ -536,6 +617,10 @@ const Checkout = () => {
           </Accordion>
         </Card>
       </div>
+    </div>
+  ) : (
+    <div className="w-full max-w-3xl m-28 flex items-center justify-center mx-auto p-8 bg-red-50 rounded">
+      <p className="text-red-600 text-lg">{tScopeCheck("notCartFound")}</p>
     </div>
   );
 };

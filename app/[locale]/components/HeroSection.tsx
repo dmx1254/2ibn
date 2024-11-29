@@ -10,7 +10,7 @@ import { FaCircleQuestion } from "react-icons/fa6";
 import { IoIosFlash } from "react-icons/io";
 import { ServerBuy, dofusItem, parsedDevise } from "@/lib/utils";
 import useStore from "@/lib/store-manage";
-import { useScopedI18n } from "@/locales/client";
+import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 import clsx from "clsx";
 import { toast } from "sonner";
 import { Card } from "./ui/card";
@@ -32,6 +32,7 @@ const HeroSection = () => {
   const { devise, activeServerRequest, addToActiveServerRequest, addToCart } =
     useStore();
   const tScope = useScopedI18n("hero");
+  const locale = useCurrentLocale();
   const { servers } = useStore();
   const [dofusChange, setDofusChange] = useState<string>(activeServerRequest);
   const [serverChange, setServerChange] = useState<string>("");
@@ -184,7 +185,15 @@ const HeroSection = () => {
                   setAmount(e.target.value)
                 }
               />
-              <span className="absolute text-[#a1a0a0] left-[50%] z-20 py-[18px] rounded-tr-[10px] rounded-br-[10px] text-sm">
+              <span
+                className={clsx(
+                  "absolute text-[#a1a0a0] z-20 py-[18px] rounded-tr-[10px] rounded-br-[10px] text-sm",
+                  {
+                    "left-[10%]": locale === "ar",
+                    "left-[50%]": locale !== "ar",
+                  }
+                )}
+              >
                 M Kamas
               </span>
             </div>
@@ -203,7 +212,10 @@ const HeroSection = () => {
                 readOnly
               />
               <Image
-                className="absolute top-[32%] left-[75%]"
+                className={clsx("absolute top-[32%]", {
+                  "left-[15%]": locale === "ar",
+                    "left-[75%]": locale !== "ar",
+                })}
                 src="/assets/cadeau.png"
                 alt="gift kamas"
                 width={16}

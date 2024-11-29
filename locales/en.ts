@@ -10,6 +10,7 @@ export default {
   "languageandcur.en": "English",
   "languageandcur.fr": "French",
   "languageandcur.es": "Spanish",
+  "languageandcur.ar": "Arabic",
 
   "languageandcur.title": "Language and Currency",
   "languageandcur.desc":
@@ -57,6 +58,7 @@ export default {
   "cartpage.success":
     "Order successfully placed. Open the chat to proceed with the exchange",
   "cartpage.error": "Something went wrong, please try again later",
+  "cartpage.totalItems": "Total ({totalItems} items)",
 
   "infosect.desctitle": "Buy and sell Kamas Dofus",
   "infosect.descdesc":
@@ -124,7 +126,7 @@ export default {
   "sellkamas.headertablePriceDH": "Morocco(DH)",
   "sellkamas.headertablePriceEUR": "Price (€/M)",
   "sellkamas.headertablePriceUSD": "Price ($/M)",
-  "sellkamas.headertablePriceAED": "UAE",
+  "sellkamas.headertablePriceAED": "UAE(AED)",
   "sellkamas.headertableStatus": "Status",
   "sellkamas.headertableAction": "Action",
   "sellkamas.headertableBtn": "Sell Now",
@@ -278,6 +280,11 @@ export default {
   "signup.renderStep3.postalCode": "Postal code",
   "signup.renderStep3.password": "Password",
   "signup.renderStep3.confirmPassword": "Confirm password",
+  "signup.renderStep3.phone": "Phone",
+  "signup.renderStep3.email": "E-mail",
+  "signup.renderStep3.orderOption": "Order Options :",
+  "signup.renderStep3.invitedTitle": "Guest Order",
+
   "signup.error.countCitAddr": "This field is required",
   "signup.error.password": "The password must contain 8 characters",
   "signup.error.confirmPassword": "Passwords do not match",
@@ -496,6 +503,8 @@ export default {
   "footer.info2": "Privacy policy",
   "footer.info3": "Terms & Conditions",
   "footer.info4": "Contact us",
+  "footer.followUs": "Follow us",
+  "footer.address": "2024 JBK Services INTERNATIONAL FZ-LLC, Compass Building, Al Shohada Road, AL Hamra Industrial Zone-FZ, Ras Al Khaimah, United Arab Emirates JBIK INTERNATIONAL CO., LIMITED (payment processing for Cardpay). Registered address :ROOMS 1318-20,HOLLYWOODPLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
 
   "ourservice.title": "Our Services",
   "ourservice.desc":
@@ -741,6 +750,7 @@ export default {
   "testimonials.refund": "Refund guaranteed",
 
   "paymentMode.title": "Select the payment method to use for this order below",
+  "paymentMode.titleMorroco": "Bank transfer",
   "paymentMode.fee": "fees",
   "checkout.step1": "Step {step1} - Login",
   "checkout.step2Conn": "Step {step2} - Billing Information",
@@ -762,6 +772,8 @@ export default {
   "checkout.characterName": "Character Name",
   "checkout.sousTotal": "Subtotal",
   "checkout.btnCom": "Confirm Order",
+  "checkout.notCartFound":
+    "Your cart is empty. Please add items to your cart before proceeding to the checkout page.",
 
   "paymentMethod.title": "My Payment Information",
   "paymentMethod.subTitle": "My Payment Methods",

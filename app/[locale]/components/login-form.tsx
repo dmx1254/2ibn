@@ -157,7 +157,7 @@ const LoginForm = () => {
             </div> */}
             <div className="relative flex items-center justify-center text-sm">
               <span className="border-t border-white/10 w-1/5" />
-              <span className="px-2  text-white/80 w-3/5">
+              <span className="px-2 text-white/80 w-3/5">
                 {tScope("bottomDesc")}
               </span>
               <span className="border-t border-white/10 w-1/5" />
@@ -166,7 +166,7 @@ const LoginForm = () => {
 
           <Button
             variant="outline"
-            className="w-full h-12 bg-white/20 text-white/80 border-white/20 hover:border-gray-300 hover:bg-gray-50 font-medium transition-colors"
+            className="w-full h-12 bg-white/20 text-white/80 border-white/20 hover:bg-white/20 hover:border-gray-300 hover:text-white/90 font-medium transition-colors"
             asChild
             aria-label="go to signup"
           >

@@ -31,6 +31,7 @@ const VendreKamasClient = () => {
   const [serversSell, setServersSell] = useState<ServerExchange[] | null>(null);
   const [selectedServer, setSelectedServer] = useState("");
   const [serverPriceEuro, setServerPriceEuro] = useState<number | null>();
+  const [serverPriceAed, setServerPriceAed] = useState<number | null>();
   const [serverPriceDollar, setServerPriceDollar] = useState<number | null>(
     null
   );
@@ -94,11 +95,35 @@ const VendreKamasClient = () => {
     queryFn: () => fetchCurrencyDollar(),
   });
 
+  const fetchCurrencyAed = async () => {
+    const response = await fetch("/api/go/currency/aed");
+    if (!response.ok) {
+      throw new Error("Fetching currency failed: ");
+    }
+
+    return response.json();
+  };
+
+  const {
+    isLoading: IsLoadingAed,
+    error: errorAed,
+    data: aedData,
+  } = useQuery({
+    queryKey: ["aed"],
+    queryFn: () => fetchCurrencyAed(),
+  });
+
   useEffect(() => {
     if (euroData) {
       setServerPriceEuro(euroData[0]?.euro);
     }
   }, [euroData]);
+
+  useEffect(() => {
+    if (aedData) {
+      setServerPriceAed(aedData[0]?.aed);
+    }
+  }, [aedData]);
 
   useEffect(() => {
     if (dollarData) {
@@ -111,7 +136,7 @@ const VendreKamasClient = () => {
   if (isLoading) return <ServerSkeleton />;
 
   return (
-    <div className="container font-poppins mx-auto p-6 space-y-6 max-w-4xl min-h-screen">
+    <div className="container font-poppins mx-auto p-6 space-y-6 max-w-5xl min-h-screen">
       <Card className="w-full bg-[#1A1D21] my-6 p-6">
         <div className="bg-[#1A1D21] rounded-lg">
           <div className="flex flex-col items-center">
@@ -255,7 +280,10 @@ const VendreKamasClient = () => {
                         Usdt/M
                       </TableCell>
                       <TableCell className="text-right">
-                        {(server.serverPriceDh / 2.72).toFixed(3)} AED/M
+                        {(server.serverPriceDh / (serverPriceAed || 1)).toFixed(
+                          2
+                        )}{" "}
+                        AED/M
                       </TableCell>
 
                       <TableCell className="text-right">
@@ -345,7 +373,10 @@ const VendreKamasClient = () => {
                         Usdt/M
                       </TableCell>
                       <TableCell className="text-right">
-                        {(server.serverPriceDh / 2.72).toFixed(3)} AED/M
+                        {(server.serverPriceDh / (serverPriceAed || 1)).toFixed(
+                          2
+                        )}{" "}
+                        AED/M
                       </TableCell>
                       <TableCell className="text-right">
                         <span
@@ -434,7 +465,10 @@ const VendreKamasClient = () => {
                         Usdt/M
                       </TableCell>
                       <TableCell className="text-right">
-                        {(server.serverPriceDh / 2.72).toFixed(3)} AED/M
+                        {(server.serverPriceDh / (serverPriceAed || 1)).toFixed(
+                          2
+                        )}{" "}
+                        AED/M
                       </TableCell>
                       <TableCell className="text-right">
                         <span

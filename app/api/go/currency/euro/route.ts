@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-// import { EuroModel } from "@/lib/models/ibytrade-models";
-// import { connectDB } from "@/lib/db";
 import { goapiModels } from "@/lib/models/ibytrade-models";
 
 export async function GET() {

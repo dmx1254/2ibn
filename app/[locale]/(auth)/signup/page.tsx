@@ -8,7 +8,7 @@ const page = async () => {
   const session = await getServerSession(options);
   if (session) redirect("/");
   return (
-    <div className="w-full flex items-center justify-center min-h-screen p-4">
+    <div className="w-full flex items-center justify-center min-h-screen p-4 signin-bgurl">
       <SignUpForm />
     </div>
   );

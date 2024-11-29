@@ -10,14 +10,14 @@ export function InvoiceSkeleton() {
       <div className="flex items-center">
         {/* <div className="mr-2 h-8 w-8 rounded-full dark:bg-gray-400 bg-gray-200 animate-pulse" /> */}
         <div className="min-w-0">
-          <div className="h-5 w-40 rounded-md dark:bg-gray-400 bg-gray-200 animate-pulse" />
+          <div className="h-5 w-40 rounded-md bg-[#363A3D] animate-pulse" />
           {/* <div className="mt-2 h-4 w-12 rounded-md dark:bg-gray-400 bg-gray-200 animate-pulse" /> */}
         </div>
       </div>
-      <div className="mt-2 h-6 w-16 rounded-md dark:bg-gray-400 bg-gray-200 animate-pulse" />
-      <div className="mt-2 h-6 w-16 rounded-md dark:bg-gray-400 bg-gray-200 animate-pulse" />
-      <div className="mt-2 h-6 w-16 rounded-md dark:bg-gray-400 bg-gray-200 animate-pulse" />
-      <div className="mt-2 h-6 w-16 rounded-md dark:bg-gray-400 bg-gray-200 animate-pulse" />
+      <div className="mt-2 h-6 w-16 rounded-md bg-[#363A3D] animate-pulse" />
+      <div className="mt-2 h-6 w-16 rounded-md bg-[#363A3D] animate-pulse" />
+      <div className="mt-2 h-6 w-16 rounded-md bg-[#363A3D] animate-pulse" />
+      <div className="mt-2 h-6 w-16 rounded-md bg-[#363A3D] animate-pulse" />
     </div>
   );
 }
@@ -29,7 +29,7 @@ export default function ServerSkeleton() {
     >
       {/* <div className="mb-4 h-8 w-36 rounded-md bg-gray-100" /> */}
       <div className="flex grow flex-col justify-between rounded-xl dark:bg-[#1c1d22] bg-white p-4">
-        <div className="dark:bg-[#1c1d22] bg-white px-6">
+        <div className="bg-[#1c1d22] px-6">
           <InvoiceSkeleton />
           <InvoiceSkeleton />
           <InvoiceSkeleton />

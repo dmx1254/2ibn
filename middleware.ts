@@ -3,13 +3,13 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 
 const I18nMiddleware = createI18nMiddleware({
-  locales: ["en", "fr", "es"],
+  locales: ["en", "fr", "es", "ar"],
   defaultLocale: "en",
 });
 
 export async function middleware(request: NextRequest) {
   // Vérifie si c'est une route protégée (profile)
-  const isProtectedProfileRoute = /^\/(en|fr|es)\/profile/.test(
+  const isProtectedProfileRoute = /^\/(en|fr|es|ar)\/profile/.test(
     request.nextUrl.pathname
   );
 

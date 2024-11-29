@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { ServerExchange, codeGenerated, parsedDevise } from "@/lib/utils";
 import { Gift, Loader } from "lucide-react";
 import { useScopedI18n } from "@/locales/client";
@@ -25,9 +25,13 @@ const SellKamasComponents = ({
 }: {
   servers: ServerExchange[] | null;
 }) => {
+  const { devise, addNewDevise } = useStore();
   const { data: session, status } = useSession();
   const tScope = useScopedI18n("dialogsell");
-  const { devise } = useStore();
+  useLayoutEffect(() => {
+    addNewDevise({ currencyName: "mad", curencyVal: 1 });
+  }, []);
+
   const [formData, setFormData] = useState({
     gameName: "",
     amount: "",

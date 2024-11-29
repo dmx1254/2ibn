@@ -1,10 +1,6 @@
 "use client";
 
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useEffect,
-} from "react";
+import React, { ChangeEvent, FormEvent, useEffect } from "react";
 
 import { useState } from "react";
 import { Eye, EyeOff, Lock } from "lucide-react";
@@ -107,19 +103,19 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
   if (!token) return <NotFound />;
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-6 shadow-md">
+    <div className="flex min-h-screen items-center justify-center signin-bgurl">
+      <div className="w-full max-w-md space-y-8 rounded-xl bg-white/20 p-6 shadow-md">
         <div className="text-center">
-          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-2xl font-extrabold text-white/80">
             {tScope("title")}
           </h2>
-          <p className="mt-2 text-sm text-gray-600">{tScope("subtitle")}</p>
+          <p className="mt-2 text-sm text-white/80">{tScope("subtitle")}</p>
         </div>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white/80"
             >
               {tScope("password")}
             </label>
@@ -131,7 +127,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setPassword(e.target.value)
                 }
-                className="block w-full p-5 rounded-md border-gray-300 fucus:ring-0 focus:outline-none focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
+                className="block w-full bg-transparent text-white/80 border-white/20 placeholder:text-white/60 p-5 rounded-md fucus:ring-0 focus:outline-none focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
                 placeholder={tScope("passwordPlace")}
                 required
               />
@@ -143,9 +139,9 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
                 aria-label="show password"
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-gray-400" />
-                ) : (
                   <Eye className="h-5 w-5 text-gray-400" />
+                ) : (
+                  <EyeOff className="h-5 w-5 text-gray-400" />
                 )}
               </button>
             </div>
@@ -156,7 +152,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
           <div>
             <label
               htmlFor="confirmPassword"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white/80"
             >
               {tScope("confirmPassword")}
             </label>
@@ -168,7 +164,7 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setConfirmPassword(e.target.value)
                 }
-                className="block w-full p-5 rounded-md border-gray-300 fucus:ring-0 focus:outline-none focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
+                className="block w-full bg-transparent text-white/80 border-white/20 placeholder:text-white/60 p-5 rounded-md fucus:ring-0 focus:outline-none focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
                 placeholder={tScope("confirmPasswordPlace")}
                 required
               />
@@ -180,9 +176,9 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
                 aria-label="show password"
               >
                 {showConfirmPassword ? (
-                  <EyeOff className="h-5 w-5 text-gray-400" />
+                  <Eye className="h-5 w-5 text-white/60" />
                 ) : (
-                  <Eye className="h-5 w-5 text-gray-400" />
+                  <EyeOff className="h-5 w-5 text-white/60" />
                 )}
               </button>
             </div>
@@ -203,13 +199,18 @@ const page = ({ searchParams }: { searchParams: { token: string } }) => {
             </p>
           )}
 
-          <Button aria-label="submit reset password" type="submit" className="w-full" disabled={!userTokenId}>
+          <Button
+            aria-label="submit reset password"
+            type="submit"
+            className="w-full"
+            disabled={!userTokenId}
+          >
             {isLoading ? (
               <div className="flex items-center justify-center">
                 <div className="w-5 h-5 border-t-2 border-b-2 border-white rounded-full animate-spin" />
               </div>
             ) : (
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center text-white/80">
                 <Lock className="mr-2 h-4 w-4" /> {tScope("btn")}
               </div>
             )}

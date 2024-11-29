@@ -4,13 +4,14 @@ import { useState } from "react";
 import useStore from "@/lib/store-manage";
 import { Cart } from "@/lib/types/types";
 import { parsedDevise } from "@/lib/utils";
-import { useI18n } from "@/locales/client";
+import { useI18n, useScopedI18n } from "@/locales/client";
 import Image from "next/image";
 import Link from "next/link";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { usePathname } from "next/navigation";
 
 const CardHoverCon = () => {
+  const tScope = useScopedI18n("cartpage");
   const pathname = usePathname();
   const [open, setOpen] = useState<boolean>(false);
   const t = useI18n();
@@ -51,7 +52,11 @@ const CardHoverCon = () => {
       <HoverCardContent className="w-80 bg-[#1A1D21] border-[#45494e]">
         <div className="w-full flex flex-col items-center space-y-4">
           <div className="w-full flex items-center justify-between">
-            <span className="text-sm text-white/90">Total ({totalItems} items)</span>
+            <span className="text-sm text-white/90">
+              {tScope("totalItems", {
+                totalItems: totalItems,
+              })}
+            </span>
             <span className="text-base font-bold  text-yellow-500 rounded">
               {totalPrice.toFixed(2)} {parsedDevise(carts[0]?.currency)}
             </span>

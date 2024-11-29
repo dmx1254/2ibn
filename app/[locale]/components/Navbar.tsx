@@ -108,8 +108,8 @@ const Navbar = () => {
           </div>
           <div className="flex items-center gap-4 max-lg:hidden">
             <Popover>
-              <PopoverTrigger className="flex items-center text-base text-white">
-                {tScope("title")} <FaSortDown className="-mt-1.5 text-white" />
+              <PopoverTrigger className="flex items-center text-base text-white transition-colors hover:text-yellow-600">
+                {tScope("title")} <FaSortDown className="-mt-1.5" />
               </PopoverTrigger>
               <PopoverContent className="max-w-36 shadow-none p-2 bg-[#1A1D21] border-[#45494e]">
                 <div className="flex flex-col items-start text-base font-semibold">
@@ -126,15 +126,18 @@ const Navbar = () => {
                 </div>
               </PopoverContent>
             </Popover>
-            <Link href="/echange-de-kamas" className="text-base text-white">
+            <Link
+              href="/echange-de-kamas"
+              className="text-base text-white transition-colors hover:text-yellow-600"
+            >
               {tScope("link1")}
             </Link>
-            <Link href="/vendre-des-kamas" className="text-base text-white">
+            <Link
+              href="/vendre-des-kamas"
+              className="text-base text-white transition-colors hover:text-yellow-600"
+            >
               {tScope("link2")}
             </Link>
-            {/* <Link href="/paysafecard" className="text-base">
-              {tScope("link3")}
-            </Link> */}
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
             {session && status === "authenticated" ? (
@@ -142,19 +145,10 @@ const Navbar = () => {
             ) : (
               <Link
                 href="/signin"
-                className="hidden sm:inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
+                className="hidden sm:inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link text-white hover:text-yellow-600"
               >
-                {/* <Image
-                  src="/user.svg"
-                  alt="account logo"
-                  width={20}
-                  height={20}
-                  className="-mt-0.5"
-                /> */}
-                <CiUser size={24} className="-mt-1 text-white" />
-                <span className="text-base text-white">
-                  {tScope("account")}
-                </span>
+                <CiUser size={24} className="-mt-1" />
+                <span className="text-base ">{tScope("account")}</span>
               </Link>
             )}
             {(!session || status !== "authenticated") && (
@@ -171,7 +165,7 @@ const Navbar = () => {
             )}
             <LanguageAndCurrency />
             <CardHoverCon />
-            <div className="flex space-x-2 max-lg:hidden">
+            <div className="flex gap-2 max-lg:hidden">
               <Link
                 href="#"
                 className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"

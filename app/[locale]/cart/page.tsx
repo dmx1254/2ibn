@@ -210,8 +210,10 @@ const CartPage: React.FC = () => {
                     <div className="w-full text-right">
                       <p className="w-full">
                         {tScope("sousTotal")}:{" "}
-                        <span className="ml-12">{subtotal.toFixed(2)}</span>
-                        {parsedDevise(carts[0].currency)}
+                        <span className="ml-12">
+                          {subtotal.toFixed(2)}
+                          {parsedDevise(carts[0].currency)}
+                        </span>
                       </p>
 
                       <p className="w-full mt-4">

@@ -10,6 +10,7 @@ export default {
   "languageandcur.en": "Anglais",
   "languageandcur.fr": "Français",
   "languageandcur.es": "Espagnol",
+  "languageandcur.ar": "Arabe",
 
   "languageandcur.title": "Langue et devise",
   "languageandcur.desc":
@@ -57,6 +58,7 @@ export default {
     "Commande validée avec succès. Ouvrez le chat pour procéder à l'échange",
   "cartpage.error":
     "Quelque chose s'est mal passée, veuillez réessayer plus tard",
+    "cartpage.totalItems": "Total ({totalItems} items)",
 
   "infosect.desctitle": "Acheter et vendre des Kamas Dofus",
   "infosect.descdesc":
@@ -127,7 +129,7 @@ export default {
   "sellkamas.headertablePriceDH": "Maroc(DH)",
   "sellkamas.headertablePriceEUR": "Prix (€/M)",
   "sellkamas.headertablePriceUSD": "Prix ($/M)",
-  "sellkamas.headertablePriceAED": "EAU",
+  "sellkamas.headertablePriceAED": "EAU(AED)",
   "sellkamas.headertableStatus": "Statut",
   "sellkamas.headertableAction": "Action",
   "sellkamas.headertableBtn": "Vendre Maintenant",
@@ -281,6 +283,10 @@ export default {
   "signup.renderStep3.postalCode": "Code postal",
   "signup.renderStep3.password": "Mot de passe",
   "signup.renderStep3.confirmPassword": "Confirmez le mot de passe",
+  "signup.renderStep3.phone": "Téléphone",
+  "signup.renderStep3.email": "Email",
+  "signup.renderStep3.orderOption": "Options de commande :",
+  "signup.renderStep3.invitedTitle": "Commande invité",
   "signup.error.countCitAddr": "Ce champ est requis",
   "signup.error.password": "Le mot de passe doit contenir 8 caractères",
   "signup.error.confirmPassword": "Les mots de passe ne correspondent pas",
@@ -511,6 +517,8 @@ export default {
   "footer.info2": "Politique de confidentialité",
   "footer.info3": "Conditions générales",
   "footer.info4": "Nous contacter",
+  "footer.followUs": "Suivez-nous",
+  "footer.address": "2024 JBK Services INTERNATIONAL FZ-LLC, Immeuble Compass, Route Al Shohada, Zone Industrielle AL Hamra-FZ, Ras Al Khaimah, Émirats Arabes Unis JBIK INTERNATIONAL CO., LIMITED (traitement des paiements pour Cardpay). Adresse enregistrée : CHAMBRES 1318-20, HOLLYWOOD PLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
 
   "ourservice.title": "Nos Services",
   "ourservice.desc":
@@ -758,6 +766,8 @@ export default {
 
   "paymentMode.title":
     "Sélectionner ci-dessous le mode de paiement à utiliser pour cette commande",
+  "paymentMode.titleMorroco":
+    "Virement bancaire",
   "paymentMode.fee": "de frais",
   "checkout.step1": "Étape {step1} - Connexion",
   "checkout.step2Conn": "Étape {step2} - Informations de facturation",
@@ -780,6 +790,8 @@ export default {
   "checkout.characterName": "Nom du personnage",
   "checkout.sousTotal": "Sous-total",
   "checkout.btnCom": "Confirmer commande",
+  "checkout.notCartFound":
+    "Votre panier est vide. Veuillez ajouter des articles à votre panier avant d'accéder à la page de paiement.",
 
   "paymentMethod.title": "Mes informations de paiements",
   "paymentMethod.subTitle": "Mes Moyens de Paiement",
@@ -802,6 +814,7 @@ export default {
   "paymentMethod.profileBankExpire": "Expire",
   "paymentMethod.profileBankCrypto": "Adresse Crypto",
   "paymentMethod.successMessageAdd": "Nouvelle méthode de paiement ajoutée",
-  "paymentMethod.successMessageDel": "Méthode de paiement supprimée avec succès",
+  "paymentMethod.successMessageDel":
+    "Méthode de paiement supprimée avec succès",
   "paymentMethod.errorMessage": "Quelque chose s'est mal passée",
 } as const;

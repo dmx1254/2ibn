@@ -37,7 +37,6 @@ import {
   FaTiktok,
   FaWhatsapp,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -238,11 +237,7 @@ const Footer = () => {
             {/* Payment Methods */}
             <div className="border-t border-gray-700 pt-8 pb-8 gap-4 px-4 md:px-56">
               <p className="text-xs text-gray-400 text-center">
-                &copy; 2024 JBK Services INTERNATIONAL FZ-LLC, Compass Building,
-                Al Shohada Road, AL Hamra Industrial Zone-FZ, Ras Al Khaimah,
-                United Arab Emirates JBIK INTERNATIONAL CO., LIMITED (payment
-                processing for Cardpay). Registered address :ROOMS
-                1318-20,HOLLYWOODPLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON
+                &copy; {tScope("address")}
               </p>
               <div className="flex flex-wrap justify-center items-center gap-4">
                 <Image
@@ -340,7 +335,7 @@ const Footer = () => {
                 />
               </div>
               <div className="sm:hidden flex items-center justify-center gap-4 max-sm:flex-col self-center my-4">
-                <span className="text-white/80">Follow us</span>
+                <span className="text-white/80">{tScope("followUs")}</span>
                 <div className="flex space-x-4 flex-wrap">
                   <Link
                     href="#"

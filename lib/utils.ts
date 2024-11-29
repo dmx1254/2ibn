@@ -6,6 +6,7 @@ import doft from "@/public/dofus-images/dofus-t.png";
 import es from "@/public/flags/spain.png";
 import fr from "@/public/flags/fr.png";
 import en from "@/public/flags/en.png";
+import ar from "@/public/flags/arabic.png";
 
 import { StaticImageData } from "next/image";
 
@@ -135,6 +136,7 @@ export const languages: Language[] = [
   { code: "fr", name: "Français", flag: fr },
   { code: "en", name: "Englais", flag: en },
   { code: "es", name: "Español", flag: es },
+  { code: "ar", name: "Arabe", flag: ar },
 ];
 
 export const currencies: CurrencyItem[] = [
@@ -280,17 +282,35 @@ export const paymentMethod: BankPayment[] = [
     id: "AWB8YT",
     title: "paysafecard",
     imgPay: "/payMethod/paysafecard.webp",
-    fee: 3,
+    fee: 7,
   },
   {
     id: "OPLAW1",
     title: "crypto",
     imgPay: "/payMethod/crypto.webp",
   },
+];
+
+export const paymentMethodMorroco: BankPayment[] = [
   {
-    id: "RTFL43",
-    title: "morocco-local-banks",
-    imgPay: "/payMethod/moroccolocalbanks.webp",
+    id: "JUK51L5",
+    title: "marobank",
+    imgPay: "/iben/marocbank.webp",
+  },
+  {
+    id: "LPA27P7",
+    title: "credit-du-maroc",
+    imgPay: "/iben/cdm.webp",
+  },
+  {
+    id: "YHA4KO2",
+    title: "societe-generale",
+    imgPay: "/iben/sg.jpg",
+  },
+  {
+    id: "BQX8P46",
+    title: "barid-bank",
+    imgPay: "/iben/barid-bank.png",
   },
 ];
 
@@ -301,21 +321,22 @@ export type Billing = {
   city: string;
   codePostal: string;
   country: string;
+  email?: string;
   departement?: string;
+  phone?: string;
 };
-
 
 export function maskDisplayName(name: string) {
   if (!name || name.length < 3) {
     // Si le nom est trop court, ne pas le masquer complètement
     return name;
   }
-  
+
   const firstChar = name[0]; // Premier caractère
   const lastChar = name[name.length - 1]; // Dernier caractère
-  
+
   // Remplir les caractères intermédiaires par des étoiles
   const maskedPart = "*".repeat(name.length - 2);
-  
+
   return `${firstChar}${maskedPart}${lastChar}`;
 }

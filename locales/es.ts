@@ -10,6 +10,7 @@ export default {
   "languageandcur.en": "Inglés",
   "languageandcur.fr": "Francés",
   "languageandcur.es": "Español",
+  "languageandcur.ar": "Árabe",
 
   "languageandcur.title": "Idioma y moneda",
   "languageandcur.desc":
@@ -57,6 +58,7 @@ export default {
   "cartpage.success":
     "Pedido realizado con éxito. Abre el chat para proceder con el intercambio",
   "cartpage.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
+  "cartpage.totalItems": "Total ({totalItems} artículos)",
 
   "infosect.desctitle": "Comprar y vender Kamas Dofus",
   "infosect.descdesc":
@@ -126,7 +128,7 @@ export default {
   "sellkamas.headertablePriceDH": "Marruecos (DH)",
   "sellkamas.headertablePriceEUR": "Precio (€/M)",
   "sellkamas.headertablePriceUSD": "Precio ($/M)",
-  "sellkamas.headertablePriceAED": "EAU",
+  "sellkamas.headertablePriceAED": "EAU(AED)",
   "sellkamas.headertableStatus": "Estado",
   "sellkamas.headertableAction": "Acción",
   "sellkamas.headertableBtn": "Vender Ahora",
@@ -261,6 +263,11 @@ export default {
   "signup.renderStep1.phonePlace": "Número de teléfono",
   "signup.renderStep1.passwordDesc": "Tu contraseña",
   "signup.renderStep3.depart": "Departamento",
+  "signup.renderStep3.phone": "Teléfono",
+  "signup.renderStep3.email": "Correo electrónico",
+  "signup.renderStep3.orderOption": "Opciones de pedido :",
+  "signup.renderStep3.invitedTitle": "Pedido de invitado",
+
   "signup.renderStep1.btnNext": "Siguiente",
   "signup.renderStep1.btnBack": "Atrás",
   "signup.renderStep1.createMyAccount": "Crear mi cuenta",
@@ -503,6 +510,8 @@ export default {
   "footer.info2": "Política de privacidad",
   "footer.info3": "Términos y condiciones",
   "footer.info4": "Contáctanos",
+  "footer.followUs": "Síguenos",
+  "footer.address": "2024 JBK Services INTERNATIONAL FZ-LLC, Edificio Compass, Carretera Al Shohada, Zona Industrial AL Hamra-FZ, Ras Al Khaimah, Emiratos Árabes Unidos JBIK INTERNATIONAL CO., LIMITED (procesamiento de pagos para Cardpay). Dirección registrada: HABITACIONES 1318-20, HOLLYWOOD PLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
 
   "ourservice.title": "Nuestros Servicios",
   "ourservice.desc":
@@ -751,6 +760,7 @@ export default {
 
   "paymentMode.title":
     "Seleccione el método de pago a utilizar para este pedido a continuación",
+  "paymentMode.titleMorroco": "transferencia bancaria",
   "paymentMode.fee": "honorarios",
   "checkout.step1": "Paso {step1} - Inicio de sesión",
   "checkout.step2Conn": "Paso {step2} - Información de facturación",
@@ -772,6 +782,8 @@ export default {
   "checkout.characterName": "Nombre del personaje",
   "checkout.sousTotal": "Subtotal",
   "checkout.btnCom": "Confirmar pedido",
+  "checkout.notCartFound":
+    "Tu carrito está vacío. Por favor, agrega artículos a tu carrito antes de proceder a la página de pago.",
 
   "paymentMethod.title": "Mis Informaciónes de Pago",
   "paymentMethod.subTitle": "Mis Métodos de Pago",
