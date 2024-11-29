@@ -480,7 +480,9 @@ const AccountAndBilling = ({
                           }
                         >
                           <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
-                            <SelectValue placeholder="Sélectionnez un pays" />
+                            <SelectValue
+                              placeholder={tScope("renderStep3.chooseCountry")}
+                            />
                           </SelectTrigger>
                           <SelectContent>
                             {countries.map((c) => (
@@ -578,7 +580,9 @@ const AccountAndBilling = ({
                         }
                       >
                         <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
-                          <SelectValue placeholder="--- Veuillez choisir ---" />
+                          <SelectValue
+                            placeholder={tScope("renderStep3.chooseDesc")}
+                          />
                         </SelectTrigger>
                         <SelectContent>
                           {cityList.map((c) => (
@@ -603,7 +607,7 @@ const AccountAndBilling = ({
               onClick={handleContinue}
               className="text-base px-6 py-2 rounded bg-yellow-600 text-white transition-colors hover:opacity-90"
             >
-              Continuer
+              {tScope("renderStep3.btnContinue")}
             </button>
           </Card>
         ) : invitedAccount ? (
@@ -784,7 +788,9 @@ const AccountAndBilling = ({
                       }
                     >
                       <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
-                        <SelectValue placeholder="Sélectionnez un pays" />
+                        <SelectValue
+                          placeholder={tScope("renderStep3.chooseCountry")}
+                        />
                       </SelectTrigger>
                       <SelectContent>
                         {countries.map((c) => (
@@ -879,7 +885,9 @@ const AccountAndBilling = ({
                     }
                   >
                     <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
-                      <SelectValue placeholder="--- Veuillez choisir ---" />
+                      <SelectValue
+                        placeholder={tScope("renderStep3.chooseDesc")}
+                      />
                     </SelectTrigger>
                     <SelectContent>
                       {cityList.map((c) => (
@@ -901,7 +909,7 @@ const AccountAndBilling = ({
               onClick={handleInvitedAccountContinue}
               className="text-base mt-4 px-6 py-2 rounded bg-yellow-600 text-white transition-colors hover:opacity-90"
             >
-              Continuer
+              {tScope("renderStep3.btnContinue")}
             </button>
           </Card>
         ) : (
@@ -1127,7 +1135,9 @@ const AccountAndBilling = ({
                         }
                       )}
                     >
-                      <SelectValue placeholder="Sélectionnez un pays" />
+                      <SelectValue
+                        placeholder={tScope("renderStep3.chooseCountry")}
+                      />
                     </SelectTrigger>
                     <SelectContent>
                       {countries.map((c) => (
@@ -1219,7 +1229,9 @@ const AccountAndBilling = ({
                       }
                     )}
                   >
-                    <SelectValue placeholder="--- Veuillez choisir ---" />
+                    <SelectValue
+                      placeholder={tScope("renderStep3.chooseDesc")}
+                    />
                   </SelectTrigger>
                   <SelectContent>
                     {cityList.map((c) => (
@@ -1245,7 +1257,7 @@ const AccountAndBilling = ({
               {loadingRegister ? (
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
               ) : (
-                "Continuer"
+                tScope("renderStep3.btnContinue")
               )}
             </button>
           </form>

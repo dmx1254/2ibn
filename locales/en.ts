@@ -266,6 +266,8 @@ export default {
   "signup.renderStep.step1": "Create your account",
   "signup.renderStep.step2": "Verification",
   "signup.renderStep.step3": "Finalize your registration",
+  "signup.renderStep3.chooseCountry": "Select a country",
+  "signup.renderStep3.chooseDesc": "--- Please choose ---",
 
   "signup.renderStep2.title": "Check your email",
   "signup.renderStep2.subTitle": "We have sent a verification code to",
@@ -284,6 +286,7 @@ export default {
   "signup.renderStep3.email": "E-mail",
   "signup.renderStep3.orderOption": "Order Options :",
   "signup.renderStep3.invitedTitle": "Guest Order",
+  "signup.renderStep3.btnContinue": "Continue",
 
   "signup.error.countCitAddr": "This field is required",
   "signup.error.password": "The password must contain 8 characters",
@@ -504,7 +507,8 @@ export default {
   "footer.info3": "Terms & Conditions",
   "footer.info4": "Contact us",
   "footer.followUs": "Follow us",
-  "footer.address": "2024 JBK Services INTERNATIONAL FZ-LLC, Compass Building, Al Shohada Road, AL Hamra Industrial Zone-FZ, Ras Al Khaimah, United Arab Emirates JBIK INTERNATIONAL CO., LIMITED (payment processing for Cardpay). Registered address :ROOMS 1318-20,HOLLYWOODPLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
+  "footer.address":
+    "2024 JBK Services INTERNATIONAL FZ-LLC, Compass Building, Al Shohada Road, AL Hamra Industrial Zone-FZ, Ras Al Khaimah, United Arab Emirates JBIK INTERNATIONAL CO., LIMITED (payment processing for Cardpay). Registered address :ROOMS 1318-20,HOLLYWOODPLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
 
   "ourservice.title": "Our Services",
   "ourservice.desc":

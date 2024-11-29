@@ -286,6 +286,10 @@ export default {
   "signup.renderStep3.address": "Dirección",
   "signup.renderStep3.addressPlace": "Tu dirección",
   "signup.renderStep3.postalCode": "Código postal",
+  "signup.renderStep3.chooseCountry": "Seleccione un país",
+  "signup.renderStep3.chooseDesc": "--- Por favor, elija ---",
+  "signup.renderStep3.btnContinue": "Continuar",
+
   "signup.renderStep3.password": "Contraseña",
   "signup.renderStep3.confirmPassword": "Confirmar contraseña",
   "signup.error.countCitAddr": "Este campo es obligatorio",
@@ -511,7 +515,8 @@ export default {
   "footer.info3": "Términos y condiciones",
   "footer.info4": "Contáctanos",
   "footer.followUs": "Síguenos",
-  "footer.address": "2024 JBK Services INTERNATIONAL FZ-LLC, Edificio Compass, Carretera Al Shohada, Zona Industrial AL Hamra-FZ, Ras Al Khaimah, Emiratos Árabes Unidos JBIK INTERNATIONAL CO., LIMITED (procesamiento de pagos para Cardpay). Dirección registrada: HABITACIONES 1318-20, HOLLYWOOD PLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
+  "footer.address":
+    "2024 JBK Services INTERNATIONAL FZ-LLC, Edificio Compass, Carretera Al Shohada, Zona Industrial AL Hamra-FZ, Ras Al Khaimah, Emiratos Árabes Unidos JBIK INTERNATIONAL CO., LIMITED (procesamiento de pagos para Cardpay). Dirección registrada: HABITACIONES 1318-20, HOLLYWOOD PLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
 
   "ourservice.title": "Nuestros Servicios",
   "ourservice.desc":

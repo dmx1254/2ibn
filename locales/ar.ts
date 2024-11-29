@@ -281,6 +281,9 @@ export default {
   "signup.renderStep3.email": "البريد الإلكتروني",
   "signup.renderStep3.orderOption": "خيارات الطلب :",
   "signup.renderStep3.invitedTitle": "طلب ضيف",
+  "signup.renderStep3.chooseCountry": "اختر دولة",
+  "signup.renderStep3.chooseDesc": "--- الرجاء الاختيار ---",
+  "signup.renderStep3.btnContinue": "متابعة",
 
   "signup.error.countCitAddr": "هذا الحقل مطلوب",
   "signup.error.password": "يجب أن تحتوي كلمة المرور على 8 أحرف",

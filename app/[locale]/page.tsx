@@ -12,7 +12,7 @@ export default async function Home() {
         <div className="bg-[#1A1D21] rounded-[10px]">
           <OurServices />
         </div>
-        <div className="bg-[#1A1D21] p-4 rounded-[10px]">
+        <div className="bg-[#1A1D21] rounded-[10px]">
           <WhyChooseUs />
         </div>
       </main>

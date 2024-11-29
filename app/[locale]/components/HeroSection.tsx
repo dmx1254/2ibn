@@ -14,7 +14,6 @@ import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 import clsx from "clsx";
 import { toast } from "sonner";
 import { Card } from "./ui/card";
-import { Separator } from "./ui/separator";
 import { Label } from "./ui/label";
 import {
   Select,

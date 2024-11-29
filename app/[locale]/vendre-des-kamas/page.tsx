@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Vendez vos Kamas Dofus en toute sécurité sur 2ibn. Livraison rapide, prix compétitifs, paiement sécurisé. Service client 24/7. ✓ Transactions Sécurisées ✓ Livraison Express",
   keywords:
-    "vente kamas, acheter kamas, echanger kamas, kamas dofus, dofus touch, dofus retro, prix kamas, kamas pas cher, kamas sécurisé, vente kamas dofus",
+    "vente kamas, acheter kamas, echanger kamas, kamas dofus, dofus touch, dofus retro, prix kamas, kamas pas cher, kamas sécurisé, vente kamas dofus, vente de kamas sécurisé, kamas rapide, livraison kamas rapide, kamas en stock, kamas fiable, transaction rapide kamas, meilleurs prix kamas",
   openGraph: {
     title: "Vente de Kamas Dofus - Prix le Plus Bas & Livraison Rapide",
     description:
