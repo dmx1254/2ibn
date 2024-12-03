@@ -34,7 +34,7 @@ const SignUpForm = () => {
   const tScope = useScopedI18n("signup");
   const router = useRouter();
   const { user } = useStore();
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     lastname: "",
     firstname: "",
@@ -375,7 +375,7 @@ const SignUpForm = () => {
         <h3 className="mt-4 text-xl font-semibold text-white/80">
           {tScope("renderStep2.title")}
         </h3>
-        <p className="mt-2 text-sm text-white/80">
+        <p className="mt-2 text-sm text-green-600">
           {tScope("renderStep2.subTitle")} {formData.email}
         </p>
       </div>

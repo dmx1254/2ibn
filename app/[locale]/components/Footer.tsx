@@ -18,6 +18,7 @@ import sg from "../../../assets/iben/sg.png";
 import cdmaroc from "../../../assets/iben/cdm-maroc.svg";
 
 import nortonbrand from "../../../assets/secure/nortonbrand.png";
+import sslShopper from "../../../assets/secure/ssl-shopper.svg";
 import ssl from "../../../assets/secure/ssl.png";
 import trustS from "../../../assets/secure/trustS.png";
 
@@ -124,34 +125,34 @@ const Footer = () => {
                 </div>
 
                 {/* Security Badges */}
-                <div className="rounded p-2">
+                <div className="bg-[#18191A] p-2 md:p-4 rounded">
                   <div className="flex flex-col items-center justify-center space-y-4">
                     <Image
-                      src={nortonbrand}
-                      alt="Norton Secured"
-                      width={100}
-                      height={100}
+                      src={sslShopper}
+                      alt="ssl Shopper"
+                      width={120}
+                      height={120}
                       className="object-cover"
                     />
                     <Image
                       src={ssl}
                       alt="SSL Certificate"
-                      width={100}
-                      height={100}
+                      width={120}
+                      height={120}
                       className="object-cover"
                     />
                     <Image
                       src={trustS}
                       alt="TrustedSite"
-                      width={100}
-                      height={100}
+                      width={120}
+                      height={120}
                       className="object-cover"
                     />
                   </div>
                 </div>
 
                 {/* Quick Links */}
-                <div className="bg-[#18191A] w-full md:w-[220px] p-2 rounded">
+                <div className="bg-[#18191A] w-full md:w-[220px] p-2 md:p-4 rounded">
                   <h3 className="text-white/80 font-bold mb-4">
                     {tScope("quickLinkTitle")}
                   </h3>
@@ -192,7 +193,7 @@ const Footer = () => {
                 </div>
 
                 {/* Information */}
-                <div className="bg-[#18191A] w-full md:w-[220px] p-2 rounded">
+                <div className="bg-[#18191A] w-full md:w-[220px] p-2 md:p-4 rounded">
                   <h3 className="text-white/80 font-bold mb-4">
                     {tScope("infoTitle")}
                   </h3>
@@ -336,7 +337,7 @@ const Footer = () => {
               </div>
               <div className="sm:hidden flex items-center justify-center gap-4 max-sm:flex-col self-center my-4">
                 <span className="text-white/80">{tScope("followUs")}</span>
-                <div className="flex space-x-4 flex-wrap">
+                <div className="flex gap-4 flex-wrap">
                   <Link
                     href="#"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
