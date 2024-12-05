@@ -21,6 +21,7 @@ import { useScopedI18n } from "@/locales/client";
 
 const ResetPasswordPage = () => {
   const tScope = useScopedI18n("resetPaasowrdLink");
+  const tScopeLink = useScopedI18n("resetlinktemplate");
   const [email, setEmail] = useState<string>("");
   const [emailError, setEmailError] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +42,10 @@ const ResetPasswordPage = () => {
         setIsLoading(true);
 
         await axios
-          .post("/api/iben/user/resetpasswordLink", { email: email })
+          .post("/api/iben/user/resetpasswordLink", {
+            email: email,
+            object: tScopeLink("object"),
+          })
           .then((response) => {
             if (response.data.successMessage) {
               //   console.log(response);

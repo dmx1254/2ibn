@@ -313,6 +313,7 @@ const Checkout = () => {
   const tScope = useScopedI18n("cartpage");
   const tScopeR = useScopedI18n("signup");
   const tScopeCheck = useScopedI18n("checkout");
+  const tScopeConfirm = useScopedI18n("orderConfirmation");
   const { carts } = useStore();
   const isConnected = status === "authenticated" ? "facturation" : "connexion";
   const [activeStep, setActiveStep] = useState<string>(isConnected);
@@ -441,11 +442,16 @@ const Checkout = () => {
     // const billing = billingInfo;
     try {
       setIsOrderLoading(true);
-      const result = await axios.post("/api/iben/order", data);
+      const result = await axios.post("/api/iben/order", {data, object: tScopeConfirm("object")});
       if (result.data) {
         toast.success(tScope("success"), {
           style: { color: "#16a34a" },
         });
+        // await axios
+        //   .post("/api/iben/user/confirmEmail", {
+        //     email: email,
+        //     object: tScopeLink("object"),
+        //   })
 
         // setTimeout(() => {
         //   clearCart();

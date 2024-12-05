@@ -11,7 +11,7 @@ const resend = new Resend(process.env.RESEND_2IBN_API_KEY);
 export async function POST(request: Request) {
   const { UserIbenModel } = await ibenModels;
   try {
-    const { email } = await request.json();
+    const { email, object } = await request.json();
     // const req = request
     const allUrl = new URL(request.url);
     const url = allUrl.origin;
@@ -35,9 +35,11 @@ export async function POST(request: Request) {
     const { data, error } = await resend.emails.send({
       from: "2IBN Verification <verification@2ibn.com>",
       to: [email],
-      subject: "Votre code de vérification - 2IBN",
+      subject: object,
       react: PasswordResetEmail({
         resetLink: resetLink,
+        lastname: user.lastname,
+        firstname: user.firstname,
       }),
     });
     if (error) {

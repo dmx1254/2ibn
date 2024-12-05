@@ -9,6 +9,7 @@ import QueryProvider from "./components/QueryProvider";
 import Navbar from "./components/Navbar";
 import { ProviderSession } from "./components/session-providers";
 import Footer from "./components/Footer";
+import CookieConsent from "./components/CookieConsent";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -107,6 +108,7 @@ export default function RootLayout({
                 <Footer />
               </ProviderSession>
             </QueryProvider>
+            <CookieConsent />
           </Providers>
         </div>
       </body>

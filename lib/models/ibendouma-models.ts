@@ -85,6 +85,7 @@ async function initializeModels(): Promise<any> {
     orderIdPaid: string;
     cur: string;
     valCurency: number;
+    billing?:any;
     status: string;
     address: string;
   }
@@ -287,9 +288,6 @@ async function initializeModels(): Promise<any> {
       totalPrice: {
         type: Number,
         required: true,
-      },
-      detailUser: {
-        type: Object,
       },
 
       orderIdPaid: {

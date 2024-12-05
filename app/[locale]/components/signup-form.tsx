@@ -32,6 +32,8 @@ import { useScopedI18n } from "@/locales/client";
 
 const SignUpForm = () => {
   const tScope = useScopedI18n("signup");
+  const tScopeObj = useScopedI18n("emailtemplate");
+  const tScopeConfirm = useScopedI18n("confirmEmail");
   const router = useRouter();
   const { user } = useStore();
   const [step, setStep] = useState(1);
@@ -105,6 +107,9 @@ const SignUpForm = () => {
           await axios
             .post("/api/iben/user/sendEmail", {
               email: formData.email,
+              lastname: formData.lastname,
+              firstname: formData.firstname,
+              object: tScopeObj("object"),
             })
             .then((response) => {
               if (response.data) {
@@ -233,11 +238,17 @@ const SignUpForm = () => {
               style: { color: "#22c55e" },
             });
             setLoading(false);
-            setTimeout(() => {
-              router.replace("/signin");
-            }, 1000);
           }
         });
+        await axios.post("/api/iben/user/confirmEmail", {
+          lastname: formData.lastname,
+          firstname: formData.firstname,
+          email: formData.email,
+          object: tScopeConfirm("object"),
+        });
+        setTimeout(() => {
+          router.replace("/signin");
+        }, 1000);
       } catch (error: any) {
         // console.log(error);
         if (error?.response?.data?.userError) {

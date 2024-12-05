@@ -328,33 +328,49 @@ export default {
   "notFound.backHome": "Return Home",
   "notFound.desc": "If you believe this is a mistake, please contact support.",
 
-  "emailtemplate.title": "Verification Code",
+  "emailtemplate.title": "Hello",
+  "emailtemplate.object": "Your verification code is on its way! 🚀",
   "emailtemplate.subtitle":
-    "To complete your verification, please use the following code",
-  "emailtemplate.codeExpireText": "This code will expire in",
-  "emailtemplate.codeExpireTime": "30 minutes",
+    "We have sent a verification code to your email address",
+  "emailtemplate.verifDesc": "Here is your verification code:",
+  "emailtemplate.enterCode":
+    "Enter this code on our website to complete your registration.",
+  "emailtemplate.codeExpireText": "This code will be valid for",
+  "emailtemplate.codeExpireTime": "15 minutes",
+  "emailtemplate.anyQuestions":
+    "If you have any questions or concerns, our team is available to assist you at",
   "emailtemplate.notice":
     "If you did not request this code, please ignore this email.",
   "emailtemplate.secureTitle": "Security Tips",
   "emailtemplate.secureDesc":
     "Never share this code with anyone. The 2IBN team will never ask for your verification code.",
+  "emailtemplate.thanks": "Thank you for joining us, and welcome to 2iBn! 🎮",
+  "emailtemplate.cordial": "Best regards,",
+  "emailtemplate.teams": "The 2iBn Team",
   "emailtemplate.copyright": "All rights reserved",
   "emailtemplate.peopleSendTo": "This email was sent to",
   "emailtemplate.website": "Website",
-  "emailtemplate.exchangeLink": "Kamas Exchange",
-  "emailtemplate.sellLink": "Sell Your Kamas",
+  "emailtemplate.exchangeLink": "Exchange kamas",
+  "emailtemplate.sellLink": "Sell your kamas",
   "emailtemplate.bottomSpam":
-    "This email was sent by 2IBN. To ensure you receive our emails, please add verification@2ibn.com to your contacts.",
+    "This email was sent by 2IBN. To ensure you receive our emails, add verification@2ibn.com to your contact list.",
 
   "resetlinktemplate.title": "Hello",
+  "resetlinktemplate.object": "Password Reset – Action Required",
   "resetlinktemplate.subtitle":
-    "We received a request to reset your password. If this request is from you, please click the link below to create a new password",
-  "resetlinktemplate.resetPasstitle": "Reset my password",
+    "You have requested to reset your password for your account on 2iBn. No worries, we're here to help you get back in the game quickly! Click the button below to create a new secure password:",
+  "resetlinktemplate.resetPasstitle": "Reset My Password",
   "resetlinktemplate.resetDesc1": "This link will expire in",
   "resetlinktemplate.resetDesc2": "30 minutes",
   "resetlinktemplate.resetDesc3":
-    "If you did not request this reset, you can ignore this email",
-  "resetlinktemplate.copyright": "All rights reserved",
+    "If you didn’t request this reset, you can ignore this email.",
+  "resetlinktemplate.resetDesc4":
+    "Got questions or need additional assistance? Our support team is available 24/7.",
+  "resetlinktemplate.thanks": "Thank you for being part of the 2iBn community!",
+  "resetlinktemplate.cordial": "Best regards",
+  "resetlinktemplate.teams": "The 2iBn Team",
+  "resetlinktemplate.sec": "Your security, our priority.",
+  "resetlinktemplate.copyright": "All rights reserved.",
   "resetlinktemplate.peopleToSend":
     "This email was sent at your request. If you have any questions, contact us at",
 
@@ -767,7 +783,7 @@ export default {
   "checkout.pan": "Cart",
   "checkout.com": "Order",
   "checkout.orderTitle": "Product Name",
-  "checkout.jeu": "Game",
+  "checkout.jeu": "Product",
   "checkout.qty": "Quantity",
   "checkout.price": "Price",
   "checkout.total": "Total",
@@ -802,4 +818,66 @@ export default {
   "paymentMethod.successMessageAdd": "New payment method added",
   "paymentMethod.successMessageDel": "Payment method successfully deleted",
   "paymentMethod.errorMessage": "Something went wrong",
+
+  "confirmEmail.title": "Hello",
+  "confirmEmail.object": "Welcome to 2iBn 🎮 Your gaming made simple!",
+  "confirmEmail.subtitle":
+    "Thank you for signing up with 2iBn! You now have access to our fast and secure services to enhance your favorite games/services.",
+  "confirmEmail.start": "To get started, visit our website here:",
+  "confirmEmail.contact":
+    "Feel free to reach out if you need assistance. We're here for you 24/7.",
+  "confirmEmail.bientot": "See you soon and happy gaming,",
+  "confirmEmail.thanks": "The 2iBn Team",
+  "confirmEmail.copyright": "All rights reserved",
+  "confirmEmail.website": "Website",
+  "confirmEmail.exchangeLink": "Kamas exchange",
+  "confirmEmail.sellLink": "Sell your kamas",
+  "confirmEmail.bottomSpam":
+    "This email was sent by 2IBN. To ensure you receive our emails, add support@2ibn.com to your contact list.",
+
+  "orderConfirmation.title": "Hello",
+  "orderConfirmation.object": "🎉 Order Confirmed! 🚀",
+  "orderConfirmation.orderConfirmed":
+    "Thank you for your order on 2iBn! We are delighted to process it for you.",
+  "orderConfirmation.confirmedV": "Here are your order details:",
+  "orderConfirmation.orderNumber": "Order Number",
+  "orderConfirmation.product": "Product/Service",
+  "orderConfirmation.totalPrice": "Total Amount",
+  "orderConfirmation.orderDate": "Order Date",
+  "orderConfirmation.status": "Processing",
+  "orderConfirmation.statusText": "Status",
+  "orderConfirmation.copyright": "All rights reserved",
+  "orderConfirmation.productTab": "Product",
+  "orderConfirmation.server": "Server",
+  "orderConfirmation.quantity": "Quantity",
+  "orderConfirmation.price": "Unit price",
+  "orderConfirmation.totalText": "Total",
+  "orderConfirmation.supportMessage":
+    "Our team is actively working to process your order. You will receive an email as soon as it is ready or delivered. In the meantime, feel free to check your order history here:",
+  "orderConfirmation.myAccount": "👉 My Account",
+  "orderConfirmation.emailInform":
+    "You will receive a confirmation email once your order is ready. Need help or have a question?",
+  "orderConfirmation.contactSupport":
+    "Contact our support anytime at support@2ibn.com or via our live chat. Thank you for trusting us for your needs. We look forward to helping you enhance your gaming experience!",
+  "orderConfirmation.cordial": "Best regards",
+  "orderConfirmation.teams": "The 2iBn Team",
+  "orderConfirmation.website": "Website",
+  "orderConfirmation.exchangeLink": "Kamas Exchange",
+  "orderConfirmation.sellLink": "Sell Your Kamas",
+  "orderConfirmation.bottomSpam":
+    "This email was sent by 2IBN. To ensure you receive our emails, add verification@2ibn.com to your contact list.",
+
+  "cookie.title": "Cookie Management",
+  "cookie.titleDesc": "We use cookies to enhance your experience",
+  "cookie.btnPerso": "Customize",
+  "cookie.btnAccet": "Accept All",
+  "cookie.detailParamsTitle": "Detailed Cookie Settings",
+  "cookie.essTitle": "Essential Cookies",
+  "cookie.essDesc": "Cookies necessary for the website's operation",
+  "cookie.perfTitle": "Performance Cookies",
+  "cookie.perfDesc": "Improve performance and user experience",
+  "cookie.markTitle": "Marketing Cookies",
+  "cookie.markDesc": "Personalize advertising content",
+  "cookie.optRefus": "Reject optional cookies",
+  "cookie.optAccept": "Accept all cookies",
 } as const;

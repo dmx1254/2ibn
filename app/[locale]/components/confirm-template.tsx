@@ -2,19 +2,15 @@ import * as React from "react";
 import { getScopedI18n } from "@/locales/server";
 
 interface EmailTemplateProps {
-  email: string;
-  verificationCode: string;
   lastname: string;
   firstname: string;
 }
 
-export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
-  email,
-  verificationCode,
+export const ConfirmEmailTemplate: React.FC<EmailTemplateProps> = async ({
   lastname,
   firstname,
 }) => {
-  const tScope = await getScopedI18n("emailtemplate");
+  const tScope = await getScopedI18n("confirmEmail");
   return (
     <div
       style={{
@@ -77,21 +73,10 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
             >
               {tScope("title")} {`${lastname} ${firstname}`}
             </h1>
-            <p
-              style={{
-                color: "#666666",
-                fontSize: "16px",
-                lineHeight: "1.5",
-                marginBottom: "30px",
-              }}
-            >
-              {tScope("subtitle")} : {email}
-            </p>
+
             <div
               style={{
-                backgroundColor: "#f8f9fa",
-                borderRadius: "6px",
-                padding: "20px",
+                padding: "10px",
                 textAlign: "center",
                 marginBottom: "30px",
               }}
@@ -102,17 +87,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                   color: "#666666",
                 }}
               >
-                {tScope("verifDesc")}
-              </p>
-              <p
-                style={{
-                  fontSize: "32px",
-                  fontWeight: "bold",
-                  color: "#d97706",
-                  letterSpacing: "4px",
-                }}
-              >
-                {verificationCode}
+                {tScope("subtitle")}
               </p>
               <p
                 style={{
@@ -121,87 +96,31 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                   lineHeight: "1.5",
                 }}
               >
-                {tScope("enterCode")}
+                {tScope("start")}
+                <a
+                  href="https://2ibn.com"
+                  style={{
+                    color: "#d97706",
+                    textDecoration: "none",
+                    margin: "0 10px",
+                  }}
+                >
+                  2ibn.com
+                </a>
               </p>
             </div>
 
-            <span
-              style={{ color: "#666666", fontSize: "16px", lineHeight: "1.5" }}
-            >
-              {tScope("anyQuestions")}{" "}
-              <a
-                href="mailto:"
-                style={{
-                  color: "#d97706",
-                  textDecoration: "none",
-                  margin: "0 10px",
-                }}
-              >
-                support@2ibn.com
-              </a>
-            </span>
             <p
               style={{ color: "#666666", fontSize: "16px", lineHeight: "1.5" }}
             >
-              {tScope("codeExpireText")}{" "}
-              <strong>{tScope("codeExpireTime")}</strong>.
+              {tScope("contact")}
             </p>
             <p
               style={{ color: "#666666", fontSize: "16px", lineHeight: "1.5" }}
             >
-              {tScope("notice")}
+              {tScope("bientot")} <br />
+              {tScope("thanks")}
             </p>
-          </td>
-        </tr>
-
-        {/* Instructions de sécurité */}
-        <tr>
-          <td style={{ padding: "0 30px 30px" }}>
-            <div
-              style={{
-                backgroundColor: "#fff8e1",
-                borderRadius: "6px",
-                padding: "20px",
-              }}
-            >
-              <p
-                style={{
-                  color: "#996c00",
-                  fontSize: "14px",
-                  lineHeight: "1.5",
-                  margin: 0,
-                }}
-              >
-                <strong>🔒 {tScope("secureTitle")} :</strong>
-                <br />
-                {tScope("secureDesc")}
-              </p>
-            </div>
-            <div
-              style={{
-                padding: "20px",
-              }}
-            >
-              <p
-                style={{
-                  fontSize: "16px",
-                  lineHeight: "1.5",
-                  margin: 0,
-                }}
-              >
-                {tScope("thanks")}
-              </p>
-              <p
-                style={{
-                  fontSize: "16px",
-                  lineHeight: "1.5",
-                  margin: 0,
-                }}
-              >
-                {tScope("cordial")} <br />
-                {tScope("teams")}
-              </p>
-            </div>
           </td>
         </tr>
 
@@ -219,11 +138,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
             >
               © 2024 JBK Services INTERNATIONAL FZ-LLC. {tScope("copyright")}.
             </p>
-            <p
-              style={{ color: "#999999", fontSize: "14px", margin: "0 0 10px" }}
-            >
-              {tScope("peopleSendTo")} {email}
-            </p>
+
             <div style={{ marginTop: "20px" }}>
               <a
                 href="https://2ibn.com"

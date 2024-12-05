@@ -58,7 +58,7 @@ export default {
     "Commande validée avec succès. Ouvrez le chat pour procéder à l'échange",
   "cartpage.error":
     "Quelque chose s'est mal passée, veuillez réessayer plus tard",
-    "cartpage.totalItems": "Total ({totalItems} items)",
+  "cartpage.totalItems": "Total ({totalItems} items)",
 
   "infosect.desctitle": "Acheter et vendre des Kamas Dofus",
   "infosect.descdesc":
@@ -336,16 +336,26 @@ export default {
   "notFound.desc":
     "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter le support.",
 
-  "emailtemplate.title": "Code de vérification",
+  "emailtemplate.title": "Bonjour",
+  "emailtemplate.object": "Votre code de vérification est en route ! 🚀",
   "emailtemplate.subtitle":
-    "Pour finaliser votre vérification, veuillez utiliser le code suivant",
-  "emailtemplate.codeExpireText": "Ce code expirera dans",
-  "emailtemplate.codeExpireTime": "30 minutes",
+    "Nous avons envoyé un code de vérification à votre adresse e-mail",
+  "emailtemplate.verifDesc": "Voici votre code de vérification :",
+  "emailtemplate.enterCode":
+    "Entrez ce code sur notre site pour finaliser votre inscription.",
+  "emailtemplate.codeExpireText": "Ce code sera valide pendant",
+  "emailtemplate.codeExpireTime": "15 minutes",
+  "emailtemplate.anyQuestions":
+    "Si vous avez des questions ou des soucis, notre équipe est disponible pour vous aider à",
   "emailtemplate.notice":
     "Si vous n'avez pas demandé ce code, veuillez ignorer cet email.",
   "emailtemplate.secureTitle": "Conseils de sécurité",
   "emailtemplate.secureDesc":
     "Ne partagez jamais ce code avec qui que ce soit. L'équipe 2IBN ne vous demandera jamais votre code de vérification.",
+  "emailtemplate.thanks":
+    "Merci de nous rejoindre, et bienvenue chez 2iBn ! 🎮",
+  "emailtemplate.cordial": "Cordialement,",
+  "emailtemplate.teams": "L'équipe 2iBn",
   "emailtemplate.copyright": "Tous droits réservés",
   "emailtemplate.peopleSendTo": "Cet email a été envoyé à",
   "emailtemplate.website": "Site web",
@@ -355,14 +365,22 @@ export default {
     "Cet email a été envoyé par 2IBN. Pour vous assurer de recevoir nos emails, ajoutez verification@2ibn.com à votre liste de contacts.",
 
   "resetlinktemplate.title": "Bonjour",
+  "resetlinktemplate.object":
+    "Réinitialisation de votre mot de passe – Action requise",
   "resetlinktemplate.subtitle":
-    "Nous avons reçu une demande de réinitialisation de votre mot de passe. Si cette demande est de votre part, veuillez cliquer sur le lien ci-dessous pour créer un nouveau mot de passe",
+    "Vous avez demandé à réinitialiser votre mot de passe pour votre compte sur 2iBn . Pas de souci, nous sommes là pour vous aider à revenir rapidement en jeu ! Cliquez sur le bouton ci-dessous pour créer un nouveau mot de passe sécurisé :",
   "resetlinktemplate.resetPasstitle": "Réinitialiser mon mot de passe",
   "resetlinktemplate.resetDesc1": "Ce lien expirera dans",
   "resetlinktemplate.resetDesc2": "30 minutes",
   "resetlinktemplate.resetDesc3":
     "Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer cet email",
-  "resetlinktemplate.copyright": "Tous droits réservés",
+  "resetlinktemplate.resetDesc4":
+    "Vous avez des questions ou besoin d'aide supplémentaire ? Notre équipe d'assistance est disponible 24h/24 et 7j/7.",
+  "resetlinktemplate.thanks": "Merci de faire partie de la communauté 2iBn !",
+  "resetlinktemplate.cordial": "Cordialement",
+  "resetlinktemplate.teams": "L'équipe 2iBn",
+  "resetlinktemplate.sec": "Votre sécurité, notre priorité.",
+  "resetlinktemplate.copyright": "Tous droits réservés.",
   "resetlinktemplate.peopleToSend":
     "Cet email a été envoyé à votre demande. Si vous avez des questions, contactez-nous à",
 
@@ -521,7 +539,8 @@ export default {
   "footer.info3": "Conditions générales",
   "footer.info4": "Nous contacter",
   "footer.followUs": "Suivez-nous",
-  "footer.address": "2024 JBK Services INTERNATIONAL FZ-LLC, Immeuble Compass, Route Al Shohada, Zone Industrielle AL Hamra-FZ, Ras Al Khaimah, Émirats Arabes Unis JBIK INTERNATIONAL CO., LIMITED (traitement des paiements pour Cardpay). Adresse enregistrée : CHAMBRES 1318-20, HOLLYWOOD PLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
+  "footer.address":
+    "2024 JBK Services INTERNATIONAL FZ-LLC, Immeuble Compass, Route Al Shohada, Zone Industrielle AL Hamra-FZ, Ras Al Khaimah, Émirats Arabes Unis JBIK INTERNATIONAL CO., LIMITED (traitement des paiements pour Cardpay). Adresse enregistrée : CHAMBRES 1318-20, HOLLYWOOD PLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
 
   "ourservice.title": "Nos Services",
   "ourservice.desc":
@@ -769,8 +788,7 @@ export default {
 
   "paymentMode.title":
     "Sélectionner ci-dessous le mode de paiement à utiliser pour cette commande",
-  "paymentMode.titleMorroco":
-    "Virement bancaire",
+  "paymentMode.titleMorroco": "Virement bancaire",
   "paymentMode.fee": "de frais",
   "checkout.step1": "Étape {step1} - Connexion",
   "checkout.step2Conn": "Étape {step2} - Informations de facturation",
@@ -784,7 +802,7 @@ export default {
   "checkout.continu": "Continuer",
 
   "checkout.orderTitle": "Nom du produit",
-  "checkout.jeu": "Jeu",
+  "checkout.jeu": "Produit",
   "checkout.qty": "Quantité",
   "checkout.price": "Prix",
   "checkout.total": "Total",
@@ -820,4 +838,67 @@ export default {
   "paymentMethod.successMessageDel":
     "Méthode de paiement supprimée avec succès",
   "paymentMethod.errorMessage": "Quelque chose s'est mal passée",
+
+  "confirmEmail.title": "Bonjour",
+  "confirmEmail.object": "Bienvenue chez 2iBn 🎮 Votre gaming simplifié !",
+  "confirmEmail.subtitle":
+    "Merci de vous être inscrit chez 2iBn ! Vous avez maintenant accès à nos services rapides et sécurisés pour booster vos jeux/Service préférés.",
+  "confirmEmail.start": "Pour commencer, visitez notre site ici :",
+  "confirmEmail.contact":
+    "N'hésitez pas à nous contacter en cas de besoin. Nous sommes là pour vous 24h/24 et 7j/7.",
+  "confirmEmail.bientot": "À bientôt et bon jeu,",
+  "confirmEmail.thanks": " L'équipe 2iBn",
+  "confirmEmail.copyright": "Tous droits réservés",
+  "confirmEmail.website": "Site web",
+  "confirmEmail.exchangeLink": "Echange de kamas",
+  "confirmEmail.sellLink": "Vendre vos kamas",
+  "confirmEmail.bottomSpam":
+    "Cet email a été envoyé par 2IBN. Pour vous assurer de recevoir nos emails, ajoutez support@2ibn.com à votre liste de contacts.",
+
+  "orderConfirmation.title": "Bonjour",
+  "orderConfirmation.object": "🎉 Commande confirmée ! 🚀",
+  "orderConfirmation.orderConfirmed":
+    "Merci pour votre commande sur 2iBn ! Nous sommes ravis de la traiter pour vous.",
+  "orderConfirmation.confirmedV": "Voici les détails de votre commande :",
+  "orderConfirmation.orderNumber": "Numéro de commande",
+  "orderConfirmation.product": "Produit/Service",
+  "orderConfirmation.totalPrice": "Montant total",
+  "orderConfirmation.orderDate": "Date de commande",
+  "orderConfirmation.status": "En traitement",
+  "orderConfirmation.statusText": "Status",
+  "orderConfirmation.copyright": "Tous droits réservés",
+  "orderConfirmation.productTab": "Produit",
+  "orderConfirmation.server": "Serveur",
+  "orderConfirmation.quantity": "Quantité",
+  "orderConfirmation.price": "Prix unitaire",
+  "orderConfirmation.totalText": "Total",
+  "orderConfirmation.supportMessage":
+    "Notre équipe travaille activement pour traiter votre commande. Vous recevez un e-mail dès qu'elle sera prête ou livrée. En attendant, n'hésitez pas à consulter votre historique de commande ici :",
+  "orderConfirmation.myAccount": "👉 Mon compte",
+  "orderConfirmation.emailInform":
+    "Vous recevrez un e-mail de confirmation une fois que votre commande sera prête. Besoin d'aide ou une question ?",
+  "orderConfirmation.contactSupport":
+    "Contactez notre support à tout moment à support@2ibn.com ou via notre chat en ligne. Merci de nous faire confiance pour vos besoins. Nous sommes impatients de vous aider à améliorer votre expérience de jeu !",
+  "orderConfirmation.cordial": "Cordialement",
+  "orderConfirmation.teams": "L'équipe 2iBn",
+  "orderConfirmation.website": "Site web",
+  "orderConfirmation.exchangeLink": "Echange de kamas",
+  "orderConfirmation.sellLink": "Vendre vos kamas",
+  "orderConfirmation.bottomSpam":
+    "Cet email a été envoyé par 2IBN. Pour vous assurer de recevoir nos emails, ajoutez verification@2ibn.com à votre liste de contacts.",
+
+  "cookie.title": "Gestion des Cookies",
+  "cookie.titleDesc":
+    "Nous utilisons des cookies pour améliorer votre expérience",
+  "cookie.btnPerso": "Personnaliser",
+  "cookie.btnAccet": "Tout accepter",
+  "cookie.detailParamsTitle": "Paramètres détaillés des Cookies",
+  "cookie.essTitle": "Cookies Essentiels",
+  "cookie.essDesc": "Cookies indispensables au fonctionnement du site",
+  "cookie.perfTitle": "Cookies de Performance",
+  "cookie.perfDesc": "Améliorent les performances et l'expérience utilisateur",
+  "cookie.markTitle": "Cookies Marketing",
+  "cookie.markDesc": "Personnalisent le contenu publicitaire",
+  "cookie.optRefus": "Refuser les cookies optionnels",
+  "cookie.optAccept": "Accepter tous les cookies",
 } as const;

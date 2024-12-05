@@ -333,35 +333,53 @@ export default {
   "notFound.desc":
     "Si cree que esto es un error, por favor contacte al soporte.",
 
-  "emailtemplate.title": "Código de verificación",
+  "emailtemplate.title": "Hola",
+  "emailtemplate.object": "¡Tu código de verificación está en camino! 🚀",
   "emailtemplate.subtitle":
-    "Para completar su verificación, utilice el siguiente código",
-  "emailtemplate.codeExpireText": "Este código expirará en",
-  "emailtemplate.codeExpireTime": "30 minutos",
+    "Hemos enviado un código de verificación a tu dirección de correo electrónico",
+  "emailtemplate.verifDesc": "Aquí está tu código de verificación:",
+  "emailtemplate.enterCode":
+    "Introduce este código en nuestro sitio web para completar tu registro.",
+  "emailtemplate.codeExpireText": "Este código será válido por",
+  "emailtemplate.codeExpireTime": "15 minutos",
+  "emailtemplate.anyQuestions":
+    "Si tienes alguna pregunta o inquietud, nuestro equipo está disponible para ayudarte en",
   "emailtemplate.notice":
-    "Si no solicitó este código, ignore este correo electrónico.",
+    "Si no solicitaste este código, por favor ignora este correo.",
   "emailtemplate.secureTitle": "Consejos de seguridad",
   "emailtemplate.secureDesc":
-    "Nunca comparta este código con nadie. El equipo de 2IBN nunca le pedirá su código de verificación.",
+    "Nunca compartas este código con nadie. El equipo de 2IBN nunca te pedirá tu código de verificación.",
+  "emailtemplate.thanks":
+    "Gracias por unirte a nosotros, ¡y bienvenido a 2iBn! 🎮",
+  "emailtemplate.cordial": "Atentamente,",
+  "emailtemplate.teams": "El equipo de 2iBn",
   "emailtemplate.copyright": "Todos los derechos reservados",
-  "emailtemplate.peopleSendTo": "Este correo electrónico fue enviado a",
+  "emailtemplate.peopleSendTo": "Este correo fue enviado a",
   "emailtemplate.website": "Sitio web",
-  "emailtemplate.exchangeLink": "Intercambio de Kamas",
-  "emailtemplate.sellLink": "Vende tus Kamas",
+  "emailtemplate.exchangeLink": "Intercambiar kamas",
+  "emailtemplate.sellLink": "Vender tus kamas",
   "emailtemplate.bottomSpam":
-    "Este correo fue enviado por 2IBN. Para asegurarte de recibir nuestros correos, agrega verification@2ibn.com a tus contactos.",
+    "Este correo fue enviado por 2IBN. Para asegurarte de recibir nuestros correos, agrega verification@2ibn.com a tu lista de contactos.",
 
   "resetlinktemplate.title": "Hola",
+  "resetlinktemplate.object":
+    "Restablecimiento de contraseña – Acción requerida",
   "resetlinktemplate.subtitle":
-    "Hemos recibido una solicitud para restablecer su contraseña. Si esta solicitud es suya, haga clic en el enlace a continuación para crear una nueva contraseña",
+    "Has solicitado restablecer tu contraseña para tu cuenta en 2iBn. No te preocupes, estamos aquí para ayudarte a volver al juego rápidamente. Haz clic en el botón de abajo para crear una nueva contraseña segura:",
   "resetlinktemplate.resetPasstitle": "Restablecer mi contraseña",
   "resetlinktemplate.resetDesc1": "Este enlace expirará en",
   "resetlinktemplate.resetDesc2": "30 minutos",
   "resetlinktemplate.resetDesc3":
-    "Si no solicitó este restablecimiento, puede ignorar este correo electrónico",
-  "resetlinktemplate.copyright": "Todos los derechos reservados",
+    "Si no solicitaste este restablecimiento, puedes ignorar este correo electrónico.",
+  "resetlinktemplate.resetDesc4":
+    "¿Tienes preguntas o necesitas asistencia adicional? Nuestro equipo de soporte está disponible 24/7.",
+  "resetlinktemplate.thanks": "¡Gracias por ser parte de la comunidad 2iBn!",
+  "resetlinktemplate.cordial": "Atentamente",
+  "resetlinktemplate.teams": "El equipo de 2iBn",
+  "resetlinktemplate.sec": "Tu seguridad, nuestra prioridad.",
+  "resetlinktemplate.copyright": "Todos los derechos reservados.",
   "resetlinktemplate.peopleToSend":
-    "Este correo electrónico fue enviado a su solicitud. Si tiene alguna pregunta, contáctenos en",
+    "Este correo fue enviado a tu solicitud. Si tienes preguntas, contáctanos en",
 
   "sidebar.profile": "Perfil",
   "sidebar.ordersBuy": "Órdenes de compra",
@@ -778,7 +796,7 @@ export default {
   "checkout.pan": "Carro",
   "checkout.com": "Orden",
   "checkout.orderTitle": "Nombre del producto",
-  "checkout.jeu": "Juego",
+  "checkout.jeu": "Producto",
   "checkout.qty": "Cantidad",
   "checkout.price": "Precio",
   "checkout.total": "Total",
@@ -813,4 +831,66 @@ export default {
   "paymentMethod.successMessageAdd": "Nuevo método de pago añadido",
   "paymentMethod.successMessageDel": "Método de pago eliminado con éxito",
   "paymentMethod.errorMessage": "Algo salió mal",
+
+  "confirmEmail.title": "Hola",
+  "confirmEmail.object": "¡Bienvenido a 2iBn 🎮 Tu gaming simplificado!",
+  "confirmEmail.subtitle":
+    "Gracias por registrarte en 2iBn. Ahora tienes acceso a nuestros servicios rápidos y seguros para potenciar tus juegos/servicios favoritos.",
+  "confirmEmail.start": "Para empezar, visita nuestro sitio aquí:",
+  "confirmEmail.contact":
+    "No dudes en contactarnos si necesitas ayuda. Estamos disponibles para ti 24/7.",
+  "confirmEmail.bientot": "Hasta pronto y felices juegos,",
+  "confirmEmail.thanks": "El equipo de 2iBn",
+  "confirmEmail.copyright": "Todos los derechos reservados",
+  "confirmEmail.website": "Sitio web",
+  "confirmEmail.exchangeLink": "Intercambio de kamas",
+  "confirmEmail.sellLink": "Vender tus kamas",
+  "confirmEmail.bottomSpam":
+    "Este correo electrónico fue enviado por 2IBN. Para asegurarte de recibir nuestros correos, agrega support@2ibn.com a tu lista de contactos.",
+
+  "orderConfirmation.title": "Hola",
+  "orderConfirmation.object": "🎉 ¡Pedido confirmado! 🚀",
+  "orderConfirmation.orderConfirmed":
+    "¡Gracias por tu pedido en 2iBn! Estamos encantados de procesarlo para ti.",
+  "orderConfirmation.confirmedV": "Aquí tienes los detalles de tu pedido:",
+  "orderConfirmation.orderNumber": "Número de pedido",
+  "orderConfirmation.product": "Producto/Servicio",
+  "orderConfirmation.totalPrice": "Monto total",
+  "orderConfirmation.orderDate": "Fecha del pedido",
+  "orderConfirmation.status": "En proceso",
+  "orderConfirmation.statusText": "Estado",
+  "orderConfirmation.copyright": "Todos los derechos reservados",
+  "orderConfirmation.productTab": "Producto",
+  "orderConfirmation.server": "Servidor",
+  "orderConfirmation.quantity": "Cantidad",
+  "orderConfirmation.price": "Precio unitario",
+  "orderConfirmation.totalText": "Total",
+  "orderConfirmation.supportMessage":
+    "Nuestro equipo está trabajando activamente para procesar tu pedido. Recibirás un correo electrónico en cuanto esté listo o entregado. Mientras tanto, puedes consultar tu historial de pedidos aquí:",
+  "orderConfirmation.myAccount": "👉 Mi cuenta",
+  "orderConfirmation.emailInform":
+    "Recibirás un correo electrónico de confirmación una vez que tu pedido esté listo. ¿Necesitas ayuda o tienes una pregunta?",
+  "orderConfirmation.contactSupport":
+    "Contacta a nuestro soporte en cualquier momento en support@2ibn.com o a través de nuestro chat en línea. Gracias por confiar en nosotros para tus necesidades. ¡Estamos deseando ayudarte a mejorar tu experiencia de juego!",
+  "orderConfirmation.cordial": "Atentamente",
+  "orderConfirmation.teams": "El equipo de 2iBn",
+  "orderConfirmation.website": "Sitio web",
+  "orderConfirmation.exchangeLink": "Intercambio de kamas",
+  "orderConfirmation.sellLink": "Vender tus kamas",
+  "orderConfirmation.bottomSpam":
+    "Este correo electrónico fue enviado por 2IBN. Para asegurarte de recibir nuestros correos, agrega verification@2ibn.com a tu lista de contactos.",
+
+  "cookie.title": "Gestión de Cookies",
+  "cookie.titleDesc": "Utilizamos cookies para mejorar tu experiencia",
+  "cookie.btnPerso": "Personalizar",
+  "cookie.btnAccet": "Aceptar Todo",
+  "cookie.detailParamsTitle": "Configuración Detallada de Cookies",
+  "cookie.essTitle": "Cookies Esenciales",
+  "cookie.essDesc": "Cookies necesarias para el funcionamiento del sitio",
+  "cookie.perfTitle": "Cookies de Rendimiento",
+  "cookie.perfDesc": "Mejoran el rendimiento y la experiencia del usuario",
+  "cookie.markTitle": "Cookies de Marketing",
+  "cookie.markDesc": "Personalizan el contenido publicitario",
+  "cookie.optRefus": "Rechazar cookies opcionales",
+  "cookie.optAccept": "Aceptar todas las cookies",
 } as const;
