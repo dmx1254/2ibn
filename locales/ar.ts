@@ -510,7 +510,7 @@ export default {
   "footer.infoTitle": "معلومات",
   "footer.info1": "الأسئلة الشائعة",
   "footer.info2": "سياسة الخصوصية",
-  "footer.info3": "الشروط والأحكام",
+  "footer.info3": "شروط وأحكام الاستخدام والإشعار القانوني",
   "footer.info4": "اتصل بنا",
   "footer.followUs": "تابعنا",
   "footer.address":
@@ -602,6 +602,39 @@ export default {
 
   "termsandconditions.bottomDesc": "آخر تحديث: أكتوبر 2024",
   "termsandconditions.bottomDescAllRight": "جميع الحقوق محفوظة.",
+
+  "termsandconditions.legalNotice.title": "الإشعار القانوني",
+  "termsandconditions.legalNotice.amlTitle": "الامتثال القانوني و KYC/AML",
+  "termsandconditions.legalNotice.amlDesc":
+    "في I2BN، نحن ملتزمون باللوائح القانونية، وخاصة عملية KYC (تعرف على عميلك). يجب على كل مستخدم التحقق من هويته لضمان الشفافية وأمان المعاملات. تتبع إجراءات مكافحة غسل الأموال (AML) الخاصة بنا التوجيهات التي وضعتها DFSA (سلطة دبي للخدمات المالية)، مما يضمن بيئة آمنة وموثوقة للجميع.",
+  "termsandconditions.legalNotice.secTitle": "أمان الموقع الإلكتروني",
+  "termsandconditions.legalNotice.secDesc":
+    "نقوم بحماية بياناتك من خلال شهادة SSL/TLS صالحة، مما يضمن اتصالاً آمناً. يتم تشفير المعلومات الحساسة باستخدام تقنيات حديثة مثل Norton. بالإضافة إلى ذلك، نجري عمليات تدقيق منتظمة لتحديد ومعالجة أي ثغرات محتملة، بما في ذلك الاختبارات ضد هجمات DDoS والانتهاكات الأمنية.",
+  "termsandconditions.legalNotice.transTitle": "شفافية الأنشطة",
+  "termsandconditions.legalNotice.transDesc":
+    "تم تسجيل I2BN في ولاية الإمارات العربية المتحدة. نحن نعمل في مجال التجارة الإلكترونية، ونقدم خدمات مثل منتجات الألعاب.",
+  "termsandconditions.legalNotice.contTitle": "المحتوى المنظم",
+  "termsandconditions.legalNotice.contDesc":
+    "نحرص على الالتزام بالقوانين السارية. الرجاء الاطلاع على: سياسة الخصوصية الخاصة بنا شروط وأحكام الاستخدام سياسة الاسترداد الخاصة بنا.",
+  "termsandconditions.legalNotice.presTitle": "التواجد الجغرافي",
+  "termsandconditions.legalNotice.presDesc":
+    "يقع مقر شركتنا في دبي بالإمارات العربية المتحدة، ولديها أيضاً تواجد دولي.",
+  "termsandconditions.legalNotice.verifTitle": "التحقق من الشركات",
+  "termsandconditions.legalNotice.verifDesc":
+    "للانضمام إلى منصتنا، نطلب ما يلي:",
+  "termsandconditions.legalNotice.verifStep1": "شهادة تسجيل شركتك",
+  "termsandconditions.legalNotice.verifStep2": "إثبات عنوان تجاري صالح",
+  "termsandconditions.legalNotice.verifStep3":
+    "وثيقة هوية رسمية للمديرين أو المالكين",
+  "termsandconditions.legalNotice.payTitle": "حلول الدفع",
+  "termsandconditions.legalNotice.payDesc": "نقدم عدة خيارات لإجراء معاملاتك:",
+  "termsandconditions.legalNotice.payStep1":
+    "المدفوعات بواسطة بطاقات الائتمان (Visa، Mastercard، إلخ.)",
+  "termsandconditions.legalNotice.payStep2":
+    "دمج المحافظ الرقمية مثل Apple Pay وPayPal.",
+  "termsandconditions.legalNotice.cryptoTitle": "مدفوعات العملات الرقمية",
+  "termsandconditions.legalNotice.cryptoDesc":
+    "لمستخدمينا الذين يفضلون العملات الرقمية، نقبل: USDT، ETH، BTC... هذه المعاملات سريعة، آمنة، ومتوافقة مع اللوائح المحلية.",
 
   "privacyandpolicy.title": "سياسة الخصوصية",
   "privacyandpolicy.intro":

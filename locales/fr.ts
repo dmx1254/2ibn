@@ -536,7 +536,7 @@ export default {
   "footer.infoTitle": "INFORMATIONS",
   "footer.info1": "FAQ",
   "footer.info2": "Politique de confidentialité",
-  "footer.info3": "Conditions générales",
+  "footer.info3": "CGU et Mentions légales",
   "footer.info4": "Nous contacter",
   "footer.followUs": "Suivez-nous",
   "footer.address":
@@ -629,6 +629,42 @@ export default {
 
   "termsandconditions.bottomDesc": "Dernière mise à jour : Octobre 2024.",
   "termsandconditions.bottomDescAllRight": "Tous droits réservés.",
+
+  "termsandconditions.legalNotice.title": "Mentions légales",
+  "termsandconditions.legalNotice.amlTitle": "Conformité légale et KYC/AML",
+  "termsandconditions.legalNotice.amlDesc":
+    "Chez I2BN, nous respectons les réglementations en matière de conformité légale, notamment le processus KYC (Know Your Customer). Chaque utilisateur est tenu de vérifier son identité afin de garantir la transparence et la sécurité des transactions. Nos procédures antiblanchiment d’argent (AML) suivent les directives établies par DFSA (Dubai Financial Services Authority), garantissant un environnement sécurisé et fiable pour tous.",
+  "termsandconditions.legalNotice.secTitle": "Sécurité du site web",
+  "termsandconditions.legalNotice.secDesc":
+    "Nous protégeons vos données avec un certificat SSL/TLS valide, garantissant une connexion sécurisée. Les informations sensibles sont encryptées à l’aide de technologies modernes telles que Norton. De plus, nous effectuons des audits réguliers pour identifier et corriger toute vulnérabilité possible, y compris les tests contre les attaques DDoS et les violations de sécurité.",
+  "termsandconditions.legalNotice.transTitle": "Transparence des activités",
+  "termsandconditions.legalNotice.transDesc":
+    "I2BN est enregistrée dans la juridiction des Emirats Arabes Unis. Nous opérons dans le domaine de E-Commerce, offrant des services tels que des produits gaming.",
+  "termsandconditions.legalNotice.contTitle": "Contenu réglementé",
+  "termsandconditions.legalNotice.contDesc":
+    "Contenu réglementé Nous mettons un point d’honneur à respecter les lois en vigueur. Consultez: Notre politique de confidentialité Nos conditions générales d’utilisation : Notre politique de remboursement.",
+  "termsandconditions.legalNotice.presTitle": "Présence géographique",
+  "termsandconditions.legalNotice.presDesc":
+    "Basée à Dubai aux Emirats Arabes Unis, notre entreprise est également présente à l’internationale.",
+  "termsandconditions.legalNotice.verifTitle": "Vérification des entreprises",
+  "termsandconditions.legalNotice.verifDesc":
+    "Pour rejoindre notre plateforme, nous demandons:",
+  "termsandconditions.legalNotice.verifStep1":
+    "Un certificat d'enregistrement de votre entreprise",
+  "termsandconditions.legalNotice.verifStep2":
+    "Une preuve d’adresse commerciale valide",
+  "termsandconditions.legalNotice.verifStep3":
+    "Une pièce d’identité officielle des administrateurs ou propriétaires",
+  "termsandconditions.legalNotice.payTitle": "Solutions de paiement",
+  "termsandconditions.legalNotice.payDesc":
+    "Nous proposons plusieurs options pour effectuer vos transactions:",
+  "termsandconditions.legalNotice.payStep1":
+    "Paiements par cartes bancaires (Visa, Mastercard…)",
+  "termsandconditions.legalNotice.payStep2":
+    "Intégration de portefeuilles numériques comme Apple Pay et Paypal.",
+  "termsandconditions.legalNotice.cryptoTitle": "Paiements Crypto",
+  "termsandconditions.legalNotice.cryptoDesc":
+    "Pour nos utilisateurs adeptes des crypto-monnaies, nous acceptons: USDT, ETH, BTC... Ces transactions sont rapides, sécurisées et conformes aux régulations locales.",
 
   "privacyandpolicy.title": "Politique de Confidentialité",
   "privacyandpolicy.intro":

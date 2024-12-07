@@ -90,18 +90,15 @@ const CartPage: React.FC = () => {
       {carts.length <= 0 ? (
         <EmptyCart />
       ) : (
-        <div className="max-w-7xl mx-auto flex flex-col items-center gap-6 overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col items-center gap-6 overflow-hidden">
           <div className="w-full bg-white">
             <Table className="w-full text-black/80 text-center">
               <TableHeader>
                 <TableRow className="bg-[#151d20] border-[#76828D]">
                   <TableHead className="text-amber-600 text-left">
-                    {tScope("image")}
+                    <span className="md:ml-12">{tScope("name")}</span>
                   </TableHead>
-                  <TableHead className="text-amber-600 text-center">
-                    {tScope("name")}
-                  </TableHead>
-                  <TableHead className="text-amber-600 text-center">
+                  <TableHead className="text-amber-600 text-center max-md:hidden">
                     {tScope("jeu")}
                   </TableHead>
                   <TableHead className="text-amber-600 text-center">
@@ -119,22 +116,13 @@ const CartPage: React.FC = () => {
               <TableBody>
                 {carts?.map((item, index) => (
                   <TableRow
-                    className="border-gray-200"
+                    className="border-gray-200 py-1"
                     style={{
                       border: index === carts.length - 1 ? "none" : "",
                     }}
                   >
-                    <TableCell className="font-medium text-right">
-                      <Image
-                        src={imageReturn(item.category)}
-                        alt={item.server}
-                        width={60}
-                        height={60}
-                        className="rounded-lg"
-                      />
-                    </TableCell>
                     <TableCell className="font-medium text-center">
-                      <div className="inline-flex flex-col items-start">
+                      <div className="flex flex-col items-start -gap-0.5">
                         <p className="uppercase text-yellow-600">
                           Kamas {item.category.split("-").join(" ")}
                         </p>
@@ -146,20 +134,20 @@ const CartPage: React.FC = () => {
                         </p>
                         <p>
                           {tScope("characterName")}:{" "}
-                          <strong className="text-xl text-red-600 capitalize">
+                          <strong className="text-base text-red-600 capitalize">
                             {item.character}
                           </strong>
                         </p>
                       </div>
                     </TableCell>
-                    <TableCell className="font-medium">
+                    <TableCell className="font-medium text-center max-md:hidden">
                       <span className="uppercase">
                         {item.category.split("-").join(" ")}{" "}
                       </span>
                     </TableCell>
                     <TableCell className="font-medium text-center">
                       {" "}
-                      <div className="">
+                      <div className="inline-flex items-center">
                         <button
                           onClick={() =>
                             updateToCart(
@@ -167,7 +155,7 @@ const CartPage: React.FC = () => {
                               Math.max(1, item.amount - 1)
                             )
                           }
-                          className="text-current hover:opacity-75 focus:outline-none bg-yellow-600 rounded-tl-full rounded-bl-full p-2 transition-colors duration-200 shadow-sm"
+                          className="text-current hover:opacity-75 focus:outline-none bg-yellow-600 rounded-tl-full rounded-bl-full p-1.5 transition-colors duration-200 shadow-sm"
                           aria-label="Decrease cart amount"
                         >
                           <Minus size={16} className="text-black/80" />
@@ -177,7 +165,7 @@ const CartPage: React.FC = () => {
                           onClick={() =>
                             updateToCart(item.productId, item.amount + 1)
                           }
-                          className="text-current hover:opacity-75 focus:outline-none bg-yellow-600 rounded-tr-full rounded-br-full p-2 transition-colors duration-200 shadow-sm"
+                          className="text-current hover:opacity-75 focus:outline-none bg-yellow-600 rounded-tr-full rounded-br-full p-1.5 transition-colors duration-200 shadow-sm"
                           aria-label="Increase cart amount"
                         >
                           <Plus size={16} className="text-black/80" />
@@ -186,26 +174,31 @@ const CartPage: React.FC = () => {
                     </TableCell>
                     <TableCell className="font-medium text-center">
                       <span className="font-semibold whitespace-nowrap">
-                        {item.unitPrice.toFixed(2)}{" "}
+                        {item.unitPrice.toFixed(2)}
                         {parsedDevise(item.currency)}
                       </span>
                     </TableCell>
-                    <TableCell className="font-medium text-center">
-                      {item.totalPrice.toFixed(2)} {parsedDevise(item.currency)}
-                      <button
-                        onClick={() => removeFromCart(item.productId)}
-                        className="bg-red-600 text-white ml-1.5 rounded hover:opacity-75 p-1 transition-colors duration-200 shadow-sm"
-                        aria-label="Remove from cart"
-                      >
-                        <TiDelete />
-                      </button>
+                    <TableCell className="font-medium text-left md:text-center">
+                      <div className="inline-flex items-center">
+                        <span>
+                          {item.totalPrice.toFixed(2)}
+                          {parsedDevise(item.currency)}
+                        </span>
+                        <button
+                          onClick={() => removeFromCart(item.productId)}
+                          className="bg-red-600 text-white rounded hover:opacity-75 p-0.5 ml-1.5 transition-colors duration-200 shadow-sm"
+                          aria-label="Remove from cart"
+                        >
+                          <TiDelete />
+                        </button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
                 <TableRow className="w-full border-gray-200">
                   <TableCell
                     className="font-medium text-end self-end"
-                    colSpan={6}
+                    colSpan={5}
                   >
                     <div className="w-full text-right">
                       <p className="w-full">

@@ -530,7 +530,7 @@ export default {
   "footer.infoTitle": "INFORMACIÓN",
   "footer.info1": "Preguntas Frecuentes",
   "footer.info2": "Política de privacidad",
-  "footer.info3": "Términos y condiciones",
+  "footer.info3": "TyC y Aviso Legal",
   "footer.info4": "Contáctanos",
   "footer.followUs": "Síguenos",
   "footer.address":
@@ -620,6 +620,42 @@ export default {
     "10. POLÍTICAS, MODIFICACIÓN Y SEPARABILIDAD",
   "termsandconditions.policyModifDesc":
     "Consulte nuestras otras políticas, como nuestra Política de Privacidad, publicadas en este sitio. Estas políticas también rigen su visita a los sitios de la Compañía. Nos reservamos el derecho de modificar nuestro sitio y los Términos y Condiciones en cualquier momento. Si alguna de estas condiciones se considera inválida, nula o inaplicable por cualquier motivo, esa condición se considerará separable y no afectará la validez y aplicabilidad de las demás condiciones.",
+
+  "termsandconditions.legalNotice.title": "Aviso legal",
+  "termsandconditions.legalNotice.amlTitle": "Cumplimiento legal y KYC/AML",
+  "termsandconditions.legalNotice.amlDesc":
+    "En I2BN, cumplimos con las normativas de cumplimiento legal, particularmente el proceso KYC (Know Your Customer). Cada usuario debe verificar su identidad para garantizar la transparencia y la seguridad de las transacciones. Nuestros procedimientos contra el lavado de dinero (AML) siguen las directrices establecidas por la DFSA (Dubai Financial Services Authority), garantizando un entorno seguro y fiable para todos.",
+  "termsandconditions.legalNotice.secTitle": "Seguridad del sitio web",
+  "termsandconditions.legalNotice.secDesc":
+    "Protegemos sus datos con un certificado SSL/TLS válido, garantizando una conexión segura. La información sensible se encripta utilizando tecnologías modernas como Norton. Además, realizamos auditorías regulares para identificar y resolver posibles vulnerabilidades, incluyendo pruebas contra ataques DDoS y violaciones de seguridad.",
+  "termsandconditions.legalNotice.transTitle": "Transparencia de actividades",
+  "termsandconditions.legalNotice.transDesc":
+    "I2BN está registrada en la jurisdicción de los Emiratos Árabes Unidos. Operamos en el sector de E-Commerce, ofreciendo servicios como productos para gaming.",
+  "termsandconditions.legalNotice.contTitle": "Contenido regulado",
+  "termsandconditions.legalNotice.contDesc":
+    "Damos gran importancia al cumplimiento de las leyes aplicables. Consulte: Nuestra Política de Privacidad Nuestros Términos y Condiciones de Uso Nuestra Política de Reembolso.",
+  "termsandconditions.legalNotice.presTitle": "Presencia geográfica",
+  "termsandconditions.legalNotice.presDesc":
+    "Con sede en Dubái, Emiratos Árabes Unidos, nuestra empresa también tiene presencia internacional.",
+  "termsandconditions.legalNotice.verifTitle": "Verificación de empresas",
+  "termsandconditions.legalNotice.verifDesc":
+    "Para unirse a nuestra plataforma, requerimos:",
+  "termsandconditions.legalNotice.verifStep1":
+    "Un certificado de registro de su empresa",
+  "termsandconditions.legalNotice.verifStep2":
+    "Una prueba válida de la dirección comercial",
+  "termsandconditions.legalNotice.verifStep3":
+    "Una identificación oficial de los administradores o propietarios",
+  "termsandconditions.legalNotice.payTitle": "Soluciones de pago",
+  "termsandconditions.legalNotice.payDesc":
+    "Ofrecemos varias opciones para realizar sus transacciones:",
+  "termsandconditions.legalNotice.payStep1":
+    "Pagos mediante tarjetas bancarias (Visa, Mastercard, etc.)",
+  "termsandconditions.legalNotice.payStep2":
+    "Integración de billeteras digitales como Apple Pay y PayPal.",
+  "termsandconditions.legalNotice.cryptoTitle": "Pagos con criptomonedas",
+  "termsandconditions.legalNotice.cryptoDesc":
+    "Para nuestros usuarios que prefieren criptomonedas, aceptamos: USDT, ETH, BTC... Estas transacciones son rápidas, seguras y cumplen con las normativas locales.",
 
   "termsandconditions.bottomDesc": "Última actualización: Octubre de 2024.",
   "termsandconditions.bottomDescAllRight": "Reservados todos los derechos.",

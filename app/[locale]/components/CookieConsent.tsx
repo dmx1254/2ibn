@@ -70,7 +70,7 @@ const CookieConsent = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
-          className="fixed bottom-4 left-4 z-[100] mx-auto"
+          className="fixed bottom-4 left-4 max-sm:right-2 z-[100] mx-auto"
         >
           <div
             className="bg-gradient-to-br from-white to-blue-50
