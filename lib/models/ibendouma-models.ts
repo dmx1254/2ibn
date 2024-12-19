@@ -85,7 +85,7 @@ async function initializeModels(): Promise<any> {
     orderIdPaid: string;
     cur: string;
     valCurency: number;
-    billing?:any;
+    billing?: any;
     status: string;
     address: string;
   }
@@ -122,7 +122,12 @@ async function initializeModels(): Promise<any> {
     city: string;
     postalCode: string;
     isEmailVerified?: boolean;
+    isBan: boolean;
+    online: boolean;
     departement?: string;
+    deviceUsed: string;
+    lastConnexion: string;
+    lastIpUsed: string;
   }
 
   const paymentMethodSchema = new Schema({
@@ -230,7 +235,27 @@ async function initializeModels(): Promise<any> {
         type: Boolean,
         default: false,
       },
+      isBan: {
+        type: Boolean,
+        default: false,
+      },
+      online: {
+        type: Boolean,
+        default: false,
+      },
       departement: {
+        type: String,
+        default: "",
+      },
+      deviceUsed: {
+        type: String,
+        default: "",
+      },
+      lastConnexion: {
+        type: String,
+        default: "",
+      },
+      lastIpUsed: {
         type: String,
         default: "",
       },
@@ -390,6 +415,27 @@ async function initializeModels(): Promise<any> {
     }
   );
 
+  interface Visit extends Document {
+    userId: string;
+    ipAdress: string;
+  }
+
+  const visitSchema = new Schema(
+    {
+      userId: {
+        type: String,
+        required: true,
+      },
+      ipAdress: {
+        type: String,
+        default: "",
+      },
+    },
+    {
+      timestamps: true,
+    }
+  );
+
   const codeSchema: Schema = new Schema(
     {
       code: {
@@ -423,6 +469,8 @@ async function initializeModels(): Promise<any> {
   const UserPaymentModel =
     ibendDB.models.payment ||
     ibendDB.model<IPaymentMethod>("payment", paymentMethodSchema);
+  const VisitModel =
+  ibendDB.models.visit || ibendDB.model<Visit>("visit", visitSchema);
 
   return {
     ServerModelIben,
@@ -434,6 +482,7 @@ async function initializeModels(): Promise<any> {
     CodeIbenModel,
     UserIbenModel,
     UserPaymentModel,
+    VisitModel,
   };
 }
 

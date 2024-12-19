@@ -245,6 +245,7 @@ export default {
   "login.bottomSignup": "¿Crear una cuenta?",
   "login.emailError": "Dirección de correo electrónico incorrecta",
   "login.passwordError": "Contraseña incorrecta",
+  "login.banError": "Tu cuenta ha sido prohibida",
   "login.continue": "Continuar",
   "login.createAccountDesc":
     "Al crear una cuenta, puede realizar pedidos más rápido, realizar un seguimiento del estado de sus pedidos y mantener un historial de sus compras anteriores.",

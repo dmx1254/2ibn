@@ -25,6 +25,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmaiError] = useState("");
+  const [banError, setBanError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,11 +49,17 @@ const LoginForm = () => {
         } else {
           setPasswordError("");
         }
+        if (response?.error?.includes("Utilisateur banni")) {
+          setBanError(tScope("passwordError"));
+        } else {
+          setBanError("");
+        }
       } else {
         router.push("/");
       }
     } catch (error: any) {
       console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }

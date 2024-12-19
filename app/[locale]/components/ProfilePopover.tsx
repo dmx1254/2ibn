@@ -17,22 +17,12 @@ import { FaSortDown } from "react-icons/fa6";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useScopedI18n } from "@/locales/client";
 
 const ProfilePopover = () => {
+  const { data: session } = useSession();
   const tScope = useScopedI18n("sidebar");
-  // const menuItems = [
-  //   { href: "/profile", label: "Profile", icon: User },
-  //   { href: "/profile/orders-buys", label: "Orders Buy", icon: ShoppingBag },
-  //   { href: "/profile/order-sell", label: "Orders Sell", icon: TrendingUp },
-  //   { href: "/profile/exchange", label: "Exchange", icon: BarChart2 },
-  //   {
-  //     href: "/profile/update-profile",
-  //     label: "Update Profile",
-  //     icon: Settings,
-  //   },
-  // ];
 
   const menuItems = [
     {
@@ -73,6 +63,8 @@ const ProfilePopover = () => {
   ];
 
   const handleLogout = async () => {
+    const data = JSON.stringify({ userId: session?.user.id, online: false });
+    await navigator.sendBeacon("/api/users-status-changed", data);
     await signOut();
   };
 

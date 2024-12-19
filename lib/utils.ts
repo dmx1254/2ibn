@@ -340,3 +340,14 @@ export function maskDisplayName(name: string) {
 
   return `${firstChar}${maskedPart}${lastChar}`;
 }
+
+export function detectDeviceType(os: string): string {
+  const mobileOS = ["ios", "android", "harmonyos"];
+  const desktopOS = ["macos", "windows", "linux"];
+
+  const osLower = os.toLowerCase();
+
+  if (mobileOS.includes(osLower)) return "Mobile";
+  if (desktopOS.includes(osLower)) return "Desktop";
+  return "unknown";
+}

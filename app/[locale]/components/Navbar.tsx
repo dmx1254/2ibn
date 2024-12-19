@@ -29,9 +29,17 @@ import {
   FaWhatsapp,
   FaTelegramPlane,
 } from "react-icons/fa";
+import { useUserPresence } from "@/app/hooks/userPresence";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
+
+  useUserPresence({
+    userId: session?.user.id,
+    onError: (error) => {
+      console.error("Erreur de présence:", error);
+    },
+  });
 
   // console.log(session);
   // console.log(status);
@@ -46,23 +54,7 @@ const Navbar = () => {
     addToActiveServerRequest(slug);
   };
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrolling = window.scrollY;
-  //     setScrollPosition(scrolling);
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   // Clean up the event listener when the component unmounts
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-
   const fetchCurrency = async () => {
-    // const currency = queryKey[1];
-    // await fetch(`/api/iben/server/${isActiveJeu}`);
     const response = await fetch(`/api/iben/server`);
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");

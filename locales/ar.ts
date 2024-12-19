@@ -239,6 +239,7 @@ export default {
   "login.bottomSignup": "إنشاء حساب؟",
   "login.emailError": "عنوان البريد الإلكتروني غير صحيح",
   "login.passwordError": "كلمة المرور غير صحيحة",
+  "login.banError": "تم حظر حسابك",
   "login.continue": "استمر",
   "login.createAccountDesc":
     "من خلال إنشاء حساب، يمكنك الطلب بشكل أسرع، وتتبع حالة طلباتك، والحفاظ على سجل من مشترياتك السابقة.",

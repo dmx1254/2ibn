@@ -242,6 +242,7 @@ export default {
   "login.bottomSignup": "Create an account?",
   "login.emailError": "Incorrect email address",
   "login.passwordError": "Incorrect password",
+  "login.banError": "Your account has been banned",
   "login.continue": "Continue",
   "login.createAccountDesc":
     "By creating an account, you can order faster, track the status of your orders, and keep a history of your past purchases.",

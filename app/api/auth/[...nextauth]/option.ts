@@ -3,6 +3,10 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { ibenModels } from "@/lib/models/ibendouma-models";
 
+import { UAParser } from "ua-parser-js";
+
+import { detectDeviceType } from "@/lib/utils";
+
 export const options: NextAuthOptions = {
   pages: {
     signIn: "/signin",
@@ -22,9 +26,10 @@ export const options: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(
-        credentials: Record<"email" | "password", string> | undefined
+        credentials: Record<"email" | "password", string> | undefined,
+        req
       ) {
-        const { UserIbenModel } = await ibenModels;
+        const { UserIbenModel, VisitModel } = await ibenModels;
 
         if (credentials) {
           const isUserExist = await UserIbenModel.findOne({
@@ -41,6 +46,37 @@ export const options: NextAuthOptions = {
           if (!isPasswordCorrect) {
             throw new Error("Mot de passe incorrect");
           }
+          if (isUserExist?.isBan) {
+            throw new Error("Utilisateur banni");
+          }
+
+          const userAgent = req.headers && req.headers["user-agent"];
+
+          const { os } = UAParser(userAgent);
+          const deviceType = detectDeviceType(os.name || "");
+
+          const isoDate = new Date().toISOString();
+          const ip = req.headers && req.headers["x-forwarded-for"];
+
+          await UserIbenModel.findByIdAndUpdate(
+            isUserExist._id,
+            {
+              $set: {
+                deviceUsed: deviceType,
+                lastConnexion: isoDate,
+                lastIpUsed: ip,
+              },
+            },
+            {
+              new: true,
+              runValidators: true,
+            }
+          );
+
+          await VisitModel.create({
+            userId: isUserExist._id,
+            ipAdress: ip,
+          });
 
           return {
             id: isUserExist._id.toString(),

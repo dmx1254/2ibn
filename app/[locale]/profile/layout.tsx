@@ -11,7 +11,7 @@ import {
   LogOut,
 } from "lucide-react";
 import type { Metadata } from "next";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,6 +21,7 @@ export default function ProfileLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { data: session } = useSession();
   const tScope = useScopedI18n("sidebar");
   const pathname = usePathname();
   const locale = useCurrentLocale();
@@ -65,6 +66,8 @@ export default function ProfileLayout({
   ];
 
   const handleLogout = async () => {
+    const data = JSON.stringify({ userId: session?.user.id, online: false });
+    await navigator.sendBeacon("/api/users-status-changed", data);
     await signOut();
   };
 
