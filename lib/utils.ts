@@ -351,3 +351,186 @@ export function detectDeviceType(os: string): string {
   if (desktopOS.includes(osLower)) return "Desktop";
   return "unknown";
 }
+
+export interface Review {
+  id: number;
+  name: string;
+  reviews: number;
+  date: string;
+  message: string;
+  titre: string;
+  image: string;
+}
+
+export const trustpilotReviews: Review[] = [
+  {
+    id: 1,
+    name: "Yassine Yousfani",
+    reviews: 5,
+    date: "19 septembre 2024",
+    message:
+      "excelllente experience, mlle khadija etait tres professionnelle, respectueuse et donne le temps au clients, merci !",
+    titre: "excelllente experience",
+    image: "",
+  },
+  {
+    id: 2,
+    name: "ystech dof",
+    reviews: 5,
+    date: "23 septembre 2024",
+    message: "excellent service 100% faible",
+    titre: "excellent service 100% faible",
+    image: "",
+  },
+  {
+    id: 3,
+    name: "Yassine Bayla",
+    reviews: 5,
+    date: "16 mars 2024",
+    message:
+      "Jai déjà vendu et acheter avec la personne sans même le connaître en vrai très professionnel rien à dire, vous pouvez lui faire confiance les yeux fermés",
+    titre:
+      "Jai déjà vendu et acheter avec la personne sans même le connaître en vrai très professionnel rien à dire, vous pouvez lui faire confiance les yeux fermés",
+    image: "",
+  },
+  {
+    id: 4,
+    name: "Hamada N",
+    reviews: 5,
+    date: "15 mars 2024",
+    message:
+      "Je recommande chaudement Bendouma pour son professionnalisme et son service irréprochable. C'est un partenaire sur lequel on peut compter en toute confiance a propos du kama, super fiable.",
+    titre: "Service fiable, rapide",
+    image: "",
+  },
+  {
+    id: 5,
+    name: "Mohamed",
+    reviews: 5,
+    date: "16 mars 2024",
+    message:
+      "Bonjour,Je valide que ce site est un site de confiance depuis plus de 5ans , je n'ai pas eu bcp de probleme avec le service en ligne .Il sont toujours disponible au horaire definit et l'écoute de mes attentes.Je vous le recommande",
+    titre: "Bonjour,",
+    image: "",
+  },
+  {
+    id: 6,
+    name: "Mehdi",
+    reviews: 5,
+    date: "23 mars 2024",
+    message:
+      "Les agents sont cools, les échanges sont rapides et les transactions sont bien sécurisés. Je recommande fortement !",
+    titre: "Experience client avec ibytrade",
+    image: "",
+  },
+  {
+    id: 7,
+    name: "Client",
+    reviews: 5,
+    date: "16 septembre 2024",
+    message: "Meilleur Prix tous sites Compris !",
+    titre: "Meilleur Prix tous sites Compris !",
+    image: "",
+  },
+  {
+    id: 8,
+    name: "Walid Ouroui",
+    reviews: 5,
+    date: "18 mars 2024",
+    message: "Rapide et efficaces sans problème ni encombre",
+    titre: "Rapide et efficaces sans problème ni encombre",
+    image: "",
+  },
+  {
+    id: 9,
+    name: "Othmane",
+    reviews: 5,
+    date: "16 mars 2024",
+    message: "site fiable service qualité je le recommande",
+    titre: "site fiable service qualité je le recommande",
+    image: "",
+  },
+  {
+    id: 9,
+    name: "Taha",
+    reviews: 5,
+    date: "15 mars 2024",
+    message: "Service rapide et fiable.Mercii beaucoup",
+    titre: "Service rapide et fiable",
+    image: "",
+  },
+  {
+    id: 10,
+    name: "Jowem",
+    reviews: 5,
+    date: "15 mars 2024",
+    message: "Fiable, rapide et serviable ! je recommande.",
+    titre: "Fiable, je recommande !",
+    image: "",
+  },
+  {
+    id: 10,
+    name: "Hox y",
+    reviews: 5,
+    date: "18 mars 2024",
+    message: "service top et rapide je recommande",
+    titre: "service top et rapide.",
+    image: "",
+  },
+  {
+    id: 11,
+    name: "Hatim El Harti",
+    reviews: 5,
+    date: "18 mars 2024",
+    message: "Service fiable , parfait , immédiat, accessible et sécurisé :D",
+    titre: "Échange professionnel et fiable",
+    image:
+      "https://user-images.trustpilot.com/65f8469a3bd3830012a05976/73x73.png",
+  },
+  {
+    id: 12,
+    name: "Achraf Belfquih",
+    reviews: 5,
+    date: "16 mars 2024",
+    message: "Site fiable, je recommande !",
+    titre: "Retour d'expérience",
+    image: "",
+  },
+  {
+    id: 13,
+    name: "الزنديق",
+    reviews: 5,
+    date: "18 mars 2024",
+    message: "Fiable et service rapide",
+    titre: "Fiable et service rapide",
+    image:
+      "https://user-images.trustpilot.com/64ece8dd24b3c30012b8972d/73x73.png",
+  },
+  {
+    id: 14,
+    name: "Drissi Melna",
+    reviews: 5,
+    date: "15 mars 2024",
+    message: "service de qualité, rapide et efficace, je recommande vivement",
+    titre: "service de qualité",
+    image: "",
+  },
+  {
+    id: 15,
+    name: "Laptop Loco",
+    reviews: 5,
+    date: "16 mars 2024",
+    message: "Service de qualité, rapidité, fiabilité 💯👌",
+    titre: "Service de qualité, recommande à tous",
+    image: "",
+  },
+  {
+    id: 16,
+    name: "Laptop Loco",
+    reviews: 5,
+    date: "16 mars 2024",
+    message: "Fiable et rapide comme d'hab",
+    titre: "Fiable et rapide comme d'hab",
+    image: "",
+  },
+];

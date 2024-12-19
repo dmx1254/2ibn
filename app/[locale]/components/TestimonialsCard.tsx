@@ -12,48 +12,48 @@ import { Card, CardContent } from "./ui/card";
 import Link from "next/link";
 import { useScopedI18n } from "@/locales/client";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
-import { maskDisplayName } from "@/lib/utils";
+import { Review, maskDisplayName } from "@/lib/utils";
+import { trustpilotReviews } from "@/lib/utils";
 
 const TestimonialsCard = () => {
   const tScope = useScopedI18n("testimonials");
   const tScope2 = useScopedI18n("exchange");
-  const [reviews, setReviews] = useState<any[]>([]);
+  const [reviews, setReviews] = useState<Review[]>(trustpilotReviews);
   const [currentGroupIndex, setCurrentGroupIndex] = useState(0);
   const controls = useAnimationControls();
 
-  const options = {
-    method: "GET",
-    url: "https://trustpilot4.p.rapidapi.com/",
-    params: {
-      domain: "ibendouma.com",
-      page: "1",
-    },
-    headers: {
-      "X-RapidAPI-Key": process.env.NEXT_PUBLIC_XRapidAPIKEY,
-      "X-RapidAPI-Host": process.env.NEXT_PUBLIC_XRapidAPIHOST,
-    },
-  };
+  // const options = {
+  //   method: "GET",
+  //   url: "https://trustpilot4.p.rapidapi.com/",
+  //   params: {
+  //     domain: "ibendouma.com",
+  //     page: "1",
+  //   },
+  //   headers: {
+  //     "X-RapidAPI-Key": process.env.NEXT_PUBLIC_XRapidAPIKEY,
+  //     "X-RapidAPI-Host": process.env.NEXT_PUBLIC_XRapidAPIHOST,
+  //   },
+  // };
 
-  const fetchTruspilotReviews = async () => {
-    const response = await axios.request(options);
-    return response;
-  };
+  // const fetchTruspilotReviews = async () => {
+  //   const response = await axios.request(options);
+  //   return response;
+  // };
 
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["trustpilot-reviews"],
-    queryFn: () => fetchTruspilotReviews(),
-    staleTime: Infinity,
-  });
+  // const { isLoading, error, data } = useQuery({
+  //   queryKey: ["trustpilot-reviews"],
+  //   queryFn: () => fetchTruspilotReviews(),
+  //   staleTime: Infinity,
+  // });
 
-  useMemo(() => {
-    if (data) {
-      const filteredReviews =
-        data?.data?.reviews?.filter((review: any) => review.rating > 3) || [];
-      setReviews([...filteredReviews, ...filteredReviews]);
-    }
-  }, [data]);
+  // useMemo(() => {
+  //   if (data) {
+  //     const filteredReviews =
+  //       data?.data?.reviews?.filter((review: any) => review.rating > 3) || [];
+  //     setReviews([...filteredReviews, ...filteredReviews]);
+  //   }
+  // }, [data]);
 
-  // Animer les groupes de 6 reviews toutes les 5 secondes
   useEffect(() => {
     if (reviews.length === 0) return;
 
@@ -114,8 +114,6 @@ const TestimonialsCard = () => {
       </div>
     );
   };
-
-  if (isLoading) return <TestimonialsCardSkeleton />;
 
   // Sélectionner le groupe de 6 reviews actuellement affiché
   const displayedReviews = reviews.slice(
@@ -186,7 +184,7 @@ const TestimonialsCard = () => {
           transition={{ duration: 0.5 }}
           className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:mt-[126px]"
         >
-          {displayedReviews.map((review: any, index: number) => (
+          {displayedReviews.map((review: Review, index: number) => (
             <Link
               href="https://fr.trustpilot.com/review/ibendouma.com"
               target="_blank"
@@ -195,28 +193,25 @@ const TestimonialsCard = () => {
             >
               <div className="w-full flex flex-col gap-2 h-full">
                 <div className="flex items-start gap-3">
-                  <UserAvatar
-                    imageUrl={review.consumer?.imageUrl}
-                    name={review.consumer.displayName}
-                  />
+                  <UserAvatar imageUrl={review.image} name={review.name} />
                   <div className="flex flex-col flex-grow">
                     <span className="font-medium text-white/90 text-sm lg:text-base">
-                      {maskDisplayName(review.consumer.displayName)}
+                      {maskDisplayName(review.name)}
                     </span>
                     <div className="flex items-center gap-3">
-                      {renderStars(review.rating)}
+                      {renderStars(review.reviews)}
                       <span className="text-xs lg:text-sm text-white">
-                        {formatDate(review.dates.publishedDate)}
+                        {formatDate(review.date)}
                       </span>
                     </div>
                   </div>
                 </div>
                 <div className="mt-2 flex-grow">
                   <p className="font-medium text-white text-xs lg:text-sm">
-                    {review.title}
+                    {review.titre}
                   </p>
                   <p className="text-xs lg:text-sm text-white mt-1">
-                    {review.text}
+                    {review.message}
                   </p>
                 </div>
               </div>
