@@ -533,4 +533,22 @@ export const trustpilotReviews: Review[] = [
     titre: "Fiable et rapide comme d'hab",
     image: "",
   },
+  {
+    id: 17,
+    name: "Mouhamed SY",
+    reviews: 5,
+    date: "8 mars 2024",
+    message: "Livraison rapide et service clientèle professionnel",
+    titre: "Livraison rapide et service clientèle professionnel",
+    image: "",
+  },
+  {
+    id: 18,
+    name: "Simo Sedraty",
+    reviews: 5,
+    date: "16 mars 2024",
+    message: "Meilleur service !",
+    titre: "Meilleur service !",
+    image: "",
+  },
 ];

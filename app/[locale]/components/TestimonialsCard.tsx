@@ -207,7 +207,7 @@ const TestimonialsCard = () => {
                   </div>
                 </div>
                 <div className="mt-2 flex-grow">
-                  <p className="font-medium text-white text-xs lg:text-sm">
+                  <p className="font-medium text-white text-xs lg:text-sm w-full truncate text-ellipsis overflow-hidden whitespace-nowrap ">
                     {review.titre}
                   </p>
                   <p className="text-xs lg:text-sm text-white mt-1">
