@@ -68,7 +68,7 @@ const ContactUs = () => {
               <Phone className="w-8 h-8" />
               <div>
                 <p className="font-semibold">{tScope("phone")}</p>
-                <p>+971 50 XXX XXXX</p>
+                <p>+971 50 908 7560</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">

@@ -144,7 +144,10 @@ const Navbar = () => {
               </Link>
             )}
             {(!session || status !== "authenticated") && (
-              <div className="inline-flex sm:hidden items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link">
+              <Link
+                href="/signin"
+                className="inline-flex sm:hidden items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
+              >
                 <Image
                   src="/assets/circle-user.svg"
                   alt="account logo"
@@ -153,7 +156,7 @@ const Navbar = () => {
                   className=""
                 />
                 <span className="sr-only">language and currency</span>
-              </div>
+              </Link>
             )}
             <LanguageAndCurrency />
             <CardHoverCon />

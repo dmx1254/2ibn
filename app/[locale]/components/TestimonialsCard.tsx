@@ -61,7 +61,7 @@ const TestimonialsCard = () => {
 
     const interval = setInterval(() => {
       setCurrentGroupIndex((prevIndex) => (prevIndex + 1) % totalGroups);
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [reviews]);

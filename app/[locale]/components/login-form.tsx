@@ -159,15 +159,12 @@ const LoginForm = () => {
           </Button>
 
           <div className="relative">
-            {/* <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-white/10" />
-            </div> */}
             <div className="relative flex items-center justify-center text-sm">
-              <span className="border-t border-white/10 w-1/5" />
-              <span className="px-2 text-white/80 w-3/5">
+              <span className="border-t border-white/10 w-1/6 sm:w-1/5" />
+              <span className="px-2 max-sm:text-center max-sm:text-xs text-white/80 w-4/6 sm:w-3/5">
                 {tScope("bottomDesc")}
               </span>
-              <span className="border-t border-white/10 w-1/5" />
+              <span className="border-t border-white/10 w-1/6 sm:w-1/5" />
             </div>
           </div>
 
