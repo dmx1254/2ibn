@@ -10,6 +10,8 @@ import Navbar from "./components/Navbar";
 import { ProviderSession } from "./components/session-providers";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
+import Head from "next/head";
+import Script from "next/script";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -92,6 +94,20 @@ export default function RootLayout({
   const isRTL = params.locale === "ar";
   return (
     <html lang={params.locale} dir={isRTL ? "rtl" : "ltr"}>
+      <head>
+        <Script id="chatbot-config" strategy="beforeInteractive">
+          {`window.embeddedChatbotConfig = {
+              chatbotId: "w6UpqTkmgXhsv5_fvMLZz",
+              domain: "www.chatbase.co"
+          }`}
+        </Script>
+        <Script
+          src="https://www.chatbase.co/embed.min.js"
+          strategy="afterInteractive"
+          data-chatbotid="w6UpqTkmgXhsv5_fvMLZz"
+          data-domain="www.chatbase.co"
+        />
+      </head>
       <body
         className={clsx(
           poppins.variable,

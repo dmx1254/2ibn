@@ -930,4 +930,72 @@ export default {
   "cookie.markDesc": "Personalizan el contenido publicitario",
   "cookie.optRefus": "Rechazar cookies opcionales",
   "cookie.optAccept": "Aceptar todas las cookies",
+
+  "reviews.message-1":
+    "Excelente experiencia, la señorita Khadija fue muy profesional, respetuosa y se tomó el tiempo con los clientes. ¡Gracias!",
+  "reviews.title-1": "Excelente experiencia",
+
+  "reviews.message-2": "Servicio excelente, 100% fiable",
+  "reviews.title-2": "Servicio excelente y fiable",
+
+  "reviews.message-3":
+    "Ya he vendido y comprado con esta persona sin conocerla en persona. Muy profesional, nada que decir, puedes confiar en él con los ojos cerrados.",
+  "reviews.title-3": "Muy profesional, confianza total",
+
+  "reviews.message-4":
+    "Recomiendo encarecidamente a Bendouma por su profesionalismo y su servicio impecable. Es un socio en el que se puede confiar completamente, especialmente con los kama. Súper fiable.",
+  "reviews.title-4": "Servicio fiable y rápido",
+
+  "reviews.message-5":
+    "Hola, confirmo que este sitio es de confianza desde hace más de 5 años. No he tenido muchos problemas con el servicio en línea. Siempre están disponibles en los horarios establecidos y atentos a mis expectativas. Lo recomiendo.",
+  "reviews.title-5": "Sitio confiable, lo recomiendo",
+
+  "reviews.message-6":
+    "Los agentes son amables, los intercambios rápidos y las transacciones seguras. ¡Lo recomiendo encarecidamente!",
+  "reviews.title-6": "Excelente experiencia del cliente",
+
+  "reviews.message-7": "¡Los mejores precios de todos los sitios!",
+  "reviews.title-7": "Precios garantizados",
+
+  "reviews.message-8": "Rápido y eficiente, sin problemas.",
+  "reviews.title-8": "Rápido y eficiente",
+
+  "reviews.message-9":
+    "Sitio confiable con un servicio de calidad. Lo recomiendo.",
+  "reviews.title-9": "Servicio fiable y de calidad",
+
+  "reviews.message-10": "Servicio rápido y confiable. Muchas gracias.",
+  "reviews.title-10": "Servicio rápido y confiable",
+
+  "reviews.message-11": "¡Fiable, rápido y servicial! Lo recomiendo.",
+  "reviews.title-11": "Fiable, lo recomiendo",
+
+  "reviews.message-12": "Servicio de calidad y rápido. Lo recomiendo.",
+  "reviews.title-12": "Servicio de calidad",
+
+  "reviews.message-13":
+    "Servicio fiable, perfecto, inmediato, accesible y seguro. :D",
+  "reviews.title-13": "Servicio fiable y profesional",
+
+  "reviews.message-14": "Sitio confiable. Lo recomiendo.",
+  "reviews.title-14": "Reseña del cliente",
+
+  "reviews.message-15": "Fiable y rápido como siempre.",
+  "reviews.title-15": "Fiable y rápido",
+
+  "reviews.message-16":
+    "Servicio de calidad, rápido y eficaz. Lo recomiendo encarecidamente.",
+  "reviews.title-16": "Servicio de calidad",
+
+  "reviews.message-17": "Servicio de calidad, rapidez y fiabilidad 💯👌",
+  "reviews.title-17": "Servicio garantizado y fiable",
+
+  "reviews.message-18": "Fiable y rápido como siempre.",
+  "reviews.title-18": "Fiable y rápido",
+
+  "reviews.message-19": "Entrega rápida y atención al cliente profesional.",
+  "reviews.title-19": "Entrega rápida y atención profesional",
+
+  "reviews.message-20": "¡El mejor servicio!",
+  "reviews.title-20": "¡El mejor servicio!",
 } as const;

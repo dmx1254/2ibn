@@ -917,4 +917,72 @@ export default {
   "cookie.markDesc": "Personalize advertising content",
   "cookie.optRefus": "Reject optional cookies",
   "cookie.optAccept": "Accept all cookies",
+
+  "reviews.message-1":
+    "Excellent experience, Ms. Khadija was very professional, respectful, and gave time to clients. Thank you!",
+  "reviews.title-1": "Excellent experience",
+
+  "reviews.message-2": "Excellent service, 100% reliable",
+  "reviews.title-2": "Excellent service, 100% reliable",
+
+  "reviews.message-3":
+    "I have already sold and bought from this person without even knowing them in real life. Very professional, nothing to say, you can trust them with your eyes closed.",
+  "reviews.title-3":
+    "I have already sold and bought from this person without even knowing them in real life. Very professional, nothing to say, you can trust them with your eyes closed.",
+
+  "reviews.message-4":
+    "I highly recommend Bendouma for their professionalism and impeccable service. They are a partner you can trust when it comes to kama, super reliable.",
+  "reviews.title-4": "Reliable and fast service",
+
+  "reviews.message-5":
+    "Hello, I confirm that this site has been trustworthy for more than 5 years. I haven't had many issues with the online service. They are always available at set times and attentive to my needs. I highly recommend it.",
+  "reviews.title-5": "Hello,",
+
+  "message-6":
+    "The agents are cool, exchanges are quick, and transactions are secure. I highly recommend!",
+  "title-6": "Customer experience with ibytrade",
+
+  "reviews.message-7": "Best prices among all sites!",
+  "reviews.title-7": "Best prices among all sites!",
+
+  "reviews.message-8": "Fast and efficient without problems or hassle.",
+  "reviews.title-8": "Fast and efficient without problems or hassle",
+
+  "reviews.message-9": "Reliable site with quality service, I recommend it.",
+  "reviews.title-9": "Reliable site with quality service, I recommend it.",
+
+  "reviews.message-10": "Fast and reliable service. Thank you very much.",
+  "reviews.title-10": "Fast and reliable service",
+
+  "reviews.message-11": "Reliable, fast, and helpful! I highly recommend it.",
+  "reviews.title-11": "Reliable, I recommend it!",
+
+  "reviews.message-12": "Top-notch and fast service, I recommend it.",
+  "reviews.title-12": "Top-notch and fast service.",
+
+  "reviews.message-13":
+    "Reliable service, perfect, immediate, accessible, and secure. :D",
+  "reviews.title-13": "Professional and reliable exchange",
+
+  "reviews.message-14": "Reliable site, I recommend it!",
+  "reviews.title-14": "Customer feedback",
+
+  "reviews.message-15": "Reliable and fast service.",
+  "reviews.title-15": "Reliable and fast service",
+
+  "reviews.message-16":
+    "Quality service, fast and efficient, I highly recommend it.",
+  "reviews.title-16": "Quality service",
+
+  "reviews.message-17": "Quality service, speed, reliability 💯👌",
+  "reviews.title-17": "Quality service, recommend to all",
+
+  "reviews.message-18": "Reliable and fast as always.",
+  "reviews.title-18": "Reliable and fast as always",
+
+  "reviews.message-19": "Fast delivery and professional customer service.",
+  "reviews.title-19": "Fast delivery and professional customer service",
+
+  "reviews.message-20": "Best service!",
+  "reviews.title-20": "Best service!",
 } as const;

@@ -1,13 +1,10 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
-import axios from "axios";
-import { AlertTriangle, Coins, ShieldCheck, UserCircle2 } from "lucide-react";
+import { AlertTriangle, UserCircle2 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
-import { TestimonialsCardSkeleton } from "@/components/ui/skeletons/skeletons";
 import { Card, CardContent } from "./ui/card";
 import Link from "next/link";
 import { useScopedI18n } from "@/locales/client";
@@ -18,6 +15,7 @@ import { trustpilotReviews } from "@/lib/utils";
 const TestimonialsCard = () => {
   const tScope = useScopedI18n("testimonials");
   const tScope2 = useScopedI18n("exchange");
+  const tScope2Reviews = useScopedI18n("reviews");
   const [reviews, setReviews] = useState<Review[]>(trustpilotReviews);
   const [currentGroupIndex, setCurrentGroupIndex] = useState(0);
   const controls = useAnimationControls();
@@ -207,11 +205,11 @@ const TestimonialsCard = () => {
                   </div>
                 </div>
                 <div className="mt-2 flex-grow">
-                  <p className="font-medium text-white text-xs lg:text-sm w-full truncate text-ellipsis overflow-hidden whitespace-nowrap ">
-                    {review.titre}
+                  <p className="font-medium text-white text-xs lg:text-sm w-full truncate text-ellipsis overflow-hidden whitespace-nowrap">
+                    {tScope2Reviews(`title-${review.id}` as any)}
                   </p>
                   <p className="text-xs lg:text-sm text-white mt-1">
-                    {review.message}
+                    {tScope2Reviews(`message-${review.id}` as any)}
                   </p>
                 </div>
               </div>

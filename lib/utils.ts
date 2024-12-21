@@ -552,3 +552,49 @@ export const trustpilotReviews: Review[] = [
     image: "",
   },
 ];
+
+export type TitleType = {
+  "title-1": string;
+  "title-2": string;
+  "title-3": string;
+  "title-4": string;
+  "title-5": string;
+  "title-6": string;
+  "title-7": string;
+  "title-8": string;
+  "title-9": string;
+  "title-10": string;
+  "title-11": string;
+  "title-12": string;
+  "title-13": string;
+  "title-14": string;
+  "title-15": string;
+  "title-16": string;
+  "title-17": string;
+  "title-18": string;
+  "title-19": string;
+  "title-20": string;
+};
+
+export type MessageType = {
+  "message-1": string;
+  "message-2": string;
+  "message-3": string;
+  "message-4": string;
+  "message-5": string;
+  "message-6": string;
+  "message-7": string;
+  "message-8": string;
+  "message-9": string;
+  "message-10": string;
+  "message-11": string;
+  "message-12": string;
+  "message-13": string;
+  "message-14": string;
+  "message-15": string;
+  "message-16": string;
+  "message-17": string;
+  "message-18": string;
+  "message-19": string;
+  "message-20": string;
+};
