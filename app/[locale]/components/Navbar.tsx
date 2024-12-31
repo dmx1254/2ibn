@@ -29,7 +29,9 @@ import {
   FaWhatsapp,
   FaTelegramPlane,
 } from "react-icons/fa";
+import { BsThreads } from "react-icons/bs";
 import { useUserPresence } from "@/app/hooks/userPresence";
+import SocialMediaDropdown from "./SocialMediaDropdown ";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
@@ -94,7 +96,7 @@ const Navbar = () => {
               />
               <span className="sr-only">Ibendouma logo</span>
               <span className="max-sm:hidden text-2xl font-extrabold -ml-3 text-white">
-                2Ibn
+                iBendouma
               </span>
             </Link>
           </div>
@@ -106,14 +108,15 @@ const Navbar = () => {
               <PopoverContent className="max-w-36 shadow-none p-2 bg-[#1A1D21] border-[#45494e]">
                 <div className="flex flex-col items-start text-base font-semibold">
                   {dofusItemNav.map((dofs, index) => (
-                    <button
+                    <Link
                       key={dofs.id + index}
-                      onClick={() => handleActiveJeu(dofs.slug)}
+                      href={`acheter-des-kamas/?category=${dofs.slug}`}
+                      // onClick={() => handleActiveJeu(dofs.slug)}
                       className="outline-none text-left w-full text-white cursor-pointer p-1.5 transition-all rounded-[10px] hover:bg-[#363A3D] hover:text-white"
                       aria-label="Server dofus selection"
                     >
                       {dofs.name}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               </PopoverContent>
@@ -160,50 +163,8 @@ const Navbar = () => {
             )}
             <LanguageAndCurrency />
             <CardHoverCon />
-            <div className="flex gap-2 max-lg:hidden">
-              <Link
-                href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
-              >
-                <FaFacebookF size={14} />
-              </Link>
-
-              <Link
-                href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-sky-600 hover:opacity-80"
-              >
-                <FaTelegramPlane size={13} />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-green-600 hover:opacity-80"
-              >
-                <FaWhatsapp size={14} />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-gray-500 hover:opacity-80"
-              >
-                <FaTiktok size={13} />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-violet-500 hover:opacity-80"
-              >
-                <FaDiscord size={13} />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-[#E1306C] hover:opacity-80"
-              >
-                <FaInstagram size={13} />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
-              >
-                <FaSkype size={14} />
-              </Link>
+            <div>
+              <SocialMediaDropdown />
             </div>
           </div>
         </div>

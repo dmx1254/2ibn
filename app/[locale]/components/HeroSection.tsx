@@ -27,7 +27,7 @@ import {
 import { Input } from "./ui/input";
 import TestimonialsCard from "./TestimonialsCard";
 
-const HeroSection = () => {
+const HeroSection = ({ cat }: { cat?: string }) => {
   const { devise, activeServerRequest, addToActiveServerRequest, addToCart } =
     useStore();
   const tScope = useScopedI18n("hero");
@@ -38,6 +38,12 @@ const HeroSection = () => {
   const [serverSelected, setServerSelected] = useState<ServerBuy[] | null>(
     null
   );
+
+  useEffect(() => {
+    if (cat) {
+      addToActiveServerRequest(cat);
+    }
+  }, [cat]);
 
   const [activeServer, setActiveServer] = useState<ServerBuy | null>(null);
   const [character, setCharacter] = useState<string>("");
@@ -213,7 +219,7 @@ const HeroSection = () => {
               <Image
                 className={clsx("absolute top-[32%]", {
                   "left-[15%]": locale === "ar",
-                    "left-[75%]": locale !== "ar",
+                  "left-[75%]": locale !== "ar",
                 })}
                 src="/assets/cadeau.png"
                 alt="gift kamas"

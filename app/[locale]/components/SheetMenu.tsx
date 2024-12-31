@@ -17,7 +17,10 @@ const SheetMenu = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button aria-label="triggering menu opening" className="outline-none inline-flex lg:hidden items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link">
+        <button
+          aria-label="triggering menu opening"
+          className="outline-none inline-flex lg:hidden items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
+        >
           <Image
             src="/assets/menu-burger.svg"
             alt="account logo"
@@ -34,14 +37,15 @@ const SheetMenu = () => {
       >
         <div className="w-full flex flex-col items-center gap-3">
           {dofusItemNavSheetMenu.map((item, index) => (
-            <button
+            <Link
               key={item.id + index}
+              href={`acheter-des-kamas/?category=${item.slug}`}
               className="outline-none w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
-              onClick={() => handleActiveJeu(item.slug)}
+              // onClick={() => handleActiveJeu(item.slug)}
               aria-label="kamas server"
             >
               {tScope(item.typeslug as "kamas" | "touch" | "retro")}
-            </button>
+            </Link>
           ))}
 
           <Link

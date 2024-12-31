@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title:
     "Vendre des kamas Dofus - Vente de Kamas Dofus - Prix le Plus Bas & Livraison Rapide | IBendouma",
   description:
-    "Vendez vos Kamas Dofus en toute sécurité sur 2ibn. Livraison rapide, prix compétitifs, paiement sécurisé. Service client 24/7. ✓ Transactions Sécurisées ✓ Livraison Express",
+    "Vendez vos Kamas Dofus en toute sécurité sur ibendouma. Livraison rapide, prix compétitifs, paiement sécurisé. Service client 24/7. ✓ Transactions Sécurisées ✓ Livraison Express",
   keywords:
     "vente kamas, acheter kamas, echanger kamas, kamas dofus, dofus touch, dofus retro, prix kamas, kamas pas cher, kamas sécurisé, vente kamas dofus, vente de kamas sécurisé, kamas rapide, livraison kamas rapide, kamas en stock, kamas fiable, transaction rapide kamas, meilleurs prix kamas",
   openGraph: {
@@ -22,16 +22,16 @@ export const metadata: Metadata = {
         url: "/dofus-images/dofus-kamas.png",
         width: 1200,
         height: 630,
-        alt: "Vendez vos kamas Dofus sur 2ibn",
+        alt: "Vendez vos kamas Dofus sur ibendouma",
       },
     ],
   },
   alternates: {
-    canonical: "https://2ibn.com/vendre-des-kamas",
+    canonical: "https://ibendouma.com/vendre-des-kamas",
     languages: {
-      "en-US": "https://2ibn.com/en/vendre-des-kamas",
-      "fr-FR": "https://2ibn.com/fr/vendre-des-kamas",
-      "es-ES": "https://2ibn.com/es/vendre-des-kamas",
+      "en-US": "https://ibendouma.com/en/vendre-des-kamas",
+      "fr-FR": "https://ibendouma.com/fr/vendre-des-kamas",
+      "es-ES": "https://ibendouma.com/es/vendre-des-kamas",
     },
   },
   robots: {
@@ -50,9 +50,9 @@ export const metadata: Metadata = {
   },
   category: "gaming",
   referrer: "origin-when-cross-origin",
-  authors: [{ name: "2ibn" }],
-  creator: "2ibn",
-  publisher: "2ibn",
+  authors: [{ name: "ibendouma" }],
+  creator: "ibendouma",
+  publisher: "ibendouma",
   formatDetection: {
     telephone: true,
     date: true,

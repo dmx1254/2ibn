@@ -61,7 +61,7 @@ const ContactUs = () => {
               <Mail className="w-8 h-8" />
               <div>
                 <p className="font-semibold">{tScope("email")}</p>
-                <p>support@2ibn.com</p>
+                <p>support@ibendouma.com</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">

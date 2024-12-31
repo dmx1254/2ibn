@@ -85,7 +85,7 @@ export const OrderConfirmationTemplate: React.FC<
               }}
             >
               <img
-                src="https://2ibn.vercel.app/ibennewapp-logo.png"
+                src="https://ibendouma.vercel.app/ibennewapp-logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",
@@ -354,7 +354,7 @@ export const OrderConfirmationTemplate: React.FC<
               >
                 {tScope("myAccount")}{" "}
                 <a
-                  href="https://2ibn.vercel.app/profile"
+                  href="https://ibendouma.vercel.app/profile"
                   style={{
                     color: "#d97706",
                     textDecoration: "none",
@@ -400,7 +400,7 @@ export const OrderConfirmationTemplate: React.FC<
 
             <div style={{ marginTop: "20px" }}>
               <a
-                href="https://2ibn.com"
+                href="https://ibendouma.com"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -411,7 +411,7 @@ export const OrderConfirmationTemplate: React.FC<
               </a>{" "}
               |
               <a
-                href="https://2ibn.com/echange-de-kamas"
+                href="https://ibendouma.com/echange-de-kamas"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -422,7 +422,7 @@ export const OrderConfirmationTemplate: React.FC<
               </a>{" "}
               |
               <a
-                href="https://2ibn.com/vendre-des-kamas"
+                href="https://ibendouma.com/vendre-des-kamas"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",

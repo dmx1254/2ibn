@@ -41,6 +41,11 @@ const SellKamasComponents = ({
     firstname: "",
   });
 
+  function handleChatClick() {
+    //@ts-ignore
+    void window?.Tawk_API.toggle();
+  }
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [gameNameError, setGameNameError] = useState<string>("");
   const [lastnameError, setLastnameError] = useState<string>("");
@@ -227,6 +232,9 @@ const SellKamasComponents = ({
           toast.success(tScope("success"), {
             style: { color: "#16a34a" },
           });
+          setTimeout(() => {
+            handleChatClick();
+          }, 1500);
         }
       } catch (error) {
         // console.log(error);

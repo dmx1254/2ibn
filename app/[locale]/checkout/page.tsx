@@ -116,7 +116,9 @@ const PaymentStep = ({
         </div>
       </Card>
       <Card className="w-full flex flex-col items-start border-none h-full  shadow-none">
-        <h2 className="text-base mb-6 font-semibold">{tsCope("titleMorroco")}</h2>
+        <h2 className="text-base mb-6 font-semibold">
+          {tsCope("titleMorroco")}
+        </h2>
         <div className="w-full flex flex-col items-start gap-6">
           {paymentMethodMorroco.map((p) => (
             <div
@@ -405,6 +407,11 @@ const Checkout = () => {
     }
   };
 
+  function handleChatClick() {
+    //@ts-ignore
+    void window?.Tawk_API.toggle();
+  }
+
   const handleCheckout = async () => {
     const products = carts.map((cart) => {
       return {
@@ -442,25 +449,24 @@ const Checkout = () => {
     // const billing = billingInfo;
     try {
       setIsOrderLoading(true);
-      const result = await axios.post("/api/iben/order", {data, object: tScopeConfirm("object")});
+      const result = await axios.post("/api/iben/order", {
+        data,
+        object: tScopeConfirm("object"),
+      });
       if (result.data) {
         toast.success(tScope("success"), {
           style: { color: "#16a34a" },
         });
-        // await axios
-        //   .post("/api/iben/user/confirmEmail", {
-        //     email: email,
-        //     object: tScopeLink("object"),
-        //   })
 
-        // setTimeout(() => {
-        //   clearCart();
-        // }, 2000);
+        setTimeout(() => {
+          handleChatClick();
+        }, 1500);
       }
     } catch (error) {
       toast.success(tScope("error"), {
         style: { color: "#dc2626" },
       });
+      console.log(error);
     } finally {
       setIsOrderLoading(false);
     }

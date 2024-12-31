@@ -4,11 +4,11 @@ import { Metadata } from "next";
 
 // Métadonnées de la page pour l'échange de kamas
 export const metadata: Metadata = {
-  title: "Échange de kamas Dofus - Échangez vos Kamas en Toute Sécurité | 2ibn",
+  title: "Échange de kamas Dofus - Échangez vos Kamas en Toute Sécurité | ibendouma",
   description:
-    "Échangez vos Kamas Dofus, Touch et Retro de manière sécurisée sur 2ibn. Service d'échange rapide et fiable, taux compétitifs. Service client 24/7. ✓ Transactions Sécurisées ✓ Échange Instantané",
+    "Échangez vos Kamas Dofus, Touch et Retro de manière sécurisée sur ibendouma. Service d'échange rapide et fiable, taux compétitifs. Service client 24/7. ✓ Transactions Sécurisées ✓ Échange Instantané",
   keywords:
-    "echange kamas, echange kams sur 2ibn, echanger kamas, kamas dofus, dofus touch, dofus retro, taux echange kamas, echange securise, transfert kamas, kamas cross serveur, echange de kamas sécurisé, kamas rapide, livraison kamas rapide, kamas en stock, echange kamas fiable, transaction rapide kamas, meilleurs taux echange kamas",
+    "echange kamas, echange kams sur ibendouma, echanger kamas, kamas dofus, dofus touch, dofus retro, taux echange kamas, echange securise, transfert kamas, kamas cross serveur, echange de kamas sécurisé, kamas rapide, livraison kamas rapide, kamas en stock, echange kamas fiable, transaction rapide kamas, meilleurs taux echange kamas",
   openGraph: {
     title: "Échange de Kamas Dofus - Service Sécurisé & Instantané",
     description:
@@ -20,16 +20,16 @@ export const metadata: Metadata = {
         url: "/dofus-images/dofus-kamas-exchange.png",
         width: 1200,
         height: 630,
-        alt: "Échangez vos kamas Dofus sur 2ibn",
+        alt: "Échangez vos kamas Dofus sur ibendouma",
       },
     ],
   },
   alternates: {
-    canonical: "https://2ibn.com/echange-de-kamas",
+    canonical: "https://ibendouma.com/echange-de-kamas",
     languages: {
-      "en-US": "https://2ibn.com/en/echange-de-kamas",
-      "fr-FR": "https://2ibn.com/fr/echange-de-kamas",
-      "es-ES": "https://2ibn.com/es/echange-de-kamas",
+      "en-US": "https://ibendouma.com/en/echange-de-kamas",
+      "fr-FR": "https://ibendouma.com/fr/echange-de-kamas",
+      "es-ES": "https://ibendouma.com/es/echange-de-kamas",
     },
   },
   robots: {
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
   },
   category: 'gaming',
   referrer: 'origin-when-cross-origin',
-  authors: [{ name: '2ibn' }],
-  creator: '2ibn',
-  publisher: '2ibn',
+  authors: [{ name: 'ibendouma' }],
+  creator: 'ibendouma',
+  publisher: 'ibendouma',
   formatDetection: {
     telephone: true,
     date: true,

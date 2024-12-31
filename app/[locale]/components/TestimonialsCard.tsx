@@ -136,7 +136,7 @@ const TestimonialsCard = () => {
             <Image
               className="object-contain object-center"
               src="/secure.png"
-              alt="2ibn secure"
+              alt="ibendouma secure"
               width={20}
               height={20}
             />
@@ -150,7 +150,7 @@ const TestimonialsCard = () => {
             <Image
               className="object-contain object-center"
               src="/delivery.png"
-              alt="2ibn delivery"
+              alt="ibendouma delivery"
               width={20}
               height={20}
             />
@@ -162,7 +162,7 @@ const TestimonialsCard = () => {
             <Image
               className="object-contain object-center"
               src="/refund.png"
-              alt="2ibn refund"
+              alt="ibendouma refund"
               width={20}
               height={20}
             />

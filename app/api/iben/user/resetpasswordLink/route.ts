@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     const resetLink = `${url}/reset-password?token=${token}`;
 
     const { data, error } = await resend.emails.send({
-      from: "2IBN Verification <verification@2ibn.com>",
+      from: "ibendouma Verification <verification@2ibn.com>",
       to: [email],
       subject: object,
       react: PasswordResetEmail({

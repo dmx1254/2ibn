@@ -15,6 +15,7 @@ async function initializeModels(): Promise<any> {
   // Définir les interfaces pour les documents
   interface IExchange extends Document {
     userId: string;
+    exchangeId: string;
     serverOut: string;
     qtyToPay: number;
     characterToPay: string;
@@ -43,6 +44,10 @@ async function initializeModels(): Promise<any> {
 
   interface IAed extends Document {
     aed: number;
+  }
+
+  interface IChangeRate extends Document {
+    rate: number;
   }
 
   interface IOrder extends Document {
@@ -83,6 +88,18 @@ async function initializeModels(): Promise<any> {
     { timestamps: true }
   );
 
+  const rateSchemas = new Schema(
+    {
+      rate: {
+        type: Number,
+        required: true,
+      },
+    },
+    {
+      timestamps: true,
+    }
+  );
+
   const serverSchema: Schema = new Schema(
     {
       serverName: { type: String, required: true, unique: true },
@@ -97,6 +114,7 @@ async function initializeModels(): Promise<any> {
   const exchangeSchema: Schema = new Schema(
     {
       userId: { type: String, required: true },
+      exchangeId: { type: String, default: "" },
       serverOut: { type: String, required: true },
       qtyToPay: { type: Number, required: true },
       characterToPay: { type: String, required: true },
@@ -137,6 +155,8 @@ async function initializeModels(): Promise<any> {
   const AedModel = goapiDB.models.aed || goapiDB.model<IAed>("aed", aedSchema);
   const BuyModel =
     goapiDB.models.buy || goapiDB.model<IOrder>("buy", buySchema);
+  const RateModel =
+    goapiDB.models.rate || goapiDB.model<IChangeRate>("rate", rateSchemas);
 
   return {
     ExchangeModel,
@@ -145,6 +165,7 @@ async function initializeModels(): Promise<any> {
     DollarModel,
     AedModel,
     BuyModel,
+    RateModel,
   };
 }
 

@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
     if (newOrder) {
       const { data: emailData, error } = await resend.emails.send({
-        from: "2IBN Support <support@2ibn.com>",
+        from: "ibendouma Support <support@2ibn.com>",
         to: [newOrder.billing.email],
         subject: object,
         react: OrderConfirmationTemplate({

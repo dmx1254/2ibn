@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   try {
     const { email, lastname, firstname, object } = await request.json();
     const { data, error } = await resend.emails.send({
-      from: "2IBN Support <support@2ibn.com>",
+      from: "ibendouma Support <support@2ibn.com>",
       to: [email],
       subject: object,
       react: ConfirmEmailTemplate({

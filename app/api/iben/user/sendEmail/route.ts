@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     const { email, lastname, firstname, object } = await request.json();
     const verificationCode = Math.floor(100000 + Math.random() * 900000);
     const { data, error } = await resend.emails.send({
-      from: "2IBN Verification <verification@2ibn.com>",
+      from: "ibendouma Verification <verification@2ibn.com>",
       to: [email],
       subject: object,
       react: EmailTemplate({

@@ -10,7 +10,6 @@ import Navbar from "./components/Navbar";
 import { ProviderSession } from "./components/session-providers";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
-import Head from "next/head";
 import Script from "next/script";
 
 const poppins = Poppins({
@@ -20,7 +19,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "2ibn - Achat, Vente et Échange de Kamas Dofus | Plateforme Sécurisée",
+  title:
+    "ibendouma - Achat, Vente et Échange de Kamas Dofus | Plateforme Sécurisée",
   description:
     "La référence pour acheter, vendre et échanger vos kamas Dofus, Dofus Touch et Dofus Retro. ✓ Paiement Sécurisé ✓ Livraison Express ✓ Service Client 24/7 ✓ Meilleurs Prix Garantis",
   icons: {
@@ -45,43 +45,43 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://2ibn.com",
-    siteName: "2ibn",
-    title: "2ibn - Plateforme d'Achat, Vente et Échange de Kamas Dofus",
+    url: "https://ibendouma.com",
+    siteName: "ibendouma",
+    title: "ibendouma - Plateforme d'Achat, Vente et Échange de Kamas Dofus",
     description:
       "Votre marketplace de confiance pour les kamas Dofus. Transactions sécurisées, prix compétitifs et service client réactif.",
     images: [
       {
-        url: "/dofus-images/dofus-kamas.png", // Assurez-vous d'avoir cette image
+        url: "/dofus-images/dofus-kamas.png",
         width: 1200,
         height: 630,
-        alt: "Plateforme 2ibn - Marketplace de Kamas Dofus",
+        alt: "Plateforme ibendouma - Marketplace de Kamas Dofus",
       },
     ],
   },
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    site: "@2ibn",
-    creator: "@2ibn",
-    title: "2ibn - Marketplace de Kamas Dofus",
+    site: "@ibendouma",
+    creator: "@ibendouma",
+    title: "ibendouma - Marketplace de Kamas Dofus",
     description:
-      "Achetez, vendez et échangez vos kamas Dofus en toute sécurité sur 2ibn. Prix compétitifs et livraison rapide.",
+      "Achetez, vendez et échangez vos kamas Dofus en toute sécurité sur ibendouma. Prix compétitifs et livraison rapide.",
     images: ["/dofus-images/dofus-kamas.png"],
   },
   alternates: {
-    canonical: "https://2ibn.com",
+    canonical: "https://ibendouma.com",
     languages: {
-      "en-US": "https://2ibn.com/en",
-      "fr-FR": "https://2ibn.com/fr",
-      "es-ES": "https://2ibn.com/es",
+      "en-US": "https://ibendouma.com/en",
+      "fr-FR": "https://ibendouma.com/fr",
+      "es-ES": "https://ibendouma.com/es",
     },
   },
   category: "marketplace",
   referrer: "origin-when-cross-origin",
-  authors: [{ name: "2ibn" }],
-  creator: "2ibn",
-  publisher: "2ibn",
+  authors: [{ name: "ibendouma" }],
+  creator: "ibendouma",
+  publisher: "ibendouma",
 };
 
 export default function RootLayout({
@@ -95,17 +95,22 @@ export default function RootLayout({
   return (
     <html lang={params.locale} dir={isRTL ? "rtl" : "ltr"}>
       <head>
-        <Script id="chatbot-config" strategy="beforeInteractive">
-          {`window.embeddedChatbotConfig = {
-              chatbotId: "w6UpqTkmgXhsv5_fvMLZz",
-              domain: "www.chatbase.co"
-          }`}
-        </Script>
         <Script
-          src="https://www.chatbase.co/embed.min.js"
+          id="tawk-to-inline"
           strategy="afterInteractive"
-          data-chatbotid="w6UpqTkmgXhsv5_fvMLZz"
-          data-domain="www.chatbase.co"
+          dangerouslySetInnerHTML={{
+            __html: `
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+              s1.async=true;
+              s1.src='https://embed.tawk.to/5ef8a6b84a7c6258179b7d5d/1fav89jc0';
+              s1.charset='UTF-8';
+              s1.setAttribute('crossorigin','*');
+              s0.parentNode.insertBefore(s1,s0);
+            })();
+          `,
+          }}
         />
       </head>
       <body

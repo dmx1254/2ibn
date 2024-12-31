@@ -86,7 +86,7 @@ export default function ProfileLayout({
             />
             <span className="sr-only">2Iben logo</span>
             <span className="max-sm:hidden text-2xl font-extrabold -ml-3 text-gray-300">
-              2Ibn
+              ibendouma
             </span>
           </Link>
           <div className="flex flex-col items-start gap-6 w-full py-6">

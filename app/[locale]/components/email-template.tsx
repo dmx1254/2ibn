@@ -52,7 +52,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
               }}
             >
               <img
-                src="https://2ibn.vercel.app/ibennewapp-logo.png"
+                src="https://ibendouma.vercel.app/ibennewapp-logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",
@@ -137,7 +137,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                   margin: "0 10px",
                 }}
               >
-                support@2ibn.com
+                support@ibendouma.com
               </a>
             </span>
             <p
@@ -226,7 +226,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
             </p>
             <div style={{ marginTop: "20px" }}>
               <a
-                href="https://2ibn.com"
+                href="https://ibendouma.com"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -237,7 +237,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
               </a>{" "}
               |
               <a
-                href="https://2ibn.com/echange-de-kamas"
+                href="https://ibendouma.com/echange-de-kamas"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -248,7 +248,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
               </a>{" "}
               |
               <a
-                href="https://2ibn.com/vendre-des-kamas"
+                href="https://ibendouma.com/vendre-des-kamas"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",

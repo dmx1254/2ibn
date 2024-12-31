@@ -153,7 +153,7 @@ const TermsAndConditions = () => {
           </div>
           <div className="mt-8 text-center text-sm text-gray-500">
             <p>{tScope("bottomDesc")}</p>
-            <p>© 2024 2IBN.com. {tScope("bottomDescAllRight")}</p>
+            <p>© 2024 ibendouma.com. {tScope("bottomDescAllRight")}</p>
           </div>
         </CardContent>
       </Card>

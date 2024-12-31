@@ -39,6 +39,7 @@ import {
   FaTiktok,
   FaWhatsapp,
 } from "react-icons/fa";
+import { BsThreads } from "react-icons/bs";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -340,44 +341,66 @@ const Footer = () => {
                 <span className="text-white/80">{tScope("followUs")}</span>
                 <div className="flex gap-4 flex-wrap">
                   <Link
-                    href="#"
+                    href="https://www.facebook.com/ibendoumaoff"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
                   >
                     <FaFacebookF size={15} />
                   </Link>
+                  <Link
+                    href="https://www.threads.net/@ibendouma_com?hl=fr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-gray-400 hover:opacity-80"
+                  >
+                    <BsThreads size={13} />
+                  </Link>
 
                   <Link
-                    href="#"
+                    href="https://t.me/ibendouma"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-sky-600 hover:opacity-80"
                   >
                     <FaTelegramPlane size={14} />
                   </Link>
                   <Link
-                    href="#"
+                    href="https://wa.me/971529087560"
+                    target="__blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-green-600 hover:opacity-80"
                   >
                     <FaWhatsapp size={15} />
                   </Link>
                   <Link
-                    href="#"
+                    href="https://www.tiktok.com/@2ibnofficial"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-gray-500 hover:opacity-80"
                   >
                     <FaTiktok size={14} />
                   </Link>
                   <Link
-                    href="#"
+                    href="https://discordapp.com/users/369803701725954048/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-violet-500 hover:opacity-80"
                   >
                     <FaDiscord size={14} />
                   </Link>
                   <Link
-                    href="#"
+                    href="https://www.instagram.com/ibendouma_com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-[#E1306C] hover:opacity-80"
                   >
                     <FaInstagram size={14} />
                   </Link>
                   <Link
-                    href="#"
+                    href="skype:bendouma.ilyass?chat"
+                    target="__blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
                   >
                     <FaSkype size={15} />

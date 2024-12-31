@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
 import { useQuery } from "@tanstack/react-query";
-import { ServerExchange } from "@/lib/utils";
+import { ServerExchange, codeGenerated } from "@/lib/utils";
 import axios from "axios";
 import { toast } from "sonner";
 import { useScopedI18n } from "@/locales/client";
@@ -40,6 +40,7 @@ const EchangeKamasClient = () => {
     ServerExchange[] | null
   >(null);
   const [loadingExchange, setLoadingExchange] = useState<boolean>(false);
+  const [rate, setRate] = useState<number>(100);
 
   const formSchema = z.object({
     serverToPay: z.string().min(1, { message: tScope("serverToPayErr") }),
@@ -70,6 +71,21 @@ const EchangeKamasClient = () => {
     },
   });
 
+  const { data: rateVal } = useQuery({
+    queryKey: ["exchange-rate"],
+    queryFn: async () => {
+      const response = await fetch("/api/go/exchange/getRate");
+      if (!response.ok) throw new Error("Fetching currency failed");
+      return response.json();
+    },
+  });
+
+  useEffect(() => {
+    if (rateVal) {
+      setRate(rateVal[0].rate);
+    }
+  }, [rateVal]);
+
   const { watch, setValue } = form;
   const serverToPay = watch("serverToPay");
   const quantityToPay = watch("quantityToPay");
@@ -85,7 +101,7 @@ const EchangeKamasClient = () => {
     const total =
       ((Number(serverToPayPrice) * Number(quantityToPay)) /
         Number(serverToReceivePrice)) *
-      0.8;
+      (1 - Number(rate / 100));
     const totalToReceive = Number(total).toFixed(2);
     if (totalToReceive)
       setValue("quantityToReceive", totalToReceive.toString());
@@ -94,6 +110,7 @@ const EchangeKamasClient = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const data = {
       userId: session?.user.id,
+      exchangeId: codeGenerated(),
       serverOut: values.serverToPay,
       serverIn: values.serverToReceive,
       codeToExchange: values.exchangeCode,

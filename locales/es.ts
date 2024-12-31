@@ -32,6 +32,19 @@ export default {
   "hero.added.cart": "{serverName} se agregó exitosamente al carrito",
   "cart.goToCart": "Ir al carrito",
 
+  "hero.homeTitle": "Compra de Kamas",
+  "hero.homeDesc": "Complete la información a continuación para su compra",
+  "hero.homeSelect": "Selección de juego",
+  "hero.homeGame": "Elija su juego",
+  "hero.homeServer": "Servidor",
+  "hero.homeMontantTite": "Cantidad",
+  "hero.homekamas": "Cantidad de Kamas",
+  "hero.homePerso": "Nombre del personaje",
+  "hero.homePersoPlace": "Ingrese el nombre de su personaje",
+  "hero.homeRecapTitle": "Resumen",
+  "hero.homeRecapQty": "Cantidad",
+  "hero.homeRecapTot": "Total",
+
   "cartpage.image": "Imagen",
   "cartpage.name": "Nombre",
   "cartpage.jeu": "Juego",
@@ -63,14 +76,14 @@ export default {
   "infosect.desctitle": "Comprar y vender Kamas Dofus",
   "infosect.descdesc":
     "Los Kamas te ayudan a disfrutar más del juego, obtenerlos comprándolos es la mejor manera. Con los Kamas puedes comprar objetos como recursos o equipamiento, y viajar por el Mundo de los Doce.",
-  "infosect.howbuytitle": "¿Por qué comprar Kamas Dofus en 2ibn?",
+  "infosect.howbuytitle": "¿Por qué comprar Kamas Dofus en ibendouma?",
   "infosect.howbuy1": "Mejores precios y grandes cantidades en stock",
   "infosect.howbuy2": "Servicios rápidos y seguros 24/7",
   "infosect.howbuy3": "Proceso de entrega simple",
   "infosect.howbuy4": "95% de los pedidos entregados en menos de 10 minutos",
   "infosect.howbuy5": "Confiado por socios y proveedores de pago fiables",
   "infosect.howobtaintitle": "¿Cómo obtener Kamas Dofus?",
-  "infosect.howobtain1": "Regístrate o inicia sesión en tu cuenta 2ibn",
+  "infosect.howobtain1": "Regístrate o inicia sesión en tu cuenta ibendouma",
   "infosect.howobtain2": "Elige el servidor y la cantidad de Kamas Dofus",
   "infosect.howobtain3":
     "Haz clic en 'Añadir al carrito' y ve a la página del carrito",
@@ -78,9 +91,9 @@ export default {
   "infosect.howobtain5": "Confirma la entrega después de recibir los Kamas",
   "infosect.howtoreciveyourkamastitle": "¿Cómo recibir tus Kamas Dofus?",
   "infosect.howtoreciveyourkamas1":
-    'El método de entrega "Cara a Cara" es utilizado por 2ibn para entregar todos los pedidos de Dofus (esto significa que debes estar conectado al mismo tiempo que nosotros para recibir tus Kamas Dofus).',
+    'El método de entrega "Cara a Cara" es utilizado por ibendouma para entregar todos los pedidos de Dofus (esto significa que debes estar conectado al mismo tiempo que nosotros para recibir tus Kamas Dofus).',
   "infosect.howtoreciveyourkamas2":
-    'El proceso es simple: después de realizar tu pedido, contáctanos a través de nuestro chat en vivo disponible 24/7. Si conoces nuestro punto de encuentro en Dofus, puedes ir allí y usar la función "Estoy en línea" en 2ibn para informarnos que estás esperando el intercambio.',
+    'El proceso es simple: después de realizar tu pedido, contáctanos a través de nuestro chat en vivo disponible 24/7. Si conoces nuestro punto de encuentro en Dofus, puedes ir allí y usar la función "Estoy en línea" en ibendouma para informarnos que estás esperando el intercambio.',
   "infosect.bottomtitle": "¿Listo para gobernar el Mundo de los Doce?",
   "infosect.btn": "¡Recoge tus Kamas ahora!",
 
@@ -88,7 +101,7 @@ export default {
     "Te enviaremos mensajes privados en el juego con el código de intercambio que proporcionaste, para confirmar que el destinatario que intercambia contigo forma parte de nuestro equipo.",
   "exchange.title": "Atención",
   "exchange.notice":
-    "M=1,000,000 Kamas. Atención: 2iBn nunca te pedirá que devuelvas tus kamas o ítems de Dofus en el juego; siempre te pediremos que vengas al «Chat en Vivo» para discutir cualquier problema. Nunca entregues tus kamas o ítems de Dofus a alguien que diga ser 2iBn.",
+    "M=1,000,000 Kamas. Atención: ibendouma nunca te pedirá que devuelvas tus kamas o ítems de Dofus en el juego; siempre te pediremos que vengas al «Chat en Vivo» para discutir cualquier problema. Nunca entregues tus kamas o ítems de Dofus a alguien que diga ser ibendouma.",
 
   "exchange.headeartitle": "INTERCAMBIO DE KAMAS",
   "exchange.serverToPay": "Servidor a Pagar",
@@ -113,7 +126,7 @@ export default {
   "exchange.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
 
   "exchange.desc1":
-    "¿Tienes kamas en otros servidores de Dofus o Dofus Touch? ¿O tienes kamas en Dofus Touch y quieres transferirlos a otros servidores? ¡No hay problema! 2ibn también asegura la transferencia de kamas de un servidor a otro.",
+    "¿Tienes kamas en otros servidores de Dofus o Dofus Touch? ¿O tienes kamas en Dofus Touch y quieres transferirlos a otros servidores? ¡No hay problema! ibendouma también asegura la transferencia de kamas de un servidor a otro.",
   "exchange.desc2":
     "Puedes intercambiar tus kamas con nosotros entre los servidores de cuenta única Draconiros, así como los servidores clásicos de Dofus Imagiro, Orukam, Ombre, TalKasha, HellMina y Tylezia. Para Dofus Retro, también cubrimos Eratz, Henual, Crail, Galgarion y Boune, así como Dofus Touch con Oshimo, Herdegrize, Terra Cogita, Epsilon, Talok y Tiliwan.",
 
@@ -349,24 +362,24 @@ export default {
     "Si no solicitaste este código, por favor ignora este correo.",
   "emailtemplate.secureTitle": "Consejos de seguridad",
   "emailtemplate.secureDesc":
-    "Nunca compartas este código con nadie. El equipo de 2IBN nunca te pedirá tu código de verificación.",
+    "Nunca compartas este código con nadie. El equipo de ibendouma nunca te pedirá tu código de verificación.",
   "emailtemplate.thanks":
-    "Gracias por unirte a nosotros, ¡y bienvenido a 2iBn! 🎮",
+    "Gracias por unirte a nosotros, ¡y bienvenido a ibendouma! 🎮",
   "emailtemplate.cordial": "Atentamente,",
-  "emailtemplate.teams": "El equipo de 2iBn",
+  "emailtemplate.teams": "El equipo de ibendouma",
   "emailtemplate.copyright": "Todos los derechos reservados",
   "emailtemplate.peopleSendTo": "Este correo fue enviado a",
   "emailtemplate.website": "Sitio web",
   "emailtemplate.exchangeLink": "Intercambiar kamas",
   "emailtemplate.sellLink": "Vender tus kamas",
   "emailtemplate.bottomSpam":
-    "Este correo fue enviado por 2IBN. Para asegurarte de recibir nuestros correos, agrega verification@2ibn.com a tu lista de contactos.",
+    "Este correo fue enviado por ibendouma. Para asegurarte de recibir nuestros correos, agrega verification@ibendouma.com a tu lista de contactos.",
 
   "resetlinktemplate.title": "Hola",
   "resetlinktemplate.object":
     "Restablecimiento de contraseña – Acción requerida",
   "resetlinktemplate.subtitle":
-    "Has solicitado restablecer tu contraseña para tu cuenta en 2iBn. No te preocupes, estamos aquí para ayudarte a volver al juego rápidamente. Haz clic en el botón de abajo para crear una nueva contraseña segura:",
+    "Has solicitado restablecer tu contraseña para tu cuenta en ibendouma. No te preocupes, estamos aquí para ayudarte a volver al juego rápidamente. Haz clic en el botón de abajo para crear una nueva contraseña segura:",
   "resetlinktemplate.resetPasstitle": "Restablecer mi contraseña",
   "resetlinktemplate.resetDesc1": "Este enlace expirará en",
   "resetlinktemplate.resetDesc2": "30 minutos",
@@ -374,9 +387,10 @@ export default {
     "Si no solicitaste este restablecimiento, puedes ignorar este correo electrónico.",
   "resetlinktemplate.resetDesc4":
     "¿Tienes preguntas o necesitas asistencia adicional? Nuestro equipo de soporte está disponible 24/7.",
-  "resetlinktemplate.thanks": "¡Gracias por ser parte de la comunidad 2iBn!",
+  "resetlinktemplate.thanks":
+    "¡Gracias por ser parte de la comunidad ibendouma!",
   "resetlinktemplate.cordial": "Atentamente",
-  "resetlinktemplate.teams": "El equipo de 2iBn",
+  "resetlinktemplate.teams": "El equipo de ibendouma",
   "resetlinktemplate.sec": "Tu seguridad, nuestra prioridad.",
   "resetlinktemplate.copyright": "Todos los derechos reservados.",
   "resetlinktemplate.peopleToSend":
@@ -499,9 +513,9 @@ export default {
   "updateKamasProfile.changePasswordErrorMessage":
     "La contraseña actual es diferente de tu contraseña",
 
-  "whychooseus.title": "¿Por qué elegir 2IBN?",
+  "whychooseus.title": "¿Por qué elegir ibendouma?",
   "whychooseus.desc":
-    "2ibn es una plataforma de venta de Kamas para Dofus que garantiza entregas ultrarrápidas en 3 a 15 minutos para el 99% de los pedidos, con un servicio disponible las 24 horas del día. El sitio se destaca por sus precios competitivos y mantiene stock en todos los servidores de Dofus, comprometido a ofrecer las mejores tarifas del mercado. El proceso de compra es sencillo: después de realizar el pedido, un agente se pone en contacto directamente con el cliente para organizar el pago y la entrega en el juego en un punto de encuentro, asegurando una transacción rápida y segura.",
+    "ibendouma es una plataforma de venta de Kamas para Dofus que garantiza entregas ultrarrápidas en 3 a 15 minutos para el 99% de los pedidos, con un servicio disponible las 24 horas del día. El sitio se destaca por sus precios competitivos y mantiene stock en todos los servidores de Dofus, comprometido a ofrecer las mejores tarifas del mercado. El proceso de compra es sencillo: después de realizar el pedido, un agente se pone en contacto directamente con el cliente para organizar el pago y la entrega en el juego en un punto de encuentro, asegurando una transacción rápida y segura.",
 
   "whychooseus.delivery": "Entrega rápida",
   "whychooseus.secure": "Entrega 100% Segura",
@@ -511,7 +525,7 @@ export default {
 
   "footer.satisfaction": "99,9% DE SATISFACCIÓN",
   "footer.satisfactionDesc":
-    "Más de 30,000 jugadores han disfrutado de los servicios de 2IBN",
+    "Más de 30,000 jugadores han disfrutado de los servicios de ibendouma",
   "footer.secure": "PAGO SEGURO",
   "footer.secureDesc":
     "Sistema de pago 100% seguro, aprobado por más de 30,000 jugadores!",
@@ -522,7 +536,7 @@ export default {
   "footer.refundDesc": "Reembolso realizado si no deseas esperar tu pedido.",
   "footer.aboutTitle": "SOBRE NOSOTROS",
   "footer.aboutDesc":
-    "2IBN vende, compra e intercambia kamas para Dofus, Dofus retro y Dofus Touch a precios inmejorables. Nuestro principal objetivo es una entrega rápida y económica. Te garantizamos un excelente servicio 24/7. Comprar kamas y jugar Dofus o Dofus Touch será mucho más fácil para ti. Tu satisfacción es nuestra principal misión.",
+    "ibendouma vende, compra e intercambia kamas para Dofus, Dofus retro y Dofus Touch a precios inmejorables. Nuestro principal objetivo es una entrega rápida y económica. Te garantizamos un excelente servicio 24/7. Comprar kamas y jugar Dofus o Dofus Touch será mucho más fácil para ti. Tu satisfacción es nuestra principal misión.",
   "footer.quickLinkTitle": "ENLACES RÁPIDOS",
   "footer.quickLink1": "Vender kamas",
   "footer.quickLink2": "Intercambiar kamas",
@@ -551,7 +565,7 @@ export default {
   "ourservice.echangeKamasDesc":
     "Intercambia tus kamas entre diferentes servidores en pocos clics. Servicio rápido y confiable.",
 
-  "statistic.title": "2IBN en Cifras",
+  "statistic.title": "ibendouma en Cifras",
   "statistic.desc":
     "Estadísticas que hablan por sí solas y reflejan nuestra fiabilidad",
   "statistic.satisfied": "Clientes Satisfechos",
@@ -570,7 +584,7 @@ export default {
     "Una vez pagado el pedido, nuestro agente le dará el punto de encuentro (mapa en el juego) donde entregará los kamas. Vaya a las coordenadas indicadas donde nuestro repartidor hará el intercambio para darle sus kamas. NB: Por favor, manténgase en línea en el chat para recibir las coordenadas del mapa.",
   "faq.scamTitle": "Prevención de Fraudes",
   "faq.scamDesc":
-    "Cualquiera que le pida en el juego que devuelva kamas por cualquier motivo es un estafador. Un agente de 2IBN nunca hará este tipo de solicitud, ya que toda la comunicación se realizará en el chat en línea. No dude en bloquear a la persona si recibe este tipo de mensaje.",
+    "Cualquiera que le pida en el juego que devuelva kamas por cualquier motivo es un estafador. Un agente de ibendouma nunca hará este tipo de solicitud, ya que toda la comunicación se realizará en el chat en línea. No dude en bloquear a la persona si recibe este tipo de mensaje.",
   "faq.roolbackTitle": "Situaciones de Rollback",
   "faq.rollbackDesc":
     "Si sus kamas fueron entregados durante un rollback, por favor contacte al soporte para una nueva entrega.",
@@ -589,7 +603,7 @@ export default {
 
   "termsandconditions.title": "Términos y Condiciones",
   "termsandconditions.companyInfo":
-    "Este sitio (2ibn.com) es propiedad y está operado por IJBK Services INTERNATIONAL FZ-LLC, Compass Building, Al Shohada Road, Al Hamra Industrial Zone-FZ, Ras Al Khaimah, Emiratos Árabes Unidos, JBIK INTERNATIONAL CO., LIMITED (procesamiento de pagos para Cardpay). Dirección registrada: ROOMS 1318-20, HOLLYWOOD PLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON y sus subsidiarias (colectivamente, la 'Compañía'), y le proporciona sus servicios bajo los siguientes términos y condiciones. Al visitar o comprar en www.2ibn.com, usted acepta estos términos. El uso continuo del sitio constituye la aceptación de estos términos y condiciones. La Compañía se reserva el derecho de modificar los términos de uso y avisos bajo los cuales se ofrecen sus sitios y servicios, incluidos, entre otros, los cargos asociados con el uso de sus sitios y servicios. Usted es responsable de revisar estos términos y condiciones regularmente y cualquier otro término adicional. Su uso continuo de los sitios y servicios de la Compañía constituye su aceptación de todos estos términos (ver TÉRMINOS Y CONDICIONES y POLÍTICA DE PRIVACIDAD). Por favor, léalos atentamente.",
+    "Este sitio (ibendouma.com) es propiedad y está operado por IJBK Services INTERNATIONAL FZ-LLC, Compass Building, Al Shohada Road, Al Hamra Industrial Zone-FZ, Ras Al Khaimah, Emiratos Árabes Unidos, JBIK INTERNATIONAL CO., LIMITED (procesamiento de pagos para Cardpay). Dirección registrada: ROOMS 1318-20, HOLLYWOOD PLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON y sus subsidiarias (colectivamente, la 'Compañía'), y le proporciona sus servicios bajo los siguientes términos y condiciones. Al visitar o comprar en www.ibendouma.com, usted acepta estos términos. El uso continuo del sitio constituye la aceptación de estos términos y condiciones. La Compañía se reserva el derecho de modificar los términos de uso y avisos bajo los cuales se ofrecen sus sitios y servicios, incluidos, entre otros, los cargos asociados con el uso de sus sitios y servicios. Usted es responsable de revisar estos términos y condiciones regularmente y cualquier otro término adicional. Su uso continuo de los sitios y servicios de la Compañía constituye su aceptación de todos estos términos (ver TÉRMINOS Y CONDICIONES y POLÍTICA DE PRIVACIDAD). Por favor, léalos atentamente.",
   "termsandconditions.privacyTitle": "1. PRIVACIDAD",
   "termsandconditions.privacyDesc":
     "Consulte nuestra POLÍTICA DE PRIVACIDAD, que también rige su visita a los sitios de la Compañía.",
@@ -610,7 +624,7 @@ export default {
     "Los precios de los sitios cambian según la oferta y la demanda. Si encuentra un mejor precio en otra tienda en línea, haremos nuestro mejor esfuerzo para superarlo.",
   "termsandconditions.refundTitle": "7. POLÍTICA DE REEMBOLSO",
   "termsandconditions.refundDesc":
-    "2IBN se compromete a reembolsar a los clientes insatisfechos en la medida de lo razonable. Tenga en cuenta que el soporte puede solicitarle que proporcione una prueba de pago. El cliente tiene derecho a solicitar un reembolso en los siguientes casos. Productos virtuales no recibidos: En caso de que los productos virtuales no se hayan entregado al cliente dentro del tiempo de entrega previsto, el cliente puede solicitar un reembolso. Pago duplicado: En caso de que el cliente haya realizado un pago repetido por un pedido, debe ponerse en contacto con el soporte para obtener un reembolso lo antes posible. Por cualquier motivo diferente a los enumerados anteriormente, explique su situación al soporte. Su solicitud de reembolso se verificará después de enviar el número de pedido y el motivo del reembolso. Si la solicitud es aprobada, el reembolso se devolverá a la cuenta o tarjeta de crédito del cliente. En los siguientes casos, no podemos reembolsar a los clientes: Entrega completa: los productos se han entregado al cliente según lo acordado y descrito. Pedido impago: el cliente no tiene derecho a solicitar un reembolso por un pedido impago.",
+    "ibendouma se compromete a reembolsar a los clientes insatisfechos en la medida de lo razonable. Tenga en cuenta que el soporte puede solicitarle que proporcione una prueba de pago. El cliente tiene derecho a solicitar un reembolso en los siguientes casos. Productos virtuales no recibidos: En caso de que los productos virtuales no se hayan entregado al cliente dentro del tiempo de entrega previsto, el cliente puede solicitar un reembolso. Pago duplicado: En caso de que el cliente haya realizado un pago repetido por un pedido, debe ponerse en contacto con el soporte para obtener un reembolso lo antes posible. Por cualquier motivo diferente a los enumerados anteriormente, explique su situación al soporte. Su solicitud de reembolso se verificará después de enviar el número de pedido y el motivo del reembolso. Si la solicitud es aprobada, el reembolso se devolverá a la cuenta o tarjeta de crédito del cliente. En los siguientes casos, no podemos reembolsar a los clientes: Entrega completa: los productos se han entregado al cliente según lo acordado y descrito. Pedido impago: el cliente no tiene derecho a solicitar un reembolso por un pedido impago.",
   "termsandconditions.thirdPartyTitle": "8. TERCEROS",
   "termsandconditions.thirdPartyDesc":
     "La Compañía también puede proporcionar enlaces y referencias a sitios web operados por terceros. Ni la Compañía, ni sus empresas matrices o subsidiarias, ni sus afiliados, operan ni controlan de ninguna manera la información, productos o servicios en estos sitios de terceros. No somos responsables de revisar o evaluar, ni garantizamos las ofertas de estas empresas o individuos ni el contenido de sus sitios web. La Compañía no asume responsabilidad alguna por las acciones, productos y contenidos de todos estos terceros y de cualquier otro tercero. Usted debe leer cuidadosamente sus declaraciones de privacidad y otros términos de uso. El material en este sitio y en sitios de terceros se proporciona 'tal cual' y sin garantía de ningún tipo, expresa o implícita. En la máxima medida permitida por la ley aplicable, la Compañía renuncia a todas las garantías, expresas o implícitas, incluidas, entre otras, las garantías implícitas de comerciabilidad y adecuación para un propósito particular. La Compañía no reclama título alguno sobre cuentas u objetos virtuales comprados o vendidos en este sitio.",
@@ -663,7 +677,7 @@ export default {
 
   "privacyandpolicy.title": "Política de Privacidad",
   "privacyandpolicy.intro":
-    "www.2ibn.com y sus empresas afiliadas (colectivamente, la 'Compañía') respetan sus derechos de privacidad y reconocen la importancia de proteger la Información Personal (como se define a continuación) que usted nos proporciona. Esta Política de Privacidad describe cómo la Compañía recopila, almacena y utiliza la Información Personal que usted nos proporciona a través de los sitios web de la Compañía y mediante comunicaciones telefónicas o por correo electrónico que pueda tener con nosotros. Esta Política de Privacidad también describe las opciones disponibles para usted respecto al uso de la Información Personal que nos proporciona y las acciones que puede tomar para acceder a esta información y solicitar que la Compañía la corrija. Se requiere que proporcione Información Personal, que puede incluir nombre, dirección de facturación, dirección de envío, número de teléfono y dirección de correo electrónico. Usamos esta información para contactarlo sobre los servicios y productos en el(los) sitio(s) en los que ha expresado interés o solicitado y para facilitar la finalización de un pedido.",
+    "www.ibendouma.com y sus empresas afiliadas (colectivamente, la 'Compañía') respetan sus derechos de privacidad y reconocen la importancia de proteger la Información Personal (como se define a continuación) que usted nos proporciona. Esta Política de Privacidad describe cómo la Compañía recopila, almacena y utiliza la Información Personal que usted nos proporciona a través de los sitios web de la Compañía y mediante comunicaciones telefónicas o por correo electrónico que pueda tener con nosotros. Esta Política de Privacidad también describe las opciones disponibles para usted respecto al uso de la Información Personal que nos proporciona y las acciones que puede tomar para acceder a esta información y solicitar que la Compañía la corrija. Se requiere que proporcione Información Personal, que puede incluir nombre, dirección de facturación, dirección de envío, número de teléfono y dirección de correo electrónico. Usamos esta información para contactarlo sobre los servicios y productos en el(los) sitio(s) en los que ha expresado interés o solicitado y para facilitar la finalización de un pedido.",
 
   "privacyandpolicy.consent.title": "1 Consentimiento",
   "privacyandpolicy.consent":
@@ -754,7 +768,7 @@ export default {
 
   "privacyandpolicy.choiceOptOut.title": "21 Elección y Exclusión",
   "privacyandpolicy.choiceOptOut":
-    "Si ya no desea recibir las comunicaciones promocionales de la Compañía, puede 'excluirse' de recibirlas siguiendo las instrucciones incluidas en cada comunicación o enviando un correo electrónico a la Compañía a support@2ibn.com.",
+    "Si ya no desea recibir las comunicaciones promocionales de la Compañía, puede 'excluirse' de recibirlas siguiendo las instrucciones incluidas en cada comunicación o enviando un correo electrónico a la Compañía a support@ibendouma.com.",
 
   "privacyandpolicy.links.title": "22 Enlaces a Otros Sitios Web",
   "privacyandpolicy.links":
@@ -767,7 +781,7 @@ export default {
 
   "privacyandpolicy.security.title": "24 Seguridad",
   "privacyandpolicy.security":
-    "La Compañía protege la privacidad e integridad de la información que recopila mediante la aplicación de protocolos administrativos apropiados, salvaguardias técnicas y controles de seguridad física diseñados para limitar el acceso, detectar y prevenir el acceso no autorizado, la divulgación inadecuada, la alteración o la destrucción de la información bajo su control. La Compañía transmite la información utilizada por sus proveedores de servicios externos para las operaciones subcontratadas específicas mencionadas anteriormente a través de redes públicas y privadas mediante tecnologías de encriptación reconocidas, como el uso de software Secure Sockets Layer (SSL), que encripta la información que usted ingresa. Aunque la Compañía sigue los procedimientos establecidos anteriormente para proteger la Información Personal enviada a la Compañía, ningún método de transmisión a través de Internet, o método de almacenamiento electrónico, es 100% seguro. Por lo tanto, aunque la Compañía se esfuerza por utilizar medios comercialmente aceptables para proteger su Información Personal, la Compañía no puede garantizar su seguridad absoluta. Si tiene alguna pregunta sobre la seguridad de la Compañía en sus sitios web, no dude en enviarnos un correo electrónico a support@2ibn.com.",
+    "La Compañía protege la privacidad e integridad de la información que recopila mediante la aplicación de protocolos administrativos apropiados, salvaguardias técnicas y controles de seguridad física diseñados para limitar el acceso, detectar y prevenir el acceso no autorizado, la divulgación inadecuada, la alteración o la destrucción de la información bajo su control. La Compañía transmite la información utilizada por sus proveedores de servicios externos para las operaciones subcontratadas específicas mencionadas anteriormente a través de redes públicas y privadas mediante tecnologías de encriptación reconocidas, como el uso de software Secure Sockets Layer (SSL), que encripta la información que usted ingresa. Aunque la Compañía sigue los procedimientos establecidos anteriormente para proteger la Información Personal enviada a la Compañía, ningún método de transmisión a través de Internet, o método de almacenamiento electrónico, es 100% seguro. Por lo tanto, aunque la Compañía se esfuerza por utilizar medios comercialmente aceptables para proteger su Información Personal, la Compañía no puede garantizar su seguridad absoluta. Si tiene alguna pregunta sobre la seguridad de la Compañía en sus sitios web, no dude en enviarnos un correo electrónico a support@ibendouma.com.",
 
   "privacyandpolicy.internetFraud.title": "25 Fraude en Internet",
   "privacyandpolicy.internetFraud":
@@ -788,7 +802,7 @@ export default {
 
   "privacyandpolicy.contactInformation.title": "29 Información de Contacto",
   "privacyandpolicy.contactInformation":
-    "Puede contactar a la Compañía por correo electrónico a support@2ibn.com.",
+    "Puede contactar a la Compañía por correo electrónico a support@ibendouma.com.",
   "privacyandpolicy.bottomDesc": "Última Actualización: Octubre 2024",
   "privacyandpolicy.bottomDescAllRight": "Todos los Derechos Reservados.",
 
@@ -813,7 +827,7 @@ export default {
 
   "shadcndialog.close": "Cerca",
   "testimonials.desc":
-    "2ibn es una plataforma de venta de Kamas para Dofus que garantiza entregas ultrarrápidas en 3 a 15 minutos para el 99% de los pedidos, con un servicio disponible las 24 horas del día. El sitio se destaca por sus precios competitivos y mantiene stock en todos los servidores de Dofus, comprometido a ofrecer las mejores tarifas del mercado. El proceso de compra es sencillo: después de realizar el pedido, un agente se pone en contacto directamente con el cliente para organizar el pago y la entrega en el juego a través de un punto de encuentro, asegurando una transacción rápida y segura.",
+    "ibendouma es una plataforma de venta de Kamas para Dofus que garantiza entregas ultrarrápidas en 3 a 15 minutos para el 99% de los pedidos, con un servicio disponible las 24 horas del día. El sitio se destaca por sus precios competitivos y mantiene stock en todos los servidores de Dofus, comprometido a ofrecer las mejores tarifas del mercado. El proceso de compra es sencillo: después de realizar el pedido, un agente se pone en contacto directamente con el cliente para organizar el pago y la entrega en el juego a través de un punto de encuentro, asegurando una transacción rápida y segura.",
   "testimonials.delivery": "Entrega fácil e instantánea",
   "testimonials.guarantee": "100% Seguro garantizado",
   "testimonials.refund": "Reembolso garantizado",
@@ -870,25 +884,25 @@ export default {
   "paymentMethod.errorMessage": "Algo salió mal",
 
   "confirmEmail.title": "Hola",
-  "confirmEmail.object": "¡Bienvenido a 2iBn 🎮 Tu gaming simplificado!",
+  "confirmEmail.object": "¡Bienvenido a ibendouma 🎮 Tu gaming simplificado!",
   "confirmEmail.subtitle":
-    "Gracias por registrarte en 2iBn. Ahora tienes acceso a nuestros servicios rápidos y seguros para potenciar tus juegos/servicios favoritos.",
+    "Gracias por registrarte en ibendouma. Ahora tienes acceso a nuestros servicios rápidos y seguros para potenciar tus juegos/servicios favoritos.",
   "confirmEmail.start": "Para empezar, visita nuestro sitio aquí:",
   "confirmEmail.contact":
     "No dudes en contactarnos si necesitas ayuda. Estamos disponibles para ti 24/7.",
   "confirmEmail.bientot": "Hasta pronto y felices juegos,",
-  "confirmEmail.thanks": "El equipo de 2iBn",
+  "confirmEmail.thanks": "El equipo de ibendouma",
   "confirmEmail.copyright": "Todos los derechos reservados",
   "confirmEmail.website": "Sitio web",
   "confirmEmail.exchangeLink": "Intercambio de kamas",
   "confirmEmail.sellLink": "Vender tus kamas",
   "confirmEmail.bottomSpam":
-    "Este correo electrónico fue enviado por 2IBN. Para asegurarte de recibir nuestros correos, agrega support@2ibn.com a tu lista de contactos.",
+    "Este correo electrónico fue enviado por ibendouma. Para asegurarte de recibir nuestros correos, agrega support@ibendouma.com a tu lista de contactos.",
 
   "orderConfirmation.title": "Hola",
   "orderConfirmation.object": "🎉 ¡Pedido confirmado! 🚀",
   "orderConfirmation.orderConfirmed":
-    "¡Gracias por tu pedido en 2iBn! Estamos encantados de procesarlo para ti.",
+    "¡Gracias por tu pedido en ibendouma! Estamos encantados de procesarlo para ti.",
   "orderConfirmation.confirmedV": "Aquí tienes los detalles de tu pedido:",
   "orderConfirmation.orderNumber": "Número de pedido",
   "orderConfirmation.product": "Producto/Servicio",
@@ -908,14 +922,14 @@ export default {
   "orderConfirmation.emailInform":
     "Recibirás un correo electrónico de confirmación una vez que tu pedido esté listo. ¿Necesitas ayuda o tienes una pregunta?",
   "orderConfirmation.contactSupport":
-    "Contacta a nuestro soporte en cualquier momento en support@2ibn.com o a través de nuestro chat en línea. Gracias por confiar en nosotros para tus necesidades. ¡Estamos deseando ayudarte a mejorar tu experiencia de juego!",
+    "Contacta a nuestro soporte en cualquier momento en support@ibendouma.com o a través de nuestro chat en línea. Gracias por confiar en nosotros para tus necesidades. ¡Estamos deseando ayudarte a mejorar tu experiencia de juego!",
   "orderConfirmation.cordial": "Atentamente",
-  "orderConfirmation.teams": "El equipo de 2iBn",
+  "orderConfirmation.teams": "El equipo de ibendouma",
   "orderConfirmation.website": "Sitio web",
   "orderConfirmation.exchangeLink": "Intercambio de kamas",
   "orderConfirmation.sellLink": "Vender tus kamas",
   "orderConfirmation.bottomSpam":
-    "Este correo electrónico fue enviado por 2IBN. Para asegurarte de recibir nuestros correos, agrega verification@2ibn.com a tu lista de contactos.",
+    "Este correo electrónico fue enviado por ibendouma. Para asegurarte de recibir nuestros correos, agrega verification@ibendouma.com a tu lista de contactos.",
 
   "cookie.title": "Gestión de Cookies",
   "cookie.titleDesc": "Utilizamos cookies para mejorar tu experiencia",
@@ -998,4 +1012,15 @@ export default {
 
   "reviews.message-20": "¡El mejor servicio!",
   "reviews.title-20": "¡El mejor servicio!",
+
+  "pageicon.sell1": "Vender",
+  "pageicon.sell2": "kamas",
+  "pageicon.memb1": "Hacerse",
+  "pageicon.memb2": "miembro",
+  "pageicon.buy1": "Comprar",
+  "pageicon.buy2": "kamas",
+  "pageicon.exchange1": "Intercambiar",
+  "pageicon.exchange2": "kamas",
+  "pageicon.social1": "Medios",
+  "pageicon.social2": "sociales",
 } as const;

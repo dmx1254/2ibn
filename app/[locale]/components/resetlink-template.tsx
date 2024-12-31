@@ -50,7 +50,7 @@ export const PasswordResetEmail: React.FC<PasswordResetEmailProps> = async ({
               }}
             >
               <img
-                src="https://2ibn.vercel.app/ibennewapp-logo.png"
+                src="https://ibendouma.vercel.app/ibennewapp-logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",
@@ -144,15 +144,15 @@ export const PasswordResetEmail: React.FC<PasswordResetEmailProps> = async ({
             <p
               style={{ color: "#999999", fontSize: "14px", margin: "0 0 10px" }}
             >
-              © 2024 2IBN. {tScope("copyright")}
+              © 2024 ibendouma. {tScope("copyright")}
             </p>
             <p style={{ color: "#999999", fontSize: "14px", margin: "0" }}>
               {tScope("peopleToSend")}{" "}
               <a
-                href="mailto:support@2ibn.com"
+                href="mailto:support@ibendouma.com"
                 style={{ color: "#d97706", textDecoration: "none" }}
               >
-                support@2ibn.com
+                support@ibendouma.com
               </a>
               .
             </p>
