@@ -27,6 +27,10 @@ const FaqPage = () => {
       content: tScope("processDesc"),
     },
     {
+      title: tScope("kamasRTitle"),
+      content: tScope("kamasRDesc"),
+    },
+    {
       title: tScope("scamTitle"),
       content: tScope("scamDesc"),
     },

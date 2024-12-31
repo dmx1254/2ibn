@@ -45,6 +45,11 @@ export default {
   "hero.homeRecapQty": "Cantidad",
   "hero.homeRecapTot": "Total",
 
+  "hero.buyDesc":
+    "En ibendouma, puedes comprar kamas {serverName} a precios bajos para beneficiarte de muchas ventajas y mejorar tu experiencia de juego. Disponemos de stock de kamas en todos los servidores de Dofus y trabajamos con proveedores confiables para garantizar un proceso de entrega correcto. Garantizamos un servicio de CALIDAD EXCELENTE, 24/7, rápido y seguro. Ahorra tiempo y disfruta al máximo de tu juego con ibendouma. El mejor precio del mercado. Si encuentras algo mejor en otra tienda online, contáctanos y haremos lo posible por superarlo.",
+
+  "hero.nb":
+    "NB: Por favor, revisa tus correos electrónicos o contacta con nuestro servicio de atención al cliente a través del chat en vivo si no recibes los kamas en los próximos 15 minutos.",
   "cartpage.image": "Imagen",
   "cartpage.name": "Nombre",
   "cartpage.jeu": "Juego",
@@ -582,6 +587,9 @@ export default {
   "faq.processTitle": "Proceso de Entrega",
   "faq.processDesc":
     "Una vez pagado el pedido, nuestro agente le dará el punto de encuentro (mapa en el juego) donde entregará los kamas. Vaya a las coordenadas indicadas donde nuestro repartidor hará el intercambio para darle sus kamas. NB: Por favor, manténgase en línea en el chat para recibir las coordenadas del mapa.",
+  "faq.kamasRTitle": "Cómo recibir tus Kamas",
+  "faq.kamasRDesc":
+    "Después de realizar el pedido, nuestro agente se pondrá en contacto contigo para proporcionarte la información de pago y comunicarte el punto de encuentro (mapa del juego) para entregarte tus Kamas. Asegúrate de poder recibir mensajes privados en el juego, luego dirígete al punto de encuentro. El 99% de los pedidos se entregan en 3 a 15 minutos.",
   "faq.scamTitle": "Prevención de Fraudes",
   "faq.scamDesc":
     "Cualquiera que le pida en el juego que devuelva kamas por cualquier motivo es un estafador. Un agente de ibendouma nunca hará este tipo de solicitud, ya que toda la comunicación se realizará en el chat en línea. No dude en bloquear a la persona si recibe este tipo de mensaje.",

@@ -35,13 +35,7 @@ const HomeSlider = () => {
     };
   }, [api]);
 
-  const images = [
-    "/slider2.jpg",
-    "/slider5.jpg",
-    "/slider6.jpg",
-    "/slider3.jpg",
-    "/slider4.jpg",
-  ];
+  const images = ["/slider5.jpg", "/slider6.jpg", "/slider3.jpg"];
 
   return (
     <div className="w-full flex items-center gap-4 h-[260px] sm:h-[420px]">
@@ -64,7 +58,7 @@ const HomeSlider = () => {
                   alt={`Slider-${index}`}
                   width={2000}
                   height={1000}
-                  className="w-full object-cover h-[260px] sm:h-[450px]"
+                  className="w-full object-cover h-[260px] object-center sm:h-[420px]"
                 />
                 {/* <div className="max-sm:hidden">
                   <Image

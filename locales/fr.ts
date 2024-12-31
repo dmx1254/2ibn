@@ -45,6 +45,11 @@ export default {
   "hero.homeRecapQty": "Quantité",
   "hero.homeRecapTot": "Total",
 
+  "hero.buyDesc":
+    "Sur ibendouma, vous pouvez acheter des kamas {serverName} à bas prix afin de bénéficier de nombreux avantages et d'améliorer votre expérience de jeu. Nous disposons de stocks de kamas sur tous les serveurs de Dofus et nous travaillons avec des fournisseurs fiables pour garantir un processus de livraison correct. Nous garantissons un service de QUALITÉ EXCELLENTE, 24h/24 et 7j/7, rapide et sécurisé. Gagnez du temps et profitez pleinement de votre jeu avec ibendouma. Meilleur prix sur le marché. Si vous trouvez mieux dans une autre boutique en ligne, contactez-nous et nous ferons de notre mieux pour les battre.",
+
+  "hero.nb":
+    "NB : Veuillez vérifier vos e-mails ou contacter notre service client via le chat en direct si vous ne recevez pas les kamas dans les 15 prochaines minutes.",
   "cartpage.image": "Image",
   "cartpage.name": "Nom",
   "cartpage.jeu": "Jeu",
@@ -589,6 +594,9 @@ export default {
   "faq.processTitle": "Processus de Livraison",
   "faq.processDesc":
     "Une fois la commande payée, notre agent vous indiquera le point de rendez-vous (carte en jeu) où il vous livrera les kamas. Rendez-vous aux coordonnées indiquées où notre livreur vous échangera vos kamas. NB : Veuillez rester en ligne sur le chat pour être informé des coordonnées de la carte.",
+  "faq.kamasRTitle": "Comment recevoir vos Kamas",
+  "faq.kamasRDesc":
+    "Après avoir passé la commande, notre agent vous contactera pour vous donner les informations de paiement et vous informer du point de rendez-vous (carte en jeu) pour livrer votre Kama. Assurez-vous de pouvoir recevoir des messages privés dans le jeu, puis rendez-vous au point de rendez-vous. 99 % des commandes sont livrées en 3 à 15 minutes.",
   "faq.scamTitle": "Prévention des Arnaques",
   "faq.scamDesc":
     "Toute personne vous demandant de rendre des kamas pour quelque raison que ce soit est un escroc. Un agent de ibendouma ne fera jamais ce type de demande, car toute communication se fait dans le chat en ligne. N'hésitez pas à bloquer la personne si vous recevez ce type de message.",

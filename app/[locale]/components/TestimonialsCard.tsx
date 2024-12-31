@@ -121,7 +121,7 @@ const TestimonialsCard = () => {
 
   return reviews.length > 0 ? (
     <div className="mt-0 lg:-mt-7 relative font-poppins w-full">
-      <Card className="max-lg:hidden absolute lg:top-[6%] w-full z-20 bg-[#363A3D] shadow-none p-2.5 flex items-center justify-between gap-2 border border-[#45494e] rounded-bl rounded-br">
+      <Card className="absolute lg:top-[6%] w-full z-20 bg-[#363A3D] shadow-none p-2.5 flex items-center justify-between gap-2 border border-[#45494e] rounded-bl rounded-br">
         {/* Header section reste le même */}
         <div className="flex flex-col items-start gap-3">
           <Image
@@ -208,7 +208,7 @@ const TestimonialsCard = () => {
                   <p className="font-medium text-white text-xs lg:text-sm w-full truncate text-ellipsis overflow-hidden whitespace-nowrap">
                     {tScope2Reviews(`title-${review.id}` as any)}
                   </p>
-                  <p className="text-xs lg:text-sm text-white mt-1">
+                  <p className="text-xs lg:text-sm text-white w-full line-clamp-2 mt-1">
                     {tScope2Reviews(`message-${review.id}` as any)}
                   </p>
                 </div>

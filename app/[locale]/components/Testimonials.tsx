@@ -84,8 +84,8 @@ const Testimonials = () => {
 
   const HeaderSection = () => (
     <div className="bg-gradient-to-r from-[#2a2d30] to-[#363A3D] p-4 rounded-t-lg border-b border-[#45494e]">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-4">
+      <div className="flex justify-between gap-4 items-center">
+        <div className="flex max-md:flex-col max-md:items-start items-center gap-4">
           <Image
             src="/reviewT.png"
             alt="Trustpilot ibendouma reviews"
@@ -93,7 +93,7 @@ const Testimonials = () => {
             height={150}
             className="object-contain"
           />
-          <div className="h-8 w-[1px] bg-[#45494e]" />
+          <div className=" max-md:hidden h-8 w-[1px] bg-[#45494e]" />
           <div className="flex items-center gap-3">
             <Image
               src="/secure.png"
@@ -102,12 +102,12 @@ const Testimonials = () => {
               height={24}
               className="object-contain"
             />
-            <span className="text-white text-sm font-medium">
+            <span className="text-white text-xs sm:text-sm font-medium">
               {tScope("guarantee")}
             </span>
           </div>
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex max-md:flex-col max-md:items-start items-center gap-6">
           <div className="flex items-center gap-3">
             <Image
               src="/delivery.png"
@@ -116,7 +116,7 @@ const Testimonials = () => {
               height={24}
               className="object-contain"
             />
-            <span className="text-white text-sm font-medium">
+            <span className="text-white text-xs sm:text-sm font-medium">
               {tScope("delivery")}
             </span>
           </div>
@@ -128,7 +128,7 @@ const Testimonials = () => {
               height={24}
               className="object-contain"
             />
-            <span className="text-white text-sm font-medium">
+            <span className="text-white text-xs sm:text-sm font-medium">
               {tScope("refund")}
             </span>
           </div>
@@ -151,7 +151,7 @@ const Testimonials = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="grid grid-cols-2 gap-4 py-6"
+                className="grid grid-cols-1 md:grid-cols-2 gap-4 py-6"
               >
                 {displayedReviews.map((review: Review, index: number) => (
                   <Link
@@ -191,7 +191,7 @@ const Testimonials = () => {
                             <p className="text-white font-medium mb-2">
                               {tScope2Reviews(`title-${review.id}` as any)}
                             </p>
-                            <p className="text-gray-300 text-sm leading-relaxed">
+                            <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
                               {tScope2Reviews(`message-${review.id}` as any)}
                             </p>
                           </div>
@@ -204,7 +204,7 @@ const Testimonials = () => {
             </AnimatePresence>
           </ScrollArea>
 
-          <div className="absolute bottom-4 right-4 flex items-center gap-2">
+          <div className="absolute bottom-5 right-4 flex items-center gap-2">
             <button
               onClick={() => navigateGroup("prev")}
               className="p-2 rounded-full bg-[#2a2d30] text-white hover:bg-blue-500/20 transition-colors"

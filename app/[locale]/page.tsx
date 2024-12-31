@@ -3,7 +3,6 @@ import HomeSlider from "./components/HomeSlider";
 import OurServices from "./components/OurServices";
 import WhyChooseUs from "./components/WhyChooseUs";
 import HomePageIcon from "./components/HomePageIcon";
-import PurchaseForm from "./components/PurchaseForm";
 import Testimonials from "./components/Testimonials";
 
 export default async function Home() {
@@ -13,11 +12,8 @@ export default async function Home() {
         <div className="w-full">
           <HomeSlider />
         </div>
-        <div className="w-full max-w-6xl my-5">
+        <div className="w-full max-w-6xl my-2">
           <HomePageIcon />
-        </div>
-        <div className="w-full max-w-6xl my-5">
-          <PurchaseForm />
         </div>
         <div className="w-full max-w-6xl my-5">
           <Testimonials />

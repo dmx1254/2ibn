@@ -45,6 +45,12 @@ export default {
   "hero.homeRecapQty": "Quantity",
   "hero.homeRecapTot": "Total",
 
+  "hero.buyDesc":
+    "On ibendouma, you can buy Kamas {serverName} at low prices in order to benefit from many advantages and improve your gaming experience. We have stocks of kamas on all Dofus servers and we work with reliable suppliers to ensure the correct delivery process. We guarantee EXCELLENT quality service, 24/7, fast and safe. Save time and fully enjoy your game with ibendouma. Best price on the market If you find better on another online store, contact us and we will do our best to beat it.",
+
+  "hero.nb":
+    "NB : Please check your emails or contact our customer service in livechat if you do not receive the kamas within the next 15 minutes.",
+
   "cartpage.image": "Image",
   "cartpage.name": "Name",
   "cartpage.jeu": "Game",
@@ -573,6 +579,9 @@ export default {
   "faq.processTitle": "Delivery Process",
   "faq.processDesc":
     "Once the order has been paid, our agent will give you the meeting point (in-game map) where he will deliver the kamas. Go to the coordinates indicated where our delivery person will trade you to give you your kamas. NB: Please stay online in the livechat to be notified of the coordinates of the map.",
+  "faq.kamasRTitle": "How to receive your Kamas",
+  "faq.kamasRDesc":
+    "After placing the order, our agent will contact you to provide payment information and inform you of the meeting point (in-game map) to deliver your Kamas. Make sure you can receive private messages in the game, then go to the meeting point. 99% of orders are delivered within 3 to 15 minutes.",
   "faq.scamTitle": "Scam Prevention",
   "faq.scamDesc":
     "Anyone talking to you in-game asking you to return kamas for any kind of reason are scammers. An ibendouma agent will never make this type of request, as all communication will be done in the online chat. Do not hesitate to block the person when you receive this kind of message.",
