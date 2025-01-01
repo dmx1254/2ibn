@@ -1,4 +1,3 @@
-import { connectDB } from "@/lib/db";
 import { goapiModels } from "@/lib/models/ibytrade-models";
 // import { BuyModel } from "@/lib/models/ibytrade-models";
 import { NextResponse } from "next/server";
