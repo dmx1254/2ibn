@@ -18,10 +18,6 @@ export default async function Home() {
         <div className="w-full max-w-6xl my-5">
           <Testimonials />
         </div>
-        <div className="w-full max-w-6xl bg-[#1A1D21] rounded-[10px] mt-4 sm:mt-10 mb-10">
-          <HeroSection />
-        </div>
-
         <div className=" w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">
           <OurServices />
         </div>
