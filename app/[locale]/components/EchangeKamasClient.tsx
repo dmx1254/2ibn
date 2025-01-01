@@ -86,6 +86,11 @@ const EchangeKamasClient = () => {
     }
   }, [rateVal]);
 
+  function handleChatClick() {
+    //@ts-ignore
+    void window?.Tawk_API.toggle();
+  }
+
   const { watch, setValue } = form;
   const serverToPay = watch("serverToPay");
   const quantityToPay = watch("quantityToPay");
@@ -126,6 +131,9 @@ const EchangeKamasClient = () => {
         toast.success(tScope("success"), {
           style: { color: "#16a34a" },
         });
+        setTimeout(() => {
+          handleChatClick();
+        }, 1500);
       }
     } catch (error) {
       //   console.log(error);

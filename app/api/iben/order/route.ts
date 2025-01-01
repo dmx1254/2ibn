@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     const newOrder = await OrderModelIben.create(data);
 
     if (newOrder) {
-      const { data: emailData, error } = await resend.emails.send({
+      const { data, error } = await resend.emails.send({
         from: "ibendouma Support <support@2ibn.com>",
         to: [newOrder.billing.email],
         subject: object,
