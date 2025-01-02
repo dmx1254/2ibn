@@ -458,6 +458,7 @@ export default {
   "ordersSellKamas.processing": "قيد المعالجة",
 
   "exchangeKamas.title": "تبادلاتك",
+  "exchangeKamas.numberOrder": "رقم التبادل",
   "exchangeKamas.code": "الكود",
   "exchangeKamas.serverOut": "الخادم الخارج",
   "exchangeKamas.amountOut": "المبلغ الخارج",

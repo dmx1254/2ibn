@@ -85,6 +85,7 @@ const ExchangeTable = ({ exchanges }: { exchanges: ExchangeKamas[] }) => {
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead>{tScope("numberOrder")}</TableHead>
             <TableHead>{tScope("code")}</TableHead>
             <TableHead>{tScope("serverOut")}</TableHead>
             <TableHead>{tScope("amountOut")}</TableHead>
@@ -121,7 +122,10 @@ const ExchangeTable = ({ exchanges }: { exchanges: ExchangeKamas[] }) => {
                 className="hover:bg-gray-50 dark:hover:bg-gray-800/50"
               >
                 <TableCell className="font-medium">
-                  #{exchange.codeToExchange}
+                  {exchange.exchangeId || "N/A"}
+                </TableCell>
+                <TableCell className="font-medium">
+                  {exchange.codeToExchange}
                 </TableCell>
                 <TableCell>{exchange.serverOut}</TableCell>
                 <TableCell className="font-medium">

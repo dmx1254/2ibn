@@ -77,6 +77,7 @@ export interface OrderLength {
 export interface ExchangeKamas {
   userId: string;
   serverOut: string;
+  exchangeId?: string;
   qtyToPay: number;
   characterToPay: string;
   serverIn: string;

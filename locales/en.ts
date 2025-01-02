@@ -468,6 +468,7 @@ export default {
   "ordersSellKamas.processing": "Processing",
 
   "exchangeKamas.title": "Your exchanges",
+  "exchangeKamas.numberOrder": "Exchange No.",
   "exchangeKamas.code": "Code",
   "exchangeKamas.serverOut": "Server Out",
   "exchangeKamas.amountOut": "Amount Out",
