@@ -127,28 +127,28 @@ const Footer = () => {
                 </div>
 
                 {/* Security Badges */}
-                <div className="bg-[#18191A] p-2 md:p-4 rounded">
-                  <div className="flex flex-col items-center justify-center space-y-4">
+                <div className="max-md:w-full bg-[#18191A] p-2 md:p-4 rounded">
+                  <div className="flex max-md:w-full flex-row md:flex-col items-center justify-between md:justify-center gap-3 sm:gap-4">
                     <Image
                       src={sslShopper}
                       alt="ssl Shopper"
                       width={120}
                       height={120}
-                      className="object-cover"
+                      className="max-sm:w-20 max-sm:h-10 object-contain md:object-cover"
                     />
                     <Image
                       src={ssl}
                       alt="SSL Certificate"
                       width={120}
                       height={120}
-                      className="object-cover"
+                      className="max-sm:w-20 max-sm:h-10 object-contain md:object-cover"
                     />
                     <Image
                       src={trustS}
                       alt="TrustedSite"
                       width={120}
                       height={120}
-                      className="object-cover"
+                      className="max-sm:w-20 max-sm:h-6 object-contain md:object-cover"
                     />
                   </div>
                 </div>
@@ -242,7 +242,7 @@ const Footer = () => {
               <p className="text-xs text-gray-400 text-center">
                 &copy; {tScope("address")}
               </p>
-              <div className="flex flex-wrap justify-center items-center gap-4">
+              <div className="flex flex-wrap justify-center items-center gap-4 mt-2">
                 <Image
                   src={visa}
                   alt="Visa"
@@ -292,15 +292,15 @@ const Footer = () => {
                   alt="Giropay"
                   className="object-cover"
                 />
-                <Image
+                {/* <Image
                   src={marocbank}
                   width={100}
                   height={50}
                   alt="Marocco bank"
                   className="object-cover"
-                />
+                /> */}
 
-                <Image
+                {/* <Image
                   src={crd_agricole}
                   width={120}
                   height={60}
@@ -313,8 +313,15 @@ const Footer = () => {
                   height={50}
                   alt="Marocco bank"
                   className="object-cover"
-                />
+                /> */}
                 <Image
+                  src="/paymentfoot2.png"
+                  width={240}
+                  height={240}
+                  alt="Marocco bank"
+                  className="object-cover"
+                />
+                {/* <Image
                   src={barid}
                   width={35}
                   height={35}
@@ -335,7 +342,7 @@ const Footer = () => {
                   height={35}
                   alt="Barid bank"
                   className="object-cover rounded"
-                />
+                /> */}
               </div>
               <div className="sm:hidden flex items-center justify-center gap-4 max-sm:flex-col self-center my-4">
                 <span className="text-white/80">{tScope("followUs")}</span>

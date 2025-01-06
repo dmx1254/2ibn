@@ -134,10 +134,10 @@ const PaymentStep = ({
                 checked={isActivePayment === p.title}
               />
               <Image
-                className="w-[136px] h-[36px] object-cover object-center"
+                className="object-cover object-center"
                 src={p.imgPay}
-                width={200}
-                height={200}
+                width={250}
+                height={250}
                 alt="payment method"
               />
               {p.fee && (

@@ -547,7 +547,7 @@ export default {
   "footer.info4": "Contact us",
   "footer.followUs": "Follow us",
   "footer.address":
-    "2024 JBK Services INTERNATIONAL FZ-LLC, Compass Building, Al Shohada Road, AL Hamra Industrial Zone-FZ, Ras Al Khaimah, United Arab Emirates JBIK INTERNATIONAL CO., LIMITED (payment processing for Cardpay). Registered address :ROOMS 1318-20,HOLLYWOODPLAZA, 610 NATHAN ROAD, MONGKOK KOWLOON",
+    "2024 JBK Services INTERNATIONAL FZ-LLC, Compass Building, Al Shohada Road, AL Hamra-FZ Industrial Zone, Ras Al Khaimah, United Arab Emirates.",
 
   "ourservice.title": "Our Services",
   "ourservice.desc":

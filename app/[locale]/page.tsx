@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <div className="font-poppins relative w-full flex flex-col items-center justify-center mx-auto min-h-screen">
       <main className="w-full flex flex-col items-center justify-center">
-        <div className="w-full">
+        <div className="w-full hidden md:flex">
           <HomeSlider />
         </div>
         <div className="w-full max-w-6xl my-2">

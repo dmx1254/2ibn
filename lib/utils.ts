@@ -190,14 +190,19 @@ export const imageReturn = (slug: string): string => {
   return img;
 };
 
-const dateCode = () => {
+export const dateCode = () => {
   const dateP = new Date(Date.now()).toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "numeric",
     year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
   });
 
-  return String(dateP).split("/").join("");
+  return (
+    String(dateP).split(" ")[0].split("/").join("") +
+    String(dateP).split(" ")[1].split(":").join("")
+  );
 };
 
 export const codeGenerated = () => {
@@ -302,25 +307,30 @@ export const paymentMethod: BankPayment[] = [
 ];
 
 export const paymentMethodMorroco: BankPayment[] = [
+  // {
+  //   id: "JUK51L5",
+  //   title: "marobank",
+  //   imgPay: "/iben/marocbank.webp",
+  // },
+  // {
+  //   id: "LPA27P7",
+  //   title: "credit-du-maroc",
+  //   imgPay: "/iben/cdm.webp",
+  // },
+  // {
+  //   id: "YHA4KO2",
+  //   title: "societe-generale",
+  //   imgPay: "/iben/sg.jpg",
+  // },
+  // {
+  //   id: "BQX8P46",
+  //   title: "barid-bank",
+  //   imgPay: "/iben/barid-bank.png",
+  // },
   {
-    id: "JUK51L5",
-    title: "marobank",
-    imgPay: "/iben/marocbank.webp",
-  },
-  {
-    id: "LPA27P7",
-    title: "credit-du-maroc",
-    imgPay: "/iben/cdm.webp",
-  },
-  {
-    id: "YHA4KO2",
-    title: "societe-generale",
-    imgPay: "/iben/sg.jpg",
-  },
-  {
-    id: "BQX8P46",
-    title: "barid-bank",
-    imgPay: "/iben/barid-bank.png",
+    id: "OPK41Y6",
+    title: "marocco-bank",
+    imgPay: "/paymentfoot2.png",
   },
 ];
 

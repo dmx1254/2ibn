@@ -248,7 +248,10 @@ const VendreKamasClient = () => {
                 {serversSell
                   ?.filter((item) => item.serverCategory === "dofus-kamas")
                   ?.map((server) => (
-                    <TableRow key={server._id} className="border-[#76828D]">
+                    <TableRow
+                      key={server._id}
+                      className="border-[#76828D] hover:bg-yellow-700 transition-colors cursor-pointer"
+                    >
                       <TableCell className="font-medium">
                         {server.serverName}
                       </TableCell>
@@ -341,7 +344,10 @@ const VendreKamasClient = () => {
                 {serversSell
                   ?.filter((item) => item.serverCategory === "dofus-retro")
                   ?.map((server) => (
-                    <TableRow key={server._id} className="border-[#76828D]">
+                    <TableRow
+                      key={server._id}
+                      className="border-[#76828D] hover:bg-yellow-700 transition-colors cursor-pointer"
+                    >
                       <TableCell className="font-medium">
                         {server.serverName}
                       </TableCell>
@@ -433,7 +439,10 @@ const VendreKamasClient = () => {
                 {serversSell
                   ?.filter((item) => item.serverCategory === "dofus-touch")
                   ?.map((server) => (
-                    <TableRow key={server._id} className="border-[#76828D]">
+                    <TableRow
+                      key={server._id}
+                      className="border-[#76828D] hover:bg-yellow-700 transition-colors cursor-pointer"
+                    >
                       <TableCell className="font-medium">
                         {server.serverName}
                       </TableCell>

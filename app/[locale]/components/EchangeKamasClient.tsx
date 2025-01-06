@@ -115,7 +115,6 @@ const EchangeKamasClient = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const data = {
       userId: session?.user.id,
-      exchangeId: codeGenerated(),
       serverOut: values.serverToPay,
       serverIn: values.serverToReceive,
       codeToExchange: values.exchangeCode,

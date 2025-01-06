@@ -15,7 +15,6 @@ async function initializeModels(): Promise<any> {
   // Définir les interfaces pour les documents
   interface IExchange extends Document {
     userId: string;
-    exchangeId: string;
     serverOut: string;
     qtyToPay: number;
     characterToPay: string;
@@ -30,8 +29,8 @@ async function initializeModels(): Promise<any> {
     serverName: string;
     serverCategory: string;
     serverStatus: string;
-    serverPriceDh: number; // Changez à number si c'est un nombre
-    serverMinQty?: number; // Optionnel
+    serverPriceDh: number;
+    serverMinQty?: number;
   }
 
   interface IEuro extends Document {
@@ -58,10 +57,10 @@ async function initializeModels(): Promise<any> {
     pu: number;
     qte: number;
     totalPrice: number;
-    paymentMethod: string; // Optionnel
-    gameName: string; // Optionnel
-    paymentInfoDetails: string; // Optionnel
-    currencymethod: string; // Optionnel
+    paymentMethod: string;
+    gameName: string;
+    paymentInfoDetails: string;
+    currencymethod: string;
     lastname: string;
     firstname: string;
     status: string;
