@@ -1021,4 +1021,7 @@ export default {
   "pageicon.exchange2": "kamas",
   "pageicon.social1": "Social",
   "pageicon.social2": "media",
+
+  "modal.signin": "Sign In",
+  "modal.signup": "Sign Up",
 } as const;

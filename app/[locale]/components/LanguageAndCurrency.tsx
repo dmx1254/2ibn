@@ -22,8 +22,9 @@ import {
   SelectValue,
 } from "./ui/select";
 import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
-const LanguageAndCurrency = () => {
+const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
   const pathname = usePathname();
   const tScope = useScopedI18n("languageandcur");
 
@@ -93,7 +94,12 @@ const LanguageAndCurrency = () => {
       <DialogTrigger asChild>
         <button
           aria-label="Language and currency"
-          className="outline-none inline-flex items-center gap-2 px-3 py-2 transition-all duration-200 cursor-pointer rounded-full hover:opacity-90 border border-[#76828D] focus:ring-0 bg-[#363A3D]"
+          className={clsx(
+            "outline-none inline-flex items-center gap-2 px-3 py-2 transition-all duration-200 cursor-pointer rounded-full hover:opacity-90",
+            {
+              "border border-[#76828D] focus:ring-0 bg-[#363A3D] max-md:hidden": isShowBg,
+            }
+          )}
         >
           <Globe size={18} className="text-white" />
           <span className="text-sm font-medium text-white">
@@ -165,7 +171,9 @@ const LanguageAndCurrency = () => {
               </div>
             </div>
           )}
-          <p className="w-full text-sm px-4 pb-4 pt-1 text-gray-800">{tScope("desc")}</p>
+          <p className="w-full text-sm px-4 pb-4 pt-1 text-gray-800">
+            {tScope("desc")}
+          </p>
         </div>
       </DialogContent>
     </Dialog>

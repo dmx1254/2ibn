@@ -1000,4 +1000,7 @@ export default {
   "pageicon.exchange2": "الكاماس",
   "pageicon.social1": "وسائل",
   "pageicon.social2": "التواصل الاجتماعي",
+
+  "modal.signin": "تسجيل الدخول",
+  "modal.signup": "إنشاء حساب",
 } as const;

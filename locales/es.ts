@@ -1032,4 +1032,7 @@ export default {
   "pageicon.exchange2": "kamas",
   "pageicon.social1": "Medios",
   "pageicon.social2": "sociales",
+
+  "modal.signin": "Iniciar sesión",
+  "modal.signup": "Registrarse",
 } as const;

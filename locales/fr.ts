@@ -1040,4 +1040,7 @@ export default {
   "pageicon.exchange2": "de kamas",
   "pageicon.social1": "Media",
   "pageicon.social2": "sociaux",
+
+  "modal.signin": "Se connecter",
+  "modal.signup": "S'inscrire",
 } as const;
