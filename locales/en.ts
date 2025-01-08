@@ -1024,4 +1024,9 @@ export default {
 
   "modal.signin": "Sign In",
   "modal.signup": "Sign Up",
+
+  "homeslide.title1": "Exchange your Kamas securely",
+  "homeslide.desc1": "Fast and reliable service 24/7",
+  "homeslide.title2": "The best rates on the market",
+  "homeslide.desc2": "Competitive prices and instant payments",
 } as const;

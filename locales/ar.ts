@@ -1003,4 +1003,9 @@ export default {
 
   "modal.signin": "تسجيل الدخول",
   "modal.signup": "إنشاء حساب",
+
+  "homeslide.title1": "قم بتبادل الكاماس بأمان",
+  "homeslide.desc1": "خدمة سريعة وموثوقة على مدار الساعة طوال أيام الأسبوع",
+  "homeslide.title2": "أفضل الأسعار في السوق",
+  "homeslide.desc2": "أسعار تنافسية ودفع فوري",
 } as const;

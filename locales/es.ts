@@ -1035,4 +1035,9 @@ export default {
 
   "modal.signin": "Iniciar sesión",
   "modal.signup": "Registrarse",
+
+  "homeslide.title1": "Intercambia tus Kamas de forma segura",
+  "homeslide.desc1": "Servicio rápido y confiable 24/7",
+  "homeslide.title2": "Las mejores tasas del mercado",
+  "homeslide.desc2": "Precios competitivos y pagos instantáneos",
 } as const;

@@ -1043,4 +1043,9 @@ export default {
 
   "modal.signin": "Se connecter",
   "modal.signup": "S'inscrire",
+
+  "homeslide.title1": "Échangez vos Kamas en toute sécurité",
+  "homeslide.desc1": "Service rapide et fiable 24h/24, 7j/7",
+  "homeslide.title2": "Les meilleurs taux du marché",
+  "homeslide.desc2": "Prix compétitifs et paiements instantanés",
 } as const;
