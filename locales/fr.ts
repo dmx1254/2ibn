@@ -1048,4 +1048,6 @@ export default {
   "homeslide.desc1": "Service rapide et fiable 24h/24, 7j/7",
   "homeslide.title2": "Les meilleurs taux du marché",
   "homeslide.desc2": "Prix compétitifs et paiements instantanés",
+  "homeslide.title3": "Support client premium",
+  "homeslide.desc3": "Une équipe dédiée à votre satisfaction",
 } as const;

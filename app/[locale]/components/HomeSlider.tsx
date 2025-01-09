@@ -38,22 +38,22 @@ const HomeSlider = () => {
 
   const sliderData = [
     {
-      image: "/slider3.jpg",
+      image: "/dofs2.png",
       title: tsCope("title1"),
       description: tsCope("desc1"),
     },
     {
-      image: "/bg-dofus.png",
+      image: "/dofs.png",
       title: tsCope("title2"),
       description: tsCope("desc2"),
     },
+    {
+      image: "/slider3.jpg",
+      title: tsCope("title3"),
+      description: tsCope("desc3"),
+    },
     // {
-    //   image: "/slider6.jpg",
-    //   title: "Support client premium",
-    //   description: "Une équipe dédiée à votre satisfaction",
-    // },
-    // {
-    //   image: "/fast.png",
+    //   image: "/dofs2.png",
     //   title: "Livraison ultra rapide",
     //   description: "Recevez vos Kamas en moins de 10 minutes",
     // },

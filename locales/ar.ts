@@ -1008,4 +1008,6 @@ export default {
   "homeslide.desc1": "خدمة سريعة وموثوقة على مدار الساعة طوال أيام الأسبوع",
   "homeslide.title2": "أفضل الأسعار في السوق",
   "homeslide.desc2": "أسعار تنافسية ودفع فوري",
+  "homeslide.title3": "دعم عملاء مميز",
+  "homeslide.desc3": "فريق مخصص لضمان رضاك",
 } as const;
