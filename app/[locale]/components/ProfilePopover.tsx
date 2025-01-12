@@ -89,7 +89,7 @@ const ProfilePopover = () => {
           <FaSortDown className="-mt-1.5 text-white -ml-0.5" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-64 p-2">
+      <PopoverContent className="w-64 p-2 max-md:ml-2">
         <div className="space-y-1">
           {menuItems.map((item) => {
             const Icon = item.icon;

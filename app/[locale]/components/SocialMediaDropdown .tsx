@@ -22,7 +22,7 @@ const SocialMediaDropdown = ({ isSource = false }) => {
   const socialLinks = [
     {
       icon: FaFacebookF,
-      href: "https://www.facebook.com/ibendoumaoff",
+      href: "https://www.facebook.com/ibendouma1",
       color: "text-blue-600",
       size: 14,
     },
@@ -46,7 +46,7 @@ const SocialMediaDropdown = ({ isSource = false }) => {
     },
     {
       icon: FaTiktok,
-      href: "https://www.tiktok.com/@2ibnofficial",
+      href: "https://www.tiktok.com/@ibendouma.com",
       color: "text-gray-500",
       size: 13,
     },

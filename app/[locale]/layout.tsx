@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   description:
     "La référence pour acheter, vendre et échanger vos kamas Dofus, Dofus Touch et Dofus Retro. ✓ Paiement Sécurisé ✓ Livraison Express ✓ Service Client 24/7 ✓ Meilleurs Prix Garantis",
   icons: {
-    icon: "/ibennewapp-logo.png",
-    shortcut: "/ibennewapp-logo.png",
-    apple: "/ibennewapp-logo.png",
+    icon: "/favlogo.png",
+    shortcut: "/favlogo.png",
+    apple: "/favlogo.png",
   },
   robots: {
     index: true,

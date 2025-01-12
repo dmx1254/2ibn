@@ -106,6 +106,16 @@ body::-webkit-scrollbar-thumb {
     opacity: 0.05;
     z-index: -1;
   }
+
+  .ident::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 13%;
+    height: 2px;
+    background-color: #f97316;
+  }
   .shadow-link {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }

@@ -267,6 +267,8 @@ export default {
   "login.continue": "Continuar",
   "login.createAccountDesc":
     "Al crear una cuenta, puede realizar pedidos más rápido, realizar un seguimiento del estado de sus pedidos y mantener un historial de sus compras anteriores.",
+  "login.modal.title": "Inicio de sesión",
+
   "menu.kamas": "Comprar Kamas Dofus 2.0 (PC)",
   "menu.touch": "Comprar Kamas Dofus Touch",
   "menu.retro": "Comprar Kamas Dofus Retro",

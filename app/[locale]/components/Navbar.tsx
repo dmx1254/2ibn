@@ -130,7 +130,9 @@ const Navbar = () => {
             </div>
             <div className="flex items-center gap-2 sm:gap-4">
               {session && status === "authenticated" ? (
-                <ProfilePopover />
+                <div className="max-md:hidden">
+                  <ProfilePopover />
+                </div>
               ) : (
                 <Link
                   href="/signin"
@@ -140,7 +142,7 @@ const Navbar = () => {
                   <span className="text-base ">{tScope("account")}</span>
                 </Link>
               )}
-              {(!session || status !== "authenticated") && (
+              {/* {(!session || status !== "authenticated") && (
                 <Link
                   href="/signin"
                   className="inline-flex max-md:hidden items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
@@ -152,9 +154,9 @@ const Navbar = () => {
                     height={22}
                     className=""
                   />
-                  <span className="sr-only">language and currency</span>
+                  <span className="sr-only">Account</span>
                 </Link>
-              )}
+              )} */}
               <LanguageAndCurrency />
               <CardHoverCon />
               <div>

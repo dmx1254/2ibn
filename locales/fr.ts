@@ -267,6 +267,7 @@ export default {
   "login.emailError": "Adresse E-mail incorrect",
   "login.passwordError": "Mot de passe incorrect",
   "login.banError": "Votre compte a été banni",
+  "login.modal.title": "Identification",
 
   "menu.kamas": "Acheter des Kamas Dofus 2.0 (PC)",
   "menu.touch": "Acheter des Kamas Dofus Touch",

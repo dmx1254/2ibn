@@ -348,7 +348,7 @@ const Footer = () => {
                 <span className="text-white/80">{tScope("followUs")}</span>
                 <div className="flex gap-4 flex-wrap">
                   <Link
-                    href="https://www.facebook.com/ibendoumaoff"
+                    href="https://www.facebook.com/ibendouma1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
@@ -381,7 +381,7 @@ const Footer = () => {
                     <FaWhatsapp size={15} />
                   </Link>
                   <Link
-                    href="https://www.tiktok.com/@2ibnofficial"
+                    href="https://www.tiktok.com/@ibendouma.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-gray-500 hover:opacity-80"

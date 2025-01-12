@@ -261,6 +261,8 @@ export default {
   "login.continue": "استمر",
   "login.createAccountDesc":
     "من خلال إنشاء حساب، يمكنك الطلب بشكل أسرع، وتتبع حالة طلباتك، والحفاظ على سجل من مشترياتك السابقة.",
+  "login.modal.title": "تسجيل الدخول",
+
   "menu.kamas": "شراء كامات Dofus 2.0 (PC)",
   "menu.touch": "شراء كامات Dofus Touch",
   "menu.retro": "شراء كامات Dofus Retro",
