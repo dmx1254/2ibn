@@ -11,6 +11,7 @@ export interface Cart {
   server: string;
   qty: number;
   amount: number;
+  bonus: number;
   unitPrice: number;
   totalPrice: number;
   image: string;

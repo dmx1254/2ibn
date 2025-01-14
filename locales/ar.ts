@@ -1006,10 +1006,11 @@ export default {
   "modal.signin": "تسجيل الدخول",
   "modal.signup": "إنشاء حساب",
 
-  "homeslide.title1": "قم بتبادل الكاماس بأمان",
-  "homeslide.desc1": "خدمة سريعة وموثوقة على مدار الساعة طوال أيام الأسبوع",
-  "homeslide.title2": "أفضل الأسعار في السوق",
-  "homeslide.desc2": "أسعار تنافسية ودفع فوري",
-  "homeslide.title3": "دعم عملاء مميز",
-  "homeslide.desc3": "فريق مخصص لضمان رضاك",
+  "homeslide.title1": "Precios competitivos",
+  "homeslide.desc1": "¡Servicio de calidad y entrega instantánea!",
+  "homeslide.title2": "Fiabilidad, rapidez y precios inmejorables",
+  "homeslide.desc2":
+    "Todo para satisfacerte: ¡compra al mejor precio, recibe al instante!",
+  "homeslide.title3": "Tu satisfacción, nuestra prioridad",
+  "homeslide.desc3": "Servicio premium y entrega rápida.",
 } as const;

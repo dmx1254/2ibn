@@ -71,6 +71,7 @@ async function initializeModels(): Promise<any> {
     server: string;
     qty: number;
     amount: number;
+    bonus: number;
     price: number;
     character: string;
     totalPrice: number;

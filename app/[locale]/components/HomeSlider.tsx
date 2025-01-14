@@ -38,20 +38,21 @@ const HomeSlider = () => {
 
   const sliderData = [
     {
-      image: "/dofs2.png",
+      image: "/slicom.jpg",
       title: tsCope("title1"),
       description: tsCope("desc1"),
+    },
+    {
+      image: "/sli2.jpg",
+      title: tsCope("title3"),
+      description: tsCope("desc3"),
     },
     {
       image: "/dofs.png",
       title: tsCope("title2"),
       description: tsCope("desc2"),
     },
-    {
-      image: "/slider3.jpg",
-      title: tsCope("title3"),
-      description: tsCope("desc3"),
-    },
+
     // {
     //   image: "/dofs2.png",
     //   title: "Livraison ultra rapide",

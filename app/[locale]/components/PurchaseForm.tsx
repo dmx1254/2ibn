@@ -53,6 +53,21 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
     addToActiveServerRequest(slug);
   };
 
+  useMemo(() => {
+    if (amount && Number(amount) > 0) {
+      const price = (
+        (Number(amount) * (activeServer?.serverPrice || 1)) /
+        1000
+      ).toFixed(2);
+
+      const priceNumber = Number(price);
+      const bon = priceNumber >= 1 ? Math.floor(priceNumber) : 0;
+      setBonus(bon);
+    }
+  }, [amount]);
+
+  // console.log(amount);
+
   useEffect(() => {
     setDofusChange(activeServerRequest);
   }, [activeServerRequest]);
@@ -87,6 +102,7 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
       server: activeServer?.serverName || "",
       qty: activeServer?.serverMinQty || 1,
       amount: Number(amount),
+      bonus: Number(bonus) || 0,
       unitPrice: actualPriceCur,
       totalPrice: returTotalValue,
       image: activeServer?.serverCategory || "",
@@ -286,7 +302,7 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
                       {tScope("homeRecapQty")}
                     </span>
                     <span className="text-white font-medium">
-                      {amount || 0} M
+                      {Number(amount) + Number(bonus) || 0} M
                     </span>
                   </div>
 

@@ -107,7 +107,7 @@ const ProfileBuyPage = () => {
           <CardContent>
             <div className="flex items-center space-x-2">
               <span className="text-2xl font-bold">
-                {totalSum || 0}
+                {totalSum?.toFixed(2) || 0}
                 {ordersBuy
                   ? parsedDevise(ordersBuy[0]?.cur)
                   : parsedDevise(devise.currencyName)}
@@ -136,7 +136,7 @@ const ProfileBuyPage = () => {
           <CardContent>
             <div className="text-2xl font-bold">
               {ordersBuy?.length
-                ? `${(totalSum || 0) / ordersBuy.length} ${
+                ? `${((totalSum || 0) / ordersBuy.length).toFixed(2)} ${
                     ordersBuy
                       ? parsedDevise(ordersBuy[0]?.cur)
                       : parsedDevise(devise.currencyName)
@@ -234,10 +234,14 @@ const ProfileBuyPage = () => {
                       <p className="text-base bg-yellow-600 text-black font-semibold rounded-[10px] p-2">
                         {tScope("paymentMethod")}: {order.paymentMethod}
                       </p>
-                      <TooltipProvider>
+                      {/* <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Button variant="outline" size="sm" aria-label="track order button">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              aria-label="track order button"
+                            >
                               <Package className="w-4 h-4 mr-2" />
                               {tScope("track")}
                             </Button>
@@ -246,7 +250,7 @@ const ProfileBuyPage = () => {
                             <p>{tScope("trackTooltip")}</p>
                           </TooltipContent>
                         </Tooltip>
-                      </TooltipProvider>
+                      </TooltipProvider> */}
                     </div>
                   </CardContent>
                 </motion.div>

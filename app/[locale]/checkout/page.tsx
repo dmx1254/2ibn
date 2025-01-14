@@ -420,6 +420,7 @@ const Checkout = () => {
         server: cart.server,
         qty: cart.qty,
         amount: cart.amount,
+        bonus: cart.bonus,
         price: cart.unitPrice.toFixed(2),
         character: cart.character,
         totalPrice: cart.totalPrice.toFixed(2),

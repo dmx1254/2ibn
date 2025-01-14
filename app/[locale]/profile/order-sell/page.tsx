@@ -102,7 +102,7 @@ const ProfileSellPage = () => {
           <CardContent>
             <div className="flex items-center space-x-2">
               <span className="text-2xl font-bold">
-                {totalSum}
+                {totalSum.toFixed(2)}
                 {ordersSell ? parsedDevise(ordersSell[0]?.currencymethod) : ""}
               </span>
             </div>
@@ -129,7 +129,7 @@ const ProfileSellPage = () => {
           <CardContent>
             <div className="text-2xl font-bold">
               {ordersSell?.length
-                ? `${totalSum / ordersSell.length} ${
+                ? `${(totalSum / ordersSell.length).toFixed(2)} ${
                     ordersSell
                       ? parsedDevise(ordersSell[0]?.currencymethod)
                       : parsedDevise(devise.currencyName)
@@ -178,6 +178,11 @@ const ProfileSellPage = () => {
                     <div className="flex items-center space-x-2">
                       <span>{order.paymentMethod}</span>
                       <Badge variant="secondary">{order.currencymethod}</Badge>
+                    </div>
+                    <div>
+                      <p>{order.gameName}</p>
+                      <p className="font-bold">{order.qte}M</p>
+                      <p>{order.paymentInfoDetails.split("<br/>")[1]}</p>
                     </div>
                   </div>
 

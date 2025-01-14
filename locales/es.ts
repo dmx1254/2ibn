@@ -1038,10 +1038,11 @@ export default {
   "modal.signin": "Iniciar sesión",
   "modal.signup": "Registrarse",
 
-  "homeslide.title1": "Intercambia tus Kamas de forma segura",
-  "homeslide.desc1": "Servicio rápido y confiable 24/7",
-  "homeslide.title2": "Las mejores tasas del mercado",
-  "homeslide.desc2": "Precios competitivos y pagos instantáneos",
-  "homeslide.title3": "Soporte al Cliente Premium",
-  "homeslide.desc3": "Un equipo dedicado a su satisfacción",
+  "homeslide.title1": "Precios competitivos",
+  "homeslide.desc1": "¡Servicio de calidad y entrega instantánea!",
+  "homeslide.title2": "Fiabilidad, rapidez y precios inmejorables",
+  "homeslide.desc2":
+    "Todo para satisfacerte: ¡compra al mejor precio, recibe al instante!",
+  "homeslide.title3": "Tu satisfacción, nuestra prioridad",
+  "homeslide.desc3": "Servicio premium y entrega rápida.",
 } as const;

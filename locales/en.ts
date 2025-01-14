@@ -1027,10 +1027,11 @@ export default {
   "modal.signin": "Sign In",
   "modal.signup": "Sign Up",
 
-  "homeslide.title1": "Exchange your Kamas securely",
-  "homeslide.desc1": "Fast and reliable service 24/7",
-  "homeslide.title2": "The best rates on the market",
-  "homeslide.desc2": "Competitive prices and instant payments",
-  "homeslide.title3": "Premium Customer Support",
-  "homeslide.desc3": "A team dedicated to your satisfaction",
+  "homeslide.title1": "Competitive prices",
+  "homeslide.desc1": "Quality service and instant delivery!",
+  "homeslide.title2": "Reliability, speed, and unbeatable prices",
+  "homeslide.desc2":
+    "Everything to satisfy you: buy at the best price, receive instantly!",
+  "homeslide.title3": "Your satisfaction, our priority",
+  "homeslide.desc3": "Premium service and fast delivery.",
 } as const;

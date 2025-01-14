@@ -1045,10 +1045,11 @@ export default {
   "modal.signin": "Se connecter",
   "modal.signup": "S'inscrire",
 
-  "homeslide.title1": "Échangez vos Kamas en toute sécurité",
-  "homeslide.desc1": "Service rapide et fiable 24h/24, 7j/7",
-  "homeslide.title2": "Les meilleurs taux du marché",
-  "homeslide.desc2": "Prix compétitifs et paiements instantanés",
-  "homeslide.title3": "Support client premium",
-  "homeslide.desc3": "Une équipe dédiée à votre satisfaction",
+  "homeslide.title1": "Des prix compétitifs",
+  "homeslide.desc1": " un service de qualité, et une livraison instantanée !",
+  "homeslide.title2": "Fiabilité, rapidité, et prix imbattables",
+  "homeslide.desc2":
+    "Tout pour vous satisfaire, achetez au meilleur prix, recevez instantanément !",
+  "homeslide.title3": "Votre satisfaction, notre priorité",
+  "homeslide.desc3": "Service premium et livraison rapide.",
 } as const;
