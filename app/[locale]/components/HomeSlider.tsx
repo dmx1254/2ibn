@@ -38,12 +38,12 @@ const HomeSlider = () => {
 
   const sliderData = [
     {
-      image: "/slicom.jpg",
+      image: "/game.webp",
       title: tsCope("title1"),
       description: tsCope("desc1"),
     },
     {
-      image: "/sli2.jpg",
+      image: "/games.webp",
       title: tsCope("title3"),
       description: tsCope("desc3"),
     },
