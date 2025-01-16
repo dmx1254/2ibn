@@ -48,7 +48,7 @@ const HomeSlider = () => {
       description: tsCope("desc3"),
     },
     {
-      image: "/dofs.png",
+      image: "/lastslide.webp",
       title: tsCope("title2"),
       description: tsCope("desc2"),
     },
