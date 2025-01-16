@@ -1007,11 +1007,10 @@ export default {
   "modal.signin": "تسجيل الدخول",
   "modal.signup": "إنشاء حساب",
 
-  "homeslide.title1": "Precios competitivos",
-  "homeslide.desc1": "¡Servicio de calidad y entrega instantánea!",
-  "homeslide.title2": "Fiabilidad, rapidez y precios inmejorables",
-  "homeslide.desc2":
-    "Todo para satisfacerte: ¡compra al mejor precio, recibe al instante!",
-  "homeslide.title3": "Tu satisfacción, nuestra prioridad",
-  "homeslide.desc3": "Servicio premium y entrega rápida.",
+  "homeslide.title1": "أسعار تنافسية",
+  "homeslide.desc1": "خدمة عالية الجودة وتسليم فوري!",
+  "homeslide.title2": "الموثوقية، السرعة، وأسعار لا تقارن",
+  "homeslide.desc2": "كل شيء لإرضائك: اشترِ بأفضل الأسعار، وتسلّم فوراً!",
+  "homeslide.title3": "رضاك هو أولويتنا",
+  "homeslide.desc3": "خدمة مميزة وتسليم سريع.",
 } as const;
