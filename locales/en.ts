@@ -241,6 +241,7 @@ export default {
 
   "dialogsell.server": "Server",
   "dialogsell.selectServer": "Select a server",
+  "dialogsell.sellOrderErrorLogin": "You must be logged in to place an order.",
 
   "emptycart.title": "Your cart is empty",
   "emptycart.desc": "Looks like you haven't added any items to your cart yet.",

@@ -241,6 +241,8 @@ export default {
   "dialogsell.serverError": "Seleccionar un servidor",
 
   "dialogsell.server": "Servidor",
+  "dialogsell.sellOrderErrorLogin":
+    "Debes iniciar sesión para realizar un pedido.",
   "dialogsell.selectServer": "Seleccionar un servidor",
 
   "emptycart.title": "Tu carrito está vacío",

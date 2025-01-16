@@ -237,6 +237,7 @@ export default {
 
   "dialogsell.server": "الخادم",
   "dialogsell.selectServer": "اختر خادمًا",
+  "dialogsell.sellOrderErrorLogin": "يجب أن تكون مسجلاً للدخول لتقديم طلب",
 
   "emptycart.title": "سلة التسوق فارغة",
   "emptycart.desc": "يبدو أنك لم تضف أي عناصر إلى سلة التسوق الخاصة بك بعد.",

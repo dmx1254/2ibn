@@ -45,7 +45,7 @@ const VendreKamasClient = () => {
   };
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ["dofus-sell-server"],
+    queryKey: [""],
     queryFn: () => fetchServers(),
   });
 

@@ -1,4 +1,3 @@
-import HeroSection from "./components/HeroSection";
 import HomeSlider from "./components/HomeSlider";
 import OurServices from "./components/OurServices";
 import WhyChooseUs from "./components/WhyChooseUs";
@@ -12,7 +11,7 @@ export default async function Home() {
         <div className="w-full hidden md:flex">
           <HomeSlider />
         </div>
-        <div className="w-full max-w-6xl my-2">
+        <div className="w-full max-w-6xl my-2 md:mt-40">
           <HomePageIcon />
         </div>
         <div className="w-full max-w-6xl my-5">

@@ -66,13 +66,12 @@ const HomeSlider = () => {
         <CarouselContent className="w-full">
           {sliderData.map((slide, index) => (
             <CarouselItem key={index}>
-              <div className="relative w-full h-[260px] sm:h-[500px] bg-black">
+              <div className="relative w-full h-[260px] md:h-[700px] bg-black">
                 <Image
                   src={slide.image}
                   alt={`Slider-${index}`}
-                  width={2000}
-                  height={1000}
-                  className="w-full object-cover h-[260px] object-center sm:h-[500px]"
+                  layout="fill"
+                  className="w-full object-cover h-[260px] object-center md:h-[700px]"
                 />
                 <div className="absolute inset-0 bg-black/40 flex flex-col gap-2 items-center justify-center text-white p-4 text-center">
                   <h2 className="text-3xl sm:text-4xl font-extrabold mb-2">

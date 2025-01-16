@@ -145,63 +145,69 @@ const SellKamasComponents = ({
   };
 
   const handleSubmit = async () => {
-    // console.log("Form submitted:", formData);
-    let paymentInfoDetails = `${formData.paymentMethod}<br/>${formData.paymentDetails}`;
-
-    let qty = Number(formData.amount);
-
-    let unitPrice = ((server?.serverPriceDh || 1) / devise.curencyVal).toFixed(
-      2
-    );
-
-    if (
-      !formData.gameName ||
-      !formData.amount ||
-      !formData.paymentMethod ||
-      !formData.paymentDetails ||
-      !formData.lastname ||
-      !formData.firstname ||
-      !server
-    ) {
-      if (!formData.gameName) {
-        setGameNameError(tScope("gameNameError"));
-      } else {
-        setGameNameError("");
-      }
-
-      if (!formData.amount) {
-        setAmountError(tScope("amountError"));
-      } else {
-        setAmountError("");
-      }
-
-      if (!formData.paymentMethod) {
-        setPaymentMethodError(tScope("paymentMethodError"));
-      } else {
-        setPaymentMethodError("");
-      }
-
-      if (!formData.paymentDetails) {
-        setPaymentDetailsError(tScope("paymentDetailsError"));
-      } else {
-        setPaymentDetailsError("");
-      }
-      if (!formData.lastname) {
-        setLastnameError(tScope("lastnameError"));
-      } else {
-        setLastnameError("");
-      }
-      if (!formData.firstname) {
-        setFirstnameError(tScope("firstnameError"));
-      } else {
-        setFirstnameError("");
-      }
-      if (!server) {
-        setServerError(tScope("serverError"));
-      } else {
-        setServerError("");
-      }
+    if (!session?.user.id) {
+      toast.error(tScope("sellOrderErrorLogin"), {
+        style: { color: "#dc2626" },
+      });
     } else {
+      // console.log("Form submitted:", formData);
+      let paymentInfoDetails = `${formData.paymentMethod}<br/>${formData.paymentDetails}`;
+
+      let qty = Number(formData.amount);
+
+      let unitPrice = (
+        (server?.serverPriceDh || 1) / devise.curencyVal
+      ).toFixed(2);
+
+      if (
+        !formData.gameName ||
+        !formData.amount ||
+        !formData.paymentMethod ||
+        !formData.paymentDetails ||
+        !formData.lastname ||
+        !formData.firstname ||
+        !server
+      ) {
+        if (!formData.gameName) {
+          setGameNameError(tScope("gameNameError"));
+        } else {
+          setGameNameError("");
+        }
+
+        if (!formData.amount) {
+          setAmountError(tScope("amountError"));
+        } else {
+          setAmountError("");
+        }
+
+        if (!formData.paymentMethod) {
+          setPaymentMethodError(tScope("paymentMethodError"));
+        } else {
+          setPaymentMethodError("");
+        }
+
+        if (!formData.paymentDetails) {
+          setPaymentDetailsError(tScope("paymentDetailsError"));
+        } else {
+          setPaymentDetailsError("");
+        }
+        if (!formData.lastname) {
+          setLastnameError(tScope("lastnameError"));
+        } else {
+          setLastnameError("");
+        }
+        if (!formData.firstname) {
+          setFirstnameError(tScope("firstnameError"));
+        } else {
+          setFirstnameError("");
+        }
+        if (!server) {
+          setServerError(tScope("serverError"));
+        } else {
+          setServerError("");
+        }
+      } else {
+      }
       setGameNameError("");
       setAmountError("");
       setPaymentMethodError("");
@@ -424,7 +430,7 @@ const SellKamasComponents = ({
           type="submit"
           className="bg-amber-500 hover:bg-amber-600 text-white"
           onClick={handleSubmit}
-          disabled={isLoading || !session?.user.id}
+          disabled={isLoading}
           aria-label="submit sell kamas button"
         >
           {isLoading ? (

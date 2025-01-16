@@ -242,6 +242,8 @@ export default {
 
   "dialogsell.server": "Serveur",
   "dialogsell.selectServer": "Sélectionner un serveur",
+  "dialogsell.sellOrderErrorLogin":
+    "Vous devez être connecté pour passer une commande.",
 
   "emptycart.title": "Votre panier est vide",
   "emptycart.desc":
