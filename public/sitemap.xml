@@ -1,97 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Nom du site -->
+  <!-- Page d'accueil -->
   <url>
     <loc>https://www.ibendouma.com/</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>1.0</priority>
-    <description>Ibendouma - Achat, Vente et Échange de Kamas Dofus | Plateforme Sécurisée. La référence pour acheter, vendre et échanger vos kamas Dofus, Dofus Touch et Dofus Retro. ✓ Paiement Sécurisé ✓ Livraison Express ✓ Service Client 24/7 ✓ Meilleurs Prix Garantis</description>
+    <changefreq>daily</changefreq>
   </url>
 
-  <!-- Pages du site -->
+  <!-- Pages principales -->
   <url>
     <loc>https://www.ibendouma.com/acheter-des-kamas</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.8</priority>
-    <description>Achetez des Kamas Dofus, Touch et Retro de manière sécurisée sur ibendouma. Service d'achat rapide et fiable, taux compétitifs. Service client disponible 24/7. ✓ Transactions Sécurisées ✓ Livraison Instantanée</description>
+    <changefreq>daily</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/echange-de-kamas</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.8</priority>
-    <description>Échangez vos Kamas Dofus, Touch et Retro de manière sécurisée sur ibendouma. Service d'échange rapide et fiable, taux compétitifs. Service client 24/7. ✓ Transactions Sécurisées ✓ Échange Instantané</description>
+    <changefreq>daily</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/vendre-des-kamas</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.8</priority>
-    <description>Vendez vos Kamas Dofus en toute sécurité sur ibendouma. Livraison rapide, prix compétitifs, paiement sécurisé. Service client 24/7. ✓ Transactions Sécurisées ✓ Livraison Express</description>
+    <changefreq>daily</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/contact-us</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.7</priority>
-    <description>Contacter nous pour toute demande d'information ou support.</description>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/faq</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.7</priority>
-    <description>Page avec des questions fréquentes pour vous aider à comprendre notre service.</description>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/signin</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.6</priority>
-    <description>Page de connexion pour accéder à votre compte.</description>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/signup</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.6</priority>
-    <description>Page d'inscription pour créer un nouveau compte utilisateur.</description>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/resetpassword</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.6</priority>
-    <description>Page pour réinitialiser votre mot de passe si vous l'avez oublié.</description>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/reset-password</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.6</priority>
-    <description>Page pour réinitialiser votre mot de passe.</description>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/profile</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.7</priority>
-    <description>Page de profil utilisateur pour voir et modifier vos informations.</description>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/privacy-and-policy</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.5</priority>
-    <description>Page expliquant notre politique de confidentialité.</description>
+    <changefreq>yearly</changefreq>
   </url>
 
   <url>
     <loc>https://www.ibendouma.com/terms-and-conditions</loc>
     <lastmod>2025-01-16</lastmod>
     <priority>0.5</priority>
-    <description>Page des conditions générales d'utilisation de notre site.</description>
+    <changefreq>yearly</changefreq>
   </url>
 
 </urlset>
