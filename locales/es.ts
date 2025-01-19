@@ -909,6 +909,15 @@ export default {
   "confirmEmail.website": "Sitio web",
   "confirmEmail.exchangeLink": "Intercambio de kamas",
   "confirmEmail.sellLink": "Vender tus kamas",
+  "confirmEmail.joinComs": "Únete a nuestra comunidad",
+  "confirmEmail.cordialy": "Atentamente",
+  "confirmEmail.ibenTeam": "El equipo de ibendouma",
+  "confirmEmail.rightreser": "Todos los derechos reservados",
+  "confirmEmail.sendTo": "Este correo electrónico fue enviado a",
+  "confirmEmail.helpCenter": "Centro de ayuda",
+  "confirmEmail.privacyPolicy": "Política de privacidad",
+  "confirmEmail.termsAndConditions": "Términos y condiciones",
+
   "confirmEmail.bottomSpam":
     "Este correo electrónico fue enviado por ibendouma. Para asegurarte de recibir nuestros correos, agrega support@ibendouma.com a tu lista de contactos.",
 

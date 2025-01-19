@@ -878,6 +878,15 @@ export default {
   "confirmEmail.copyright": "جميع الحقوق محفوظة",
   "confirmEmail.website": "الموقع الإلكتروني",
   "confirmEmail.exchangeLink": "تبادل الكاماس",
+  "confirmEmail.joinComs": "انضم إلى مجتمعنا",
+  "confirmEmail.cordialy": "مع أطيب التحيات",
+  "confirmEmail.ibenTeam": "فريق ibendouma",
+  "confirmEmail.rightreser": "جميع الحقوق محفوظة",
+  "confirmEmail.sendTo": "تم إرسال هذا البريد الإلكتروني إلى",
+  "confirmEmail.helpCenter": "مركز المساعدة",
+  "confirmEmail.privacyPolicy": "سياسة الخصوصية",
+  "confirmEmail.termsAndConditions": "الشروط والأحكام",
+
   "confirmEmail.sellLink": "بيع الكاماس الخاصة بك",
   "confirmEmail.bottomSpam":
     "تم إرسال هذا البريد الإلكتروني بواسطة ibendouma. لضمان استلام رسائلنا، أضف support@ibendouma.com إلى قائمة جهات الاتصال الخاصة بك.",

@@ -897,6 +897,15 @@ export default {
   "confirmEmail.website": "Website",
   "confirmEmail.exchangeLink": "Kamas exchange",
   "confirmEmail.sellLink": "Sell your kamas",
+  "confirmEmail.joinComs": "Join our community",
+  "confirmEmail.cordialy": "Best regards",
+  "confirmEmail.ibenTeam": "The ibendouma team",
+  "confirmEmail.rightreser": "All rights reserved",
+  "confirmEmail.sendTo": "This email was sent to",
+  "confirmEmail.helpCenter": "Help Center",
+  "confirmEmail.privacyPolicy": "Privacy Policy",
+  "confirmEmail.termsAndConditions": "Terms and Conditions",
+
   "confirmEmail.bottomSpam":
     "This email was sent by ibendouma. To ensure you receive our emails, add support@ibendouma.com to your contact list.",
 

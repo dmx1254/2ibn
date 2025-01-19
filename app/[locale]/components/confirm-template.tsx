@@ -48,7 +48,7 @@ export const ConfirmEmailTemplate: React.FC<EmailTemplateProps> = async ({
               }}
             >
               <img
-                src="https://ibendouma.vercel.app/ibennewapp-logo.png"
+                src="https://ibendouma.com/ibennewapp-logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",
@@ -109,18 +109,264 @@ export const ConfirmEmailTemplate: React.FC<EmailTemplateProps> = async ({
                 </a>
               </p>
             </div>
+          </td>
+        </tr>
 
-            <p
-              style={{ color: "#666666", fontSize: "16px", lineHeight: "1.5" }}
-            >
-              {tScope("contact")}
-            </p>
-            <p
-              style={{ color: "#666666", fontSize: "16px", lineHeight: "1.5" }}
-            >
-              {tScope("bientot")} <br />
-              {tScope("thanks")}
-            </p>
+        {/* Pied de page */}
+        <tr>
+          <td style={{ padding: "0 30px 30px" }}>
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "16px",
+                    lineHeight: "1.5",
+                    margin: 0,
+                  }}
+                >
+                  🎮 {tScope("joinComs")}:
+                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "16px",
+                    flexWrap: "wrap",
+                    marginLeft: "8px",
+                  }}
+                >
+                  <a
+                    href="https://www.facebook.com/ibendouma1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "4px",
+                      borderRadius: "9999px",
+                      border: "2px solid #45494e",
+                      backgroundColor: "#363A3D",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/128/733/733547.png"
+                      alt="Facebook"
+                      style={{
+                        display: "block",
+                        width: "14px",
+                        height: "14px",
+                      }}
+                    />
+                  </a>
+
+                  <a
+                    href="https://www.threads.net/@ibendouma_com?hl=fr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "4px",
+                      borderRadius: "9999px",
+                      border: "2px solid #45494e",
+                      backgroundColor: "#363A3D",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <img
+                      src="https://tse4.mm.bing.net/th?id=OIP.FJ2rxJYdlVhRJ2kGR9-g6QHaHa&w=474&h=474&c=7"
+                      alt="Threads"
+                      style={{
+                        display: "block",
+                        width: "14px",
+                        height: "14px",
+                      }}
+                    />
+                  </a>
+
+                  <a
+                    href="https://t.me/ibendouma"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "4px",
+                      borderRadius: "9999px",
+                      border: "2px solid #45494e",
+                      backgroundColor: "#363A3D",
+                      textDecoration: "none",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png"
+                      alt="Telegram"
+                      style={{
+                        display: "block",
+                        width: "14px",
+                        height: "14px",
+                      }}
+                    />
+                  </a>
+
+                  <a
+                    href="https://wa.me/971529087560"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "4px",
+                      borderRadius: "9999px",
+                      border: "2px solid #45494e",
+                      backgroundColor: "#363A3D",
+                      textDecoration: "none",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/128/733/733585.png"
+                      alt="WhatsApp"
+                      style={{
+                        display: "block",
+                        width: "14px",
+                        height: "14px",
+                      }}
+                    />
+                  </a>
+
+                  <a
+                    href="https://www.tiktok.com/@ibendouma.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "4px",
+                      borderRadius: "9999px",
+                      border: "2px solid #45494e",
+                      backgroundColor: "#363A3D",
+                      textDecoration: "none",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/128/3046/3046121.png"
+                      alt="TikTok"
+                      style={{
+                        display: "block",
+                        width: "14px",
+                        height: "14px",
+                      }}
+                    />
+                  </a>
+
+                  <a
+                    href="https://discordapp.com/users/369803701725954048/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "4px",
+                      borderRadius: "9999px",
+                      border: "2px solid #45494e",
+                      backgroundColor: "#363A3D",
+                      textDecoration: "none",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/128/3670/3670157.png"
+                      alt="Discord"
+                      style={{
+                        display: "block",
+                        width: "14px",
+                        height: "14px",
+                      }}
+                    />
+                  </a>
+
+                  <a
+                    href="https://www.instagram.com/ibendouma_com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "4px",
+                      borderRadius: "9999px",
+                      border: "2px solid #45494e",
+                      backgroundColor: "#363A3D",
+                      textDecoration: "none",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png"
+                      alt="Instagram"
+                      style={{
+                        display: "block",
+                        width: "14px",
+                        height: "14px",
+                      }}
+                    />
+                  </a>
+
+                  <a
+                    href="skype:bendouma.ilyass?chat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "4px",
+                      borderRadius: "9999px",
+                      border: "2px solid #45494e",
+                      backgroundColor: "#363A3D",
+                      textDecoration: "none",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    <img
+                      src="https://tse4.mm.bing.net/th?id=OIP.DZtr8Ssjo5BUHKRNRYiw3gHaHa&w=474&h=474&c=7"
+                      alt="Skype"
+                      style={{
+                        display: "block",
+                        width: "14px",
+                        height: "14px",
+                      }}
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <p
+                style={{
+                  fontSize: "16px",
+                  lineHeight: "1.5",
+                  margin: 0,
+                }}
+              >
+                {tScope("cordialy")}, <br />
+                {tScope("ibenTeam")}
+              </p>
+            </div>
           </td>
         </tr>
 
@@ -136,41 +382,41 @@ export const ConfirmEmailTemplate: React.FC<EmailTemplateProps> = async ({
             <p
               style={{ color: "#999999", fontSize: "14px", margin: "0 0 10px" }}
             >
-              © 2024 JBK Services INTERNATIONAL FZ-LLC. {tScope("copyright")}.
+              © 2024 JBK Services INTERNATIONAL FZ-LLC. {tScope("rightreser")}.
             </p>
 
             <div style={{ marginTop: "20px" }}>
               <a
-                href="https://ibendouma.com"
+                href="https://www.ibendouma.com/faq"
                 style={{
-                  color: "#d97706",
+                  color: "#999999",
                   textDecoration: "none",
                   margin: "0 10px",
                 }}
               >
-                {tScope("website")}
+                {tScope("helpCenter")}
               </a>{" "}
-              |
+              -
               <a
-                href="https://ibendouma.com/echange-de-kamas"
+                href="https://www.ibendouma.com/privacy-and-policy"
                 style={{
-                  color: "#d97706",
+                  color: "#999999",
                   textDecoration: "none",
                   margin: "0 10px",
                 }}
               >
-                {tScope("exchangeLink")}
+                {tScope("privacyPolicy")}
               </a>{" "}
-              |
+              -
               <a
-                href="https://ibendouma.com/vendre-des-kamas"
+                href="https://ibendouma.com/terms-and-conditions"
                 style={{
-                  color: "#d97706",
+                  color: "#999999",
                   textDecoration: "none",
                   margin: "0 10px",
                 }}
               >
-                {tScope("sellLink")}
+                {tScope("termsAndConditions")}
               </a>
             </div>
           </td>
