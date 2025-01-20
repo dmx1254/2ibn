@@ -90,6 +90,7 @@ const HeroSection = ({ cat }: { cat?: string }) => {
       qty: activeServer?.serverMinQty || 1,
       amount: Number(amount),
       unitPrice: actualPriceCur,
+      bonus: bonus,
       totalPrice: returTotalValue,
       image: activeServer?.serverCategory || "",
       type: "dofus",

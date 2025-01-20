@@ -7,9 +7,7 @@ import { FaSortDown } from "react-icons/fa";
 import SheetMenu from "./SheetMenu";
 import { CiUser } from "react-icons/ci";
 
-import { useQuery } from "@tanstack/react-query";
 import { dofusItemNav } from "@/lib/utils";
-import useStore from "@/lib/store-manage";
 import LanguageAndCurrency from "./LanguageAndCurrency";
 import { useScopedI18n } from "@/locales/client";
 import CardHoverCon from "./HoverCard";
@@ -19,8 +17,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 import { useSession } from "next-auth/react";
 import ProfilePopover from "./ProfilePopover";
-
-import { BsThreads } from "react-icons/bs";
 import { useUserPresence } from "@/app/hooks/userPresence";
 import SocialMediaDropdown from "./SocialMediaDropdown ";
 import MobileTopMenus from "./MobileTopMenus";
@@ -35,38 +31,12 @@ const Navbar = () => {
     },
   });
 
-  // console.log(session);
-  // console.log(status);
-
   const tScope = useScopedI18n("navbar.popover");
   const pathname = usePathname();
-  const { addSevers, activeServerRequest, addToActiveServerRequest } =
-    useStore();
+ 
   // const [scrollPosition, setScrollPosition] = useState<number>(0);
 
-  const handleActiveJeu = (slug: string) => {
-    addToActiveServerRequest(slug);
-  };
-
-  const fetchCurrency = async () => {
-    const response = await fetch(`/api/iben/server`);
-    if (!response.ok) {
-      throw new Error("Fetching currency failed: ");
-    }
-
-    return response.json();
-  };
-
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["dofus-buy"],
-    queryFn: () => fetchCurrency(),
-  });
-
-  useEffect(() => {
-    if (data) {
-      addSevers(data);
-    }
-  }, [data]);
+ 
 
   return (
     !pathname.includes("signin") &&
@@ -142,21 +112,7 @@ const Navbar = () => {
                   <span className="text-base ">{tScope("account")}</span>
                 </Link>
               )}
-              {/* {(!session || status !== "authenticated") && (
-                <Link
-                  href="/signin"
-                  className="inline-flex max-md:hidden items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link"
-                >
-                  <Image
-                    src="/assets/circle-user.svg"
-                    alt="account logo"
-                    width={22}
-                    height={22}
-                    className=""
-                  />
-                  <span className="sr-only">Account</span>
-                </Link>
-              )} */}
+
               <LanguageAndCurrency />
               <CardHoverCon />
               <div>
