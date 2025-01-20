@@ -24,6 +24,7 @@ import ServerSkeleton from "@/components/ui/skeletons/skeletons";
 import Link from "next/link";
 import useStore from "@/lib/store-manage";
 import SellKamasComponents from "../components/SellKamasComponents";
+import axios from "axios";
 
 const VendreKamasClient = () => {
   const { devise } = useStore();
@@ -32,30 +33,26 @@ const VendreKamasClient = () => {
   const [selectedServer, setSelectedServer] = useState("");
   const [serverPriceEuro, setServerPriceEuro] = useState<number | null>();
   const [serverPriceAed, setServerPriceAed] = useState<number | null>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [serverPriceDollar, setServerPriceDollar] = useState<number | null>(
     null
   );
 
-  const fetchServers = async () => {
-    const response = await fetch("/api/go/server");
-    if (!response.ok) {
-      throw new Error("Fetching currency failed");
+  useEffect(() => {
+    try {
+      setIsLoading(true);
+      const getServer = async () => {
+        const response = await axios.get("/api/go/server");
+        if (response) {
+          setServersSell(response.data);
+        }
+      };
+      getServer();
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
     }
-    return response.json();
-  };
-
-  const { isLoading, error, data } = useQuery({
-    queryKey: [""],
-    queryFn: () => fetchServers(),
-    refetchOnWindowFocus: true,
-    refetchOnMount: true,
-  });
-
-  useMemo(() => {
-    if (data) {
-      setServersSell(data);
-    }
-  }, [data]);
+  }, []);
 
   // EURO CURRENCY FETCHING
 

@@ -22,15 +22,11 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Input } from "./ui/input";
+import axios from "axios";
 
 const PurchaseForm = ({ cat }: { cat?: string }) => {
-  const {
-    devise,
-    activeServerRequest,
-    addToActiveServerRequest,
-    addToCart,
-    servers,
-  } = useStore();
+  const { devise, activeServerRequest, addToActiveServerRequest, addToCart } =
+    useStore();
   const tScope = useScopedI18n("hero");
 
   const [dofusChange, setDofusChange] = useState<string>(activeServerRequest);
@@ -42,6 +38,21 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
   const [character, setCharacter] = useState<string>("");
   const [amount, setAmount] = useState<number | string>();
   const [bonus, setBonus] = useState<number | string>();
+  const [servers, setServers] = useState<ServerBuy[] | null>(null);
+
+  useEffect(() => {
+    try {
+      const getServerBuy = async () => {
+        const response = await axios.get(`/api/iben/server`);
+        if (response) {
+          setServers(response.data);
+        }
+      };
+      getServerBuy();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
     if (cat) {
