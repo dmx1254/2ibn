@@ -76,7 +76,6 @@ const EchangeKamasClient = () => {
       try {
         const response = await fetch(`/api/go/server`, {
           cache: "no-store",
-          next: { revalidate: 10 },
         });
         const res = await response.json();
 

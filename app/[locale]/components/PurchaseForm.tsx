@@ -44,7 +44,6 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
       try {
         const response = await fetch(`/api/iben/server`, {
           cache: "no-store",
-          next: { revalidate: 10 },
         });
         const res = await response.json();
         if (res) {
