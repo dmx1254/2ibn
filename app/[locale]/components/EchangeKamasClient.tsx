@@ -72,21 +72,22 @@ const EchangeKamasClient = () => {
   });
 
   useEffect(() => {
-    try {
-      const getServerExchange = async () => {
+    const getServerExchange = async () => {
+      try {
         const response = await fetch(`/api/go/server`, {
           cache: "no-store",
           next: { revalidate: 10 },
         });
         const res = await response.json();
+
         if (res) {
-          setServersExchange(res.data);
+          setServersExchange(res);
         }
-      };
-      getServerExchange();
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getServerExchange();
   }, []);
 
   const { data: rateVal } = useQuery({

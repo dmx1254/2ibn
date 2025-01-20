@@ -38,23 +38,25 @@ const VendreKamasClient = () => {
   );
 
   useEffect(() => {
-    try {
-      setIsLoading(true);
-      const getServer = async () => {
+    const getServer = async () => {
+      try {
+        setIsLoading(true);
         const response = await fetch("/api/go/server", {
           cache: "no-store",
           next: { revalidate: 10 },
         });
         const res = await response.json();
         if (res) {
-          setServersSell(res.data);
+          setServersSell(res);
         }
-      };
-      getServer();
-    } catch (error) {
-    } finally {
-      setIsLoading(false);
-    }
+      } catch (error) {
+        console.error("Erreur lors de la récupération :", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getServer();
   }, []);
 
   // EURO CURRENCY FETCHING

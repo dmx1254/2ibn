@@ -40,21 +40,21 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
   const [servers, setServers] = useState<ServerBuy[] | null>(null);
 
   useEffect(() => {
-    try {
-      const getServerBuy = async () => {
+    const getServerBuy = async () => {
+      try {
         const response = await fetch(`/api/iben/server`, {
           cache: "no-store",
           next: { revalidate: 10 },
         });
         const res = await response.json();
         if (res) {
-          setServers(res.data);
+          setServers(res);
         }
-      };
-      getServerBuy();
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getServerBuy();
   }, []);
 
   useEffect(() => {
