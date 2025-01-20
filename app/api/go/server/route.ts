@@ -3,8 +3,10 @@ import { NextResponse } from "next/server";
 // import { ServerModel } from "@/lib/models/ibytrade-models";
 // import { connectDB } from "@/lib/db";
 import { goapiModels } from "@/lib/models/ibytrade-models";
+import { NextApiResponse } from "next";
 
-export async function GET() {
+export async function GET( res: NextApiResponse) {
+  res.setHeader("Cache-Control", "no-store");
   try {
     const { ServerModel } = await goapiModels;
     const servers = await ServerModel.find();
