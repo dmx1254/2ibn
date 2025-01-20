@@ -3,10 +3,8 @@ import { NextResponse } from "next/server";
 // import { ServerModelIben } from "@/lib/models/ibendouma-models";
 // import { connectDB } from "@/lib/db";
 import { ibenModels } from "@/lib/models/ibendouma-models";
-import { NextApiResponse } from "next";
 
-export async function GET(res: NextApiResponse) {
-  res.setHeader("Cache-Control", "no-store");
+export async function GET() {
   try {
     const { ServerModelIben } = await ibenModels;
     const servers = await ServerModelIben.find();

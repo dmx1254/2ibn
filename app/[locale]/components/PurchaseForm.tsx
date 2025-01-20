@@ -22,7 +22,6 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Input } from "./ui/input";
-import axios from "axios";
 
 const PurchaseForm = ({ cat }: { cat?: string }) => {
   const { devise, activeServerRequest, addToActiveServerRequest, addToCart } =
@@ -43,9 +42,13 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
   useEffect(() => {
     try {
       const getServerBuy = async () => {
-        const response = await axios.get(`/api/iben/server`);
-        if (response) {
-          setServers(response.data);
+        const response = await fetch(`/api/iben/server`, {
+          cache: "no-store",
+          next: { revalidate: 10 },
+        });
+        const res = await response.json();
+        if (res) {
+          setServers(res.data);
         }
       };
       getServerBuy();

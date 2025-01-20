@@ -71,10 +71,30 @@ const EchangeKamasClient = () => {
     },
   });
 
+  useEffect(() => {
+    try {
+      const getServerExchange = async () => {
+        const response = await fetch(`/api/go/server`, {
+          cache: "no-store",
+          next: { revalidate: 10 },
+        });
+        const res = await response.json();
+        if (res) {
+          setServersExchange(res.data);
+        }
+      };
+      getServerExchange();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   const { data: rateVal } = useQuery({
     queryKey: ["exchange-rate"],
     queryFn: async () => {
-      const response = await fetch("/api/go/exchange/getRate");
+      const response = await fetch("/api/go/exchange/getRate", {
+        cache: "no-store",
+      });
       if (!response.ok) throw new Error("Fetching currency failed");
       return response.json();
     },
@@ -143,20 +163,6 @@ const EchangeKamasClient = () => {
       setLoadingExchange(false);
     }
   }
-
-  useEffect(() => {
-    try {
-      const getServerExchange = async () => {
-        const response = await axios.get(`/api/go/server`);
-        if (response) {
-          setServersExchange(response.data);
-        }
-      };
-      getServerExchange();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
 
   return (
     <div className="font-poppins p-4 md:p-8 min-h-screen">
