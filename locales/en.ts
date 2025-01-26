@@ -628,7 +628,24 @@ export default {
     "The prices of the sites evolve according to supply and demand. If you find a better price at another online store, we'll do our best to beat it.",
   "termsandconditions.refundTitle": "7. REFUND POLICY",
   "termsandconditions.refundDesc":
-    "ibendouma commits to refund unsatisfied customers to a reasonable extent. Please not that support may ask you to provide proof of payment. The customer is entitled to request a refund in the following cases. Virtual products not received: In the event that the virtual products have not been delivered to the customer within the expected delivery time, the customer may request a refund. Double payment: In the event that the customer has made a repeated payment for an order, he is requested to contact the support in order to be refunded as soon as possible. For any reason other than those listed above, please explain your situation to support. Your refund request will be verified after submitting the order number and refund reason. If the request is approved, the refund will be returned to the customer's account or credit card. In the following cases, we cannot refund customers: Delivery complete: the products have been delivered to the customer as agreed and as described. Unpaid order: The customer is not allowed to request a refund for the unpaid order.",
+    "ibendouma is committed to refunding dissatisfied customers within a reasonable scope. Please note that support may ask you to provide proof of payment. The customer has the right to request a refund in the following cases.",
+
+  "termsandconditions.refundsubTitle1": "Virtual Products Not Received",
+  "termsandconditions.refundsubDesc1":
+    "If the virtual products have not been delivered to the customer within the specified delivery time, the customer may request a refund.",
+  "termsandconditions.refundsubTitle2": "Duplicate Payment",
+  "termsandconditions.refundsubDesc2":
+    "If the customer has made a repeated payment for an order, they are advised to contact support for a refund as soon as possible.",
+
+  "termsandconditions.desMiddle":
+    "For any reason other than those listed above, please explain your situation to support. Your refund request will be reviewed after submitting the order number and the reason for the refund. If the request is approved, the refund will be returned to the customer's account or credit card. In the following cases, we cannot refund customers:",
+  "termsandconditions.refundsubTitle3": "Complete Delivery",
+  "termsandconditions.refundsubDesc3":
+    "The products have been delivered to the customer as agreed and described.",
+  "termsandconditions.refundsubTitle4": "Unpaid Order",
+  "termsandconditions.refundsubDesc4":
+    "The customer is not entitled to request a refund for an unpaid order.",
+
   "termsandconditions.thirdPartyTitle": "8. THIRD PARTIES",
   "termsandconditions.thirdPartyDesc":
     'The Company may also provide links and pointers to websites operated by third parties. Neither the Company, its parent or subsidiary companies, nor their affiliates operate or control in any respect the information, products or services on such third-party sites. We are not responsible for examining or evaluating, and we do not warrant, the offerings of such companies or individuals or the content of their websites. The Company assumes no responsibility for the actions, product and content of all these and any other third parties. You should carefully read their privacy statements and other terms of use. The material on this site and third-party sites is provided "as is" and without warranty of any kind, either express or implied. To the fullest extent permitted by applicable law, the Company disclaims all warranties, express or implied, including, but not limited to, implied warranties of merchantability and fitness for a particular purpose. The Company does not claim any title to any accounts or virtual items purchased or sold through this site.',
@@ -643,13 +660,13 @@ export default {
   "termsandconditions.legalNotice.title": "Legal Notice",
   "termsandconditions.legalNotice.amlTitle": "Legal Compliance and KYC/AML",
   "termsandconditions.legalNotice.amlDesc":
-    "At I2BN, we adhere to legal compliance regulations, particularly the KYC (Know Your Customer) process. Every user is required to verify their identity to ensure transparency and transaction security. Our anti-money laundering (AML) procedures follow guidelines established by the DFSA (Dubai Financial Services Authority), guaranteeing a secure and reliable environment for all.",
+    "At ibendouma, we adhere to legal compliance regulations, particularly the KYC (Know Your Customer) process. Every user is required to verify their identity to ensure transparency and transaction security. Our anti-money laundering (AML) procedures follow guidelines established by the DFSA (Dubai Financial Services Authority), guaranteeing a secure and reliable environment for all.",
   "termsandconditions.legalNotice.secTitle": "Website Security",
   "termsandconditions.legalNotice.secDesc":
     "We protect your data with a valid SSL/TLS certificate, ensuring a secure connection. Sensitive information is encrypted using modern technologies such as Norton. Additionally, we conduct regular audits to identify and resolve any vulnerabilities, including tests against DDoS attacks and security breaches.",
   "termsandconditions.legalNotice.transTitle": "Activity Transparency",
   "termsandconditions.legalNotice.transDesc":
-    "I2BN is registered in the jurisdiction of the United Arab Emirates. We operate in the E-Commerce sector, offering services such as gaming products.",
+    "ibendouma is registered in the jurisdiction of the United Arab Emirates. We operate in the E-Commerce sector, offering services such as gaming products.",
   "termsandconditions.legalNotice.contTitle": "Regulated Content",
   "termsandconditions.legalNotice.contDesc":
     "We place great importance on adhering to applicable laws. Please refer to: Our Privacy Policy Our Terms and Conditions of Use Our Refund Policy.",
@@ -806,6 +823,56 @@ export default {
     "You may contact the Company by e-mail at support@ibendouma.com.",
   "privacyandpolicy.bottomDesc": "Last Updated: October 2024",
   "privacyandpolicy.bottomDescAllRight": "All Rights Reserved.",
+  "privacyandpolicy.typesTitle": "Types of information collected",
+  "privacyandpolicy.typesDesc":
+    "The Company collects various types of information to provide and improve its services. This information includes",
+
+  "privacyandpolicy.typesContTitle1": "Personal Information",
+  "privacyandpolicy.typesContDesc1":
+    "Data that can directly identify you, such as your name, address, phone number, email address, and any other information you voluntarily provide.",
+
+  "privacyandpolicy.typesContTitle2": "Payment Data",
+  "privacyandpolicy.typesContDesc2":
+    "The Company uses third-party services to process payments. These providers collect and process your payment information (such as credit card numbers) directly, in accordance with their own privacy policies. The Company does not store your payment information on its servers.",
+
+  "privacyandpolicy.typesContTitle3": "Browsing Data",
+  "privacyandpolicy.typesContDesc3":
+    "During your visits to the site, the Company automatically collects information about your online activity through cookies and similar technologies. This includes",
+  "privacyandpolicy.typesContSub1": "Pages visited",
+  "privacyandpolicy.typesContSub2": "Browser type used",
+  "privacyandpolicy.typesContSub3": "IP address",
+  "privacyandpolicy.typesContSub4": "Click data",
+  "privacyandpolicy.typesContSub5": "Access times",
+
+  "privacyandpolicy.typesContTitle4": "Use of Analytics Tools",
+  "privacyandpolicy.typesContDesc4":
+    "The Company uses tools such as Google Analytics to analyze user behavior on the site. These tools collect anonymized data about how you interact with the site, such as",
+  "privacyandpolicy.typesContSub6": "Duration of your visit",
+  "privacyandpolicy.typesContSub7": "Pages viewed",
+  "privacyandpolicy.typesContSub8": "Navigation paths",
+  "privacyandpolicy.typesContNote":
+    "This data is used to improve user experience and optimize the services provided. You can review Google Analytics' Privacy Policy to learn more about their practices.",
+
+  "privacyandpolicy.typesContTitle5": "Advertising Partners",
+  "privacyandpolicy.typesContDesc5":
+    "Some browsing information may be shared with advertising partners to personalize the ads displayed on the site and elsewhere online. This data remains anonymous and does not include your personal information.",
+
+  "privacyandpolicy.useInfoTitle": "Use of Information",
+  "privacyandpolicy.useInfoDesc":
+    "The Company uses the collected information for the following purposes",
+
+  "privacyandpolicy.useInfoCont1":
+    "Order processing: Manage, track, and deliver user orders.",
+  "privacyandpolicy.useInfoCont2":
+    "Customer communication: Respond to inquiries, provide order updates, and notify about important service changes.",
+  "privacyandpolicy.useInfoCont3":
+    "Direct marketing: Send promotional offers, news, or personalized product and service recommendations. You can unsubscribe from these communications at any time via the links included in the emails.",
+  "privacyandpolicy.useInfoCont4":
+    "Service improvement: Analyze user feedback and collect anonymized data using tools such as Google Analytics to identify areas for improvement and provide an optimized experience.",
+  "privacyandpolicy.useInfoCont5":
+    "Behavioral analysis: Study trends, purchasing behaviors, and user interactions with the site to personalize offers and services.",
+  "privacyandpolicy.useInfoCont6":
+    "Legal compliance: Meet legal obligations, respond to requests from competent authorities, and ensure data security.",
 
   "contact.title": "Get In Touch",
   "contact.desc":

@@ -643,7 +643,24 @@ export default {
     "Les prix des sites évoluent en fonction de l'offre et de la demande. Si vous trouvez un meilleur prix dans une autre boutique en ligne, nous ferons de notre mieux pour le battre.",
   "termsandconditions.refundTitle": "7. POLITIQUE DE REMBOURSEMENT",
   "termsandconditions.refundDesc":
-    "ibendouma s'engage à rembourser les clients insatisfaits dans une mesure raisonnable. Veuillez noter que le support peut vous demander de fournir une preuve de paiement. Le client a le droit de demander un remboursement dans les cas suivants. Produits virtuels non reçus : Dans le cas où les produits virtuels n'ont pas été livrés au client dans le délai de livraison prévu, le client peut demander un remboursement. Paiement en double : Dans le cas où le client a effectué un paiement répété pour une commande, il est prié de contacter le support pour obtenir un remboursement dès que possible. Pour toute raison autre que celles énumérées ci-dessus, veuillez expliquer votre situation au support. Votre demande de remboursement sera vérifiée après soumission du numéro de commande et du motif du remboursement. Si la demande est approuvée, le remboursement sera retourné sur le compte ou la carte de crédit du client. Dans les cas suivants, nous ne pouvons pas rembourser les clients : Livraison complète : les produits ont été livrés au client comme convenu et décrit. Commande impayée : le client n'est pas autorisé à demander un remboursement pour une commande impayée.",
+    "ibendouma s'engage à rembourser les clients insatisfaits dans une mesure raisonnable. Veuillez noter que le support peut vous demander de fournir une preuve de paiement. Le client a le droit de demander un remboursement dans les cas suivants.",
+
+  "termsandconditions.refundsubTitle1": "Produits virtuels non reçus",
+  "termsandconditions.refundsubDesc1":
+    "Dans le cas où les produits virtuels n'ont pas été livrés au client dans le délai de livraison prévu, le client peut demander un remboursement.",
+  "termsandconditions.refundsubTitle2": "Paiement en double",
+  "termsandconditions.refundsubDesc2":
+    " Dans le cas où le client a effectué un paiement répété pour une commande, il est prié de contacter le support pour obtenir un remboursement dès que possible.",
+
+  "termsandconditions.desMiddle":
+    "Pour toute raison autre que celles énumérées ci-dessus, veuillez expliquer votre situation au support. Votre demande de remboursement sera vérifiée après soumission du numéro de commande et du motif du remboursement. Si la demande est approuvée, le remboursement sera retourné sur le compte ou la carte de crédit du client. Dans les cas suivants, nous ne pouvons pas rembourser les clients :",
+  "termsandconditions.refundsubTitle3": "Livraison complète",
+  "termsandconditions.refundsubDesc3":
+    "Les produits ont été livrés au client comme convenu et décrit.",
+  "termsandconditions.refundsubTitle4": "Commande impayée",
+  "termsandconditions.refundsubDesc4":
+    "Le client n'est pas autorisé à demander un remboursement pour une commande impayée.",
+
   "termsandconditions.thirdPartyTitle": "8. TIERS",
   "termsandconditions.thirdPartyDesc":
     "La Société peut également fournir des liens et des pointeurs vers des sites Web exploités par des tiers. Ni la Société, ni ses sociétés mères ou filiales, ni leurs affiliés n'exploitent ou ne contrôlent en aucun cas les informations, produits ou services sur ces sites tiers. Nous ne sommes pas responsables de l'examen ou de l'évaluation, et nous ne garantissons pas les offres de ces sociétés ou individus ni le contenu de leurs sites Web. La Société n'assume aucune responsabilité pour les actions, produits et contenus de tous ces tiers et de tout autre tiers. Vous devriez lire attentivement leurs déclarations de confidentialité et autres conditions d'utilisation. Le matériel sur ce site et les sites tiers est fourni 'tel quel' et sans garantie de quelque nature que ce soit, explicite ou implicite. Dans toute la mesure permise par la loi applicable, la Société décline toute garantie, expresse ou implicite, y compris, mais sans s'y limiter, les garanties implicites de qualité marchande et d'adéquation à un usage particulier. La Société ne revendique aucun titre sur les comptes ou objets virtuels achetés ou vendus sur ce site.",
@@ -661,13 +678,13 @@ export default {
   "termsandconditions.legalNotice.title": "Mentions légales",
   "termsandconditions.legalNotice.amlTitle": "Conformité légale et KYC/AML",
   "termsandconditions.legalNotice.amlDesc":
-    "Chez I2BN, nous respectons les réglementations en matière de conformité légale, notamment le processus KYC (Know Your Customer). Chaque utilisateur est tenu de vérifier son identité afin de garantir la transparence et la sécurité des transactions. Nos procédures antiblanchiment d’argent (AML) suivent les directives établies par DFSA (Dubai Financial Services Authority), garantissant un environnement sécurisé et fiable pour tous.",
+    "Chez ibendouma, nous respectons les réglementations en matière de conformité légale, notamment le processus KYC (Know Your Customer). Chaque utilisateur est tenu de vérifier son identité afin de garantir la transparence et la sécurité des transactions. Nos procédures antiblanchiment d’argent (AML) suivent les directives établies par DFSA (Dubai Financial Services Authority), garantissant un environnement sécurisé et fiable pour tous.",
   "termsandconditions.legalNotice.secTitle": "Sécurité du site web",
   "termsandconditions.legalNotice.secDesc":
     "Nous protégeons vos données avec un certificat SSL/TLS valide, garantissant une connexion sécurisée. Les informations sensibles sont encryptées à l’aide de technologies modernes telles que Norton. De plus, nous effectuons des audits réguliers pour identifier et corriger toute vulnérabilité possible, y compris les tests contre les attaques DDoS et les violations de sécurité.",
   "termsandconditions.legalNotice.transTitle": "Transparence des activités",
   "termsandconditions.legalNotice.transDesc":
-    "I2BN est enregistrée dans la juridiction des Emirats Arabes Unis. Nous opérons dans le domaine de E-Commerce, offrant des services tels que des produits gaming.",
+    "ibendouma est enregistrée dans la juridiction des Emirats Arabes Unis. Nous opérons dans le domaine de E-Commerce, offrant des services tels que des produits gaming.",
   "termsandconditions.legalNotice.contTitle": "Contenu réglementé",
   "termsandconditions.legalNotice.contDesc":
     "Contenu réglementé Nous mettons un point d’honneur à respecter les lois en vigueur. Consultez: Notre politique de confidentialité Nos conditions générales d’utilisation : Notre politique de remboursement.",
@@ -822,6 +839,56 @@ export default {
     "Vous pouvez contacter la Société par e-mail à support@ibendouma.com.",
   "privacyandpolicy.bottomDesc": "Dernière mise à jour : octobre 2024",
   "privacyandpolicy.bottomDescAllRight": "Tous droits réservés.",
+
+  "privacyandpolicy.typesTitle": "Types d'informations collectées",
+  "privacyandpolicy.typesDesc":
+    "La Société collecte différents types d'informations pour offrir et améliorer ses services. Ces informations comprennent",
+
+  "privacyandpolicy.typesContTitle1": "Informations personnelles",
+  "privacyandpolicy.typesContDesc1":
+    "Données pouvant vous identifier directement, telles que votre nom, adresse, numéro de téléphone, adresse e-mail, et toute autre information que vous fournissez volontairement.",
+
+  "privacyandpolicy.typesContTitle2": "Données de paiement",
+  "privacyandpolicy.typesContDesc2":
+    "La Société utilise des services tiers pour traiter les paiements. Ces prestataires collectent et traitent directement vos informations de paiement (comme les numéros de carte bancaire) conformément à leurs propres politiques de confidentialité. La Société ne stocke pas vos informations de paiement sur ses serveurs.",
+
+  "privacyandpolicy.typesContTitle3": "Données de navigation",
+  "privacyandpolicy.typesContDesc3":
+    "Lors de vos visites sur le site, la Société collecte automatiquement des informations sur votre activité en ligne via des cookies et des technologies similaires. Cela inclut",
+  "privacyandpolicy.typesContSub1": "Les pages visitées",
+  "privacyandpolicy.typesContSub2": "Le type de navigateur utilisé",
+  "privacyandpolicy.typesContSub3": "L’adresse IP",
+  "privacyandpolicy.typesContSub4": "Les données de clics",
+  "privacyandpolicy.typesContSub5": "Les heures d’accès",
+
+  "privacyandpolicy.typesContTitle4": "Utilisation d’Outils d’Analyse",
+  "privacyandpolicy.typesContDesc4":
+    "La Société utilise des outils comme Google Analytics pour analyser les comportements des utilisateurs sur le site. Ces outils collectent des données anonymisées sur la manière dont vous interagissez avec le site, telles que",
+  "privacyandpolicy.typesContSub6": "La durée de votre visite",
+  "privacyandpolicy.typesContSub7": "Les pages consultées",
+  "privacyandpolicy.typesContSub8":
+    "Ces données sont utilisées pour améliorer l'expérience utilisateur et optimiser les services offerts. Vous pouvez consulter la Politique de confidentialité de Google Analytics pour en savoir plus sur leurs pratiques.",
+
+  "privacyandpolicy.typesContTitle5": "Partenaires publicitaires",
+  "privacyandpolicy.typesContDesc5":
+    "Certaines informations de navigation peuvent être partagées avec des partenaires publicitaires afin de personnaliser les annonces affichées sur le site et ailleurs en ligne. Ces données restent anonymes et n’incluent pas vos informations personnelles.",
+
+  "privacyandpolicy.useInfoTitle": "Utilisation des informations",
+  "privacyandpolicy.useInfoDesc":
+    "La Société utilise les informations collectées pour les finalités suivantes",
+
+  "privacyandpolicy.useInfoCont1":
+    "Traitement des commandes : Assurer la gestion, le suivi et la livraison des commandes passées par les utilisateurs.",
+  "privacyandpolicy.useInfoCont2":
+    "Communication client : Répondre aux demandes, fournir des mises à jour sur les commandes et informer sur les modifications importantes des services.",
+  "privacyandpolicy.useInfoCont3":
+    "Marketing direct : Envoyer des offres promotionnelles, des actualités ou des suggestions personnalisées sur les produits et services. Vous pouvez à tout moment vous désinscrire de ces communications via les liens inclus dans les e-mails.",
+  "privacyandpolicy.useInfoCont4":
+    "Amélioration des services : Analyser les retours d'expérience utilisateur et collecter des données anonymes via des outils comme Google Analytics pour identifier les points à améliorer et offrir une expérience optimisée.",
+  "privacyandpolicy.useInfoCont5":
+    "Analyse comportementale : Étudier les tendances, les comportements d'achat et les interactions des utilisateurs avec le site pour personnaliser les offres et les services.",
+  "privacyandpolicy.useInfoCont6":
+    "Conformité juridique : Respecter les obligations légales, répondre aux demandes des autorités compétentes et garantir la sécurité des données.",
 
   "contact.title": "Contactez-nous",
   "contact.desc":

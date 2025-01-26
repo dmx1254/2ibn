@@ -9,9 +9,23 @@ import {
 } from "../components/ui/card";
 import { useScopedI18n } from "@/locales/client";
 
+type Terms = {
+  title: string;
+  content: string;
+  subType?: {
+    title: string;
+    desc: string;
+    subContents: {
+      title?: string;
+      desc: string;
+      subSubContent?: string[];
+    }[];
+  }[];
+};
+
 const PrivacyAndPolicy = () => {
   const tScope = useScopedI18n("privacyandpolicy");
-  const termsData = [
+  const termsData: Terms[] = [
     {
       title: tScope("title"),
       content: tScope("intro"),
@@ -19,6 +33,70 @@ const PrivacyAndPolicy = () => {
     {
       title: tScope("consent.title"),
       content: tScope("consent"),
+      subType: [
+        {
+          title: tScope("typesTitle"),
+          desc: tScope("typesDesc"),
+          subContents: [
+            {
+              title: tScope("typesContTitle1"),
+              desc: tScope("typesContDesc1"),
+            },
+            {
+              title: tScope("typesContTitle2"),
+              desc: tScope("typesContDesc2"),
+            },
+            {
+              title: tScope("typesContTitle3"),
+              desc: tScope("typesContDesc3"),
+              subSubContent: [
+                tScope("typesContSub1"),
+                tScope("typesContSub2"),
+                tScope("typesContSub3"),
+                tScope("typesContSub4"),
+                tScope("typesContSub5"),
+              ],
+            },
+            {
+              title: tScope("typesContTitle4"),
+              desc: tScope("typesContDesc4"),
+              subSubContent: [
+                tScope("typesContSub6"),
+                tScope("typesContSub7"),
+                tScope("typesContSub8"),
+              ],
+            },
+            {
+              title: tScope("typesContTitle5"),
+              desc: tScope("typesContDesc5"),
+            },
+          ],
+        },
+        {
+          title: tScope("useInfoTitle"),
+          desc: tScope("useInfoDesc"),
+          subContents: [
+            {
+              desc: tScope("useInfoCont1"),
+            },
+            {
+              desc: tScope("useInfoCont2"),
+            },
+            {
+              desc: tScope("useInfoCont3"),
+            },
+            {
+              desc: tScope("useInfoCont4"),
+            },
+            {
+              desc: tScope("useInfoCont5"),
+            },
+            {
+              desc: tScope("useInfoCont6"),
+            },
+          ],
+        },
+      ],
     },
     {
       title: tScope("informationCollectionAndUse.title"),
@@ -145,10 +223,39 @@ const PrivacyAndPolicy = () => {
           <div className="space-y-6">
             {termsData.map((section, index) => (
               <div key={index} className="p-4 rounded-md">
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">
+                <h3 className="text-lg font-semibold mb-2">
                   {section.title}
                 </h3>
-                <p className="text-gray-600">{section.content}</p>
+                <p className="">{section.content}</p>
+                {section.subType &&
+                  section.subType.map((sec, index) => (
+                    <div key={index} className="flex flex-col items-start mt-2">
+                      <p className="text-base font-semibold mb-2">
+                        2.{index + 1} {sec.title} :
+                      </p>
+                      <p className="">{sec.desc}</p>
+
+                      {sec.subContents &&
+                        sec.subContents.map((c, index) => (
+                          <div key={index} className="ml-12">
+                            <div>
+                              <span className="font-semibold">
+                                {`● ${c.title ?? ""}`}
+                              </span>{" "}
+                              {c.title && ":"} {c.desc}
+                            </div>
+                            <div className="flex flex-col items-start gap-2 ml-12">
+                              {c.subSubContent &&
+                                c.subSubContent.map((sb, index) => (
+                                  <div key={index}>
+                                    <span className="text-xs">○</span> {sb}
+                                  </div>
+                                ))}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  ))}
               </div>
             ))}
           </div>
