@@ -9,14 +9,8 @@ import giropay from "../../../assets/iben/giropay.webp";
 import mastercard from "../../../assets/iben/mastercard.webp";
 import neosurf from "../../../assets/iben/neosurf.webp";
 import paysafecard from "../../../assets/iben/paysafecard.webp";
-import marocbank from "../../../assets/iben/marocbank.webp";
-import mabank from "../../../assets/iben/ma_bank.png";
-import barid from "../../../assets/iben/barid.webp";
-import bnpParibas from "../../../assets/iben/bnpParibas.jpg";
 import paypal from "../../../assets/iben/paypal.png";
-import crd_agricole from "../../../assets/iben/crd_agricole.png";
-import sg from "../../../assets/iben/sg.png";
-import cdmaroc from "../../../assets/iben/cdm-maroc.svg";
+
 
 // import nortonbrand from "../../../assets/secure/nortonbrand.png";
 import sslShopper from "../../../assets/secure/ssl-shopper.svg";

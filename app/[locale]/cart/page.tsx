@@ -37,53 +37,6 @@ const CartPage: React.FC = () => {
   const shipping = 0.0;
   const total = subtotal + shipping;
 
-  // console.log(carts);
-
-  // const handleCheckout = async () => {
-  //   const products = carts.map((cart) => {
-  //     return {
-  //       productId: cart.productId,
-  //       category: cart.category,
-  //       server: cart.server,
-  //       qty: cart.qty,
-  //       amount: cart.amount,
-  //       price: cart.unitPrice.toFixed(2),
-  //       character: cart.character,
-  //       totalPrice: cart.totalPrice.toFixed(2),
-  //     };
-  //   });
-  //   const data = {
-  //     userId: session?.user.id,
-  //     orderNum: orderBuyNumGenerated(),
-  //     products: products,
-  //     address: "",
-  //     status: "En attente",
-  //     totalPrice: total.toFixed(2),
-  //     paymentMethod: activePaymentMethod,
-  //     orderIdPaid: "",
-  //     cur: carts[0]?.currency,
-  //     valCurency: Number(carts[0]?.valCurrency),
-  //   };
-  //   try {
-  //     setIsOrderLoading(true);
-  //     const result = await axios.post("/api/iben/order", data);
-  //     if (result.data) {
-  //       toast.success(tScope("success"), {
-  //         style: { color: "#16a34a" },
-  //       });
-
-  //       setTimeout(() => {
-  //         clearCart();
-  //       }, 2000);
-  //     }
-  //   } catch (error) {
-  //     toast.success(tScope("error"), {
-  //       style: { color: "#dc2626" },
-  //     });
-  //   } finally {
-  //     setIsOrderLoading(false);
-  //   }
-  // };
 
   return (
     <div className="w-full py-6 sm:py-12 px-4 sm:px-6 lg:px-8  min-h-screen">

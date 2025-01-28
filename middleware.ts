@@ -42,7 +42,7 @@ export const config = {
   // Matcher mis à jour pour inclure toutes les routes localisées et protégées
   matcher: [
     // Routes protégées
-    "/(en|fr|es)/profile/:path*",
+    "/(en|fr|es|ar)/profile/:path*",
     // Routes i18n (exclut les fichiers statiques et les API)
     "/((?!api|_next|static|.*\\..*|favicon.ico|robots.txt).*)",
   ],
