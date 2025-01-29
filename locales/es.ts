@@ -129,6 +129,9 @@ export default {
   "exchange.success":
     "Solicitud de intercambio enviada con éxito. Abra el chat para proceder con el intercambio.",
   "exchange.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
+  "exchange.usernotlogin":
+    "Debes iniciar sesión primero antes de hacer un intercambio.",
+  "exchange.missingfield": "Por favor, completa los campos antes de continuar.",
 
   "exchange.desc1":
     "¿Tienes kamas en otros servidores de Dofus o Dofus Touch? ¿O tienes kamas en Dofus Touch y quieres transferirlos a otros servidores? ¡No hay problema! ibendouma también asegura la transferencia de kamas de un servidor a otro.",

@@ -133,34 +133,51 @@ const EchangeKamasClient = () => {
   }, [serverToPay, serverToReceive, quantityToPay]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const data = {
-      userId: session?.user.id,
-      serverOut: values.serverToPay,
-      serverIn: values.serverToReceive,
-      codeToExchange: values.exchangeCode,
-      characterToPay: values.characterToPay,
-      characterToReceive: values.characterToReceive,
-      qtyToPay: Number(values.quantityToPay),
-      qtyToReceive: Number(values.quantityToReceive),
-    };
-    try {
-      setLoadingExchange(true);
-      const response = await axios.post("/api/go/exchange", data);
-      if (response) {
-        toast.success(tScope("success"), {
-          style: { color: "#16a34a" },
-        });
-        setTimeout(() => {
-          handleChatClick();
-        }, 1500);
-      }
-    } catch (error) {
-      //   console.log(error);
-      toast.success(tScope("error"), {
+    if (
+      !values.serverToPay ||
+      !values.serverToReceive ||
+      !values.exchangeCode ||
+      !values.characterToPay ||
+      !values.characterToReceive ||
+      !Number(values.quantityToPay)
+    ) {
+      toast.error(tScope("missingfield"), {
         style: { color: "#dc2626" },
       });
-    } finally {
-      setLoadingExchange(false);
+    } else if (!session?.user.id) {
+      toast.error(tScope("usernotlogin"), {
+        style: { color: "#dc2626" },
+      });
+    } else {
+      const data = {
+        userId: session?.user.id,
+        serverOut: values.serverToPay,
+        serverIn: values.serverToReceive,
+        codeToExchange: values.exchangeCode,
+        characterToPay: values.characterToPay,
+        characterToReceive: values.characterToReceive,
+        qtyToPay: Number(values.quantityToPay),
+        qtyToReceive: Number(values.quantityToReceive),
+      };
+      try {
+        setLoadingExchange(true);
+        const response = await axios.post("/api/go/exchange", data);
+        if (response) {
+          toast.success(tScope("success"), {
+            style: { color: "#16a34a" },
+          });
+          setTimeout(() => {
+            handleChatClick();
+          }, 1500);
+        }
+      } catch (error) {
+        //   console.log(error);
+        toast.success(tScope("error"), {
+          style: { color: "#dc2626" },
+        });
+      } finally {
+        setLoadingExchange(false);
+      }
     }
   }
 
@@ -418,7 +435,7 @@ const EchangeKamasClient = () => {
                   <Button
                     type="submit"
                     className="w-full h-11 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-lg transition-colors duration-200"
-                    disabled={loadingExchange || !session?.user.id}
+                    disabled={loadingExchange}
                     aria-label="Excahnge order button"
                   >
                     {loadingExchange ? (
