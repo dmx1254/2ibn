@@ -43,7 +43,8 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
     const getServerBuy = async () => {
       try {
         const response = await fetch(`/api/iben/server`, {
-          cache: "no-store",
+          method: "POST",
+          body: JSON.stringify({ server: "Imagiro" }),
         });
         const res = await response.json();
         if (res) {

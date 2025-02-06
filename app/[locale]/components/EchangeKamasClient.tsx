@@ -75,7 +75,8 @@ const EchangeKamasClient = () => {
     const getServerExchange = async () => {
       try {
         const response = await fetch(`/api/go/server`, {
-          cache: "no-store",
+          method: "POST",
+          body: JSON.stringify({ server: "Draconiros" }),
         });
         const res = await response.json();
 

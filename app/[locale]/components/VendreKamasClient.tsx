@@ -42,7 +42,8 @@ const VendreKamasClient = () => {
       try {
         setIsLoading(true);
         const response = await fetch("/api/go/server", {
-          cache: "no-store",
+          method: "POST",
+          body: JSON.stringify({ server: "Imagiro" }),
         });
         const res = await response.json();
         if (res) {
