@@ -52,7 +52,10 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
   };
 
   const fetchCurrency = async (currency: string): Promise<CUR[]> => {
-    const response = await fetch(`/api/iben/currency/${currency}`);
+    const response = await fetch(`/api/iben/currency/${currency}`, {
+      method: "POST",
+      body: JSON.stringify({ cur: "eur" }),
+    });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }
@@ -97,7 +100,8 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
           className={clsx(
             "outline-none inline-flex items-center gap-2 px-3 py-2 transition-all duration-200 cursor-pointer rounded-full hover:opacity-90",
             {
-              "border border-[#76828D] focus:ring-0 bg-[#363A3D] max-md:hidden": isShowBg,
+              "border border-[#76828D] focus:ring-0 bg-[#363A3D] max-md:hidden":
+                isShowBg,
             }
           )}
         >

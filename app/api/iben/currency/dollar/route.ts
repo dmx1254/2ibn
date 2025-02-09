@@ -1,10 +1,8 @@
 import { NextResponse } from "next/server";
 
-// import { DollarModelIben } from "@/lib/models/ibendouma-models";
-import { connectDB } from "@/lib/db";
 import { ibenModels } from "@/lib/models/ibendouma-models";
 
-export async function GET() {
+export async function POST(req: Request) {
   try {
     const { DollarModelIben } = await ibenModels;
     const dollar = await DollarModelIben.find();

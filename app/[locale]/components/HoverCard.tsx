@@ -42,9 +42,11 @@ const CardHoverCon = () => {
               className=""
             />
             <span className="sr-only">Cart</span>
-            <span className="flex items-center justify-center text-center absolute h-4 w-4 text-xs bg-yellow-500 text-white rounded-full top-[12%] left-[50%]">
-              {totalItems}
-            </span>
+            {totalItems > 0 && (
+              <span className="flex items-center justify-center text-center absolute h-4 w-4 text-xs bg-yellow-500 text-white rounded-full top-[12%] left-[50%]">
+                {totalItems}
+              </span>
+            )}
           </button>
         </HoverCardTrigger>
       )}

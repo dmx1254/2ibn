@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { goapiModels } from "@/lib/models/ibytrade-models";
 
-export async function GET() {
+export async function POST(req: Request) {
   try {
     const { EuroModel } = await goapiModels;
     const euro = await EuroModel.find();

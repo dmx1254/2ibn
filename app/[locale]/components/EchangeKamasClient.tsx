@@ -94,7 +94,8 @@ const EchangeKamasClient = () => {
     queryKey: ["exchange-rate"],
     queryFn: async () => {
       const response = await fetch("/api/go/exchange/getRate", {
-        cache: "no-store",
+        method: "POST",
+        body: JSON.stringify({ rate: "rate" }),
       });
       if (!response.ok) throw new Error("Fetching currency failed");
       return response.json();

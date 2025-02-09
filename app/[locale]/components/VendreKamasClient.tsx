@@ -62,7 +62,10 @@ const VendreKamasClient = () => {
   // EURO CURRENCY FETCHING
 
   const fetchCurrencyEuro = async () => {
-    const response = await fetch("/api/go/currency/euro");
+    const response = await fetch("/api/go/currency/euro", {
+      method: "POST",
+      body: JSON.stringify({ cur: "eur" }),
+    });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }
@@ -82,7 +85,10 @@ const VendreKamasClient = () => {
   // DOLLAR CURRENCY FETCHING
 
   const fetchCurrencyDollar = async () => {
-    const response = await fetch("/api/go/currency/dollar");
+    const response = await fetch("/api/go/currency/dollar", {
+      method: "POST",
+      body: JSON.stringify({ cur: "eur" }),
+    });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }
@@ -100,7 +106,10 @@ const VendreKamasClient = () => {
   });
 
   const fetchCurrencyAed = async () => {
-    const response = await fetch("/api/go/currency/aed");
+    const response = await fetch("/api/go/currency/aed", {
+      method: "POST",
+      body: JSON.stringify({ cur: "eur" }),
+    });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }

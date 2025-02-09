@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 // import { connectDB } from "@/lib/db";
 import { goapiModels } from "@/lib/models/ibytrade-models";
 
-export async function GET() {
+export async function POST(req: Request) {
   try {
     const { RateModel } = await goapiModels;
     const rate = await RateModel.find();

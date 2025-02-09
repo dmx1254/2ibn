@@ -286,13 +286,7 @@ const Footer = () => {
                   alt="Giropay"
                   className="object-cover"
                 />
-                {/* <Image
-                  src={marocbank}
-                  width={100}
-                  height={50}
-                  alt="Marocco bank"
-                  className="object-cover"
-                /> */}
+              
 
                 {/* <Image
                   src={crd_agricole}
