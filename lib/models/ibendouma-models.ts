@@ -295,6 +295,10 @@ async function initializeModels(): Promise<any> {
             type: Number,
             required: true,
           },
+          bonus: {
+            type: Number,
+            default: 0,
+          },
           price: { type: Number, required: true },
           character: {
             type: String,
@@ -471,7 +475,7 @@ async function initializeModels(): Promise<any> {
     ibendDB.models.payment ||
     ibendDB.model<IPaymentMethod>("payment", paymentMethodSchema);
   const VisitModel =
-  ibendDB.models.visit || ibendDB.model<Visit>("visit", visitSchema);
+    ibendDB.models.visit || ibendDB.model<Visit>("visit", visitSchema);
 
   return {
     ServerModelIben,
