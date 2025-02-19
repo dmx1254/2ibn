@@ -235,7 +235,7 @@ export default {
   "dialogsell.casebinpaywiseinput": "Ingrese el correo de pago",
   "dialogsell.caseadvcashinput": "Ingrese el número de cuenta",
   "dialogsell.casetrc20input": "Ingrese la dirección TRX",
-  "dialogsell.bonus": "Bono: +50 Dhs (pedidos superiores a 3000 Dhs)",
+  "dialogsell.bonus": "Bono: {bonus1} (pedidos superiores a {bonus2})",
 
   "dialogsell.gameNameError": "El nombre en el juego es obligatorio",
   "dialogsell.amountError": "La cantidad es obligatoria",
@@ -1229,4 +1229,9 @@ export default {
   "virtualgame.pasha.service3": "Asistencia 24/7 disponible",
   "virtualgame.pasha.conclusion":
     "¡No pierdas la oportunidad de personalizar tu personaje y dominar el juego con tus nuevos Diamantes Pasha Fencer!",
+
+  "orderSuccess.title": "¡Pedido exitoso!",
+  "orderSuccess.desc":
+    "Gracias por su pedido. Nos pondremos en contacto con usted en breve para confirmar los detalles de la entrega.",
+  "orderSuccess.btn": "Volver a inicio",
 } as const;

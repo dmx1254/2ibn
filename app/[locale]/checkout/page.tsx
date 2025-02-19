@@ -34,6 +34,7 @@ import axios from "axios";
 import { useScopedI18n } from "@/locales/client";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 // Composant pour l'étape de connexion
 const ConnectionStep = ({
@@ -283,6 +284,7 @@ const ConfirmationStep = ({
 
 const Checkout = () => {
   const { data: session, status } = useSession();
+  const router = useRouter();
 
   const [formData, setFormData] = useState<any>({
     lastname: "",
@@ -460,8 +462,9 @@ const Checkout = () => {
         });
 
         setTimeout(() => {
-          handleChatClick();
-        }, 1500);
+          // handleChatClick();
+          router.push("/order-success");
+        }, 1000);
       }
     } catch (error) {
       toast.success(tScope("error"), {

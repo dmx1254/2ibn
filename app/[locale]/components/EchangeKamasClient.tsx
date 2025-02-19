@@ -32,9 +32,11 @@ import {
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const EchangeKamasClient = () => {
   const { data: session, status } = useSession();
+  const router = useRouter();
   const tScope = useScopedI18n("exchange");
   const [serversExchange, setServersExchange] = useState<
     ServerExchange[] | null
@@ -169,8 +171,9 @@ const EchangeKamasClient = () => {
             style: { color: "#16a34a" },
           });
           setTimeout(() => {
-            handleChatClick();
-          }, 1500);
+            // handleChatClick();
+            router.push("/order-success");
+          }, 1000);
         }
       } catch (error) {
         //   console.log(error);

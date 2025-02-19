@@ -230,7 +230,7 @@ export default {
   "dialogsell.casebinpaywiseinput": "أدخل بريد الدفع الإلكتروني",
   "dialogsell.caseadvcashinput": "أدخل رقم الحساب",
   "dialogsell.casetrc20input": "أدخل عنوان TRX",
-  "dialogsell.bonus": "مكافأة: +50 درهم (الطلبات التي تزيد عن 3000 درهم)",
+  "dialogsell.bonus": "المكافأة: {bonus1} (للطلبات التي تزيد عن {bonus2})",
 
   "dialogsell.gameNameError": "اسم الشخصية في اللعبة مطلوب",
   "dialogsell.amountError": "الكمية مطلوبة",
@@ -1183,4 +1183,8 @@ export default {
   "virtualgame.pasha.service3": "دعم فني متاح 24/7",
   "virtualgame.pasha.conclusion":
     "لا تفوت فرصة تخصيص شخصيتك والسيطرة على اللعبة مع ألماس باشا فينسر الجديد!",
+
+  "orderSuccess.title": "تم الطلب بنجاح!",
+  "orderSuccess.desc": "شكرًا لطلبك. سنتواصل معك قريبًا لتأكيد تفاصيل التسليم.",
+  "orderSuccess.btn": "العودة إلى الصفحة الرئيسية",
 } as const;

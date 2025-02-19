@@ -107,9 +107,8 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
         >
           <Globe size={18} className="text-white" />
           <span className="text-sm font-medium text-white">
-            {getLocaleLanguage()?.code.toUpperCase()}
-            {!pathname.includes("vendre-des-kamas") &&
-              ` / ${getActualCurrency()?.symbol}`}
+            {getLocaleLanguage()?.code.toUpperCase()} /{" "}
+            {getActualCurrency()?.symbol}
           </span>
           <ChevronDown
             size={16}
@@ -134,47 +133,47 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
             </h4>
             <LocaleSelect />
           </div>
-          {!pathname.includes("vendre-des-kamas") && (
-            <div className="p-4 space-y-2">
-              <h4 className="font-semibold text-lg text-gray-800">
-                {tScope("currency")}
-              </h4>
-              <div className="space-y-1">
-                <Select onValueChange={(value) => handleCurrencyChange(value)}>
-                  <SelectTrigger className="w-full outline-none focus:outline-none focus:ring-0 focus:ring-offset-0">
-                    <SelectValue
-                      placeholder={
+
+          <div className="p-4 space-y-2">
+            <h4 className="font-semibold text-lg text-gray-800">
+              {tScope("currency")}
+            </h4>
+            <div className="space-y-1">
+              <Select onValueChange={(value) => handleCurrencyChange(value)}>
+                <SelectTrigger className="w-full outline-none focus:outline-none focus:ring-0 focus:ring-offset-0">
+                  <SelectValue
+                    placeholder={
+                      <div className="flex items-center gap-2">
+                        <span className="flex-grow text-left text-sm font-medium -mt-0.5">
+                          {getActualCurrency()?.symbol}
+                        </span>
+                        <span className="flex-grow text-left text-sm font-medium -mt-0.5">
+                          {getActualCurrency()?.name}
+                        </span>
+                      </div>
+                    }
+                  />
+                </SelectTrigger>
+                <SelectContent className="w-full">
+                  <SelectGroup className="w-full">
+                    {currencies.map((curr) => (
+                      <SelectItem key={curr.code} value={curr.slug}>
                         <div className="flex items-center gap-2">
-                          <span className="flex-grow text-left text-sm font-medium -mt-0.5">
-                            {getActualCurrency()?.symbol}
+                          <span className="text-base font-semibold w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full">
+                            {curr.symbol}
                           </span>
-                          <span className="flex-grow text-left text-sm font-medium -mt-0.5">
-                            {getActualCurrency()?.name}
+                          <span className="flex-grow text-left text-sm font-medium">
+                            {curr.name}
                           </span>
                         </div>
-                      }
-                    />
-                  </SelectTrigger>
-                  <SelectContent className="w-full">
-                    <SelectGroup className="w-full">
-                      {currencies.map((curr) => (
-                        <SelectItem key={curr.code} value={curr.slug}>
-                          <div className="flex items-center gap-2">
-                            <span className="text-base font-semibold w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full">
-                              {curr.symbol}
-                            </span>
-                            <span className="flex-grow text-left text-sm font-medium">
-                              {curr.name}
-                            </span>
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </div>
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
-          )}
+          </div>
+
           <p className="w-full text-sm px-4 pb-4 pt-1 text-gray-800">
             {tScope("desc")}
           </p>

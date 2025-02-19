@@ -60,7 +60,7 @@ const VendreKamasClient = () => {
     getServer();
   }, []);
 
-  console.log(serverPriceUsdt);
+  // console.log(serverPriceUsdt);
   // EURO CURRENCY FETCHING
 
   const fetchCurrencyEuro = async () => {

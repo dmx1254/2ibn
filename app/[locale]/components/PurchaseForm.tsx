@@ -70,11 +70,25 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
     router.push(`/acheter-des-kamas/${slug}`);
   };
 
+  const checkPrice = (price: number | undefined): number => {
+    if (!price) return 1;
+    if (price >= 50 && price <= 100) {
+      return 4000;
+    } else if (price >= 20 && price < 50) {
+      return 3000;
+    } else if (price >= 1 && price < 20) {
+      return 2000;
+    } else {
+      return 1000;
+    }
+  };
+
   useMemo(() => {
+    const p = checkPrice(activeServer?.serverPrice);
     if (amount && Number(amount) > 0) {
       const price = (
         (Number(amount) * (activeServer?.serverPrice || 1)) /
-        1000
+        p
       ).toFixed(2);
 
       const priceNumber = Number(price);
@@ -319,7 +333,7 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
                       {tScope("homeRecapQty")}
                     </span>
                     <span className="text-white font-medium">
-                      {Number(amount) + Number(bonus) || 0} M
+                      {Number(amount)} M
                     </span>
                   </div>
 

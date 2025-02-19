@@ -19,6 +19,7 @@ import {
 } from "./ui/select";
 import { useSession } from "next-auth/react";
 import { Card } from "./ui/card";
+import { useRouter } from "next/navigation";
 
 const SellKamasComponents = ({
   servers,
@@ -27,10 +28,13 @@ const SellKamasComponents = ({
 }) => {
   const { devise, addNewDevise } = useStore();
   const { data: session, status } = useSession();
+
+  const router = useRouter();
+
   const tScope = useScopedI18n("dialogsell");
-  useLayoutEffect(() => {
-    addNewDevise({ currencyName: "mad", curencyVal: 1 });
-  }, []);
+  // useLayoutEffect(() => {
+  //   addNewDevise({ currencyName: "mad", curencyVal: 1 });
+  // }, []);
 
   const [formData, setFormData] = useState({
     gameName: "",
@@ -239,8 +243,9 @@ const SellKamasComponents = ({
             style: { color: "#16a34a" },
           });
           setTimeout(() => {
-            handleChatClick();
-          }, 1500);
+            // handleChatClick();
+            router.push("/order-success");
+          }, 1000);
         }
       } catch (error) {
         // console.log(error);
@@ -420,7 +425,16 @@ const SellKamasComponents = ({
 
             <div className="flex items-center gap-2 text-sm text-amber-600">
               <Gift className="h-4 w-4" />
-              <span>{tScope("bonus")}</span>
+              <span>
+                {tScope("bonus", {
+                  bonus1: `${Math.round(50 / devise.curencyVal)} ${parsedDevise(
+                    devise.currencyName
+                  )}`,
+                  bonus2: `${Math.round(
+                    3000 / devise.curencyVal
+                  )} ${parsedDevise(devise.currencyName)}`,
+                })}
+              </span>
             </div>
           </div>
         </div>
