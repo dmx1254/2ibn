@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { FaSortDown } from "react-icons/fa";
 import SheetMenu from "./SheetMenu";
 import { CiUser } from "react-icons/ci";
 
-import { dofusItemNav } from "@/lib/utils";
+import { dofusItemNav, games } from "@/lib/utils";
 import LanguageAndCurrency from "./LanguageAndCurrency";
 import { useScopedI18n } from "@/locales/client";
 import CardHoverCon from "./HoverCard";
@@ -23,6 +23,8 @@ import MobileTopMenus from "./MobileTopMenus";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
+  const [isGameHovering, setIsGameHovering] = useState<boolean>(false);
+  const [isDofusHovering, setIsDofusHovering] = useState<boolean>(false);
 
   useUserPresence({
     userId: session?.user.id,
@@ -32,11 +34,10 @@ const Navbar = () => {
   });
 
   const tScope = useScopedI18n("navbar.popover");
+  const tScope2 = useScopedI18n("navbar");
   const pathname = usePathname();
- 
-  // const [scrollPosition, setScrollPosition] = useState<number>(0);
 
- 
+  // const [scrollPosition, setScrollPosition] = useState<number>(0);
 
   return (
     !pathname.includes("signin") &&
@@ -65,18 +66,24 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="flex items-center gap-4 max-lg:hidden">
-              <Popover>
-                <PopoverTrigger className="flex items-center text-base text-white transition-colors hover:text-yellow-600">
+              <Popover open={isDofusHovering} onOpenChange={setIsDofusHovering}>
+                <PopoverTrigger
+                  className="flex items-center text-base text-white transition-colors hover:text-yellow-600"
+                  onMouseEnter={() => setIsDofusHovering(true)}
+                >
                   {tScope("title")} <FaSortDown className="-mt-1.5" />
                 </PopoverTrigger>
-                <PopoverContent className="max-w-36 shadow-none p-2 bg-[#1A1D21] border-[#45494e]">
+                <PopoverContent
+                  className="max-w-36 shadow-none p-2 bg-[#1A1D21] border-[#45494e]"
+                  onMouseLeave={() => setIsDofusHovering(false)}
+                >
                   <div className="flex flex-col items-start text-base font-semibold">
                     {dofusItemNav.map((dofs, index) => (
                       <Link
                         key={dofs.id + index}
-                        href={`acheter-des-kamas/?category=${dofs.slug}`}
+                        href={`/acheter-des-kamas/${dofs.slug}`}
                         // onClick={() => handleActiveJeu(dofs.slug)}
-                        className="outline-none text-left w-full text-white cursor-pointer p-1.5 transition-all rounded-[10px] hover:bg-[#363A3D] hover:text-white"
+                        className="outline-none text-sm text-left w-full text-white cursor-pointer p-1.5 transition-all rounded-[10px] hover:bg-[#363A3D] hover:text-white"
                         aria-label="Server dofus selection"
                       >
                         {dofs.name}
@@ -97,6 +104,39 @@ const Navbar = () => {
               >
                 {tScope("link2")}
               </Link>
+              <Popover open={isGameHovering} onOpenChange={setIsGameHovering}>
+                <PopoverTrigger
+                  className="flex items-center text-base text-white transition-colors hover:text-yellow-600"
+                  onMouseEnter={() => setIsGameHovering(true)}
+                >
+                  {tScope2("game")} <FaSortDown className="-mt-1.5" />
+                </PopoverTrigger>
+                <PopoverContent
+                  className="max-w-48 shadow-none p-2 bg-[#1A1D21] border-[#45494e]"
+                  onMouseLeave={() => setIsGameHovering(false)}
+                >
+                  <div className="flex flex-col items-start text-base font-semibold">
+                    {games.map((g, index) => (
+                      <Link
+                        key={g.id + index}
+                        href={`/jeux/${g.slug}`}
+                        // onClick={() => handleActiveJeu(dofs.slug)}
+                        className="outline-none text-sm text-left w-full text-white cursor-pointer p-1.5 transition-all rounded-[10px] hover:bg-[#363A3D] hover:text-white"
+                        aria-label="games"
+                      >
+                        {tScope2(
+                          g.slug as
+                            | "pubg-mobile"
+                            | "free-fire"
+                            | "fortnite"
+                            | "mobile-legends"
+                            | "pasha-fencer-diamonds"
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                </PopoverContent>
+              </Popover>
             </div>
             <div className="flex items-center gap-2 sm:gap-4">
               {session && status === "authenticated" ? (

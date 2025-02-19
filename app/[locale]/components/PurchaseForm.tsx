@@ -22,8 +22,10 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Input } from "./ui/input";
+import { useRouter } from "next/navigation";
 
 const PurchaseForm = ({ cat }: { cat?: string }) => {
+  const router = useRouter();
   const { devise, activeServerRequest, addToActiveServerRequest, addToCart } =
     useStore();
   const tScope = useScopedI18n("hero");
@@ -65,6 +67,7 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
 
   const handleDofusChange = (slug: string) => {
     addToActiveServerRequest(slug);
+    router.push(`/acheter-des-kamas/${slug}`);
   };
 
   useMemo(() => {

@@ -5,7 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { useScopedI18n } from "@/locales/client";
 import useStore from "@/lib/store-manage";
 import Link from "next/link";
-import { dofusItemNavSheetMenu } from "@/lib/utils";
+import { dofusItemNavSheetMenu, games } from "@/lib/utils";
 
 const SheetMenu = () => {
   const { addToActiveServerRequest } = useStore();
@@ -39,7 +39,7 @@ const SheetMenu = () => {
           {dofusItemNavSheetMenu.map((item, index) => (
             <Link
               key={item.id + index}
-              href={`acheter-des-kamas/?category=${item.slug}`}
+              href={`/acheter-des-kamas/${item.slug}`}
               className="outline-none w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
               // onClick={() => handleActiveJeu(item.slug)}
               aria-label="kamas server"
@@ -47,7 +47,6 @@ const SheetMenu = () => {
               {tScope(item.typeslug as "kamas" | "touch" | "retro")}
             </Link>
           ))}
-
           <Link
             href="/echange-de-kamas"
             className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
@@ -60,6 +59,17 @@ const SheetMenu = () => {
           >
             {tScope("sell")}
           </Link>
+          {games.map((g, index) => (
+            <Link
+              key={g.id + index}
+              href={`/jeux/${g.slug}`}
+              className="outline-none w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
+              // onClick={() => handleActiveJeu(item.slug)}
+              aria-label="kamas server"
+            >
+              {g.name}
+            </Link>
+          ))}
         </div>
       </SheetContent>
     </Sheet>

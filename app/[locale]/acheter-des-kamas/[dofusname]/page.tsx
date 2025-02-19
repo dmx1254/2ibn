@@ -1,7 +1,7 @@
 import { SearchParamProps } from "@/lib/types/types";
 import React from "react";
 import { Metadata } from "next";
-import AchatKamasClient from "../components/AchatKamasClient";
+import AchatKamasClient from "../../components/AchatKamasClient";
 
 export const metadata: Metadata = {
   title: "Acheter des Kamas Dofus - Achat Sécurisé et Instantané | ibendouma",
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
   },
 };
 
-const AchatDeKamas = ({ searchParams }: SearchParamProps) => {
-  const dofusName = searchParams.category as string;
-  return <AchatKamasClient dofusName={dofusName} />;
+const AchatDeKamas = async ({ params }: { params: { dofusname: string } }) => {
+  const { dofusname } = await params;
+  return <AchatKamasClient dofusName={dofusname} />;
 };
 
 export default AchatDeKamas;

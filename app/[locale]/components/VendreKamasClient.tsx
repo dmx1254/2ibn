@@ -32,6 +32,7 @@ const VendreKamasClient = () => {
   const [selectedServer, setSelectedServer] = useState("");
   const [serverPriceEuro, setServerPriceEuro] = useState<number | null>();
   const [serverPriceAed, setServerPriceAed] = useState<number | null>();
+  const [serverPriceUsdt, setServerPriceUsdt] = useState<number | null>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [serverPriceDollar, setServerPriceDollar] = useState<number | null>(
     null
@@ -59,6 +60,7 @@ const VendreKamasClient = () => {
     getServer();
   }, []);
 
+  console.log(serverPriceUsdt);
   // EURO CURRENCY FETCHING
 
   const fetchCurrencyEuro = async () => {
@@ -117,6 +119,27 @@ const VendreKamasClient = () => {
     return response.json();
   };
 
+  const fetchCurrencyUsdt = async () => {
+    const response = await fetch("/api/go/currency/usdt", {
+      method: "POST",
+      body: JSON.stringify({ cur: "usdt" }),
+    });
+    if (!response.ok) {
+      throw new Error("Fetching currency failed: ");
+    }
+
+    return response.json();
+  };
+
+  const {
+    isLoading: IsLoadingUsdt,
+    error: errorUsdt,
+    data: usdtData,
+  } = useQuery({
+    queryKey: ["usdt"],
+    queryFn: () => fetchCurrencyUsdt(),
+  });
+
   const {
     isLoading: IsLoadingAed,
     error: errorAed,
@@ -137,6 +160,14 @@ const VendreKamasClient = () => {
       setServerPriceAed(aedData[0]?.aed);
     }
   }, [aedData]);
+
+  useEffect(() => {
+    if (usdtData) {
+      setServerPriceUsdt(usdtData[0]?.usdt);
+    }
+  }, [usdtData]);
+
+  // console.log(usdtData);
 
   useEffect(() => {
     if (dollarData) {
@@ -291,7 +322,7 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceDollar || 1)
+                          server.serverPriceDh / (serverPriceUsdt || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
                       </TableCell>
@@ -387,7 +418,7 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceDollar || 1)
+                          server.serverPriceDh / (serverPriceUsdt || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
                       </TableCell>
@@ -482,7 +513,100 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceDollar || 1)
+                          server.serverPriceDh / (serverPriceUsdt || 1)
+                        ).toFixed(2)}{" "}
+                        Usdt/M
+                      </TableCell>
+                      <TableCell className="text-center max-md:text-xs">
+                        {(server.serverPriceDh / (serverPriceAed || 1)).toFixed(
+                          2
+                        )}{" "}
+                        AED/M
+                      </TableCell>
+                      <TableCell className="text-center max-md:text-xs">
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs ${
+                            server.serverStatus === "Disponible"
+                              ? "text-green-600"
+                              : "text-red-500"
+                          }`}
+                        >
+                          {server.serverStatus === "Disponible"
+                            ? tScope("headertableStatusInTableAva")
+                            : tScope("headertableStatusInTableComp")}
+                        </span>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </div>
+          <div className="bg-[#363A3D] rounded-lg  flex flex-col items-center gap-3 shadow-md overflow-hidden mt-6">
+            <p className="text-2xl font-semibold pt-2 text-white/80">Wakfu</p>
+            <Table className="text-white/90">
+              <TableHeader>
+                <TableRow className="bg-[#151d20] border-[#76828D]">
+                  <TableHead className="text-amber-600 max-md:text-xs">
+                    {tScope("headertableServ")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center max-md:text-xs">
+                    {tScope("headertablePriceDH")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center max-md:text-xs">
+                    Paypal
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center max-md:text-xs">
+                    Skrill
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center max-md:text-xs">
+                    Sepa
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center max-md:text-xs">
+                    Usdt(TRC20/ERC20)
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center max-md:text-xs">
+                    {tScope("headertablePriceAED")}
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-center max-md:text-xs">
+                    {tScope("headertableStatus")}
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {serversSell
+                  ?.filter((item) => item.serverCategory === "wakfu")
+                  ?.map((server) => (
+                    <TableRow
+                      key={server._id}
+                      className="border-[#76828D] hover:bg-yellow-700 transition-colors cursor-pointer"
+                    >
+                      <TableCell className="font-medium max-md:text-xs">
+                        {server.serverName}
+                      </TableCell>
+                      <TableCell className="text-center max-md:text-xs">
+                        {server.serverPriceDh.toFixed(2)} DH/M
+                      </TableCell>
+                      <TableCell className="text-center max-md:text-xs">
+                        {(
+                          server.serverPriceDh / (serverPriceEuro || 1)
+                        ).toFixed(2)}{" "}
+                        €/M
+                      </TableCell>
+                      <TableCell className="text-center max-md:text-xs">
+                        {(
+                          server.serverPriceDh / (serverPriceEuro || 1)
+                        ).toFixed(2)}{" "}
+                        €/M
+                      </TableCell>
+                      <TableCell className="text-center max-md:text-xs">
+                        {(
+                          server.serverPriceDh / (serverPriceEuro || 1)
+                        ).toFixed(2)}{" "}
+                        €/M
+                      </TableCell>
+                      <TableCell className="text-center max-md:text-xs">
+                        {(
+                          server.serverPriceDh / (serverPriceUsdt || 1)
                         ).toFixed(2)}{" "}
                         Usdt/M
                       </TableCell>

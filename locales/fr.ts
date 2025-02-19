@@ -4,6 +4,12 @@ export default {
   "navbar.popover.link2": "Vendre Kamas",
   "navbar.popover.link3": "Paysafecard",
   "navbar.popover.account": "Compte",
+  "navbar.game": "Jeux",
+  "navbar.pubg-mobile": "Pubg Mobile",
+  "navbar.free-fire": "Free FIRE",
+  "navbar.fortnite": "Fortnite",
+  "navbar.mobile-legends": "Mobile Legends",
+  "navbar.pasha-fencer-diamonds": "Pasha Fencer Diamonds",
 
   "languageandcur.language": "Langue",
   "languageandcur.currency": "Devise",
@@ -1133,4 +1139,104 @@ export default {
     "Tout pour vous satisfaire, achetez au meilleur prix, recevez instantanément !",
   "homeslide.title3": "Votre satisfaction, notre priorité",
   "homeslide.desc3": "Service premium et livraison rapide.",
+
+  // Textes généraux de la page
+  "virtualgame.contentExclusif": "Contenu Exclusif",
+  "virtualgame.bonusSpeciaux": "Bonus Spéciaux",
+  "virtualgame.livraisonSecurisee": "Livraison Sécurisée",
+  "virtualgame.accesContenu":
+    "Accédez à des contenus exclusifs et démarquez-vous en jeu",
+  "virtualgame.profitezBonus":
+    "Profitez de bonus exclusifs sur tous vos achats",
+  "virtualgame.receptionInstantanee": "Réception instantanée et sécurisée 24/7",
+  "virtualgame.acheterMaintenant": "Acheter Maintenant",
+  "virtualgame.jeuNonTrouve": "Jeu non trouvé",
+
+  // PUBG Mobile
+  "virtualgame.pubg-mobile.title": "PUBG Mobile UC",
+  "virtualgame.pubg.description":
+    "Boostez votre expérience de jeu avec les UC (Unknown Cash) PUBG Mobile !",
+  "virtualgame.pubg.descriptionComplete":
+    "Achetez des UC PUBG Mobile au meilleur prix ! Boostez votre expérience de jeu avec les UC (Unknown Cash) PUBG Mobile ! Achetez des UC instantanément et débloquez :",
+  "virtualgame.pubg.benefit1":
+    "Des skins exclusifs (armes, vêtements, véhicules)",
+  "virtualgame.pubg.benefit2": "Le Royale Pass pour des récompenses premium",
+  "virtualgame.pubg.benefit3": "Des packs et des caisses rares",
+  "virtualgame.pubg.service1": "Livraison rapide et sécurisée",
+  "virtualgame.pubg.service2": "Paiement sécurisé",
+  "virtualgame.pubg.service3": "Disponible 24/7",
+  "virtualgame.pubg.conclusion":
+    "Obtenez vos UC PUBG maintenant et dominez le champ de bataille !",
+
+  // Free Fire
+  "virtualgame.free-fire.title": "Free Fire Diamonds",
+  "virtualgame.freefire.description":
+    "Faites passer votre expérience Free Fire au niveau supérieur avec des Diamants !",
+  "virtualgame.freefire.descriptionComplete":
+    "Achetez des Diamants Free Fire au meilleur prix ! Faites passer votre expérience Free Fire au niveau supérieur avec des Diamants Free Fire !",
+  "virtualgame.freefire.benefit1":
+    "Débloquer des skins exclusifs (armes, personnages, costumes)",
+  "virtualgame.freefire.benefit2":
+    "Acheter le Pass Élite pour des récompenses et missions spéciales",
+  "virtualgame.freefire.benefit3":
+    "Obtenez des caisses et packs rares pour personnaliser votre gameplay",
+  "virtualgame.freefire.service1": "Livraison instantanée et sécurisée",
+  "virtualgame.freefire.service2":
+    "Paiement sécurisé (carte, PayPal, crypto, etc.)",
+  "virtualgame.freefire.service3":
+    "Disponible 24/7 avec un support client dédié",
+  "virtualgame.freefire.conclusion":
+    "Faites de chaque match un combat unique avec vos nouveaux diamants !",
+
+  // Fortnite
+  "virtualgame.fortnite.title": "Fortnite V-Bucks",
+  "virtualgame.fortnite.description":
+    "Accédez à des V-Bucks Fortnite instantanément et améliorez votre expérience de jeu !",
+  "virtualgame.fortnite.descriptionComplete":
+    "Achetez des V-Bucks Fortnite au meilleur prix ! Accédez à des V-Bucks Fortnite instantanément et améliorez votre expérience de jeu !",
+  "virtualgame.fortnite.benefit1":
+    "Acheter des skins exclusifs pour personnaliser vos personnages et armes",
+  "virtualgame.fortnite.benefit2":
+    "Débloquer des emotes et des danses pour impressionner vos amis",
+  "virtualgame.fortnite.benefit3":
+    "Accéder à des passes de combat pour obtenir des récompenses de niveau supérieur",
+  "virtualgame.fortnite.conclusion":
+    "Faites briller vos personnages et soyez prêt pour chaque bataille avec vos V-Bucks Fortnite !",
+
+  // Mobile Legends
+  "virtualgame.mobile-legends.title": "Mobile Legends Diamonds",
+  "virtualgame.mobilelegends.subtitle":
+    "Achetez des Diamants Mobile Legends au meilleur prix !",
+  "virtualgame.mobilelegends.description":
+    "Améliorez votre jeu sur Mobile Legends avec des Diamants Mobile Legends !",
+  "virtualgame.mobilelegends.benefit1":
+    "Débloquer des héros et des skins exclusifs",
+  "virtualgame.mobilelegends.benefit2": "Acheter des objets dans la boutique",
+  "virtualgame.mobilelegends.benefit3": "Accéder au Battle Pass",
+  "virtualgame.mobilelegends.service1": "Livraison instantanée et sécurisée",
+  "virtualgame.mobilelegends.service2":
+    "Paiement facile (carte, PayPal, crypto, etc.)",
+  "virtualgame.mobilelegends.service3": "Support client disponible 24/7",
+  "virtualgame.mobilelegends.conclusion":
+    "Préparez-vous à conquérir l'arène avec vos nouveaux Diamants Mobile Legends !",
+
+  // Pasha Fencer
+  "virtualgame.pasha-fencer-diamonds.title": "Pasha Fencer Diamonds",
+  "virtualgame.pasha.subtitle":
+    "Achetez des Diamants Pasha Fencer au meilleur prix !",
+
+  "virtualgame.pasha.descriptionComplete":
+    "Achetez des Diamants Pasha Fencer au meilleur prix ! Obtenez des Diamants Pasha Fencer et boostez votre expérience de jeu !",
+  "virtualgame.pasha.benefit1":
+    "Débloquer des skins exclusifs pour personnaliser votre personnage",
+  "virtualgame.pasha.benefit2":
+    "Acheter des équipements spéciaux pour gagner plus facilement en jeu",
+  "virtualgame.pasha.benefit3":
+    "Accéder à des événements spéciaux pour des récompenses uniques",
+  "virtualgame.pasha.service1": "Livraison rapide et sécurisée",
+  "virtualgame.pasha.service2":
+    "Paiement facile et sécurisé (carte, PayPal, crypto, etc.)",
+  "virtualgame.pasha.service3": "Assistance 24/7 disponible",
+  "virtualgame.pasha.conclusion":
+    "Ne laissez pas passer l'occasion de personnaliser votre personnage et de dominer le jeu avec vos nouveaux Diamants Pasha Fencer !",
 } as const;

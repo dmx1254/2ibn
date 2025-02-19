@@ -36,6 +36,12 @@ export const dofusItem: DofusItem[] = [
     slug: "dofus-touch",
     img: doft,
   },
+  {
+    id: "lpac37",
+    name: "Wakfu",
+    slug: "wakfu",
+    img: dofk,
+  },
 ];
 
 export const dofusItemNav: DofusItemNav[] = [
@@ -54,7 +60,41 @@ export const dofusItemNav: DofusItemNav[] = [
     name: "Dofus 2.0 (pc)",
     slug: "dofus-kamas",
   },
+  {
+    id: "jzwo64",
+    name: "Wakfu",
+    slug: "wakfu",
+  },
 ];
+
+export const games: DofusItemNav[] = [
+  {
+    id: "ghyt12",
+    name: "Pubg Mobile",
+    slug: "pubg-mobile",
+  },
+  {
+    id: "la12or",
+    name: "Free FIRE",
+    slug: "free-fire",
+  },
+  {
+    id: "w56xql",
+    name: "Fortnite",
+    slug: "fortnite",
+  },
+  {
+    id: "klz67u",
+    name: "Mobile Legends",
+    slug: "mobile-legends",
+  },
+  {
+    id: "yxg82e",
+    name: "Pasha Fencer Diamonds",
+    slug: "pasha-fencer-diamonds",
+  },
+];
+
 export const dofusItemNavSheetMenu: SheetMenuNav[] = [
   {
     id: "bqoa71",
@@ -572,3 +612,116 @@ export const trustpilotReviews: Review[] = [
     image: "",
   },
 ];
+
+export interface ProductBon {
+  id: number;
+  amount: string;
+  bonus?: string;
+  price: number;
+}
+
+export interface VirtualP {
+  title: string;
+  description: string;
+  benefits: string[];
+  products: ProductBon[];
+}
+
+export interface GamePro {
+  [key: string]: VirtualP;
+}
+
+export const gameProducts: GamePro = {
+  "pubg-mobile": {
+    title: "PUBG Mobile UC",
+    description:
+      "Boostez votre expérience de jeu avec les UC (Unknown Cash) PUBG Mobile !",
+    benefits: [
+      "Des skins exclusifs (armes, vêtements, véhicules)",
+      "Le Royale Pass pour des récompenses premium",
+      "Des packs et des caisses rares",
+    ],
+    products: [
+      { id: 1, amount: "60 UC", bonus: "", price: 20 },
+      { id: 2, amount: "300 UC", bonus: "25", price: 60 },
+      { id: 3, amount: "600 UC", bonus: "60", price: 110 },
+      { id: 4, amount: "1500 UC", bonus: "300", price: 320 },
+      { id: 5, amount: "3000 UC", bonus: "850", price: 530 },
+      { id: 6, amount: "6000 UC", bonus: "2100", price: 1036 },
+      { id: 7, amount: "12000 UC", bonus: "4200", price: 2050 },
+      { id: 8, amount: "18000 UC", bonus: "6300", price: 3126 },
+      { id: 9, amount: "24000 UC", bonus: "8400", price: 3985 },
+      { id: 10, amount: "30000 UC", bonus: "10500", price: 4999 },
+    ],
+  },
+  "free-fire": {
+    title: "Free Fire Diamonds",
+    description:
+      "Faites passer votre expérience Free Fire au niveau supérieur avec des Diamants !",
+    benefits: [
+      "Débloquer des skins exclusifs",
+      "Acheter le Pass Élite",
+      "Obtenez des caisses et packs rares",
+    ],
+    products: [
+      { id: 1, amount: "100", bonus: "10", price: 20 },
+      { id: 2, amount: "210", bonus: "21", price: 35 },
+      { id: 3, amount: "530", bonus: "53", price: 77 },
+      { id: 4, amount: "1080", bonus: "108", price: 150 },
+      { id: 5, amount: "2200", bonus: "220", price: 272 },
+    ],
+  },
+  fortnite: {
+    title: "Fortnite V-Bucks",
+    description:
+      "Accédez à des V-Bucks Fortnite instantanément et améliorez votre expérience de jeu !",
+    benefits: [
+      "Acheter des skins exclusifs",
+      "Débloquer des emotes et des danses",
+      "Accéder à des passes de combat",
+    ],
+    products: [
+      { id: 1, amount: "1000", bonus: "", price: 110 },
+      { id: 2, amount: "2800", bonus: "", price: 275 },
+      { id: 3, amount: "5000", bonus: "", price: 408 },
+      { id: 4, amount: "13500", bonus: "", price: 1050 },
+    ],
+  },
+  "mobile-legends": {
+    title: "Mobile Legends Diamonds",
+    description:
+      "Améliorez votre jeu sur Mobile Legends avec des Diamants Mobile Legends !",
+    benefits: [
+      "Débloquer des héros et des skins exclusifs",
+      "Acheter des objets dans la boutique",
+      "Accéder au Battle Pass",
+    ],
+    products: [
+      { id: 1, amount: "278", bonus: "", price: 85 },
+      { id: 2, amount: "571", bonus: "", price: 150 },
+      { id: 3, amount: "1167", bonus: "", price: 287 },
+      { id: 4, amount: "1783", bonus: "", price: 430 },
+      { id: 5, amount: "3005", bonus: "", price: 635 },
+      { id: 6, amount: "6012", bonus: "", price: 1199 },
+    ],
+  },
+  "pasha-fencer-diamonds": {
+    title: "Pasha Fencer Diamonds",
+    description:
+      "Obtenez des Diamants Pasha Fencer et boostez votre expérience de jeu !",
+    benefits: [
+      "Débloquer des skins exclusifs",
+      "Acheter des équipements spéciaux",
+      "Accéder à des événements spéciaux",
+    ],
+    products: [
+      { id: 1, amount: "300", bonus: "", price: 60 },
+      { id: 2, amount: "680", bonus: "", price: 121 },
+      { id: 3, amount: "1640", bonus: "", price: 275 },
+      { id: 4, amount: "3300", bonus: "", price: 515 },
+      { id: 5, amount: "6600", bonus: "", price: 1007 },
+      { id: 6, amount: "13600", bonus: "", price: 1999 },
+      { id: 7, amount: "35000", bonus: "", price: 4999 },
+    ],
+  },
+};

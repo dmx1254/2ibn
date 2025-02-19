@@ -4,6 +4,12 @@ export default {
   "navbar.popover.link2": "بيع الكاماس",
   "navbar.popover.link3": "باي سيف كارد",
   "navbar.popover.account": "الحساب",
+  "navbar.game": "لعبة",
+  "navbar.pubg-mobile": "ببجي موبايل",
+  "navbar.free-fire": "فري فاير",
+  "navbar.fortnite": "فورتنايت",
+  "navbar.mobile-legends": "موبايل ليجندز",
+  "navbar.pasha-fencer-diamonds": "ألماس باشا فينسر",
 
   "languageandcur.language": "اللغة",
   "languageandcur.currency": "العملة",
@@ -1092,4 +1098,89 @@ export default {
   "homeslide.desc2": "كل شيء لإرضائك: اشترِ بأفضل الأسعار، وتسلّم فوراً!",
   "homeslide.title3": "رضاك هو أولويتنا",
   "homeslide.desc3": "خدمة مميزة وتسليم سريع.",
+
+  // النصوص العامة للصفحة
+  "virtualgame.contentExclusif": "محتوى حصري",
+  "virtualgame.bonusSpeciaux": "مكافآت خاصة",
+  "virtualgame.livraisonSecurisee": "توصيل آمن",
+  "virtualgame.accesContenu": "احصل على محتوى حصري وتميز في اللعبة",
+  "virtualgame.profitezBonus": "استفد من المكافآت الحصرية على جميع مشترياتك",
+  "virtualgame.receptionInstantanee": "استلام فوري وآمن على مدار الساعة",
+  "virtualgame.acheterMaintenant": "اشترِ الآن",
+  "virtualgame.jeuNonTrouve": "اللعبة غير موجودة",
+
+  // PUBG Mobile
+  "virtualgame.pubg-mobile.title": "شحن شدات ببجي موبايل",
+  "virtualgame.pubg.description":
+    "عزز تجربتك في ببجي موبايل مع شدات (UC) ببجي!",
+  "virtualgame.pubg.descriptionComplete":
+    "اشترِ شدات ببجي موبايل بأفضل سعر! عزز تجربتك في اللعبة مع شدات (UC) ببجي. احصل على الشدات فورًا واستمتع بـ:",
+  "virtualgame.pubg.benefit1": "أشكال حصرية (أسلحة، ملابس، مركبات)",
+  "virtualgame.pubg.benefit2": "رويال باس لمكافآت مميزة",
+  "virtualgame.pubg.benefit3": "حزم وصناديق نادرة",
+  "virtualgame.pubg.service1": "توصيل سريع وآمن",
+  "virtualgame.pubg.service2": "دفع آمن",
+  "virtualgame.pubg.service3": "متوفر 24/7",
+  "virtualgame.pubg.conclusion":
+    "احصل على شدات ببجي الآن وكن البطل في ساحة المعركة!",
+
+  // Free Fire
+  "virtualgame.free-fire.title": "شحن جواهر فري فاير",
+  "virtualgame.freefire.description": "ارفع مستواك في فري فاير مع الجواهر!",
+  "virtualgame.freefire.descriptionComplete":
+    "اشترِ جواهر فري فاير بأفضل سعر! اجعل تجربتك في اللعبة أكثر إثارة مع الجواهر الحصرية.",
+  "virtualgame.freefire.benefit1": "افتح أشكالًا حصرية (أسلحة، شخصيات، أزياء)",
+  "virtualgame.freefire.benefit2":
+    "اشترِ الباتل باس للحصول على مهام ومكافآت خاصة",
+  "virtualgame.freefire.benefit3":
+    "احصل على صناديق وعروض نادرة لتخصيص أسلوب لعبك",
+  "virtualgame.freefire.service1": "توصيل فوري وآمن",
+  "virtualgame.freefire.service2": "دفع آمن (بطاقة، PayPal، عملات مشفرة، إلخ)",
+  "virtualgame.freefire.service3": "متوفر 24/7 مع دعم فني مخصص",
+  "virtualgame.freefire.conclusion":
+    "اجعل كل مباراة معركة فريدة من نوعها مع جواهرك الجديدة!",
+
+  // Fortnite
+  "virtualgame.fortnite.title": "شحن نقود فورتنايت (V-Bucks)",
+  "virtualgame.fortnite.description":
+    "احصل على نقود V-Bucks فورًا وطور تجربتك في فورتنايت!",
+  "virtualgame.fortnite.descriptionComplete":
+    "اشترِ نقود V-Bucks بأفضل سعر! احصل عليها فورًا وطور شخصياتك وتجهيزاتك.",
+  "virtualgame.fortnite.benefit1":
+    "اشترِ أشكالًا حصرية لتخصيص الشخصيات والأسلحة",
+  "virtualgame.fortnite.benefit2": "افتح رقصات وتعابير لإبهار أصدقائك",
+  "virtualgame.fortnite.benefit3": "احصل على بطاقة المعركة لمكافآت حصرية",
+  "virtualgame.fortnite.conclusion":
+    "اجعل شخصياتك متميزة واستعد لكل معركة مع نقود V-Bucks!",
+
+  // Mobile Legends
+  "virtualgame.mobile-legends.title": "شحن ألماس موبايل ليجندز",
+  "virtualgame.mobilelegends.subtitle": "اشترِ ألماس موبايل ليجندز بأفضل سعر!",
+  "virtualgame.mobilelegends.description":
+    "حسن مستواك في موبايل ليجندز مع الألماس الحصري!",
+  "virtualgame.mobilelegends.benefit1": "افتح أبطالًا وأشكالًا حصرية",
+  "virtualgame.mobilelegends.benefit2": "اشترِ العناصر من المتجر",
+  "virtualgame.mobilelegends.benefit3": "احصل على بطاقة المعركة",
+  "virtualgame.mobilelegends.service1": "توصيل فوري وآمن",
+  "virtualgame.mobilelegends.service2":
+    "دفع سهل (بطاقة، PayPal، عملات مشفرة، إلخ)",
+  "virtualgame.mobilelegends.service3": "دعم فني متاح 24/7",
+  "virtualgame.mobilelegends.conclusion":
+    "استعد للسيطرة على الساحة مع ألماس موبايل ليجندز الجديد!",
+
+  // Pasha Fencer
+  "virtualgame.pasha-fencer-diamonds.title": "شحن ألماس باشا فينسر",
+  "virtualgame.pasha.subtitle": "اشترِ ألماس باشا فينسر بأفضل سعر!",
+  "virtualgame.pasha.descriptionComplete":
+    "اشترِ ألماس باشا فينسر بأفضل سعر! احصل على الألماس وطور مستواك في اللعبة!",
+  "virtualgame.pasha.benefit1": "افتح أشكالًا حصرية لتخصيص شخصيتك",
+  "virtualgame.pasha.benefit2": "اشترِ معدات خاصة للفوز بسهولة في اللعبة",
+  "virtualgame.pasha.benefit3":
+    "شارك في الأحداث الخاصة للحصول على مكافآت فريدة",
+  "virtualgame.pasha.service1": "توصيل سريع وآمن",
+  "virtualgame.pasha.service2":
+    "دفع سهل وآمن (بطاقة، PayPal، عملات مشفرة، إلخ)",
+  "virtualgame.pasha.service3": "دعم فني متاح 24/7",
+  "virtualgame.pasha.conclusion":
+    "لا تفوت فرصة تخصيص شخصيتك والسيطرة على اللعبة مع ألماس باشا فينسر الجديد!",
 } as const;

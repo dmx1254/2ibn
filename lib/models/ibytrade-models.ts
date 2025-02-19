@@ -45,6 +45,10 @@ async function initializeModels(): Promise<any> {
     aed: number;
   }
 
+  interface Iusdt extends Document {
+    usdt: number;
+  }
+
   interface IChangeRate extends Document {
     rate: number;
   }
@@ -141,6 +145,11 @@ async function initializeModels(): Promise<any> {
     { timestamps: true }
   );
 
+  const usdtSchema: Schema = new Schema(
+    { usdt: { type: Number, required: true } },
+    { timestamps: true }
+  );
+
   // Créer les modèles si ils n'existent pas déjà
   const ExchangeModel =
     goapiDB.models.exchange ||
@@ -156,6 +165,8 @@ async function initializeModels(): Promise<any> {
     goapiDB.models.buy || goapiDB.model<IOrder>("buy", buySchema);
   const RateModel =
     goapiDB.models.rate || goapiDB.model<IChangeRate>("rate", rateSchemas);
+  const UsdtModel =
+    goapiDB.models.usdt || goapiDB.model<Iusdt>("usdt", usdtSchema);
 
   return {
     ExchangeModel,
@@ -165,6 +176,7 @@ async function initializeModels(): Promise<any> {
     AedModel,
     BuyModel,
     RateModel,
+    UsdtModel,
   };
 }
 
