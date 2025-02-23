@@ -184,6 +184,7 @@ export const currencies: CurrencyItem[] = [
   { code: "USD", name: "US Dollar", symbol: "$", slug: "dollar" },
   { code: "MAD", name: "Moroccan Dirham", symbol: "DH", slug: "mad" },
   { code: "CAD", name: "Canadian Dollar", symbol: "C$", slug: "cad" },
+  // { code: "USDT", name: "Usdt", symbol: "usdt", slug: "usdt" },
 ];
 
 export const parsedDevise = (cur: string) => {

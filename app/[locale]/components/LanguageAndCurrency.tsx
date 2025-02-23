@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Check, ChevronDown, Globe } from "lucide-react";
 import { CurrencyItem, Language, cn, currencies, languages } from "@/lib/utils";
@@ -9,7 +9,6 @@ import useStore from "@/lib/store-manage";
 import { CUR } from "@/lib/types/types";
 import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 import { LocaleSelect } from "./LocaleSelect";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 
 import {
@@ -17,24 +16,23 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
 const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
-  const pathname = usePathname();
   const tScope = useScopedI18n("languageandcur");
 
   const { addNewDevise, devise } = useStore();
   const locale = useCurrentLocale();
+  const curr = currencies.find((c) => c.slug === devise.currencyName);
 
   const [isActiveCurrency, setIsActiveCurrency] = useState<string>("euro");
   const [language, setLanguage] = useState(languages[0]);
   const [currency, setCurrency] = useState(currencies[0]);
   const [isOpen, setIsOpen] = useState(false);
+  const [cur, setCur] = useState<CurrencyItem | undefined>(curr);
 
   const handleLanguageChange = (lang: Language) => {
     setLanguage(lang);
@@ -87,10 +85,16 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
     const language = languages.find((l) => l.code === locale);
     return language;
   };
-  const getActualCurrency = () => {
-    const curr = currencies.find((c) => c.slug === devise.currencyName);
-    return curr;
-  };
+
+  useEffect(() => {
+    const getActualCurrency = () => {
+      const curr = currencies.find((c) => c.slug === devise.currencyName);
+      if (curr) {
+        setCur(curr);
+      }
+    };
+    getActualCurrency();
+  }, [devise]);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -107,8 +111,7 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
         >
           <Globe size={18} className="text-white" />
           <span className="text-sm font-medium text-white">
-            {getLocaleLanguage()?.code.toUpperCase()} /{" "}
-            {getActualCurrency()?.symbol}
+            {getLocaleLanguage()?.code.toUpperCase()} / {cur?.symbol}
           </span>
           <ChevronDown
             size={16}
@@ -145,10 +148,10 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
                     placeholder={
                       <div className="flex items-center gap-2">
                         <span className="flex-grow text-left text-sm font-medium -mt-0.5">
-                          {getActualCurrency()?.symbol}
+                          {cur?.symbol}
                         </span>
                         <span className="flex-grow text-left text-sm font-medium -mt-0.5">
-                          {getActualCurrency()?.name}
+                          {cur?.name}
                         </span>
                       </div>
                     }

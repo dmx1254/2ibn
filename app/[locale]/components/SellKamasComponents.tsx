@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { ServerExchange, codeGenerated, parsedDevise } from "@/lib/utils";
 import { Gift, Loader } from "lucide-react";
 import { useScopedI18n } from "@/locales/client";
@@ -20,6 +20,8 @@ import {
 import { useSession } from "next-auth/react";
 import { Card } from "./ui/card";
 import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { CUR } from "@/lib/types/types";
 
 const SellKamasComponents = ({
   servers,
@@ -60,8 +62,27 @@ const SellKamasComponents = ({
   const [serverError, setServerError] = useState<string>("");
   const [server, setServer] = useState<ServerExchange | null>(null);
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = async (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+    // console.log(field + " " + value);
+
+    if (value === "Paypal" || value === "Skrill") {
+      await fetchCurrency("euro");
+    }
+    if (
+      value === "CIH Bank" ||
+      value === "Attijariwafa Bank" ||
+      value === "Bmce" ||
+      value === "BMCI" ||
+      value === "Crédit du maroc" ||
+      value === "Crédit agricole" ||
+      value === "Cfg" ||
+      value === "Société générale" ||
+      value === "Cash Plus" ||
+      value === "Wafacash"
+    ) {
+      await fetchCurrency("mad");
+    }
   };
 
   const paymentMethods = [
@@ -264,6 +285,30 @@ const SellKamasComponents = ({
     );
     if (serverSelected) {
       setServer(serverSelected);
+    }
+  };
+
+  const fetchCurrency = async (currency: string) => {
+    const response = await fetch(`/api/iben/currency/${currency}`, {
+      method: "POST",
+      body: JSON.stringify({ cur: "eur" }),
+    });
+    if (!response.ok) {
+      throw new Error("Fetching currency failed: ");
+    }
+
+    const data: CUR[] = await response.json();
+    console.log(data);
+    if (data && data.length > 0) {
+      let keys = Object.keys(data[0]);
+      let values = Object.values(data[0]);
+      let name = keys[1];
+      let val = values[1];
+      const dev = {
+        currencyName: name,
+        curencyVal: val,
+      };
+      addNewDevise(dev);
     }
   };
 
