@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect } from "react";
 import PurchaseForm from "./PurchaseForm";
 
 const AchatKamasClient = ({ dofusName }: { dofusName: string }) => {

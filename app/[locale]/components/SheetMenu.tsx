@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { useScopedI18n } from "@/locales/client";
@@ -8,6 +9,7 @@ import Link from "next/link";
 import { dofusItemNavSheetMenu, games } from "@/lib/utils";
 
 const SheetMenu = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const { addToActiveServerRequest } = useStore();
   const tScope = useScopedI18n("menu");
   const handleActiveJeu = (slug: string) => {
@@ -15,7 +17,7 @@ const SheetMenu = () => {
   };
 
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <button
           aria-label="triggering menu opening"
@@ -43,6 +45,7 @@ const SheetMenu = () => {
               className="outline-none w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
               // onClick={() => handleActiveJeu(item.slug)}
               aria-label="kamas server"
+              onClick={() => setIsOpen(false)}
             >
               {tScope(item.typeslug as "kamas" | "touch" | "retro")}
             </Link>
@@ -50,12 +53,14 @@ const SheetMenu = () => {
           <Link
             href="/echange-de-kamas"
             className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
+            onClick={() => setIsOpen(false)}
           >
             {tScope("exchange")}
           </Link>
           <Link
             href="/vendre-des-kamas"
             className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
+            onClick={() => setIsOpen(false)}
           >
             {tScope("sell")}
           </Link>
@@ -64,7 +69,7 @@ const SheetMenu = () => {
               key={g.id + index}
               href={`/jeux/${g.slug}`}
               className="outline-none w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
-              // onClick={() => handleActiveJeu(item.slug)}
+              onClick={() => setIsOpen(false)}
               aria-label="kamas server"
             >
               {g.name}
