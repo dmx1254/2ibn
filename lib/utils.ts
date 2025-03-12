@@ -726,3 +726,89 @@ export const gameProducts: GamePro = {
     ],
   },
 };
+
+export const dislocName = (name: string) => {
+  if (name && typeof name === "string") {
+    if (name.length === 0) {
+      return "******";
+    } else if (name.length === 1) {
+      return name + "*****";
+    } else if (name.length === 2) {
+      return name[0] + "***" + name[1];
+    } else if (name.length === 3) {
+      return name[0] + name[1] + "***" + name[2];
+    } else {
+      return name[0] + name[1] + name[2] + "****" + name[name.length - 1];
+    }
+  } else {
+    return "******";
+  }
+};
+
+export const convertDate = (date: string) => {
+  const dateConverted = new Date(date).toLocaleDateString("en", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+  return dateConverted;
+};
+
+export const comments = [
+  {
+    _id: "1",
+    commentLastname: "Ahmed zinaoui",
+    comment:
+      "J'ai été livré en moins de 5 minutes. Le processus d'achat était simple et la livraison rapide.",
+    dateToCreated: "2025-11-05T14:55:31.008Z",
+  },
+  {
+    _id: "2",
+    commentLastname: "Youssef Bendouma",
+    comment:
+      "L'interface rapide et consultation parfaite! J'ai acheté des Kamas et tout est arrivé en moins de 5 minutes. Service impeccable!",
+    dateToCreated: "2023-11-04T10:30:21.008Z",
+  },
+  {
+    _id: "3",
+    commentLastname: "Malik",
+    comment:
+      "J'ai acheté un compte Dofus sur le site en quelques minutes! Processus simple et sécurisé. Très satisfait de mon achat!",
+    dateToCreated: "2024-11-05T09:15:45.008Z",
+  },
+  {
+    _id: "4",
+    commentLastname: "Karim",
+    comment:
+      "L'assistance client est top! Très gentil au téléphone et complet. Ils m'ont aidé à choisir le meilleur compte Dofus pour mon niveau.",
+    dateToCreated: "2023-11-05T16:40:12.008Z",
+  },
+  {
+    _id: "5",
+    commentLastname: "Omar",
+    comment:
+      "J'ai été bluffé! L'achat de Kamas était vraiment simple et efficace. Tout s'est passé comme prévu. Livraison rapide, sécurisée et sans tracas.",
+    dateToCreated: "2024-11-05T11:22:33.008Z",
+  },
+  {
+    _id: "6",
+    commentLastname: "Nasser",
+    comment:
+      "Je voulais dire que l'interface est très intuitive. J'ai pu acheter mon compte Dofus Retro sans problème. AIDE TRÈS VÉRIDIQUE dans mes démarches.",
+    dateToCreated: "2024-11-05T13:45:18.008Z",
+  },
+  {
+    _id: "7",
+    commentLastname: "Bilal",
+    comment:
+      "Le personnel est courtois et m'a rappelé en moins de 10 minutes. J'ai reçu mon compte Dofus avec tous les items promis. L'excellent service!",
+    dateToCreated: "2023-11-05T15:10:27.008Z",
+  },
+  {
+    _id: "8",
+    commentLastname: "Jamal",
+    comment:
+      "J'ai obtenu TOUS les Kamas dont j'avais besoin et si facilement! Très satisfait du service et des prix, tout est à la meilleure valeur!",
+    dateToCreated: "2022-11-05T12:33:42.008Z",
+  },
+]

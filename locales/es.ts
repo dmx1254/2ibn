@@ -1110,6 +1110,25 @@ export default {
 
   "reviews.message-20": "¡El mejor servicio!",
   "reviews.title-20": "¡El mejor servicio!",
+  "reviews.notes":
+    "Calificado con 4.9 de 5 basado en 11293 reseñas en ibendouma.com",
+
+  "reviews.user-1":
+    "Me entregaron en menos de 5 minutos. El proceso de compra fue sencillo y la entrega rápida.",
+  "reviews.user-2":
+    "¡Interfaz rápida y experiencia perfecta! Compré Kamas y todo llegó en menos de 5 minutos. ¡Servicio impecable!",
+  "reviews.user-3":
+    "¡Compré una cuenta de Dofus en el sitio web en solo unos minutos! Proceso simple y seguro. ¡Muy satisfecho con mi compra!",
+  "reviews.user-4":
+    "¡El servicio de atención al cliente es excelente! Muy amables y detallados por teléfono. Me ayudaron a elegir la mejor cuenta de Dofus para mi nivel.",
+  "reviews.user-5":
+    "¡Me sorprendió! Comprar Kamas fue realmente fácil y eficiente. Todo salió según lo previsto. Entrega rápida, segura y sin problemas.",
+  "reviews.user-6":
+    "Solo quería decir que la interfaz es muy intuitiva. Pude comprar mi cuenta de Dofus Retro sin problemas. AYUDA MUY ÚTIL en mi proceso.",
+  "reviews.user-7":
+    "El personal es cortés y me devolvió la llamada en menos de 10 minutos. Recibí mi cuenta de Dofus con todos los artículos prometidos. ¡Servicio excelente!",
+  "reviews.user-8":
+    "¡Conseguí TODOS los Kamas que necesitaba y muy fácilmente! Muy satisfecho con el servicio y los precios, ¡todo con el mejor valor!",
 
   "pageicon.sell1": "Vender",
   "pageicon.sell2": "kamas",

@@ -1097,6 +1097,24 @@ export default {
 
   "reviews.message-20": "Best service!",
   "reviews.title-20": "Best service!",
+  "reviews.notes": "Rated 4.9 out of 5 based on 11293 reviews on ibendouma.com",
+
+  "reviews.user-1":
+    "I was delivered in less than 5 minutes. The purchase process was simple, and the delivery was fast.",
+  "reviews.user-2":
+    "Fast interface and perfect experience! I bought Kamas, and everything arrived in less than 5 minutes. Impeccable service!",
+  "reviews.user-3":
+    "I bought a Dofus account on the website in just a few minutes! Simple and secure process. Very satisfied with my purchase!",
+  "reviews.user-4":
+    "Customer support is top-notch! Very kind and thorough over the phone. They helped me choose the best Dofus account for my level.",
+  "reviews.user-5":
+    "I was amazed! Buying Kamas was really simple and efficient. Everything went as expected. Fast, secure, and hassle-free delivery.",
+  "reviews.user-6":
+    "I just wanted to say that the interface is very intuitive. I was able to buy my Dofus Retro account without any issues. VERY HELPFUL assistance in my process.",
+  "reviews.user-7":
+    "The staff is courteous and called me back in less than 10 minutes. I received my Dofus account with all the promised items. Excellent service!",
+  "reviews.user-8":
+    "I got ALL the Kamas I needed, and it was so easy! Very satisfied with the service and prices, everything is the best value!",
 
   "pageicon.sell1": "Sell",
   "pageicon.sell2": "kamas",

@@ -138,107 +138,109 @@ const Testimonials = () => {
   );
 
   return reviews.length > 0 ? (
-    <div className="relative font-poppins w-full max-w-7xl mx-auto">
-      <Card className="bg-[#363A3D] border-[#45494e] overflow-hidden">
-        <HeaderSection />
+    <>
+      <div className="relative font-poppins w-full max-w-7xl mx-auto">
+        <Card className="bg-[#363A3D] border-[#45494e] overflow-hidden">
+          <HeaderSection />
 
-        <div className="relative">
-          <ScrollArea className="w-full h-[500px] px-4">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentGroupIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-4 py-6"
-              >
-                {displayedReviews.map((review: Review, index: number) => (
-                  <Link
-                    href="https://fr.trustpilot.com/review/ibendouma.com"
-                    target="_blank"
-                    key={`${review.id}-${index}`}
-                    className="group"
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="bg-gradient-to-br from-[#2a2d30] to-[#363A3D] p-4 rounded-lg border border-[#45494e] hover:border-blue-500/50 transition-all duration-300"
+          <div className="relative">
+            <ScrollArea className="w-full h-[500px] px-4">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentGroupIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4 py-6"
+                >
+                  {displayedReviews.map((review: Review, index: number) => (
+                    <Link
+                      href="https://fr.trustpilot.com/review/ibendouma.com"
+                      target="_blank"
+                      key={`${review.id}-${index}`}
+                      className="group"
                     >
-                      <div className="flex items-start gap-4">
-                        <UserAvatar
-                          imageUrl={review.image}
-                          name={review.name}
-                        />
-                        <div className="flex-1">
-                          <h3 className="text-white font-medium">
-                            {maskDisplayName(review.name)}
-                          </h3>
-                          <div className="flex items-center gap-3 mt-1">
-                            <Image
-                              src="/stars-5-down.svg"
-                              alt="rating"
-                              width={80}
-                              height={20}
-                              className="object-contain"
-                            />
-                            <span className="text-sm text-gray-400">
-                              {formatDate(review.date)}
-                            </span>
-                          </div>
-                          <div className="mt-4">
-                            <p className="text-white font-medium mb-2">
-                              {tScope2Reviews(`title-${review.id}` as any)}
-                            </p>
-                            <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
-                              {tScope2Reviews(`message-${review.id}` as any)}
-                            </p>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        className="bg-gradient-to-br from-[#2a2d30] to-[#363A3D] p-4 rounded-lg border border-[#45494e] hover:border-blue-500/50 transition-all duration-300"
+                      >
+                        <div className="flex items-start gap-4">
+                          <UserAvatar
+                            imageUrl={review.image}
+                            name={review.name}
+                          />
+                          <div className="flex-1">
+                            <h3 className="text-white font-medium">
+                              {maskDisplayName(review.name)}
+                            </h3>
+                            <div className="flex items-center gap-3 mt-1">
+                              <Image
+                                src="/stars-5-down.svg"
+                                alt="rating"
+                                width={80}
+                                height={20}
+                                className="object-contain"
+                              />
+                              <span className="text-sm text-gray-400">
+                                {formatDate(review.date)}
+                              </span>
+                            </div>
+                            <div className="mt-4">
+                              <p className="text-white font-medium mb-2">
+                                {tScope2Reviews(`title-${review.id}` as any)}
+                              </p>
+                              <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
+                                {tScope2Reviews(`message-${review.id}` as any)}
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </motion.div>
-                  </Link>
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </ScrollArea>
+                      </motion.div>
+                    </Link>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </ScrollArea>
 
-          <div className="absolute bottom-5 right-4 flex items-center gap-2">
-            <button
-              onClick={() => navigateGroup("prev")}
-              className="p-2 rounded-full bg-[#2a2d30] text-white hover:bg-blue-500/20 transition-colors"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <div className="text-white text-sm">
-              {currentGroupIndex + 1} / {totalGroups}
+            <div className="absolute bottom-5 right-4 flex items-center gap-2">
+              <button
+                onClick={() => navigateGroup("prev")}
+                className="p-2 rounded-full bg-[#2a2d30] text-white hover:bg-blue-500/20 transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <div className="text-white text-sm">
+                {currentGroupIndex + 1} / {totalGroups}
+              </div>
+              <button
+                onClick={() => navigateGroup("next")}
+                className="p-2 rounded-full bg-[#2a2d30] text-white hover:bg-blue-500/20 transition-colors"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
-            <button
-              onClick={() => navigateGroup("next")}
-              className="p-2 rounded-full bg-[#2a2d30] text-white hover:bg-blue-500/20 transition-colors"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
           </div>
-        </div>
 
-        <div className="border-t border-[#45494e]">
-          <Alert
-            variant="destructive"
-            className="border-none rounded-none bg-[#2a2d30]"
-          >
-            <AlertTriangle className="h-4 w-4" />
-            <AlertTitle className="font-semibold text-red-500">
-              {tScope2("title")}
-            </AlertTitle>
-            <AlertDescription className="text-red-400">
-              {tScope2("notice")}
-            </AlertDescription>
-          </Alert>
-        </div>
-      </Card>
-    </div>
+          <div className="border-t border-[#45494e]">
+            <Alert
+              variant="destructive"
+              className="border-none rounded-none bg-[#2a2d30]"
+            >
+              <AlertTriangle className="h-4 w-4" />
+              <AlertTitle className="font-semibold text-red-500">
+                {tScope2("title")}
+              </AlertTitle>
+              <AlertDescription className="text-red-400">
+                {tScope2("notice")}
+              </AlertDescription>
+            </Alert>
+          </div>
+        </Card>
+      </div>
+    </>
   ) : null;
 };
 
