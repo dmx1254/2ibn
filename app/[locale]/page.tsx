@@ -25,7 +25,7 @@ export default async function Home() {
         <div className=" w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">
           <WhyChooseUs />
         </div>
-        <div className=" w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">
+        <div className="w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">
           <UserComment />
         </div>
       </main>
