@@ -1,3 +1,4 @@
+import { NewOrderConfirmationTemplate } from "@/app/[locale]/components/neworder-template";
 import { OrderConfirmationTemplate } from "@/app/[locale]/components/orderConfirm-template";
 import { ibenModels } from "@/lib/models/ibendouma-models";
 import { NextResponse } from "next/server";
@@ -26,6 +27,17 @@ export async function POST(request: Request) {
             totalPrice: newOrder.totalPrice,
             dateCreated: newOrder.createdAt,
             products: newOrder.products,
+          }),
+        });
+
+        await resend.emails.send({
+          from: "Ibendouma Notification <noreply@ibendouma.com>",
+          to: ["support@ibendouma.com"],
+          subject: "Notification de commande de ibendouma",
+          react: NewOrderConfirmationTemplate({
+            orderNum: newOrder.orderNum,
+            dateCreated: new Date(),
+            type: "Commande de d'achat",
           }),
         });
       } catch (error: any) {
