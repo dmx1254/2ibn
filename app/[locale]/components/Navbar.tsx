@@ -53,7 +53,7 @@ const Navbar = () => {
               <SheetMenu />
               <Link href="/" className="flex items-center justify-center gap-0">
                 <Image
-                  src="/ibennewapp-logo.png"
+                  src="/logo.png"
                   alt="ibendouma logo"
                   height={70}
                   width={70}
