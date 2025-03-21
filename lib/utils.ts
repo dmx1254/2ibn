@@ -632,6 +632,14 @@ export interface GamePro {
   [key: string]: VirtualP;
 }
 
+export const homegames = [
+  { id: "GHS5F", slug: "pubg-mobile" },
+  { id: "JAZ2X", slug: "free-fire" },
+  { id: "WAX5T", slug: "fortnite" },
+  { id: "GAZ5R", slug: "mobile-legends" },
+  { id: "BAZ3K", slug: "pasha-fencer-diamonds" },
+];
+
 export const gameProducts: GamePro = {
   "pubg-mobile": {
     title: "PUBG Mobile UC",
@@ -811,4 +819,4 @@ export const comments = [
       "J'ai obtenu TOUS les Kamas dont j'avais besoin et si facilement! Très satisfait du service et des prix, tout est à la meilleure valeur!",
     dateToCreated: "2022-11-05T12:33:42.008Z",
   },
-]
+];

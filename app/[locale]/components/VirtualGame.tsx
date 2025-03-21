@@ -19,7 +19,7 @@ const VirtualGame = ({ gamename }: { gamename: string }) => {
   const gameData = gameProducts[gamename];
   const tScope = useScopedI18n("virtualgame");
 
-  console.log(devise);
+  // console.log(devise);
 
   if (!gameData) {
     return (

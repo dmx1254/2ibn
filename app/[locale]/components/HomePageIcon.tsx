@@ -7,6 +7,7 @@ import { useScopedI18n } from "@/locales/client";
 
 const HomePageIcon = () => {
   const tScope = useScopedI18n("pageicon");
+  
   return (
     <div className="w-full flex items-center justify-between mt- sm:mt-16 px-4">
       <Link
