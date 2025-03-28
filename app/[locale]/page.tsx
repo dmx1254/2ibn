@@ -19,16 +19,13 @@ export default async function Home() {
         <div className="w-full max-w-6xl my-6 md:mt-4">
           <HomePageGame />
         </div>
-        
-        
-
         <div className="w-full max-w-6xl my-5">
           <Testimonials />
         </div>
-        <div className=" w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">
+        <div className="w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">
           <OurServices />
         </div>
-        <div className=" w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">
+        <div className="w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">
           <WhyChooseUs />
         </div>
         <div className="w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">

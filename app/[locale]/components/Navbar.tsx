@@ -47,7 +47,7 @@ const Navbar = () => {
     !pathname.includes("resetpassword") && (
       <>
         <MobileTopMenus />
-        <div className="z-50 font-poppins flex  sticky top-0 left-0 right-0 w-full items-center justify-center text-center px-2 md:px-4 bg-[#18191A] border-b border-gray-100">
+        <div className="z-50 font-poppins flex sticky top-0 left-0 right-0 w-full items-center justify-center text-center px-2 md:px-4 bg-[#18191A] border-b border-gray-100">
           <div className="w-full max-w-6xl flex items-center justify-between">
             <div className="flex items-center gap-0">
               <SheetMenu />

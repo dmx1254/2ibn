@@ -9,13 +9,17 @@ const resend = new Resend(process.env.RESEND_2IBN_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { OrderModelIben } = await ibenModels;
+    const { OrderModelIben, UserIbenModel } = await ibenModels;
+
     const { data, object } = await request.json();
+    const user = await UserIbenModel.findById(data.userId);
     const newOrder = await OrderModelIben.create(data);
+
+    // console.log(data);
 
     if (newOrder) {
       try {
-        const { data, error } = await resend.emails.send({
+        await resend.emails.send({
           from: "Ibendouma Support <support@ibendouma.com>",
           to: [newOrder.billing.email],
           subject: object,
@@ -37,7 +41,20 @@ export async function POST(request: Request) {
           react: NewOrderConfirmationTemplate({
             orderNum: newOrder.orderNum,
             dateCreated: new Date(),
-            type: "Commande de d'achat",
+            type: "Commande d'achat",
+            billing: {
+              firstname: newOrder.billing.firstname,
+              lastname: newOrder.billing.lastname,
+              email: newOrder.billing.email || user?.email,
+              phone: newOrder.billing.phone || user?.phone,
+            },
+            products: newOrder.products,
+            totalPrice: newOrder.totalPrice,
+            cur: newOrder.cur,
+            buyDetails: {
+              status: newOrder.status,
+              paymentMethod: newOrder.paymentMethod,
+            },
           }),
         });
       } catch (error: any) {
