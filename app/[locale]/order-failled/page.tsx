@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Gift, CheckCircle } from "lucide-react";
+import { Gift, XCircle } from "lucide-react";
+import Link from "next/link";
 import { useScopedI18n } from "@/locales/client";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { useSearchParams } from "next/navigation";
 
 interface GIFT {
   id: number;
@@ -14,28 +14,21 @@ interface GIFT {
   size: number;
 }
 
-const SuccessOrder = () => {
-  const tScope = useScopedI18n("orderSuccess");
-  const tScopeOrder = useScopedI18n("orderConfirmation");
+const FailedOrder = () => {
+  const tScope = useScopedI18n("orderFailed");
   const searchParams = useSearchParams();
   const orderId = searchParams.get("orderId");
-  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
-  const router = useRouter();
+
   // useEffect(() => {
   //   const fetchData = async () => {
-  //     const object = tScopeOrder("object");
   //     if (orderId) {
-  //       const response = await fetch(`/api/paypal/order/success?orderId=${orderId}&object=${object}`);
+  //       const response = await fetch(`/api/paypal/order/failled?orderId=${orderId}`);
   //       const data = await response.json();
   //       console.log(data);
   //     }
   //   };
   //   fetchData();
   // }, [orderId]);
-
-  setTimeout(() => {
-    setIsButtonDisabled(false);
-  }, 3000);
 
   const [gifts, setGifts] = useState<GIFT[]>([]);
 
@@ -52,7 +45,7 @@ const SuccessOrder = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-red-50 to-white flex flex-col items-center justify-center relative overflow-hidden">
       {/* Cadeaux qui tombent */}
       {gifts.map((gift) => (
         <div
@@ -64,30 +57,29 @@ const SuccessOrder = () => {
             transform: `rotate(${gift.rotation}deg)`,
           }}
         >
-          <Gift size={gift.size} className="text-orange-500 opacity-50" />
+          <Gift size={gift.size} className="text-red-500 opacity-50" />
         </div>
       ))}
 
       {/* Contenu principal */}
       <div className="bg-white p-8 rounded-lg shadow-xl text-center z-10 mx-4">
         <div className="mb-6 flex justify-center">
-          <CheckCircle size={64} className="text-green-500" />
+          <XCircle size={64} className="text-red-500" />
         </div>
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
           {tScope("title")}
         </h1>
         <p className="text-gray-600 text-lg mb-6">{tScope("desc")}</p>
-        <Button
-          disabled={isButtonDisabled}
-          onClick={() => router.push("/")}
-          className="bg-yellow-600 text-white px-8 py-3 rounded-full font-semibold 
-                     hover:bg-yellow-700 transition-colors duration-300"
+        <Link
+          href="/"
+          className="bg-red-600 text-white px-8 py-3 rounded-full font-semibold 
+                     hover:bg-red-700 transition-colors duration-300"
         >
           {tScope("btn")}
-        </Button>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default SuccessOrder;
+export default FailedOrder;

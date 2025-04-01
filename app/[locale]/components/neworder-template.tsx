@@ -107,11 +107,11 @@ export const NewOrderConfirmationTemplate: React.FC<
               >
                 Détails de la commande
               </h3>
-              <p style={{ marginBottom: "8px" }}>
-                <strong>Statut:</strong> {buyDetails?.status}
+              <p style={{ marginBottom: "8px", color: buyDetails?.status === "paid" ? "green" : "blue" }}>
+                <strong>Statut:</strong> {buyDetails?.status === "paid" ? tScope2("orderpaid") : buyDetails?.status === "pending" ? tScope2("orderpending") : buyDetails?.status === "failed" ? tScope2("orderfailed") : buyDetails?.status === "refunded" ? tScope2("orderrefunded") : tScope2("orderpending")}
               </p>
               <p style={{ marginBottom: "8px" }}>
-                <strong>Méthode de paiement:</strong>{" "}
+                <strong>{tScope2("paymentmethod")}:</strong>{" "}
                 {buyDetails?.paymentMethod}
               </p>
             </div>

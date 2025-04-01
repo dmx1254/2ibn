@@ -450,9 +450,24 @@ const Checkout = () => {
     };
 
     // const billing = billingInfo;
-    try {
-      setIsOrderLoading(true);
-      const result = await axios.post("/api/iben/order", {
+    if (isActivePayment === "paypal") {
+      // try {
+      //   setIsOrderLoading(true);
+      //   const result = await axios.post("/api/paypal", {
+      //     data,
+      //     object: tScopeConfirm("object"),
+      //   });
+      //   window.location.href = result.data.redirectUrl;
+      // } catch (error) {
+      //   console.log(error);
+      // } finally {
+      //   setIsOrderLoading(false);
+      // }
+      console.log("yes");
+    } else {
+      try {
+        setIsOrderLoading(true);
+        const result = await axios.post("/api/iben/order", {
         data,
         object: tScopeConfirm("object"),
       });
@@ -471,8 +486,9 @@ const Checkout = () => {
         style: { color: "#dc2626" },
       });
       console.log(error);
-    } finally {
-      setIsOrderLoading(false);
+      } finally {
+        setIsOrderLoading(false);
+      }
     }
   };
 

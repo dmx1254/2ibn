@@ -11,7 +11,7 @@ interface PresenceOptions {
 
 export const useUserPresence = ({
   userId,
-  heartbeatInterval = 120000,
+  heartbeatInterval = 300000,
   onError = (error: any) => console.error("Erreur de présence:", error),
 }: PresenceOptions) => {
   const updatePresence = useCallback(

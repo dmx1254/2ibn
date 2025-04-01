@@ -191,16 +191,20 @@ export const parsedDevise = (cur: string) => {
   let symbole = "";
   switch (cur) {
     case "euro":
+    case "EUR":
       symbole = "€";
       break;
     case "dollar":
+    case "USD":
       symbole = "$";
       break;
     case "mad":
+    case "MAD":
       symbole = "DH";
       break;
     case "cad":
-      symbole = "CAD";
+    case "CAD":
+      symbole = "C$";
       break;
 
     default:
@@ -210,6 +214,22 @@ export const parsedDevise = (cur: string) => {
 
   return symbole;
 };
+
+export const returnFormatedPaypalCurrency = (cur: string) => {
+  switch (cur) {
+    case "EUR":
+      return "EUR";
+    case "USD":
+      return "USD";
+    case "MAD":
+      return "MAD";
+    case "CAD":
+      return "CAD";
+    default:
+      return "EUR";
+  }
+};
+
 export const imageReturn = (slug: string): string => {
   let img = "";
   switch (slug) {

@@ -256,26 +256,27 @@ const SellKamasComponents = ({
         firstname: formData.firstname,
       };
 
-      try {
-        setIsLoading(true);
-        const response = await axios.post("/api/go/order", data);
-        if (response) {
-          toast.success(tScope("success"), {
-            style: { color: "#16a34a" },
-          });
-          setTimeout(() => {
-            // handleChatClick();
-            router.push("/order-success");
-          }, 1000);
-        }
-      } catch (error) {
-        // console.log(error);
-        toast.success(tScope("error"), {
-          style: { color: "#dc2626" },
-        });
-      } finally {
-        setIsLoading(false);
-      }
+      // try {
+      //   setIsLoading(true);
+      //   const response = await axios.post("/api/go/order", data);
+      //   if (response) {
+      //     toast.success(tScope("success"), {
+      //       style: { color: "#16a34a" },
+      //     });
+      //     setTimeout(() => {
+      //       // handleChatClick();
+      //       router.push("/order-success");
+      //     }, 1000);
+      //   }
+      // } catch (error) {
+      //   // console.log(error);
+      //   toast.success(tScope("error"), {
+      //     style: { color: "#dc2626" },
+      //   });
+      // } finally {
+      //   setIsLoading(false);
+      // }
+      console.log("yes");
     }
   };
 
@@ -489,7 +490,8 @@ const SellKamasComponents = ({
           type="submit"
           className="bg-amber-500 hover:bg-amber-600 text-white"
           onClick={handleSubmit}
-          disabled={isLoading}
+          // disabled={isLoading}
+          disabled={true}
           aria-label="submit sell kamas button"
         >
           {isLoading ? (

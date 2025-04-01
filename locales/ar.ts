@@ -961,6 +961,11 @@ export default {
   "confirmEmail.sendTo": "تم إرسال هذا البريد الإلكتروني إلى",
   "confirmEmail.helpCenter": "مركز المساعدة",
   "confirmEmail.privacyPolicy": "سياسة الخصوصية",
+  "confirmEmail.orderpaid": "تم الدفع",
+  "confirmEmail.orderpending": "قيد المعالجة",
+  "confirmEmail.orderfailed": "تم الطلب بنجاح!",
+  "confirmEmail.orderrefunded": "تم الطلب بنجاح!",
+  "confirmEmail.paymentmethod": "طريقة الدفع",
   "confirmEmail.termsAndConditions": "الشروط والأحكام",
 
   "confirmEmail.sellLink": "بيع الكاماس الخاصة بك",
@@ -996,6 +1001,10 @@ export default {
   "orderConfirmation.website": "الموقع الإلكتروني",
   "orderConfirmation.exchangeLink": "تبادل الكاماس",
   "orderConfirmation.sellLink": "بيع الكاماس الخاصة بك",
+  "orderConfirmation.paypal": "بايبال",
+  "orderConfirmation.bankTransfer": "التحويل البنكي",
+  "orderConfirmation.statusPaid": "تم الدفع",
+  "orderConfirmation.paymentMethod": "طريقة الدفع",
   "orderConfirmation.bottomSpam":
     "تم إرسال هذا البريد الإلكتروني بواسطة ibendouma. لضمان استلام رسائلنا، أضف verification@ibendouma.com إلى قائمة جهات الاتصال الخاصة بك.",
 
@@ -1206,4 +1215,10 @@ export default {
   "orderSuccess.title": "تم الطلب بنجاح!",
   "orderSuccess.desc": "شكرًا لطلبك. سنتواصل معك قريبًا لتأكيد تفاصيل التسليم.",
   "orderSuccess.btn": "العودة إلى الصفحة الرئيسية",
+
+  "orderFailed.title": "تم الطلب بنجاح!",
+  "orderFailed.desc": "شكرًا لطلبك. سنتواصل معك قريبًا لتأكيد تفاصيل التسليم.",
+  "orderFailed.btn": "العودة إلى الصفحة الرئيسية",
+
+  "announcement.message": "🚧 لا يوجد خدمات حالية، ولكن سيتم إضافه جديده قريبا 🚧",
 } as const;

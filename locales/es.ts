@@ -993,6 +993,12 @@ export default {
   "confirmEmail.helpCenter": "Centro de ayuda",
   "confirmEmail.privacyPolicy": "Política de privacidad",
   "confirmEmail.termsAndConditions": "Términos y condiciones",
+  "confirmEmail.orderpaid": "Pedido pagado",
+  "confirmEmail.orderpending": "Pedido pendiente",
+  "confirmEmail.orderfailed": "Pedido fallido",
+  "confirmEmail.orderrefunded": "Pedido reembolsado",
+  "confirmEmail.paymentmethod": "Método de pago",
+
 
   "confirmEmail.bottomSpam":
     "Este correo electrónico fue enviado por ibendouma. Para asegurarte de recibir nuestros correos, agrega support@ibendouma.com a tu lista de contactos.",
@@ -1026,6 +1032,10 @@ export default {
   "orderConfirmation.website": "Sitio web",
   "orderConfirmation.exchangeLink": "Intercambio de kamas",
   "orderConfirmation.sellLink": "Vender tus kamas",
+  "orderConfirmation.paypal": "Paypal",
+  "orderConfirmation.bankTransfer": "Transferencia bancaria",
+  "orderConfirmation.statusPaid": "Pagado",
+  "orderConfirmation.paymentMethod": "Método de pago",
   "orderConfirmation.bottomSpam":
     "Este correo electrónico fue enviado por ibendouma. Para asegurarte de recibir nuestros correos, agrega verification@ibendouma.com a tu lista de contactos.",
 
@@ -1253,4 +1263,11 @@ export default {
   "orderSuccess.desc":
     "Gracias por su pedido. Nos pondremos en contacto con usted en breve para confirmar los detalles de la entrega.",
   "orderSuccess.btn": "Volver a inicio",
+
+  "orderFailed.title": "¡Pedido fallido!",
+  "orderFailed.desc":
+    "Gracias por su pedido. Nos pondremos en contacto con usted en breve para confirmar los detalles de la entrega.",
+  "orderFailed.btn": "Volver a inicio",
+
+  "announcement.message": "🚧 Nuestros servicios no están disponibles pero llegarán pronto! ¡Mantente atento para las actualizaciones. 🚧",
 } as const;

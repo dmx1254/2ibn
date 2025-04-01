@@ -11,6 +11,7 @@ import { ProviderSession } from "./components/session-providers";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import Script from "next/script";
+import { AnnouncementBanner } from "./components/announcement-banner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -123,6 +124,7 @@ export default function RootLayout({
           <Providers locale={params.locale}>
             <QueryProvider>
               <ProviderSession>
+                <AnnouncementBanner />
                 <Navbar />
                 <Toaster />
                 {children}

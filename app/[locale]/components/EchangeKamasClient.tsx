@@ -163,26 +163,28 @@ const EchangeKamasClient = () => {
         qtyToPay: Number(values.quantityToPay),
         qtyToReceive: Number(values.quantityToReceive),
       };
-      try {
-        setLoadingExchange(true);
-        const response = await axios.post("/api/go/exchange", data);
-        if (response) {
-          toast.success(tScope("success"), {
-            style: { color: "#16a34a" },
-          });
-          setTimeout(() => {
-            // handleChatClick();
-            router.push("/order-success");
-          }, 1000);
-        }
-      } catch (error) {
-        //   console.log(error);
-        toast.success(tScope("error"), {
-          style: { color: "#dc2626" },
-        });
-      } finally {
-        setLoadingExchange(false);
-      }
+      // try {
+      //   setLoadingExchange(true);
+      //   const response = await axios.post("/api/go/exchange", data);
+      //   if (response) {
+      //     toast.success(tScope("success"), {
+      //       style: { color: "#16a34a" },
+      //     });
+      //     setTimeout(() => {
+      //       // handleChatClick();
+      //       router.push("/order-success");
+      //     }, 1000);
+      //   }
+      // } catch (error) {
+      //   //   console.log(error);
+      //   toast.success(tScope("error"), {
+      //     style: { color: "#dc2626" },
+      //   });
+      // } finally {
+      //   setLoadingExchange(false);
+      // }`
+
+      console.log("Yes");
     }
   }
 
@@ -440,8 +442,9 @@ const EchangeKamasClient = () => {
                   <Button
                     type="submit"
                     className="w-full h-11 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-lg transition-colors duration-200"
-                    disabled={loadingExchange}
+                    // disabled={loadingExchange}
                     aria-label="Excahnge order button"
+                    disabled={true}
                   >
                     {loadingExchange ? (
                       <span className="flex items-center justify-center gap-2">

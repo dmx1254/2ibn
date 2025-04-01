@@ -979,6 +979,11 @@ export default {
   "confirmEmail.sendTo": "This email was sent to",
   "confirmEmail.helpCenter": "Help Center",
   "confirmEmail.privacyPolicy": "Privacy Policy",
+  "confirmEmail.orderpaid": "Order paid",
+  "confirmEmail.orderpending": "Order pending",
+  "confirmEmail.orderfailed": "Order failed",
+  "confirmEmail.orderrefunded": "Order refunded",
+  "confirmEmail.paymentmethod": "Payment method",
   "confirmEmail.termsAndConditions": "Terms and Conditions",
 
   "confirmEmail.bottomSpam":
@@ -1013,6 +1018,10 @@ export default {
   "orderConfirmation.website": "Website",
   "orderConfirmation.exchangeLink": "Kamas Exchange",
   "orderConfirmation.sellLink": "Sell Your Kamas",
+  "orderConfirmation.paypal": "Paypal",
+  "orderConfirmation.bankTransfer": "Bank Transfer",
+  "orderConfirmation.statusPaid": "Paid",
+  "orderConfirmation.paymentMethod": "Payment Method",
   "orderConfirmation.bottomSpam":
     "This email was sent by ibendouma. To ensure you receive our emails, add verification@ibendouma.com to your contact list.",
 
@@ -1239,4 +1248,11 @@ export default {
   "orderSuccess.desc":
     "Thank you for your order. We will contact you shortly to confirm the delivery details.",
   "orderSuccess.btn": "Back to Home",
+
+  "orderFailed.title": "Order Failed!",
+  "orderFailed.desc":
+    "Thank you for your order. We will contact you shortly to confirm the delivery details.",
+  "orderFailed.btn": "Back to Home",
+
+  "announcement.message": "🚧 Our services are not yet available but coming soon! Stay tuned for updates. 🚧",
 } as const;

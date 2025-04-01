@@ -1000,6 +1000,11 @@ export default {
   "confirmEmail.helpCenter": "Centre d'aide",
   "confirmEmail.privacyPolicy": "Politique de confidentialité",
   "confirmEmail.termsAndConditions": "Conditions d'utilisation",
+  "confirmEmail.orderpaid": "Commande payée",
+  "confirmEmail.orderpending": "Commande en attente",
+  "confirmEmail.orderfailed": "Commande échouée",
+  "confirmEmail.orderrefunded": "Commande remboursée",
+  "confirmEmail.paymentmethod": "Méthode de paiement",
 
   "confirmEmail.bottomSpam":
     "Cet email a été envoyé par ibendouma. Pour vous assurer de recevoir nos emails, ajoutez support@ibendouma.com à votre liste de contacts.",
@@ -1033,6 +1038,10 @@ export default {
   "orderConfirmation.website": "Site web",
   "orderConfirmation.exchangeLink": "Echange de kamas",
   "orderConfirmation.sellLink": "Vendre vos kamas",
+  "orderConfirmation.paypal": "Paypal",
+  "orderConfirmation.bankTransfer": "Virement bancaire",
+  "orderConfirmation.statusPaid": "Payée",
+  "orderConfirmation.paymentMethod": "Méthode de paiement",
   "orderConfirmation.bottomSpam":
     "Cet email a été envoyé par ibendouma. Pour vous assurer de recevoir nos emails, ajoutez verification@ibendouma.com à votre liste de contacts.",
 
@@ -1120,14 +1129,22 @@ export default {
 
   "reviews.notes": "Noté 4.9 sur 5 sur la base de 11293 sur ibendouma.com",
 
-  "reviews.user-1": "J'ai été livré en moins de 5 minutes. Le processus d'achat était simple et la livraison rapide.",
-  "reviews.user-2": "L'interface rapide et consultation parfaite! J'ai acheté des Kamas et tout est arrivé en moins de 5 minutes. Service impeccable!",
-  "reviews.user-3": "J'ai acheté un compte Dofus sur le site en quelques minutes! Processus simple et sécurisé. Très satisfait de mon achat!",
-  "reviews.user-4": "L'assistance client est top! Très gentil au téléphone et complet. Ils m'ont aidé à choisir le meilleur compte Dofus pour mon niveau.",
-  "reviews.user-5": "J'ai été bluffé! L'achat de Kamas était vraiment simple et efficace. Tout s'est passé comme prévu. Livraison rapide, sécurisée et sans tracas.",
-  "reviews.user-6": "Je voulais dire que l'interface est très intuitive. J'ai pu acheter mon compte Dofus Retro sans problème. AIDE TRÈS VÉRIDIQUE dans mes démarches.",
-  "reviews.user-7": "Le personnel est courtois et m'a rappelé en moins de 10 minutes. J'ai reçu mon compte Dofus avec tous les items promis. L'excellent service!",
-  "reviews.user-8": "J'ai obtenu TOUS les Kamas dont j'avais besoin et si facilement! Très satisfait du service et des prix, tout est à la meilleure valeur!",
+  "reviews.user-1":
+    "J'ai été livré en moins de 5 minutes. Le processus d'achat était simple et la livraison rapide.",
+  "reviews.user-2":
+    "L'interface rapide et consultation parfaite! J'ai acheté des Kamas et tout est arrivé en moins de 5 minutes. Service impeccable!",
+  "reviews.user-3":
+    "J'ai acheté un compte Dofus sur le site en quelques minutes! Processus simple et sécurisé. Très satisfait de mon achat!",
+  "reviews.user-4":
+    "L'assistance client est top! Très gentil au téléphone et complet. Ils m'ont aidé à choisir le meilleur compte Dofus pour mon niveau.",
+  "reviews.user-5":
+    "J'ai été bluffé! L'achat de Kamas était vraiment simple et efficace. Tout s'est passé comme prévu. Livraison rapide, sécurisée et sans tracas.",
+  "reviews.user-6":
+    "Je voulais dire que l'interface est très intuitive. J'ai pu acheter mon compte Dofus Retro sans problème. AIDE TRÈS VÉRIDIQUE dans mes démarches.",
+  "reviews.user-7":
+    "Le personnel est courtois et m'a rappelé en moins de 10 minutes. J'ai reçu mon compte Dofus avec tous les items promis. L'excellent service!",
+  "reviews.user-8":
+    "J'ai obtenu TOUS les Kamas dont j'avais besoin et si facilement! Très satisfait du service et des prix, tout est à la meilleure valeur!",
 
   "pageicon.sell1": "Vendre",
   "pageicon.sell2": "des kamas",
@@ -1251,9 +1268,15 @@ export default {
   "virtualgame.pasha.conclusion":
     "Ne laissez pas passer l'occasion de personnaliser votre personnage et de dominer le jeu avec vos nouveaux Diamants Pasha Fencer !",
 
+  "orderSuccess.title": "Commande réussie !",
+  "orderSuccess.desc":
+    "Merci pour votre commande. Nous vous contacterons sous peu pour confirmer les détails de la livraison.",
+  "orderSuccess.btn": "Retour à l'accueil",
 
-    "orderSuccess.title": "Commande réussie !",
-    "orderSuccess.desc": "Merci pour votre commande. Nous vous contacterons sous peu pour confirmer les détails de la livraison.",
-    "orderSuccess.btn": "Retour à l'accueil",
+  "orderFailed.title": "Commande échouée !",
+  "orderFailed.desc":
+    "Merci pour votre commande. Nous vous contacterons sous peu pour confirmer les détails de la livraison.",
+  "orderFailed.btn": "Retour à l'accueil",
 
+  "announcement.message": "🚧 Nos services ne sont pas encore disponibles mais arrivent bientôt ! Restez à l'écoute pour les mises à jour. 🚧",
 } as const;

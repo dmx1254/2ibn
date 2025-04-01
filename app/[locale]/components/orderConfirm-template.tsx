@@ -18,6 +18,8 @@ interface OrderConfirmationTemplateProps {
   firstname: string;
   cur: string;
   totalPrice: number;
+  status: string;
+  paymentMethod: string;
   orderNum: string;
   dateCreated: Date;
   products: Product[];
@@ -30,6 +32,8 @@ export const OrderConfirmationTemplate: React.FC<
   firstname,
   cur,
   totalPrice,
+  status,
+  paymentMethod,
   orderNum,
   dateCreated,
   products,
@@ -86,7 +90,7 @@ export const OrderConfirmationTemplate: React.FC<
               }}
             >
               <img
-                src="https://ibendouma.com/ibennewapp-logo.png"
+                src="https://www.ibendouma.com/logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",
@@ -148,6 +152,7 @@ export const OrderConfirmationTemplate: React.FC<
               >
                 <strong>{tScope("orderNumber")}:</strong> {orderNum}
               </p>
+
               <p
                 style={{
                   color: "#666666",
@@ -187,11 +192,37 @@ export const OrderConfirmationTemplate: React.FC<
                 <strong>{tScope("statusText")}:</strong>{" "}
                 <span
                   style={{
-                    color: "#2563eb",
+                    color:
+                      status === "paid"
+                        ? "green"
+                        : status === "pending"
+                        ? "yellow"
+                        : status === "failed"
+                        ? "red"
+                        : status === "refunded"
+                        ? "yellow"
+                        : "blue",
                   }}
                 >
-                  {tScope("status")}
+                  {status === "paid"
+                    ? tScope2("orderpaid")
+                    : status === "pending"
+                    ? tScope2("orderpending")
+                    : status === "failed"
+                    ? tScope2("orderfailed")
+                    : status === "refunded"
+                    ? tScope2("orderrefunded")
+                    : tScope2("orderpending")}
                 </span>
+              </p>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
+                <strong>{tScope2("paymentmethod")}:</strong> {paymentMethod}
               </p>
             </div>
 

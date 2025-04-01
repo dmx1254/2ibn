@@ -37,7 +37,6 @@ const CartPage: React.FC = () => {
   const shipping = 0.0;
   const total = subtotal + shipping;
 
-
   return (
     <div className="w-full py-6 sm:py-12 px-4 sm:px-6 lg:px-8  min-h-screen">
       {carts.length <= 0 ? (
@@ -183,12 +182,17 @@ const CartPage: React.FC = () => {
             >
               {tScope("continueShop")}
             </Link>
+            {/* {/*
             <Link
               href="/checkout"
               className="bg-black/80 text-white/80 p-2 rounded transition-colors hover:bg-black/90"
             >
               {tScope("order")}
-            </Link>
+            </Link> */}
+
+            <span className="bg-black/80 text-white/80 p-2 rounded transition-colors hover:bg-black/90">
+              {tScope("order")}
+            </span>
           </div>
         </div>
       )}
