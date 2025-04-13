@@ -21,11 +21,14 @@ import { TiDelete } from "react-icons/ti";
 
 const CartPage: React.FC = () => {
   const tScope = useScopedI18n("cartpage");
+  const tScope2 = useScopedI18n("hero");
   const { carts, removeFromCart, updateToCart, clearCart } = useStore();
 
   const subtotal = carts.reduce((total, item) => total + item.totalPrice, 0);
   const shipping = 0.0;
   const total = subtotal + shipping;
+
+  // console.log(carts);
 
   return (
     <div className="w-full py-6 sm:py-12 px-4 sm:px-6 lg:px-8  min-h-screen">
@@ -165,21 +168,30 @@ const CartPage: React.FC = () => {
               </TableBody>
             </Table>
           </div>
-          <div className="w-full flex items-center justify-between p-4 border border-gray-200">
+          <div className="w-full flex max-sm:flex-col gap-4 items-center justify-between p-4 border border-gray-200">
             <Link
               href="/"
-              className="bg-black/80 text-white/80 p-2 rounded transition-colors hover:bg-black/90"
+              className="bg-black/80 max-sm:w-full text-center text-white/80 p-2 rounded transition-colors hover:bg-black/90"
             >
               {tScope("continueShop")}
             </Link>
 
             <Link
               href="/checkout"
-              className="bg-black/80 text-white/80 p-2 rounded transition-colors hover:bg-black/90"
+              className="bg-black/80 max-sm:w-full text-center text-white/80 p-2 rounded transition-colors hover:bg-black/90"
             >
               {tScope("order")}
             </Link>
           </div>
+          {carts.length > 0 && (
+            <button
+              onClick={() => clearCart()}
+              className="bg-black/80 max-sm:w-full text-center text-white/80 p-2 rounded transition-colors hover:bg-black/90"
+              aria-label="Clear cart"
+            >
+              {tScope2("clearCart")}
+            </button>
+          )}
         </div>
       )}
     </div>

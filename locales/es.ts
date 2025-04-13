@@ -50,6 +50,8 @@ export default {
   "hero.homeRecapTitle": "Resumen",
   "hero.homeRecapQty": "Cantidad",
   "hero.homeRecapTot": "Total",
+  "hero.currencyError": "Las monedas en el carrito no pueden ser diferentes",
+  "hero.clearCart": "Vaciar el carrito",
 
   "hero.buyDesc":
     "En ibendouma, puedes comprar kamas {serverName} a precios bajos para beneficiarte de muchas ventajas y mejorar tu experiencia de juego. Disponemos de stock de kamas en todos los servidores de Dofus y trabajamos con proveedores confiables para garantizar un proceso de entrega correcto. Garantizamos un servicio de CALIDAD EXCELENTE, 24/7, rápido y seguro. Ahorra tiempo y disfruta al máximo de tu juego con ibendouma. El mejor precio del mercado. Si encuentras algo mejor en otra tienda online, contáctanos y haremos lo posible por superarlo.",

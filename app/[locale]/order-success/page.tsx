@@ -5,6 +5,7 @@ import { Gift, CheckCircle } from "lucide-react";
 import { useScopedI18n } from "@/locales/client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import useStore from "@/lib/store-manage";
 
 interface GIFT {
   id: number;
@@ -17,6 +18,7 @@ interface GIFT {
 const SuccessOrder = () => {
   const tScope = useScopedI18n("orderSuccess");
   const tScopeOrder = useScopedI18n("orderConfirmation");
+  const { clearCart } = useStore();
   const searchParams = useSearchParams();
   const orderId = searchParams.get("orderId");
   const type = searchParams.get("type");
@@ -54,6 +56,10 @@ const SuccessOrder = () => {
       size: 24 + Math.random() * 24, // Taille entre 24px et 48px
     }));
     setGifts(newGifts);
+  }, []);
+
+  useEffect(() => {
+    clearCart();
   }, []);
 
   return (

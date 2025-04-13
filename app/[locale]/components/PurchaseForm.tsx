@@ -26,8 +26,13 @@ import { useRouter } from "next/navigation";
 
 const PurchaseForm = ({ cat }: { cat?: string }) => {
   const router = useRouter();
-  const { devise, activeServerRequest, addToActiveServerRequest, addToCart } =
-    useStore();
+  const {
+    devise,
+    carts,
+    activeServerRequest,
+    addToActiveServerRequest,
+    addToCart,
+  } = useStore();
   const tScope = useScopedI18n("hero");
 
   const [dofusChange, setDofusChange] = useState<string>(activeServerRequest);
@@ -142,6 +147,14 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
       valCurrency: devise.curencyVal,
       character: character,
     };
+
+    if (carts[0] && cart.currency !== carts[0].currency) {
+      toast.error(tScope("currencyError"), {
+        style: { color: "#dc2626" },
+        position: "top-right",
+      });
+      return;
+    }
     addToCart(cart);
     toast.success(
       tScope("added.cart", { serverName: activeServer?.serverName }),
