@@ -18,17 +18,18 @@ const FailedOrder = () => {
   const tScope = useScopedI18n("orderFailed");
   const searchParams = useSearchParams();
   const orderId = searchParams.get("orderId");
+  const type = searchParams.get("type");
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     if (orderId) {
-  //       const response = await fetch(`/api/paypal/order/failled?orderId=${orderId}`);
-  //       const data = await response.json();
-  //       console.log(data);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [orderId]);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (orderId) {
+        const response = await fetch(
+          `/api/paypal/order/failled?orderId=${orderId}&type=${type}`
+        );
+      }
+    };
+    fetchData();
+  }, [orderId]);
 
   const [gifts, setGifts] = useState<GIFT[]>([]);
 

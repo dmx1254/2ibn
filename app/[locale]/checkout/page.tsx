@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -34,7 +34,7 @@ import axios from "axios";
 import { useScopedI18n } from "@/locales/client";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 // Composant pour l'étape de connexion
 const ConnectionStep = ({
@@ -102,11 +102,11 @@ const PaymentStep = ({
                 onChange={() => handleActivePayment(p.title)}
                 checked={isActivePayment === p.title}
               />
-              <Image
-                className="w-full h-auto object-cover object-center"
+              <img
+                className={`w-[200px] h-auto object-contain object-center`}
                 src={p.imgPay}
-                width={200}
-                height={200}
+                // width={p.w}
+                // height={p.h}
                 alt="payment method"
               />
               {p.fee && (
@@ -165,7 +165,7 @@ const ConfirmationStep = ({
   invitedAccount: boolean;
 }) => {
   const tScope = useScopedI18n("checkout");
-  const { carts } = useStore();
+  const { carts, isMainting } = useStore();
   const subtotal = carts.reduce((total, item) => total + item.totalPrice, 0);
   const shipping = 0.0;
   const total = subtotal + shipping;
@@ -263,9 +263,9 @@ const ConfirmationStep = ({
           <button
             onClick={handleCheckout}
             className="p-3 bg-black/80 text-white rounded transition-colors hover:opacity-85"
-            disabled={status !== "authenticated" && !invitedAccount}
+            disabled={(status !== "authenticated" && !invitedAccount) || isMainting}
             style={{
-              opacity: status !== "authenticated" && !invitedAccount ? 0.6 : 1,
+              opacity: (status !== "authenticated" && !invitedAccount) ? 0.6 : 1,
             }}
           >
             {isOrderLoading ? (
@@ -285,6 +285,10 @@ const ConfirmationStep = ({
 const Checkout = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const orderId = searchParams.get("orderId");
+  const type = searchParams.get("type");
 
   const [formData, setFormData] = useState<any>({
     lastname: "",
@@ -311,6 +315,17 @@ const Checkout = () => {
     country: "",
     departement: "",
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (orderId) {
+        const response = await fetch(
+          `/api/paypal/order/failled?orderId=${orderId}&type=${type}`
+        );
+      }
+    };
+    fetchData();
+  }, [orderId]);
 
   // console.log(billingInfo);
 
@@ -409,10 +424,10 @@ const Checkout = () => {
     }
   };
 
-  function handleChatClick() {
-    //@ts-ignore
-    void window?.Tawk_API.toggle();
-  }
+  // function handleChatClick() {
+  //   //@ts-ignore
+  //   void window?.Tawk_API.toggle();
+  // }
 
   const handleCheckout = async () => {
     const products = carts.map((cart) => {
@@ -441,6 +456,7 @@ const Checkout = () => {
       products: products,
       address: "",
       status: "En attente",
+      type: "dofus",
       totalPrice: total.toFixed(2),
       paymentMethod: isActivePayment,
       orderIdPaid: "",
@@ -451,41 +467,94 @@ const Checkout = () => {
 
     // const billing = billingInfo;
     if (isActivePayment === "paypal") {
-      // try {
-      //   setIsOrderLoading(true);
-      //   const result = await axios.post("/api/paypal", {
-      //     data,
-      //     object: tScopeConfirm("object"),
-      //   });
-      //   window.location.href = result.data.redirectUrl;
-      // } catch (error) {
-      //   console.log(error);
-      // } finally {
-      //   setIsOrderLoading(false);
-      // }
-      console.log("yes");
-    } else {
+      try {
+        setIsOrderLoading(true);
+        const result = await axios.post("/api/paypal", {
+          data,
+          object: tScopeConfirm("object"),
+        });
+        window.location.href = result.data.redirectUrl;
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsOrderLoading(false);
+      }
+      // console.log("yes");
+    } else if (isActivePayment === "crypto") {
+      try {
+        setIsOrderLoading(true);
+        const result = await axios.post("/api/nowpayment", {
+          data,
+          object: tScopeConfirm("object"),
+        });
+        window.location.href = result.data.invoice_url;
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsOrderLoading(false);
+      }
+    } else if (isActivePayment === "coinpal" || isActivePayment === "binance") {
+      try {
+        setIsOrderLoading(true);
+        const result = await axios.post("/api/coinpal", {
+          data,
+          object: tScopeConfirm("object"),
+        });
+        window.location.href = result.data.nextStepContent;
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsOrderLoading(false);
+      }
+    }
+    // else if (isActivePayment === "binance") {
+    //   try {
+    //     setIsOrderLoading(true);
+    //     const result = await axios.post("/api/iben/order", {
+    //       data,
+    //       object: tScopeConfirm("object"),
+    //     });
+    //     if (result.data) {
+    //       toast.success(tScope("success"), {
+    //         style: { color: "#16a34a" },
+    //       });
+
+    //       setTimeout(() => {
+    //         // handleChatClick();
+    //         router.push("/pay-with-binance");
+    //       }, 1000);
+    //     }
+    //   } catch (error) {
+    //     toast.success(tScope("error"), {
+    //       style: { color: "#dc2626" },
+    //     });
+    //     console.log(error);
+    //   } finally {
+    //     setIsOrderLoading(false);
+    //   }
+    // }
+    else {
       try {
         setIsOrderLoading(true);
         const result = await axios.post("/api/iben/order", {
-        data,
-        object: tScopeConfirm("object"),
-      });
-      if (result.data) {
-        toast.success(tScope("success"), {
-          style: { color: "#16a34a" },
+          data,
+          object: tScopeConfirm("object"),
         });
+        if (result.data) {
+          toast.success(tScope("success"), {
+            style: { color: "#16a34a" },
+          });
 
-        setTimeout(() => {
-          // handleChatClick();
-          router.push("/order-success");
-        }, 1000);
-      }
-    } catch (error) {
-      toast.success(tScope("error"), {
-        style: { color: "#dc2626" },
-      });
-      console.log(error);
+          setTimeout(() => {
+            // handleChatClick();
+            router.push("/order-success");
+          }, 1000);
+        }
+      } catch (error) {
+        toast.success(tScope("error"), {
+          style: { color: "#dc2626" },
+        });
+        console.log(error);
       } finally {
         setIsOrderLoading(false);
       }

@@ -78,7 +78,7 @@ export default function ProfileLayout({
         <div>
           <Link href="/" className="flex items-center gap-2 -ml-4">
             <Image
-              src="/ibennewapp-logo.png"
+              src="/logo.png"
               alt="ibendouma logo"
               height={70}
               width={70}

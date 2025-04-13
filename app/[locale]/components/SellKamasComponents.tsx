@@ -28,8 +28,10 @@ const SellKamasComponents = ({
 }: {
   servers: ServerExchange[] | null;
 }) => {
-  const { devise, addNewDevise } = useStore();
+  const { devise, addNewDevise, isMainting } = useStore();
   const { data: session, status } = useSession();
+
+  // console.log(devise);
 
   const router = useRouter();
 
@@ -47,10 +49,10 @@ const SellKamasComponents = ({
     firstname: "",
   });
 
-  function handleChatClick() {
-    //@ts-ignore
-    void window?.Tawk_API.toggle();
-  }
+  // function handleChatClick() {
+  //   //@ts-ignore
+  //   void window?.Tawk_API.toggle();
+  // }
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [gameNameError, setGameNameError] = useState<string>("");
@@ -67,6 +69,7 @@ const SellKamasComponents = ({
     // console.log(field + " " + value);
 
     if (value === "Paypal" || value === "Skrill") {
+      if (devise.currencyName === "euro") return;
       await fetchCurrency("euro");
     }
     if (
@@ -76,12 +79,14 @@ const SellKamasComponents = ({
       value === "BMCI" ||
       value === "Crédit du maroc" ||
       value === "Crédit agricole" ||
-      value === "Cfg" ||
-      value === "Société générale" ||
-      value === "Cash Plus" ||
       value === "Wafacash"
     ) {
+      if (devise.currencyName === "mad") return;
       await fetchCurrency("mad");
+    }
+    if (value === "Aed" || value === "Usdt(TRC20/ERC20)") {
+      if (devise.currencyName === "dollar") return;
+      await fetchCurrency("dollar");
     }
   };
 
@@ -92,13 +97,11 @@ const SellKamasComponents = ({
     "BMCI",
     "Crédit du maroc",
     "Crédit agricole",
-    "Cfg",
-    "Société générale",
-    "Cash Plus",
     "Wafacash",
     "Paypal",
     "Skrill",
-    "Usdt",
+    "Usdt(TRC20/ERC20)",
+    "Aed",
     // "Binance Pay",
     // "Payeer",
     // "Wise",
@@ -115,6 +118,7 @@ const SellKamasComponents = ({
       case "Crédit agricole":
       case "Cfg":
       case "Société générale":
+      case "Aed":
         return tScope("casemaroccobank");
       case "Western Union":
         return tScope("casewestandcash");
@@ -127,7 +131,7 @@ const SellKamasComponents = ({
         return tScope("casebinpaywise");
       case "ADV Cash":
         return tScope("caseadvcash");
-      case "Usdt":
+      case "Usdt(TRC20/ERC20)":
         return tScope("casetrc20");
       default:
         return "";
@@ -139,6 +143,7 @@ const SellKamasComponents = ({
       case "CIH Bank":
       case "Attijariwafa Bank":
       case "Barid Bank":
+      case "Aed":
         return tScope("casemaroccobankinput");
       case "Western Union":
         return tScope("casewestandcashinput");
@@ -256,27 +261,27 @@ const SellKamasComponents = ({
         firstname: formData.firstname,
       };
 
-      // try {
-      //   setIsLoading(true);
-      //   const response = await axios.post("/api/go/order", data);
-      //   if (response) {
-      //     toast.success(tScope("success"), {
-      //       style: { color: "#16a34a" },
-      //     });
-      //     setTimeout(() => {
-      //       // handleChatClick();
-      //       router.push("/order-success");
-      //     }, 1000);
-      //   }
-      // } catch (error) {
-      //   // console.log(error);
-      //   toast.success(tScope("error"), {
-      //     style: { color: "#dc2626" },
-      //   });
-      // } finally {
-      //   setIsLoading(false);
-      // }
-      console.log("yes");
+      try {
+        setIsLoading(true);
+        const response = await axios.post("/api/go/order", data);
+        if (response) {
+          toast.success(tScope("success"), {
+            style: { color: "#16a34a" },
+          });
+          setTimeout(() => {
+            // handleChatClick();
+            router.push("/order-success");
+          }, 1000);
+        }
+      } catch (error) {
+        // console.log(error);
+        toast.success(tScope("error"), {
+          style: { color: "#dc2626" },
+        });
+      } finally {
+        setIsLoading(false);
+      }
+      // console.log("yes");
     }
   };
 
@@ -490,8 +495,7 @@ const SellKamasComponents = ({
           type="submit"
           className="bg-amber-500 hover:bg-amber-600 text-white"
           onClick={handleSubmit}
-          // disabled={isLoading}
-          disabled={true}
+          disabled={isLoading || isMainting}
           aria-label="submit sell kamas button"
         >
           {isLoading ? (

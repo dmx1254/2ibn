@@ -51,7 +51,7 @@ export const PasswordResetEmail: React.FC<PasswordResetEmailProps> = async ({
               }}
             >
               <img
-                src="https://ibendouma.com/ibennewapp-logo.png"
+                src="https://ibendouma.com/logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",

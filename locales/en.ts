@@ -84,6 +84,7 @@ export default {
     "Order successfully placed. Open the chat to proceed with the exchange",
   "cartpage.error": "Something went wrong, please try again later",
   "cartpage.totalItems": "Total ({totalItems} items)",
+  "cartpage.login": "You need to log in first",
 
   "infosect.desctitle": "Buy and sell Kamas Dofus",
   "infosect.descdesc":
@@ -281,6 +282,7 @@ export default {
   "menu.retro": "Buy Kamas Dofus Retro",
   "menu.exchange": "Exchange Kamas",
   "menu.sell": "Sell ​​your Kamas",
+  "menu.crypto": "Crypto",
 
   "signup.renderStep1.personnalInformation": "Your personal information",
   "signup.renderStep1.lastname": "Last Name",
@@ -460,10 +462,15 @@ export default {
   "ordersBuyKamas.notFoundDesc":
     "Looks like you haven't made any purchases yet.",
   "ordersBuyKamas.notFoundLink": "Start Shopping",
-  "ordersBuyKamas.completed": "Completed",
+  "ordersBuyKamas.completed": "Paid",
   "ordersBuyKamas.pending": "Pending",
   "ordersBuyKamas.cancelled": "Cancelled",
   "ordersBuyKamas.processing": "Processing",
+  "ordersBuyKamas.gamename": "Games",
+  "ordersBuyKamas.qty": "Quantity",
+  "ordersBuyKamas.bonus": "Bonus",
+  "ordersBuyKamas.orderdof": "My Dofus Orders",
+  "ordersBuyKamas.ordergame": "My Game Orders",
 
   "ordersSellKamas.cardTotalSales": "Total Sales",
   "ordersSellKamas.cardTotalOrders": "Total Orders",
@@ -557,6 +564,9 @@ export default {
   "footer.info3": "T&C and Legal Notice",
   "footer.info4": "Contact us",
   "footer.followUs": "Follow us",
+  "footer.sup": "24/7 Online Support",
+  "footer.what": "Direct WhatsApp",
+  "footer.giveReviews": "Leave a review",
   "footer.address":
     "2024 JBK Services INTERNATIONAL FZ-LLC, Compass Building, Al Shohada Road, AL Hamra-FZ Industrial Zone, Ras Al Khaimah, United Arab Emirates.",
 
@@ -1022,6 +1032,7 @@ export default {
   "orderConfirmation.bankTransfer": "Bank Transfer",
   "orderConfirmation.statusPaid": "Paid",
   "orderConfirmation.paymentMethod": "Payment Method",
+  "orderConfirmation.qty": "Quantity",
   "orderConfirmation.bottomSpam":
     "This email was sent by ibendouma. To ensure you receive our emails, add verification@ibendouma.com to your contact list.",
 
@@ -1106,6 +1117,19 @@ export default {
 
   "reviews.message-20": "Best service!",
   "reviews.title-20": "Best service!",
+  "reviews.message-42":
+    "Khadija is a reliable and fast seller, less than 3 minutes. Thanks to her and ibendouma.com",
+  "reviews.title-42": "Khadija reliable and fast seller",
+  "reviews.message-56":
+    "Hi Ilyass, thank you very much for your speed and professionalism. Great service, I recommend you! ✌️",
+  "reviews.title-56": "Top-notch service",
+  "reviews.message-63":
+    "Excellent service, after falling twice for scammers, happy to find trustworthy people!",
+  "reviews.title-63": "Excellent service",
+  "reviews.message-87":
+    "Reliable and very fast service, communication with the website staff is very friendly, I fully recommend this site",
+  "reviews.title-87": "Reliable and very fast service",
+
   "reviews.notes": "Rated 4.9 out of 5 based on 11293 reviews on ibendouma.com",
 
   "reviews.user-1":
@@ -1254,5 +1278,64 @@ export default {
     "Thank you for your order. We will contact you shortly to confirm the delivery details.",
   "orderFailed.btn": "Back to Home",
 
-  "announcement.message": "🚧 Our services are not yet available but coming soon! Stay tuned for updates. 🚧",
+  "announcement.message":
+    "🚧 Our services are not yet available but coming soon! Stay tuned for updates. 🚧",
+
+  "binance.title": "Binance Pay Payment",
+  "binance.desc": "Scan the QR code to complete your order",
+  "binance.instructTitle": "Instructions",
+  "binance.instructDesc1": "Open the Binance app on your mobile device",
+  "binance.instructDesc2": "Tap the Scan icon at the top right",
+  "binance.instructDesc3": "Scan the QR code to make the payment",
+  "binance.instructDesc4": "Check the details and confirm the payment",
+  "binance.pending": "Waiting for payment...",
+  "binance.infoTitle": "Important Information",
+  "binance.infoDesc1":
+    "Once the payment is made, please wait while we verify the transaction.",
+  "binance.infoDesc2":
+    "If you encounter any issues, feel free to contact us via live chat.",
+  "binance.infoDesc3":
+    "The payment should be processed within 1–2 minutes after confirmation.",
+  "binance.infoDesc4":
+    "Do not close this page until your payment is confirmed.",
+  "binance.needhelp": "Need help with your payment?",
+  "binance.support": "Contact Support",
+
+  "paymentMode.selectPayment": "Select Payment Method",
+  "paymentMode.amount": "Amount",
+  "paymentMode.bonus": "Bonus",
+  "paymentMode.price": "Price",
+  "paymentMode.feegame": "Fees",
+  "paymentMode.international": "Payment Methods",
+  "paymentMode.morocco": "Moroccan Bank Transfer",
+  "paymentMode.confirmPayment": "Confirm Payment",
+  "paymentMode.processing": "Processing order...",
+
+  "crypto.title": "Sell Your Cryptocurrency Securely",
+  "crypto.description":
+    "Looking to sell your cryptocurrencies like Bitcoin, Ethereum, USDT and more? We offer a fast and secure service to help you convert your cryptos into real money easily and quickly.",
+  "crypto.paymentMethods": "Payment Methods",
+  "crypto.paypalDesc":
+    "Fast, reliable, and secure. Receive your payment instantly.",
+  "crypto.skrillDesc": "Another popular and secure payment method.",
+  "crypto.sepaDesc":
+    "For customers in Europe, benefit from payments directly to your bank account.",
+  "crypto.bankTransfer": "Moroccan Bank Transfer",
+  "crypto.bankTransferDesc":
+    "For our customers in Morocco, we offer the possibility to receive payment directly to your Moroccan bank account.",
+  "crypto.telegram": "Telegram",
+  "crypto.whatsapp": "WhatsApp",
+  "crypto.whyChooseUs": "Why Choose Us?",
+  "crypto.security": "Guaranteed Security",
+  "crypto.securityDesc":
+    "We use advanced security protocols to ensure the safety of your funds.",
+  "crypto.speed": "Speed",
+  "crypto.speedDesc":
+    "Our transactions are processed quickly. You'll receive your payment as soon as we receive your cryptocurrencies.",
+  "crypto.support": "Customer Support",
+  "crypto.supportDesc":
+    "In case of doubt or questions, our support team is available via Telegram or WhatsApp.",
+  "crypto.legalNotice": "Legal Notice",
+  "crypto.legalNoticeDesc":
+    "All payments are processed securely. Your transaction information is never shared with third parties. Please verify all information before sending your cryptocurrencies.",
 } as const;

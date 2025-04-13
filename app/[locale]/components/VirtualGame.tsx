@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import {
   Card,
@@ -9,15 +9,30 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Gamepad2, Shield, Sparkles, Wallet2 } from "lucide-react";
+import { Gamepad2, Shield, Sparkles } from "lucide-react";
 import { gameProducts, parsedDevise } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 import useStore from "@/lib/store-manage";
+import { GamePaymentDialog } from "./game-payment-dialog";
+
+interface GameProduct {
+  id: number;
+  amount: string;
+  bonus?: string;
+  price: number;
+}
 
 const VirtualGame = ({ gamename }: { gamename: string }) => {
   const { devise } = useStore();
   const gameData = gameProducts[gamename];
   const tScope = useScopedI18n("virtualgame");
+  const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<GameProduct | null>(null);
+
+  const handleBuyClick = (product: GameProduct) => {
+    setSelectedProduct(product);
+    setIsPaymentDialogOpen(true);
+  };
 
   // console.log(devise);
 
@@ -278,7 +293,10 @@ const VirtualGame = ({ gamename }: { gamename: string }) => {
                     {(Number(product.price) / devise.curencyVal).toFixed(2)}{" "}
                     {parsedDevise(devise.currencyName)}
                   </p>
-                  <button disabled className="w-full bg-gradient-to-r from-[#eab308] to-[#f97316] hover:from-[#f97316] hover:to-[#eab308] text-black font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 opacity-80">
+                  <button
+                    onClick={() => handleBuyClick(product)}
+                    className="w-full bg-gradient-to-r from-[#eab308] to-[#f97316] hover:from-[#f97316] hover:to-[#eab308] text-black font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
+                  >
                     {tScope("acheterMaintenant")}
                   </button>
                 </div>
@@ -287,6 +305,16 @@ const VirtualGame = ({ gamename }: { gamename: string }) => {
           ))}
         </div>
       </div>
+
+      {/* Dialogue de paiement */}
+      {selectedProduct && (
+        <GamePaymentDialog
+          isOpen={isPaymentDialogOpen}
+          onClose={() => setIsPaymentDialogOpen(false)}
+          product={selectedProduct}
+          gameTitle={gameData.title}
+        />
+      )}
     </div>
   );
 };

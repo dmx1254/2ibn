@@ -48,7 +48,7 @@ export const ConfirmEmailTemplate: React.FC<EmailTemplateProps> = async ({
               }}
             >
               <img
-                src="https://ibendouma.com/ibennewapp-logo.png"
+                src="https://ibendouma.com/logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",

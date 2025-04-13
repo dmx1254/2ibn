@@ -1,21 +1,50 @@
 import * as React from "react";
 import { getScopedI18n } from "@/locales/server";
+import { parsedDevise } from "@/lib/utils";
 
-interface EmailTemplateProps {
-  email: string;
-  verificationCode: string;
-  lastname: string;
+interface OrderConfirmationTemplateProps {
+  orderNum: string;
+  dateCreated: Date;
   firstname: string;
+  lastname: string;
+  name: string;
+  amount: number;
+  totalPrice: number;
+  cur: string;
+  buyDetails: {
+    status: string;
+    paymentMethod: string;
+  };
 }
 
-export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
-  email,
-  verificationCode,
-  lastname,
+export const OrderGameTemplate: React.FC<
+  OrderConfirmationTemplateProps
+> = async ({
+  orderNum,
+  dateCreated,
   firstname,
+  lastname,
+  name,
+  amount,
+  totalPrice,
+  cur,
+  buyDetails,
 }) => {
-  const tScope = await getScopedI18n("emailtemplate");
+  const tScope = await getScopedI18n("orderConfirmation");
   const tScope2 = await getScopedI18n("confirmEmail");
+
+  const formatDate = (date: Date) => {
+    return new Date(date).toLocaleDateString("fr-FR", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  const formatCurrency = (amount: number, currency: string) => {
+    return `${amount} ${parsedDevise(currency)}`;
+  };
+
   return (
     <div
       style={{
@@ -36,11 +65,10 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
           boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
         }}
       >
-        {/* En-tête */}
+        {/* Header */}
         <tr>
           <td
             style={{
-              backgroundColor: "#363A3D",
               padding: "10px",
               textAlign: "center",
               fontSize: "24px",
@@ -53,7 +81,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
               }}
             >
               <img
-                src="https://ibendouma.com/logo.png"
+                src="https://www.ibendouma.com/logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",
@@ -66,33 +94,22 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
           </td>
         </tr>
 
-        {/* Contenu principal */}
+        {/* Main Content */}
         <tr>
           <td style={{ padding: "40px 30px" }}>
             <h1
               style={{
                 color: "#333333",
                 fontSize: "24px",
-                marginBottom: "20px",
+                marginBottom: "10px",
               }}
             >
-              {tScope("title")} {`${lastname} ${firstname}`}
+              {tScope("title")} {`${firstname} ${lastname}`}
             </h1>
-            <p
-              style={{
-                color: "#666666",
-                fontSize: "16px",
-                lineHeight: "1.5",
-                marginBottom: "30px",
-              }}
-            >
-              {tScope("subtitle")} : {email}
-            </p>
+
             <div
               style={{
-                backgroundColor: "#f8f9fa",
-                borderRadius: "6px",
-                padding: "20px",
+                padding: "10px",
                 textAlign: "center",
                 marginBottom: "30px",
               }}
@@ -103,81 +120,151 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                   color: "#666666",
                 }}
               >
-                {tScope("verifDesc")}
+                {tScope("orderConfirmed")}
               </p>
               <p
                 style={{
-                  fontSize: "32px",
-                  fontWeight: "bold",
-                  color: "#d97706",
-                  letterSpacing: "4px",
+                  fontSize: "16px",
+                  color: "#666666",
                 }}
               >
-                {verificationCode}
+                {tScope("confirmedV")}
+              </p>
+            </div>
+
+            {/* Order Details */}
+            <div style={{ marginBottom: "20px" }}>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
+                <strong>{tScope("orderNumber")}:</strong> {orderNum}
+              </p>
+
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
+                <strong>{tScope("product")}:</strong> {name}
               </p>
               <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
+                <strong>{tScope("qty")}:</strong> {amount}
+              </p>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
+                <strong>{tScope("totalPrice")}:</strong>{" "}
+                {formatCurrency(totalPrice, cur)}
+              </p>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
+                <strong>{tScope("orderDate")}:</strong>{" "}
+                {formatDate(dateCreated)}
+              </p>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
+                <strong>{tScope("statusText")}:</strong>{" "}
+                <span
+                  style={{
+                    color:
+                      buyDetails.status === "paid"
+                        ? "green"
+                        : buyDetails.status === "pending"
+                        ? "yellow"
+                        : buyDetails.status === "failed"
+                        ? "red"
+                        : buyDetails.status === "refunded"
+                        ? "yellow"
+                        : "blue",
+                  }}
+                >
+                  {buyDetails.status === "paid"
+                    ? tScope2("orderpaid")
+                    : buyDetails.status === "pending"
+                    ? tScope2("orderpending")
+                    : buyDetails.status === "failed"
+                    ? tScope2("orderfailed")
+                    : buyDetails.status === "refunded"
+                    ? tScope2("orderrefunded")
+                    : tScope2("orderpending")}
+                </span>
+              </p>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
+                <strong>{tScope2("paymentmethod")}:</strong> {buyDetails.paymentMethod}
+              </p>
+            </div>
+            <div>
+              <span
                 style={{
                   color: "#666666",
                   fontSize: "16px",
                   lineHeight: "1.5",
                 }}
               >
-                {tScope("enterCode")}
-              </p>
-            </div>
-
-            <span
-              style={{ color: "#666666", fontSize: "16px", lineHeight: "1.5" }}
-            >
-              {tScope("anyQuestions")}{" "}
-              <a
-                href="mailto:"
+                {tScope("supportMessage")}
+              </span>
+              <span
                 style={{
-                  color: "#d97706",
-                  textDecoration: "none",
-                  margin: "0 10px",
-                }}
-              >
-                support@ibendouma.com
-              </a>
-            </span>
-            <p
-              style={{ color: "#666666", fontSize: "16px", lineHeight: "1.5" }}
-            >
-              {tScope("codeExpireText")}{" "}
-              <strong>{tScope("codeExpireTime")}</strong>.
-            </p>
-            <p
-              style={{ color: "#666666", fontSize: "16px", lineHeight: "1.5" }}
-            >
-              {tScope("notice")}
-            </p>
-          </td>
-        </tr>
-
-        {/* Instructions de sécurité */}
-        <tr>
-          <td style={{ padding: "0 30px 30px" }}>
-            <div
-              style={{
-                backgroundColor: "#fff8e1",
-                borderRadius: "6px",
-                padding: "20px",
-              }}
-            >
-              <p
-                style={{
-                  color: "#996c00",
-                  fontSize: "14px",
+                  color: "#666666",
+                  fontSize: "16px",
                   lineHeight: "1.5",
-                  margin: 0,
+                  marginLeft: "4px",
                 }}
               >
-                <strong>🔒 {tScope("secureTitle")} :</strong>
-                <br />
-                {tScope("secureDesc")}
-              </p>
+                {tScope("myAccount")}{" "}
+                <a
+                  href="https://ibendouma.com/profile"
+                  style={{
+                    color: "#d97706",
+                    textDecoration: "none",
+                  }}
+                >
+                  {tScope("website")}
+                </a>
+              </span>
             </div>
+            <p
+              style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5" }}
+            >
+              {tScope("emailInform")}
+            </p>
+            <p
+              style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5" }}
+            >
+              {tScope("contactSupport")}
+            </p>
           </td>
         </tr>
 
@@ -207,6 +294,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                     gap: "16px",
                     flexWrap: "wrap",
                     marginLeft: "8px",
+                    marginRight: "8px",
                   }}
                 >
                   <a
@@ -218,9 +306,10 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                       alignItems: "center",
                       justifyContent: "center",
                       padding: "4px",
+                      marginRight: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                     }}
                   >
@@ -246,7 +335,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                     }}
                   >
@@ -272,7 +361,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -299,7 +388,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -326,7 +415,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -353,7 +442,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -380,7 +469,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -407,7 +496,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -492,7 +581,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = async ({
         </tr>
       </table>
 
-      {/* Message anti-spam */}
+      {/* Anti-spam Message */}
       <table
         role="presentation"
         width="100%"

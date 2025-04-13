@@ -46,12 +46,16 @@ const ProfilePage = () => {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "payée":
+      case "paid":
         return "bg-green-500 rounded p-1 text-sm text-black/80";
       case "en attente":
+      case "pending":
         return "bg-yellow-500 rounded p-1 text-sm text-black/80";
       case "en cours de payment":
+      case "processing":
         return "bg-blue-500 rounded p-1 text-sm text-black/80";
       case "annulée":
+      case "cancelled":
         return "bg-red-500 rounded p-1 text-sm text-black/80";
       default:
         return "bg-gray-500 rounded p-1 text-sm text-black/80";
@@ -73,6 +77,8 @@ const ProfilePage = () => {
       setUser(data);
     }
   }, [data]);
+
+  console.log(ordersL);
 
   useEffect(() => {
     const getPaymentMethods = async () => {

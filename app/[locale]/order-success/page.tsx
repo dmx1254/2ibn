@@ -19,19 +19,24 @@ const SuccessOrder = () => {
   const tScopeOrder = useScopedI18n("orderConfirmation");
   const searchParams = useSearchParams();
   const orderId = searchParams.get("orderId");
+  const type = searchParams.get("type");
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
   const router = useRouter();
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const object = tScopeOrder("object");
-  //     if (orderId) {
-  //       const response = await fetch(`/api/paypal/order/success?orderId=${orderId}&object=${object}`);
-  //       const data = await response.json();
-  //       console.log(data);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [orderId]);
+  // Assurez-vous que orderId ne contient pas déjà un point d'interrogation
+  const cleanOrderId = orderId?.replace(/\?/g, "");
+  useEffect(() => {
+    const fetchData = async () => {
+      const object = tScopeOrder("object");
+      if (orderId) {
+        await fetch(
+          `/api/paypal/order/success?orderId=${cleanOrderId}&type=${type}&object=${encodeURIComponent(
+            object
+          )}`
+        );
+      }
+    };
+    fetchData();
+  }, [orderId]);
 
   setTimeout(() => {
     setIsButtonDisabled(false);

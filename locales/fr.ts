@@ -83,6 +83,7 @@ export default {
   "cartpage.error":
     "Quelque chose s'est mal passée, veuillez réessayer plus tard",
   "cartpage.totalItems": "Total ({totalItems} items)",
+  "cartpage.login": "Vous devez vous d'abord vous connecter",
 
   "infosect.desctitle": "Acheter et vendre des Kamas Dofus",
   "infosect.descdesc":
@@ -285,6 +286,7 @@ export default {
   "menu.retro": "Acheter des Kamas Dofus Retro",
   "menu.exchange": "Échanger des Kamas",
   "menu.sell": "Vendre vos Kamas",
+  "menu.crypto": "Crypto",
 
   "signup.renderStep1.personnalInformation": "Vos informations personnelles",
   "signup.renderStep1.lastname": "Nom",
@@ -472,10 +474,15 @@ export default {
   "ordersBuyKamas.notFoundDesc":
     "On dirait que vous n'avez pas encore effectué d'achats.",
   "ordersBuyKamas.notFoundLink": "Commencez vos achats",
-  "ordersBuyKamas.completed": "Terminée",
+  "ordersBuyKamas.completed": "Payée",
   "ordersBuyKamas.pending": "En attente",
   "ordersBuyKamas.cancelled": "Annulée",
   "ordersBuyKamas.processing": "En traitement",
+  "ordersBuyKamas.gamename": "Jeux",
+  "ordersBuyKamas.qty": "Quantité",
+  "ordersBuyKamas.bonus": "Bonus",
+  "ordersBuyKamas.orderdof": "Mes commandes dofus",
+  "ordersBuyKamas.ordergame": "Mes commandes jeux",
 
   "ordersSellKamas.cardTotalSales": "Ventes totales",
   "ordersSellKamas.cardTotalOrders": "Commandes totales",
@@ -573,6 +580,9 @@ export default {
   "footer.info3": "CGU et Mentions légales",
   "footer.info4": "Nous contacter",
   "footer.followUs": "Suivez-nous",
+  "footer.sup": "Support En ligne 24/7",
+  "footer.what": "Whatssap direct",
+  "footer.giveReviews": "Ajouter un avis",
   "footer.address":
     "2024 JBK Services INTERNATIONAL FZ-LLC, Immeuble Compass, Route Al Shohada, Zone Industrielle AL Hamra-FZ, Ras Al Khaimah, Émirats Arabes Unis.",
 
@@ -1042,6 +1052,7 @@ export default {
   "orderConfirmation.bankTransfer": "Virement bancaire",
   "orderConfirmation.statusPaid": "Payée",
   "orderConfirmation.paymentMethod": "Méthode de paiement",
+  "orderConfirmation.qty": "Quantité",
   "orderConfirmation.bottomSpam":
     "Cet email a été envoyé par ibendouma. Pour vous assurer de recevoir nos emails, ajoutez verification@ibendouma.com à votre liste de contacts.",
 
@@ -1124,8 +1135,18 @@ export default {
   "reviews.message-19": "Livraison rapide et service clientèle professionnel.",
   "reviews.title-19": "Livraison rapide et service client professionnel",
 
-  "reviews.message-20": "Meilleur service !",
-  "reviews.title-20": "Meilleur service !",
+  "reviews.message-42":
+    "khadija vendeuse fiable et rapide moins de 3 minute merci à elle et à ibendouma.com",
+  "reviews.title-42": "khadija vendeuse fiable et rapide moins…",
+  "reviews.message-56":
+    "Salut Ilyass, merci beaucoup pour ta rapidité et ton sérieux dans l’échange. Service au top, je te recommande ! ✌️m",
+  "reviews.title-56": "Service au top",
+  "reviews.message-63":
+    "Excellent service, après être tombé deux fois sur des arnaqueurs content de trouver des gens fiables !",
+  "reviews.title-63": "Excellent service",
+  "reviews.message-87":
+    "Service confidant et très rapide , communication avec le staff du site , trèa amicale , je recommande purement ce site",
+  "reviews.title-87": "Service confidant et très rapide",
 
   "reviews.notes": "Noté 4.9 sur 5 sur la base de 11293 sur ibendouma.com",
 
@@ -1278,5 +1299,65 @@ export default {
     "Merci pour votre commande. Nous vous contacterons sous peu pour confirmer les détails de la livraison.",
   "orderFailed.btn": "Retour à l'accueil",
 
-  "announcement.message": "🚧 Nos services ne sont pas encore disponibles mais arrivent bientôt ! Restez à l'écoute pour les mises à jour. 🚧",
+  "announcement.message":
+    "🚧 Nos services ne sont pas encore disponibles mais arrivent bientôt ! Restez à l'écoute pour les mises à jour. 🚧",
+
+  "binance.title": "Paiement Binance Pay",
+  "binance.desc": "Scannez le QR code pour finaliser votre commande",
+  "binance.instructTitle": "Instructions",
+  "binance.instructDesc1":
+    "Ouvrez l'application Binance sur votre appareil mobile",
+  "binance.instructDesc2": "Cliquez sur l'icône Scan en haut à droite",
+  "binance.instructDesc3": "Scannez le QR code pour effectuer le paiement",
+  "binance.instructDesc4": "Vérifiez les détails et confirmez le paiement",
+  "binance.pending": "En attente de paiement...",
+  "binance.infoTitle": "Informations importantes",
+  "binance.infoDesc1":
+    "Une fois le paiement effectué, veuillez patienter pendant que nous vérifions la transaction.",
+  "binance.infoDesc2":
+    "Si vous rencontrez des difficultés, n'hésitez pas à nous contacter via le chat en direct.",
+  "binance.infoDesc3":
+    "Le paiement devrait être traité dans les 1-2 minutes suivant la confirmation.",
+  "binance.infoDesc4":
+    "Ne fermez pas cette page avant la confirmation de votre paiement.",
+  "binance.needhelp": "Besoin d'aide avec votre paiement?",
+  "binance.support": "Contacter le support",
+
+  "paymentMode.selectPayment": "Sélectionner la méthode de paiement",
+  "paymentMode.amount": "Montant",
+  "paymentMode.bonus": "Bonus",
+  "paymentMode.price": "Prix",
+  "paymentMode.feegame": "Frais",
+  "paymentMode.international": "Méthodes de paiement",
+  "paymentMode.morocco": "Virement bancaire marocain",
+  "paymentMode.confirmPayment": "Confirmer le paiement",
+  "paymentMode.processing": "Traitement de la commande...",
+
+  "crypto.title": "Vendez votre Crypto-monnaie en toute sécurité",
+  "crypto.description":
+    "Vous cherchez à vendre vos crypto-monnaies comme Bitcoin, Ethereum, USDT et plus ? Nous vous offrons un service rapide et sécurisé pour vous permettre de convertir vos cryptos en argent réel de manière simple et rapide.",
+  "crypto.paymentMethods": "Méthodes de paiement",
+  "crypto.paypalDesc":
+    "Rapide, fiable, et sécurisé. Recevez votre paiement instantanément.",
+  "crypto.skrillDesc": "Un autre moyen de paiement populaire et sécurisé.",
+  "crypto.sepaDesc":
+    "Pour les clients en Europe, bénéficiez de paiements directement sur votre compte bancaire.",
+  "crypto.bankTransfer": "Virement Bancaire Marocain",
+  "crypto.bankTransferDesc":
+    "Pour nos clients au Maroc, nous offrons la possibilité de recevoir un paiement directement sur votre compte bancaire marocain.",
+  "crypto.telegram": "Telegram",
+  "crypto.whatsapp": "Whatsapp",
+  "crypto.whyChooseUs": "Pourquoi vendre avec nous ?",
+  "crypto.security": "Sécurité garantie",
+  "crypto.securityDesc":
+    "Nous utilisons des protocoles de sécurité avancés pour garantir la sécurité de vos fonds.",
+  "crypto.speed": "Rapidité",
+  "crypto.speedDesc":
+    "Nos transactions sont traitées rapidement. Vous recevrez votre paiement dès que nous recevons vos crypto-monnaies.",
+  "crypto.support": "Soutien client disponible",
+  "crypto.supportDesc":
+    "En cas de doute ou de question, notre équipe de support est à votre disposition via Telegram ou WhatsApp.",
+  "crypto.legalNotice": "Mentions légales",
+  "crypto.legalNoticeDesc":
+    "Tous les paiements sont traités en toute sécurité. Les informations de votre transaction ne sont jamais partagées avec des tiers. Assurez-vous de vérifier toutes les informations avant d'envoyer vos crypto-monnaies.",
 } as const;

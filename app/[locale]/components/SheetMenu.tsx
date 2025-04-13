@@ -58,6 +58,12 @@ const SheetMenu = () => {
             {tScope("exchange")}
           </Link>
           <Link
+            href="/crypto"
+            className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
+          >
+            {tScope("crypto")}
+          </Link>
+          <Link
             href="/vendre-des-kamas"
             className="w-full text-center rounded-[10px] text-sm cursor-pointer bg-[#EDEDED] p-2"
             onClick={() => setIsOpen(false)}

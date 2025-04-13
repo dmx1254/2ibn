@@ -5,17 +5,14 @@ import React from "react";
 import Image from "next/image";
 import visa from "../../../assets/iben/visa.webp";
 import crypto from "../../../assets/iben/crypto.webp";
-import giropay from "../../../assets/iben/giropay.webp";
-import mastercard from "../../../assets/iben/mastercard.webp";
-import neosurf from "../../../assets/iben/neosurf.webp";
-import paysafecard from "../../../assets/iben/paysafecard.webp";
 import paypal from "../../../assets/iben/paypal.png";
-
 
 // import nortonbrand from "../../../assets/secure/nortonbrand.png";
 import sslShopper from "../../../assets/secure/ssl-shopper.svg";
 import ssl from "../../../assets/secure/ssl.png";
 import trustS from "../../../assets/secure/trustS.png";
+import coinpal from "@/public/payMethod/coinpal.png";
+import binance from "@/public/payMethod/binance.png";
 
 import { AiFillLike } from "react-icons/ai";
 import { MdSecurity, MdFlashOn } from "react-icons/md";
@@ -34,10 +31,17 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { BsThreads } from "react-icons/bs";
+import { MdOutlineSupportAgent, MdOutlineWhatsapp } from "react-icons/md";
 
 const Footer = () => {
   const pathname = usePathname();
   const tScope = useScopedI18n("footer");
+
+  function handleChatClick() {
+    //@ts-ignore
+    void window?.Tawk_API.toggle();
+  }
+
   return (
     !pathname.includes("signin") &&
     !pathname.includes("signup") &&
@@ -244,20 +248,13 @@ const Footer = () => {
                   height={20}
                   className="object-cover"
                 />
-                <Image
+                {/* <Image
                   width={40}
                   height={10}
                   src={mastercard}
                   alt="Mastercard"
                   className="object-cover"
-                />
-                <Image
-                  src={paysafecard}
-                  width={90}
-                  height={85}
-                  alt="PaySafeCard"
-                  className="object-cover"
-                />
+                /> */}
                 <Image
                   src={crypto}
                   width={130}
@@ -273,35 +270,20 @@ const Footer = () => {
                   className="object-cover"
                 />
                 <Image
-                  src={neosurf}
-                  width={70}
-                  height={55}
-                  alt="Neosurf"
+                  src={coinpal}
+                  width={150}
+                  height={150}
+                  alt="coinpal"
                   className="object-cover"
                 />
                 <Image
-                  src={giropay}
-                  width={60}
-                  height={40}
-                  alt="Giropay"
+                  src={binance}
+                  width={150}
+                  height={150}
+                  alt="binance"
                   className="object-cover"
                 />
-              
 
-                {/* <Image
-                  src={crd_agricole}
-                  width={120}
-                  height={60}
-                  alt="Marocco bank"
-                  className="object-cover"
-                />
-                <Image
-                  src={sg}
-                  width={100}
-                  height={50}
-                  alt="Marocco bank"
-                  className="object-cover"
-                /> */}
                 <Image
                   src="/paymentfoot2.png"
                   width={240}
@@ -309,28 +291,6 @@ const Footer = () => {
                   alt="Marocco bank"
                   className="object-cover"
                 />
-                {/* <Image
-                  src={barid}
-                  width={35}
-                  height={35}
-                  alt="Barid bank"
-                  className="object-cover rounded"
-                />
-                <Image
-                  src={cdmaroc}
-                  width={70}
-                  height={70}
-                  alt="Marocco bank"
-                  className="object-cover"
-                />
-
-                <Image
-                  src={bnpParibas}
-                  width={35}
-                  height={35}
-                  alt="Barid bank"
-                  className="object-cover rounded"
-                /> */}
               </div>
               <div className="sm:hidden flex items-center justify-center gap-4 max-sm:flex-col self-center my-4">
                 <span className="text-white/80">{tScope("followUs")}</span>
@@ -401,6 +361,44 @@ const Footer = () => {
                     <FaSkype size={15} />
                   </Link>
                 </div>
+              </div>
+
+              <Link
+                href="https://fr.trustpilot.com/evaluate/ibendouma.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 mt-6 mb-2"
+              >
+                <span className="text-sm text-gray-300">
+                  {tScope("giveReviews")}
+                </span>
+                <Image
+                  src="/reviewT.png"
+                  alt="Trustpilot ibendouma reviews"
+                  width={150}
+                  height={150}
+                  className="object-contain"
+                />
+              </Link>
+            </div>
+            <div className="w-full flex sm:hidden items-center p-4 justify-between gap-4 bg-[#212122] h-8">
+              <button
+                className="flex outline-none border-none focus:outline-none items-center justify-center gap-2"
+                onClick={handleChatClick}
+              >
+                <p className="text-sm text-white/80">{tScope("sup")}</p>
+                <MdOutlineSupportAgent className="text-white/80" />
+              </button>
+              <div className="flex items-center gap-2">
+                <p className="text-sm text-white/80">{tScope("what")}</p>
+                <Link
+                  href="https://wa.me/212617972929"
+                  target="__blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center text-green-600 hover:opacity-80"
+                >
+                  <MdOutlineWhatsapp className="text-white/80" />
+                </Link>
               </div>
             </div>
           </div>

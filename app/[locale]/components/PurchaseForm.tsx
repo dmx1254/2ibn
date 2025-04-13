@@ -149,6 +149,9 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
         style: { color: "#16a34a" },
       }
     );
+    setTimeout(() => {
+      router.push("/checkout");
+    }, 1000);
   };
 
   return (
@@ -333,7 +336,7 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
                       {tScope("homeRecapQty")}
                     </span>
                     <span className="text-white font-medium">
-                      {Number(amount)} M
+                      {Number(amount) || 0} M
                     </span>
                   </div>
 

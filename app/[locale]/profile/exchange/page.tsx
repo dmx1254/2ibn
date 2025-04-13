@@ -29,10 +29,13 @@ const StatusBadge = ({ status }: { status: string }) => {
   const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {
       case "terminée":
+      case "paid":
         return "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300";
       case "en attente":
+      case "pending":
         return "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300";
       case "annulée":
+      case "cancelled":
         return "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300";
       default:
         return "bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-gray-300";
@@ -45,9 +48,9 @@ const StatusBadge = ({ status }: { status: string }) => {
         status
       )} font-medium hover:bg-yellow-100 hover:text-yellow-700`}
     >
-      {status === "Terminée" && tScope("completed")}
-      {status === "En attente" && tScope("pending")}
-      {status === "Annulée" && tScope("cancelled")}
+      {(status === "Terminée" || status === "paid") && tScope("completed")}
+      {(status === "En attente" || status === "pending") && tScope("pending")}
+      {(status === "Annulée" || status === "cancelled") && tScope("cancelled")}
     </Badge>
   );
 };

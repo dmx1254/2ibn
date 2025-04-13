@@ -83,6 +83,7 @@ export default {
     "Pedido realizado con éxito. Abre el chat para proceder con el intercambio",
   "cartpage.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
   "cartpage.totalItems": "Total ({totalItems} artículos)",
+  "cartpage.login": "Debes iniciar sesión primero",
 
   "infosect.desctitle": "Comprar y vender Kamas Dofus",
   "infosect.descdesc":
@@ -285,6 +286,7 @@ export default {
   "menu.retro": "Comprar Kamas Dofus Retro",
   "menu.exchange": "Intercambiar Kamas",
   "menu.sell": "Vende tus Kamas",
+  "menu.crypto": "Crypto",
 
   "signup.renderStep1.personnalInformation": "Tu información personal",
   "signup.renderStep1.lastname": "Apellido",
@@ -468,10 +470,15 @@ export default {
   "ordersBuyKamas.notFoundDesc":
     "Parece que aún no has realizado ninguna compra.",
   "ordersBuyKamas.notFoundLink": "Comienza a comprar",
-  "ordersBuyKamas.completed": "Completado",
+  "ordersBuyKamas.completed": "Pagada",
   "ordersBuyKamas.pending": "Pendiente",
   "ordersBuyKamas.cancelled": "Cancelado",
   "ordersBuyKamas.processing": "Procesando",
+  "ordersBuyKamas.gamename": "Juegos",
+  "ordersBuyKamas.qty": "Cantidad",
+  "ordersBuyKamas.bonus": "Bono",
+  "ordersBuyKamas.orderdof": "Mis pedidos de Dofus",
+  "ordersBuyKamas.ordergame": "Mis pedidos de juegos",
 
   "ordersSellKamas.cardTotalSales": "Ventas totales",
   "ordersSellKamas.cardTotalOrders": "Órdenes totales",
@@ -567,6 +574,9 @@ export default {
   "footer.info3": "TyC y Aviso Legal",
   "footer.info4": "Contáctanos",
   "footer.followUs": "Síguenos",
+  "footer.sup": "Soporte en línea 24/7",
+  "footer.what": "WhatsApp directo",
+  "footer.giveReviews": "Dejar una reseña",
   "footer.address":
     "2024 JBK Services INTERNATIONAL FZ-LLC, Edificio Compass, Carretera Al Shohada, Zona Industrial AL Hamra-FZ, Ras Al Khaimah, Emiratos Árabes Unidos.",
 
@@ -999,7 +1009,6 @@ export default {
   "confirmEmail.orderrefunded": "Pedido reembolsado",
   "confirmEmail.paymentmethod": "Método de pago",
 
-
   "confirmEmail.bottomSpam":
     "Este correo electrónico fue enviado por ibendouma. Para asegurarte de recibir nuestros correos, agrega support@ibendouma.com a tu lista de contactos.",
 
@@ -1036,6 +1045,7 @@ export default {
   "orderConfirmation.bankTransfer": "Transferencia bancaria",
   "orderConfirmation.statusPaid": "Pagado",
   "orderConfirmation.paymentMethod": "Método de pago",
+  "orderConfirmation.qty": "Cantidad",
   "orderConfirmation.bottomSpam":
     "Este correo electrónico fue enviado por ibendouma. Para asegurarte de recibir nuestros correos, agrega verification@ibendouma.com a tu lista de contactos.",
 
@@ -1120,6 +1130,19 @@ export default {
 
   "reviews.message-20": "¡El mejor servicio!",
   "reviews.title-20": "¡El mejor servicio!",
+  "reviews.message-42":
+    "Khadija es una vendedora confiable y rápida, menos de 3 minutos. Gracias a ella y a ibendouma.com",
+  "reviews.title-42": "Khadija vendedora confiable y rápida",
+  "reviews.message-56":
+    "Hola Ilyass, muchas gracias por tu rapidez y seriedad. ¡Servicio excelente, te recomiendo! ✌️",
+  "reviews.title-56": "Servicio excelente",
+  "reviews.message-63":
+    "Excelente servicio, después de caer dos veces en estafas, ¡contento de encontrar gente de confianza!",
+  "reviews.title-63": "Servicio excelente",
+  "reviews.message-87":
+    "Servicio confiable y muy rápido, la comunicación con el equipo del sitio es muy amigable, recomiendo totalmente este sitio",
+  "reviews.title-87": "Servicio confiable y muy rápido",
+
   "reviews.notes":
     "Calificado con 4.9 de 5 basado en 11293 reseñas en ibendouma.com",
 
@@ -1269,5 +1292,65 @@ export default {
     "Gracias por su pedido. Nos pondremos en contacto con usted en breve para confirmar los detalles de la entrega.",
   "orderFailed.btn": "Volver a inicio",
 
-  "announcement.message": "🚧 Nuestros servicios no están disponibles pero llegarán pronto! ¡Mantente atento para las actualizaciones. 🚧",
+  "announcement.message":
+    "🚧 Nuestros servicios no están disponibles pero llegarán pronto! ¡Mantente atento para las actualizaciones. 🚧",
+
+  "binance.title": "Pago con Binance Pay",
+  "binance.desc": "Escanea el código QR para completar tu pedido",
+  "binance.instructTitle": "Instrucciones",
+  "binance.instructDesc1":
+    "Abre la aplicación de Binance en tu dispositivo móvil",
+  "binance.instructDesc2":
+    "Toca el ícono de escanear en la parte superior derecha",
+  "binance.instructDesc3": "Escanea el código QR para realizar el pago",
+  "binance.instructDesc4": "Verifica los detalles y confirma el pago",
+  "binance.pending": "Esperando el pago...",
+  "binance.infoTitle": "Información importante",
+  "binance.infoDesc1":
+    "Una vez realizado el pago, espera mientras verificamos la transacción.",
+  "binance.infoDesc2":
+    "Si tienes algún problema, no dudes en contactarnos por el chat en vivo.",
+  "binance.infoDesc3":
+    "El pago debería procesarse dentro de 1–2 minutos después de la confirmación.",
+  "binance.infoDesc4": "No cierres esta página hasta que se confirme tu pago.",
+  "binance.needhelp": "¿Necesitas ayuda con tu pago?",
+  "binance.support": "Contactar soporte",
+
+  "paymentMode.selectPayment": "Seleccionar el método de pago",
+  "paymentMode.amount": "Cantidad",
+  "paymentMode.bonus": "Bonos",
+  "paymentMode.price": "Precio",
+  "paymentMode.feegame": "Fees",
+  "paymentMode.international": "Métodos de pago",
+  "paymentMode.morocco": "Transferencia bancaria marroquí",
+  "paymentMode.confirmPayment": "Confirmar pago",
+  "paymentMode.processing": "Procesando pedido...",
+
+  "crypto.title": "Vende tu criptomonedas de forma segura",
+  "crypto.description":
+    "Buscas vender tus criptomonedas como Bitcoin, Ethereum, USDT y más? Ofrecemos un servicio rápido y seguro para que puedas convertir tus criptos en efectivo de manera fácil y rápida.",
+  "crypto.paymentMethods": "Métodos de pago",
+  "crypto.paypalDesc":
+    "Rápido, fiable y seguro. Recibe tu pago instantáneamente.",
+  "crypto.skrillDesc": "Otro método de pago popular y seguro.",
+  "crypto.sepaDesc":
+    "Para clientes en Europa, benefíciate de pagos directos a tu cuenta bancaria.",
+  "crypto.bankTransfer": "Transferencia bancaria marroquí",
+  "crypto.bankTransferDesc":
+    "Para nuestros clientes en Marruecos, ofrecemos la posibilidad de recibir un pago directamente a tu cuenta bancaria marroquí.",
+  "crypto.telegram": "Telegram",
+  "crypto.whatsapp": "WhatsApp",
+  "crypto.whyChooseUs": "¿Por qué vender con nosotros?",
+  "crypto.security": "Seguridad garantizada",
+  "crypto.securityDesc":
+    "Utilizamos protocolos de seguridad avanzados para garantizar la seguridad de tus fondos.",
+  "crypto.speed": "Rapidez",
+  "crypto.speedDesc":
+    "Nuestras transacciones se procesan rápidamente. Recibirás tu pago tan pronto como recibamos tus criptomonedas.",
+  "crypto.support": "Soporte al cliente disponible",
+  "crypto.supportDesc":
+    "En caso de duda o pregunta, nuestro equipo de soporte está disponible a través de Telegram o WhatsApp.",
+  "crypto.legalNotice": "Aviso legal",
+  "crypto.legalNoticeDesc":
+    "Todos los pagos se procesan de forma segura. Las informaciones de tu transacción no se comparten con terceros. Asegúrate de verificar todas las informaciones antes de enviar tus criptomonedas.",
 } as const;

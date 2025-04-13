@@ -20,11 +20,14 @@ import ProfilePopover from "./ProfilePopover";
 import { useUserPresence } from "@/app/hooks/userPresence";
 import SocialMediaDropdown from "./SocialMediaDropdown ";
 import MobileTopMenus from "./MobileTopMenus";
+import useStore from "@/lib/store-manage";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
   const [isGameHovering, setIsGameHovering] = useState<boolean>(false);
   const [isDofusHovering, setIsDofusHovering] = useState<boolean>(false);
+
+  const { addNewMainting } = useStore();
 
   useUserPresence({
     userId: session?.user.id,
@@ -35,7 +38,24 @@ const Navbar = () => {
 
   const tScope = useScopedI18n("navbar.popover");
   const tScope2 = useScopedI18n("navbar");
+  const tScope3 = useScopedI18n("menu");
   const pathname = usePathname();
+
+  useEffect(() => {
+    const fetchMaintingStatus = async () => {
+      try {
+        const res = await fetch("/api/iben/mainting", {
+          method: "PUT",
+          body: JSON.stringify({ status: "ok" }),
+        });
+        const data = await res.json();
+        addNewMainting(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchMaintingStatus();
+  }, []);
 
   // const [scrollPosition, setScrollPosition] = useState<number>(0);
 
@@ -68,7 +88,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4 max-lg:hidden">
               <Popover open={isDofusHovering} onOpenChange={setIsDofusHovering}>
                 <PopoverTrigger
-                  className="flex items-center text-base text-white transition-colors hover:text-yellow-600"
+                  className="flex items-center text-sm text-white transition-colors hover:text-yellow-600"
                   onMouseEnter={() => setIsDofusHovering(true)}
                 >
                   {tScope("title")} <FaSortDown className="-mt-1.5" />
@@ -94,13 +114,13 @@ const Navbar = () => {
               </Popover>
               <Link
                 href="/echange-de-kamas"
-                className="text-base text-white transition-colors hover:text-yellow-600"
+                className="text-sm text-white transition-colors hover:text-yellow-600"
               >
                 {tScope("link1")}
               </Link>
               <Link
                 href="/vendre-des-kamas"
-                className="text-base text-white transition-colors hover:text-yellow-600"
+                className="text-sm text-white transition-colors hover:text-yellow-600"
               >
                 {tScope("link2")}
               </Link>
@@ -137,6 +157,12 @@ const Navbar = () => {
                   </div>
                 </PopoverContent>
               </Popover>
+              <Link
+                href="/crypto"
+                className="text-sm text-white transition-colors hover:text-yellow-600"
+              >
+                {tScope3("crypto")}
+              </Link>
             </div>
             <div className="flex items-center gap-2 sm:gap-4">
               {session && status === "authenticated" ? (
@@ -148,8 +174,8 @@ const Navbar = () => {
                   href="/signin"
                   className="hidden sm:inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link text-white hover:text-yellow-600"
                 >
-                  <CiUser size={24} className="-mt-1" />
-                  <span className="text-base ">{tScope("account")}</span>
+                  <CiUser size={22} className="-mt-1" />
+                  <span className="text-sm ">{tScope("account")}</span>
                 </Link>
               )}
 

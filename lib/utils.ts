@@ -214,16 +214,39 @@ export const parsedDevise = (cur: string) => {
 
   return symbole;
 };
+export const parsedDeviseNowPayment = (cur: string) => {
+  let symbole = "";
+  switch (cur) {
+    case "euro":
+      symbole = "eur";
+      break;
+    case "dollar":
+      symbole = "usd";
+      break;
+    case "mad":
+      symbole = "mad";
+      break;
+    case "cad":
+      symbole = "cad";
+      break;
+
+    default:
+      symbole = "eur";
+      break;
+  }
+
+  return symbole;
+};
 
 export const returnFormatedPaypalCurrency = (cur: string) => {
   switch (cur) {
-    case "EUR":
+    case "euro":
       return "EUR";
-    case "USD":
+    case "dollar":
       return "USD";
-    case "MAD":
+    case "mad":
       return "MAD";
-    case "CAD":
+    case "cad":
       return "CAD";
     default:
       return "EUR";
@@ -330,40 +353,55 @@ type BankPayment = {
   title: string;
   imgPay: string;
   fee?: number;
+  w: number;
+  h: number;
 };
 
 export const paymentMethod: BankPayment[] = [
-  {
-    id: "JUK51L",
-    title: "visa-google-pay",
-    imgPay: "/payMethod/creditcardgooglepay.webp",
-  },
-  {
-    id: "LPA27P",
-    title: "visa-and-jcb",
-    imgPay: "/payMethod/creditcard_pay.webp",
-  },
-  {
-    id: "YHA4KO",
-    title: "google-pay",
-    imgPay: "/payMethod/google_pay.webp",
-  },
+  // {
+  //   id: "JUK51L",
+  //   title: "visa-google-pay",
+  //   imgPay: "/payMethod/creditcardgooglepay.webp",
+  // },
+  // {
+  //   id: "LPA27P",
+  //   title: "visa-and-jcb",
+  //   imgPay: "/payMethod/creditcard_pay.webp",
+  // },
+  // {
+  //   id: "YHA4KO",
+  //   title: "google-pay",
+  //   imgPay: "/payMethod/google_pay.webp",
+  // },
   {
     id: "BQXP46",
     title: "paypal",
     imgPay: "/payMethod/paypals.webp",
     fee: 3,
+    w: 80,
+    h: 80,
   },
-  {
-    id: "AWB8YT",
-    title: "paysafecard",
-    imgPay: "/payMethod/paysafecard.webp",
-    fee: 7,
-  },
+
   {
     id: "OPLAW1",
     title: "crypto",
     imgPay: "/payMethod/crypto.webp",
+    w: 80,
+    h: 80,
+  },
+  {
+    id: "AWB8YT",
+    title: "binance",
+    imgPay: "/payMethod/binance.svg",
+    w: 110,
+    h: 110,
+  },
+  {
+    id: "HW37UW",
+    title: "coinpal",
+    imgPay: "/payMethod/coinpal.png",
+    w: 110,
+    h: 110,
   },
 ];
 
@@ -392,6 +430,8 @@ export const paymentMethodMorroco: BankPayment[] = [
     id: "OPK41Y6",
     title: "marocco-bank",
     imgPay: "/paymentfoot2.png",
+    w: 200,
+    h: 200,
   },
 ];
 
@@ -444,6 +484,46 @@ export interface Review {
 }
 
 export const trustpilotReviews: Review[] = [
+  {
+    id: 42,
+    name: "doglas morino",
+    reviews: 5,
+    date: "13 avril 2025",
+    message:
+      "khadija vendeuse fiable et rapide moins de 3 minute merci à elle et à ibendouma.com",
+    titre: "khadija vendeuse fiable et rapide moins…",
+    image: "",
+  },
+  {
+    id: 56,
+    name: "ABBAL karim",
+    reviews: 5,
+    date: "24 mars 2025",
+    message:
+      "Salut Ilyass, merci beaucoup pour ta rapidité et ton sérieux dans l’échange. Service au top, je te recommande ! ✌️m",
+    titre: "Service au top",
+    image: "https://user-images.trustpilot.com/67e09d03b135c1e2267bb619/73x73.png",
+  },
+  {
+    id: 63,
+    name: "Moufid Soufiani",
+    reviews: 5,
+    date: "14 mars 2025",
+    message:
+      "Excellent service, après être tombé deux fois sur des arnaqueurs content de trouver des gens fiables !",
+    titre: "Excellent service",
+    image: "https://user-images.trustpilot.com/67d444107062e88038d2ccb7/73x73.png",
+  },
+  {
+    id: 87,
+    name: "Garbouz Zakaria",
+    reviews: 5,
+    date: "12 mars 2025",
+    message:
+      "Service confidant et très rapide , communication avec le staff du site , trèa amicale , je recommande purement ce site",
+    titre: "Service confidant et très rapide",
+    image: "https://user-images.trustpilot.com/67ca2f29bd2f7d8380350470/73x73.png",
+  },
   {
     id: 1,
     name: "Yassine Yousfani",
@@ -840,3 +920,38 @@ export const comments = [
     dateToCreated: "2022-11-05T12:33:42.008Z",
   },
 ];
+
+export interface NowPaymentsIPN {
+  payment_id: string;
+  payment_status: string;
+  order_id: string;
+  price_amount: number;
+  price_currency: string;
+  pay_amount: number;
+  pay_currency: string;
+  purchase_id?: string;
+  created_at: string;
+  updated_at: string;
+  outcome_amount?: number;
+  outcome_currency?: string;
+}
+
+export interface IGamerResp {
+  _id: string;
+  userId: string;
+  name: string;
+  items?: string;
+  orderNum: string;
+  status: string;
+  bonus?: number;
+  type: string;
+  amount: number;
+  price: number;
+  paymentMethod: string;
+  cur: string;
+  valcurrency: number;
+  totalPrice: number;
+  orderIdPaid?: string;
+  createdAt: string;
+  updatedAt: string;
+}

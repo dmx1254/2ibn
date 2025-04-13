@@ -29,6 +29,8 @@ export async function POST(request: Request) {
             lastname: newOrder.billing.lastname,
             cur: newOrder.cur,
             totalPrice: newOrder.totalPrice,
+            status: newOrder.status,
+            paymentMethod: newOrder.paymentMethod,
             dateCreated: newOrder.createdAt,
             products: newOrder.products,
           }),

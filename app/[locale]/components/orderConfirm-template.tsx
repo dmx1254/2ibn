@@ -77,7 +77,7 @@ export const OrderConfirmationTemplate: React.FC<
         <tr>
           <td
             style={{
-              backgroundColor: "#363A3D",
+              
               padding: "10px",
               textAlign: "center",
               fontSize: "24px",
@@ -446,9 +446,10 @@ export const OrderConfirmationTemplate: React.FC<
                       alignItems: "center",
                       justifyContent: "center",
                       padding: "4px",
+                      marginRight: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+                      
                       textDecoration: "none",
                     }}
                   >
@@ -474,7 +475,7 @@ export const OrderConfirmationTemplate: React.FC<
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+                      
                       textDecoration: "none",
                     }}
                   >
@@ -500,7 +501,7 @@ export const OrderConfirmationTemplate: React.FC<
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+                      
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -527,7 +528,7 @@ export const OrderConfirmationTemplate: React.FC<
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+                      
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -554,7 +555,7 @@ export const OrderConfirmationTemplate: React.FC<
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+                      
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -581,7 +582,7 @@ export const OrderConfirmationTemplate: React.FC<
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+                      
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -608,7 +609,7 @@ export const OrderConfirmationTemplate: React.FC<
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+                      
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -635,7 +636,7 @@ export const OrderConfirmationTemplate: React.FC<
                       padding: "4px",
                       borderRadius: "9999px",
                       border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+                      
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}

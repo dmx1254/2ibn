@@ -1,128 +1,139 @@
-// import { ibenModels } from "@/lib/models/ibendouma-models";
-// import { returnFormatedPaypalCurrency } from "@/lib/utils";
-// import axios from "axios";
-// import { NextResponse } from "next/server";
-// import { NextRequest } from "next/server";  
+import { ibenModels } from "@/lib/models/ibendouma-models";
+import { returnFormatedPaypalCurrency } from "@/lib/utils";
+import axios from "axios";
+import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
-// // Configuration PayPal
-// const isProduction = process.env.NODE_ENV === "production";
+// Configuration PayPal
+const isProduction = process.env.NODE_ENV === "production";
 
-// const PAYPAL_CONFIG = {
-//   clientId: isProduction
-//     ? process.env.PAYPAL_LIVE_CLIENT_ID
-//     : process.env.PAYPAL_SANDBOX_CLIENT_ID,
-//   clientSecret: isProduction
-//     ? process.env.PAYPAL_LIVE_CLIENT_SECRET
-//     : process.env.PAYPAL_SANDBOX_CLIENT_SECRET,
-//   baseUrl: isProduction
-//     ? process.env.PAYPAL_LIVE_BASE_URL
-//     : process.env.PAYPAL_SANDBOX_BASE_URL,
-// };
+const PAYPAL_CONFIG = {
+  clientId: isProduction
+    ? process.env.PAYPAL_LIVE_CLIENT_ID
+    : process.env.PAYPAL_SANDBOX_CLIENT_ID,
+  clientSecret: isProduction
+    ? process.env.PAYPAL_LIVE_CLIENT_SECRET
+    : process.env.PAYPAL_SANDBOX_CLIENT_SECRET,
+  baseUrl: isProduction
+    ? process.env.PAYPAL_LIVE_BASE_URL
+    : process.env.PAYPAL_SANDBOX_BASE_URL,
+};
 
-// // console.log(PAYPAL_CONFIG);
+// console.log(PAYPAL_CONFIG);
 
-// const getAcceToken = async () => {
-//   try {
-//     const auth = Buffer.from(
-//       PAYPAL_CONFIG.clientId + ":" + PAYPAL_CONFIG.clientSecret
-//     ).toString("base64");
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/x-www-form-urlencoded",
-//         Authorization: `Basic ${auth}`,
-//       },
-//     };
-//     const data = "grant_type=client_credentials";
+const getAcceToken = async () => {
+  try {
+    const auth = Buffer.from(
+      PAYPAL_CONFIG.clientId + ":" + PAYPAL_CONFIG.clientSecret
+    ).toString("base64");
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Basic ${auth}`,
+      },
+    };
+    const data = "grant_type=client_credentials";
 
-//     const response = await axios.post(
-//       `${PAYPAL_CONFIG.baseUrl}/v1/oauth2/token`,
-//       data,
-//       config
-//     );
+    const response = await axios.post(
+      `${PAYPAL_CONFIG.baseUrl}/v1/oauth2/token`,
+      data,
+      config
+    );
 
-//     return response.data.access_token;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+    return response.data.access_token;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-// // Vérification de la configuration
-// if (
-//   !PAYPAL_CONFIG.clientId ||
-//   !PAYPAL_CONFIG.clientSecret ||
-//   !PAYPAL_CONFIG.baseUrl
-// ) {
-//   throw new Error("Configuration PayPal manquante");
-// }
+// Vérification de la configuration
+if (
+  !PAYPAL_CONFIG.clientId ||
+  !PAYPAL_CONFIG.clientSecret ||
+  !PAYPAL_CONFIG.baseUrl
+) {
+  throw new Error("Configuration PayPal manquante");
+}
 
-// export async function POST(req: NextRequest) {
-//   const { data: orderData, object } = await req.json();
-//   // console.log(orderData, object);
-//   const accessToken = await getAcceToken();
-//   // console.log(accessToken);
+export async function POST(req: NextRequest) {
+  const { data: orderData, object } = await req.json();
+  // console.log(orderData, object);
+  const accessToken = await getAcceToken();
 
-//   const { OrderModelIben } = await ibenModels;
+  const type = orderData.type;
+  // console.log(accessToken);
 
-//   try {
-//     const totalPrice = orderData.totalPrice;
-//     const currency = returnFormatedPaypalCurrency(orderData.cur);
+  const { OrderModelIben, GameModel } = await ibenModels;
 
-//     const data = {
-//       intent: "CAPTURE",
-//       purchase_units: [
-//         {
-//           amount: {
-//             value: totalPrice,
-//             currency_code: currency,
-//           },
-//         },
-//       ],
-//       application_context: {
-//         return_url: `${process.env.BASE_URL}/order-success?orderId=${orderData.orderNum}`,
-//         cancel_url: `${process.env.BASE_URL}/order-failled?orderId=${orderData.orderNum}`,
-//       }
-//     };
+  try {
+    const totalPrice = orderData.totalPrice;
+    const currency = returnFormatedPaypalCurrency(orderData.cur);
 
-//     const createOrder = await axios.post(
-//       `${PAYPAL_CONFIG.baseUrl}/v2/checkout/orders`,
-//       data,
-//       {
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: `Bearer ${accessToken}`,
-//         },
-//       }
-//     );
+    const data = {
+      intent: "CAPTURE",
+      purchase_units: [
+        {
+          amount: {
+            value: totalPrice,
+            currency_code: currency,
+          },
+        },
+      ],
+      application_context: {
+        return_url: `${process.env.BASE_URL}/order-success?orderId=${orderData.orderNum}&type=${type}`,
+        cancel_url: `${process.env.BASE_URL}/order-failled?orderId=${orderData.orderNum}&type=${type}`,
+      },
+    };
 
-//     const orderIdPaid = createOrder.data.id;
-//     const newOrder = {
-//       ...orderData,
-//       orderIdPaid: orderIdPaid,
-//     }
+    const createOrder = await axios.post(
+      `${PAYPAL_CONFIG.baseUrl}/v2/checkout/orders`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
 
-//     await OrderModelIben.create(newOrder);
-//     const approveLink = createOrder.data.links.find((link: { rel: string; href: string }) => link.rel === 'approve');
+    const orderIdPaid = createOrder.data.id;
+    const newOrder = {
+      ...orderData,
+      orderIdPaid: orderIdPaid,
+    };
 
-//     if (approveLink) {
-//       return NextResponse.json({
-//         redirectUrl: approveLink.href,
-//       }, { status: 200 });
-//     }
-    
+    if (type && type === "game") {
+      await GameModel.create(newOrder);
+    } else {
+      await OrderModelIben.create(newOrder);
+    }
 
-//     // return NextResponse.json(createOrder.data, { status: 200 });
-//     // console.log("----------------createOrder----------------");
-//     // console.log(createOrder.data);
-//   } catch (error) {
-//     NextResponse.json(
-//       {
-//         success: false,
-//         message: "Erreur lors de la création de la commande PayPal",
-//         error: error,
-//       },
-//       { status: 500 }
-//     );
+    const approveLink = createOrder.data.links.find(
+      (link: { rel: string; href: string }) => link.rel === "approve"
+    );
 
-//     console.log(error);
-//   }
-// }
+    if (approveLink) {
+      return NextResponse.json(
+        {
+          redirectUrl: approveLink.href,
+        },
+        { status: 200 }
+      );
+    }
+
+    // return NextResponse.json(createOrder.data, { status: 200 });
+    // console.log("----------------createOrder----------------");
+    // console.log(createOrder.data);
+  } catch (error) {
+    NextResponse.json(
+      {
+        success: false,
+        message: "Erreur lors de la création de la commande PayPal",
+        error: error,
+      },
+      { status: 500 }
+    );
+
+    console.log(error);
+  }
+}

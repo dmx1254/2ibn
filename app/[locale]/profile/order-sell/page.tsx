@@ -78,12 +78,16 @@ const ProfileSellPage = () => {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "payée":
+      case "paid":
         return "bg-green-500";
       case "en attente":
+      case "pending":
         return "bg-yellow-500";
       case "en cours de payment":
+      case "processing":
         return "bg-blue-500";
       case "annulée":
+      case "cancelled":
         return "bg-red-500";
       default:
         return "bg-gray-500";
@@ -198,10 +202,17 @@ const ProfileSellPage = () => {
                           : parsedDevise(devise.currencyName)}
                       </span>
                       <Badge className={getStatusColor(order.status)}>
-                        {order.status === "Payée" && tScope("completed")}
-                        {order.status === "En attente" && tScope("pending")}
-                        {order.status === "Annulée" && tScope("cancelled")}
-                        {order.status === "En Cours de payment" &&
+                        {(order.status === "Payée" ||
+                          order.status === "paid") &&
+                          tScope("completed")}
+                        {(order.status === "En attente" ||
+                          order.status === "pending") &&
+                          tScope("pending")}
+                        {(order.status === "Annulée" ||
+                          order.status === "cancelled") &&
+                          tScope("cancelled")}
+                        {(order.status === "En Cours de payment" ||
+                          order.status === "processing") &&
                           tScope("processing")}
                       </Badge>
                     </div>

@@ -1,19 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
-import { ArrowLeft, Trash2, Minus, Plus, Check, Loader } from "lucide-react";
+import React from "react";
+import { Minus, Plus } from "lucide-react";
 import useStore from "@/lib/store-manage";
-import { imageReturn, orderBuyNumGenerated, parsedDevise } from "@/lib/utils";
-import { Cart } from "@/lib/types/types";
-import clsx from "clsx";
+import { parsedDevise } from "@/lib/utils";
 import Link from "next/link";
 import { useScopedI18n } from "@/locales/client";
-import axios from "axios";
-import { toast } from "sonner";
-import InfoSection from "../components/InfoSection";
 import EmptyCart from "../components/EmptyCart";
-import { useSession } from "next-auth/react";
 
 import {
   Table,
@@ -27,11 +20,8 @@ import {
 import { TiDelete } from "react-icons/ti";
 
 const CartPage: React.FC = () => {
-  const { data: session } = useSession();
   const tScope = useScopedI18n("cartpage");
   const { carts, removeFromCart, updateToCart, clearCart } = useStore();
-  const [activePaymentMethod, setActivePaymentMethod] = useState("");
-  const [isOrderLoading, setIsOrderLoading] = useState<boolean>(false);
 
   const subtotal = carts.reduce((total, item) => total + item.totalPrice, 0);
   const shipping = 0.0;
@@ -182,17 +172,13 @@ const CartPage: React.FC = () => {
             >
               {tScope("continueShop")}
             </Link>
-            {/* {/*
+
             <Link
               href="/checkout"
               className="bg-black/80 text-white/80 p-2 rounded transition-colors hover:bg-black/90"
             >
               {tScope("order")}
-            </Link> */}
-
-            <span className="bg-black/80 text-white/80 p-2 rounded transition-colors hover:bg-black/90">
-              {tScope("order")}
-            </span>
+            </Link>
           </div>
         </div>
       )}

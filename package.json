@@ -29,6 +29,7 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "coinpal-sdk": "^2.0.0",
     "country-state-city": "^3.2.1",
     "crypto": "^1.0.1",
     "date-fns": "^4.1.0",
