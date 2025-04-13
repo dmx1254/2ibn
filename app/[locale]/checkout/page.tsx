@@ -263,9 +263,11 @@ const ConfirmationStep = ({
           <button
             onClick={handleCheckout}
             className="p-3 bg-black/80 text-white rounded transition-colors hover:opacity-85"
-            disabled={(status !== "authenticated" && !invitedAccount) || isMainting}
+            disabled={
+              (status !== "authenticated" && !invitedAccount) || isMainting
+            }
             style={{
-              opacity: (status !== "authenticated" && !invitedAccount) ? 0.6 : 1,
+              opacity: status !== "authenticated" && !invitedAccount ? 0.6 : 1,
             }}
           >
             {isOrderLoading ? (
@@ -424,11 +426,6 @@ const Checkout = () => {
     }
   };
 
-  // function handleChatClick() {
-  //   //@ts-ignore
-  //   void window?.Tawk_API.toggle();
-  // }
-
   const handleCheckout = async () => {
     const products = carts.map((cart) => {
       return {
@@ -506,34 +503,7 @@ const Checkout = () => {
       } finally {
         setIsOrderLoading(false);
       }
-    }
-    // else if (isActivePayment === "binance") {
-    //   try {
-    //     setIsOrderLoading(true);
-    //     const result = await axios.post("/api/iben/order", {
-    //       data,
-    //       object: tScopeConfirm("object"),
-    //     });
-    //     if (result.data) {
-    //       toast.success(tScope("success"), {
-    //         style: { color: "#16a34a" },
-    //       });
-
-    //       setTimeout(() => {
-    //         // handleChatClick();
-    //         router.push("/pay-with-binance");
-    //       }, 1000);
-    //     }
-    //   } catch (error) {
-    //     toast.success(tScope("error"), {
-    //       style: { color: "#dc2626" },
-    //     });
-    //     console.log(error);
-    //   } finally {
-    //     setIsOrderLoading(false);
-    //   }
-    // }
-    else {
+    } else {
       try {
         setIsOrderLoading(true);
         const result = await axios.post("/api/iben/order", {

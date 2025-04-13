@@ -49,17 +49,6 @@ export const GamePaymentDialog = ({
   const [isPaying, setIsPaying] = useState<boolean>(false);
   const [selectedMethod, setSelectedMethod] = useState<string>("");
 
-  // console.log(product);
-  // console.log(gameTitle);
-
-  // const handlePaymentSelect = async (method: string) => {
-  //   try {
-  //   } catch (error) {
-  //   } finally {
-  //     setIsPaying(false);
-  //   }
-  // };
-
   const handleCheckout = async () => {
     const data = {
       userId: session?.user.id,
@@ -77,21 +66,6 @@ export const GamePaymentDialog = ({
       valcurrency: Number(devise.curencyVal),
       price: Number(product.price / devise.curencyVal).toFixed(2),
     };
-
-    // userId: string;
-    // name: string;
-    // items: string;
-    // orderNum: string;
-    // status: GameStatus;
-    // bonus?:number;
-    // type: GameType;
-    // amount: number;
-    // price: number;
-    // paymentMethod: string;
-    // currency: string;
-    // valcurrency: number;
-    // totalPrice: number;
-    // orderIdPaid?: string;
 
     if (!session?.user.id) {
       toast.error(tScope("login"), {
@@ -141,35 +115,7 @@ export const GamePaymentDialog = ({
       } finally {
         setIsPaying(false);
       }
-    }
-
-    // else if (selectedMethod === "binance") {
-    //   try {
-    //     setIsPaying(true);
-    //     const result = await axios.post("/api/iben/order", {
-    //       data,
-    //       object: tScopeConfirm("object"),
-    //     });
-    //     if (result.data) {
-    //       toast.success(tScope("success"), {
-    //         style: { color: "#16a34a" },
-    //       });
-
-    //       setTimeout(() => {
-    //         // handleChatClick();
-    //         router.push("/pay-with-binance");
-    //       }, 1000);
-    //     }
-    //   } catch (error) {
-    //     toast.success(tScope("error"), {
-    //       style: { color: "#dc2626" },
-    //     });
-    //     console.log(error);
-    //   } finally {
-    //     setIsPaying(false);
-    //   }
-    // }
-    else {
+    } else {
       try {
         setIsPaying(true);
         const result = await axios.post("/api/iben/order", {
@@ -198,10 +144,6 @@ export const GamePaymentDialog = ({
 
     // console.log("data", data);
   };
-
-  // console.log(product);
-  // console.log(gameTitle);
-  // console.log(selectedMethod);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
