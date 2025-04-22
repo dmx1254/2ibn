@@ -68,8 +68,7 @@ async function initializeModels(): Promise<any> {
     serverPrice: number; // Changez à number si c'est un nombre
     serverMinQty: number;
   }
-
-  interface Product extends Document {
+ interface Product extends Document {
     productId: string;
     category: string;
     server: string;

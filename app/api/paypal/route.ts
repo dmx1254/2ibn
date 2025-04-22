@@ -7,23 +7,23 @@ import { NextRequest } from "next/server";
 // Configuration PayPal
 const isProduction = process.env.NODE_ENV === "production";
 
-// const PAYPAL_CONFIG = {
-//   clientId: isProduction
-//     ? process.env.PAYPAL_LIVE_CLIENT_ID
-//     : process.env.PAYPAL_SANDBOX_CLIENT_ID,
-//   clientSecret: isProduction
-//     ? process.env.PAYPAL_LIVE_CLIENT_SECRET
-//     : process.env.PAYPAL_SANDBOX_CLIENT_SECRET,
-//   baseUrl: isProduction
-//     ? process.env.PAYPAL_LIVE_BASE_URL
-//     : process.env.PAYPAL_SANDBOX_BASE_URL,
-// };
-
 const PAYPAL_CONFIG = {
-  clientId: process.env.PAYPAL_LIVE_CLIENT_ID,
-  clientSecret: process.env.PAYPAL_LIVE_CLIENT_SECRET,
-  baseUrl: process.env.PAYPAL_LIVE_BASE_URL,
+  clientId: isProduction
+    ? process.env.PAYPAL_LIVE_CLIENT_ID
+    : process.env.PAYPAL_SANDBOX_CLIENT_ID,
+  clientSecret: isProduction
+    ? process.env.PAYPAL_LIVE_CLIENT_SECRET
+    : process.env.PAYPAL_SANDBOX_CLIENT_SECRET,
+  baseUrl: isProduction
+    ? process.env.PAYPAL_LIVE_BASE_URL
+    : process.env.PAYPAL_SANDBOX_BASE_URL,
 };
+
+// const PAYPAL_CONFIG = {
+//   clientId: process.env.PAYPAL_LIVE_CLIENT_ID,
+//   clientSecret: process.env.PAYPAL_LIVE_CLIENT_SECRET,
+//   baseUrl: process.env.PAYPAL_LIVE_BASE_URL,
+// };
 
 // console.log(PAYPAL_CONFIG);
 
@@ -58,7 +58,7 @@ if (
   !PAYPAL_CONFIG.clientSecret ||
   !PAYPAL_CONFIG.baseUrl
 ) {
-  throw new Error("Configuration PayPal manquante");
+  throw new Error("Configuration PayPal manquante"); 
 }
 
 export async function POST(req: NextRequest) {
@@ -75,6 +75,13 @@ export async function POST(req: NextRequest) {
     const totalPrice = orderData.totalPrice;
     const currency = returnFormatedPaypalCurrency(orderData.cur);
 
+    const productName =
+      orderData.type === "game" ? orderData.name : "Dofus Items";
+    const description =
+      orderData.type === "game"
+        ? `Service ${orderData.name}`
+        : "Produits dofus";
+
     const data = {
       intent: "CAPTURE",
       purchase_units: [
@@ -82,7 +89,21 @@ export async function POST(req: NextRequest) {
           amount: {
             value: totalPrice,
             currency_code: currency,
+            breakdown: {
+              item_total: {
+                value: totalPrice,
+                currency_code: currency,
+              },
+            },
           },
+          items: [
+            {
+              name: productName,
+              description,
+              unit_amount: { currency_code: currency, value: totalPrice },
+              quantity: "1",
+            },
+          ],
         },
       ],
       application_context: {
