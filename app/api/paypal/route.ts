@@ -7,22 +7,16 @@ import { NextRequest } from "next/server";
 // Configuration PayPal
 const isProduction = process.env.NODE_ENV === "production";
 
-// const PAYPAL_CONFIG = {
-//   clientId: isProduction
-//     ? process.env.PAYPAL_LIVE_CLIENT_ID
-//     : process.env.PAYPAL_SANDBOX_CLIENT_ID,
-//   clientSecret: isProduction
-//     ? process.env.PAYPAL_LIVE_CLIENT_SECRET
-//     : process.env.PAYPAL_SANDBOX_CLIENT_SECRET,
-//   baseUrl: isProduction
-//     ? process.env.PAYPAL_LIVE_BASE_URL
-//     : process.env.PAYPAL_SANDBOX_BASE_URL,
-// };
-
 const PAYPAL_CONFIG = {
-  clientId: process.env.PAYPAL_LIVE_CLIENT_ID,
-  clientSecret: process.env.PAYPAL_LIVE_CLIENT_SECRET,
-  baseUrl: process.env.PAYPAL_LIVE_BASE_URL,
+  clientId: isProduction
+    ? process.env.PAYPAL_LIVE_CLIENT_ID
+    : process.env.PAYPAL_SANDBOX_CLIENT_ID,
+  clientSecret: isProduction
+    ? process.env.PAYPAL_LIVE_CLIENT_SECRET
+    : process.env.PAYPAL_SANDBOX_CLIENT_SECRET,
+  baseUrl: isProduction
+    ? process.env.PAYPAL_LIVE_BASE_URL
+    : process.env.PAYPAL_SANDBOX_BASE_URL,
 };
 
 // console.log(PAYPAL_CONFIG);
