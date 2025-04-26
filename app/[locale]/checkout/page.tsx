@@ -94,13 +94,16 @@ const PaymentStep = ({
               aria-label={`${p.title} payment method`}
               key={p.id}
               className="flex items-center gap-2 cursor-pointer"
+              style={{
+                opacity: p.title === "paypal" ? 0.5 : 1,
+              }}
               onClick={() => handleActivePayment(p.title)}
             >
               <input
                 type="radio"
                 className="cursor-pointer"
                 onChange={() => handleActivePayment(p.title)}
-                checked={isActivePayment === p.title}
+                checked={p.title !== "paypal" && isActivePayment === p.title}
               />
               <img
                 className={`w-[200px] h-auto object-contain object-center`}
@@ -366,7 +369,9 @@ const Checkout = () => {
   const total = subtotal + shipping;
 
   const handleActivePayment = (payment: string) => {
-    setIsActivePayment(payment);
+    if (payment !== "paypal") {
+      setIsActivePayment(payment);
+    }
   };
 
   // console.log(isActivePayment);

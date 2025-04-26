@@ -208,9 +208,17 @@ export const GamePaymentDialog = ({
                         ? "border-yellow-500"
                         : "border-gray-300"
                     }`}
-                    onClick={() => setSelectedMethod(method.title)}
+                    style={{
+                      opacity: method.title === "paypal" ? 0.5 : 1,
+                    }}
+                    onClick={() => {
+                      if (method.title !== "paypal") {
+                        setSelectedMethod(method.title);
+                      }
+                    }}
                   >
-                    {selectedMethod === method.title ? (
+                    {method.title !== "paypal" &&
+                    selectedMethod === method.title ? (
                       <IoIosCheckmarkCircleOutline
                         className="w-5 h-5 text-yellow-500 cursor-pointer"
                         onClick={() => setSelectedMethod(method.title)}
