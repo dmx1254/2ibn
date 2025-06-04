@@ -120,7 +120,7 @@ export default function RootLayout({
           "w-full h-full antialiased font-sans bg-gray-50"
         )}
       >
-        <div className="relative w-full h-full home-all">
+        <div className="relative w-full h-full home-all hidden">
           <Providers locale={params.locale}>
             <QueryProvider>
               <ProviderSession>
