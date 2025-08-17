@@ -45,6 +45,10 @@ const EchangeKamasClient = () => {
   >(null);
   const [loadingExchange, setLoadingExchange] = useState<boolean>(false);
   const [rate, setRate] = useState<number>(100);
+  const [exchangeRate, setExchangeRate] = useState<number | undefined>(1);
+  const [serverExchangeRate, setServerExchangeRate] = useState<string>("");
+
+  // console.log(serversExchange);
 
   const formSchema = z.object({
     serverToPay: z.string().min(1, { message: tScope("serverToPayErr") }),
@@ -126,19 +130,62 @@ const EchangeKamasClient = () => {
     const serverToPayPrice = serversExchange?.find(
       (s) => s.serverName === serverToPay
     )?.serverPriceDh;
+
     const serverToReceivePrice = serversExchange?.find(
       (s) => s.serverName === serverToReceive
     )?.serverPriceDh;
+
+    const serverToReceiveRate = serversExchange?.find(
+      (s) => s.serverName === serverToReceive
+    )?.rate;
+
+    const activeServer = serversExchange?.find(
+      (s) => s.serverName === serverToReceive
+    )?.serverName;
+
+    setServerExchangeRate(activeServer || "");
+
+    const activeServerRate = serversExchange?.find(
+      (s) => s.serverName === serverToPay
+    )?.rate;
+
+    setExchangeRate(activeServerRate);
+
+    // console.log("activeServerRate: ", activeServerRate);
+
+
+    // console.log("serverToPayRate: ", serverToPayRate);
+    // console.log("serverToReceiveRate: ", serverToReceiveRate);
+
+    // console.log(serverToPayPrice, serverToReceivePrice);
     const total =
       ((Number(serverToPayPrice) * Number(quantityToPay)) /
         Number(serverToReceivePrice)) *
-      (1 - Number(rate / 100));
+      (1 - Number(serverToReceiveRate));
     const totalToReceive = Number(total).toFixed(2);
     if (totalToReceive)
       setValue("quantityToReceive", totalToReceive.toString());
   }, [serverToPay, serverToReceive, quantityToPay]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    const getStatusServer = serversExchange?.find(
+      (s) => s.serverName === values.serverToPay
+    )?.serverStatus;
+
+    if (
+      getStatusServer?.toLocaleLowerCase() === "stock complet" ||
+      getStatusServer?.toLocaleLowerCase() === "complet"
+    ) {
+      toast.error(
+        `desolé, nous n'avons pas besoin du serveur: ${values.serverToPay} pour le moment`,
+        {
+          style: { color: "#dc2626" },
+          position: "top-right",
+        }
+      );
+      return;
+    }
+
     if (
       !values.serverToPay ||
       !values.serverToReceive ||
@@ -150,10 +197,12 @@ const EchangeKamasClient = () => {
       toast.error(tScope("missingfield"), {
         style: { color: "#dc2626" },
       });
+      return;
     } else if (!session?.user.id) {
       toast.error(tScope("usernotlogin"), {
         style: { color: "#dc2626" },
       });
+      return;
     } else {
       const data = {
         userId: session?.user.id,
@@ -401,6 +450,14 @@ const EchangeKamasClient = () => {
                         )}
                       />
                     </div>
+                    {serverExchangeRate && exchangeRate && (
+                      <p className="text-white/90 font-medium text-sm text-center">
+                        {tScope("serverExchangeRate", {
+                          servername: serverExchangeRate,
+                          serverRate: exchangeRate * 100 + "%",
+                        })}
+                      </p>
+                    )}
 
                     <FormField
                       control={form.control}
@@ -444,8 +501,11 @@ const EchangeKamasClient = () => {
                   <Button
                     type="submit"
                     className="w-full h-11 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-lg transition-colors duration-200"
-                    disabled={loadingExchange || isMainting}
-                    aria-label="Excahnge order button"
+                    disabled={
+                      loadingExchange
+                      //  || isMainting
+                    }
+                    aria-label="Exchange order button"
                   >
                     {loadingExchange ? (
                       <span className="flex items-center justify-center gap-2">

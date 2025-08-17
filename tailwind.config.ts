@@ -63,6 +63,7 @@ const config: Config = {
       },
       fontFamily: {
         poppins: "var(--font-poppins)",
+        roboto: "var(--font-roboto)",
       },
       borderRadius: {
         lg: "var(--radius)",

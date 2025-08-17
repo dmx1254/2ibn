@@ -1,7 +1,7 @@
 import { Schema, Document } from "mongoose";
 import { connectDB, getConnections } from "../db";
 
-const crypto = require("crypto");
+import crypto from "crypto";
 
 const secretKey = process.env.TOKEN_SECRET_PAYMENT_CRYPT; // À stocker de manière sécurisée, par exemple dans des variables d'environnement.
 
@@ -59,6 +59,17 @@ async function initializeModels(): Promise<any> {
 
   interface IMainting extends Document {
     mainting: boolean;
+    message: string;
+  }
+
+  interface IPromotion extends Document {
+    promotion: boolean;
+    message: string;
+  }
+
+  interface IUpdate extends Document {
+    update: boolean;
+    message: string;
   }
 
   interface IServer extends Document {
@@ -68,7 +79,8 @@ async function initializeModels(): Promise<any> {
     serverPrice: number; // Changez à number si c'est un nombre
     serverMinQty: number;
   }
- interface Product extends Document {
+
+  interface Product extends Document {
     productId: string;
     category: string;
     server: string;
@@ -88,7 +100,6 @@ async function initializeModels(): Promise<any> {
     paymentMethod: string;
     orderIdPaid: string;
     cur: string;
-    type: GameType;
     valCurency: number;
     billing?: any;
     status: string;
@@ -135,72 +146,22 @@ async function initializeModels(): Promise<any> {
     lastIpUsed: string;
   }
 
-  enum GameStatus {
-    PENDING = "pending",
-    PAID = "paid",
-    CANCELLED = "cancelled",
-    PROCESSING = "processing",
+  interface Referral extends Document {
+    referrerId: string;
+    referredId: string;
+    referralCode: string;
+    status: string;
+    points: number;
   }
 
-  enum GameType {
-    GAME = "game",
-    DOFUS = "dofus",
-  }
-
-  interface IGamer extends Document {
+  interface ReferralCode extends Document {
     userId: string;
-    name: string;
-    items?: string;
-    orderNum: string;
-    status: GameStatus;
-    bonus?: number;
-    type: GameType;
-    amount: number;
-    price: number;
-    paymentMethod: string;
-    cur: string;
-    valcurrency: number;
-    totalPrice: number;
-    orderIdPaid?: string;
+    code: string;
+    isActive: boolean;
+    totalReferrals: number;
+    totalPoints: number;
+    maxReferrals: number;
   }
-
-  const maintingSchema = new Schema({
-    mainting: {
-      type: Boolean,
-      default: false,
-    },
-  });
-
-  // Création du schéma Mongoose
-  const gamerSchema = new Schema(
-    {
-      userId: { type: String, required: true },
-      orderNum: { type: String, required: true },
-      name: { type: String, required: true },
-      items: { type: String, required: false },
-      status: {
-        type: String,
-        enum: Object.values(GameStatus),
-        default: GameStatus.PENDING,
-        required: true,
-      },
-      type: {
-        type: String,
-        enum: Object.values(GameType),
-        default: GameType.GAME,
-        required: true,
-      },
-      amount: { type: Number, required: true },
-      price: { type: Number, required: true },
-      paymentMethod: { type: String, required: true },
-      totalPrice: { type: Number, required: true },
-      cur: { type: String, required: true },
-      valcurrency: { type: Number, required: true },
-      orderIdPaid: { type: String, required: false },
-      bonus: { type: Number, required: false },
-    },
-    { timestamps: true }
-  );
 
   const paymentMethodSchema = new Schema({
     userId: {
@@ -243,6 +204,128 @@ async function initializeModels(): Promise<any> {
 
   paymentMethodSchema.set("toJSON", {
     getters: true,
+  });
+
+  // Referral Schema for the parrainage system
+  const referralSchema: Schema = new Schema(
+    {
+      referrerId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      referredId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      referralCode: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+      status: {
+        type: String,
+        enum: ["pending", "active", "completed", "expired", "cancelled"],
+        default: "pending",
+      },
+      points: {
+        type: Number,
+        default: 1,
+      },
+      bonusPoints: {
+        type: Number,
+        default: 0,
+      },
+      isFirstOrder: {
+        type: Boolean,
+        default: false,
+      },
+      completedAt: {
+        type: Date,
+        default: null,
+      },
+      expiresAt: {
+        type: Date,
+        default: function () {
+          // Expire after 30 days
+          return new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+        },
+      },
+    },
+    {
+      timestamps: true,
+    }
+  );
+
+  // Referral Code Schema for managing unique codes
+  const referralCodeSchema: Schema = new Schema(
+    {
+      userId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+        unique: true,
+      },
+      code: {
+        type: String,
+        required: true,
+        unique: true,
+        uppercase: true,
+      },
+      isActive: {
+        type: Boolean,
+        default: true,
+      },
+      totalReferrals: {
+        type: Number,
+        default: 0,
+      },
+      totalPoints: {
+        type: Number,
+        default: 0,
+      },
+      maxReferrals: {
+        type: Number,
+        default: 50, // Maximum referrals per user
+      },
+    },
+    {
+      timestamps: true,
+    }
+  );
+
+  const maintingSchema = new Schema({
+    mainting: {
+      type: Boolean,
+      default: false,
+    },
+    message: {
+      type: String,
+      default: "",
+    },
+  });
+
+  const promotionSchema = new Schema({
+    promotion: {
+      type: Boolean,
+      default: false,
+    },
+    message: {
+      type: String,
+      default: "",
+    },
+  });
+
+  const updateSchema = new Schema({
+    update: {
+      type: Boolean,
+      default: false,
+    },
+    message: {
+      type: String,
+      default: "",
+    },
   });
 
   const userSchema: Schema = new Schema(
@@ -331,6 +414,51 @@ async function initializeModels(): Promise<any> {
         type: String,
         default: "",
       },
+
+      // Referral System Fields
+      referralCode: {
+        type: String,
+        unique: true,
+        sparse: true,
+      },
+      usedReferralCode: {
+        type: String,
+        default: null,
+      },
+      referredBy: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        default: null,
+      },
+      referralPoints: {
+        type: Number,
+        default: 0,
+      },
+      totalReferrals: {
+        type: Number,
+        default: 0,
+      },
+      referralLevel: {
+        type: String,
+        enum: ["bronze", "silver", "gold", "platinum", "diamond"],
+        default: "bronze",
+      },
+      referralRewards: [
+        {
+          type: {
+            type: String,
+            enum: ["discount", "bonus", "feature", "gift"],
+            required: true,
+          },
+          value: {
+            type: Number,
+            required: true,
+          },
+          description: String,
+          claimedAt: Date,
+          expiresAt: Date,
+        },
+      ],
     },
     {
       timestamps: true,
@@ -350,14 +478,6 @@ async function initializeModels(): Promise<any> {
       paymentMethod: {
         type: String,
       },
-
-      type: {
-        type: String,
-        enum: Object.values(GameType),
-        default: GameType.DOFUS,
-        required: true,
-      },
-
       products: [
         {
           productId: { type: String, required: true },
@@ -392,7 +512,7 @@ async function initializeModels(): Promise<any> {
 
       status: {
         type: String,
-        default: "En attente...",
+        default: "En attente",
       },
       totalPrice: {
         type: Number,
@@ -555,11 +675,20 @@ async function initializeModels(): Promise<any> {
     ibendDB.model<IPaymentMethod>("payment", paymentMethodSchema);
   const VisitModel =
     ibendDB.models.visit || ibendDB.model<Visit>("visit", visitSchema);
-  const GameModel =
-    ibendDB.models.game || ibendDB.model<IGamer>("game", gamerSchema);
+  const ReferralModel =
+    ibendDB.models.referral ||
+    ibendDB.model<Referral>("referral", referralSchema);
+  const ReferralCodeModel =
+    ibendDB.models.referralCode ||
+    ibendDB.model<ReferralCode>("referralCode", referralCodeSchema);
   const MaintingModel =
-    ibendDB.models.maintenance ||
-    ibendDB.model<IMainting>("maintenance", maintingSchema);
+    ibendDB.models.mainting ||
+    ibendDB.model<IMainting>("mainting", maintingSchema);
+  const PromotionModel =
+    ibendDB.models.promotion ||
+    ibendDB.model<IPromotion>("promotion", promotionSchema);
+  const UpdateModel =
+    ibendDB.models.update || ibendDB.model<IUpdate>("update", updateSchema);
 
   return {
     ServerModelIben,
@@ -572,8 +701,11 @@ async function initializeModels(): Promise<any> {
     UserIbenModel,
     UserPaymentModel,
     VisitModel,
-    GameModel,
+    ReferralModel,
+    ReferralCodeModel,
     MaintingModel,
+    PromotionModel,
+    UpdateModel,
   };
 }
 
@@ -581,3 +713,32 @@ async function initializeModels(): Promise<any> {
 export const ibenModels = initializeModels().catch((error) => {
   console.error("Erreur lors de l'initialisation des modèles :", error);
 });
+
+// Referral System Utility Functions
+export const generateReferralCode = (): string => {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let result = "";
+  for (let i = 0; i < 8; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+};
+
+export const calculateReferralLevel = (totalPoints: number): string => {
+  if (totalPoints >= 1000) return "diamond";
+  if (totalPoints >= 500) return "platinum";
+  if (totalPoints >= 200) return "gold";
+  if (totalPoints >= 50) return "silver";
+  return "bronze";
+};
+
+export const getReferralBonus = (level: string): number => {
+  const bonuses = {
+    bronze: 1,
+    silver: 2,
+    gold: 3,
+    platinum: 5,
+    diamond: 10,
+  };
+  return bonuses[level as keyof typeof bonuses] || 1;
+};

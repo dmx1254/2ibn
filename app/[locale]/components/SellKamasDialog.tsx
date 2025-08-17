@@ -303,20 +303,9 @@ const SellKamasDialog = ({
                 {calculateTotal().total} {parsedDevise(devise.currencyName)}
               </span>
             </div>
-
-            <div className="flex items-center gap-2 text-sm text-amber-700">
-              <Gift className="h-4 w-4" />
-              <span>
-                {tScope("bonus", {
-                  bonus1: (50 / devise.curencyVal).toFixed(2),
-                  cur: parsedDevise(devise.currencyName),
-                  totalbonus: (3000 / devise.curencyVal).toFixed(2),
-                })}
-              </span>
-            </div>
           </div>
         </div>
-        {/* "dialogsell.bonus":"Bonus: +{bonus1} {cur} (orders over {totalbonus} {cur})", */}
+
         <DialogFooter>
           <Button
             type="submit"

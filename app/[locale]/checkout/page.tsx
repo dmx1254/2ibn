@@ -168,7 +168,7 @@ const ConfirmationStep = ({
   invitedAccount: boolean;
 }) => {
   const tScope = useScopedI18n("checkout");
-  const { carts, isMainting } = useStore();
+  const { carts } = useStore();
   const subtotal = carts.reduce((total, item) => total + item.totalPrice, 0);
   const shipping = 0.0;
   const total = subtotal + shipping;
@@ -266,9 +266,7 @@ const ConfirmationStep = ({
           <button
             onClick={handleCheckout}
             className="p-3 bg-black/80 text-white rounded transition-colors hover:opacity-85"
-            disabled={
-              (status !== "authenticated" && !invitedAccount) || isMainting
-            }
+            disabled={status !== "authenticated" && !invitedAccount}
             style={{
               opacity: status !== "authenticated" && !invitedAccount ? 0.6 : 1,
             }}
@@ -468,71 +466,70 @@ const Checkout = () => {
     };
 
     // const billing = billingInfo;
-    if (isActivePayment === "paypal") {
-      try {
-        setIsOrderLoading(true);
-        const result = await axios.post("/api/paypal", {
-          data,
-          object: tScopeConfirm("object"),
+    // if (isActivePayment === "paypal") {
+    //   try {
+    //     setIsOrderLoading(true);
+    //     const result = await axios.post("/api/paypal", {
+    //       data,
+    //       object: tScopeConfirm("object"),
+    //     });
+    //     window.location.href = result.data.redirectUrl;
+    //   } catch (error) {
+    //     console.log(error);
+    //   } finally {
+    //     setIsOrderLoading(false);
+    //   }
+    //   // console.log("yes");
+    // } else if (isActivePayment === "crypto") {
+    //   try {
+    //     setIsOrderLoading(true);
+    //     const result = await axios.post("/api/nowpayment", {
+    //       data,
+    //       object: tScopeConfirm("object"),
+    //     });
+    //     window.location.href = result.data.invoice_url;
+    //   } catch (error) {
+    //     console.log(error);
+    //   } finally {
+    //     setIsOrderLoading(false);
+    //   }
+    // } else if (isActivePayment === "coinpal" || isActivePayment === "binance") {
+    //   try {
+    //     setIsOrderLoading(true);
+    //     const result = await axios.post("/api/coinpal", {
+    //       data,
+    //       object: tScopeConfirm("object"),
+    //     });
+    //     window.location.href = result.data.nextStepContent;
+    //   } catch (error) {
+    //     console.log(error);
+    //   } finally {
+    //     setIsOrderLoading(false);
+    //   }
+    // } else {
+    try {
+      setIsOrderLoading(true);
+      const result = await axios.post("/api/iben/order", {
+        data,
+        object: tScopeConfirm("object"),
+      });
+      if (result.data) {
+        toast.success(tScope("success"), {
+          style: { color: "#16a34a" },
         });
-        window.location.href = result.data.redirectUrl;
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsOrderLoading(false);
-      }
-      // console.log("yes");
-    } else if (isActivePayment === "crypto") {
-      try {
-        setIsOrderLoading(true);
-        const result = await axios.post("/api/nowpayment", {
-          data,
-          object: tScopeConfirm("object"),
-        });
-        window.location.href = result.data.invoice_url;
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsOrderLoading(false);
-      }
-    } else if (isActivePayment === "coinpal" || isActivePayment === "binance") {
-      try {
-        setIsOrderLoading(true);
-        const result = await axios.post("/api/coinpal", {
-          data,
-          object: tScopeConfirm("object"),
-        });
-        window.location.href = result.data.nextStepContent;
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsOrderLoading(false);
-      }
-    } else {
-      try {
-        setIsOrderLoading(true);
-        const result = await axios.post("/api/iben/order", {
-          data,
-          object: tScopeConfirm("object"),
-        });
-        if (result.data) {
-          toast.success(tScope("success"), {
-            style: { color: "#16a34a" },
-          });
 
-          setTimeout(() => {
-            // handleChatClick();
-            router.push("/order-success");
-          }, 1000);
-        }
-      } catch (error) {
-        toast.success(tScope("error"), {
-          style: { color: "#dc2626" },
-        });
-        console.log(error);
-      } finally {
-        setIsOrderLoading(false);
+        setTimeout(() => {
+          // handleChatClick();
+          router.push("/order-success");
+        }, 1000);
       }
+    } catch (error) {
+      toast.success(tScope("error"), {
+        style: { color: "#dc2626" },
+      });
+      console.log(error);
+    } finally {
+      setIsOrderLoading(false);
     }
   };
 

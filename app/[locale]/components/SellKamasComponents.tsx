@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useState } from "react";
 import { ServerExchange, codeGenerated, parsedDevise } from "@/lib/utils";
-import { Gift, Loader } from "lucide-react";
+import { Loader } from "lucide-react";
 import { useScopedI18n } from "@/locales/client";
 import useStore from "@/lib/store-manage";
 import axios from "axios";
@@ -20,15 +20,15 @@ import {
 import { useSession } from "next-auth/react";
 import { Card } from "./ui/card";
 import { useRouter } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
 import { CUR } from "@/lib/types/types";
+import { FaDiscord, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
 const SellKamasComponents = ({
   servers,
 }: {
   servers: ServerExchange[] | null;
 }) => {
-  const { devise, addNewDevise, isMainting } = useStore();
+  const { devise, addNewDevise } = useStore();
   const { data: session, status } = useSession();
 
   // console.log(devise);
@@ -36,9 +36,6 @@ const SellKamasComponents = ({
   const router = useRouter();
 
   const tScope = useScopedI18n("dialogsell");
-  // useLayoutEffect(() => {
-  //   addNewDevise({ currencyName: "mad", curencyVal: 1 });
-  // }, []);
 
   const [formData, setFormData] = useState({
     gameName: "",
@@ -63,12 +60,26 @@ const SellKamasComponents = ({
   const [paymentDetailsError, setPaymentDetailsError] = useState<string>("");
   const [serverError, setServerError] = useState<string>("");
   const [server, setServer] = useState<ServerExchange | null>(null);
+  const [contactMethod, setContactMethod] = useState<{
+    whatsapp: string;
+    facebook: string;
+    discord: string;
+  }>({
+    whatsapp: "",
+    facebook: "",
+    discord: "",
+  });
+  const [selectedContactMethod, setSelectedContactMethod] =
+    useState<string>("");
+
+  const handleContactMethod = (field: string, value: string) => {
+    setContactMethod((prev) => ({ ...prev, [field]: value }));
+  };
 
   const handleInputChange = async (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    // console.log(field + " " + value);
 
-    if (value === "Paypal" || value === "Skrill") {
+    if (value === "Paypal" || value === "Skrill" || value === "Sepa") {
       if (devise.currencyName === "euro") return;
       await fetchCurrency("euro");
     }
@@ -76,7 +87,6 @@ const SellKamasComponents = ({
       value === "CIH Bank" ||
       value === "Attijariwafa Bank" ||
       value === "Bmce" ||
-      value === "BMCI" ||
       value === "Crédit du maroc" ||
       value === "Crédit agricole" ||
       value === "Wafacash"
@@ -84,7 +94,11 @@ const SellKamasComponents = ({
       if (devise.currencyName === "mad") return;
       await fetchCurrency("mad");
     }
-    if (value === "Aed" || value === "Usdt(TRC20/ERC20)") {
+    if (
+      value === "Aed" ||
+      value === "Usdt(TRC20/ERC20) " ||
+      value === "USDC (TRC20/ERC20/Binance ID)"
+    ) {
       if (devise.currencyName === "dollar") return;
       await fetchCurrency("dollar");
     }
@@ -94,7 +108,8 @@ const SellKamasComponents = ({
     "CIH Bank",
     "Attijariwafa Bank",
     "Bmce",
-    "BMCI",
+    "USDC (TRC20/ERC20/Binance ID)",
+    "Sepa",
     "Crédit du maroc",
     "Crédit agricole",
     "Wafacash",
@@ -113,7 +128,6 @@ const SellKamasComponents = ({
       case "CIH Bank":
       case "Attijariwafa Bank":
       case "Bmce":
-      case "BMCI":
       case "Crédit du maroc":
       case "Crédit agricole":
       case "Cfg":
@@ -133,6 +147,10 @@ const SellKamasComponents = ({
         return tScope("caseadvcash");
       case "Usdt(TRC20/ERC20)":
         return tScope("casetrc20");
+      case "USDC (TRC20/ERC20/Binance ID)":
+        return tScope("caseusdc");
+      case "Sepa":
+        return tScope("casesepa");
       default:
         return "";
     }
@@ -158,6 +176,10 @@ const SellKamasComponents = ({
         return tScope("caseadvcashinput");
       case "TRC20":
         return tScope("casetrc20input");
+      case "USDC (TRC20/ERC20/Binance ID)":
+        return tScope("caseusdcinput");
+      case "Sepa":
+        return tScope("casesepainput");
       default:
         return "";
     }
@@ -168,10 +190,7 @@ const SellKamasComponents = ({
     const total = Number(
       ((amount * (server?.serverPriceDh || 0)) / devise.curencyVal).toFixed(2)
     );
-    const bonusNoParsed =
-      total > 3000 ? (50 / devise.curencyVal).toFixed(2) : 0;
-    const bonus = Number(bonusNoParsed);
-    return { total, bonus };
+    return total;
   };
 
   const handleSubmit = async () => {
@@ -179,8 +198,13 @@ const SellKamasComponents = ({
       toast.error(tScope("sellOrderErrorLogin"), {
         style: { color: "#dc2626" },
       });
+    } else if ((server?.serverPriceDh || 1) * Number(formData.amount) < 200) {
+      toast.error("Le montant minimum de vente est de 200 DH", {
+        style: { color: "#dc2626" },
+        position: "top-right",
+      });
+      return;
     } else {
-      // console.log("Form submitted:", formData);
       let paymentInfoDetails = `${formData.paymentMethod}<br/>${formData.paymentDetails}`;
 
       let qty = Number(formData.amount);
@@ -252,7 +276,7 @@ const SellKamasComponents = ({
         server: server?.serverName,
         pu: Number(unitPrice),
         qte: qty,
-        totalPrice: calculateTotal().total + calculateTotal().bonus,
+        totalPrice: calculateTotal(),
         paymentMethod: formData.paymentMethod,
         gameName: formData.gameName,
         paymentInfoDetails: paymentInfoDetails,
@@ -261,9 +285,16 @@ const SellKamasComponents = ({
         firstname: formData.firstname,
       };
 
+      const contact = Object.entries(contactMethod)
+        .filter(([key, value]) => !!value)
+        .join("-");
+
       try {
         setIsLoading(true);
-        const response = await axios.post("/api/go/order", data);
+        const response = await axios.post("/api/go/order", {
+          data,
+          contact,
+        });
         if (response) {
           toast.success(tScope("success"), {
             style: { color: "#16a34a" },
@@ -304,7 +335,7 @@ const SellKamasComponents = ({
     }
 
     const data: CUR[] = await response.json();
-    console.log(data);
+    // console.log(data);
     if (data && data.length > 0) {
       let keys = Object.keys(data[0]);
       let values = Object.values(data[0]);
@@ -470,32 +501,17 @@ const SellKamasComponents = ({
             <div className="flex justify-between text-sm">
               <span>{tScope("total")}:</span>
               <span className="font-semibold text-amber-600">
-                {calculateTotal().total} {parsedDevise(devise.currencyName)}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2 text-sm text-amber-600">
-              <Gift className="h-4 w-4" />
-              <span>
-                {tScope("bonus", {
-                  bonus1: `${Math.round(50 / devise.curencyVal)} ${parsedDevise(
-                    devise.currencyName
-                  )}`,
-                  bonus2: `${Math.round(
-                    3000 / devise.curencyVal
-                  )} ${parsedDevise(devise.currencyName)}`,
-                })}
+                {calculateTotal()} {parsedDevise(devise.currencyName)}
               </span>
             </div>
           </div>
         </div>
-        {/* "dialogsell.bonus":"Bonus: +{bonus1} {cur} (orders over {totalbonus} {cur})", */}
 
         <Button
           type="submit"
           className="bg-amber-500 hover:bg-amber-600 text-white"
           onClick={handleSubmit}
-          disabled={isLoading || isMainting}
+          disabled={isLoading}
           aria-label="submit sell kamas button"
         >
           {isLoading ? (
@@ -507,6 +523,75 @@ const SellKamasComponents = ({
             tScope("btn")
           )}
         </Button>
+        <div className="w-full max-w-md bg-[#363A3D] text-white/80 mt-4 border-none p-4 rounded-lg space-y-4">
+          <Label htmlFor="contactMethod" className="text-sm font-medium">
+            {tScope("contactMethod")}
+          </Label>
+          <div className="space-y-4">
+            <Select
+              value={selectedContactMethod}
+              onValueChange={(value) => {
+                setSelectedContactMethod(value);
+                // Reset contact method values when switching
+                handleContactMethod(value, "");
+              }}
+            >
+              <SelectTrigger className="outline-none bg-[#363A3D] border-white/10 text-white/80 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0">
+                <SelectValue placeholder={tScope("contactMethodDesc")} />
+              </SelectTrigger>
+              <SelectContent className="bg-[#1A1D21] border-[#45494e] text-white">
+                <SelectItem value="whatsapp">WhatsApp</SelectItem>
+                <SelectItem value="facebook">Facebook</SelectItem>
+                <SelectItem value="discord">Discord</SelectItem>
+              </SelectContent>
+            </Select>
+
+            {selectedContactMethod === "whatsapp" && (
+              <div className="flex items-center gap-2">
+                <Input
+                  id="whatsapp"
+                  placeholder="WhatsApp: +XXX XXXXXXXX"
+                  value={contactMethod.whatsapp || ""}
+                  onChange={(e) =>
+                    handleContactMethod("whatsapp", e.target.value)
+                  }
+                  className="outline-none bg-[#363A3D] text-white/80 border-white/10 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+                <FaWhatsapp className="text-green-500" size={20} />
+              </div>
+            )}
+
+            {selectedContactMethod === "facebook" && (
+              <div className="flex items-center gap-2">
+                <Input
+                  id="facebook"
+                  placeholder="Facebook: your.username"
+                  value={contactMethod.facebook || ""}
+                  onChange={(e) =>
+                    handleContactMethod("facebook", e.target.value)
+                  }
+                  className="outline-none bg-[#363A3D] text-white/80 border-white/10 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+                <FaFacebookF className="text-blue-500" size={20} />
+              </div>
+            )}
+
+            {selectedContactMethod === "discord" && (
+              <div className="flex items-center gap-2">
+                <Input
+                  id="discord"
+                  placeholder="Discord: username#0000"
+                  value={contactMethod.discord || ""}
+                  onChange={(e) =>
+                    handleContactMethod("discord", e.target.value)
+                  }
+                  className="outline-none bg-[#363A3D] text-white/80 border-white/10 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+                <FaDiscord className="text-purple-500" size={20} />
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </Card>
   );

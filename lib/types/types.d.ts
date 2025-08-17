@@ -47,6 +47,12 @@ export interface USERLOGINRESPONSE {
   password: string | undefined;
   phone: string;
   profil: string;
+  referralCode?: string;
+  usedReferralCode?: string;
+  referredBy?: string;
+  referralPoints?: number;
+  totalReferrals?: number;
+  referralLevel?: string;
 }
 
 export interface UserRegister {

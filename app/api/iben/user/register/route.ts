@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 
 export async function POST(request: Request) {
-  const { UserIbenModel, CodeIbenModel } = await ibenModels;
+  const { UserIbenModel, CodeIbenModel, ReferralCodeModel } = await ibenModels;
   try {
     const data = await request.json();
 
@@ -24,7 +24,30 @@ export async function POST(request: Request) {
       if (user.code) {
         await CodeIbenModel.findOneAndDelete({ code: user.code });
       }
-
+      if (data.referralCode) {
+        const referralCode = await ReferralCodeModel.findOne({
+          code: data.referralCode,
+        });
+        if (referralCode) {
+          await ReferralCodeModel.findOneAndUpdate(
+            { code: data.referralCode },
+            { $inc: { totalReferrals: 1, totalPoints: 1 } }
+          );
+          await UserIbenModel.findOneAndUpdate(
+            { email: data.email },
+            {
+              $set: {
+                referralCode: data.referralCode,
+                usedReferralCode: data.referralCode,
+                referredBy: referralCode.userId,
+                referralPoints: referralCode.totalPoints + 1,
+                totalReferrals: referralCode.totalReferrals + 1,
+                referralLevel: referralCode.referralLevel,
+              },
+            }
+          );
+        }
+      }
       return NextResponse.json(
         { successMessage: "Your account has been created" },
         { status: 200 }

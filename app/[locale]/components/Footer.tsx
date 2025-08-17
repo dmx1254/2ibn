@@ -321,7 +321,7 @@ const Footer = () => {
                     <FaTelegramPlane size={14} />
                   </Link>
                   <Link
-                    href="https://wa.me/971529087560"
+                    href="https://wa.me/212617972929"
                     target="__blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-green-600 hover:opacity-80"
@@ -352,34 +352,8 @@ const Footer = () => {
                   >
                     <FaInstagram size={14} />
                   </Link>
-                  <Link
-                    href="skype:bendouma.ilyass?chat"
-                    target="__blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center p-1.5 rounded-full border-[2px] bg-[#363A3D] border-[#45494e] text-blue-600 hover:opacity-80"
-                  >
-                    <FaSkype size={15} />
-                  </Link>
                 </div>
               </div>
-
-              <Link
-                href="https://fr.trustpilot.com/evaluate/ibendouma.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 mt-6 mb-2"
-              >
-                <span className="text-sm text-gray-300">
-                  {tScope("giveReviews")}
-                </span>
-                <Image
-                  src="/reviewT.png"
-                  alt="Trustpilot ibendouma reviews"
-                  width={150}
-                  height={150}
-                  className="object-contain"
-                />
-              </Link>
             </div>
             <div className="w-full flex sm:hidden items-center p-4 justify-between gap-4 bg-[#212122] h-8">
               <button

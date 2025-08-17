@@ -7,7 +7,7 @@ import { FaCircleQuestion } from "react-icons/fa6";
 import { IoIosFlash } from "react-icons/io";
 import { ServerBuy, dofusItem, parsedDevise } from "@/lib/utils";
 import useStore from "@/lib/store-manage";
-import { useCurrentLocale, useScopedI18n } from "@/locales/client";
+import { useScopedI18n } from "@/locales/client";
 import clsx from "clsx";
 import { toast } from "sonner";
 import { Card } from "./ui/card";
@@ -23,6 +23,7 @@ import {
 } from "./ui/select";
 import { Input } from "./ui/input";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const PurchaseForm = ({ cat }: { cat?: string }) => {
   const router = useRouter();
@@ -34,6 +35,7 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
     addToCart,
   } = useStore();
   const tScope = useScopedI18n("hero");
+  const tScopeFooter = useScopedI18n("footer");
 
   const [dofusChange, setDofusChange] = useState<string>(activeServerRequest);
   const [serverChange, setServerChange] = useState<string>("");
@@ -406,6 +408,24 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
           </div>
         </div>
       </div>
+
+      <Link
+        href="https://fr.trustpilot.com/evaluate/ibendouma.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex p-4 rounded-lg items-center justify-center gap-2 mt-6 mb-2 bg-[#2A2D30]"
+      >
+        <span className="text-sm text-gray-300">
+          {tScopeFooter("giveReviews")}
+        </span>
+        <Image
+          src="/reviewT.png"
+          alt="Trustpilot ibendouma reviews"
+          width={150}
+          height={150}
+          className="object-contain"
+        />
+      </Link>
       <Card className="w-full flex flex-col items-start justify-center mx-auto my-10 gap-4 max-w-6xl p-6 self-center bg-[#2A2D30] border-[#1A1D21]">
         <p className="text-base text-white/90">
           {tScope("buyDesc", { serverName: activeServer?.serverName })}

@@ -40,7 +40,7 @@ const SocialMediaDropdown = ({ isSource = false }) => {
     },
     {
       icon: FaWhatsapp,
-      href: "https://wa.me/971529087560",
+      href: "https://wa.me/212617972929",
       color: "text-green-600",
       size: 14,
     },
@@ -61,12 +61,6 @@ const SocialMediaDropdown = ({ isSource = false }) => {
       href: "https://www.instagram.com/ibendouma_com/",
       color: "text-[#E1306C]",
       size: 13,
-    },
-    {
-      icon: FaSkype,
-      href: "skype:bendouma.ilyass?chat",
-      color: "text-blue-600",
-      size: 14,
     },
   ];
 

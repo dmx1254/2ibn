@@ -4,6 +4,7 @@ import { Resend } from "resend";
 import { goapiModels } from "@/lib/models/ibytrade-models";
 import { ibenModels } from "@/lib/models/ibendouma-models";
 import { NewOrderConfirmationTemplate } from "@/app/[locale]/components/neworder-template";
+import { addOrderToSheet } from "@/lib/orderSheets-exchange";
 
 const resend = new Resend(process.env.RESEND_2IBN_API_KEY);
 export async function GET() {
@@ -16,11 +17,12 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
     const { ExchangeModel } = await goapiModels;
     const { UserIbenModel } = await ibenModels;
-    const data = await request.json();
+    const data = await req.json();
+
     const { codeToExchange, userId } = data;
 
     // Récupérer les informations de l'utilisateur
@@ -31,6 +33,29 @@ export async function POST(request: Request) {
     }
 
     const newExchange = await ExchangeModel.create(data);
+    // console.log(user);
+    // console.log(newExchange);
+
+    const order = {
+      code: newExchange.codeToExchange,
+      serveurARecevoir: newExchange.serverOut,
+      quantiteA: newExchange.qtyToPay,
+      serveurADonner: newExchange.serverIn,
+      quantiteB: newExchange.qtyToReceive,
+      contact:
+        user.email +
+        "-" +
+        user.phone +
+        "-" +
+        user.firstname +
+        "-" +
+        user.lastname,
+      etatCommande: newExchange.status,
+      idCommande: newExchange._id,
+    };
+
+    await addOrderToSheet(order);
+    // console.log(addOrder);
 
     await resend.emails.send({
       from: "Ibendouma Notification <noreply@ibendouma.com>",

@@ -118,7 +118,7 @@ export default {
     "Nous vous enverrons des messages privés en jeu avec le code d'échange que vous aviez fourni, afin de confirmer que le destinataire qui échange avec vous fait partie de notre staff.",
   "exchange.title": "Attention",
   "exchange.notice":
-    "M=1,000,000 Kamas.Attention: ibendouma ne vous demandera jamais de rendre vos kamas ou objets dofus dans le jeu, nous vous demanderons toujours de venir sur le « Chat en Direct » pour discuter de n’importe quel problème. Ne donnez jamais vos kamas ou objets dofus à quelqu’un qui prétend être ibendouma.",
+    "M=1,000,000 Kamas.Attention: ibendouma ne vous demandera jamais de rendre vos kamas ou objets dofus dans le jeu, nous vous demanderons toujours de venir sur le « Chat en Direct » pour discuter de n'importe quel problème. Ne donnez jamais vos kamas ou objets dofus à quelqu'un qui prétend être ibendouma.",
   "exchange.headeartitle": "ECHANGE DE KAMAS",
   "exchange.serverToPay": "Serveur à payer",
   "exchange.qtyToPay": "Quantité à payer(M)",
@@ -137,7 +137,11 @@ export default {
   "exchange.serverToReceiveErr": "Serveur à recevoir est requis",
   "exchange.characterToReceiveErr": "Personnage à recevoir est requis",
   "exchange.exchangeCodeErr": "Code d'échange est requis",
-  "exchange.success":
+
+  "exchange.serverExchangeRate":
+    "Taux de change du serveur {servername}: {serverRate}",
+  "exchange.rate": "Taux de change",
+    "exchange.success":
     "Demande d'échange envoyée avec succès. Ouvrez le chat pour procéder à l'échange.",
   "exchange.error":
     "Quelque chose s'est mal passé, veuillez réessayer plus tard",
@@ -166,7 +170,8 @@ export default {
   "sellkamas.headertableAction": "Action",
   "sellkamas.headertableBtn": "Vendre Maintenant",
   "sellkamas.headertableStatusInTableAva": "Incomplet",
-  "sellkamas.headertableStatusInTableComp": "Stock Complet",
+  "sellkamas.headertableStatusInTableComp": "Complet",
+  "sellkamas.headertableStatusInTableFast": "Vendre rapidement",
 
   "sellkamas.descTitle": "Vendre des Kamas | Vente de Kamas",
   "sellkamas.qtyDesc": "Quantité",
@@ -234,11 +239,15 @@ export default {
   "dialogsell.casebinpaywise": "Email de paiement:",
   "dialogsell.caseadvcash": "Numéro de compte:",
   "dialogsell.casetrc20": "Adresse TRX:",
+  "dialogsell.caseusdc": "Adresse USDC ou Binance ID:",
+  "dialogsell.casesepa": "Votre IBAN:",
   "dialogsell.casemaroccobankinput": "Entrez votre RIB",
   "dialogsell.casewestandcashinput": "Entrez votre ville",
   "dialogsell.casebinpaywiseinput": "Entrez l'email de paiement",
   "dialogsell.caseadvcashinput": "Entrez le numéro de compte",
   "dialogsell.casetrc20input": "Entrez l'adresse TRX",
+  "dialogsell.caseusdcinput": "Entrez l'adresse USDC ou Binance ID",
+  "dialogsell.casesepainput": "Entrez votre IBAN",
   "dialogsell.bonus": "Bonus : {bonus1} (commandes supérieures à {bonus2})",
   "dialogsell.gameNameError": "Le nom dans le jeu est requis",
   "dialogsell.amountError": "La quantité est requise",
@@ -252,6 +261,11 @@ export default {
   "dialogsell.error":
     "Quelque chose s'est mal passée, veuillez réessayer plus tard",
   "dialogsell.serverError": "Sélectionner un serveur",
+  "dialogsell.contactMethod": "Méthode de contact",
+  "dialogsell.contactMethodDesc": "Sélectionnez une méthode de contact",
+  "dialogsell.contactMethodWhatsapp": "Whatsapp",
+  "dialogsell.contactMethodFacebook": "Facebook",
+  "dialogsell.contactMethodDiscord": "Discord",
 
   "dialogsell.server": "Serveur",
   "dialogsell.selectServer": "Sélectionner un serveur",
@@ -273,7 +287,7 @@ export default {
   "login.alreadyClient": "Déjà client",
   "login.continue": "Continuer",
   "login.createAccountDesc":
-    "En créant un compte, vous pouvez commander plus rapidement, suivre l’état de vos commandes et conserver un historique de vos achats passés.",
+    "En créant un compte, vous pouvez commander plus rapidement, suivre l'état de vos commandes et conserver un historique de vos achats passés.",
   "login.forgopassword": "Mot de passe oublié ?",
   "login.btnlogin": "Se connecter",
   "login.btnloginLoader": "Connexion en cours...",
@@ -294,6 +308,8 @@ export default {
   "signup.renderStep1.personnalInformation": "Vos informations personnelles",
   "signup.renderStep1.lastname": "Nom",
   "signup.renderStep1.firstname": "Prénom",
+  "signup.renderStep1.referralCode": "Code de parrainage",
+  "signup.renderStep1.referralCodePlace": "Entrez votre code de parrainage",
   "signup.renderStep1.email": "E-mail",
   "signup.renderStep1.emailPlace": "Entrez votre adresse e-mail",
   "signup.renderStep1.phone": "Téléphone",
@@ -463,7 +479,15 @@ export default {
   "profile.acountDetail.parsedTimedayText": "jour",
   "profile.acountDetail.parsedTimemonthText": "mois",
   "profile.acountDetail.parsedTimeyearText": "année",
-
+  "profile.acountDetail.generating": "Génération...",
+  "profile.acountDetail.generateReferralCode": "Générer un code de parrainage",
+  "profile.acountDetail.referralCode": "Code de parrainage",
+  "profile.acountDetail.referralCodeTitle": "Partagez votre code de parrainage",
+  "profile.acountDetail.referralCodeDesc": "Partagez ce code avec vos amis pour gagner des points !",
+  "profile.acountDetail.referralCodeCopied": "Code de parrainage copié !",
+  "profile.acountDetail.copyReferralCode": "Copier",
+  "profile.acountDetail.referralLevel": "Niveau de parrainage",
+  "profile.acountDetail.referralPoints": "Points de parrainage",
   "ordersBuyKamas.title": "Vos commandes",
   "ordersBuyKamas.cardTotalSales": "Ventes totales",
   "ordersBuyKamas.cardTotalOrders": "Commandes totales",
@@ -700,28 +724,28 @@ export default {
   "termsandconditions.legalNotice.title": "Mentions légales",
   "termsandconditions.legalNotice.amlTitle": "Conformité légale et KYC/AML",
   "termsandconditions.legalNotice.amlDesc":
-    "Chez ibendouma, nous respectons les réglementations en matière de conformité légale, notamment le processus KYC (Know Your Customer). Chaque utilisateur est tenu de vérifier son identité afin de garantir la transparence et la sécurité des transactions. Nos procédures antiblanchiment d’argent (AML) suivent les directives établies par DFSA (Dubai Financial Services Authority), garantissant un environnement sécurisé et fiable pour tous.",
+    "Chez ibendouma, nous respectons les réglementations en matière de conformité légale, notamment le processus KYC (Know Your Customer). Chaque utilisateur est tenu de vérifier son identité afin de garantir la transparence et la sécurité des transactions. Nos procédures antiblanchiment d'argent (AML) suivent les directives établies par DFSA (Dubai Financial Services Authority), garantissant un environnement sécurisé et fiable pour tous.",
   "termsandconditions.legalNotice.secTitle": "Sécurité du site web",
   "termsandconditions.legalNotice.secDesc":
-    "Nous protégeons vos données avec un certificat SSL/TLS valide, garantissant une connexion sécurisée. Les informations sensibles sont encryptées à l’aide de technologies modernes telles que Norton. De plus, nous effectuons des audits réguliers pour identifier et corriger toute vulnérabilité possible, y compris les tests contre les attaques DDoS et les violations de sécurité.",
+    "Nous protégeons vos données avec un certificat SSL/TLS valide, garantissant une connexion sécurisée. Les informations sensibles sont encryptées à l'aide de technologies modernes telles que Norton. De plus, nous effectuons des audits réguliers pour identifier et corriger toute vulnérabilité possible, y compris les tests contre les attaques DDoS et les violations de sécurité.",
   "termsandconditions.legalNotice.transTitle": "Transparence des activités",
   "termsandconditions.legalNotice.transDesc":
     "ibendouma est enregistrée dans la juridiction des Emirats Arabes Unis. Nous opérons dans le domaine de E-Commerce, offrant des services tels que des produits gaming.",
   "termsandconditions.legalNotice.contTitle": "Contenu réglementé",
   "termsandconditions.legalNotice.contDesc":
-    "Contenu réglementé Nous mettons un point d’honneur à respecter les lois en vigueur. Consultez: Notre politique de confidentialité Nos conditions générales d’utilisation : Notre politique de remboursement.",
+    "Contenu réglementé Nous mettons un point d'honneur à respecter les lois en vigueur. Consultez: Notre politique de confidentialité Nos conditions générales d'utilisation : Notre politique de remboursement.",
   "termsandconditions.legalNotice.presTitle": "Présence géographique",
   "termsandconditions.legalNotice.presDesc":
-    "Basée à Dubai aux Emirats Arabes Unis, notre entreprise est également présente à l’internationale.",
+    "Basée à Dubai aux Emirats Arabes Unis, notre entreprise est également présente à l'internationale.",
   "termsandconditions.legalNotice.verifTitle": "Vérification des entreprises",
   "termsandconditions.legalNotice.verifDesc":
     "Pour rejoindre notre plateforme, nous demandons:",
   "termsandconditions.legalNotice.verifStep1":
     "Un certificat d'enregistrement de votre entreprise",
   "termsandconditions.legalNotice.verifStep2":
-    "Une preuve d’adresse commerciale valide",
+    "Une preuve d'adresse commerciale valide",
   "termsandconditions.legalNotice.verifStep3":
-    "Une pièce d’identité officielle des administrateurs ou propriétaires",
+    "Une pièce d'identité officielle des administrateurs ou propriétaires",
   "termsandconditions.legalNotice.payTitle": "Solutions de paiement",
   "termsandconditions.legalNotice.payDesc":
     "Nous proposons plusieurs options pour effectuer vos transactions:",
@@ -879,11 +903,11 @@ export default {
     "Lors de vos visites sur le site, la Société collecte automatiquement des informations sur votre activité en ligne via des cookies et des technologies similaires. Cela inclut",
   "privacyandpolicy.typesContSub1": "Les pages visitées",
   "privacyandpolicy.typesContSub2": "Le type de navigateur utilisé",
-  "privacyandpolicy.typesContSub3": "L’adresse IP",
+  "privacyandpolicy.typesContSub3": "L'adresse IP",
   "privacyandpolicy.typesContSub4": "Les données de clics",
-  "privacyandpolicy.typesContSub5": "Les heures d’accès",
+  "privacyandpolicy.typesContSub5": "Les heures d'accès",
 
-  "privacyandpolicy.typesContTitle4": "Utilisation d’Outils d’Analyse",
+  "privacyandpolicy.typesContTitle4": "Utilisation d'Outils d'Analyse",
   "privacyandpolicy.typesContDesc4":
     "La Société utilise des outils comme Google Analytics pour analyser les comportements des utilisateurs sur le site. Ces outils collectent des données anonymisées sur la manière dont vous interagissez avec le site, telles que",
   "privacyandpolicy.typesContSub6": "La durée de votre visite",
@@ -893,7 +917,7 @@ export default {
 
   "privacyandpolicy.typesContTitle5": "Partenaires publicitaires",
   "privacyandpolicy.typesContDesc5":
-    "Certaines informations de navigation peuvent être partagées avec des partenaires publicitaires afin de personnaliser les annonces affichées sur le site et ailleurs en ligne. Ces données restent anonymes et n’incluent pas vos informations personnelles.",
+    "Certaines informations de navigation peuvent être partagées avec des partenaires publicitaires afin de personnaliser les annonces affichées sur le site et ailleurs en ligne. Ces données restent anonymes et n'incluent pas vos informations personnelles.",
 
   "privacyandpolicy.useInfoTitle": "Utilisation des informations",
   "privacyandpolicy.useInfoDesc":
@@ -1077,6 +1101,20 @@ export default {
   "reviews.message-1":
     "Excellente expérience, Mlle Khadija était très professionnelle, respectueuse et donnait du temps aux clients. Merci !",
   "reviews.title-1": "Excellente expérience",
+  "reviews.message-162":
+    "J'ai récemment commandé un livre sur ibendouma et je suis vraiment impressionné par leur service. La commande a été très simple à passer, et ce qui m'a vraiment marqué, c'est la rapidité de la livraison.",
+  "reviews.title-162": "je suis vraiment impressionné",
+
+  "reviews.message-132": "Excellent service excellente qualité",
+  "reviews.title-132": "Excellent service excellente qualité",
+
+  "reviews.message-182":
+    "Mmmmmdr c rapide j'ai pas pensé que ça sera assez simple et fiable comme ça ptn ❤️❤️❤️😭😭 support ilyass super sympa",
+  "reviews.title-182": "Mmmmmdr c rapide j'ai pas pensé que ça…",
+
+  "reviews.message-142":
+    "Bendouma j'achète de chez lui et je lui revends les kamas depuis 2 ans environ aucune plainte envers lui le service est excellent je vous conseilles vivement",
+  "reviews.title-142": "Bendouma j'achète de chez lui et je lui…",
 
   "reviews.message-2": "Excellent service, 100% fiable",
   "reviews.title-2": "Excellent service, 100% fiable",
@@ -1142,7 +1180,7 @@ export default {
     "khadija vendeuse fiable et rapide moins de 3 minute merci à elle et à ibendouma.com",
   "reviews.title-42": "khadija vendeuse fiable et rapide moins…",
   "reviews.message-56":
-    "Salut Ilyass, merci beaucoup pour ta rapidité et ton sérieux dans l’échange. Service au top, je te recommande ! ✌️m",
+    "Salut Ilyass, merci beaucoup pour ta rapidité et ton sérieux dans l'échange. Service au top, je te recommande ! ✌️m",
   "reviews.title-56": "Service au top",
   "reviews.message-63":
     "Excellent service, après être tombé deux fois sur des arnaqueurs content de trouver des gens fiables !",
@@ -1363,4 +1401,39 @@ export default {
   "crypto.legalNotice": "Mentions légales",
   "crypto.legalNoticeDesc":
     "Tous les paiements sont traités en toute sécurité. Les informations de votre transaction ne sont jamais partagées avec des tiers. Assurez-vous de vérifier toutes les informations avant d'envoyer vos crypto-monnaies.",
+
+  referral: {
+    title: "Système de Parrainage",
+    subtitle: "Parrainez vos amis et gagnez des points !",
+    yourCode: "Votre Code de Parrainage",
+    active: "Actif",
+    inactive: "Inactif",
+    codeDescription: "Partagez ce code avec vos amis pour gagner des points !",
+    noCodeYet: "Vous n'avez pas encore de code de parrainage",
+    generateCode: "Générer un Code",
+    share: "Partager",
+    yourStats: "Vos Statistiques",
+    level: "Niveau",
+    totalReferrals: "Parrainages",
+    remaining: "restants",
+    points: "Points",
+    earned: "gagnés",
+    yourReferrals: "Vos Parrainages",
+    rewards: "Récompenses",
+    referralCode: "Code de Parrainage",
+    enterCode: "Veuillez entrer un code de parrainage",
+    validCode: "Code de parrainage valide !",
+    invalidCode: "Code de parrainage invalide",
+    validationError: "Erreur lors de la validation",
+    enterReferralCode: "Entrez le code de parrainage",
+    validate: "Valider",
+    referredBy: "Parrainé par",
+    benefits: "Avantages du parrainage :",
+    welcomeBonus: "Bonus de bienvenue",
+    prioritySupport: "Support prioritaire",
+    exclusiveOffers: "Offres exclusives",
+    fasterDelivery: "Livraison accélérée",
+    optional: "Optionnel",
+    referralInfo: "Utilisez le code de parrainage d'un ami pour gagner des avantages mutuels. Vous recevrez des bonus et votre ami gagnera des points de parrainage !",
+  },
 } as const;

@@ -4,7 +4,6 @@ import WhyChooseUs from "./components/WhyChooseUs";
 import HomePageIcon from "./components/HomePageIcon";
 import Testimonials from "./components/Testimonials";
 import UserComment from "./components/UserComment";
-import HomePageGame from "./components/HomePageGame";
 
 export default async function Home() {
   return (
@@ -16,9 +15,9 @@ export default async function Home() {
         <div className="w-full max-w-6xl my-2 md:mt-40">
           <HomePageIcon />
         </div>
-        <div className="w-full max-w-6xl my-6 md:mt-4">
+        {/* <div className="w-full max-w-6xl my-6 md:mt-4">
           <HomePageGame />
-        </div>
+        </div> */}
         <div className="w-full max-w-6xl my-5">
           <Testimonials />
         </div>

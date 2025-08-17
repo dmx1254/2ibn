@@ -133,8 +133,10 @@ export default {
   "exchange.qtyToReceiveErr": "Se requiere cantidad a recibir",
   "exchange.characterToPayErr": "El personaje a pagar es obligatorio",
   "exchange.serverToReceiveErr": "El servidor a recibir es obligatorio",
-  "exchange.characterToReceiveErr": "El personaje a recibir es obligatorio",
-  "exchange.exchangeCodeErr": "El código de intercambio es obligatorio",
+  "exchange.serverExchangeRate":
+    "Tasa de cambio del servidor {servername}: {serverRate}",
+  "exchange.rate": "Tasa de cambio",
+
   "exchange.success":
     "Solicitud de intercambio enviada con éxito. Abra el chat para proceder con el intercambio.",
   "exchange.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
@@ -163,7 +165,8 @@ export default {
   "sellkamas.headertableAction": "Acción",
   "sellkamas.headertableBtn": "Vender Ahora",
   "sellkamas.headertableStatusInTableAva": "Incompleto",
-  "sellkamas.headertableStatusInTableComp": "Stock Completo",
+  "sellkamas.headertableStatusInTableComp": "Completo",
+  "sellkamas.headertableStatusInTableFast": "Vender rápidamente",
 
   "sellkamas.descTitle": "Vender Kamas | Venta de Kamas",
   "sellkamas.qtyDesc": "Cantidad",
@@ -233,11 +236,15 @@ export default {
   "dialogsell.casebinpaywise": "Correo de pago:",
   "dialogsell.caseadvcash": "Número de cuenta:",
   "dialogsell.casetrc20": "Dirección TRX:",
+  "dialogsell.caseusdc": "Dirección USDC o Binance ID:",
+  "dialogsell.casesepa": "Su IBAN:",
   "dialogsell.casemaroccobankinput": "Ingrese su RIB",
   "dialogsell.casewestandcashinput": "Ingrese su ciudad",
   "dialogsell.casebinpaywiseinput": "Ingrese el correo de pago",
   "dialogsell.caseadvcashinput": "Ingrese el número de cuenta",
   "dialogsell.casetrc20input": "Ingrese la dirección TRX",
+  "dialogsell.caseusdcinput": "Ingrese la dirección USDC o Binance ID",
+  "dialogsell.casesepainput": "Ingrese su IBAN",
   "dialogsell.bonus": "Bono: {bonus1} (pedidos superiores a {bonus2})",
 
   "dialogsell.gameNameError": "El nombre en el juego es obligatorio",
@@ -256,6 +263,11 @@ export default {
   "dialogsell.sellOrderErrorLogin":
     "Debes iniciar sesión para realizar un pedido.",
   "dialogsell.selectServer": "Seleccionar un servidor",
+  "dialogsell.contactMethod": "Método de contacto",
+  "dialogsell.contactMethodDesc": "Selecciona un método de contacto",
+  "dialogsell.contactMethodWhatsapp": "Whatsapp",
+  "dialogsell.contactMethodFacebook": "Facebook",
+  "dialogsell.contactMethodDiscord": "Discord",
 
   "emptycart.title": "Tu carrito está vacío",
   "emptycart.desc":
@@ -296,6 +308,8 @@ export default {
   "signup.renderStep1.email": "Correo electrónico",
   "signup.renderStep1.emailPlace": "Ingrese su dirección de correo",
   "signup.renderStep1.phone": "Teléfono",
+  "signup.renderStep1.referralCode": "Código de referido",
+  "signup.renderStep1.referralCodePlace": "Ingrese su código de referido",
   "signup.renderStep1.phonePlace": "Número de teléfono",
   "signup.renderStep1.passwordDesc": "Tu contraseña",
   "signup.renderStep3.depart": "Departamento",
@@ -458,6 +472,15 @@ export default {
   "profile.acountDetail.parsedTimedayText": "día",
   "profile.acountDetail.parsedTimemonthText": "mes",
   "profile.acountDetail.parsedTimeyearText": "año",
+  "profile.acountDetail.copyReferralCode": "Copiar",
+  "profile.acountDetail.generating": "Generando...",
+  "profile.acountDetail.generateReferralCode": "Generar código de referido",
+  "profile.acountDetail.referralCode": "Código de referido",
+  "profile.acountDetail.referralCodeTitle": "Comparte tu código de referido",
+  "profile.acountDetail.referralCodeDesc": "Comparte este código con tus amigos para ganar puntos!",
+  "profile.acountDetail.referralCodeCopied": "Código de referido copiado!",
+  "profile.acountDetail.referralLevel": "Nivel de referido",
+  "profile.acountDetail.referralPoints": "Puntos de referido",
 
   "ordersBuyKamas.title": "Tus órdenes",
   "ordersBuyKamas.cardTotalSales": "Ventas totales",
@@ -1075,6 +1098,23 @@ export default {
   "reviews.message-3":
     "Ya he vendido y comprado con esta persona sin conocerla en persona. Muy profesional, nada que decir, puedes confiar en él con los ojos cerrados.",
   "reviews.title-3": "Muy profesional, confianza total",
+
+  
+  "reviews.message-162":
+    "Recientemente hice un pedido de un libro en ibendouma y estoy muy impresionado por su servicio. El pedido fue muy simple de colocar, y lo que realmente me impresionó fue la rapidez de la entrega.",
+  "reviews.title-162": "Estoy muy impresionado",
+
+  "reviews.message-132": "Excelente servicio, excelente calidad",
+  "reviews.title-132": "Excelente servicio, excelente calidad",
+
+  "reviews.message-182":
+    "Mmmmmdr es rápido, no pensé que fuera tan simple y confiable como esto ptn ❤️❤️❤️😭😭 support ilyass super simpático",
+  "reviews.title-182": "Mmmmmdr es rápido, no pensé que fuera tan simple y confiable como esto...",
+
+  "reviews.message-142":
+    "Bendouma compro de él y yo le vendo kamas por casi 2 años ahora no tengo quejas contra él el servicio es excelente lo recomiendo encarecidamente",
+  "reviews.title-142": "Bendouma compro de él y yo le vendo kamas por casi 2 años ahora no tengo quejas contra él el servicio es excelente lo recomiendo encarecidamente",
+
 
   "reviews.message-4":
     "Recomiendo encarecidamente a Bendouma por su profesionalismo y su servicio impecable. Es un socio en el que se puede confiar completamente, especialmente con los kama. Súper fiable.",

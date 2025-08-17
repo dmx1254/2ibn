@@ -63,6 +63,7 @@ const SignUpForm = () => {
   const [passwordError, setPasswordError] = useState<string>("");
   const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [referralCode, setReferralCode] = useState<string>("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -228,6 +229,7 @@ const SignUpForm = () => {
         city: formData.city,
         postalCode: formData.postalCode,
         isEmailVerified: true,
+        referralCode: referralCode,
       };
 
       try {
@@ -335,6 +337,21 @@ const SignUpForm = () => {
             )}
           </div>
         </div>
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="referralCode" className="text-white/80">
+          {tScope("renderStep1.referralCode")}
+        </Label>
+        <Input
+          id="referralCode"
+          name="referralCode"
+          className="outline-none bg-transparent border-white/80 text-white/80 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-white/60"
+          placeholder={tScope("renderStep1.referralCodePlace")}
+          value={referralCode}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setReferralCode(e.target.value)
+          }
+        />
       </div>
       <div className="space-y-2">
         <Label htmlFor="email" className="text-white/80">

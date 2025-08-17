@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, useAnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
 import { AlertTriangle, UserCircle2 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
@@ -18,39 +18,6 @@ const TestimonialsCard = () => {
   const tScope2Reviews = useScopedI18n("reviews");
   const [reviews, setReviews] = useState<Review[]>(trustpilotReviews);
   const [currentGroupIndex, setCurrentGroupIndex] = useState(0);
-  const controls = useAnimationControls();
-
-  // const options = {
-  //   method: "GET",
-  //   url: "https://trustpilot4.p.rapidapi.com/",
-  //   params: {
-  //     domain: "ibendouma.com",
-  //     page: "1",
-  //   },
-  //   headers: {
-  //     "X-RapidAPI-Key": process.env.NEXT_PUBLIC_XRapidAPIKEY,
-  //     "X-RapidAPI-Host": process.env.NEXT_PUBLIC_XRapidAPIHOST,
-  //   },
-  // };
-
-  // const fetchTruspilotReviews = async () => {
-  //   const response = await axios.request(options);
-  //   return response;
-  // };
-
-  // const { isLoading, error, data } = useQuery({
-  //   queryKey: ["trustpilot-reviews"],
-  //   queryFn: () => fetchTruspilotReviews(),
-  //   staleTime: Infinity,
-  // });
-
-  // useMemo(() => {
-  //   if (data) {
-  //     const filteredReviews =
-  //       data?.data?.reviews?.filter((review: any) => review.rating > 3) || [];
-  //     setReviews([...filteredReviews, ...filteredReviews]);
-  //   }
-  // }, [data]);
 
   useEffect(() => {
     if (reviews.length === 0) return;

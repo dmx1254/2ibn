@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 import { FaSortDown } from "react-icons/fa";
@@ -20,14 +20,11 @@ import ProfilePopover from "./ProfilePopover";
 import { useUserPresence } from "@/app/hooks/userPresence";
 import SocialMediaDropdown from "./SocialMediaDropdown ";
 import MobileTopMenus from "./MobileTopMenus";
-import useStore from "@/lib/store-manage";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
   const [isGameHovering, setIsGameHovering] = useState<boolean>(false);
   const [isDofusHovering, setIsDofusHovering] = useState<boolean>(false);
-
-  const { addNewMainting } = useStore();
 
   useUserPresence({
     userId: session?.user.id,
@@ -41,21 +38,6 @@ const Navbar = () => {
   const tScope3 = useScopedI18n("menu");
   const pathname = usePathname();
 
-  useEffect(() => {
-    const fetchMaintingStatus = async () => {
-      try {
-        const res = await fetch("/api/iben/mainting", {
-          method: "PUT",
-          body: JSON.stringify({ status: "ok" }),
-        });
-        const data = await res.json();
-        addNewMainting(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchMaintingStatus();
-  }, []);
 
   // const [scrollPosition, setScrollPosition] = useState<number>(0);
 

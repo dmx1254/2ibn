@@ -30,10 +30,18 @@ const StatusBadge = ({ status }: { status: string }) => {
     switch (status.toLowerCase()) {
       case "terminée":
       case "paid":
+      case "payée":
+      case "livrée":
+      case "livré":
+      case "delivered":
         return "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300";
       case "en attente":
       case "pending":
         return "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300";
+      case "en cours de payment":
+      case "en cours de paiement":
+      case "processing":
+        return "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300";
       case "annulée":
       case "cancelled":
         return "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300";
@@ -48,9 +56,19 @@ const StatusBadge = ({ status }: { status: string }) => {
         status
       )} font-medium hover:bg-yellow-100 hover:text-yellow-700`}
     >
-      {(status === "Terminée" || status === "paid") && tScope("completed")}
-      {(status === "En attente" || status === "pending") && tScope("pending")}
-      {(status === "Annulée" || status === "cancelled") && tScope("cancelled")}
+      {(status.toLowerCase() === "terminée" ||
+        status.toLowerCase() === "paid" ||
+        status.toLowerCase() === "payée" ||
+        status.toLowerCase() === "livrée" ||
+        status.toLowerCase() === "livré" ||
+        status.toLowerCase() === "delivered") &&
+        tScope("completed")}
+      {(status.toLowerCase() === "en attente" ||
+        status.toLowerCase() === "pending") &&
+        tScope("pending")}
+      {(status.toLowerCase() === "annulée" ||
+        status.toLowerCase() === "cancelled") &&
+        tScope("cancelled")}
     </Badge>
   );
 };

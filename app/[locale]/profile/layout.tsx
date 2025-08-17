@@ -72,9 +72,9 @@ export default function ProfileLayout({
   };
 
   return (
-    <div className="flex h-screen font-poppins">
+    <div className="flex min-h-screen font-poppins">
       {/* Barre latérale */}
-      <div className="h-full flex flex-col items-start justify-between bg-[#1A1D21] text-white px-6 border-r border-gray-700 w-20 sm:w-64">
+      <div className="h-screen sticky top-0 flex flex-col items-start justify-between bg-[#1A1D21] text-white px-6 border-r border-gray-700 w-20 sm:w-64">
         <div>
           <Link href="/" className="flex items-center gap-2 -ml-4">
             <Image
@@ -117,7 +117,7 @@ export default function ProfileLayout({
       </div>
 
       {/* Contenu principal */}
-      <div className="flex-1 p-2 sm:p-6 overflow-y-auto profile-user">
+      <div className="flex-1 p-2 sm:p-6 overflow-y-auto profile-user min-h-screen">
         {children}
       </div>
     </div>

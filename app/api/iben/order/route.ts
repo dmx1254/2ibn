@@ -1,5 +1,6 @@
 import { NewOrderConfirmationTemplate } from "@/app/[locale]/components/neworder-template";
 import { OrderConfirmationTemplate } from "@/app/[locale]/components/orderConfirm-template";
+import { addOrderVenteToSheet } from "@/lib/orderSheets-exchange";
 import { ibenModels } from "@/lib/models/ibendouma-models";
 import { NextResponse } from "next/server";
 
@@ -13,9 +14,48 @@ export async function POST(request: Request) {
 
     const { data, object } = await request.json();
     const user = await UserIbenModel.findById(data.userId);
-    const newOrder = await OrderModelIben.create(data);
 
     // console.log(data);
+
+    const newOrder = await OrderModelIben.create(data);
+
+    // console.log(newOrder);
+    // console.log(user);
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    for (const product of newOrder.products) {
+      const orderSheet = {
+        code: "#" + newOrder.orderNum,
+        serveur: product.server,
+        total:
+          product.price +
+          "" +
+          newOrder.cur +
+          "/M" +
+          "*" +
+          product.amount +
+          "M" +
+          "=" +
+          newOrder.totalPrice +
+          "" +
+          newOrder.cur,
+
+        InfoPay: newOrder.paymentMethod,
+        personnage: product.character,
+        livraisondetails:
+          newOrder.paymentMethod +
+          " - email: " +
+          user.email +
+          " - phone: " +
+          user.phone,
+        etatCommande: newOrder.status,
+        idCommande: newOrder._id.toString(),
+      };
+      await addOrderVenteToSheet(orderSheet);
+    }
 
     if (newOrder) {
       try {
@@ -65,6 +105,7 @@ export async function POST(request: Request) {
         return NextResponse.json(newOrder, { status: 200 });
       }
     }
+    return NextResponse.json(newOrder, { status: 200 });
 
     // console.log(data, object);
   } catch (error: any) {

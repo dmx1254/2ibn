@@ -34,8 +34,6 @@ const VirtualGame = ({ gamename }: { gamename: string }) => {
     setIsPaymentDialogOpen(true);
   };
 
-  // console.log(devise);
-
   if (!gameData) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#0D0F10]">
@@ -47,7 +45,6 @@ const VirtualGame = ({ gamename }: { gamename: string }) => {
   return (
     <div className="min-h-screen bg-[#0D0F10] text-white mb-12">
       <div className="container mx-auto px-4 py-12">
-        {/* En-tête avec image du jeu */}
         <div className="relative mb-16 p-8 rounded-2xl bg-[#131619] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#eab308]/20 to-[#f97316]/20 z-10"></div>
           <div className="absolute inset-0">
@@ -199,7 +196,6 @@ const VirtualGame = ({ gamename }: { gamename: string }) => {
           </div>
         </div>
 
-        {/* Avantages avec design moderne */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <Card className="bg-[#1A1D21] border-0 overflow-hidden group hover:shadow-xl hover:shadow-[#eab308]/5 transition-all duration-300">
             <CardHeader className="relative">
@@ -247,14 +243,12 @@ const VirtualGame = ({ gamename }: { gamename: string }) => {
           </Card>
         </div>
 
-        {/* Grille de produits avec design amélioré et images */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {gameData.products.map((product) => (
             <Card
               key={product.id}
               className="bg-[#131619] border-0 group hover:shadow-2xl hover:shadow-[#eab308]/5 transition-all duration-300 relative overflow-hidden"
             >
-              {/* Image du jeu en arrière-plan */}
               <div className="absolute inset-0">
                 <Image
                   src={`/jeux/${gamename}.webp`}
@@ -306,7 +300,6 @@ const VirtualGame = ({ gamename }: { gamename: string }) => {
         </div>
       </div>
 
-      {/* Dialogue de paiement */}
       {selectedProduct && (
         <GamePaymentDialog
           isOpen={isPaymentDialogOpen}

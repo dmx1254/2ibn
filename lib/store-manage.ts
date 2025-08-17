@@ -6,8 +6,6 @@ import { Cart, USERLOGINRESPONSE } from "./types/types";
 interface MyStore {
   servers: ServerBuy[];
   addSevers: (servers: ServerBuy[]) => void;
-  isMainting: boolean;
-  addNewMainting: (status: boolean) => void;
   devise: CURRENCY;
   addNewDevise: (dev: CURRENCY) => void;
   carts: Cart[];
@@ -31,8 +29,6 @@ const useStore = create<MyStore>()(
       devise: { currencyName: "mad", curencyVal: 1 },
       carts: [],
       totalItems: 0,
-      isMainting: false,
-      addNewMainting: (status) => set({ isMainting: status }),
       activeServerRequest: "dofus-kamas",
       addSevers: (servers) => set({ servers: servers }),
       addToActiveServerRequest: (serverActive) =>

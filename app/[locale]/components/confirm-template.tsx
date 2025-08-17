@@ -220,7 +220,7 @@ export const ConfirmEmailTemplate: React.FC<EmailTemplateProps> = async ({
                   </a>
 
                   <a
-                    href="https://wa.me/971529087560"
+                    href="https://wa.me/212617972929"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -319,33 +319,6 @@ export const ConfirmEmailTemplate: React.FC<EmailTemplateProps> = async ({
                     <img
                       src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png"
                       alt="Instagram"
-                      style={{
-                        display: "block",
-                        width: "14px",
-                        height: "14px",
-                      }}
-                    />
-                  </a>
-
-                  <a
-                    href="skype:bendouma.ilyass?chat"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "4px",
-                      borderRadius: "9999px",
-                      border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
-                      textDecoration: "none",
-                      marginLeft: "2px",
-                    }}
-                  >
-                    <img
-                      src="https://tse4.mm.bing.net/th?id=OIP.DZtr8Ssjo5BUHKRNRYiw3gHaHa&w=474&h=474&c=7"
-                      alt="Skype"
                       style={{
                         display: "block",
                         width: "14px",

@@ -23,6 +23,7 @@ import { useSession } from "next-auth/react";
 import { useScopedI18n } from "@/locales/client";
 import { formatTimeAgo } from "@/lib/utils";
 import PaymentMethodsCard from "../components/PaymentMethodsCard";
+import { toast } from "sonner";
 
 const ProfilePage = () => {
   const tScope = useScopedI18n("profile");
@@ -41,6 +42,8 @@ const ProfilePage = () => {
   const [paymentMethods, setPaymentMethods] = useState<
     UserPaymentMethodResponse[]
   >([]);
+  const [referralCode, setReferralCode] = useState<string>("");
+  const [isGeneratingCode, setIsGeneratingCode] = useState<boolean>(false);
   // console.log(ordersL);
 
   const getStatusColor = (status: string) => {
@@ -75,6 +78,7 @@ const ProfilePage = () => {
   useEffect(() => {
     if (data) {
       setUser(data);
+      setReferralCode(data.referralCode || "");
     }
   }, [data]);
 
@@ -317,12 +321,43 @@ const ProfilePage = () => {
                 </p>
               )}
             </div>
+            <div className="text-sm text-gray-500 flex items-center gap-2">
+              {tScope("acountDetail.referralLevel")} :
+            </div>
+            <div className="flex items-center gap-2">
+              <div
+                className={`font-medium text-sm ${
+                  user?.referralLevel === "bronze"
+                    ? "bg-amber-600 text-white/80 px-2 py-1 rounded-md"
+                    : user?.referralLevel === "silver"
+                    ? "bg-gray-400 text-white/80 px-2 py-1 rounded-md"
+                    : user?.referralLevel === "gold"
+                    ? "bg-yellow-400 text-white/80 px-2 py-1 rounded-md"
+                    : user?.referralLevel === "platinum"
+                    ? "bg-blue-400 text-white/80 px-2 py-1 rounded-md"
+                    : user?.referralLevel === "diamond"
+                    ? "bg-purple-400 text-white/80 px-2 py-1 rounded-md"
+                    : "bg-gray-400 text-white/80 px-2 py-1 rounded-md"
+                }`}
+              >
+                {user?.referralLevel || "N/A"}
+              </div>
+            </div>
+
+            <div className="text-sm text-gray-500 flex items-center gap-2">
+              {tScope("acountDetail.referralPoints")} :
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="font-medium text-sm bg-amber-600 text-white/80 px-2 py-1 rounded-md">
+                {user?.referralPoints || 0}
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Recent Activity */}
-      <Card className="mb-8">
+      <Card className="mb-8 w-full">
         <CardContent className="p-6">
           <h2 className="text-lg font-semibold mb-4">
             {tScope("acountDetail.orderRecentTitle")}
@@ -370,9 +405,84 @@ const ProfilePage = () => {
           </div>
         </CardContent>
       </Card>
-      <Card className="w-full">
-        <PaymentMethodsCard methods={paymentMethods} />
-      </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Card className="w-full shadow-lg rounded-2xl">
+          <CardContent className="p-6">
+            <h2 className="text-lg font-semibold mb-4">
+              {tScope("acountDetail.referralCode")}
+            </h2>
+            <div className="space-y-4">
+              {referralCode ? (
+                <div>
+                  <p className="text-sm text-gray-500 mb-2">
+                    {tScope("acountDetail.referralCodeTitle")}
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <code className="bg-gray-100 px-3 py-2 rounded-lg font-mono text-lg">
+                      {referralCode}
+                    </code>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(referralCode);
+                        toast.success(
+                          tScope("acountDetail.referralCodeCopied")
+                        );
+                      }}
+                      className="text-yellow-600 hover:opacity-80 text-sm font-medium"
+                    >
+                      {tScope("acountDetail.copyReferralCode")}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center py-4">
+                  <p className="text-sm text-gray-500 mb-3">
+                    {tScope("acountDetail.referralCodeTitle")}
+                  </p>
+                  <button
+                    onClick={async () => {
+                      if (!session?.user?.id) return;
+
+                      try {
+                        setIsGeneratingCode(true);
+                        const response = await fetch("/api/iben/referral", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ userId: session.user.id }),
+                        });
+                        const data = await response.json();
+                        if (data.success) {
+                          setReferralCode(data.referralCode);
+                          // Update user state locally
+                          setUser((prev) =>
+                            prev
+                              ? { ...prev, referralCode: data.referralCode }
+                              : null
+                          );
+                        }
+                      } catch (error) {
+                        console.error("Error generating referral code:", error);
+                      } finally {
+                        setIsGeneratingCode(false);
+                      }
+                    }}
+                    disabled={isGeneratingCode}
+                    className="bg-yellow-600 hover:opacity-80 text-white/80 px-4 py-2 rounded-lg text-sm font-medium"
+                  >
+                    {isGeneratingCode
+                      ? tScope("acountDetail.generating")
+                      : tScope("acountDetail.generateReferralCode")}
+                  </button>
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="w-full">
+          <PaymentMethodsCard methods={paymentMethods} />
+        </Card>
+      </div>
     </div>
   );
 };

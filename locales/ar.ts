@@ -132,7 +132,9 @@ export default {
   "exchange.characterToPayErr": "الشخصية للدفع مطلوبة",
   "exchange.serverToReceiveErr": "الخادم للاستلام مطلوب",
   "exchange.characterToReceiveErr": "الشخصية للاستلام مطلوبة",
-  "exchange.exchangeCodeErr": "رمز التبادل مطلوب",
+  "exchange.serverExchangeRate":
+    "سعر التبادل للخادم {servername}: {serverRate}",
+  "exchange.rate": "سعر التبادل",
   "exchange.success":
     "تم تقديم طلب التبادل بنجاح. افتح الدردشة للمتابعة في التبادل.",
   "exchange.error": "حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقاً.",
@@ -160,7 +162,8 @@ export default {
   "sellkamas.headertableAction": "الإجراء",
   "sellkamas.headertableBtn": "بيع الآن",
   "sellkamas.headertableStatusInTableAva": "غير مكتمل",
-  "sellkamas.headertableStatusInTableComp": "المخزون كامل",
+  "sellkamas.headertableStatusInTableComp": "كامل",
+  "sellkamas.headertableStatusInTableFast": "بيع بسرعة",
 
   "sellkamas.descTitle": "بيع الكاماس | بيع الكاماس",
   "sellkamas.qtyDesc": "الكمية",
@@ -223,12 +226,16 @@ export default {
   "dialogsell.total": "المجموع",
   "dialogsell.btn": "تقديم الطلب",
   "dialogsell.casemaroccobank": "RIB كامل:",
+  "dialogsell.caseusdc": "عنوان USDC أو Binance ID:",
+  "dialogsell.casesepa": "IBAN:",
   "dialogsell.casewestandcash": "مدينتك:",
   "dialogsell.casebinpaywise": "البريد الإلكتروني للدفع:",
   "dialogsell.caseadvcash": "رقم الحساب:",
   "dialogsell.casetrc20": "عنوان TRX:",
   "dialogsell.casemaroccobankinput": "أدخل RIB الخاص بك",
   "dialogsell.casemaroccobankCashAndWafa": "رقم الهاتف:",
+  "dialogsell.caseusdcinput": "أدخل عنوان USDC أو Binance ID",
+  "dialogsell.casesepainput": "أدخل IBAN",
   "dialogsell.casewestandcashinput": "أدخل مدينتك",
   "dialogsell.casebinpaywiseinput": "أدخل بريد الدفع الإلكتروني",
   "dialogsell.caseadvcashinput": "أدخل رقم الحساب",
@@ -246,6 +253,11 @@ export default {
     "تم تقديم الطلب بنجاح. افتح الدردشة للمضي قدماً في التبادل",
   "dialogsell.error": "حدث خطأ، يرجى المحاولة لاحقاً",
   "dialogsell.serverError": "اختر خادمًا",
+  "dialogsell.contactMethod": "طريقة التواصل",
+  "dialogsell.contactMethodDesc": "اختر طريقة التواصل",
+  "dialogsell.contactMethodWhatsapp": "واتساب",
+  "dialogsell.contactMethodFacebook": "فيسبوك",
+  "dialogsell.contactMethodDiscord": "ديسكورد",
 
   "dialogsell.server": "الخادم",
   "dialogsell.selectServer": "اختر خادمًا",
@@ -290,6 +302,8 @@ export default {
   "signup.renderStep1.emailPlace": "أدخل عنوان بريدك الإلكتروني",
   "signup.renderStep1.phone": "رقم الهاتف",
   "signup.renderStep1.phonePlace": "رقم الهاتف",
+  "signup.renderStep1.referralCode": "رمز التحرير",
+  "signup.renderStep1.referralCodePlace": "أدخل رمز التحرير",
   "signup.renderStep3.depart": "القسم",
   "signup.renderStep1.passwordDesc": "كلمة المرور الخاصة بك",
   "signup.renderStep1.btnNext": "التالي",
@@ -443,6 +457,16 @@ export default {
   "profile.acountDetail.parsedTimedayText": "يوم",
   "profile.acountDetail.parsedTimemonthText": "شهر",
   "profile.acountDetail.parsedTimeyearText": "سنة",
+  "profile.acountDetail.generating": "جاري التحرير...",
+  "profile.acountDetail.generateReferralCode": "تحرير رمز التحرير",
+  "profile.acountDetail.referralCode": "رمز التحرير",
+  "profile.acountDetail.referralCodeTitle": "شارك رمز التحرير",
+  "profile.acountDetail.referralCodeDesc":
+    "شارك هذا الرمز مع أصدقائك لتحصل على نقاط!",
+  "profile.acountDetail.copyReferralCode": "نسخ",
+  "profile.acountDetail.referralCodeCopied": "رمز التحرير منسوخ!",
+  "profile.acountDetail.referralLevel": "مستوى التحرير",
+  "profile.acountDetail.referralPoints": "نقاط التحرير",
 
   "ordersBuyKamas.title": "طلباتك",
   "ordersBuyKamas.cardTotalSales": "إجمالي المبيعات",
@@ -1066,6 +1090,23 @@ export default {
 
   "reviews.message-9": "موقع موثوق مع خدمة عالية الجودة. أنصح به.",
   "reviews.title-9": "خدمة موثوقة وعالية الجودة",
+
+  "reviews.message-162":
+    "لقد قمت بطلب كتاب على ibendouma وأنا حقا مثيرا بخدمتها. كان الطلب سهل الوضع وما يزال مثيرا للدهشة هو سرعة التسليم.",
+  "reviews.title-162": "أنا حقا مثيرا",
+
+  "reviews.message-132": "خدمة عالية الجودة",
+  "reviews.title-132": "خدمة عالية الجودة",
+
+  "reviews.message-182":
+    "Mmmmmdr سريع جدا لم أعتقد أنه سيكون بهذه البساطة والموثوقية كهذا ptn ❤️❤️❤️😭😭 support ilyass super sympa",
+  "reviews.title-182":
+    "Mmmmmdr سريع جدا لم أعتقد أنه سيكون بهذه البساطة والموثوقية كهذا...",
+
+  "reviews.message-142":
+    "Bendouma أشتري منه وأبيع له كاماس لأكثر من 2 سنوات الآن لا أزعم به أنه لا يوجد أي إعتراض ضده الخدمة جيدة جدا أوصي به بشدة",
+  "reviews.title-142":
+    "Bendouma أشتري منه وأبيع له كاماس لأكثر من 2 سنوات الآن لا أزعم به أنه لا يوجد أي إعتراض ضده الخدمة جيدة جدا أوصي به بشدة",
 
   "reviews.message-10": "خدمة سريعة وموثوقة. شكرًا جزيلاً.",
   "title-10": "خدمة سريعة وموثوقة",

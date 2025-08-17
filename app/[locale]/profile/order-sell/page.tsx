@@ -79,11 +79,15 @@ const ProfileSellPage = () => {
     switch (status.toLowerCase()) {
       case "payée":
       case "paid":
+      case "livrée":
+      case "livré":
+      case "delivered":
         return "bg-green-500";
       case "en attente":
       case "pending":
         return "bg-yellow-500";
       case "en cours de payment":
+      case "en cours de paiement":
       case "processing":
         return "bg-blue-500";
       case "annulée":
@@ -202,17 +206,23 @@ const ProfileSellPage = () => {
                           : parsedDevise(devise.currencyName)}
                       </span>
                       <Badge className={getStatusColor(order.status)}>
-                        {(order.status === "Payée" ||
-                          order.status === "paid") &&
+                        {(order.status.toLowerCase() === "payée" ||
+                          order.status.toLowerCase() === "livrée" ||
+                          order.status.toLowerCase() === "livré" ||
+                          order.status.toLowerCase() === "delivered" ||
+                          order.status.toLowerCase() === "paid") &&
                           tScope("completed")}
-                        {(order.status === "En attente" ||
-                          order.status === "pending") &&
+                        {(order.status.toLowerCase() === "en attente" ||
+                          order.status.toLowerCase() === "pending") &&
                           tScope("pending")}
-                        {(order.status === "Annulée" ||
-                          order.status === "cancelled") &&
+                        {(order.status.toLowerCase() === "annulée" ||
+                          order.status.toLowerCase() === "cancelled") &&
                           tScope("cancelled")}
-                        {(order.status === "En Cours de payment" ||
-                          order.status === "processing") &&
+                        {(order.status.toLowerCase() ===
+                          "en cours de payment" ||
+                          order.status.toLowerCase() ===
+                            "en cours de paiement" ||
+                          order.status.toLowerCase() === "processing") &&
                           tScope("processing")}
                       </Badge>
                     </div>

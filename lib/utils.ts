@@ -134,6 +134,7 @@ export interface ServerExchange {
   serverStatus: string;
   serverPriceDh: number;
   serverMinQty: number;
+  rate: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -485,6 +486,46 @@ export interface Review {
 
 export const trustpilotReviews: Review[] = [
   {
+    id: 162,
+    name: "Lucas",
+    reviews: 5,
+    date: "21 février 2025",
+    message:
+      "J'ai récemment commandé un livre sur ibendouma et je suis vraiment impressionné par leur service. La commande a été très simple à passer, et ce qui m'a vraiment marqué, c'est la rapidité de la livraison.",
+    titre: "je suis vraiment impressionné",
+    image: "",
+  },
+  {
+    id: 132,
+    name: "Abdellah Tetouani",
+    reviews: 5,
+    date: "30 mai 2025",
+    message: "Excellent service excellente qualité",
+    titre: "Excellent service excellente qualité",
+    image:
+      "https://user-images.trustpilot.com/6838e9b92824b5e5dffb4b1f/73x73.png",
+  },
+  {
+    id: 182,
+    name: "Islam Benhayun",
+    reviews: 5,
+    date: "03 mai 2025",
+    message:
+      "Mmmmmdr c rapide j'ai pas pensé que ça sera assez simple et fiable comme ça ptn ❤️❤️❤️😭😭 support ilyass super sympa",
+    titre: "Mmmmmdr c rapide j'ai pas pensé que ça…",
+    image: "",
+  },
+  {
+    id: 142,
+    name: "Yassine Bayla",
+    reviews: 5,
+    date: "02 mai 2025",
+    message:
+      "Bendouma j’achète de chez lui et je lui revends les kamas depuis 2 ans environ aucune plainte envers lui le service est excellent je vous conseilles vivement",
+    titre: "Bendouma j’achète de chez lui et je lui…",
+    image: "",
+  },
+  {
     id: 42,
     name: "doglas morino",
     reviews: 5,
@@ -502,7 +543,8 @@ export const trustpilotReviews: Review[] = [
     message:
       "Salut Ilyass, merci beaucoup pour ta rapidité et ton sérieux dans l’échange. Service au top, je te recommande ! ✌️m",
     titre: "Service au top",
-    image: "https://user-images.trustpilot.com/67e09d03b135c1e2267bb619/73x73.png",
+    image:
+      "https://user-images.trustpilot.com/67e09d03b135c1e2267bb619/73x73.png",
   },
   {
     id: 63,
@@ -512,7 +554,8 @@ export const trustpilotReviews: Review[] = [
     message:
       "Excellent service, après être tombé deux fois sur des arnaqueurs content de trouver des gens fiables !",
     titre: "Excellent service",
-    image: "https://user-images.trustpilot.com/67d444107062e88038d2ccb7/73x73.png",
+    image:
+      "https://user-images.trustpilot.com/67d444107062e88038d2ccb7/73x73.png",
   },
   {
     id: 87,
@@ -522,7 +565,8 @@ export const trustpilotReviews: Review[] = [
     message:
       "Service confidant et très rapide , communication avec le staff du site , trèa amicale , je recommande purement ce site",
     titre: "Service confidant et très rapide",
-    image: "https://user-images.trustpilot.com/67ca2f29bd2f7d8380350470/73x73.png",
+    image:
+      "https://user-images.trustpilot.com/67ca2f29bd2f7d8380350470/73x73.png",
   },
   {
     id: 1,
@@ -868,56 +912,56 @@ export const comments = [
     commentLastname: "Ahmed zinaoui",
     comment:
       "J'ai été livré en moins de 5 minutes. Le processus d'achat était simple et la livraison rapide.",
-    dateToCreated: "2025-02-05T14:55:31.008Z",
+    dateToCreated: "2025-08-16T14:55:31.008Z",
   },
   {
     _id: "2",
     commentLastname: "Youssef Bendouma",
     comment:
       "L'interface rapide et consultation parfaite! J'ai acheté des Kamas et tout est arrivé en moins de 5 minutes. Service impeccable!",
-    dateToCreated: "2023-11-04T10:30:21.008Z",
+    dateToCreated: "2025-08-04T10:30:21.008Z",
   },
   {
     _id: "3",
     commentLastname: "Malik",
     comment:
       "J'ai acheté un compte Dofus sur le site en quelques minutes! Processus simple et sécurisé. Très satisfait de mon achat!",
-    dateToCreated: "2024-11-05T09:15:45.008Z",
+    dateToCreated: "2025-07-05T09:15:45.008Z",
   },
   {
     _id: "4",
     commentLastname: "Karim",
     comment:
       "L'assistance client est top! Très gentil au téléphone et complet. Ils m'ont aidé à choisir le meilleur compte Dofus pour mon niveau.",
-    dateToCreated: "2023-11-05T16:40:12.008Z",
+    dateToCreated: "2025-07-03T16:40:12.008Z",
   },
   {
     _id: "5",
     commentLastname: "Omar",
     comment:
       "J'ai été bluffé! L'achat de Kamas était vraiment simple et efficace. Tout s'est passé comme prévu. Livraison rapide, sécurisée et sans tracas.",
-    dateToCreated: "2024-11-05T11:22:33.008Z",
+    dateToCreated: "2025-07-02T11:22:33.008Z",
   },
   {
     _id: "6",
     commentLastname: "Nasser",
     comment:
       "Je voulais dire que l'interface est très intuitive. J'ai pu acheter mon compte Dofus Retro sans problème. AIDE TRÈS VÉRIDIQUE dans mes démarches.",
-    dateToCreated: "2024-11-05T13:45:18.008Z",
+    dateToCreated: "2025-07-01T13:45:18.008Z",
   },
   {
     _id: "7",
     commentLastname: "Bilal",
     comment:
       "Le personnel est courtois et m'a rappelé en moins de 10 minutes. J'ai reçu mon compte Dofus avec tous les items promis. L'excellent service!",
-    dateToCreated: "2023-11-05T15:10:27.008Z",
+    dateToCreated: "2025-06-12T15:10:27.008Z",
   },
   {
     _id: "8",
     commentLastname: "Jamal",
     comment:
       "J'ai obtenu TOUS les Kamas dont j'avais besoin et si facilement! Très satisfait du service et des prix, tout est à la meilleure valeur!",
-    dateToCreated: "2022-11-05T12:33:42.008Z",
+    dateToCreated: "2025-06-10T12:33:42.008Z",
   },
 ];
 

@@ -50,14 +50,14 @@ const ProfileBuyPage = () => {
     enabled: !!session?.user.id,
   });
 
-  const { data: games } = useQuery({
-    queryKey: ["games-order"],
-    queryFn: async () => {
-      const response = await axios.get(`/api/iben/games`);
-      return response.data as IGamerResp[];
-    },
-    enabled: !!session?.user.id,
-  });
+  // const { data: games } = useQuery({
+  //   queryKey: ["games-order"],
+  //   queryFn: async () => {
+  //     const response = await axios.get(`/api/iben/games`);
+  //     return response.data as IGamerResp[];
+  //   },
+  //   enabled: !!session?.user.id,
+  // });
 
   if (isLoading) {
     return (
@@ -77,12 +77,17 @@ const ProfileBuyPage = () => {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "terminée":
+      case "payée":
+      case "livrée":
+      case "livré":
+      case "delivered":
       case "paid":
         return "bg-green-500 hover:bg-green-600";
       case "en attente":
       case "pending":
         return "bg-yellow-500 hover:bg-yellow-600";
       case "en cours de payment":
+      case "en cours de paiement":
       case "processing":
         return "bg-blue-500 hover:bg-blue-600";
       case "annulée":
@@ -176,16 +181,22 @@ const ProfileBuyPage = () => {
                       order.status
                     )} text-white`}
                   >
-                    {(order.status === "Terminée" || order.status === "paid") &&
+                    {(order.status.toLowerCase() === "terminée" ||
+                      order.status.toLowerCase() === "paid" ||
+                      order.status.toLowerCase() === "payée" ||
+                      order.status.toLowerCase() === "livrée" ||
+                      order.status.toLowerCase() === "livré" ||
+                      order.status.toLowerCase() === "delivered") &&
                       tScope("completed")}
-                    {(order.status === "En attente" ||
-                      order.status === "pending") &&
+                    {(order.status.toLowerCase() === "en attente" ||
+                      order.status.toLowerCase() === "pending") &&
                       tScope("pending")}
-                    {(order.status === "Annulée" ||
-                      order.status === "cancelled") &&
+                    {(order.status.toLowerCase() === "annulée" ||
+                      order.status.toLowerCase() === "cancelled") &&
                       tScope("cancelled")}
-                    {(order.status === "En Cours de payment" ||
-                      order.status === "processing") &&
+                    {(order.status.toLowerCase() === "en cours de payment" ||
+                      order.status.toLowerCase() === "en cours de paiement" ||
+                      order.status.toLowerCase() === "processing") &&
                       tScope("processing")}
                   </Badge>
                   {expandedOrder === order.orderNum ? (
@@ -276,7 +287,7 @@ const ProfileBuyPage = () => {
         </Card>
       )}
 
-      <p className="text-2xl font-semibold">{tScope("ordergame")}</p>
+      {/* <p className="text-2xl font-semibold">{tScope("ordergame")}</p>
       <div className="space-y-6">
         {games?.map((game) => (
           <Card
@@ -373,7 +384,7 @@ const ProfileBuyPage = () => {
             </AnimatePresence>
           </Card>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

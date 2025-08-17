@@ -128,6 +128,9 @@ export default {
   "exchange.btn": "Exchange",
   "exchange.btnLoading": "Exchanging...",
   "exchange.placeholderServer": "Choose server",
+  "exchange.serverExchangeRate":
+    "Exchange rate of the server {servername}: {serverRate}",
+  "exchange.rate": "Rate",
   "exchange.serverToPayErr": "Server to Pay is required",
   "exchange.qtyToPayErr": "Quantity to Pay is required",
   "exchange.qtyToReceiveErr": "Quantity to receive is required",
@@ -161,7 +164,8 @@ export default {
   "sellkamas.headertableAction": "Action",
   "sellkamas.headertableBtn": "Sell Now",
   "sellkamas.headertableStatusInTableAva": "Incomplete",
-  "sellkamas.headertableStatusInTableComp": "Full Stock",
+  "sellkamas.headertableStatusInTableComp": "Complete",
+  "sellkamas.headertableStatusInTableFast": "Sell Fast",
 
   "sellkamas.descTitle": "Sell Kamas | Kamas Sale",
   "sellkamas.qtyDesc": "Quantity",
@@ -230,13 +234,22 @@ export default {
   "dialogsell.casebinpaywise": "Payment email:",
   "dialogsell.caseadvcash": "Account number:",
   "dialogsell.casetrc20": "TRX address:",
+  "dialogsell.caseusdc": "USDC or Binance ID address:",
+  "dialogsell.casesepa": "Your IBAN:",
   "dialogsell.casemaroccobankinput": "Enter your RIB",
   "dialogsell.casemaroccobankCashAndWafa": "Phone:",
   "dialogsell.casewestandcashinput": "Enter your city",
   "dialogsell.casebinpaywiseinput": "Enter payment email",
   "dialogsell.caseadvcashinput": "Enter account number",
   "dialogsell.casetrc20input": "Enter TRX address",
+  "dialogsell.caseusdcinput": "Enter USDC or Binance ID address",
+  "dialogsell.casesepainput": "Enter your IBAN",
   "dialogsell.bonus": "Bonus: {bonus1} (orders over {bonus2})",
+  "dialogsell.contactMethod": "Contact method",
+  "dialogsell.contactMethodDesc": "Select contact method",
+  "dialogsell.contactMethodWhatsapp": "Whatsapp",
+  "dialogsell.contactMethodFacebook": "Facebook",
+  "dialogsell.contactMethodDiscord": "Discord",
 
   "dialogsell.gameNameError": "In-game name is required",
   "dialogsell.amountError": "Amount is required",
@@ -289,6 +302,8 @@ export default {
   "signup.renderStep1.personnalInformation": "Your personal information",
   "signup.renderStep1.lastname": "Last Name",
   "signup.renderStep1.firstname": "First name",
+  "signup.renderStep1.referralCode": "Referral Code",
+  "signup.renderStep1.referralCodePlace": "Enter your referral code",
   "signup.renderStep1.email": "Email",
   "signup.renderStep1.emailPlace": "Enter your adress mail",
   "signup.renderStep1.phone": "Phone",
@@ -451,7 +466,15 @@ export default {
   "profile.acountDetail.parsedTimedayText": "day",
   "profile.acountDetail.parsedTimemonthText": "month",
   "profile.acountDetail.parsedTimeyearText": "year",
-
+  "profile.acountDetail.generating": "Generating...",
+  "profile.acountDetail.generateReferralCode": "Generate Referral Code",
+  "profile.acountDetail.referralCode": "Referral Code",
+  "profile.acountDetail.referralCodeTitle": "Share your referral code",
+  "profile.acountDetail.referralCodeDesc": "Share this code with your friends to earn points!",
+  "profile.acountDetail.referralCodeCopied": "Referral code copied!",
+  "profile.acountDetail.copyReferralCode": "Copy",
+  "profile.acountDetail.referralLevel": "Referral Level",
+  "profile.acountDetail.referralPoints": "Referral Points",
   "ordersBuyKamas.title": "Your Orders",
   "ordersBuyKamas.cardTotalSales": "Total Sales",
   "ordersBuyKamas.cardTotalOrders": "Total Orders",
@@ -1072,9 +1095,24 @@ export default {
     "Hello, I confirm that this site has been trustworthy for more than 5 years. I haven't had many issues with the online service. They are always available at set times and attentive to my needs. I highly recommend it.",
   "reviews.title-5": "Hello,",
 
-  "message-6":
+  "reviews.message-162":
+    "I recently ordered a book on ibendouma and I am really impressed by their service. The order was very simple to place, and what really impressed me was the speed of delivery.",
+  "reviews.title-162": "I am really impressed",
+
+  "reviews.message-132": "Excellent service excellent quality",
+  "reviews.title-132": "Excellent service excellent quality",
+
+  "reviews.message-182":
+    "Mmmmmdr it's quick I didn't think that it would be so simple and reliable like this ptn ❤️❤️❤️😭😭 support ilyass super sympa",
+  "reviews.title-182": "Mmmmmdr it's quick I didn't think that...",
+
+  "reviews.message-142":
+    "Bendouma I buy from him and I sell him kamas for about 2 years now no complaint against him the service is excellent I highly recommend",
+  "reviews.title-142": "Bendouma I buy from him and I sell him kamas for about 2 years now no complaint against him the service is excellent I highly recommend",
+
+  "reviews.message-6":
     "The agents are cool, exchanges are quick, and transactions are secure. I highly recommend!",
-  "title-6": "Customer experience with ibytrade",
+  "reviews.title-6": "Customer experience with ibytrade",
 
   "reviews.message-7": "Best prices among all sites!",
   "reviews.title-7": "Best prices among all sites!",

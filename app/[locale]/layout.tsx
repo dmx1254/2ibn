@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Roboto } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 
@@ -10,13 +10,19 @@ import Navbar from "./components/Navbar";
 import { ProviderSession } from "./components/session-providers";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
-import Script from "next/script";
 import { AnnouncementBanner } from "./components/announcement-banner";
+import MessengerContact from "./components/MessengerContact";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "900"],
   variable: "--font-poppins",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
@@ -95,7 +101,7 @@ export default function RootLayout({
   const isRTL = params.locale === "ar";
   return (
     <html lang={params.locale} dir={isRTL ? "rtl" : "ltr"}>
-      <head>
+      {/* <head>
         <Script
           id="tawk-to-inline"
           strategy="afterInteractive"
@@ -113,10 +119,11 @@ export default function RootLayout({
           `,
           }}
         />
-      </head>
+      </head> */}
       <body
         className={clsx(
           poppins.variable,
+          roboto.variable,
           "w-full h-full antialiased font-sans bg-gray-50"
         )}
       >
@@ -127,6 +134,7 @@ export default function RootLayout({
                 <AnnouncementBanner />
                 <Navbar />
                 <Toaster />
+                <MessengerContact />
                 {children}
                 <Footer />
               </ProviderSession>

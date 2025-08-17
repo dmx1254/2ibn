@@ -1,13 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import SocialMediaDropdown from "./SocialMediaDropdown ";
 import { useScopedI18n } from "@/locales/client";
 
 const HomePageIcon = () => {
+  const [isSheetLoading, setIsSheetLoading] = useState(false);
   const tScope = useScopedI18n("pageicon");
-  
+  const handleViewSheet = async () => {
+    try {
+      setIsSheetLoading(true);
+      const response = await fetch("/api/gsheet/sheetinfo");
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(
+        "Erreur lors de la récupération des informations du sheet:",
+        error
+      );
+    } finally {
+      setIsSheetLoading(false);
+    }
+  };
   return (
     <div className="w-full flex items-center justify-between mt- sm:mt-16 px-4">
       <Link
@@ -65,6 +80,12 @@ const HomePageIcon = () => {
         </div>
       </Link>
       <SocialMediaDropdown isSource={true} />
+      {/* <button
+        onClick={handleViewSheet}
+        className="bg-blue-500 text-white px-4 py-2 rounded-md"
+      >
+        {isSheetLoading ? "Chargement..." : "Sheet info"}
+      </button> */}
     </div>
   );
 };
