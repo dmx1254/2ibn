@@ -37,7 +37,6 @@ import useStore from "@/lib/store-manage";
 
 const EchangeKamasClient = () => {
   const { data: session, status } = useSession();
-  const { isMainting } = useStore();
   const router = useRouter();
   const tScope = useScopedI18n("exchange");
   const [serversExchange, setServersExchange] = useState<
@@ -45,10 +44,12 @@ const EchangeKamasClient = () => {
   >(null);
   const [loadingExchange, setLoadingExchange] = useState<boolean>(false);
   const [rate, setRate] = useState<number>(100);
-  const [exchangeRate, setExchangeRate] = useState<number | undefined>(1);
+  const [exchangeRate, setExchangeRate] = useState<number | undefined>();
   const [serverExchangeRate, setServerExchangeRate] = useState<string>("");
 
   // console.log(serversExchange);
+
+  console.log(exchangeRate);
 
   const formSchema = z.object({
     serverToPay: z.string().min(1, { message: tScope("serverToPayErr") }),
@@ -146,13 +147,12 @@ const EchangeKamasClient = () => {
     setServerExchangeRate(activeServer || "");
 
     const activeServerRate = serversExchange?.find(
-      (s) => s.serverName === serverToPay
-    )?.rate;
+      (s) => s.serverName === serverToReceive
+    );
 
-    setExchangeRate(activeServerRate);
+    setExchangeRate(activeServerRate?.rate || 1);
 
     // console.log("activeServerRate: ", activeServerRate);
-
 
     // console.log("serverToPayRate: ", serverToPayRate);
     // console.log("serverToReceiveRate: ", serverToReceiveRate);
@@ -454,7 +454,8 @@ const EchangeKamasClient = () => {
                       <p className="text-white/90 font-medium text-sm text-center">
                         {tScope("serverExchangeRate", {
                           servername: serverExchangeRate,
-                          serverRate: exchangeRate * 100 + "%",
+                          serverRate:
+                            Math.round(Number(exchangeRate) * 100) + "%",
                         })}
                       </p>
                     )}
@@ -501,10 +502,7 @@ const EchangeKamasClient = () => {
                   <Button
                     type="submit"
                     className="w-full h-11 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-lg transition-colors duration-200"
-                    disabled={
-                      loadingExchange
-                      //  || isMainting
-                    }
+                    disabled={loadingExchange}
                     aria-label="Exchange order button"
                   >
                     {loadingExchange ? (
