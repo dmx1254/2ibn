@@ -1215,9 +1215,15 @@ export default {
   "pageicon.exchange2": "kamas",
   "pageicon.social1": "Medios",
   "pageicon.social2": "sociales",
-
+  "pageicon.rate": "Calificar",
+  "pageicon.rateDesc": "en Trustpilot",
+  "pageicon.search": "Buscar",
+  "pageicon.searchDesc": "Buscar lo que quieres",
   "modal.signin": "Iniciar sesión",
   "modal.signup": "Registrarse",
+  "pageicon.main1": "Una plataforma para",
+  "pageicon.main2": "ventas y compras, segura y",
+  "pageicon.main3": "práctica",
 
   "homeslide.title1": "Precios competitivos",
   "homeslide.desc1": "¡Servicio de calidad y entrega instantánea!",

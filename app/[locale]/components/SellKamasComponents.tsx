@@ -97,7 +97,7 @@ const SellKamasComponents = ({
     if (
       value === "Aed" ||
       value === "Usdt(TRC20/ERC20) " ||
-      value === "USDC (TRC20/ERC20/Binance ID)"
+      value === "Usdt(TRC20/ERC20)/USDC(TRC20/ERC20/Binance ID)"
     ) {
       if (devise.currencyName === "dollar") return;
       await fetchCurrency("dollar");
@@ -108,14 +108,14 @@ const SellKamasComponents = ({
     "CIH Bank",
     "Attijariwafa Bank",
     "Bmce",
-    "USDC (TRC20/ERC20/Binance ID)",
+    "Usdt(TRC20/ERC20)/USDC(TRC20/ERC20/Binance ID)",
     "Sepa",
     "Crédit du maroc",
     "Crédit agricole",
     "Wafacash",
     "Paypal",
     "Skrill",
-    "Usdt(TRC20/ERC20)",
+    // "Usdt(TRC20/ERC20)",
     "Aed",
     // "Binance Pay",
     // "Payeer",
@@ -145,9 +145,9 @@ const SellKamasComponents = ({
         return tScope("casebinpaywise");
       case "ADV Cash":
         return tScope("caseadvcash");
-      case "Usdt(TRC20/ERC20)":
+      // case "Usdt(TRC20/ERC20)":
         return tScope("casetrc20");
-      case "USDC (TRC20/ERC20/Binance ID)":
+      case "Usdt(TRC20/ERC20)/USDC(TRC20/ERC20/Binance ID)":
         return tScope("caseusdc");
       case "Sepa":
         return tScope("casesepa");
@@ -176,7 +176,7 @@ const SellKamasComponents = ({
         return tScope("caseadvcashinput");
       case "TRC20":
         return tScope("casetrc20input");
-      case "USDC (TRC20/ERC20/Binance ID)":
+      case "Usdt(TRC20/ERC20)/USDC(TRC20/ERC20/Binance ID)":
         return tScope("caseusdcinput");
       case "Sepa":
         return tScope("casesepainput");

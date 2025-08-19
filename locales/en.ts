@@ -1199,9 +1199,16 @@ export default {
   "pageicon.exchange2": "kamas",
   "pageicon.social1": "Social",
   "pageicon.social2": "media",
+  "pageicon.rate": "Rate us",
+  "pageicon.rateDesc": "Trustpilot",
+  "pageicon.search": "Search",
+  "pageicon.searchDesc": "Search what you want",
 
-  "modal.signin": "Sign In",
-  "modal.signup": "Sign Up",
+  "modal.signin": "Login",
+  "modal.signup": "Sign up",
+  "pageicon.main1": "A platform for",
+  "pageicon.main2": "sales and purchases, secure and",
+  "pageicon.main3": "practical",
 
   "homeslide.title1": "Competitive prices",
   "homeslide.desc1": "Quality service and instant delivery!",

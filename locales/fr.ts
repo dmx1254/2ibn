@@ -141,7 +141,7 @@ export default {
   "exchange.serverExchangeRate":
     "Taux de change du serveur {servername}: {serverRate}",
   "exchange.rate": "Taux de change",
-    "exchange.success":
+  "exchange.success":
     "Demande d'échange envoyée avec succès. Ouvrez le chat pour procéder à l'échange.",
   "exchange.error":
     "Quelque chose s'est mal passé, veuillez réessayer plus tard",
@@ -483,7 +483,8 @@ export default {
   "profile.acountDetail.generateReferralCode": "Générer un code de parrainage",
   "profile.acountDetail.referralCode": "Code de parrainage",
   "profile.acountDetail.referralCodeTitle": "Partagez votre code de parrainage",
-  "profile.acountDetail.referralCodeDesc": "Partagez ce code avec vos amis pour gagner des points !",
+  "profile.acountDetail.referralCodeDesc":
+    "Partagez ce code avec vos amis pour gagner des points !",
   "profile.acountDetail.referralCodeCopied": "Code de parrainage copié !",
   "profile.acountDetail.copyReferralCode": "Copier",
   "profile.acountDetail.referralLevel": "Niveau de parrainage",
@@ -1218,9 +1219,17 @@ export default {
   "pageicon.exchange2": "de kamas",
   "pageicon.social1": "Media",
   "pageicon.social2": "sociaux",
-
+  "pageicon.rate": "Notez-nous",
+  "pageicon.rateDesc": "sur Trustpilot",
+  "pageicon.search": "Rechercher",
+  "pageicon.searchDesc": "Rechercher ce que vous voulez",
   "modal.signin": "Se connecter",
   "modal.signup": "S'inscrire",
+  "pageicon.main1": "Une plateforme d'échange de",
+
+  "pageicon.main2": "ventes et d'achat, sécurisée et",
+
+  "pageicon.main3": "pratique",
 
   "homeslide.title1": "Des prix compétitifs",
   "homeslide.desc1": " un service de qualité, et une livraison instantanée !",
@@ -1434,6 +1443,7 @@ export default {
     exclusiveOffers: "Offres exclusives",
     fasterDelivery: "Livraison accélérée",
     optional: "Optionnel",
-    referralInfo: "Utilisez le code de parrainage d'un ami pour gagner des avantages mutuels. Vous recevrez des bonus et votre ami gagnera des points de parrainage !",
+    referralInfo:
+      "Utilisez le code de parrainage d'un ami pour gagner des avantages mutuels. Vous recevrez des bonus et votre ami gagnera des points de parrainage !",
   },
 } as const;

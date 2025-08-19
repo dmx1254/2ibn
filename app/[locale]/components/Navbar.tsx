@@ -9,7 +9,7 @@ import { CiUser } from "react-icons/ci";
 
 import { dofusItemNav, games } from "@/lib/utils";
 import LanguageAndCurrency from "./LanguageAndCurrency";
-import { useScopedI18n } from "@/locales/client";
+import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 import CardHoverCon from "./HoverCard";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -36,8 +36,10 @@ const Navbar = () => {
   const tScope = useScopedI18n("navbar.popover");
   const tScope2 = useScopedI18n("navbar");
   const tScope3 = useScopedI18n("menu");
+  const tScope4 = useScopedI18n("modal");
   const pathname = usePathname();
 
+  const currentLocale = useCurrentLocale();
 
   // const [scrollPosition, setScrollPosition] = useState<number>(0);
 
@@ -49,7 +51,13 @@ const Navbar = () => {
     !pathname.includes("resetpassword") && (
       <>
         <MobileTopMenus />
-        <div className="z-50 font-poppins flex sticky top-0 left-0 right-0 w-full items-center justify-center text-center px-2 md:px-4 bg-[#18191A] border-b border-gray-100">
+        <div
+          style={{
+            backgroundColor:
+              pathname === `/${currentLocale}` ? "transparent" : "#1A1D21",
+          }}
+          className="z-50 absolute font-poppins flex top-0 left-0 right-0 w-full items-center justify-center text-center px-2 md:px-4 bg-transparent"
+        >
           <div className="w-full max-w-6xl flex items-center justify-between">
             <div className="flex items-center gap-0">
               <SheetMenu />
@@ -108,7 +116,7 @@ const Navbar = () => {
               </Link>
               <Popover open={isGameHovering} onOpenChange={setIsGameHovering}>
                 <PopoverTrigger
-                  className="flex items-center text-base text-white transition-colors hover:text-yellow-600"
+                  className="flex items-center text-sm text-white transition-colors hover:text-yellow-600"
                   onMouseEnter={() => setIsGameHovering(true)}
                 >
                   {tScope2("game")} <FaSortDown className="-mt-1.5" />
@@ -154,10 +162,9 @@ const Navbar = () => {
               ) : (
                 <Link
                   href="/signin"
-                  className="hidden sm:inline-flex items-center gap-1 p-3 transition-colors cursor-pointer rounded-[10px] hover:shadow-link text-white hover:text-yellow-600"
+                  className="hidden sm:inline-flex items-center text-sm gap-1 p-2 transition-colors cursor-pointer rounded-[10px] hover:shadow-link bg-yellow-500 text-white hover:opacity-80"
                 >
-                  <CiUser size={22} className="-mt-1" />
-                  <span className="text-sm ">{tScope("account")}</span>
+                  {tScope4("signin")}/{tScope4("signup")}
                 </Link>
               )}
 

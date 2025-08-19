@@ -2,7 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { AlertTriangle, ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import {
+  AlertTriangle,
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  Quote,
+} from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card } from "./ui/card";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
@@ -86,7 +92,7 @@ const Testimonials = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10" />
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-pink-500/20 to-blue-500/20 rounded-full blur-2xl" />
-      
+
       <div className="relative z-10 flex justify-between gap-6 items-center">
         <div className="flex max-md:flex-col max-md:items-start items-center gap-6">
           <div className="relative">
@@ -193,7 +199,10 @@ const Testimonials = () => {
                             <div className="flex items-center gap-4 mb-4">
                               <div className="flex items-center gap-1">
                                 {[...Array(5)].map((_, i) => (
-                                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                                  <Star
+                                    key={i}
+                                    className="w-5 h-5 text-yellow-400 fill-current"
+                                  />
                                 ))}
                               </div>
                               <span className="text-sm text-slate-400 font-medium bg-slate-800/50 px-3 py-1 rounded-full">
@@ -210,7 +219,7 @@ const Testimonials = () => {
                             </div>
                           </div>
                         </div>
-                        
+
                         {/* Decorative elements */}
                         <div className="absolute top-4 right-4 w-3 h-3 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <div className="absolute bottom-4 left-4 w-2 h-2 bg-gradient-to-br from-pink-400 to-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100" />
@@ -259,7 +268,7 @@ const Testimonials = () => {
             </Alert>
           </div>
         </Card>
-        
+
         <Link
           href="https://fr.trustpilot.com/evaluate/ibendouma.com"
           target="_blank"
@@ -277,9 +286,6 @@ const Testimonials = () => {
               height={120}
               className="object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
             />
-            <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-              <Star className="w-3 h-3 text-white fill-current" />
-            </div>
           </div>
         </Link>
       </div>

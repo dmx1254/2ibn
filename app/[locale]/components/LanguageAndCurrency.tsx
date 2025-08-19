@@ -104,19 +104,19 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
           className={clsx(
             "outline-none inline-flex items-center gap-2 px-3 py-2 transition-all duration-200 cursor-pointer rounded-full hover:opacity-90",
             {
-              "border border-[#76828D] focus:ring-0 bg-[#363A3D] max-md:hidden":
+              "border border-gray-100 focus:ring-0 bg-white shadow-sm text-black max-md:hidden":
                 isShowBg,
             }
           )}
         >
-          <Globe size={18} className="text-white" />
-          <span className="text-sm font-medium text-white">
+          <Globe size={18} className="text-black" />
+          <span className="text-sm font-medium text-black">
             {getLocaleLanguage()?.code.toUpperCase()} / {cur?.symbol}
           </span>
           <ChevronDown
             size={16}
             className={cn(
-              "text-white transition-transform duration-200",
+              "text-black transition-transform duration-200",
               isOpen && "rotate-180"
             )}
           />

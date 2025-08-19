@@ -5,10 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { ServerExchange } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
-import {
-  Card,
-  CardContent,
-} from "../components/ui/card";
+import { Card, CardContent } from "../components/ui/card";
 import {
   Table,
   TableBody,
@@ -22,6 +19,7 @@ import Link from "next/link";
 import useStore from "@/lib/store-manage";
 import SellKamasComponents from "../components/SellKamasComponents";
 import Image from "next/image";
+import Testimonials from "./Testimonials";
 
 const VendreKamasClient = () => {
   const { devise } = useStore();
@@ -178,7 +176,7 @@ const VendreKamasClient = () => {
 
   return (
     <div className="container font-roboto mx-auto p-2 md:p-6 space-y-6 max-w-5xl min-h-screen">
-      <Card className="w-full bg-[#1A1D21] my-6 p-6">
+      <Card className="w-full bg-[#1A1D21] mt-16 mb-6 p-6">
         <div className="bg-[#1A1D21] rounded-lg">
           <div className="flex flex-col items-center">
             <h2 className="text-2xl font-bold text-white/90 mb-4">
@@ -225,7 +223,7 @@ const VendreKamasClient = () => {
                   </p>
                 </div>
               </div>
-          
+
               <p>
                 {tScope("desc8")}{" "}
                 <Link
@@ -240,26 +238,12 @@ const VendreKamasClient = () => {
         </div>
       </Card>
 
-      <Link
-        href="https://fr.trustpilot.com/evaluate/ibendouma.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex p-4 rounded-lg items-center justify-center gap-2 mt-6 mb-2 bg-[#1A1D21]"
-      >
-        <span className="text-sm text-gray-300">
-          {tScopeFooter("giveReviews")}
-        </span>
-        <Image
-          src="/reviewT.png"
-          alt="Trustpilot ibendouma reviews"
-          width={150}
-          height={150}
-          className="object-contain"
-        />
-      </Link>
       <Card className="w-full bg-[#1A1D21] my-6">
         <SellKamasComponents servers={serversSell} />
       </Card>
+      <div className="w-full max-w-6xl my-5 mx-auto">
+        <Testimonials />
+      </div>
       <Card className="w-full mt-6 bg-transparent border-none">
         <CardContent className="w-full space-y-4 p-0">
           <div className="bg-[#363A3D] flex flex-col items-center gap-3 rounded-lg shadow-md overflow-hidden mt-6">

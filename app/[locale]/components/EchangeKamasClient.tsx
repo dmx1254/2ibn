@@ -33,7 +33,7 @@ import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import useStore from "@/lib/store-manage";
+import Testimonials from "./Testimonials";
 
 const EchangeKamasClient = () => {
   const { data: session, status } = useSession();
@@ -241,7 +241,7 @@ const EchangeKamasClient = () => {
 
   return (
     <div className="font-poppins p-4 md:p-8 min-h-screen">
-      <div className="max-w-6xl mx-auto space-y-4 bg-[#1A1D21] p-4 rounded-[10px]">
+      <div className="max-w-6xl mx-auto mt-16 space-y-4 bg-[#1A1D21] p-4 rounded-[10px]">
         <div className="text-center space-y-2 mb-6">
           <h1 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-400 bg-clip-text text-transparent">
             {tScope("headeartitle")}
@@ -519,6 +519,9 @@ const EchangeKamasClient = () => {
             </CardContent>
           </Card>
         </div>
+      </div>
+      <div className="w-full max-w-6xl my-5 mx-auto">
+        <Testimonials />
       </div>
       <Card className="w-full flex flex-col items-center justify-center mx-auto my-10 gap-4 max-w-6xl p-6 self-center bg-[#1A1D21] border-[#45494e]">
         <p className="text-base text-white/90">{tScope("desc1")}</p>

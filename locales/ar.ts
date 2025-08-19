@@ -1183,9 +1183,15 @@ export default {
   "pageicon.exchange2": "الكاماس",
   "pageicon.social1": "وسائل",
   "pageicon.social2": "التواصل الاجتماعي",
-
+  "pageicon.rate": "تقييمنا",
+  "pageicon.rateDesc": "على Trustpilot",
+  "pageicon.search": "بحث",
+  "pageicon.searchDesc": "ابحث عن ما تريد",
   "modal.signin": "تسجيل الدخول",
   "modal.signup": "إنشاء حساب",
+  "pageicon.main1": "منصة ل",
+  "pageicon.main2": "المبيعات والمشتريات، آمنة و",
+  "pageicon.main3": "ممتازة",
 
   "homeslide.title1": "أسعار تنافسية",
   "homeslide.desc1": "خدمة عالية الجودة وتسليم فوري!",

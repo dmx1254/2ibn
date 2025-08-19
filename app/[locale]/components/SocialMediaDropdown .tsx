@@ -71,7 +71,7 @@ const SocialMediaDropdown = ({ isSource = false }) => {
           className={clsx(
             "flex flex-col items-center gap-2 justify-center p-1.5 rounded-full text-white hover:opacity-80",
             {
-              "max-sm:hidden border-[2px] bg-[#363A3D] border-[#45494e]":
+              "max-sm:hidden border-[2px] bg-white shadow-sm text-black border-gray-100":
                 !isSource,
             }
           )}
@@ -86,8 +86,8 @@ const SocialMediaDropdown = ({ isSource = false }) => {
           />
           {isSource && (
             <div className="max-sm:text-xs flex flex-col text-inherit items-center text-sm antialiased">
-              <span className="text-black">{tScope("social1")}</span>
-              <span className="text-black max-sm:hidden">
+              <span className="text-black text-xs">{tScope("social1")}</span>
+              <span className="text-black max-sm:hidden text-xs">
                 {tScope("social2")}
               </span>
             </div>
