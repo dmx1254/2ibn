@@ -5,6 +5,7 @@ import { ibenModels } from "@/lib/models/ibendouma-models";
 import { NextResponse } from "next/server";
 
 import { Resend } from "resend";
+import { NotifyIlyasstemplate } from "@/app/[locale]/components/notifyilyasstemplate";
 
 const resend = new Resend(process.env.RESEND_2IBN_API_KEY);
 
@@ -115,6 +116,15 @@ export async function POST(request: Request) {
               status: newOrder.status,
               paymentMethod: newOrder.paymentMethod,
             },
+          }),
+        });
+
+        await resend.emails.send({
+          from: "Ibendouma Notification <noreply@ibendouma.com>",
+          to: ["bendoumailyass@gmail.com"],
+          subject: "Notification de commande de vente de ibendouma",
+          react: NotifyIlyasstemplate({
+            type: "Commande de vente vers google sheet",
           }),
         });
       } catch (error: any) {

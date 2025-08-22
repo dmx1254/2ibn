@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import { AnnouncementBanner } from "./components/announcement-banner";
 import MessengerContact from "./components/MessengerContact";
+import Script from "next/script";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -101,7 +102,25 @@ export default function RootLayout({
   const isRTL = params.locale === "ar";
   return (
     <html lang={params.locale} dir={isRTL ? "rtl" : "ltr"}>
-      
+      <head>
+        <Script
+          id="tawk-to-inline"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+              s1.async=true;
+              s1.src='https://embed.tawk.to/5ef8a6b84a7c6258179b7d5d/1fav89jc0';
+              s1.charset='UTF-8';
+              s1.setAttribute('crossorigin','*');
+              s0.parentNode.insertBefore(s1,s0);
+            })();
+          `,
+          }}
+        />
+      </head>
       <body
         className={clsx(
           poppins.variable,

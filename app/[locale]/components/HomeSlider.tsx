@@ -1,108 +1,18 @@
 "use client";
 
 import React from "react";
-// import {
-//   Carousel,
-//   CarouselApi,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselNext,
-//   CarouselPrevious,
-// } from "@/components/ui/carousel";
-// import Image from "next/image";
+
 import { useScopedI18n } from "@/locales/client";
 import Link from "next/link";
 
 const HomeSlider = () => {
   const tScope2 = useScopedI18n("pageicon");
-  // const [api, setApi] = useState<CarouselApi>();
-  // const [activeIndex, setActiveIndex] = useState(0);
-
-  // useEffect(() => {
-  //   if (!api) return;
-
-  //   const handleSelect = () => {
-  //     let currentIndex =
-  //       api.selectedScrollSnap() === sliderData.length - 1 ||
-  //       api.selectedScrollSnap() === 0
-  //         ? 1
-  //         : api.selectedScrollSnap();
-  //     setActiveIndex(currentIndex);
-  //   };
-
-  //   api.on("select", handleSelect);
-
-  //   return () => {
-  //     api.off("select", handleSelect);
-  //   };
-  // }, [api]);
-
-  // const sliderData = [
-  //   {
-  //     image: "/game.webp",
-  //     title: tsCope("title1"),
-  //     description: tsCope("desc1"),
-  //   },
-  //   {
-  //     image: "/games.webp",
-  //     title: tsCope("title3"),
-  //     description: tsCope("desc3"),
-  //   },
-  //   {
-  //     image: "/lastslide.webp",
-  //     title: tsCope("title2"),
-  //     description: tsCope("desc2"),
-  //   },
-
-  // {
-  //   image: "/dofs2.png",
-  //   title: "Livraison ultra rapide",
-  //   description: "Recevez vos Kamas en moins de 10 minutes",
-  // },
-  // ];
-
+ 
   return (
-    <div className="w-full flex items-center justify-center md:h-screen max-md: mt-16 h-full gap-4 relative">
-      {/* <Carousel setApi={setApi} className="w-full h-full">
-        <CarouselContent className="w-full">
-          {sliderData.map((slide, index) => (
-            <CarouselItem key={index}>
-              <div className="relative w-full h-[260px] md:h-[700px] bg-black">
-                <Image
-                  src={slide.image}
-                  alt={`Slider-${index}`}
-                  layout="fill"
-                  className="w-full object-cover h-[260px] object-center md:h-[700px]"
-                />
-                <div className="inset-0 bg-black/40 flex flex-col gap-2 items-center justify-center text-white p-4 text-center">
-                  <h2 className="text-3xl sm:text-4xl font-extrabold mb-2">
-                    {slide.title}
-                  </h2>
-                  <p className="text-lg sm:text-xl font-bold bg-gradient-to-r from-orange-500 to-yellow-500 p-3 rounded">
-                    {slide.description}
-                  </p>
-                </div>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel> */}
-      <div className="flex flex-col items-center justify-center text-center px-4 z-10">
-        {/* Section 1: Titre principal */}
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
-            {tScope2("main1")}
-            <br />
-            {tScope2("main2")}
-            <br />
-            {tScope2("main3")}
-          </h1>
-        </div>
+    <div className="w-full flex items-center justify-center pt-20 pb-2 md:pt-64 md:pb-40 h-full gap-4 relative">
 
-        {/* Section 2: Barre de recherche */}
-        <div className="mb-12 relative flex items-center gap-3 w-full max-w-2xl">
+      <div className="flex flex-col items-center justify-center w-full max-w-4xl text-center px-4 z-10">
+        <div className="mb-12 relative flex items-center gap-3 w-full">
           <div className="flex-1 relative">
             <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
               <svg
@@ -134,7 +44,7 @@ const HomeSlider = () => {
         </div>
 
         {/* Section 3: Icônes de catégories */}
-        <div className="mb-12 flex items-center justify-between gap-3 w-full max-w-4xl">
+        <div className="mb-12 flex items-center justify-between gap-3 w-full">
           {/* Buy Kamas */}
           <Link
             href="/acheter-des-kamas"

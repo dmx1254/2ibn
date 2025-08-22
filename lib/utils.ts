@@ -162,9 +162,8 @@ export interface CURRENCY {
 
 export interface BuyInfo{
   fullname: string;
-  gameName: string;
   paymentMethod: string;
-  buyCode: string;
+  paymentDetails: string;
 }
 
 export interface CurrencyItem {

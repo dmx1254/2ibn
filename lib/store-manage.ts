@@ -34,9 +34,8 @@ const useStore = create<MyStore>()(
       activeServerRequest: "dofus-kamas",
       buyInfo: {
         fullname: "",
-        gameName: "",
         paymentMethod: "",
-        buyCode: "",
+        paymentDetails: "",
       },
       addBuyInfo: (buyInfo) => set({ buyInfo: buyInfo }),
       addSevers: (servers) => set({ servers: servers }),

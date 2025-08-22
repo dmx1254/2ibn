@@ -293,11 +293,9 @@ const VendreKamasClient = () => {
                     Paypal
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Skrill
+                    SKRILL/SEPA
                   </TableHead>
-                  <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Sepa
-                  </TableHead>
+
                   <TableHead className="text-amber-600 text-right max-md:text-xs">
                     Usdt / Usdc / Binance Pay
                   </TableHead>
@@ -332,12 +330,7 @@ const VendreKamasClient = () => {
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
-                      <TableCell className="text-center max-md:text-xs">
-                        {(
-                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
-                        ).toFixed(3)}{" "}
-                        €/M
-                      </TableCell>
+
                       <TableCell className="text-center max-md:text-xs">
                         {(
                           server.serverPriceDh / (serverPriceDollar || 1)
@@ -353,14 +346,14 @@ const VendreKamasClient = () => {
 
                       <TableCell className="text-right">
                         <span
-                          className={`px-2 py-1 rounded-full text-xs ${
+                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-sm border ${
                             server.serverStatus === "Disponible"
-                              ? "text-green-600"
+                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                              ? "text-green-600"
+                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Vendre rapidement"
-                              ? "text-sky-600"
-                              : "text-red-600"
+                              ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
+                              : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
@@ -394,11 +387,9 @@ const VendreKamasClient = () => {
                     Paypal
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Skrill
+                    SKRILL/SEPA
                   </TableHead>
-                  <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Sepa
-                  </TableHead>
+
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
                     Usdt / Usdc / Binance Pay
                   </TableHead>
@@ -435,12 +426,6 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
-                        ).toFixed(3)}{" "}
-                        €/M
-                      </TableCell>
-                      <TableCell className="text-center max-md:text-xs">
-                        {(
                           server.serverPriceDh / (serverPriceDollar || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
@@ -448,14 +433,14 @@ const VendreKamasClient = () => {
 
                       <TableCell className="text-center max-md:text-xs">
                         <span
-                          className={`px-2 py-1 rounded-full text-xs ${
+                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-sm border ${
                             server.serverStatus === "Disponible"
-                              ? "text-green-600"
+                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                              ? "text-green-600"
+                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Vendre rapidement"
-                              ? "text-sky-600"
-                              : "text-red-600"
+                              ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
+                              : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
@@ -489,11 +474,9 @@ const VendreKamasClient = () => {
                     Paypal
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Skrill
+                    SKRILL/SEPA
                   </TableHead>
-                  <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Sepa
-                  </TableHead>
+
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
                     Usdt / Usdc / Binance Pay
                   </TableHead>
@@ -530,12 +513,6 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
-                        ).toFixed(3)}{" "}
-                        €/M
-                      </TableCell>
-                      <TableCell className="text-center max-md:text-xs">
-                        {(
                           server.serverPriceDh / (serverPriceDollar || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
@@ -543,15 +520,19 @@ const VendreKamasClient = () => {
 
                       <TableCell className="text-center max-md:text-xs">
                         <span
-                          className={`px-2 py-1 rounded-full text-xs ${
+                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-sm border ${
                             server.serverStatus === "Disponible"
-                              ? "text-green-600"
+                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                              : server.serverStatus === "Incomplet"
+                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Vendre rapidement"
-                              ? "text-sky-600"
-                              : "text-red-500"
+                              ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
+                              : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
+                            ? tScope("headertableStatusInTableAva")
+                            : server.serverStatus === "Incomplet"
                             ? tScope("headertableStatusInTableAva")
                             : server.serverStatus === "Vendre rapidement"
                             ? tScope("headertableStatusInTableFast")
@@ -578,11 +559,9 @@ const VendreKamasClient = () => {
                     Paypal
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Skrill
+                    SKRILL/SEPA
                   </TableHead>
-                  <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Sepa
-                  </TableHead>
+
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
                     Usdt / Usdc / Binance Pay
                   </TableHead>
@@ -622,12 +601,6 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
-                        ).toFixed(3)}{" "}
-                        €/M
-                      </TableCell>
-                      <TableCell className="text-center max-md:text-xs">
-                        {(
                           server.serverPriceDh / (serverPriceDollar || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
@@ -640,14 +613,22 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         <span
-                          className={`px-2 py-1 rounded-full text-xs ${
+                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-sm border ${
                             server.serverStatus === "Disponible"
-                              ? "text-green-600"
-                              : "text-red-500"
+                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                              : server.serverStatus === "Incomplet"
+                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                              : server.serverStatus === "Vendre rapidement"
+                              ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
+                              : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
                             ? tScope("headertableStatusInTableAva")
+                            : server.serverStatus === "Incomplet"
+                            ? tScope("headertableStatusInTableAva")
+                            : server.serverStatus === "Vendre rapidement"
+                            ? tScope("headertableStatusInTableFast")
                             : tScope("headertableStatusInTableComp")}
                         </span>
                       </TableCell>

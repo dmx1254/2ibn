@@ -251,7 +251,7 @@ const Testimonials = () => {
             </div>
           </div>
 
-          <div className="border-t border-slate-700/50">
+          <div className="border-t-4 border-red-100">
             <Alert
               variant="destructive"
               className="border-none rounded-none bg-gradient-to-r from-red-900/50 via-red-800/50 to-red-900/50 backdrop-blur-sm"

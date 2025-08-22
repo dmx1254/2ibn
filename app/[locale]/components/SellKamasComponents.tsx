@@ -29,7 +29,7 @@ const SellKamasComponents = ({
   servers: ServerExchange[] | null;
 }) => {
   const { devise, addNewDevise, addBuyInfo, buyInfo } = useStore();
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   // console.log(devise);
 
@@ -38,10 +38,10 @@ const SellKamasComponents = ({
   const tScope = useScopedI18n("dialogsell");
 
   const [formData, setFormData] = useState({
-    gameName: buyInfo.gameName,
+    gameName: "",
     amount: "",
     paymentMethod: buyInfo.paymentMethod,
-    paymentDetails: "",
+    paymentDetails: buyInfo.paymentDetails,
     lastname: buyInfo.fullname,
     firstname: "",
   });
@@ -58,7 +58,7 @@ const SellKamasComponents = ({
   const [amountError, setAmountError] = useState<string>("");
   const [paymentMethodError, setPaymentMethodError] = useState<string>("");
   const [paymentDetailsError, setPaymentDetailsError] = useState<string>("");
-  const [buyCode, setBuyCode] = useState<string>(buyInfo.buyCode);
+  const [buyCode, setBuyCode] = useState<string>("");
   const [serverError, setServerError] = useState<string>("");
   const [server, setServer] = useState<ServerExchange | null>(null);
   const [contactMethod, setContactMethod] = useState<{
@@ -306,9 +306,8 @@ const SellKamasComponents = ({
         if (response) {
           addBuyInfo({
             fullname: formData.lastname,
-            gameName: formData.gameName,
             paymentMethod: formData.paymentMethod,
-            buyCode: buyCode,
+            paymentDetails: formData.paymentDetails,
           });
           toast.success(tScope("success"), {
             style: { color: "#16a34a" },
@@ -351,10 +350,10 @@ const SellKamasComponents = ({
     const data: CUR[] = await response.json();
     // console.log(data);
     if (data && data.length > 0) {
-      let keys = Object.keys(data[0]);
-      let values = Object.values(data[0]);
-      let name = keys[1];
-      let val = values[1];
+      const keys = Object.keys(data[0]);
+      const values = Object.values(data[0]);
+      const name = keys[1];
+      const val = values[1];
       const dev = {
         currencyName: name,
         curencyVal: val,

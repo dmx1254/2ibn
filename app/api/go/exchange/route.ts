@@ -5,6 +5,7 @@ import { goapiModels } from "@/lib/models/ibytrade-models";
 import { ibenModels } from "@/lib/models/ibendouma-models";
 import { NewOrderConfirmationTemplate } from "@/app/[locale]/components/neworder-template";
 import { addOrderToSheet } from "@/lib/orderSheets-exchange";
+import { NotifyIlyasstemplate } from "@/app/[locale]/components/notifyilyasstemplate";
 
 const resend = new Resend(process.env.RESEND_2IBN_API_KEY);
 export async function GET() {
@@ -88,6 +89,15 @@ export async function POST(req: Request) {
           qtyToPay: data.qtyToPay,
           qtyToReceive: data.qtyToReceive,
         },
+      }),
+    });
+
+    await resend.emails.send({
+      from: "Ibendouma Notification <noreply@ibendouma.com>",
+      to: ["bendoumailyass@gmail.com"],
+      subject: "Notification d'échange de ibendouma",
+      react: NotifyIlyasstemplate({
+        type: "Commande d'échange vers google sheet",
       }),
     });
     return NextResponse.json(newExchange, { status: 200 });
