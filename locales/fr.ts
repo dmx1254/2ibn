@@ -212,6 +212,8 @@ export default {
 
   "dialogsell.btnSell": "Vendre Maintenant",
   "dialogsell.title": "Vendre des Kamas sur {server}",
+  "dialogsell.buyCode": "Code d'achat",
+  "dialogsell.buyCodeInput": "Entrez un code d'achat, 6 caractères maximum",
   "dialogsell.desc":
     "Veuillez remplir vos informations pour procéder à la vente.",
   "dialogsell.IngameName": "Nom dans le jeu",

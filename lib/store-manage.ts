@@ -1,11 +1,13 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { CURRENCY, ServerBuy } from "./utils";
+import { BuyInfo, CURRENCY, ServerBuy } from "./utils";
 import { Cart, USERLOGINRESPONSE } from "./types/types";
 
 interface MyStore {
   servers: ServerBuy[];
   addSevers: (servers: ServerBuy[]) => void;
+  buyInfo: BuyInfo;
+  addBuyInfo: (buyInfo: BuyInfo) => void;
   devise: CURRENCY;
   addNewDevise: (dev: CURRENCY) => void;
   carts: Cart[];
@@ -30,6 +32,13 @@ const useStore = create<MyStore>()(
       carts: [],
       totalItems: 0,
       activeServerRequest: "dofus-kamas",
+      buyInfo: {
+        fullname: "",
+        gameName: "",
+        paymentMethod: "",
+        buyCode: "",
+      },
+      addBuyInfo: (buyInfo) => set({ buyInfo: buyInfo }),
       addSevers: (servers) => set({ servers: servers }),
       addToActiveServerRequest: (serverActive) =>
         set({ activeServerRequest: serverActive }),

@@ -71,7 +71,7 @@ const SocialMediaDropdown = ({ isSource = false }) => {
           className={clsx(
             "flex flex-col items-center gap-2 justify-center p-1.5 rounded-full text-white hover:opacity-80",
             {
-              "max-sm:hidden border-[2px] bg-white shadow-sm text-black border-gray-100":
+              "max-sm:hidden border-[2px] bg-[#45494e] shadow-sm text-white border-none":
                 !isSource,
             }
           )}

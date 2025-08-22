@@ -42,6 +42,10 @@ async function initializeModels(): Promise<any> {
     dollar: number;
   }
 
+  interface ISkrillSepa extends Document {
+    skrillSepa: number;
+  }
+
   interface IAed extends Document {
     aed: number;
   }
@@ -66,6 +70,7 @@ async function initializeModels(): Promise<any> {
     gameName: string;
     paymentInfoDetails: string;
     currencymethod: string;
+    buyCode: string;
     lastname: string;
     firstname: string;
     status: string;
@@ -85,9 +90,10 @@ async function initializeModels(): Promise<any> {
       gameName: { type: String },
       paymentInfoDetails: { type: String },
       currencymethod: { type: String },
+      buyCode: { type: String },
       lastname: { type: String },
       firstname: { type: String },
-      status: { type: String, default: "En attente" },
+      status: { type: String, default: "En cours de paiement" },
     },
     { timestamps: true }
   );
@@ -137,6 +143,11 @@ async function initializeModels(): Promise<any> {
     { timestamps: true }
   );
 
+  const skrillSepaSchema: Schema = new Schema(
+    { skrillSepa: { type: Number, required: true } },
+    { timestamps: true }
+  );
+
   const dollarSchema: Schema = new Schema(
     { dollar: { type: Number, required: true } },
     { timestamps: true }
@@ -163,6 +174,9 @@ async function initializeModels(): Promise<any> {
   const DollarModel =
     goapiDB.models.dollar || goapiDB.model<IDollar>("dollar", dollarSchema);
   const AedModel = goapiDB.models.aed || goapiDB.model<IAed>("aed", aedSchema);
+  const SkrillSepaModel =
+    goapiDB.models.skrillsepa ||
+    goapiDB.model<ISkrillSepa>("skrillsepa", skrillSepaSchema);
   const BuyModel =
     goapiDB.models.buy || goapiDB.model<IOrder>("buy", buySchema);
   const RateModel =
@@ -177,6 +191,7 @@ async function initializeModels(): Promise<any> {
     DollarModel,
     AedModel,
     BuyModel,
+    SkrillSepaModel,
     RateModel,
     UsdtModel,
   };

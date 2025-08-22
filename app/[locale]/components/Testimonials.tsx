@@ -233,20 +233,20 @@ const Testimonials = () => {
             <div className="absolute bottom-6 right-6 flex items-center gap-4">
               <button
                 onClick={() => navigateGroup("prev")}
-                className="p-3 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-700 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:scale-110 border border-slate-600/50"
+                className="p-2 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-700 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:scale-110 border border-slate-600/50"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-4 h-4" />
               </button>
-              <div className="bg-slate-800/80 backdrop-blur-sm px-4 py-2 rounded-2xl border border-slate-700/50">
+              <div className="bg-slate-800/80 backdrop-blur-sm px-2 py-1.5 rounded-2xl border border-slate-700/50">
                 <span className="text-white text-sm font-semibold">
                   {currentGroupIndex + 1} / {totalGroups}
                 </span>
               </div>
               <button
                 onClick={() => navigateGroup("next")}
-                className="p-3 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-700 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:scale-110 border border-slate-600/50"
+                className="p-2 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-700 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:scale-110 border border-slate-600/50"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -256,13 +256,16 @@ const Testimonials = () => {
               variant="destructive"
               className="border-none rounded-none bg-gradient-to-r from-red-900/50 via-red-800/50 to-red-900/50 backdrop-blur-sm"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
-                <AlertTriangle className="h-5 w-5 text-white" />
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-gradient-to-br from-red-500 to-red-600 rounded flex items-center justify-center">
+                  <AlertTriangle className="h-4 w-4 text-white" />
+                </div>
+                <AlertTitle className="font-bold text-red-300 text-base">
+                  {tScope2("title")}
+                </AlertTitle>
               </div>
-              <AlertTitle className="font-bold text-red-300 text-lg">
-                {tScope2("title")}
-              </AlertTitle>
-              <AlertDescription className="text-red-200 text-base">
+
+              <AlertDescription className="text-red-200 text-sm mt-2">
                 {tScope2("notice")}
               </AlertDescription>
             </Alert>

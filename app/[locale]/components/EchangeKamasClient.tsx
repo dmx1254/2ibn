@@ -520,13 +520,13 @@ const EchangeKamasClient = () => {
           </Card>
         </div>
       </div>
-      <div className="w-full max-w-6xl my-5 mx-auto">
-        <Testimonials />
-      </div>
       <Card className="w-full flex flex-col items-center justify-center mx-auto my-10 gap-4 max-w-6xl p-6 self-center bg-[#1A1D21] border-[#45494e]">
         <p className="text-base text-white/90">{tScope("desc1")}</p>
         <p className="text-base text-white/90">{tScope("desc2")}</p>
       </Card>
+      <div className="w-full max-w-6xl my-5 mx-auto">
+        <Testimonials />
+      </div>
     </div>
   );
 };

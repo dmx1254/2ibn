@@ -22,6 +22,12 @@ export async function POST(req: Request) {
     const { ExchangeModel } = await goapiModels;
     const { UserIbenModel } = await ibenModels;
     const data = await req.json();
+    const time = new Date().toISOString();
+
+    const newTime1 = time.split("T")[0];
+    const newTime2 = time.split("T")[1];
+    const newTime3 = newTime2.split(".")[0];
+    const newTime = newTime1 + " " + newTime3;
 
     const { codeToExchange, userId } = data;
 
@@ -37,6 +43,7 @@ export async function POST(req: Request) {
     // console.log(newExchange);
 
     const order = {
+      newTime: newTime,
       code: newExchange.codeToExchange,
       serveurARecevoir: newExchange.serverOut,
       quantiteA: newExchange.qtyToPay,

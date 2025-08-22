@@ -10,7 +10,7 @@ import SignUpModal from "./SignUpModal";
 const MobileTopMenus = () => {
   const { data: session, status } = useSession();
   return (
-    <div className="w-full px-4 py-1 bg-[#363A3D] flex items-center justify-between md:hidden">
+    <div className="w-full px-4 py-1.5 bg-[#363A3D] flex items-center justify-between md:hidden">
       {session && status === "authenticated" ? (
         <ProfilePopover />
       ) : (

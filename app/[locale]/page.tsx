@@ -5,9 +5,9 @@ import UserComment from "./components/UserComment";
 
 export default async function Home() {
   return (
-    <div className="font-poppins relative w-full flex flex-col items-center justify-center mx-auto min-h-screen">
+    <div className="font-poppins relative w-full flex flex-col items-center justify-center mx-auto min-h-screen home-all">
       <main className="w-full flex flex-col items-center justify-center">
-        <div className="w-full hidden md:flex">
+        <div className="w-full">
           <HomeSlider />
         </div>
         <div className="w-full max-w-6xl bg-[#1A1D21] rounded-[10px] my-10">

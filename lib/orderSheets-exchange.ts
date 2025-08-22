@@ -1,6 +1,7 @@
 import { addRowToSheet } from "./googleSheets";
 
 export interface OrderExhange {
+  newTime: string;
   code: string;
   serveurARecevoir: string;
   quantiteA: number;
@@ -12,23 +13,25 @@ export interface OrderExhange {
 }
 
 export interface OrderAchat {
+  newTime: string;
   code: string;
   serveur: string;
+  personnage: string;
   total: string;
   InfoPay: string;
-  personnage: string;
   contact: string;
   status: string;
   idCommande: string;
 }
 
 export interface OrderVente {
+  newTime: string;
   code: string;
   serveur: string;
-  total: string;
-  InfoPay: string;
   personnage: string;
+  total: string;
   livraisondetails: string;
+  InfoPay: string;
   etatCommande: string;
   idCommande: string;
 }
@@ -37,18 +40,19 @@ export async function addOrderToSheet(order: OrderExhange) {
   try {
     // Préparer les données dans l'ordre des colonnes
     const rowData = [
-      order.code, // Colonne 0: Code
-      order.serveurARecevoir, // Colonne 1: Serveur à recevoir/Personnages
-      order.quantiteA, // Colonne 2: Quantité A
-      order.serveurADonner, // Colonne 3: Serveur à donner/Personnages
-      order.quantiteB, // Colonne 4: Quantité B
-      order.contact, // Colonne 5: Contact
-      order.etatCommande, // Colonne 6: État de la commande
-      order.idCommande, // Colonne 7: ID de la commande
+      order.newTime, // Colonne 0: Code
+      order.code, // Colonne 1: Code
+      order.serveurARecevoir, // Colonne 2: Serveur à recevoir/Personnages
+      order.quantiteA, // Colonne 3: Quantité A
+      order.serveurADonner, // Colonne 4: Serveur à donner/Personnages
+      order.quantiteB, // Colonne 5: Quantité B
+      order.contact, // Colonne 6: Contact
+      order.etatCommande, // Colonne 7: État de la commande
+      order.idCommande, // Colonne 8: ID de la commande
     ];
 
     // Spécifier la plage de votre table (ajustez selon votre sheet)
-    const result = await addRowToSheet(rowData, "'Orders echanges'!A:H");
+    const result = await addRowToSheet(rowData, "'Orders echanges'!A:I");
 
     // console.log("✅ Commande ajoutée:", order.idCommande);
     return result;
@@ -63,18 +67,19 @@ export async function addOrderVenteToSheet(order: OrderVente) {
   try {
     // Préparer les données dans l'ordre des colonnes
     const rowData = [
-      order.code, // Colonne 0: Code
-      order.serveur, // Colonne 1: Serveur à recevoir/Personnages
-      order.total, // Colonne 2: Quantité A
-      order.InfoPay, // Colonne 3: Serveur à donner/Personnages
-      order.personnage, // Colonne 4: Quantité B
+      order.newTime, // Colonne 0: Code
+      order.code, // Colonne 1: Code
+      order.serveur, // Colonne 2: Serveur à recevoir/Personnages
+      order.personnage, // Colonne 3: Quantité B
+      order.total, // Colonne 4: Quantité A
       order.livraisondetails, // Colonne 5: Contact
-      order.etatCommande, // Colonne 6: État de la commande
-      order.idCommande, // Colonne 7: ID de la commande
+      order.InfoPay, // Colonne 6: Serveur à donner/Personnages
+      order.etatCommande, // Colonne 7: État de la commande
+      order.idCommande, // Colonne 8: ID de la commande
     ];
 
     // Spécifier la plage de votre table (ajustez selon votre sheet)
-    const result = await addRowToSheet(rowData, "'Orders ventes'!A:H");
+    const result = await addRowToSheet(rowData, "'Orders ventes'!A:I");
 
     // console.log("✅ Commande ajoutée:", order.idCommande);
     return result;
@@ -89,18 +94,19 @@ export async function addOrderAchatToSheet(order: OrderAchat) {
   try {
     // Préparer les données dans l'ordre des colonnes
     const rowData = [
-      order.code, // Colonne 0: Code
-      order.serveur, // Colonne 1: Serveur à recevoir/Personnages
-      order.total, // Colonne 2: Quantité A
+      order.newTime, // Colonne 0: Code
+      order.code, // Colonne 1: Code
+      order.serveur, // Colonne 2: Serveur à recevoir/Personnages
+      order.personnage, // Colonne 3: Quantité B
+      order.total, // Colonne 4: Quantité A
       order.InfoPay, // Colonne 3: Serveur à donner/Personnages
-      order.personnage, // Colonne 4: Quantité B
-      order.contact, // Colonne 5: Contact
-      order.status, // Colonne 6: État de la commande
-      order.idCommande, // Colonne 7: ID de la commande
+      order.contact, // Colonne 6: Contact
+      order.status, // Colonne 7: État de la commande
+      order.idCommande, // Colonne 8: ID de la commande
     ];
 
     // Spécifier la plage de votre table (ajustez selon votre sheet)
-    const result = await addRowToSheet(rowData, "'Orders achats'!A:H");
+    const result = await addRowToSheet(rowData, "'Orders achats'!A:I");
 
     // console.log("✅ Commande ajoutée:", order.idCommande);
     return result;

@@ -14,6 +14,13 @@ export async function POST(request: Request) {
     const { UserIbenModel } = await ibenModels;
     const { data, contact } = await request.json();
     const { numBuy, userId } = data;
+    const time = new Date().toISOString();
+
+    // console.log(data);
+    const newTime1 = time.split("T")[0];
+    const newTime2 = time.split("T")[1];
+    const newTime3 = newTime2.split(".")[0];
+    const newTime = newTime1 + " " + newTime3;
 
     const newContact = contact.split(",").join(" ");
 
@@ -30,11 +37,22 @@ export async function POST(request: Request) {
     // console.log(user);
 
     const orderSheet = {
-      code: "#" + orderbuy.numBuy,
+      newTime: "[" + newTime + "]",
+      code: orderbuy.buyCode,
       serveur: orderbuy.server,
-      total: orderbuy.totalPrice + " " + orderbuy.currencymethod + "/" + orderbuy.qte,
-      InfoPay: orderbuy.paymentInfoDetails,
       personnage: orderbuy.gameName,
+      total:
+        orderbuy.pu +
+        " " +
+        orderbuy.currencymethod +
+        " * " +
+        orderbuy.qte +
+        "(M)" +
+        " = " +
+        orderbuy.totalPrice +
+        orderbuy.currencymethod,
+
+      InfoPay: orderbuy.lastname + " " + orderbuy.paymentInfoDetails,
       contact: newContact,
       status: orderbuy.status,
       idCommande: orderbuy._id.toString(),

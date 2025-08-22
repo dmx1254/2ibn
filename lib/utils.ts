@@ -160,6 +160,13 @@ export interface CURRENCY {
   curencyVal: number;
 }
 
+export interface BuyInfo{
+  fullname: string;
+  gameName: string;
+  paymentMethod: string;
+  buyCode: string;
+}
+
 export interface CurrencyItem {
   code: string;
   name: string;

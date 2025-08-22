@@ -204,6 +204,8 @@ export default {
 
   "dialogsell.btnSell": "بيع الآن",
   "dialogsell.title": "بيع الكاماس على {الخادم}",
+  "dialogsell.buyCode": "رمز الشراء",
+  "dialogsell.buyCodeInput": "أدخل رمز الشراء، أقصى 6 أحرف",
   "dialogsell.desc": "يرجى ملء تفاصيلك للمتابعة مع البيع.",
   "dialogsell.IngameName": "اسم اللعبة",
   "dialogsell.IngameInput": "أدخل اسمك في اللعبة",

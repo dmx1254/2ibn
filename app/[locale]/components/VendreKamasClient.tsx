@@ -16,24 +16,29 @@ import {
 } from "../components/ui/table";
 import ServerSkeleton from "@/components/ui/skeletons/skeletons";
 import Link from "next/link";
-import useStore from "@/lib/store-manage";
+// import useStore from "@/lib/store-manage";
 import SellKamasComponents from "../components/SellKamasComponents";
-import Image from "next/image";
+// import Image from "next/image";
 import Testimonials from "./Testimonials";
 
 const VendreKamasClient = () => {
-  const { devise } = useStore();
+  // const { devise } = useStore();
   const tScope = useScopedI18n("sellkamas");
-  const tScopeFooter = useScopedI18n("footer");
+  // const tScopeFooter = useScopedI18n("footer");
   const [serversSell, setServersSell] = useState<ServerExchange[] | null>(null);
-  const [selectedServer, setSelectedServer] = useState("");
+  // const [selectedServer, setSelectedServer] = useState("");
   const [serverPriceEuro, setServerPriceEuro] = useState<number | null>();
   const [serverPriceAed, setServerPriceAed] = useState<number | null>();
-  const [serverPriceUsdt, setServerPriceUsdt] = useState<number | null>();
+  // const [serverPriceUsdt, setServerPriceUsdt] = useState<number | null>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [serverPriceDollar, setServerPriceDollar] = useState<number | null>(
     null
   );
+  const [serverPriceSkrillSepa, setServerPriceSkrillSepa] = useState<
+    number | null
+  >(null);
+
+  console.log(serverPriceSkrillSepa);
 
   useEffect(() => {
     const getServer = async () => {
@@ -73,8 +78,8 @@ const VendreKamasClient = () => {
   };
 
   const {
-    isLoading: IsLoadingEuro,
-    error: errorEuro,
+    // isLoading: IsLoadingEuro,
+    // error: errorEuro,
     data: euroData,
   } = useQuery({
     queryKey: ["euro"],
@@ -96,8 +101,8 @@ const VendreKamasClient = () => {
   };
 
   const {
-    isLoading: IsLoadingDollar,
-    error: errorDollar,
+    // isLoading: IsLoadingDollar,
+    // error: errorDollar,
     data: dollarData,
   } = useQuery({
     queryKey: ["dollar"],
@@ -116,10 +121,40 @@ const VendreKamasClient = () => {
     return response.json();
   };
 
-  const fetchCurrencyUsdt = async () => {
-    const response = await fetch("/api/go/currency/usdt", {
+  // const fetchCurrencyUsdt = async () => {
+  //   const response = await fetch("/api/go/currency/usdt", {
+  //     method: "POST",
+  //     body: JSON.stringify({ cur: "usdt" }),
+  //   });
+  //   if (!response.ok) {
+  //     throw new Error("Fetching currency failed: ");
+  //   }
+
+  //   return response.json();
+  // };
+
+  // const {
+  //   isLoading: IsLoadingUsdt,
+  //   error: errorUsdt,
+  //   data: usdtData,
+  // } = useQuery({
+  //   queryKey: ["usdt"],
+  //   queryFn: () => fetchCurrencyUsdt(),
+  // });
+
+  const {
+    // isLoading: IsLoadingAed,
+    // error: errorAed,
+    data: aedData,
+  } = useQuery({
+    queryKey: ["aed"],
+    queryFn: () => fetchCurrencyAed(),
+  });
+
+  const fetchCurrencySkrillSepa = async () => {
+    const response = await fetch("/api/go/currency/skrillsepa", {
       method: "POST",
-      body: JSON.stringify({ cur: "usdt" }),
+      body: JSON.stringify({ cur: "eur" }),
     });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
@@ -129,21 +164,12 @@ const VendreKamasClient = () => {
   };
 
   const {
-    isLoading: IsLoadingUsdt,
-    error: errorUsdt,
-    data: usdtData,
+    // isLoading: IsLoadingSkrillSepa,
+    // error: errorSkrillSepa,
+    data: skrillSepaData,
   } = useQuery({
-    queryKey: ["usdt"],
-    queryFn: () => fetchCurrencyUsdt(),
-  });
-
-  const {
-    isLoading: IsLoadingAed,
-    error: errorAed,
-    data: aedData,
-  } = useQuery({
-    queryKey: ["aed"],
-    queryFn: () => fetchCurrencyAed(),
+    queryKey: ["skrillsepa"],
+    queryFn: () => fetchCurrencySkrillSepa(),
   });
 
   useEffect(() => {
@@ -158,11 +184,17 @@ const VendreKamasClient = () => {
     }
   }, [aedData]);
 
+  // useEffect(() => {
+  //   if (usdtData) {
+  //     setServerPriceUsdt(usdtData[0]?.usdt);
+  //   }
+  // }, [usdtData]);
+
   useEffect(() => {
-    if (usdtData) {
-      setServerPriceUsdt(usdtData[0]?.usdt);
+    if (skrillSepaData) {
+      setServerPriceSkrillSepa(skrillSepaData[0]?.skrillSepa);
     }
-  }, [usdtData]);
+  }, [skrillSepaData]);
 
   // console.log(usdtData);
 
@@ -176,7 +208,7 @@ const VendreKamasClient = () => {
 
   return (
     <div className="container font-roboto mx-auto p-2 md:p-6 space-y-6 max-w-5xl min-h-screen">
-      <Card className="w-full bg-[#1A1D21] mt-16 mb-6 p-6">
+      <Card className="w-full bg-[#1A1D21] mt-16 mb-6 p-6 border-[#45494e]">
         <div className="bg-[#1A1D21] rounded-lg">
           <div className="flex flex-col items-center">
             <h2 className="text-2xl font-bold text-white/90 mb-4">
@@ -241,10 +273,8 @@ const VendreKamasClient = () => {
       <Card className="w-full bg-[#1A1D21] my-6">
         <SellKamasComponents servers={serversSell} />
       </Card>
-      <div className="w-full max-w-6xl my-5 mx-auto">
-        <Testimonials />
-      </div>
-      <Card className="w-full mt-6 bg-transparent border-none">
+
+      <Card className="w-full mt-6 bg-transparent border-none border-[#45494e]">
         <CardContent className="w-full space-y-4 p-0">
           <div className="bg-[#363A3D] flex flex-col items-center gap-3 rounded-lg shadow-md overflow-hidden mt-6">
             <p className="text-2xl font-semibold pt-2 text-white/80">
@@ -269,7 +299,7 @@ const VendreKamasClient = () => {
                     Sepa
                   </TableHead>
                   <TableHead className="text-amber-600 text-right max-md:text-xs">
-                    Usdt(TRC20/ERC20)
+                    Usdt / Usdc / Binance Pay
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
                     {tScope("headertableStatus")}
@@ -298,19 +328,19 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceEuro || 1)
+                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceEuro || 1)
+                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceUsdt || 1)
+                          server.serverPriceDh / (serverPriceDollar || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
                       </TableCell>
@@ -370,7 +400,7 @@ const VendreKamasClient = () => {
                     Sepa
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Usdt(TRC20/ERC20)
+                    Usdt / Usdc / Binance Pay
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
                     {tScope("headertableStatus")}
@@ -399,19 +429,19 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceEuro || 1)
+                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceEuro || 1)
+                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceUsdt || 1)
+                          server.serverPriceDh / (serverPriceDollar || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
                       </TableCell>
@@ -465,7 +495,7 @@ const VendreKamasClient = () => {
                     Sepa
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Usdt(TRC20/ERC20)
+                    Usdt / Usdc / Binance Pay
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
                     {tScope("headertableStatus")}
@@ -494,19 +524,19 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceEuro || 1)
+                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceEuro || 1)
+                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceUsdt || 1)
+                          server.serverPriceDh / (serverPriceDollar || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
                       </TableCell>
@@ -554,7 +584,7 @@ const VendreKamasClient = () => {
                     Sepa
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Usdt(TRC20/ERC20)
+                    Usdt / Usdc / Binance Pay
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
                     {tScope("headertablePriceAED")}
@@ -586,19 +616,19 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceEuro || 1)
+                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceEuro || 1)
+                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceUsdt || 1)
+                          server.serverPriceDh / (serverPriceDollar || 1)
                         ).toFixed(3)}{" "}
                         Usdt/M
                       </TableCell>
@@ -628,6 +658,9 @@ const VendreKamasClient = () => {
           </div>
         </CardContent>
       </Card>
+      <div className="w-full max-w-6xl my-5 mx-auto">
+        <Testimonials />
+      </div>
     </div>
   );
 };

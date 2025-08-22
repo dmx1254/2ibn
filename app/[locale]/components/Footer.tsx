@@ -25,7 +25,6 @@ import {
   FaDiscord,
   FaFacebookF,
   FaInstagram,
-  FaSkype,
   FaTelegramPlane,
   FaTiktok,
   FaWhatsapp,
@@ -38,7 +37,7 @@ const Footer = () => {
   const tScope = useScopedI18n("footer");
 
   function handleChatClick() {
-    //@ts-ignore
+    //@ts-expect-error - Tawk_API is not defined in the global scope
     void window?.Tawk_API.toggle();
   }
 

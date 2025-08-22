@@ -31,12 +31,14 @@ interface OrderSell {
   status: string;
   createdAt: Date;
   updatedAt: Date;
+  buyCode?: string;
 }
 
 const ProfileSellPage = () => {
   const tScope = useScopedI18n("ordersSellKamas");
+  const tScope2 = useScopedI18n("dialogsell");
   const { devise } = useStore();
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const {
     isLoading,
     data: ordersSell,
@@ -77,9 +79,17 @@ const ProfileSellPage = () => {
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
+      case "terminée":
+      case "terminé":
+      case "termine":
+      case "completed":
       case "payée":
+      case "payee":
+      case "paye":
       case "paid":
       case "livrée":
+      case "livree":
+      case "livre":
       case "livré":
       case "delivered":
         return "bg-green-500";
@@ -166,6 +176,12 @@ const ProfileSellPage = () => {
                     </p>
                     <p className="font-medium">{order.numBuy}</p>
                   </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500">
+                      {tScope2("buyCode")}
+                    </p>
+                    <p className="font-medium">{order.buyCode}</p>
+                  </div>
 
                   <div>
                     <p className="text-sm font-medium text-gray-500">
@@ -207,7 +223,14 @@ const ProfileSellPage = () => {
                       </span>
                       <Badge className={getStatusColor(order.status)}>
                         {(order.status.toLowerCase() === "payée" ||
+                          order.status.toLowerCase() === "terminée" ||
+                          order.status.toLowerCase() === "terminé" ||
+                          order.status.toLowerCase() === "termine" ||
+                          order.status.toLowerCase() === "payee" ||
+                          order.status.toLowerCase() === "paye" ||
                           order.status.toLowerCase() === "livrée" ||
+                          order.status.toLowerCase() === "livree" ||
+                          order.status.toLowerCase() === "livre" ||
                           order.status.toLowerCase() === "livré" ||
                           order.status.toLowerCase() === "delivered" ||
                           order.status.toLowerCase() === "paid") &&

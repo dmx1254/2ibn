@@ -15,7 +15,13 @@ export async function POST(request: Request) {
     const { data, object } = await request.json();
     const user = await UserIbenModel.findById(data.userId);
 
+    const time = new Date().toISOString();
+
     // console.log(data);
+    const newTime1 = time.split("T")[0];
+    const newTime2 = time.split("T")[1];
+    const newTime3 = newTime2.split(".")[0];
+    const newTime = newTime1 + " " + newTime3;
 
     const newOrder = await OrderModelIben.create(data);
 
@@ -28,8 +34,10 @@ export async function POST(request: Request) {
 
     for (const product of newOrder.products) {
       const orderSheet = {
+        newTime: "[" + newTime + "]",
         code: "#" + newOrder.orderNum,
         serveur: product.server,
+        personnage: product.character,
         total:
           product.price +
           "" +
@@ -42,20 +50,30 @@ export async function POST(request: Request) {
           newOrder.totalPrice +
           "" +
           newOrder.cur,
-
-        InfoPay: newOrder.paymentMethod,
-        personnage: product.character,
         livraisondetails:
           newOrder.paymentMethod +
           " - email: " +
           user.email +
           " - phone: " +
           user.phone,
+        InfoPay: newOrder.paymentMethod,
         etatCommande: newOrder.status,
         idCommande: newOrder._id.toString(),
       };
       await addOrderVenteToSheet(orderSheet);
     }
+
+    // const rowData = [
+    //   order.newTime, // Colonne 0: Code
+    //   order.code, // Colonne 0: Code
+    //   order.serveur, // Colonne 1: Serveur à recevoir/Personnages
+    //   order.personnage, // Colonne 4: Quantité B
+    //   order.total, // Colonne 2: Quantité A
+    //   order.livraisondetails, // Colonne 5: Contact
+    //   order.InfoPay, // Colonne 3: Serveur à donner/Personnages
+    //   order.etatCommande, // Colonne 6: État de la commande
+    //   order.idCommande, // Colonne 7: ID de la commande
+    // ];
 
     if (newOrder) {
       try {

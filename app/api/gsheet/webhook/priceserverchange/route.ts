@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   headers.set("Access-Control-Allow-Origin", "*");
   headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
 
-  const { ServerModel } = await goapiModels;
+  const { ServerModel, SkrillSepaModel } = await goapiModels;
   const { EuroModelIben, DollarModelIben, CadModelIben, ServerModelIben } =
     await ibenModels;
 
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
   try {
     const data = await req.json();
-    console.log("Données reçues de Google Sheets:", data);
+    // console.log("Données reçues de Google Sheets:", data);
 
     const server = await ServerModel.findOne({
       serverName: data.rowData.server,
@@ -35,15 +35,14 @@ export async function POST(req: Request) {
       );
     }
 
-    if (data.columnLetter === "Q") {
+    if (data.columnLetter === "F") {
       await ServerModel.findByIdAndUpdate(server._id, {
         $set: {
           serverStatus: data.rowData.etatServeur,
-          serverPriceDh: Number(data.rowData.prixAchatFace),
         },
       });
     }
-    if (data.columnLetter === "R") {
+    if (data.columnLetter === "G") {
       await ServerModelIben.findByIdAndUpdate(server._id, {
         $set: {
           serverPrice: Number(data.rowData.prixVenteFace),
@@ -51,7 +50,7 @@ export async function POST(req: Request) {
       });
     }
 
-    if (data.columnLetter === "O") {
+    if (data.columnLetter === "D") {
       await ServerModel.findByIdAndUpdate(server._id, {
         $set: {
           serverPriceDh: Number(data.rowData.prixAchatFace),
@@ -59,7 +58,7 @@ export async function POST(req: Request) {
       });
     }
 
-    if (data.columnLetter === "P") {
+    if (data.columnLetter === "E") {
       await ServerModel.findByIdAndUpdate(server._id, {
         $set: {
           rate: data.rowData.tauxChange,
@@ -67,7 +66,7 @@ export async function POST(req: Request) {
       });
     }
 
-    if (data.columnLetter === "T") {
+    if (data.columnLetter === "I") {
       const euro = await EuroModelIben.find();
 
       await EuroModelIben.findByIdAndUpdate(euro[0]._id, {
@@ -76,7 +75,7 @@ export async function POST(req: Request) {
         },
       });
     }
-    if (data.columnLetter === "U") {
+    if (data.columnLetter === "J") {
       const dollar = await DollarModelIben.find();
 
       await DollarModelIben.findByIdAndUpdate(dollar[0]._id, {
@@ -85,12 +84,21 @@ export async function POST(req: Request) {
         },
       });
     }
-    if (data.columnLetter === "V") {
+    if (data.columnLetter === "K") {
       const cad = await CadModelIben.find();
 
       await CadModelIben.findByIdAndUpdate(cad[0]._id, {
         $set: {
           cad: Number(data.rowData.cad),
+        },
+      });
+    }
+    if (data.columnLetter === "L") {
+      const skrillsepa = await SkrillSepaModel.find();
+
+      await SkrillSepaModel.findByIdAndUpdate(skrillsepa[0]._id, {
+        $set: {
+          skrillSepa: Number(data.rowData.skrillSepa),
         },
       });
     }

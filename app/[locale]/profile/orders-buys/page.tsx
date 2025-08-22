@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -9,14 +9,11 @@ import {
   Loader2,
   ChevronDown,
   ChevronUp,
-  DollarSign,
-  Package,
   Calendar,
   AlertCircle,
 } from "lucide-react";
-import { format } from "date-fns";
 import useStore from "@/lib/store-manage";
-import { OrderBuy, Product } from "@/lib/types/types";
+import { OrderBuy } from "@/lib/types/types";
 import {
   Card,
   CardContent,
@@ -26,7 +23,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "../../components/ui/button";
 
-import { IGamerResp, convertDate, parsedDevise } from "@/lib/utils";
+import { convertDate, parsedDevise } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 
 const ProfileBuyPage = () => {
@@ -50,15 +47,6 @@ const ProfileBuyPage = () => {
     enabled: !!session?.user.id,
   });
 
-  // const { data: games } = useQuery({
-  //   queryKey: ["games-order"],
-  //   queryFn: async () => {
-  //     const response = await axios.get(`/api/iben/games`);
-  //     return response.data as IGamerResp[];
-  //   },
-  //   enabled: !!session?.user.id,
-  // });
-
   if (isLoading) {
     return (
       <div className="flex h-96 items-center justify-center">
@@ -77,7 +65,14 @@ const ProfileBuyPage = () => {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "terminée":
+      case "terminé":
+      case "termine":
+      case "completed":
+      case "payee":
+      case "paye":
       case "payée":
+      case "livree":
+      case "livre":
       case "livrée":
       case "livré":
       case "delivered":
@@ -182,8 +177,14 @@ const ProfileBuyPage = () => {
                     )} text-white`}
                   >
                     {(order.status.toLowerCase() === "terminée" ||
+                      order.status.toLowerCase() === "termine" ||
+                      order.status.toLowerCase() === "completed" ||
                       order.status.toLowerCase() === "paid" ||
                       order.status.toLowerCase() === "payée" ||
+                      order.status.toLowerCase() === "payee" ||
+                      order.status.toLowerCase() === "paye" ||
+                      order.status.toLowerCase() === "livree" ||
+                      order.status.toLowerCase() === "livre" ||
                       order.status.toLowerCase() === "livrée" ||
                       order.status.toLowerCase() === "livré" ||
                       order.status.toLowerCase() === "delivered") &&
@@ -286,105 +287,6 @@ const ProfileBuyPage = () => {
           </Button>
         </Card>
       )}
-
-      {/* <p className="text-2xl font-semibold">{tScope("ordergame")}</p>
-      <div className="space-y-6">
-        {games?.map((game) => (
-          <Card
-            key={game._id}
-            className="bg-white/80 backdrop-blur-sm shadow-xl"
-          >
-            <CardHeader
-              className="cursor-pointer"
-              onClick={() => toggleOrderExpansion(game.orderNum)}
-            >
-              <div className="flex justify-between items-center">
-                <CardTitle className="text-xl font-bold text-black/90">
-                  {tScope("cardOrderTitle")} #{game.orderNum}
-                </CardTitle>
-                <div className="flex items-center space-x-4">
-                  <Badge
-                    className={`${getStatusColor(game.status)} text-white`}
-                  >
-                    {(game.status === "Terminée" || game.status === "paid") &&
-                      tScope("completed")}
-                    {(game.status === "En attente" ||
-                      game.status === "pending") &&
-                      tScope("pending")}
-                    {(game.status === "Annulée" ||
-                      game.status === "cancelled") &&
-                      tScope("cancelled")}
-                    {(game.status === "En Cours de payment" ||
-                      game.status === "processing") &&
-                      tScope("processing")}
-                  </Badge>
-                  {expandedOrder === game.orderNum ? (
-                    <ChevronUp size={20} className="text-gray-500" />
-                  ) : (
-                    <ChevronDown size={20} className="text-gray-500" />
-                  )}
-                </div>
-              </div>
-              <div className="flex items-center gap-2 text-black/90 mt-2 font-semibold">
-                <span className="mr-4 font-semibold text-base">
-                  {game.totalPrice.toFixed(2)}{" "}
-                  {game.cur
-                    ? parsedDevise(game?.cur)
-                    : parsedDevise(devise.currencyName)}
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <Calendar className="inline-block w-4 h-4 mr-1" />
-                  {convertDate(game.createdAt)}
-                </span>
-              </div>
-            </CardHeader>
-            <AnimatePresence>
-              {expandedOrder === game.orderNum && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
-                        <div>
-                          <p className="font-bold text-black/80">{game.name}</p>
-                          <p className="text-sm text-black/80 font-semibold">
-                            {tScope("gamename")}: {game.name}
-                          </p>
-                          <p className="text-sm text-black/80 font-semibold">
-                            {tScope("qty")}: {game.amount}{" "}
-                            {game.items && game.items}
-                          </p>
-                          {game.bonus && (
-                            <p className="text-sm text-black/80 font-semibold">
-                              {tScope("bonus")}: {game.bonus}{" "}
-                              {game.items && game.items}
-                            </p>
-                          )}
-                        </div>
-                        <div className="text-right">
-                          <p className="font-semibold text-black/80">
-                            {game.totalPrice.toFixed(2)}{" "}
-                            {parsedDevise(game.cur)}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-4 flex justify-between items-center">
-                      <p className="text-base bg-yellow-600 text-black font-semibold rounded-[10px] p-2">
-                        {tScope("paymentMethod")}: {game.paymentMethod}
-                      </p>
-                    </div>
-                  </CardContent>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </Card>
-        ))}
-      </div> */}
     </div>
   );
 };

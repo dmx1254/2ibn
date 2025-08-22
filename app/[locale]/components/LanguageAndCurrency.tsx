@@ -102,21 +102,23 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
         <button
           aria-label="Language and currency"
           className={clsx(
-            "outline-none inline-flex items-center gap-2 px-3 py-2 transition-all duration-200 cursor-pointer rounded-full hover:opacity-90",
+            "outline-none inline-flex items-center gap-2 p-2 transition-all duration-200 cursor-pointer rounded-full hover:opacity-90",
             {
-              "border border-gray-100 focus:ring-0 bg-white shadow-sm text-black max-md:hidden":
+              "border border-white/95 focus:ring-0 bg-white/95 shadow-sm text-black max-md:hidden":
                 isShowBg,
+              "border border-white/95 focus:ring-0 bg-white/95 text-white shadow-sm":
+                !isShowBg,
             }
           )}
         >
-          <Globe size={18} className="text-black" />
-          <span className="text-sm font-medium text-black">
+          <Globe size={18} className="text-black/80" />
+          <span className="text-sm font-medium text-black/80">
             {getLocaleLanguage()?.code.toUpperCase()} / {cur?.symbol}
           </span>
           <ChevronDown
             size={16}
             className={cn(
-              "text-black transition-transform duration-200",
+              "text-black/80 transition-transform duration-200",
               isOpen && "rotate-180"
             )}
           />
@@ -146,7 +148,7 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
                 <SelectTrigger className="w-full outline-none focus:outline-none focus:ring-0 focus:ring-offset-0">
                   <SelectValue
                     placeholder={
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 text-black">
                         <span className="flex-grow text-left text-sm font-medium -mt-0.5">
                           {cur?.symbol}
                         </span>

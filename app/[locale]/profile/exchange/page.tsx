@@ -4,7 +4,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { ArrowLeftRight, ArrowRight } from "lucide-react";
+import { ArrowLeftRight } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -13,12 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../components/ui/table";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../../components/ui/card";
+import { Card } from "../../components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "../../components/ui/skeleton";
 import { ExchangeKamas } from "@/lib/types/types";
@@ -29,9 +24,17 @@ const StatusBadge = ({ status }: { status: string }) => {
   const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {
       case "terminée":
-      case "paid":
+      case "terminé":
+      case "termine":
+      case "completed":
+      case "payee":
+      case "paye":
       case "payée":
+      case "payé":
+      case "paid":
       case "livrée":
+      case "livree":
+      case "livre":
       case "livré":
       case "delivered":
         return "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300";
@@ -57,9 +60,17 @@ const StatusBadge = ({ status }: { status: string }) => {
       )} font-medium hover:bg-yellow-100 hover:text-yellow-700`}
     >
       {(status.toLowerCase() === "terminée" ||
+        status.toLowerCase() === "terminé" ||
+        status.toLowerCase() === "termine" ||
+        status.toLowerCase() === "completed" ||
         status.toLowerCase() === "paid" ||
         status.toLowerCase() === "payée" ||
+        status.toLowerCase() === "payee" ||
+        status.toLowerCase() === "paye" ||
+        status.toLowerCase() === "payé" ||
         status.toLowerCase() === "livrée" ||
+        status.toLowerCase() === "livree" ||
+        status.toLowerCase() === "livre" ||
         status.toLowerCase() === "livré" ||
         status.toLowerCase() === "delivered") &&
         tScope("completed")}

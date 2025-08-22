@@ -9,7 +9,7 @@ import React from "react";
 //   CarouselNext,
 //   CarouselPrevious,
 // } from "@/components/ui/carousel";
-import Image from "next/image";
+// import Image from "next/image";
 import { useScopedI18n } from "@/locales/client";
 import Link from "next/link";
 
@@ -62,7 +62,7 @@ const HomeSlider = () => {
   // ];
 
   return (
-    <div className="w-full flex items-center gap-4 relative">
+    <div className="w-full flex items-center justify-center md:h-screen max-md: mt-16 h-full gap-4 relative">
       {/* <Carousel setApi={setApi} className="w-full h-full">
         <CarouselContent className="w-full">
           {sliderData.map((slide, index) => (
@@ -74,7 +74,7 @@ const HomeSlider = () => {
                   layout="fill"
                   className="w-full object-cover h-[260px] object-center md:h-[700px]"
                 />
-                <div className="absolute inset-0 bg-black/40 flex flex-col gap-2 items-center justify-center text-white p-4 text-center">
+                <div className="inset-0 bg-black/40 flex flex-col gap-2 items-center justify-center text-white p-4 text-center">
                   <h2 className="text-3xl sm:text-4xl font-extrabold mb-2">
                     {slide.title}
                   </h2>
@@ -89,7 +89,7 @@ const HomeSlider = () => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel> */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
+      <div className="flex flex-col items-center justify-center text-center px-4 z-10">
         {/* Section 1: Titre principal */}
         <div className="mb-8">
           <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
@@ -106,7 +106,7 @@ const HomeSlider = () => {
           <div className="flex-1 relative">
             <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
               <svg
-                className="w-5 h-5 text-gray-400"
+                className="w-5 h-5 max-md:w-4 max-md:h-4 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -122,12 +122,12 @@ const HomeSlider = () => {
             <input
               type="text"
               placeholder={tScope2("searchDesc")}
-              className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+              className="w-full pl-10 md:pl-12 pr-4 py-3 max-md:text-sm md:py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
             />
           </div>
           <button
             disabled
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors"
+            className="absolute right-2 max-md:text-sm top-1/2 transform -translate-y-1/2 bg-yellow-500 text-white px-4 py-2 md:px-8 md:py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors"
           >
             {tScope2("search")}
           </button>
@@ -235,13 +235,13 @@ const HomeSlider = () => {
           </Link>
         </div>
       </div>
-      <Image
+      {/* <Image
         src="/whitefiltre.jpeg"
         alt="image background"
         width={1000}
         height={1000}
         className="w-full h-full object-cover"
-      />
+      /> */}
     </div>
   );
 };
