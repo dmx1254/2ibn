@@ -1,4 +1,4 @@
-import { addRowToSheet } from "./googleSheets";
+import { addMultipleRowsToSheet, addRowToSheet } from "./googleSheets";
 
 export interface OrderExhange {
   newTime: string;
@@ -34,6 +34,13 @@ export interface OrderVente {
   InfoPay: string;
   etatCommande: string;
   idCommande: string;
+}
+
+export interface UserClient {
+  lastname?: string;
+  firstname?: string;
+  email: string;
+  phone?: string;
 }
 
 export async function addOrderToSheet(order: OrderExhange) {
@@ -85,6 +92,40 @@ export async function addOrderVenteToSheet(order: OrderVente) {
     return result;
   } catch (error) {
     console.error("❌ Erreur ajout commande:", error);
+    throw error;
+  }
+}
+
+//Add users clients informations to sheet Users clients
+export async function addUsersClientsToSheet(users: UserClient[]) {
+  try {
+    const usersData = users.map((user) => [
+      user.lastname ?? "",
+      user.firstname ?? "",
+      user.email ?? "",
+      user.phone ?? "",
+    ]);
+    const result = await addMultipleRowsToSheet(usersData, "clients!A:D");
+    return result;
+  } catch (error) {
+    console.error("❌ Erreur ajout utilisateurs:", error);
+    throw error;
+  }
+}
+
+// Add single user client to sheet Users clients
+export async function addSingleUserClientToSheet(user: UserClient) {
+  try {
+    const userData = [
+      user.lastname ?? "",
+      user.firstname ?? "",
+      user.email ?? "",
+      user.phone ?? "",
+    ];
+    const result = await addRowToSheet(userData, "clients!A:D");
+    return result;
+  } catch (error) {
+    console.error("❌ Erreur ajout utilisateur:", error);
     throw error;
   }
 }

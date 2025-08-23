@@ -9,7 +9,7 @@ const HomeSlider = () => {
   const tScope2 = useScopedI18n("pageicon");
  
   return (
-    <div className="w-full flex items-center justify-center pt-20 pb-2 md:pt-64 md:pb-40 h-full gap-4 relative">
+    <div className="w-full flex items-center justify-center pt-14 pb-0 md:pt-36 md:pb-216 h-full gap-4 relative">
 
       <div className="flex flex-col items-center justify-center w-full max-w-4xl text-center px-4 z-10">
         <div className="mb-12 relative flex items-center gap-3 w-full">

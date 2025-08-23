@@ -2,6 +2,10 @@ import { ibenModels } from "@/lib/models/ibendouma-models";
 import { NextResponse } from "next/server";
 
 import bcrypt from "bcrypt";
+import {
+  addSingleUserClientToSheet,
+  UserClient,
+} from "@/lib/orderSheets-exchange";
 
 export async function POST(request: Request) {
   const { UserIbenModel, CodeIbenModel, ReferralCodeModel } = await ibenModels;
@@ -48,6 +52,15 @@ export async function POST(request: Request) {
           );
         }
       }
+
+      const userData: UserClient = {
+        lastname: user.lastname,
+        firstname: user.firstname,
+        email: user.email,
+        phone: user.phone,
+      };
+      await addSingleUserClientToSheet(userData);
+
       return NextResponse.json(
         { successMessage: "Your account has been created" },
         { status: 200 }

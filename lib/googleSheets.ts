@@ -10,19 +10,19 @@ const auth = new google.auth.GoogleAuth({
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
-export const sheets = google.sheets({ version: 'v4', auth });
+export const sheets = google.sheets({ version: "v4", auth });
 
 // Fonction pour lire des données du Sheet
-export async function readFromSheet(range: string = 'A:Z') {
+export async function readFromSheet(range: string = "A:Z") {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: range,
     });
-    
+
     return response.data.values || [];
   } catch (error) {
-    console.error('Erreur lecture Google Sheets:', error);
+    console.error("Erreur lecture Google Sheets:", error);
     throw error;
   }
 }
@@ -38,10 +38,30 @@ export async function addRowToSheet(data: any[], range: string = "Sheet1!A:Z") {
         values: [data],
       },
     });
-    
+
     return response.data;
   } catch (error) {
     console.error("Erreur ajout Google Sheets:", error);
+    throw error;
+  }
+}
+
+export async function addMultipleRowsToSheet(
+  data: string[][],
+  range: string = "Sheet1!A:Z"
+) {
+  try {
+    const response = await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: range,
+      valueInputOption: "RAW",
+      requestBody: {
+        values: data,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Erreur ajout multiple Google Sheets:", error);
     throw error;
   }
 }
@@ -54,7 +74,7 @@ export async function updateRowInSheet(
 ) {
   try {
     const updateRange = `${range}!A${row}:Z${row}`;
-    
+
     const response = await sheets.spreadsheets.values.update({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: updateRange,
@@ -77,17 +97,19 @@ export async function deleteRowInSheet(rowIndex: number, sheetId: number = 0) {
     const response = await sheets.spreadsheets.batchUpdate({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       requestBody: {
-        requests: [{
-          deleteDimension: {
+        requests: [
+          {
+            deleteDimension: {
               range: {
                 sheetId: sheetId,
                 dimension: "ROWS",
                 startIndex: rowIndex - 1, // Google Sheets utilise un index basé sur 0
                 endIndex: rowIndex,
               },
-          }
-        }]
-      }
+            },
+          },
+        ],
+      },
     });
 
     return response.data;
