@@ -46,9 +46,9 @@ export async function POST(req: Request) {
     const order = {
       newTime: newTime,
       code: newExchange.codeToExchange,
-      serveurARecevoir: newExchange.serverOut,
+      serveurARecevoir: newExchange.serverOut + "/" + newExchange.characterToPay,
       quantiteA: newExchange.qtyToPay,
-      serveurADonner: newExchange.serverIn,
+      serveurADonner: newExchange.serverIn + "/" + newExchange.characterToReceive,
       quantiteB: newExchange.qtyToReceive,
       contact:
         user.email +
