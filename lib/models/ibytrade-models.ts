@@ -1,5 +1,6 @@
-import { Schema, Document, Model } from "mongoose";
+import { Schema, Document } from "mongoose";
 import { connectDB, getConnections } from "../db";
+import { Billing } from "../utils";
 
 // Fonction asynchrone pour initialiser les modèles
 async function initializeModels(): Promise<any> {
@@ -34,8 +35,48 @@ async function initializeModels(): Promise<any> {
     rate: number;
   }
 
+  interface IAccount extends Document {
+    category: string;
+    licence: string;
+    description: string;
+    minQ: number;
+    stock: number;
+    deliveryDelay: number;
+    price: number;
+    status: string;
+    moreDetails: string;
+  }
+
+  interface IProduct extends Document {
+    description: string;
+    qty: number;
+    price: number;
+    totalPrice: number;
+    product: string;
+    category: string;
+    licence: string;
+    deliveryDelay: number;
+  }
+
+  interface IorderAccount extends Document {
+    userId: string;
+    numOrder: string;
+    products: IProduct[];
+    totalPrice: number;
+    paymentMethod: string;
+    status: string;
+    address: string;
+    billing: Billing;
+    cur: string;
+    valCurency: number;
+  }
+
   interface IEuro extends Document {
     euro: number;
+  }
+
+  interface IMad extends Document {
+    mad: number;
   }
 
   interface IDollar extends Document {
@@ -76,6 +117,48 @@ async function initializeModels(): Promise<any> {
     status: string;
   }
 
+  const productSchema: Schema = new Schema({
+    description: { type: String, required: true },
+    qty: { type: Number, required: true },
+    price: { type: Number, required: true },
+    totalPrice: { type: Number, required: true },
+    product: { type: String, required: true },
+    category: { type: String, required: true },
+    licence: { type: String, required: true },
+    deliveryDelay: { type: Number, required: true },
+  });
+
+  const accountSchema: Schema = new Schema(
+    {
+      category: { type: String, required: true },
+      licence: { type: String, required: true },
+      description: { type: String, default: "" },
+      minQ: { type: Number, required: true },
+      stock: { type: Number, required: true },
+      deliveryDelay: { type: Number, required: true },
+      price: { type: Number, required: true },
+      status: { type: String, required: true },
+      moreDetails: { type: String, default: "" },
+    },
+    { timestamps: true }
+  );
+
+  const orderAccountSchema: Schema = new Schema(
+    {
+      userId: { type: String, required: true },
+      numOrder: { type: String, required: true },
+      products: { type: [productSchema], required: true },
+      totalPrice: { type: Number, required: true },
+      paymentMethod: { type: String, required: true },
+      status: { type: String, default: "En attente" },
+      address: { type: String, default: "" },
+      billing: { type: Object, default: {} },
+      cur: { type: String, default: "" },
+      valCurency: { type: Number, default: 0 },
+    },
+    { timestamps: true }
+  );
+
   // Définition des schémas
   const buySchema: Schema = new Schema(
     {
@@ -93,7 +176,7 @@ async function initializeModels(): Promise<any> {
       buyCode: { type: String },
       lastname: { type: String },
       firstname: { type: String },
-      status: { type: String, default: "En cours de paiement" },
+      status: { type: String, default: "En attente" },
     },
     { timestamps: true }
   );
@@ -125,7 +208,7 @@ async function initializeModels(): Promise<any> {
   const exchangeSchema: Schema = new Schema(
     {
       userId: { type: String, required: true },
-      exchangeId: { type: String, default: "" },
+      numExchange: { type: String, required: true },
       serverOut: { type: String, required: true },
       qtyToPay: { type: Number, required: true },
       characterToPay: { type: String, required: true },
@@ -153,6 +236,11 @@ async function initializeModels(): Promise<any> {
     { timestamps: true }
   );
 
+  const madSchema: Schema = new Schema(
+    { mad: { type: Number, required: true } },
+    { timestamps: true }
+  );
+
   const aedSchema: Schema = new Schema(
     { aed: { type: Number, required: true } },
     { timestamps: true }
@@ -173,6 +261,7 @@ async function initializeModels(): Promise<any> {
     goapiDB.models.euro || goapiDB.model<IEuro>("euro", euroSchema);
   const DollarModel =
     goapiDB.models.dollar || goapiDB.model<IDollar>("dollar", dollarSchema);
+  const MadModel = goapiDB.models.mad || goapiDB.model<IMad>("mad", madSchema);
   const AedModel = goapiDB.models.aed || goapiDB.model<IAed>("aed", aedSchema);
   const SkrillSepaModel =
     goapiDB.models.skrillsepa ||
@@ -183,17 +272,25 @@ async function initializeModels(): Promise<any> {
     goapiDB.models.rate || goapiDB.model<IChangeRate>("rate", rateSchemas);
   const UsdtModel =
     goapiDB.models.usdt || goapiDB.model<Iusdt>("usdt", usdtSchema);
+  const AccountModel =
+    goapiDB.models.account || goapiDB.model<IAccount>("account", accountSchema);
+  const OrderAccountModel =
+    goapiDB.models.orderAccount ||
+    goapiDB.model<IorderAccount>("orderAccount", orderAccountSchema);
 
   return {
     ExchangeModel,
     ServerModel,
     EuroModel,
     DollarModel,
+    MadModel,
     AedModel,
     BuyModel,
     SkrillSepaModel,
     RateModel,
     UsdtModel,
+    AccountModel,
+    OrderAccountModel,
   };
 }
 

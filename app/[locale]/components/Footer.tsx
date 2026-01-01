@@ -284,7 +284,7 @@ const Footer = () => {
                 />
 
                 <Image
-                  src="/paymentfoot2.png"
+                  src="/iben/paymentfoot2.png"
                   width={240}
                   height={240}
                   alt="Marocco bank"

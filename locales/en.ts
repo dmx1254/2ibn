@@ -7,6 +7,8 @@ export default {
   "navbar.game": "Game",
   "navbar.pubg-mobile": "PUBG Mobile",
   "navbar.free-fire": "Free Fire",
+  "navbar.accounts": "Accounts",
+  "navbar.gift-cards": "Gift cards",
   "navbar.fortnite": "Fortnite",
   "navbar.mobile-legends": "Mobile Legends",
   "navbar.pasha-fencer-diamonds": "Pasha Fencer Diamonds",
@@ -558,12 +560,28 @@ export default {
 
   "whychooseus.title": "Why choose ibendouma?",
   "whychooseus.desc":
-    "ibendouma is a Kamas-selling platform for Dofus that guarantees ultra-fast deliveries in 3 to 15 minutes for 99% of orders, with service available 24/7. The site stands out for its competitive prices and maintains stock on all Dofus servers, committed to offering the best rates on the market. The purchasing process is simplified: after placing an order, an agent directly contacts the customer to arrange payment and in-game delivery at a meeting point, ensuring a fast and secure transaction.",
-
-  "whychooseus.delivery": "Fast delivery",
-  "whychooseus.secure": "100% Secure Delivery",
-  "whychooseus.bestPrice": "Best prices",
-  "whychooseus.onlineSupport": "24/7 Online Support",
+    "At ibendouma, we are committed to offering quality, secure and fast service for all your needs in kamas, game accounts, items, coins and gift cards. Here's why you should choose our platform:",
+  "whychooseus.serviceClient": "24/7 Customer Service",
+  "whychooseus.serviceClientDesc":
+    "Our team is available at all times to answer your questions and resolve your problems. You can contact us at any time, 7 days a week, and receive fast and professional assistance.",
+  "whychooseus.securityFiabilite": "Security and Reliability",
+  "whychooseus.securityFiabiliteDesc":
+    "The security of your transactions is our priority. We use advanced protection systems to ensure that your purchases, sales and exchanges are done securely.",
+  "whychooseus.prixCompetitifs": "Competitive Prices",
+  "whychooseus.prixCompetitifsDesc":
+    "We offer very competitive prices for buying and selling kamas, game accounts, items and gift cards. You will benefit from the best offers on the market.",
+  "whychooseus.transactionsRapides": "Fast and Instant Transactions",
+  "whychooseus.transactionsRapidesDesc":
+    "We guarantee fast delivery for all your kamas purchases and fast payment for selling your kamas. In addition, our server exchanges are instant and hassle-free.",
+  "whychooseus.largeSelection": "Wide Selection of Products",
+  "whychooseus.largeSelectionDesc":
+    "Whether you're looking for kamas for Dofus, game accounts, coins, items, or gift cards, we have a wide selection to meet all your needs.",
+  "whychooseus.satisfactionGarantie": "Guaranteed Customer Satisfaction",
+  "whychooseus.satisfactionGarantieDesc":
+    "Your satisfaction is our priority. We do everything we can to offer you the best possible experience and ensure that you are fully satisfied with our services.",
+  "whychooseus.plateformeFiable": "Reliable and Easy-to-Use Platform",
+  "whychooseus.plateformeFiableDesc":
+    "Our site is designed to offer a smooth, simple and intuitive experience. You can easily navigate, make purchases and sales in a few clicks, and enjoy our services without complications.",
   "whychooseus.startNow": "Start Now",
 
   "footer.satisfaction": "99.9% SATISFACTION",
@@ -599,17 +617,26 @@ export default {
 
   "ourservice.title": "Our Services",
   "ourservice.desc":
-    "Discover our solutions tailored to all your kamas needs, with customer service available 24/7.",
-  "ourservice.achatKamasTitle": "Buy Kamas",
-  "ourservice.achatKamasDesc":
-    "Get your kamas quickly and securely. Competitive prices and guaranteed instant delivery.",
+    "Discover our comprehensive solutions adapted to all your kamas needs and more, with customer service available 24/7 to guarantee you a smooth and secure experience.",
+  "ourservice.achatVenteKamasTitle": "Buy and Sell Kamas",
+  "ourservice.achatVenteKamasDesc":
+    "We offer kamas sales for Dofus at competitive prices, with fast and secure delivery. You can also sell your kamas at an advantageous price and receive your payment quickly.",
   "ourservice.btn": "Learn more",
-  "ourservice.vendKamasTitle": "Sell Kamas",
-  "ourservice.vendKamasDesc":
-    "Sell your kamas at the best market price. Fast and secure payment guaranteed.",
   "ourservice.echangeKamasTitle": "Exchange Kamas",
   "ourservice.echangeKamasDesc":
-    "Exchange your kamas between different servers in a few clicks. Fast and reliable service.",
+    "Exchange your kamas between different servers in a simple and fast way. Our exchange service allows you to transfer your kamas securely and without delay.",
+  "ourservice.venteComptesTitle": "Game Account Sales",
+  "ourservice.venteComptesDesc":
+    "We sell accounts for Dofus and other popular games at attractive prices. Each account is verified to ensure its security and proper functioning.",
+  "ourservice.venteCoinsTitle": "Game Coins Sales",
+  "ourservice.venteCoinsDesc":
+    "Buy coins for your favorite games. We offer virtual currencies for many games, allowing you to fully enjoy your gaming experience.",
+  "ourservice.giftCardsTitle": "Gift Cards",
+  "ourservice.giftCardsDesc":
+    "Get gift cards for your favorite games. Buy cards for Dofus, DB, or other popular games directly on our site.",
+  "ourservice.itemsObjetsTitle": "Game Items and Objects",
+  "ourservice.itemsObjetsDesc":
+    "We sell items for various games, including Dofus and other popular titles. Find the objects you need to enhance your gaming experience.",
 
   "statistic.title": "ibendouma in Numbers",
   "statistic.desc":
@@ -949,6 +976,9 @@ export default {
   "paymentMode.title": "Select the payment method to use for this order below",
   "paymentMode.titleMorroco": "Bank transfer",
   "paymentMode.fee": "fees",
+  "paymentMode.paypalDesc": "(0 fees in Europe)",
+  "paymentMode.cryptoDesc": "(TRC20 / ERC20 / Binance Id or Email)",
+  "paymentMode.creditcardDesc": "(In progress)",
   "checkout.step1": "Step {step1} - Login",
   "checkout.step2Conn": "Step {step2} - Billing Information",
   "checkout.step2NoConn": "Step {step2} - Account & Billing Information",
@@ -1199,6 +1229,10 @@ export default {
   "pageicon.buy2": "kamas",
   "pageicon.exchange1": "Exchange",
   "pageicon.exchange2": "kamas",
+  "pageicon.accounts1": "Game",
+  "pageicon.accounts2": "accounts",
+  "pageicon.giftCards1": "Gift",
+  "pageicon.giftCards2": "cards",
   "pageicon.social1": "Social",
   "pageicon.social2": "media",
   "pageicon.rate": "Rate us",
@@ -1387,4 +1421,73 @@ export default {
   "crypto.legalNotice": "Legal Notice",
   "crypto.legalNoticeDesc":
     "All payments are processed securely. Your transaction information is never shared with third parties. Please verify all information before sending your cryptocurrencies.",
+
+  "accountDetails.home": "Home",
+  "accountDetails.videoGames": "Video Games",
+  "accountDetails.share": "Share",
+  "accountDetails.facebook": "Facebook",
+  "accountDetails.twitter": "X (Twitter)",
+  "accountDetails.whatsapp": "WhatsApp",
+  "accountDetails.telegram": "Telegram",
+  "accountDetails.copyLink": "Copy link",
+  "accountDetails.linkCopied": "Link copied to clipboard!",
+  "accountDetails.copyError": "Error copying link",
+  "accountDetails.productInfo": "Product Information",
+  "accountDetails.deliverySpeed": "Delivery speed:",
+  "accountDetails.deliveryMethod": "Delivery method:",
+  "accountDetails.directRecharge": "Direct recharge",
+  "accountDetails.nominalComplement": "Nominal complement:",
+  "accountDetails.totalAmount": "Total amount =",
+  "accountDetails.whyChooseUs": "Why choose us? →",
+  "accountDetails.seeMore": "See more",
+  "accountDetails.otherDenominations": "Other denominations",
+  "accountDetails.startingFrom": "starting from",
+  "accountDetails.showMore": "Show more",
+  "accountDetails.available": "available",
+  "accountDetails.outOfStock": "Out of stock",
+  "accountDetails.quantity": "Quantity",
+  "accountDetails.totalAmountLabel": "Total Amount",
+  "accountDetails.buyNow": "Buy now",
+  "accountDetails.sold": "sold",
+  "accountDetails.chat": "Chat",
+  "accountDetails.successfulDeliveries": "successful deliveries",
+  "accountDetails.registeredOn": "Registered on",
+  "accountDetails.overallRating": "Overall rating of",
+  "accountDetails.legendarySeller": "Legendary seller",
+  "accountDetails.recentVerifiedPurchases": "Recent verified purchases",
+  "accountDetails.instant": "Instant",
+
+  "virtualGame.home": "Home",
+  "virtualGame.videoGames": "Video Games",
+  "virtualGame.accountAvailable": "account available",
+  "virtualGame.accountsAvailable": "accounts available",
+  "virtualGame.searchPlaceholder": "Enter your filter",
+  "virtualGame.sortBy": "Sort by:",
+  "virtualGame.recommended": "Recommended",
+  "virtualGame.lowestPrice": "Lowest price",
+  "virtualGame.about": "About",
+  "virtualGame.result": "result",
+  "virtualGame.results": "results",
+  "virtualGame.minQty": "Min qty:",
+  "virtualGame.stock": "Stock:",
+  "virtualGame.offer": "offer",
+  "virtualGame.offers": "offers",
+  "virtualGame.startingFrom": "starting from",
+  "virtualGame.unavailable": "Unavailable",
+  "virtualGame.noAccountFound": "No account found for",
+  "virtualGame.page": "Page",
+  "virtualGame.of": "of",
+
+  "videoGamePage.home": "Home",
+  "videoGamePage.games": "Games",
+  "videoGamePage.searchPlaceholder": "Search a brand",
+  "videoGamePage.all": "All",
+  "videoGamePage.recharger": "Recharge",
+  "videoGamePage.trending": "Trending",
+  "videoGamePage.allBrands": "All game brands",
+  "videoGamePage.offer": "offer",
+  "videoGamePage.offers": "offers",
+  "videoGamePage.noGameFound": "No game found for",
+  "videoGamePage.searchResults": "Search results for",
+  "videoGamePage.noResultsFound": "No results found for",
 } as const;

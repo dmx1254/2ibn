@@ -1,313 +1,384 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Gamepad2, Shield, Sparkles } from "lucide-react";
-import { gameProducts, parsedDevise } from "@/lib/utils";
-import { useScopedI18n } from "@/locales/client";
+import React, { useEffect, useState } from "react";
+import { Search, Diamond, ChevronLeft, ChevronRight } from "lucide-react";
+import { Card } from "./ui/card";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { parsedDevise } from "@/lib/utils";
 import useStore from "@/lib/store-manage";
 import { GamePaymentDialog } from "./game-payment-dialog";
+import { useScopedI18n } from "@/locales/client";
 
-interface GameProduct {
-  id: number;
-  amount: string;
-  bonus?: string;
+interface Account {
+  _id: string;
+  category: string;
+  licence: string;
+  description: string;
+  minQ: number;
+  stock: number;
+  deliveryDelay: number;
   price: number;
+  status: string;
+  moreDetails: string;
 }
 
-const VirtualGame = ({ gamename }: { gamename: string }) => {
-  const { devise } = useStore();
-  const gameData = gameProducts[gamename];
-  const tScope = useScopedI18n("virtualgame");
-  const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<GameProduct | null>(null);
+interface VirtualGameProps {
+  gamename: string;
+  accounts: Account[];
+}
 
-  const handleBuyClick = (product: GameProduct) => {
-    setSelectedProduct(product);
-    setIsPaymentDialogOpen(true);
+const VirtualGame = ({ gamename, accounts: initialAccounts }: VirtualGameProps) => {
+  const t = useScopedI18n("virtualGame");
+  const { devise } = useStore();
+  const router = useRouter();
+  const [accounts, setAccounts] = useState<Account[]>(initialAccounts);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState<"recommended" | "lowest">("recommended");
+  const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
+  const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+
+  // Convertir le slug en nom de licence
+  const licenceName = gamename
+    ? gamename.includes("-")
+      ? gamename
+          .split("-")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ")
+      : gamename
+    : gamename;
+
+  useEffect(() => {
+    let filtered = [...initialAccounts];
+
+    // Filtrer par recherche
+    if (searchQuery.trim()) {
+      filtered = filtered.filter(
+        (account) =>
+          account.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          account.licence.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    // Trier
+    if (sortBy === "lowest") {
+      // Tri du prix le plus bas au plus haut
+      filtered.sort((a, b) => a.price - b.price);
+    } else {
+      // Recommandé : par stock disponible d'abord, puis par prix
+      filtered.sort((a, b) => {
+        if (a.stock > 0 && b.stock === 0) return -1;
+        if (a.stock === 0 && b.stock > 0) return 1;
+        return a.price - b.price;
+      });
+    }
+
+    setAccounts(filtered);
+    setCurrentPage(1); // Réinitialiser à la page 1 quand la recherche ou le tri change
+  }, [searchQuery, sortBy, initialAccounts]);
+
+  const handleAccountClick = (account: Account) => {
+    if (account.stock > 0 && account.status !== "rupture de stock") {
+      // Rediriger vers la page de détails
+      router.push(`/video-game/${gamename}/${account._id}`);
+    }
   };
 
-  if (!gameData) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-[#0D0F10]">
-        <p className="text-xl text-gray-400">{tScope("jeuNonTrouve")}</p>
-      </div>
-    );
-  }
+  // Grouper les comptes par description pour compter les offres
+  const groupedAccounts = accounts.reduce((acc, account) => {
+    const key = account.description;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(account);
+    return acc;
+  }, {} as Record<string, Account[]>);
+
+  const accountGroups = Object.entries(groupedAccounts).map(([description, accounts]) => ({
+    description,
+    accounts,
+    count: accounts.length,
+    minPrice: Math.min(...accounts.map((a) => a.price)),
+  }));
+
+  // Calcul de la pagination
+  const totalPages = Math.ceil(accountGroups.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedGroups = accountGroups.slice(startIndex, endIndex);
+
+  // Fonctions de navigation
+  const goToPage = (page: number) => {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-[#0D0F10] text-white mb-12">
-      <div className="container mx-auto px-4 py-12">
-        <div className="relative mb-16 p-8 rounded-2xl bg-[#131619] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#eab308]/20 to-[#f97316]/20 z-10"></div>
-          <div className="absolute inset-0">
-            <Image
-              src={`/jeux/${gamename}.webp`}
-              alt={gameData.title}
-              fill
-              className="object-cover opacity-30"
-              priority
+    <div className="min-h-screen bg-[#1A1D21] text-white font-poppins">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
+          <Link href="/" className="hover:text-yellow-600 transition-colors">
+            {t("home")}
+          </Link>
+          <span>»</span>
+          <Link href="/video-game" className="hover:text-yellow-600 transition-colors">
+            {t("videoGames")}
+          </Link>
+          <span>»</span>
+          <span className="text-white">{licenceName}</span>
+        </div>
+
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-white mb-2">{licenceName.toUpperCase()}</h1>
+          <p className="text-gray-400">
+            {accounts.length} {accounts.length === 1 ? t("accountAvailable") : t("accountsAvailable")}
+          </p>
+        </div>
+
+        {/* Barre de recherche et filtres */}
+        <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
+          <div className="relative flex-1 w-full">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <input
+              type="text"
+              placeholder={t("searchPlaceholder")}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-3 bg-[#2A2D30] border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-yellow-600 transition-colors"
             />
           </div>
-          <div className="relative z-20">
-            <h1 className="text-5xl font-bold text-center mb-6 bg-gradient-to-r from-[#eab308] to-[#f97316] text-transparent bg-clip-text">
-              {tScope(
-                `${
-                  gamename as
-                    | "pubg-mobile"
-                    | "free-fire"
-                    | "fortnite"
-                    | "mobile-legends"
-                    | "pasha-fencer-diamonds"
-                }.title`
-              )}
-            </h1>
-            <div className="max-w-3xl mx-auto space-y-6 bg-[#0D0F10]/50 p-6 rounded-xl backdrop-blur-sm">
-              {gamename === "pubg-mobile" && (
-                <>
-                  <p className="text-2xl font-bold text-[#eab308] text-center">
-                    {tScope("pubg.description")}
-                  </p>
-                  <p className="text-lg text-gray-200">
-                    {tScope("pubg.descriptionComplete")}:
-                  </p>
-                  <div className="space-y-2 text-gray-200">
-                    <p>✅{tScope("pubg.benefit1")}</p>
-                    <p>✅ {tScope("pubg.benefit2")}</p>
-                    <p>✅ {tScope("pubg.benefit3")}</p>
-                  </div>
-                  <div className="space-y-2 text-gray-300">
-                    <p>🔹 {tScope("pubg.service1")}</p>
-                    <p>🔹 {tScope("pubg.service2")}</p>
-                    <p>🔹 {tScope("pubg.service3")}</p>
-                  </div>
-                  <p className="text-lg font-semibold text-[#f97316] text-center">
-                    {tScope("pubg.conclusion")} 🎮🔥
-                  </p>
-                </>
-              )}
-
-              {gamename === "free-fire" && (
-                <>
-                  <p className="text-2xl font-bold text-[#eab308] text-center">
-                    {tScope("free-fire.title")}
-                  </p>
-                  <p className="text-lg text-gray-200">
-                    {tScope("freefire.description")}
-                  </p>
-                  <p className="text-lg text-gray-200">
-                    {tScope("freefire.descriptionComplete")} :
-                  </p>
-                  <div className="space-y-2 text-gray-200">
-                    <p>✅ {tScope("freefire.benefit1")}</p>
-                    <p>✅ {tScope("freefire.benefit2")}</p>
-                    <p>✅ {tScope("freefire.benefit3")}</p>
-                  </div>
-                  <div className="space-y-2 text-gray-300">
-                    <p>🔹 {tScope("freefire.service1")}</p>
-                    <p>🔹 {tScope("freefire.service2")}</p>
-                    <p>🔹 {tScope("freefire.service3")}</p>
-                  </div>
-                  <p className="text-lg font-semibold text-[#f97316] text-center">
-                    {tScope("freefire.conclusion")} 💎🔥
-                  </p>
-                </>
-              )}
-
-              {gamename === "fortnite" && (
-                <>
-                  <p className="text-2xl font-bold text-[#eab308] text-center">
-                    {tScope("fortnite.description")}
-                  </p>
-                  <p className="text-lg text-gray-200">
-                    {tScope("fortnite.descriptionComplete")} :
-                  </p>
-                  <div className="space-y-2 text-gray-200">
-                    <p>✅ {tScope("fortnite.benefit1")}</p>
-                    <p>✅ {tScope("fortnite.benefit2")}</p>
-                    <p>✅ {tScope("fortnite.benefit3")}</p>
-                  </div>
-                  <div className="space-y-2 text-gray-300">
-                    <p>🔹{tScope("freefire.service1")}</p>
-                    <p>🔹 {tScope("freefire.service2")}</p>
-                    <p>🔹 {tScope("freefire.service3")}</p>
-                  </div>
-                  <p className="text-lg font-semibold text-[#f97316] text-center">
-                    {tScope("fortnite.conclusion")} 🎮💥
-                  </p>
-                </>
-              )}
-
-              {gamename === "mobile-legends" && (
-                <>
-                  <p className="text-2xl font-bold text-[#eab308] text-center">
-                    {tScope("mobilelegends.subtitle")}
-                  </p>
-                  <p className="text-lg text-gray-200">
-                    {tScope("mobilelegends.description")} :
-                  </p>
-                  <div className="space-y-2 text-gray-200">
-                    <p>✅ {tScope("mobilelegends.benefit1")}</p>
-                    <p>✅ {tScope("mobilelegends.benefit2")}</p>
-                    <p>✅ {tScope("mobilelegends.benefit3")}</p>
-                  </div>
-                  <div className="space-y-2 text-gray-300">
-                    <p>🔹 {tScope("mobilelegends.service1")}</p>
-                    <p>🔹 {tScope("mobilelegends.service2")}</p>
-                    <p>🔹 {tScope("mobilelegends.service3")}</p>
-                  </div>
-                  <p className="text-lg font-semibold text-[#f97316] text-center">
-                    {tScope("mobilelegends.conclusion")} 🎮💎
-                  </p>
-                </>
-              )}
-
-              {gamename === "pasha-fencer-diamonds" && (
-                <>
-                  <p className="text-2xl font-bold text-[#eab308] text-center">
-                    {tScope("pasha.subtitle")}
-                  </p>
-                  <p className="text-lg text-gray-200">
-                    {tScope("pasha.descriptionComplete")} :
-                  </p>
-                  <div className="space-y-2 text-gray-200">
-                    <p>✅ {tScope("pasha.benefit1")}</p>
-                    <p>✅ {tScope("pasha.benefit2")}</p>
-                    <p>✅ {tScope("pasha.benefit3")}</p>
-                  </div>
-                  <div className="space-y-2 text-gray-300">
-                    <p>🔹 {tScope("pasha.service1")}</p>
-                    <p>🔹 {tScope("pasha.service2")}</p>
-                    <p>🔹 {tScope("pasha.service3")}</p>
-                  </div>
-                  <p className="text-lg font-semibold text-[#f97316] text-center">
-                    {tScope("pasha.conclusion")} 💎🎮
-                  </p>
-                </>
-              )}
+          <div className="flex items-center gap-4">
+            <span className="text-gray-400">{t("sortBy")}</span>
+            <div className="flex gap-4">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="sort"
+                  value="recommended"
+                  checked={sortBy === "recommended"}
+                  onChange={() => setSortBy("recommended")}
+                  className="w-4 h-4 text-yellow-600"
+                />
+                <span className="text-white">{t("recommended")}</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="sort"
+                  value="lowest"
+                  checked={sortBy === "lowest"}
+                  onChange={() => setSortBy("lowest")}
+                  className="w-4 h-4 text-yellow-600"
+                />
+                <span className="text-white">{t("lowestPrice")}</span>
+              </label>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <Card className="bg-[#1A1D21] border-0 overflow-hidden group hover:shadow-xl hover:shadow-[#eab308]/5 transition-all duration-300">
-            <CardHeader className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#eab308]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <Gamepad2 className="w-12 h-12 mb-4 text-[#eab308]" />
-              <CardTitle className="text-white">
-                {tScope("contentExclusif")}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-gray-400 text-base">
-                {tScope("accesContenu")}
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-[#1A1D21] border-0 overflow-hidden group hover:shadow-xl hover:shadow-[#f97316]/5 transition-all duration-300">
-            <CardHeader className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#f97316]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <Sparkles className="w-12 h-12 mb-4 text-[#f97316]" />
-              <CardTitle className="text-white">
-                {tScope("bonusSpeciaux")}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-gray-400 text-base">
-                {tScope("profitezBonus")}
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-[#1A1D21] border-0 overflow-hidden group hover:shadow-xl hover:shadow-[#eab308]/5 transition-all duration-300">
-            <CardHeader className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#eab308]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <Shield className="w-12 h-12 mb-4 text-[#eab308]" />
-              <CardTitle className="text-white">
-                {tScope("livraisonSecurisee")}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-gray-400 text-base">
-                {tScope("receptionInstantanee")}
-              </CardDescription>
-            </CardContent>
-          </Card>
+        {/* Résultats */}
+        <div className="mb-4">
+          <p className="text-gray-400">
+            {t("about")} {accountGroups.length} {accountGroups.length === 1 ? t("result") : t("results")}
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {gameData.products.map((product) => (
-            <Card
-              key={product.id}
-              className="bg-[#131619] border-0 group hover:shadow-2xl hover:shadow-[#eab308]/5 transition-all duration-300 relative overflow-hidden"
-            >
-              <div className="absolute inset-0">
-                <Image
-                  src={`/jeux/${gamename}.webp`}
-                  alt={gameData.title}
-                  fill
-                  className="object-cover opacity-10 transition-opacity group-hover:opacity-20"
-                />
-              </div>
+        {/* Grille de produits */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {paginatedGroups.map((group, index) => {
+            const availableAccounts = group.accounts.filter(
+              (a) => a.stock > 0 && a.status !== "rupture de stock"
+            );
+            const isAvailable = availableAccounts.length > 0;
+            const displayAccount = availableAccounts[0] || group.accounts[0];
 
-              <div className="absolute inset-0 bg-gradient-to-br from-[#eab308]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            return (
+              <Card
+                key={index}
+                onClick={() => isAvailable && handleAccountClick(displayAccount)}
+                className={`relative bg-[#2A2D30] border border-gray-700 rounded-lg p-5 cursor-pointer hover:border-yellow-600 hover:shadow-xl hover:shadow-yellow-600/20 hover:scale-[1.02] transition-all duration-300 overflow-hidden group ${
+                  !isAvailable ? "opacity-60 cursor-not-allowed" : ""
+                }`}
+              >
+                {/* Effet de brillance au hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/0 to-yellow-600/0 group-hover:from-yellow-600/5 group-hover:to-transparent transition-all duration-300 pointer-events-none"></div>
+                
+                <div className="relative z-10">
+                  {/* Titre du produit en haut */}
+                  <h3 className="text-sm font-semibold text-white/90 mb-3 line-clamp-2 min-h-[2.5rem]">
+                    {group.description}
+                  </h3>
 
-              <CardHeader className="relative z-10 pb-4">
-                <div className="flex items-center justify-center space-x-2">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden mb-2">
-                    <Image
-                      src={`/jeux/${gamename}.webp`}
-                      alt={gameData.title}
-                      fill
-                      className="object-cover"
-                    />
+                  {/* Nom du jeu */}
+                  <p className="text-xs font-bold text-white/70 mb-3 tracking-wider">
+                    {licenceName.toUpperCase()}
+                  </p>
+
+                  {/* Description avec icône diamant */}
+                  <div className="flex items-center gap-2 text-cyan-400 mb-4">
+                    <Diamond className="w-4 h-4 flex-shrink-0" />
+                    <span className="text-sm line-clamp-2">{group.description}</span>
+                  </div>
+
+                  {/* Informations supplémentaires */}
+                  <div className="flex items-center gap-3 mb-3 justify-between text-xs text-gray-400">
+                    <div className="flex items-center gap-1">
+                      <span className="font-medium">{t("minQty")}</span>
+                      <span className="text-white">{displayAccount.minQ || 1}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="font-medium">{t("stock")}</span>
+                      <span className={`font-semibold ${
+                        displayAccount.stock > 0 ? "text-green-400" : "text-red-400"
+                      }`}>
+                        {displayAccount.stock || 0}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Prix et offres en bas */}
+                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-700">
+                    <div className="flex-1">
+                      <p className="text-xs text-gray-400 mb-1">
+                        {group.count} {group.count === 1 ? t("offer") : t("offers")}
+                      </p>
+                      <p className="text-base font-bold text-yellow-600">
+                        {t("startingFrom")}{" "}
+                        {(
+                          (group.minPrice / devise.curencyVal) *
+                          (displayAccount.minQ || 1)
+                        ).toFixed(2)}{" "}
+                        {parsedDevise(devise.currencyName)}
+                      </p>
+                    </div>
+                    {!isAvailable && (
+                      <span className="text-xs text-red-400 bg-red-400/10 px-2 py-1 rounded ml-2">
+                        {displayAccount.status || t("unavailable")}
+                      </span>
+                    )}
                   </div>
                 </div>
-                <CardTitle className="text-center text-2xl font-bold text-white">
-                  {product.amount}
-                </CardTitle>
-                {product.bonus && (
-                  <span className="absolute top-2 right-2 bg-[#eab308] text-black text-sm font-bold px-2 py-1 rounded-full">
-                    +{product.bonus}
-                  </span>
-                )}
-              </CardHeader>
-
-              <CardContent className="relative z-10">
-                <div className="text-center space-y-4">
-                  <p className="text-2xl font-bold bg-gradient-to-r from-[#eab308] to-[#f97316] text-transparent bg-clip-text">
-                    {(Number(product.price) / devise.curencyVal).toFixed(2)}{" "}
-                    {parsedDevise(devise.currencyName)}
-                  </p>
-                  <button
-                    onClick={() => handleBuyClick(product)}
-                    className="w-full bg-gradient-to-r from-[#eab308] to-[#f97316] hover:from-[#f97316] hover:to-[#eab308] text-black font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
-                  >
-                    {tScope("acheterMaintenant")}
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+              </Card>
+            );
+          })}
         </div>
-      </div>
 
-      {selectedProduct && (
-        <GamePaymentDialog
-          isOpen={isPaymentDialogOpen}
-          onClose={() => setIsPaymentDialogOpen(false)}
-          product={selectedProduct}
-          gameTitle={gameData.title}
-        />
-      )}
+        {/* Message si aucun résultat */}
+        {accountGroups.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-400 text-lg">
+              {t("noAccountFound")} &quot;{searchQuery}&quot;
+            </p>
+          </div>
+        )}
+
+        {/* Pagination */}
+        {accountGroups.length > itemsPerPage && (
+          <div className="flex flex-col items-center gap-4 mt-8">
+            <div className="flex items-center gap-2">
+              {/* Bouton Précédent */}
+              <button
+                onClick={goToPreviousPage}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded-lg border transition-colors ${
+                  currentPage === 1
+                    ? "border-gray-700 text-gray-600 cursor-not-allowed"
+                    : "border-gray-600 text-white hover:bg-gray-700 hover:border-yellow-600"
+                }`}
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {/* Numéros de page */}
+              <div className="flex items-center gap-1">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                  // Afficher seulement certaines pages pour éviter trop de boutons
+                  if (
+                    page === 1 ||
+                    page === totalPages ||
+                    (page >= currentPage - 1 && page <= currentPage + 1)
+                  ) {
+                    return (
+                      <button
+                        key={page}
+                        onClick={() => goToPage(page)}
+                        className={`px-4 py-2 rounded-lg border transition-colors ${
+                          currentPage === page
+                            ? "bg-yellow-600 border-yellow-600 text-white font-semibold"
+                            : "border-gray-600 text-white hover:bg-gray-700 hover:border-yellow-600"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    );
+                  } else if (page === currentPage - 2 || page === currentPage + 2) {
+                    return (
+                      <span key={page} className="px-2 text-gray-400">
+                        ...
+                      </span>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+
+              {/* Bouton Suivant */}
+              <button
+                onClick={goToNextPage}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded-lg border transition-colors ${
+                  currentPage === totalPages
+                    ? "border-gray-700 text-gray-600 cursor-not-allowed"
+                    : "border-gray-600 text-white hover:bg-gray-700 hover:border-yellow-600"
+                }`}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Informations de pagination */}
+            <p className="text-sm text-gray-400">
+              {t("page")} {currentPage} {t("of")} {totalPages} ({accountGroups.length} {accountGroups.length === 1 ? t("result") : t("results")})
+            </p>
+          </div>
+        )}
+
+        {/* Dialog de paiement */}
+        {selectedAccount && (
+          <GamePaymentDialog
+            isOpen={isPaymentDialogOpen}
+            onClose={() => {
+              setIsPaymentDialogOpen(false);
+              setSelectedAccount(null);
+            }}
+            product={{
+              id: parseInt(selectedAccount._id.slice(-6), 16) || 1,
+              amount: `${selectedAccount.minQ} compte${selectedAccount.minQ > 1 ? "s" : ""}`,
+              bonus: selectedAccount.moreDetails ? undefined : undefined,
+              price: selectedAccount.price * (selectedAccount.minQ || 1),
+            }}
+            gameTitle={selectedAccount.description}
+            account={selectedAccount}
+            quantity={selectedAccount.minQ || 1}
+          />
+        )}
+      </div>
     </div>
   );
 };

@@ -54,7 +54,7 @@ const ProfileSellPage = () => {
     enabled: !!session?.user.id,
   });
 
-  //   console.log(ordersSell);
+    console.log(ordersSell);
 
   const totalSum = React.useMemo(() => {
     if (!ordersSell) return 0;

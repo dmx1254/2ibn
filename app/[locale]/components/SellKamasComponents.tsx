@@ -30,6 +30,7 @@ const SellKamasComponents = ({
 }) => {
   const { devise, addNewDevise, addBuyInfo, buyInfo } = useStore();
   const { data: session } = useSession();
+  // console.log(servers);
 
   // console.log(devise);
 
@@ -46,10 +47,12 @@ const SellKamasComponents = ({
     firstname: "",
   });
 
-  // function handleChatClick() {
-  //   //@ts-ignore
-  //   void window?.Tawk_API.toggle();
-  // }
+  function handleChatClick() {
+    //@ts-ignore
+    void window?.Tawk_API.toggle();
+  }
+
+  // Le prix des serveurs c'est en dollar
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [gameNameError, setGameNameError] = useState<string>("");
@@ -188,9 +191,7 @@ const SellKamasComponents = ({
 
   const calculateTotal = () => {
     const amount = parseFloat(formData.amount) || 0;
-    const total = Number(
-      ((amount * (server?.serverPriceDh || 0)) / devise.curencyVal).toFixed(2)
-    );
+    const total = Number((amount * (server?.serverPriceDh || 0)).toFixed(2));
     return total;
   };
 
@@ -199,7 +200,7 @@ const SellKamasComponents = ({
       toast.error(tScope("sellOrderErrorLogin"), {
         style: { color: "#dc2626" },
       });
-    } else if ((server?.serverPriceDh || 1) * Number(formData.amount) < 200) {
+    } else if ((server?.serverPriceDh || 1) * Number(formData.amount) < 20) {
       toast.error("Le montant minimum de vente est de 200 DH", {
         style: { color: "#dc2626" },
         position: "top-right",
@@ -210,9 +211,7 @@ const SellKamasComponents = ({
 
       const qty = Number(formData.amount);
 
-      const unitPrice = (
-        (server?.serverPriceDh || 1) / devise.curencyVal
-      ).toFixed(2);
+      const unitPrice = (server?.serverPriceDh || 1).toFixed(2);
 
       if (
         !formData.gameName ||
@@ -287,7 +286,7 @@ const SellKamasComponents = ({
         paymentMethod: formData.paymentMethod,
         gameName: formData.gameName,
         paymentInfoDetails: paymentInfoDetails,
-        currencymethod: devise.currencyName,
+        currencymethod: "dollar",
         lastname: formData.lastname,
         firstname: "",
         buyCode: buyCode,
@@ -313,12 +312,12 @@ const SellKamasComponents = ({
             style: { color: "#16a34a" },
           });
           setTimeout(() => {
-            // handleChatClick();
-            router.push("/order-success");
+            handleChatClick();
+            // router.push("/order-success");
           }, 1000);
         }
       } catch (error) {
-        // console.log(error);
+        console.log(error);
         toast.success(tScope("error"), {
           style: { color: "#dc2626" },
         });
@@ -340,8 +339,8 @@ const SellKamasComponents = ({
 
   const fetchCurrency = async (currency: string) => {
     const response = await fetch(`/api/iben/currency/${currency}`, {
-      method: "POST",
-      body: JSON.stringify({ cur: "eur" }),
+      method: "GET",
+      cache: "no-store",
     });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
@@ -512,14 +511,14 @@ const SellKamasComponents = ({
             <div className="flex justify-between text-sm">
               <span>{tScope("pricedesc")}:</span>
               <span className="font-semibold text-amber-600">
-                {((server?.serverPriceDh || 0) / devise.curencyVal).toFixed(2)}{" "}
-                {parsedDevise(devise.currencyName)}
+                {(server?.serverPriceDh || 0).toFixed(2)}{" "}
+                {parsedDevise("dollar")}
               </span>
             </div>
             <div className="flex justify-between text-sm">
               <span>{tScope("total")}:</span>
               <span className="font-semibold text-amber-600">
-                {calculateTotal()} {parsedDevise(devise.currencyName)}
+                {calculateTotal()} {parsedDevise("dollar")}
               </span>
             </div>
           </div>

@@ -63,8 +63,8 @@ const ProfilePopover = () => {
   ];
 
   const handleLogout = async () => {
-    const data = JSON.stringify({ userId: session?.user.id, online: false });
-    await navigator.sendBeacon("/api/users-status-changed", data);
+    // const data = JSON.stringify({ userId: session?.user.id, online: false });
+    // await navigator.sendBeacon("/api/users-status-changed", data);
     await signOut();
   };
 

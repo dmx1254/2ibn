@@ -49,50 +49,56 @@ export const dofusItemNav: DofusItemNav[] = [
     id: "bqoa71",
     name: "Dofus Touch",
     slug: "dofus-touch",
+    traduc: "dofus-touch",
   },
   {
     id: "kopa68",
     name: "Dofus Retro",
     slug: "dofus-retro",
+    traduc: "dofus-retro",
   },
   {
     id: "erst14",
     name: "Dofus 2.0 (pc)",
     slug: "dofus-kamas",
+    traduc: "dofus-kamas",
   },
   {
     id: "jzwo64",
     name: "Wakfu",
     slug: "wakfu",
+    traduc: "wakfu",
   },
 ];
 
 export const games: DofusItemNav[] = [
   {
     id: "ghyt12",
-    name: "Pubg Mobile",
-    slug: "pubg-mobile",
+    name: "Accounts",
+    slug: "accounts",
+    traduc: "accounts",
   },
   {
     id: "la12or",
-    name: "Free FIRE",
-    slug: "free-fire",
+    name: "Gift cards",
+    slug: "gift-cards",
+    traduc: "gift-cards",
   },
-  {
-    id: "w56xql",
-    name: "Fortnite",
-    slug: "fortnite",
-  },
-  {
-    id: "klz67u",
-    name: "Mobile Legends",
-    slug: "mobile-legends",
-  },
-  {
-    id: "yxg82e",
-    name: "Pasha Fencer Diamonds",
-    slug: "pasha-fencer-diamonds",
-  },
+  // {
+  //   id: "w56xql",
+  //   name: "Fortnite",
+  //   slug: "fortnite",
+  // },
+  // {
+  //   id: "klz67u",
+  //   name: "Mobile Legends",
+  //   slug: "mobile-legends",
+  // },
+  // {
+  //   id: "yxg82e",
+  //   name: "Pasha Fencer Diamonds",
+  //   slug: "pasha-fencer-diamonds",
+  // },
 ];
 
 export const dofusItemNavSheetMenu: SheetMenuNav[] = [
@@ -101,18 +107,21 @@ export const dofusItemNavSheetMenu: SheetMenuNav[] = [
     name: "Dofus Touch",
     slug: "dofus-touch",
     typeslug: "touch",
+    traduc: "dofus-touch",
   },
   {
     id: "kopa68",
     name: "Dofus Retro",
     slug: "dofus-retro",
     typeslug: "retro",
+    traduc: "dofus-retro",
   },
   {
     id: "erst14",
     name: "Dofus 2.0 (pc)",
     slug: "dofus-kamas",
     typeslug: "kamas",
+    traduc: "dofus-kamas",
   },
 ];
 
@@ -123,8 +132,13 @@ export interface ServerBuy {
   serverStatus: string;
   serverPrice: number;
   serverMinQty: number;
-  createdAt: Date;
+  createdAt: Date;  
   updatedAt: Date;
+}
+
+export interface Promotion {
+  message: string;
+  promotion: boolean;
 }
 
 export interface ServerExchange {
@@ -149,6 +163,7 @@ interface DofusItemNav {
   id: string;
   name: string;
   slug: string;
+  traduc: string;
 }
 
 interface SheetMenuNav extends DofusItemNav {
@@ -160,7 +175,7 @@ export interface CURRENCY {
   curencyVal: number;
 }
 
-export interface BuyInfo{
+export interface BuyInfo {
   fullname: string;
   paymentMethod: string;
   paymentDetails: string;
@@ -221,6 +236,37 @@ export const parsedDevise = (cur: string) => {
 
   return symbole;
 };
+
+export const parsedSymboleToDevise = (cur: string) => {
+  let symbole = "";
+  switch (cur) {
+    case "€":
+    case "EUR":
+      symbole = "euro";
+      break;
+    case "$":
+    case "USD":
+      symbole = "dollar";
+      break;
+    case "mad":
+    case "MAD":
+    case "DH":
+      symbole = "mad";
+      break;
+    case "cad":
+    case "CAD":
+    case "C$":
+      symbole = "cad";
+      break;
+
+    default:
+      symbole = "euro";
+      break;
+  }
+
+  return symbole;
+};
+
 export const parsedDeviseNowPayment = (cur: string) => {
   let symbole = "";
   switch (cur) {
@@ -296,13 +342,24 @@ export const dateCode = () => {
   );
 };
 
+export const codeGeneratedBuy = () => {
+  const generateRandomCode =
+    "0123456789abcdefghijklmnopkrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let myCode = "";
+  for (let i = 0; i < 6; i++) {
+    const code = Math.floor(Math.random() * generateRandomCode.length);
+    myCode += generateRandomCode[code];
+  }
+  return myCode;
+};
+
 export const codeGenerated = () => {
   const generateRandomCode =
     "0123456789abcdefghijklmnopkrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   let myCode = "";
   for (let i = 0; i < 5; i++) {
-    let code = Math.floor(Math.random() * generateRandomCode.length);
+    const code = Math.floor(Math.random() * generateRandomCode.length);
     myCode += generateRandomCode[code];
   }
   return dateCode() + myCode;
@@ -313,7 +370,7 @@ export const orderBuyNumGenerated = () => {
 
   let myCode = "";
   for (let i = 0; i < 5; i++) {
-    let code = Math.floor(Math.random() * generateOrderNum.length);
+    const code = Math.floor(Math.random() * generateOrderNum.length);
     myCode += generateOrderNum[code];
   }
   return dateCode() + myCode;
@@ -362,53 +419,66 @@ type BankPayment = {
   fee?: number;
   w: number;
   h: number;
+  desc?: string;
+  isActive: boolean;
 };
 
 export const paymentMethod: BankPayment[] = [
-  // {
-  //   id: "JUK51L",
-  //   title: "visa-google-pay",
-  //   imgPay: "/payMethod/creditcardgooglepay.webp",
-  // },
-  // {
-  //   id: "LPA27P",
-  //   title: "visa-and-jcb",
-  //   imgPay: "/payMethod/creditcard_pay.webp",
-  // },
-  // {
-  //   id: "YHA4KO",
-  //   title: "google-pay",
-  //   imgPay: "/payMethod/google_pay.webp",
-  // },
-  {
-    id: "BQXP46",
-    title: "paypal",
-    imgPay: "/payMethod/paypals.webp",
-    fee: 3,
-    w: 80,
-    h: 80,
-  },
-
+  // 1. TRC20 / ERC20 / Binance Id ou Email (crypto, coinpal, binance)
   {
     id: "OPLAW1",
-    title: "crypto",
+    title: "USDT/USDC (TRC20/ERC20/USDC/Binance ID)",
     imgPay: "/payMethod/crypto.webp",
     w: 80,
     h: 80,
+    desc: "USDT/USDC (TRC20/ERC20/USDC/Binance ID)",
+    isActive: true,
   },
+  // {
+  //   id: "HW37UW",
+  //   title: "coinpal",
+  //   imgPay: "/payMethod/coinpal.png",
+  //   w: 110,
+  //   h: 110,
+  //   isActive:true,
+  // },
+  // {
+  //   id: "AWB8YT",
+  //   title: "binance",
+  //   imgPay: "/payMethod/binance.svg",
+  //   w: 110,
+  //   h: 110,
+  //   isActive:true,
+  // },
+  // 3. PayPal : Entre proche PayPal 0 frais en Europe
   {
-    id: "AWB8YT",
-    title: "binance",
-    imgPay: "/payMethod/binance.svg",
-    w: 110,
-    h: 110,
+    id: "BQXP46",
+    title: "Paypal",
+    imgPay: "/payMethod/paypals.webp",
+    fee: 0,
+    w: 80,
+    h: 80,
+    desc: "(0 frais en Europe)",
+    isActive: true,
   },
+  // 4. Skrill
   {
-    id: "HW37UW",
-    title: "coinpal",
-    imgPay: "/payMethod/coinpal.png",
-    w: 110,
-    h: 110,
+    id: "SKRL789",
+    title: "Skrill",
+    imgPay: "/iben/skrill.png",
+    w: 80,
+    h: 80,
+    isActive: true,
+  },
+  // 5. Par carte bancaire (en cours)
+  {
+    id: "CRDC456",
+    title: "creditcard",
+    imgPay: "/payMethod/creditcard_pay.webp",
+    w: 100,
+    h: 80,
+    desc: "(En cours)",
+    isActive: false,
   },
 ];
 
@@ -435,10 +505,11 @@ export const paymentMethodMorroco: BankPayment[] = [
   // },
   {
     id: "OPK41Y6",
-    title: "marocco-bank",
+    title: "Virement Bancaire",
     imgPay: "/paymentfoot2.png",
     w: 200,
     h: 200,
+    isActive: true,
   },
 ];
 
@@ -452,6 +523,16 @@ export type Billing = {
   email?: string;
   departement?: string;
   phone?: string;
+};
+
+export const convertTime = (time: number): string => {
+  if (time >= 1440) {
+    return `${Math.floor(time / 1440)}j`;
+  } else if (time >= 60 && time < 1440) {
+    return `${Math.floor(time / 60)}h`;
+  } else {
+    return `${time}min`;
+  }
 };
 
 export function maskDisplayName(name: string) {

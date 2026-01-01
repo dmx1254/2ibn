@@ -7,7 +7,8 @@ export default {
   "navbar.game": "Juego",
   "navbar.pubg-mobile": "PUBG Mobile",
   "navbar.free-fire": "Free Fire",
-  "navbar.fortnite": "Fortnite",
+  "navbar.accounts": "Cuentas",
+  "navbar.gift-cards": "Tarjetas de regalo",
   "navbar.mobile-legends": "Mobile Legends",
   "navbar.pasha-fencer-diamonds": "Diamantes de Pasha Fencer",
 
@@ -568,12 +569,28 @@ export default {
 
   "whychooseus.title": "¿Por qué elegir ibendouma?",
   "whychooseus.desc":
-    "ibendouma es una plataforma de venta de Kamas para Dofus que garantiza entregas ultrarrápidas en 3 a 15 minutos para el 99% de los pedidos, con un servicio disponible las 24 horas del día. El sitio se destaca por sus precios competitivos y mantiene stock en todos los servidores de Dofus, comprometido a ofrecer las mejores tarifas del mercado. El proceso de compra es sencillo: después de realizar el pedido, un agente se pone en contacto directamente con el cliente para organizar el pago y la entrega en el juego en un punto de encuentro, asegurando una transacción rápida y segura.",
-
-  "whychooseus.delivery": "Entrega rápida",
-  "whychooseus.secure": "Entrega 100% Segura",
-  "whychooseus.bestPrice": "Los mejores precios",
-  "whychooseus.onlineSupport": "Soporte en línea 24/7",
+    "En ibendouma, nos comprometemos a ofrecer un servicio de calidad, seguro y rápido para todas tus necesidades en kamas, cuentas de juegos, objetos, monedas y tarjetas de regalo. Aquí está por qué deberías elegir nuestra plataforma:",
+  "whychooseus.serviceClient": "Servicio al Cliente Disponible 24/7",
+  "whychooseus.serviceClientDesc":
+    "Nuestro equipo está a tu disposición en todo momento para responder tus preguntas y resolver tus problemas. Puedes contactarnos en cualquier momento, 7 días a la semana, y recibir asistencia rápida y profesional.",
+  "whychooseus.securityFiabilite": "Seguridad y Confiabilidad",
+  "whychooseus.securityFiabiliteDesc":
+    "La seguridad de tus transacciones es nuestra prioridad. Utilizamos sistemas de protección avanzados para garantizar que tus compras, ventas e intercambios se realicen de forma segura.",
+  "whychooseus.prixCompetitifs": "Precios Competitivos",
+  "whychooseus.prixCompetitifsDesc":
+    "Ofrecemos precios muy competitivos para la compra y venta de kamas, cuentas de juegos, objetos y tarjetas de regalo. Te beneficiarás de las mejores ofertas del mercado.",
+  "whychooseus.transactionsRapides": "Transacciones Rápidas e Instantáneas",
+  "whychooseus.transactionsRapidesDesc":
+    "Garantizamos una entrega rápida para todas tus compras de kamas y un pago rápido por la venta de tus kamas. Además, nuestros intercambios entre servidores son instantáneos y sin problemas.",
+  "whychooseus.largeSelection": "Amplia Selección de Productos",
+  "whychooseus.largeSelectionDesc":
+    "Ya sea que busques kamas para Dofus, cuentas de juegos, monedas, objetos o tarjetas de regalo, tenemos una amplia selección para satisfacer todas tus necesidades.",
+  "whychooseus.satisfactionGarantie": "Satisfacción del Cliente Garantizada",
+  "whychooseus.satisfactionGarantieDesc":
+    "Tu satisfacción es nuestra prioridad. Hacemos todo lo posible para ofrecerte la mejor experiencia posible y nos aseguramos de que estés completamente satisfecho con nuestros servicios.",
+  "whychooseus.plateformeFiable": "Plataforma Confiable y Fácil de Usar",
+  "whychooseus.plateformeFiableDesc":
+    "Nuestro sitio está diseñado para ofrecer una experiencia fluida, simple e intuitiva. Puedes navegar fácilmente, realizar compras y ventas en unos pocos clics, y disfrutar de nuestros servicios sin complicaciones.",
   "whychooseus.startNow": "Comienza Ahora",
 
   "footer.satisfaction": "99,9% DE SATISFACCIÓN",
@@ -609,17 +626,26 @@ export default {
 
   "ourservice.title": "Nuestros Servicios",
   "ourservice.desc":
-    "Descubre nuestras soluciones adaptadas a todas tus necesidades de kamas, con servicio al cliente disponible 24/7.",
-  "ourservice.achatKamasTitle": "Compra de Kamas",
-  "ourservice.achatKamasDesc":
-    "Obtén tus kamas de forma rápida y segura. Precios competitivos y entrega instantánea garantizada.",
+    "Descubre nuestras soluciones completas adaptadas a todas tus necesidades de kamas y más, con servicio al cliente disponible 24/7 para garantizarte una experiencia fluida y segura.",
+  "ourservice.achatVenteKamasTitle": "Compra y Venta de Kamas",
+  "ourservice.achatVenteKamasDesc":
+    "Ofrecemos venta de kamas para Dofus a precios competitivos, con entrega rápida y segura. También puedes vender tus kamas a un precio ventajoso y recibir tu pago rápidamente.",
   "ourservice.btn": "Saber más",
-  "ourservice.vendKamasTitle": "Venta de Kamas",
-  "ourservice.vendKamasDesc":
-    "Vende tus kamas al mejor precio del mercado. Pago rápido y seguro garantizado.",
   "ourservice.echangeKamasTitle": "Intercambio de Kamas",
   "ourservice.echangeKamasDesc":
-    "Intercambia tus kamas entre diferentes servidores en pocos clics. Servicio rápido y confiable.",
+    "Intercambia tus kamas entre diferentes servidores de manera simple y rápida. Nuestro servicio de intercambio te permite transferir tus kamas de forma segura y sin demora.",
+  "ourservice.venteComptesTitle": "Venta de Cuentas de Juegos",
+  "ourservice.venteComptesDesc":
+    "Vendemos cuentas para Dofus y otros juegos populares a precios atractivos. Cada cuenta está verificada para garantizar su seguridad y correcto funcionamiento.",
+  "ourservice.venteCoinsTitle": "Venta de Monedas de Juegos",
+  "ourservice.venteCoinsDesc":
+    "Compra monedas para tus juegos favoritos. Te ofrecemos monedas virtuales para muchos juegos, permitiéndote disfrutar plenamente de tu experiencia de juego.",
+  "ourservice.giftCardsTitle": "Tarjetas de Regalo",
+  "ourservice.giftCardsDesc":
+    "Consigue tarjetas de regalo para tus juegos favoritos. Compra tarjetas para Dofus, DB u otros juegos populares directamente en nuestro sitio.",
+  "ourservice.itemsObjetsTitle": "Items y Objetos de Juegos",
+  "ourservice.itemsObjetsDesc":
+    "Vendemos items para varios juegos, incluyendo Dofus y otros títulos populares. Encuentra los objetos que necesitas para mejorar tu experiencia de juego.",
 
   "statistic.title": "ibendouma en Cifras",
   "statistic.desc":
@@ -962,6 +988,9 @@ export default {
     "Seleccione el método de pago a utilizar para este pedido a continuación",
   "paymentMode.titleMorroco": "transferencia bancaria",
   "paymentMode.fee": "honorarios",
+  "paymentMode.paypalDesc": "(0 tarifas en Europa)",
+  "paymentMode.cryptoDesc": "(TRC20 / ERC20 / Binance Id o Email)",
+  "paymentMode.creditcardDesc": "(En progreso)",
   "checkout.step1": "Paso {step1} - Inicio de sesión",
   "checkout.step2Conn": "Paso {step2} - Información de facturación",
   "checkout.step2NoConn": "Paso {step2} - Cuenta e Información de facturación",
@@ -1215,6 +1244,10 @@ export default {
   "pageicon.buy2": "kamas",
   "pageicon.exchange1": "Intercambiar",
   "pageicon.exchange2": "kamas",
+  "pageicon.accounts1": "Cuentas",
+  "pageicon.accounts2": "de juegos",
+  "pageicon.giftCards1": "Tarjetas",
+  "pageicon.giftCards2": "regalo",
   "pageicon.social1": "Medios",
   "pageicon.social2": "sociales",
   "pageicon.rate": "Calificar",
@@ -1403,4 +1436,73 @@ export default {
   "crypto.legalNotice": "Aviso legal",
   "crypto.legalNoticeDesc":
     "Todos los pagos se procesan de forma segura. Las informaciones de tu transacción no se comparten con terceros. Asegúrate de verificar todas las informaciones antes de enviar tus criptomonedas.",
+
+  "accountDetails.home": "Inicio",
+  "accountDetails.videoGames": "Videojuegos",
+  "accountDetails.share": "Compartir",
+  "accountDetails.facebook": "Facebook",
+  "accountDetails.twitter": "X (Twitter)",
+  "accountDetails.whatsapp": "WhatsApp",
+  "accountDetails.telegram": "Telegram",
+  "accountDetails.copyLink": "Copiar enlace",
+  "accountDetails.linkCopied": "¡Enlace copiado al portapapeles!",
+  "accountDetails.copyError": "Error al copiar el enlace",
+  "accountDetails.productInfo": "Información del producto",
+  "accountDetails.deliverySpeed": "Velocidad de entrega:",
+  "accountDetails.deliveryMethod": "Método de entrega:",
+  "accountDetails.directRecharge": "Recarga directa",
+  "accountDetails.nominalComplement": "Complemento nominal:",
+  "accountDetails.totalAmount": "Monto total =",
+  "accountDetails.whyChooseUs": "¿Por qué elegirnos? →",
+  "accountDetails.seeMore": "Ver más",
+  "accountDetails.otherDenominations": "Otras denominaciones",
+  "accountDetails.startingFrom": "desde",
+  "accountDetails.showMore": "Mostrar más",
+  "accountDetails.available": "disponibles",
+  "accountDetails.outOfStock": "Agotado",
+  "accountDetails.quantity": "Cantidad",
+  "accountDetails.totalAmountLabel": "Monto Total",
+  "accountDetails.buyNow": "Comprar ahora",
+  "accountDetails.sold": "vendidos",
+  "accountDetails.chat": "Chat",
+  "accountDetails.successfulDeliveries": "entregas exitosas",
+  "accountDetails.registeredOn": "Registrado el",
+  "accountDetails.overallRating": "Calificación general de",
+  "accountDetails.legendarySeller": "Vendedor legendario",
+  "accountDetails.recentVerifiedPurchases": "Compras verificadas recientes",
+  "accountDetails.instant": "Instantáneo",
+
+  "virtualGame.home": "Inicio",
+  "virtualGame.videoGames": "Videojuegos",
+  "virtualGame.accountAvailable": "cuenta disponible",
+  "virtualGame.accountsAvailable": "cuentas disponibles",
+  "virtualGame.searchPlaceholder": "Ingrese su filtro",
+  "virtualGame.sortBy": "Ordenar por:",
+  "virtualGame.recommended": "Recomendado",
+  "virtualGame.lowestPrice": "Precio más bajo",
+  "virtualGame.about": "Aproximadamente",
+  "virtualGame.result": "resultado",
+  "virtualGame.results": "resultados",
+  "virtualGame.minQty": "Cant. mín.:",
+  "virtualGame.stock": "Stock:",
+  "virtualGame.offer": "oferta",
+  "virtualGame.offers": "ofertas",
+  "virtualGame.startingFrom": "desde",
+  "virtualGame.unavailable": "No disponible",
+  "virtualGame.noAccountFound": "No se encontró cuenta para",
+  "virtualGame.page": "Página",
+  "virtualGame.of": "de",
+
+  "videoGamePage.home": "Inicio",
+  "videoGamePage.games": "Juegos",
+  "videoGamePage.searchPlaceholder": "Buscar una marca",
+  "videoGamePage.all": "Todos",
+  "videoGamePage.recharger": "Recargar",
+  "videoGamePage.trending": "Tendencias",
+  "videoGamePage.allBrands": "Todas las marcas de juegos",
+  "videoGamePage.offer": "oferta",
+  "videoGamePage.offers": "ofertas",
+  "videoGamePage.noGameFound": "No se encontró juego para",
+  "videoGamePage.searchResults": "Resultados de búsqueda para",
+  "videoGamePage.noResultsFound": "No se encontraron resultados para",
 } as const;

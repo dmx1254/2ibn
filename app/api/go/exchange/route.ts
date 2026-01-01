@@ -3,8 +3,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { goapiModels } from "@/lib/models/ibytrade-models";
 import { ibenModels } from "@/lib/models/ibendouma-models";
-import { NewOrderConfirmationTemplate } from "@/app/[locale]/components/neworder-template";
-import { addOrderToSheet } from "@/lib/orderSheets-exchange";
+import { addOrderExchangeToSheet } from "@/lib/orderSheets-exchange";
 import { NotifyIlyasstemplate } from "@/app/[locale]/components/notifyilyasstemplate";
 
 const resend = new Resend(process.env.RESEND_2IBN_API_KEY);
@@ -30,7 +29,11 @@ export async function POST(req: Request) {
     const newTime3 = newTime2.split(".")[0];
     const newTime = newTime1 + " " + newTime3;
 
-    const { codeToExchange, userId } = data;
+    const { userId } = data;
+
+    // console.log(data);
+    // console.log(newTime);
+    // return;
 
     // Récupérer les informations de l'utilisateur
     const user = await UserIbenModel.findById(userId);
@@ -44,53 +47,32 @@ export async function POST(req: Request) {
     // console.log(newExchange);
 
     const order = {
-      newTime: newTime,
-      code: newExchange.codeToExchange,
-      serveurARecevoir: newExchange.serverOut + "/" + newExchange.characterToPay,
-      quantiteA: newExchange.qtyToPay,
-      serveurADonner: newExchange.serverIn + "/" + newExchange.characterToReceive,
-      quantiteB: newExchange.qtyToReceive,
-      contact:
-        user.email +
-        "-" +
-        user.phone +
-        "-" +
-        user.firstname +
-        "-" +
-        user.lastname,
-      etatCommande: newExchange.status,
-      idCommande: newExchange._id,
+      newTime: ` 
+        #${newExchange.numExchange}
+        [${newTime}]
+        `,
+      type: "Echange",
+      produit: newExchange.serverOut,
+      qtyToPay: newExchange.qtyToPay,
+      montant: newExchange.qtyToReceive,
+      puV: data.puV + "$",
+      personnage: ` 
+       Personnage à payer: ${newExchange.characterToPay}
+       Personnage à recevoir: ${newExchange.characterToReceive}
+       Code d'échange: ${newExchange.codeToExchange}
+        `,
+      payment: newExchange.serverIn,
+      statutPayment: "En attente",
+      platform: "iBendouma",
+      userInfo: `
+          ${user.firstname} ${user.lastname}
+          email: ${user.email}
+          phone: ${user.phone}
+        `,
+      email: user.email,
     };
 
-    await addOrderToSheet(order);
-    // console.log(addOrder);
-
-    await resend.emails.send({
-      from: "Ibendouma Notification <noreply@ibendouma.com>",
-      to: ["support@ibendouma.com"],
-      subject: "Notification d'échange de ibendouma",
-      react: NewOrderConfirmationTemplate({
-        orderNum: codeToExchange,
-        dateCreated: new Date(),
-        type: "Échange",
-        billing: {
-          firstname: user.firstname,
-          lastname: user.lastname,
-          email: user.email,
-          phone: user.phone,
-        },
-        exchangeDetails: {
-          userId: data.userId,
-          serverOut: data.serverOut,
-          serverIn: data.serverIn,
-          codeToExchange: data.codeToExchange,
-          characterToPay: data.characterToPay,
-          characterToReceive: data.characterToReceive,
-          qtyToPay: data.qtyToPay,
-          qtyToReceive: data.qtyToReceive,
-        },
-      }),
-    });
+    await addOrderExchangeToSheet(order);
 
     await resend.emails.send({
       from: "Ibendouma Notification <noreply@ibendouma.com>",

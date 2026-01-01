@@ -34,19 +34,20 @@ const VendreKamasClient = () => {
   const [serverPriceDollar, setServerPriceDollar] = useState<number | null>(
     null
   );
+  const [serverPriceMad, setServerPriceMad] = useState<number | null>(null);
   const [serverPriceSkrillSepa, setServerPriceSkrillSepa] = useState<
     number | null
   >(null);
 
-  console.log(serverPriceSkrillSepa);
+  // console.log(serverPriceMad);
+  // console.log(serverPriceEuro);
 
   useEffect(() => {
     const getServer = async () => {
       try {
         setIsLoading(true);
         const response = await fetch("/api/go/server", {
-          method: "POST",
-          body: JSON.stringify({ server: "Imagiro" }),
+          method: "GET",
         });
         const res = await response.json();
         if (res) {
@@ -67,8 +68,7 @@ const VendreKamasClient = () => {
 
   const fetchCurrencyEuro = async () => {
     const response = await fetch("/api/go/currency/euro", {
-      method: "POST",
-      body: JSON.stringify({ cur: "eur" }),
+      method: "GET",
     });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
@@ -90,8 +90,7 @@ const VendreKamasClient = () => {
 
   const fetchCurrencyDollar = async () => {
     const response = await fetch("/api/go/currency/dollar", {
-      method: "POST",
-      body: JSON.stringify({ cur: "eur" }),
+      method: "GET",
     });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
@@ -111,8 +110,7 @@ const VendreKamasClient = () => {
 
   const fetchCurrencyAed = async () => {
     const response = await fetch("/api/go/currency/aed", {
-      method: "POST",
-      body: JSON.stringify({ cur: "eur" }),
+      method: "GET",
     });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
@@ -121,26 +119,25 @@ const VendreKamasClient = () => {
     return response.json();
   };
 
-  // const fetchCurrencyUsdt = async () => {
-  //   const response = await fetch("/api/go/currency/usdt", {
-  //     method: "POST",
-  //     body: JSON.stringify({ cur: "usdt" }),
-  //   });
-  //   if (!response.ok) {
-  //     throw new Error("Fetching currency failed: ");
-  //   }
+  const fetchCurrencyMad = async () => {
+    const response = await fetch("/api/go/currency/mad", {
+      method: "GET",
+    });
+    if (!response.ok) {
+      throw new Error("Fetching currency failed: ");
+    }
 
-  //   return response.json();
-  // };
+    return response.json();
+  };
 
-  // const {
-  //   isLoading: IsLoadingUsdt,
-  //   error: errorUsdt,
-  //   data: usdtData,
-  // } = useQuery({
-  //   queryKey: ["usdt"],
-  //   queryFn: () => fetchCurrencyUsdt(),
-  // });
+  const {
+    // isLoading: IsLoadingMad,
+    // error: errorMad,
+    data: madData,
+  } = useQuery({
+    queryKey: ["mad"],
+    queryFn: () => fetchCurrencyMad(),
+  });
 
   const {
     // isLoading: IsLoadingAed,
@@ -184,6 +181,12 @@ const VendreKamasClient = () => {
     }
   }, [aedData]);
 
+  useEffect(() => {
+    if (madData) {
+      setServerPriceMad(madData[0]?.mad);
+    }
+  }, [madData]);
+
   // useEffect(() => {
   //   if (usdtData) {
   //     setServerPriceUsdt(usdtData[0]?.usdt);
@@ -195,8 +198,6 @@ const VendreKamasClient = () => {
       setServerPriceSkrillSepa(skrillSepaData[0]?.skrillSepa);
     }
   }, [skrillSepaData]);
-
-  // console.log(usdtData);
 
   useEffect(() => {
     if (dollarData) {
@@ -290,14 +291,14 @@ const VendreKamasClient = () => {
                     {tScope("headertablePriceDH")}
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    Paypal
-                  </TableHead>
-                  <TableHead className="text-amber-600 text-center max-md:text-xs">
-                    SKRILL/SEPA
+                    Paypal/SKRILL/SEPA
                   </TableHead>
 
                   <TableHead className="text-amber-600 text-right max-md:text-xs">
                     Usdt / Usdc / Binance Pay
+                  </TableHead>
+                  <TableHead className="text-amber-600 text-right max-md:text-xs">
+                    AED
                   </TableHead>
                   <TableHead className="text-amber-600 text-center max-md:text-xs">
                     {tScope("headertableStatus")}
@@ -310,59 +311,55 @@ const VendreKamasClient = () => {
                   ?.map((server) => (
                     <TableRow
                       key={server._id}
-                      className="border-[#76828D] hover:bg-yellow-700 transition-colors cursor-pointer"
+                      className="border-none hover:bg-yellow-700 transition-colors cursor-pointer"
                     >
                       <TableCell className="font-medium max-md:text-xs">
                         {server.serverName}
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
-                        {server.serverPriceDh.toFixed(3)} DH/M
+                        {(server.serverPriceDh * (serverPriceMad || 1)).toFixed(
+                          3
+                        )}{" "}
+                        DH/M
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         {(
-                          server.serverPriceDh / (serverPriceEuro || 1)
+                          (server.serverPriceDh * (serverPriceMad || 1)) /
+                          (serverPriceEuro || 1)
                         ).toFixed(3)}{" "}
                         €/M
                       </TableCell>
-                      <TableCell className="text-center max-md:text-xs">
-                        {(
-                          server.serverPriceDh / (serverPriceSkrillSepa || 1)
-                        ).toFixed(3)}{" "}
-                        €/M
-                      </TableCell>
+                     
 
                       <TableCell className="text-center max-md:text-xs">
-                        {(
-                          server.serverPriceDh / (serverPriceDollar || 1)
-                        ).toFixed(3)}{" "}
-                        Usdt/M
+                        {server.serverPriceDh.toFixed(3)} Usdt/M
                       </TableCell>
-                      {/* <TableCell className="text-right max-md:text-xs">
-                        {(server.serverPriceDh / (serverPriceAed || 1)).toFixed(
+                      <TableCell className="text-right max-md:text-xs">
+                        {(server.serverPriceDh * (serverPriceMad || 1) / (serverPriceAed || 1)).toFixed(
                           3
                         )}{" "}
                         AED/M
-                      </TableCell> */}
+                      </TableCell>
 
                       <TableCell className="text-right">
                         <span
-                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-sm border ${
+                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-none border-none ${
                             server.serverStatus === "Disponible"
                               ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
-                              : server.serverStatus === "Vendre rapidement"
-                              ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
-                              : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
+                                ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                                : server.serverStatus === "Vendre rapidement"
+                                  ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
+                                  : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
                             ? tScope("headertableStatusInTableAva")
                             : server.serverStatus === "Incomplet"
-                            ? tScope("headertableStatusInTableAva")
-                            : server.serverStatus === "Vendre rapidement"
-                            ? tScope("headertableStatusInTableFast")
-                            : tScope("headertableStatusInTableComp")}
+                              ? tScope("headertableStatusInTableAva")
+                              : server.serverStatus === "Vendre rapidement"
+                                ? tScope("headertableStatusInTableFast")
+                                : tScope("headertableStatusInTableComp")}
                         </span>
                       </TableCell>
                     </TableRow>
@@ -433,23 +430,23 @@ const VendreKamasClient = () => {
 
                       <TableCell className="text-center max-md:text-xs">
                         <span
-                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-sm border ${
+                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-none border-none ${
                             server.serverStatus === "Disponible"
                               ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
-                              : server.serverStatus === "Vendre rapidement"
-                              ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
-                              : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
+                                ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                                : server.serverStatus === "Vendre rapidement"
+                                  ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
+                                  : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
                             ? tScope("headertableStatusInTableAva")
                             : server.serverStatus === "Incomplet"
-                            ? tScope("headertableStatusInTableAva")
-                            : server.serverStatus === "Vendre rapidement"
-                            ? tScope("headertableStatusInTableFast")
-                            : tScope("headertableStatusInTableComp")}
+                              ? tScope("headertableStatusInTableAva")
+                              : server.serverStatus === "Vendre rapidement"
+                                ? tScope("headertableStatusInTableFast")
+                                : tScope("headertableStatusInTableComp")}
                         </span>
                       </TableCell>
                     </TableRow>
@@ -491,7 +488,7 @@ const VendreKamasClient = () => {
                   ?.map((server) => (
                     <TableRow
                       key={server._id}
-                      className="border-[#76828D] hover:bg-yellow-700 transition-colors cursor-pointer"
+                      className="border-none hover:bg-yellow-700 transition-colors cursor-pointer"
                     >
                       <TableCell className="font-medium max-md:text-xs">
                         {server.serverName}
@@ -520,23 +517,23 @@ const VendreKamasClient = () => {
 
                       <TableCell className="text-center max-md:text-xs">
                         <span
-                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-sm border ${
+                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-none border-none ${
                             server.serverStatus === "Disponible"
                               ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
-                              : server.serverStatus === "Vendre rapidement"
-                              ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
-                              : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
+                                ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                                : server.serverStatus === "Vendre rapidement"
+                                  ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
+                                  : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
                             ? tScope("headertableStatusInTableAva")
                             : server.serverStatus === "Incomplet"
-                            ? tScope("headertableStatusInTableAva")
-                            : server.serverStatus === "Vendre rapidement"
-                            ? tScope("headertableStatusInTableFast")
-                            : tScope("headertableStatusInTableComp")}
+                              ? tScope("headertableStatusInTableAva")
+                              : server.serverStatus === "Vendre rapidement"
+                                ? tScope("headertableStatusInTableFast")
+                                : tScope("headertableStatusInTableComp")}
                         </span>
                       </TableCell>
                     </TableRow>
@@ -579,7 +576,7 @@ const VendreKamasClient = () => {
                   ?.map((server) => (
                     <TableRow
                       key={server._id}
-                      className="border-[#76828D] hover:bg-yellow-700 transition-colors cursor-pointer"
+                      className="border-none hover:bg-yellow-700 transition-colors cursor-pointer"
                     >
                       <TableCell className="font-medium max-md:text-xs">
                         {server.serverName}
@@ -613,23 +610,23 @@ const VendreKamasClient = () => {
                       </TableCell>
                       <TableCell className="text-center max-md:text-xs">
                         <span
-                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-sm border ${
+                          className={`px-3 py-2 rounded-lg text-sm font-medium shadow-none border-none ${
                             server.serverStatus === "Disponible"
                               ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
-                              : server.serverStatus === "Vendre rapidement"
-                              ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
-                              : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
+                                ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                                : server.serverStatus === "Vendre rapidement"
+                                  ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
+                                  : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
                             ? tScope("headertableStatusInTableAva")
                             : server.serverStatus === "Incomplet"
-                            ? tScope("headertableStatusInTableAva")
-                            : server.serverStatus === "Vendre rapidement"
-                            ? tScope("headertableStatusInTableFast")
-                            : tScope("headertableStatusInTableComp")}
+                              ? tScope("headertableStatusInTableAva")
+                              : server.serverStatus === "Vendre rapidement"
+                                ? tScope("headertableStatusInTableFast")
+                                : tScope("headertableStatusInTableComp")}
                         </span>
                       </TableCell>
                     </TableRow>

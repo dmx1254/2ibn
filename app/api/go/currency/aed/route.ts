@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { goapiModels } from "@/lib/models/ibytrade-models";
 
-export async function POST(req: Request) {
+export async function GET() {
   try {
     const { AedModel } = await goapiModels;
     const aed = await AedModel.find();
     return NextResponse.json(aed, { status: 200 });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(error, { status: 500 });
   }
 }

@@ -35,6 +35,8 @@ import { useScopedI18n } from "@/locales/client";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { LiaCircleSolid } from "react-icons/lia";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 // Composant pour l'étape de connexion
 const ConnectionStep = ({
@@ -85,73 +87,140 @@ const PaymentStep = ({
 }) => {
   const tsCope = useScopedI18n("paymentMode");
   return (
-    <Card className="w-full flex max-md:flex-col items-start gap-8 justify-between border-none shadow-none">
-      <Card className="w-full flex flex-col items-start border-none h-full  shadow-none">
-        <h2 className="text-base mb-6 font-semibold">{tsCope("title")}</h2>
-        <div className="w-full flex flex-col items-start gap-6">
-          {paymentMethod.map((p) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <Card className="p-6">
+        <h3 className="text-lg font-semibold mb-4">
+          {tsCope("international")}
+        </h3>
+        <div className="space-y-4">
+          {paymentMethod.map((method) => (
             <div
-              aria-label={`${p.title} payment method`}
-              key={p.id}
-              className="flex items-center gap-2 cursor-pointer"
+              key={method.id}
+              className={`flex items-center gap-4 p-3 border rounded-lg cursor-pointer hover:bg-gray-50 ${
+                isActivePayment === method.title
+                  ? "border-yellow-500"
+                  : "border-gray-300"
+              }`}
               style={{
-                opacity: p.title === "paypal" ? 0.5 : 1,
+                opacity: method.isActive ? 1 : 0.5,
               }}
-              onClick={() => handleActivePayment(p.title)}
+              onClick={() => {
+                if (method.isActive) {
+                  handleActivePayment(method.title);
+                }
+              }}
+              aria-label={`${method.title} payment method`}
             >
-              <input
-                type="radio"
-                className="cursor-pointer"
-                onChange={() => handleActivePayment(p.title)}
-                checked={p.title !== "paypal" && isActivePayment === p.title}
-              />
-              <img
-                className={`w-[200px] h-auto object-contain object-center`}
-                src={p.imgPay}
-                // width={p.w}
-                // height={p.h}
-                alt="payment method"
-              />
-              {p.fee && (
-                <span className="w-full">{`${p.fee}% ${tsCope("fee")}`}</span>
+              {isActivePayment === method.title ? (
+                <IoIosCheckmarkCircleOutline
+                  className="w-5 h-5 text-yellow-500 cursor-pointer"
+                  onClick={() => handleActivePayment(method.title)}
+                />
+              ) : (
+                <LiaCircleSolid
+                  className="w-5 h-5 text-gray-400 cursor-pointer"
+                  onClick={() => {
+                    if (method.isActive) {
+                      handleActivePayment(method.title);
+                    }
+                  }}
+                />
               )}
-            </div>
-          ))}
-        </div>
-      </Card>
-      <Card className="w-full flex flex-col items-start border-none h-full  shadow-none">
-        <h2 className="text-base mb-6 font-semibold">
-          {tsCope("titleMorroco")}
-        </h2>
-        <div className="w-full flex flex-col items-start gap-6">
-          {paymentMethodMorroco.map((p) => (
-            <div
-              aria-label={`${p.title} payment method`}
-              key={p.id}
-              className="flex items-center gap-2 cursor-pointer"
-              onClick={() => handleActivePayment(p.title)}
-            >
-              <input
-                type="radio"
-                className="cursor-pointer"
-                onChange={() => handleActivePayment(p.title)}
-                checked={isActivePayment === p.title}
-              />
               <Image
-                className="object-cover object-center"
-                src={p.imgPay}
-                width={250}
-                height={250}
-                alt="payment method"
+                src={method.imgPay}
+                alt={method.title}
+                width={
+                  method.title === "binance"
+                    ? 220
+                    : method.title === "USDT/USDC (TRC20/ERC20/USDC/Binance ID)"
+                      ? 140
+                      : method.title === "coinpal"
+                        ? 150
+                        : method.title === "creditcard"
+                          ? 180
+                          : method.title === "Skrill"
+                            ? 100
+                            : 80
+                }
+                height={
+                  method.title === "binance"
+                    ? 220
+                    : method.title === "USDT/USDC (TRC20/ERC20/USDC/Binance ID)"
+                      ? 140
+                      : method.title === "coinpal"
+                        ? 150
+                        : method.title === "creditcard"
+                          ? 80
+                          : method.title === "Skrill"
+                            ? 80
+                            : 80
+                }
+                className="object-contain"
               />
-              {p.fee && (
-                <span className="w-full">{`${p.fee}% ${tsCope("fee")}`}</span>
+              {method.desc && (
+                <span className="text-sm text-gray-500">
+                  {method.title === "paypal"
+                    ? tsCope("paypalDesc")
+                    : method.title === "crypto"
+                      ? tsCope("cryptoDesc")
+                      : method.title === "creditcard"
+                        ? tsCope("creditcardDesc")
+                        : method.desc}
+                </span>
               )}
             </div>
           ))}
         </div>
       </Card>
-    </Card>
+
+      <Card className="p-6">
+        <h3 className="text-lg font-semibold mb-4">{tsCope("morocco")}</h3>
+        <div className="space-y-4">
+          {paymentMethodMorroco.map((method) => (
+            <div
+              key={method.id}
+              className={`flex items-center gap-4 p-3 border rounded-lg cursor-pointer hover:bg-gray-50 ${
+                isActivePayment === method.title
+                  ? "border-yellow-500"
+                  : "border-gray-300"
+              }`}
+              onClick={() => handleActivePayment(method.title)}
+              aria-label={`${method.title} payment method`}
+            >
+              {isActivePayment === method.title ? (
+                <IoIosCheckmarkCircleOutline
+                  className="w-5 h-5 text-yellow-500 cursor-pointer"
+                  onClick={() => handleActivePayment(method.title)}
+                />
+              ) : (
+                <LiaCircleSolid
+                  className="w-5 h-5 text-gray-400 cursor-pointer"
+                  onClick={() => handleActivePayment(method.title)}
+                />
+              )}
+              <Image
+                src={method.imgPay}
+                alt={method.title}
+                width={method.w || 200}
+                height={method.h || 200}
+                className="object-contain"
+              />
+              {method.desc && (
+                <span className="text-sm text-gray-500">
+                  {method.title === "paypal"
+                    ? tsCope("paypalDesc")
+                    : method.title === "crypto"
+                      ? tsCope("cryptoDesc")
+                      : method.title === "creditcard"
+                        ? tsCope("creditcardDesc")
+                        : method.desc}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+      </Card>
+    </div>
   );
 };
 
@@ -172,6 +241,9 @@ const ConfirmationStep = ({
   const subtotal = carts.reduce((total, item) => total + item.totalPrice, 0);
   const shipping = 0.0;
   const total = subtotal + shipping;
+
+
+  
 
   return (
     <div className="w-full max-w-6xl">
@@ -367,12 +439,18 @@ const Checkout = () => {
   const total = subtotal + shipping;
 
   const handleActivePayment = (payment: string) => {
-    if (payment !== "paypal") {
+    if (payment !== "creditcard") {
       setIsActivePayment(payment);
     }
   };
 
   // console.log(isActivePayment);
+
+  // Fonction pour ouvrir Tawk chat
+  const handleChatClick = () => {
+    //@ts-expect-error - Tawk_API is not defined in the global scope
+    void window?.Tawk_API?.toggle();
+  };
 
   const handleContinue = () => {
     if (activeStep === "connexion") {
@@ -448,8 +526,8 @@ const Checkout = () => {
       status === "authenticated"
         ? session?.user.id
         : invitedAccount
-        ? `invitedOrder-${billingInfo.phone}`
-        : "Commande invite";
+          ? `invitedOrder-${billingInfo.phone}`
+          : "Commande invite";
     const data = {
       userId: userId,
       orderNum: orderBuyNumGenerated(),
@@ -465,48 +543,7 @@ const Checkout = () => {
       billing: billingInfo,
     };
 
-    // const billing = billingInfo;
-    // if (isActivePayment === "paypal") {
-    //   try {
-    //     setIsOrderLoading(true);
-    //     const result = await axios.post("/api/paypal", {
-    //       data,
-    //       object: tScopeConfirm("object"),
-    //     });
-    //     window.location.href = result.data.redirectUrl;
-    //   } catch (error) {
-    //     console.log(error);
-    //   } finally {
-    //     setIsOrderLoading(false);
-    //   }
-    //   // console.log("yes");
-    // } else if (isActivePayment === "crypto") {
-    //   try {
-    //     setIsOrderLoading(true);
-    //     const result = await axios.post("/api/nowpayment", {
-    //       data,
-    //       object: tScopeConfirm("object"),
-    //     });
-    //     window.location.href = result.data.invoice_url;
-    //   } catch (error) {
-    //     console.log(error);
-    //   } finally {
-    //     setIsOrderLoading(false);
-    //   }
-    // } else if (isActivePayment === "coinpal" || isActivePayment === "binance") {
-    //   try {
-    //     setIsOrderLoading(true);
-    //     const result = await axios.post("/api/coinpal", {
-    //       data,
-    //       object: tScopeConfirm("object"),
-    //     });
-    //     window.location.href = result.data.nextStepContent;
-    //   } catch (error) {
-    //     console.log(error);
-    //   } finally {
-    //     setIsOrderLoading(false);
-    //   }
-    // } else {
+   
     try {
       setIsOrderLoading(true);
       const result = await axios.post("/api/iben/order", {
@@ -519,8 +556,8 @@ const Checkout = () => {
         });
 
         setTimeout(() => {
-          // handleChatClick();
-          router.push("/order-success");
+          handleChatClick();
+          // router.push("/order-success");
         }, 1000);
       }
     } catch (error) {

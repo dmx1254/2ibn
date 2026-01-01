@@ -2,7 +2,15 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Wallet, CreditCard, ArrowLeftRight } from "lucide-react";
+import {
+  ArrowRight,
+  CreditCard,
+  ArrowLeftRight,
+  Gamepad2,
+  Coins,
+  Gift,
+  Package,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { useScopedI18n } from "@/locales/client";
@@ -32,8 +40,8 @@ const OurServices = () => {
 
   const categories = [
     {
-      title: tScope("achatKamasTitle"),
-      description: tScope("achatKamasDesc"),
+      title: tScope("achatVenteKamasTitle"),
+      description: tScope("achatVenteKamasDesc"),
       icon: CreditCard,
       color: "#363A3D",
       iconColor: "text-violet-600",
@@ -42,24 +50,54 @@ const OurServices = () => {
       gradientTo: "to-purple-600",
     },
     {
-      title: tScope("vendKamasTitle"),
-      description: tScope("vendKamasDesc"),
-      icon: Wallet,
-      color: "#363A3D",
-      iconColor: "text-blue-600",
-      buttonHref: "/vendre-des-kamas",
-      gradientFrom: "from-blue-500",
-      gradientTo: "to-cyan-600",
-    },
-    {
       title: tScope("echangeKamasTitle"),
       description: tScope("echangeKamasDesc"),
       icon: ArrowLeftRight,
       color: "#363A3D",
-      iconColor: "text-amber-600",
+      iconColor: "text-blue-600",
       buttonHref: "/echange-de-kamas",
+      gradientFrom: "from-blue-500",
+      gradientTo: "to-cyan-600",
+    },
+    {
+      title: tScope("venteComptesTitle"),
+      description: tScope("venteComptesDesc"),
+      icon: Gamepad2,
+      color: "#363A3D",
+      iconColor: "text-emerald-600",
+      buttonHref: "#home",
+      gradientFrom: "from-emerald-500",
+      gradientTo: "to-green-600",
+    },
+    {
+      title: tScope("venteCoinsTitle"),
+      description: tScope("venteCoinsDesc"),
+      icon: Coins,
+      color: "#363A3D",
+      iconColor: "text-amber-600",
+      buttonHref: "#home",
       gradientFrom: "from-amber-500",
       gradientTo: "to-yellow-600",
+    },
+    {
+      title: tScope("giftCardsTitle"),
+      description: tScope("giftCardsDesc"),
+      icon: Gift,
+      color: "#363A3D",
+      iconColor: "text-pink-600",
+      buttonHref: "#home",
+      gradientFrom: "from-pink-500",
+      gradientTo: "to-rose-600",
+    },
+    {
+      title: tScope("itemsObjetsTitle"),
+      description: tScope("itemsObjetsDesc"),
+      icon: Package,
+      color: "#363A3D",
+      iconColor: "text-orange-600",
+      buttonHref: "#home",
+      gradientFrom: "from-orange-500",
+      gradientTo: "to-red-600",
     },
   ];
 
@@ -103,7 +141,7 @@ const OurServices = () => {
                   {category.title}
                 </h3>
 
-                <p className="text-white mb-8 h-24">{category.description}</p>
+                <p className="text-white mb-8 min-h-[96px]">{category.description}</p>
 
                 <Button
                   className="w-full inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white bg-yellow-600 rounded-lg hover:bg-yellow-700 transition-colors duration-300"

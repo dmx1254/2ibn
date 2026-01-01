@@ -1,7 +1,16 @@
 "use client";
 
 import React from "react";
-import { Clock, Lock, Star, MessageCircle, ArrowRight } from "lucide-react";
+import {
+  MessageCircle,
+  Shield,
+  DollarSign,
+  Zap,
+  Package,
+  Heart,
+  Monitor,
+  ArrowRight,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "./ui/button";
@@ -11,28 +20,46 @@ const WhyChooseUs = () => {
   const tScope = useScopedI18n("whychooseus");
   const features = [
     {
-      icon: Clock,
-      title: tScope("delivery"),
-      color: "bg-yellow-100",
-      iconColor: "text-yellow-500",
-    },
-    {
-      icon: Lock,
-      title: tScope("secure"),
-      color: "bg-yellow-100",
-      iconColor: "text-yellow-500",
-    },
-    {
-      icon: Star,
-      title: tScope("bestPrice"),
-      color: "bg-yellow-100",
-      iconColor: "text-yellow-500",
-    },
-    {
       icon: MessageCircle,
-      title: tScope("onlineSupport"),
-      color: "bg-yellow-100",
+      title: tScope("serviceClient"),
+      description: tScope("serviceClientDesc"),
+      iconColor: "text-blue-500",
+    },
+    {
+      icon: Shield,
+      title: tScope("securityFiabilite"),
+      description: tScope("securityFiabiliteDesc"),
+      iconColor: "text-green-500",
+    },
+    {
+      icon: DollarSign,
+      title: tScope("prixCompetitifs"),
+      description: tScope("prixCompetitifsDesc"),
       iconColor: "text-yellow-500",
+    },
+    {
+      icon: Zap,
+      title: tScope("transactionsRapides"),
+      description: tScope("transactionsRapidesDesc"),
+      iconColor: "text-orange-500",
+    },
+    {
+      icon: Package,
+      title: tScope("largeSelection"),
+      description: tScope("largeSelectionDesc"),
+      iconColor: "text-purple-500",
+    },
+    {
+      icon: Heart,
+      title: tScope("satisfactionGarantie"),
+      description: tScope("satisfactionGarantieDesc"),
+      iconColor: "text-pink-500",
+    },
+    {
+      icon: Monitor,
+      title: tScope("plateformeFiable"),
+      description: tScope("plateformeFiableDesc"),
+      iconColor: "text-cyan-500",
     },
   ];
 
@@ -70,7 +97,7 @@ const WhyChooseUs = () => {
         </div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -81,14 +108,15 @@ const WhyChooseUs = () => {
               variants={itemVariants}
               className="flex flex-col items-center text-center p-6 rounded-2xl bg-[#363A3D] transition-all duration-300 hover:shadow-lg"
             >
-              <div
-                className={`p-4 rounded-full mb-4 bg-[#1A1D21]`}
-              >
+              <div className={`p-4 rounded-full mb-4 bg-[#1A1D21]`}>
                 <feature.icon className={`w-8 h-8 ${feature.iconColor}`} />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold text-white mb-3">
                 {feature.title}
               </h3>
+              <p className="text-sm text-white/80 leading-relaxed">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
         </motion.div>

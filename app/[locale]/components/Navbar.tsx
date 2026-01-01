@@ -16,21 +16,27 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 import { useSession } from "next-auth/react";
 import ProfilePopover from "./ProfilePopover";
-import { useUserPresence } from "@/app/hooks/userPresence";
+// import { useUserPresence } from "@/app/hooks/userPresence";
 import SocialMediaDropdown from "./SocialMediaDropdown ";
 import MobileTopMenus from "./MobileTopMenus";
+// import useStore from "@/lib/store-manage";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
+  const router = useRouter();
+  // const { devise } = useStore();
   const [isGameHovering, setIsGameHovering] = useState<boolean>(false);
   const [isDofusHovering, setIsDofusHovering] = useState<boolean>(false);
 
-  useUserPresence({
-    userId: session?.user.id,
-    onError: (error) => {
-      console.error("Erreur de présence:", error);
-    },
-  });
+  // useUserPresence({
+  //   userId: session?.user.id,
+  //   onError: (error) => {
+  //     console.error("Erreur de présence:", error);
+  //   },
+  // });
+
+  // console.log(devise);
 
   const tScope = useScopedI18n("navbar.popover");
   const tScope2 = useScopedI18n("navbar");
@@ -109,6 +115,10 @@ const Navbar = () => {
                 <PopoverTrigger
                   className="flex items-center text-sm text-white transition-colors hover:text-yellow-600"
                   onMouseEnter={() => setIsGameHovering(true)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    router.push("/video-game");
+                  }}
                 >
                   {tScope2("game")} <FaSortDown className="-mt-1.5" />
                 </PopoverTrigger>
@@ -120,19 +130,12 @@ const Navbar = () => {
                     {games.map((g, index) => (
                       <Link
                         key={g.id + index}
-                        href={`/jeux/${g.slug}`}
+                        href={`/video-game/${g.slug}`}
                         // onClick={() => handleActiveJeu(dofs.slug)}
                         className="outline-none text-sm text-left w-full text-white cursor-pointer p-1.5 transition-all rounded-[10px] hover:bg-[#363A3D] hover:text-white"
                         aria-label="games"
                       >
-                        {tScope2(
-                          g.slug as
-                            | "pubg-mobile"
-                            | "free-fire"
-                            | "fortnite"
-                            | "mobile-legends"
-                            | "pasha-fencer-diamonds"
-                        )}
+                        {tScope2(g.traduc as "accounts" | "gift-cards")}
                       </Link>
                     ))}
                   </div>

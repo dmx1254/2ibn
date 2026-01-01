@@ -13,14 +13,15 @@ export async function POST(req: Request) {
     const update = await UpdateModel.find({}).limit(1).lean();
     const data = await req.json();
     // console.log(data);
+    // return;
 
     let processed = false;
 
-    if (data.columnLetter === "A" && mainting[0]) {
-      const isUpadtedBool = data.rowData.maintenance ? true : false;
+    if (data.row === 5 && data.column === 2 && mainting[0]) {
+      const isUpadtedBool = data.rowData.row2;
       await MaintingModel.findByIdAndUpdate(
         mainting[0]._id,
-        { message: data.rowData.maintenance, mainting: isUpadtedBool },
+        { message: data.rowData.row1, mainting: isUpadtedBool },
         { new: true }
       );
       await PromotionModel.findByIdAndUpdate(
@@ -34,35 +35,13 @@ export async function POST(req: Request) {
         { new: true }
       );
       processed = true;
-    } else if (data.columnLetter === "A") {
-      const isUpadtedBool = data.rowData.maintenance ? true : false;
-      await MaintingModel.create({
-        message: data.rowData.maintenance,
-        mainting: isUpadtedBool,
-      });
-      // Mettre à jour les autres modèles existants pour mettre leurs booléens à false
-      if (promotion[0]) {
-        await PromotionModel.findByIdAndUpdate(
-          promotion[0]._id,
-          { promotion: false },
-          { new: true }
-        );
-      }
-      if (update[0]) {
-        await UpdateModel.findByIdAndUpdate(
-          update[0]._id,
-          { update: false },
-          { new: true }
-        );
-      }
-      processed = true;
     }
 
-    if (data.columnLetter === "B" && promotion[0]) {
-      const isUpadtedBool = data.rowData.promotion ? true : false;
+    if (data.row === 8 && data.column === 2 && promotion[0]) {
+      const isUpadtedBool = data.rowData.row2;
       await PromotionModel.findByIdAndUpdate(
         promotion[0]._id,
-        { message: data.rowData.promotion, promotion: isUpadtedBool },
+        { message: data.rowData.row1, promotion: isUpadtedBool },
         { new: true }
       );
       await MaintingModel.findByIdAndUpdate(
@@ -75,77 +54,13 @@ export async function POST(req: Request) {
         { update: false },
         { new: true }
       );
-      processed = true;
-    } else if (data.columnLetter === "B") {
-      const isUpadtedBool = data.rowData.promotion ? true : false;
-      await PromotionModel.create({
-        message: data.rowData.promotion,
-        promotion: isUpadtedBool,
-      });
-      // Mettre à jour les autres modèles existants pour mettre leurs booléens à false
-      if (mainting[0]) {
-        await MaintingModel.findByIdAndUpdate(
-          mainting[0]._id,
-          { mainting: false },
-          { new: true }
-        );
-      }
-      if (update[0]) {
-        await UpdateModel.findByIdAndUpdate(
-          update[0]._id,
-          { update: false },
-          { new: true }
-        );
-      }
-      processed = true;
-    }
-
-    if (data.columnLetter === "C" && update[0]) {
-      const isUpadtedBool = data.rowData.update ? true : false;
-      await UpdateModel.findByIdAndUpdate(
-        update[0]._id,
-        { message: data.rowData.update, update: isUpadtedBool },
-        { new: true }
-      );
-      await MaintingModel.findByIdAndUpdate(
-        mainting[0]._id,
-        { mainting: false },
-        { new: true }
-      );
-      await PromotionModel.findByIdAndUpdate(
-        promotion[0]._id,
-        { promotion: false },
-        { new: true }
-      );
-      processed = true;
-    } else if (data.columnLetter === "C") {
-      const isUpadtedBool = data.rowData.update ? true : false;
-      await UpdateModel.create({
-        message: data.rowData.update,
-        update: isUpadtedBool,
-      });
-      // Mettre à jour les autres modèles existants pour mettre leurs booléens à false
-      if (mainting[0]) {
-        await MaintingModel.findByIdAndUpdate(
-          mainting[0]._id,
-          { mainting: false },
-          { new: true }
-        );
-      }
-      if (promotion[0]) {
-        await PromotionModel.findByIdAndUpdate(
-          promotion[0]._id,
-          { promotion: false },
-          { new: true }
-        );
-      }
       processed = true;
     }
 
     // Default response if no conditions were met
     if (!processed) {
       return NextResponse.json(
-        { message: "No valid column letter provided or no data to process" },
+        { message: "No valid row and column provided or no data to process" },
         { status: 400, headers }
       );
     }
@@ -163,14 +78,14 @@ export async function POST(req: Request) {
   }
 }
 
-export async function OPTIONS() {
-  const headers = new Headers();
-  headers.set("Access-Control-Allow-Origin", "*");
-  headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-  headers.set("Access-Control-Allow-Headers", "Content-Type"); // Retiré Authorization
-
-  return new NextResponse(null, {
-    status: 200,
-    headers,
-  });
+export async function GET() {
+  try {
+    const { MaintingModel, PromotionModel, UpdateModel } = await ibenModels;
+    const mainting = await MaintingModel.find({}).limit(1).lean();
+    const promotion = await PromotionModel.find({}).limit(1).lean();
+    const update = await UpdateModel.find({}).limit(1).lean();
+    return NextResponse.json({ mainting, promotion, update }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: error }, { status: 500 });
+  }
 }

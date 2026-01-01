@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 
-import { Check, ChevronDown, Globe } from "lucide-react";
-import { CurrencyItem, Language, cn, currencies, languages } from "@/lib/utils";
+import { ChevronDown, Globe } from "lucide-react";
+import { CurrencyItem, cn, currencies, languages } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import useStore from "@/lib/store-manage";
 import { CUR } from "@/lib/types/types";
@@ -29,15 +29,15 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
   const curr = currencies.find((c) => c.slug === devise.currencyName);
 
   const [isActiveCurrency, setIsActiveCurrency] = useState<string>("euro");
-  const [language, setLanguage] = useState(languages[0]);
+  // const [language, setLanguage] = useState(languages[0]);
   const [currency, setCurrency] = useState(currencies[0]);
   const [isOpen, setIsOpen] = useState(false);
   const [cur, setCur] = useState<CurrencyItem | undefined>(curr);
 
-  const handleLanguageChange = (lang: Language) => {
-    setLanguage(lang);
-    setIsOpen(false);
-  };
+  // const handleLanguageChange = (lang: Language) => {
+  //   setLanguage(lang);
+  //   setIsOpen(false);
+  // };
 
   const handleCurrencyChange = (valCur: string) => {
     const currencySelected = currencies.find((c) => c.slug === valCur);
@@ -51,8 +51,8 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
 
   const fetchCurrency = async (currency: string): Promise<CUR[]> => {
     const response = await fetch(`/api/iben/currency/${currency}`, {
-      method: "POST",
-      body: JSON.stringify({ cur: "eur" }),
+      method: "GET",
+      
     });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
@@ -69,10 +69,10 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
 
   useEffect(() => {
     if (data && data.length > 0) {
-      let keys = Object.keys(data[0]);
-      let values = Object.values(data[0]);
-      let name = keys[1];
-      let val = values[1];
+      const keys = Object.keys(data[0]);
+      const values = Object.values(data[0]);
+      const name = keys[1];
+      const val = values[1];
       const dev = {
         currencyName: name,
         curencyVal: val,

@@ -4,12 +4,12 @@ import { NextResponse } from "next/server";
 // import { connectDB } from "@/lib/db";
 import { goapiModels } from "@/lib/models/ibytrade-models";
 
-export async function POST() {
+export async function GET() {
   try {
     const { ServerModel } = await goapiModels;
     const servers = await ServerModel.find();
     return NextResponse.json(servers, { status: 200 });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(error, { status: 500 });
   }
 }

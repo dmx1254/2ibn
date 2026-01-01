@@ -1,20 +1,23 @@
-import { NewOrderConfirmationTemplate } from "@/app/[locale]/components/neworder-template";
 import { OrderConfirmationTemplate } from "@/app/[locale]/components/orderConfirm-template";
-import { addOrderVenteToSheet } from "@/lib/orderSheets-exchange";
+import { addOrderVentesToSheet } from "@/lib/orderSheets-exchange";
 import { ibenModels } from "@/lib/models/ibendouma-models";
 import { NextResponse } from "next/server";
 
 import { Resend } from "resend";
 import { NotifyIlyasstemplate } from "@/app/[locale]/components/notifyilyasstemplate";
+import { parsedDevise } from "@/lib/utils";
 
 const resend = new Resend(process.env.RESEND_2IBN_API_KEY);
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
     const { OrderModelIben, UserIbenModel } = await ibenModels;
 
-    const { data, object } = await request.json();
-    const user = await UserIbenModel.findById(data.userId);
+    const { data, object } = await req.json();
+    const isInviteOrder = data.userId.includes("invitedOrder");
+    const user = isInviteOrder
+      ? null
+      : await UserIbenModel.findById(data.userId);
 
     const time = new Date().toISOString();
 
@@ -23,58 +26,46 @@ export async function POST(request: Request) {
     const newTime2 = time.split("T")[1];
     const newTime3 = newTime2.split(".")[0];
     const newTime = newTime1 + " " + newTime3;
+    // console.log(newTime);
+    // console.log(data);
 
     const newOrder = await OrderModelIben.create(data);
 
     // console.log(newOrder);
     // console.log(user);
 
-    if (!user) {
+    if (!user && !isInviteOrder) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
     for (const product of newOrder.products) {
+      const cur = parsedDevise(newOrder.cur);
       const orderSheet = {
-        newTime: "[" + newTime + "]",
-        code: "#" + newOrder.orderNum,
-        serveur: product.server,
+        newTime: ` 
+        #${newOrder.orderNum}
+        [${newTime}]
+        `,
+        // code: "#" + newOrder.orderNum,
+        type: "Vente",
+        produit: product.server,
+        qte: parseInt(product.amount),
+        montant: Number(product.totalPrice) + cur,
+        puV: product.price + cur,
         personnage: product.character,
-        total:
-          product.price +
-          "" +
-          newOrder.cur +
-          "/M" +
-          "*" +
-          product.amount +
-          "M" +
-          "=" +
-          newOrder.totalPrice +
-          "" +
-          newOrder.cur,
-        livraisondetails:
-          newOrder.paymentMethod +
-          " - email: " +
-          user.email +
-          " - phone: " +
-          user.phone,
-        InfoPay: newOrder.paymentMethod,
+        payment: newOrder.paymentMethod,
         etatCommande: newOrder.status,
-        idCommande: newOrder._id.toString(),
-      };
-      await addOrderVenteToSheet(orderSheet);
-    }
+        platform: "iBendouma",
+        userInfo: `
+          ${newOrder.billing.firstname} ${newOrder.billing.lastname}
+          adresse: ${newOrder.billing.address}
+          email: ${newOrder.billing.email}
+          phone: ${newOrder.billing.phone}`,
 
-    // const rowData = [
-    //   order.newTime, // Colonne 0: Code
-    //   order.code, // Colonne 0: Code
-    //   order.serveur, // Colonne 1: Serveur à recevoir/Personnages
-    //   order.personnage, // Colonne 4: Quantité B
-    //   order.total, // Colonne 2: Quantité A
-    //   order.livraisondetails, // Colonne 5: Contact
-    //   order.InfoPay, // Colonne 3: Serveur à donner/Personnages
-    //   order.etatCommande, // Colonne 6: État de la commande
-    //   order.idCommande, // Colonne 7: ID de la commande
-    // ];
+        email: newOrder.billing.email,
+      };
+      // La vente ici correspond a l'achat sur le site
+      await addOrderVentesToSheet(orderSheet);
+    }
 
     if (newOrder) {
       try {
@@ -97,30 +88,6 @@ export async function POST(request: Request) {
 
         await resend.emails.send({
           from: "Ibendouma Notification <noreply@ibendouma.com>",
-          to: ["support@ibendouma.com"],
-          subject: "Notification de commande de ibendouma",
-          react: NewOrderConfirmationTemplate({
-            orderNum: newOrder.orderNum,
-            dateCreated: new Date(),
-            type: "Commande d'achat",
-            billing: {
-              firstname: newOrder.billing.firstname,
-              lastname: newOrder.billing.lastname,
-              email: newOrder.billing.email || user?.email,
-              phone: newOrder.billing.phone || user?.phone,
-            },
-            products: newOrder.products,
-            totalPrice: newOrder.totalPrice,
-            cur: newOrder.cur,
-            buyDetails: {
-              status: newOrder.status,
-              paymentMethod: newOrder.paymentMethod,
-            },
-          }),
-        });
-
-        await resend.emails.send({
-          from: "Ibendouma Notification <noreply@ibendouma.com>",
           to: ["bendoumailyass@gmail.com"],
           subject: "Notification de commande de vente de ibendouma",
           react: NotifyIlyasstemplate({
@@ -138,5 +105,35 @@ export async function POST(request: Request) {
     // console.log(data, object);
   } catch (error: any) {
     return NextResponse.json(error, { status: 500 });
+  }
+}
+
+export async function GET() {
+  try {
+    const { OrderModelIben } = await ibenModels;
+    const orders = await OrderModelIben.find();
+    return NextResponse.json(orders, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Error fetching orders" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE() {
+  try {
+    const { OrderModelIben } = await ibenModels;
+
+    await OrderModelIben.deleteMany();
+    return NextResponse.json(
+      { message: "Orders deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Error deleting orders" },
+      { status: 500 }
+    );
   }
 }

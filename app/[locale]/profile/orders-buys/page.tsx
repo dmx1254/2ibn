@@ -26,6 +26,30 @@ import { Button } from "../../components/ui/button";
 import { convertDate, parsedDevise } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 
+interface OrderAccount {
+  _id: string;
+  userId: string;
+  numOrder: string;
+  products: Array<{
+    description: string;
+    qty: number;
+    price: number;
+    totalPrice: number;
+    product: string;
+    category: string;
+    licence: string;
+    deliveryDelay: number;
+  }>;
+  totalPrice: number;
+  paymentMethod: string;
+  status: string;
+  address: string;
+  cur: string;
+  valCurency: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 const ProfileBuyPage = () => {
   const tScope = useScopedI18n("ordersBuyKamas");
   const { devise } = useStore();
@@ -47,13 +71,26 @@ const ProfileBuyPage = () => {
     enabled: !!session?.user.id,
   });
 
-  if (isLoading) {
+  const { isLoading: isLoadingAccounts, data: ordersAccounts } = useQuery({
+    queryKey: ["user-order-accounts", session?.user.id],
+    queryFn: async () => {
+      const response = await axios.get(
+        `/api/go/accounts/order/${session?.user.id}`
+      );
+      return response.data as OrderAccount[];
+    },
+    enabled: !!session?.user.id,
+  });
+
+  if (isLoading || isLoadingAccounts) {
     return (
       <div className="flex h-96 items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
   }
+
+  console.log(ordersBuy);
 
   // console.log(games);
 
@@ -271,7 +308,7 @@ const ProfileBuyPage = () => {
         ))}
       </div>
 
-      {ordersBuy?.length === 0 && (
+      {ordersBuy?.length === 0 && ordersAccounts?.length === 0 && (
         <Card className="bg-white/80 backdrop-blur-sm shadow-xl p-8 text-center">
           <AlertCircle className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
           <p className="text-xl font-semibold text-black">
@@ -286,6 +323,143 @@ const ProfileBuyPage = () => {
             {tScope("notFoundLink")}
           </Button>
         </Card>
+      )}
+
+      {/* Section des commandes de jeux vidéo */}
+      {ordersAccounts && ordersAccounts.length > 0 && (
+        <>
+          <p className="text-2xl font-semibold mt-8">Commandes de jeux vidéo</p>
+          <div className="space-y-6">
+            {ordersAccounts.map((order) => (
+              <Card
+                key={order.numOrder}
+                className="bg-white/80 backdrop-blur-sm shadow-xl"
+              >
+                <CardHeader
+                  className="cursor-pointer"
+                  onClick={() => toggleOrderExpansion(order.numOrder)}
+                >
+                  <div className="flex justify-between items-center">
+                    <CardTitle className="text-xl font-bold text-black/90">
+                      Commande #{order.numOrder}
+                    </CardTitle>
+                    <div className="flex items-center space-x-4">
+                      <Badge
+                        className={`hover:bg-none ${getStatusColor(
+                          order.status
+                        )} text-white`}
+                      >
+                        {(order.status.toLowerCase() === "terminée" ||
+                          order.status.toLowerCase() === "termine" ||
+                          order.status.toLowerCase() === "completed" ||
+                          order.status.toLowerCase() === "paid" ||
+                          order.status.toLowerCase() === "payée" ||
+                          order.status.toLowerCase() === "payee" ||
+                          order.status.toLowerCase() === "paye" ||
+                          order.status.toLowerCase() === "livree" ||
+                          order.status.toLowerCase() === "livre" ||
+                          order.status.toLowerCase() === "livrée" ||
+                          order.status.toLowerCase() === "livré" ||
+                          order.status.toLowerCase() === "delivered") &&
+                          tScope("completed")}
+                        {(order.status.toLowerCase() === "en attente" ||
+                          order.status.toLowerCase() === "pending") &&
+                          tScope("pending")}
+                        {(order.status.toLowerCase() === "annulée" ||
+                          order.status.toLowerCase() === "cancelled") &&
+                          tScope("cancelled")}
+                        {(order.status.toLowerCase() ===
+                          "en cours de payment" ||
+                          order.status.toLowerCase() ===
+                            "en cours de paiement" ||
+                          order.status.toLowerCase() === "processing") &&
+                          tScope("processing")}
+                      </Badge>
+                      {expandedOrder === order.numOrder ? (
+                        <ChevronUp size={20} className="text-gray-500" />
+                      ) : (
+                        <ChevronDown size={20} className="text-gray-500" />
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-black/90 mt-2 font-semibold">
+                    <span className="mr-4 font-semibold text-base">
+                      {order.totalPrice.toFixed(2)}{" "}
+                      {parsedDevise(order.cur || devise.currencyName)}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Calendar className="inline-block w-4 h-4 mr-1" />
+                      {convertDate(String(order.createdAt))}
+                    </span>
+                  </div>
+                </CardHeader>
+                <AnimatePresence>
+                  {expandedOrder === order.numOrder && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <CardContent>
+                        <div className="space-y-4">
+                          {order.products?.map((product, index: number) => (
+                            <div
+                              key={index}
+                              className="flex justify-between items-center p-4 bg-gray-50 rounded-lg"
+                            >
+                              <div>
+                                <p className="font-bold text-black/80">
+                                  {product.product || product.description}
+                                </p>
+                                <p className="text-sm text-black/80 font-semibold">
+                                  Catégorie: {product.category}
+                                </p>
+                                <p className="text-sm text-black/80 font-semibold">
+                                  Licence: {product.licence}
+                                </p>
+                                {product.deliveryDelay !== undefined && (
+                                  <p className="text-sm text-black/80 font-semibold">
+                                    Délai de livraison:{" "}
+                                    {product.deliveryDelay === 0
+                                      ? "Instantané"
+                                      : `${product.deliveryDelay} min`}
+                                  </p>
+                                )}
+                              </div>
+                              <div className="text-right">
+                                <p className="font-semibold text-black/80">
+                                  {product.totalPrice.toFixed(2)}{" "}
+                                  {parsedDevise(
+                                    order.cur || devise.currencyName
+                                  )}
+                                </p>
+                                <p className="text-sm text-black/80 font-semibold">
+                                  Qté: {product.qty}
+                                </p>
+                                <p className="text-sm text-black/80 font-semibold">
+                                  Prix unitaire: {product.price.toFixed(2)}{" "}
+                                  {parsedDevise(
+                                    order.cur || devise.currencyName
+                                  )}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-4 flex justify-between items-center">
+                          <p className="text-base bg-yellow-600 text-black font-semibold rounded-[10px] p-2">
+                            {tScope("paymentMethod")}: {order.paymentMethod}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Card>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

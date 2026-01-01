@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AlertTriangle, Loader, ArrowRightLeft, Coins } from "lucide-react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-import { useQuery } from "@tanstack/react-query";
-import { ServerExchange, codeGenerated } from "@/lib/utils";
+import { codeGenerated, ServerExchange } from "@/lib/utils";
 import axios from "axios";
 import { toast } from "sonner";
 import { useScopedI18n } from "@/locales/client";
@@ -36,20 +35,18 @@ import { useRouter } from "next/navigation";
 import Testimonials from "./Testimonials";
 
 const EchangeKamasClient = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   const tScope = useScopedI18n("exchange");
   const [serversExchange, setServersExchange] = useState<
     ServerExchange[] | null
   >(null);
   const [loadingExchange, setLoadingExchange] = useState<boolean>(false);
-  const [rate, setRate] = useState<number>(100);
   const [exchangeRate, setExchangeRate] = useState<number | undefined>();
   const [serverExchangeRate, setServerExchangeRate] = useState<string>("");
+  const [puV, setPuV] = useState<number>(0);
 
   // console.log(serversExchange);
-
-  console.log(exchangeRate);
 
   const formSchema = z.object({
     serverToPay: z.string().min(1, { message: tScope("serverToPayErr") }),
@@ -84,8 +81,7 @@ const EchangeKamasClient = () => {
     const getServerExchange = async () => {
       try {
         const response = await fetch(`/api/go/server`, {
-          method: "POST",
-          body: JSON.stringify({ server: "Draconiros" }),
+          method: "GET",
         });
         const res = await response.json();
 
@@ -99,26 +95,10 @@ const EchangeKamasClient = () => {
     getServerExchange();
   }, []);
 
-  const { data: rateVal } = useQuery({
-    queryKey: ["exchange-rate"],
-    queryFn: async () => {
-      const response = await fetch("/api/go/exchange/getRate", {
-        method: "POST",
-        body: JSON.stringify({ rate: "rate" }),
-      });
-      if (!response.ok) throw new Error("Fetching currency failed");
-      return response.json();
-    },
-  });
 
-  useEffect(() => {
-    if (rateVal) {
-      setRate(rateVal[0].rate);
-    }
-  }, [rateVal]);
 
   function handleChatClick() {
-    //@ts-ignore
+    //@ts-expect-error
     void window?.Tawk_API.toggle();
   }
 
@@ -131,6 +111,8 @@ const EchangeKamasClient = () => {
     const serverToPayPrice = serversExchange?.find(
       (s) => s.serverName === serverToPay
     )?.serverPriceDh;
+
+    setPuV(serverToPayPrice || 0);
 
     const serverToReceivePrice = serversExchange?.find(
       (s) => s.serverName === serverToReceive
@@ -154,15 +136,17 @@ const EchangeKamasClient = () => {
 
     // console.log("activeServerRate: ", activeServerRate);
 
-    // console.log("serverToPayRate: ", serverToPayRate);
     // console.log("serverToReceiveRate: ", serverToReceiveRate);
 
-    // console.log(serverToPayPrice, serverToReceivePrice);
-    const total =
-      ((Number(serverToPayPrice) * Number(quantityToPay)) /
-        Number(serverToReceivePrice)) *
-      (1 - Number(serverToReceiveRate));
-    const totalToReceive = Number(total).toFixed(2);
+    console.log(serverToPayPrice, serverToReceivePrice);
+    const serverPayCus = Number(serverToPayPrice) * Number(quantityToPay);
+    const serverReceiveCus =
+      Number(serverToReceivePrice) * (1 - Number(serverToReceiveRate));
+    // const total =
+    //   ((Number(serverToPayPrice) * Number(quantityToPay)) /
+    //     Number(serverToReceivePrice)) *
+    //   (1 - Number(serverToReceiveRate));
+    const totalToReceive = Number(serverPayCus / serverReceiveCus).toFixed(2);
     if (totalToReceive)
       setValue("quantityToReceive", totalToReceive.toString());
   }, [serverToPay, serverToReceive, quantityToPay]);
@@ -205,6 +189,7 @@ const EchangeKamasClient = () => {
       return;
     } else {
       const data = {
+        numExchange: codeGenerated(),
         userId: session?.user.id,
         serverOut: values.serverToPay,
         serverIn: values.serverToReceive,
@@ -213,6 +198,8 @@ const EchangeKamasClient = () => {
         characterToReceive: values.characterToReceive,
         qtyToPay: Number(values.quantityToPay),
         qtyToReceive: Number(values.quantityToReceive),
+        puV: puV,
+        status: "En attente",
       };
       try {
         setLoadingExchange(true);
@@ -222,8 +209,8 @@ const EchangeKamasClient = () => {
             style: { color: "#16a34a" },
           });
           setTimeout(() => {
-            // handleChatClick();
-            router.push("/order-success");
+            handleChatClick();
+            // router.push("/order-success");
           }, 1000);
         }
       } catch (error) {
@@ -450,7 +437,7 @@ const EchangeKamasClient = () => {
                         )}
                       />
                     </div>
-                    {serverExchangeRate && exchangeRate && (
+                    {/* {serverExchangeRate && exchangeRate && (
                       <p className="text-white/90 font-medium text-sm text-center">
                         {tScope("serverExchangeRate", {
                           servername: serverExchangeRate,
@@ -458,7 +445,7 @@ const EchangeKamasClient = () => {
                             Math.round(Number(exchangeRate) * 100) + "%",
                         })}
                       </p>
-                    )}
+                    )} */}
 
                     <FormField
                       control={form.control}
