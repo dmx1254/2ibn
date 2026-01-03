@@ -50,7 +50,7 @@ export async function POST(request: Request) {
         #${orderbuy.numBuy}
         [${newTime}]
         `,
-      type: "Achat",
+      type: "Vente",
       produit: orderbuy.server,
       qte: orderbuy.qte,
       montant: orderbuy.totalPrice + cur,

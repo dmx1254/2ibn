@@ -8,6 +8,8 @@ import { OrderGameAdminTemplate } from "@/app/[locale]/components/order-admin-ga
 
 const resend = new Resend(process.env.RESEND_2IBN_API_KEY);
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);

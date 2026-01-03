@@ -83,7 +83,7 @@ const HomeSlider = () => {
   const handleResultClick = (licence: string) => {
     const slug = getSlugFromLicence(licence);
     setIsSearchDialogOpen(false);
-    router.push(`/video-game/${slug}`);
+    router.push(`/marketplace/category/${slug}`);
   };
 
   // console.log(searchResults);
@@ -133,7 +133,7 @@ const HomeSlider = () => {
         </form>
 
         {/* Section 3: Icônes de catégories */}
-        <div className="mb-12 flex items-start md:items-center flex-wrap md:justify-between gap-4 md:gap-3 w-full">
+        <div className="mb-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:gap-3 w-full max-w-6xl mx-auto">
           {/* Buy Kamas */}
           <Link
             href="/acheter-des-kamas"
@@ -213,7 +213,7 @@ const HomeSlider = () => {
 
           {/* Video Game Accounts */}
           <Link
-            href="/video-game/accounts"
+            href="/marketplace/category/accounts"
             className="flex flex-col items-center gap-2"
           >
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
@@ -227,7 +227,7 @@ const HomeSlider = () => {
 
           {/* Gift Cards */}
           <Link
-            href="/video-game/gift-cards"
+            href="/marketplace/category/gift-cards"
             className="flex flex-col items-center gap-2"
           >
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
@@ -242,6 +242,104 @@ const HomeSlider = () => {
             <div className="max-sm:text-xs flex flex-col text-white font-bold items-center text-sm antialiased">
               <span>{tScope2("giftCards1")}</span>
               <span className="max-sm:hidden">{tScope2("giftCards2")}</span>
+            </div>
+          </Link>
+
+          {/* Game Coins */}
+          <Link
+            href="/marketplace/category/game-coins"
+            className="flex flex-col items-center gap-2"
+          >
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z" />
+              </svg>
+            </div>
+            <div className="max-sm:text-xs flex flex-col text-white font-bold items-center text-sm antialiased">
+              <span>{tScope2("gameCoins1")}</span>
+              <span className="max-sm:hidden">{tScope2("gameCoins2")}</span>
+            </div>
+          </Link>
+
+          {/* Item */}
+          <Link
+            href="/marketplace/category/item"
+            className="flex flex-col items-center gap-2"
+          >
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z" />
+              </svg>
+            </div>
+            <div className="max-sm:text-xs flex flex-col text-white font-bold items-center text-sm antialiased">
+              <span>{tScope2("item1")}</span>
+              {/* {tScope2("item2") && (
+                <span className="max-sm:hidden">{tScope2("item2")}</span>
+              )} */}
+            </div>
+          </Link>
+
+          {/* Software and App */}
+          <Link
+            href="/marketplace/category/software-and-app"
+            className="flex flex-col items-center gap-2"
+          >
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+              </svg>
+            </div>
+            <div className="max-sm:text-xs flex flex-col text-white font-bold items-center text-sm antialiased">
+              <span>{tScope2("softwareAndApp1")}</span>
+              <span className="max-sm:hidden">{tScope2("softwareAndApp2")}</span>
+            </div>
+          </Link>
+
+          {/* Carte Prepayees */}
+          <Link
+            href="/marketplace/category/carte-prepayees"
+            className="flex flex-col items-center gap-2"
+          >
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+              </svg>
+            </div>
+            <div className="max-sm:text-xs flex flex-col text-white font-bold items-center text-sm antialiased">
+              <span>{tScope2("cartePrepayees1")}</span>
+              <span className="max-sm:hidden">{tScope2("cartePrepayees2")}</span>
+            </div>
+          </Link>
+
+          {/* Game */}
+          <Link
+            href="/marketplace/category/game"
+            className="flex flex-col items-center gap-2"
+          >
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <Gamepad2 className="w-6 h-6 text-white" />
+            </div>
+            <div className="max-sm:text-xs flex flex-col text-white font-bold items-center text-sm antialiased">
+              <span>{tScope2("gameName1")}</span>
+              {/* {tScope2("gameName2") && (
+                <span className="max-sm:hidden">{tScope2("gameName2")}</span>
+              )} */}
             </div>
           </Link>
 

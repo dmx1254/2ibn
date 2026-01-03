@@ -117,7 +117,7 @@ const Navbar = () => {
                   onMouseEnter={() => setIsGameHovering(true)}
                   onClick={(e) => {
                     e.preventDefault();
-                    router.push("/video-game");
+                    router.push("/marketplace");
                   }}
                 >
                   {tScope2("game")} <FaSortDown className="-mt-1.5" />
@@ -130,23 +130,23 @@ const Navbar = () => {
                     {games.map((g, index) => (
                       <Link
                         key={g.id + index}
-                        href={`/video-game/${g.slug}`}
+                        href={`/marketplace/category/${g.slug}`}
                         // onClick={() => handleActiveJeu(dofs.slug)}
                         className="outline-none text-sm text-left w-full text-white cursor-pointer p-1.5 transition-all rounded-[10px] hover:bg-[#363A3D] hover:text-white"
-                        aria-label="games"
+                        aria-label="categories"
                       >
-                        {tScope2(g.traduc as "accounts" | "gift-cards")}
+                        {tScope2(g.traduc as "accounts" | "gift-cards" | "game-coins" | "software-and-app" | "carte-prepayees")}
                       </Link>
                     ))}
                   </div>
                 </PopoverContent>
               </Popover>
-              <Link
+              {/* <Link
                 href="/crypto"
                 className="text-sm text-white transition-colors hover:text-yellow-600"
               >
                 {tScope3("crypto")}
-              </Link>
+              </Link> */}
             </div>
             <div className="flex items-center gap-2 sm:gap-4">
               {session && status === "authenticated" ? (

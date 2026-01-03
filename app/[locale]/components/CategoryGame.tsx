@@ -24,20 +24,20 @@ interface Account {
   moreDetails: string;
 }
 
-interface VirtualGameProps {
-  gamename: string;
+interface CategoryGameProps {
+  categoryname: string;
   accounts: Account[];
 }
 
-interface Category {
-  category: string;
+interface Licence {
+  licence: string;
   count: number;
 }
 
-const VirtualGame = ({
-  gamename,
+const CategoryGame = ({
+  categoryname,
   accounts: initialAccounts,
-}: VirtualGameProps) => {
+}: CategoryGameProps) => {
   const t = useScopedI18n("virtualGame");
   const tScope2 = useScopedI18n("navbar");
   const { devise } = useStore();
@@ -49,40 +49,40 @@ const VirtualGame = ({
   const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [loadingCategories, setLoadingCategories] = useState(true);
+  const [licences, setLicences] = useState<Licence[]>([]);
+  const [selectedLicence, setSelectedLicence] = useState<string | null>(null);
+  const [loadingLicences, setLoadingLicences] = useState(true);
 
-  // Récupérer les catégories distinctes pour cette licence
+  // Récupérer les licences distinctes pour cette catégorie
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchLicences = async () => {
       try {
-        setLoadingCategories(true);
+        setLoadingLicences(true);
         const response = await axios.get(
-          `/api/go/accounts/categories?licence=${gamename}`
+          `/api/go/accounts/category-licences?category=${categoryname}`
         );
         const data = response.data;
-        setCategories(data);
+        setLicences(data);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        console.error("Error fetching licences:", error);
       } finally {
-        setLoadingCategories(false);
+        setLoadingLicences(false);
       }
     };
 
-    fetchCategories();
-  }, [gamename]);
+    fetchLicences();
+  }, [categoryname]);
 
   useEffect(() => {
     let filtered = [...initialAccounts];
 
-    // Filtrer par catégorie (normaliser pour éviter les problèmes de casse/espaces)
-    if (selectedCategory) {
-      const normalizedSelectedCategory = selectedCategory.toLowerCase().trim();
+    // Filtrer par licence (normaliser pour éviter les problèmes de casse/espaces)
+    if (selectedLicence) {
+      const normalizedSelectedLicence = selectedLicence.toLowerCase().trim();
       filtered = filtered.filter(
         (account) =>
-          (account.category || "").toLowerCase().trim() ===
-          normalizedSelectedCategory
+          (account.licence || "").toLowerCase().trim() ===
+          normalizedSelectedLicence
       );
     }
 
@@ -112,12 +112,12 @@ const VirtualGame = ({
 
     setAccounts(filtered);
     setCurrentPage(1); // Réinitialiser à la page 1 quand la recherche ou le tri change
-  }, [searchQuery, sortBy, initialAccounts, selectedCategory]);
+  }, [searchQuery, sortBy, initialAccounts, selectedLicence]);
 
   const handleAccountClick = (account: Account) => {
     if (account.stock > 0 && account.status !== "rupture de stock") {
       // Rediriger vers la page de détails
-      router.push(`/marketplace/${gamename}/${account._id}`);
+      router.push(`/marketplace/${account.licence}/${account._id}`);
     }
   };
 
@@ -167,8 +167,29 @@ const VirtualGame = ({
     }
   };
 
-  // console.log("accounts", accounts);
-  // console.log("categories", categories);
+  // Format du nom de catégorie
+  const formatCategoryName = (name: string) => {
+    if (name.includes("-")) {
+      return name
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+    }
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
+
+  // Format du nom de licence
+  const formatLicenceName = (name: string) => {
+    if (name.includes("-")) {
+      return name
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+    }
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
+
+  const categoryDisplayName = formatCategoryName(categoryname);
 
   return (
     <div className="min-h-screen bg-[#1A1D21] text-white font-poppins">
@@ -186,25 +207,13 @@ const VirtualGame = ({
             {tScope2("game")}
           </Link>
           <span>»</span>
-          <span className="text-white">
-            {gamename.includes("-")
-              ? gamename
-                  .split("-")
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join(" ")
-              : gamename}
-          </span>
+          <span className="text-white">{categoryDisplayName}</span>
         </div>
 
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-2">
-            {gamename.includes("-")
-              ? gamename
-                  .split("-")
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join(" ")
-              : gamename.toUpperCase()}
+            {categoryDisplayName.toUpperCase()}
           </h1>
           <p className="text-gray-400">
             {accounts.length}{" "}
@@ -214,60 +223,48 @@ const VirtualGame = ({
           </p>
         </div>
 
-        {/* Section Catégories */}
-        {!loadingCategories && categories.length > 0 && (
+        {/* Section Licences */}
+        {!loadingLicences && licences.length > 0 && (
           <div className="w-full mb-8 flex flex-col items-center">
             <div className="flex flex-wrap justify-center gap-3 w-full max-w-6xl">
               <button
-                onClick={() => setSelectedCategory(null)}
+                onClick={() => setSelectedLicence(null)}
                 className={`px-5 py-2.5 rounded-lg cursor-pointer transition-all duration-200 ${
-                  selectedCategory === null
+                  selectedLicence === null
                     ? "bg-yellow-600 text-black border border-yellow-600"
                     : "bg-[#2A2D30] border border-gray-700 hover:bg-[#363A3D] hover:border-gray-600 text-white"
                 }`}
               >
                 <span className="text-sm font-medium">Tous</span>
               </button>
-              {categories.map((cat) => {
-                const formatCategoryName = (name: string) => {
-                  if (name.includes("-")) {
-                    return name
-                      .split("-")
-                      .map(
-                        (word) => word.charAt(0).toUpperCase() + word.slice(1)
-                      )
-                      .join(" ");
-                  }
-                  return name.charAt(0).toUpperCase() + name.slice(1);
-                };
-
+              {licences.map((lic) => {
                 return (
                   <button
-                    key={cat.category}
-                    onClick={() => setSelectedCategory(cat.category)}
+                    key={lic.licence}
+                    onClick={() => setSelectedLicence(lic.licence)}
                     className={`px-5 py-2.5 rounded-lg cursor-pointer transition-all duration-200 group ${
-                      selectedCategory === cat.category
+                      selectedLicence === lic.licence
                         ? "bg-yellow-600 text-black border border-yellow-600"
                         : "bg-[#2A2D30] border border-gray-700 hover:bg-[#363A3D] hover:border-gray-600"
                     }`}
                   >
                     <span
                       className={`text-sm font-medium ${
-                        selectedCategory === cat.category
+                        selectedLicence === lic.licence
                           ? "text-black"
                           : "text-white group-hover:text-yellow-600"
                       }`}
                     >
-                      {formatCategoryName(cat.category)}
+                      {formatLicenceName(lic.licence)}
                     </span>
                     <span
                       className={`ml-2 text-xs ${
-                        selectedCategory === cat.category
+                        selectedLicence === lic.licence
                           ? "text-black/70"
                           : "text-gray-400"
                       }`}
                     >
-                      ({cat.count})
+                      ({lic.count})
                     </span>
                   </button>
                 );
@@ -276,8 +273,8 @@ const VirtualGame = ({
           </div>
         )}
 
-        {/* Loading skeleton pour les catégories */}
-        {loadingCategories && (
+        {/* Loading skeleton pour les licences */}
+        {loadingLicences && (
           <div className="w-full mb-8 flex flex-col items-center">
             <div className="flex flex-wrap justify-center gap-3 w-full max-w-6xl">
               {[...Array(6)].map((_, i) => (
@@ -367,17 +364,9 @@ const VirtualGame = ({
                     {group.description}
                   </h3>
 
-                  {/* Nom du jeu */}
+                  {/* Nom de la licence */}
                   <p className="text-xs font-bold text-white/70 mb-3 tracking-wider">
-                    {gamename.includes("-")
-                      ? gamename
-                          .split("-")
-                          .map(
-                            (word) =>
-                              word.charAt(0).toUpperCase() + word.slice(1)
-                          )
-                          .join(" ")
-                      : gamename.toUpperCase()}
+                    {formatLicenceName(displayAccount.licence).toUpperCase()}
                   </p>
 
                   {/* Catégorie */}
@@ -454,79 +443,46 @@ const VirtualGame = ({
           })}
         </div>
 
-        {/* Message si aucun résultat */}
-        {accountGroups.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">
-              {t("noAccountFound")} &quot;{searchQuery}&quot;
-            </p>
-          </div>
-        )}
-
         {/* Pagination */}
-        {accountGroups.length > itemsPerPage && (
-          <div className="flex flex-col items-center gap-4 mt-8">
+        {totalPages > 1 && (
+          <div className="flex flex-col items-center justify-center gap-4 mt-8">
             <div className="flex items-center gap-2">
-              {/* Bouton Précédent */}
               <button
                 onClick={goToPreviousPage}
                 disabled={currentPage === 1}
-                className={`px-4 py-2 rounded-lg border transition-colors ${
+                className={`p-2 rounded-lg ${
                   currentPage === 1
-                    ? "border-gray-700 text-gray-600 cursor-not-allowed"
-                    : "border-gray-600 text-white hover:bg-gray-700 hover:border-yellow-600"
-                }`}
+                    ? "bg-[#2A2D30] text-gray-600 cursor-not-allowed"
+                    : "bg-[#2A2D30] text-white hover:bg-[#363A3D]"
+                } transition-colors`}
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
 
-              {/* Numéros de page */}
-              <div className="flex items-center gap-1">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                  (page) => {
-                    // Afficher seulement certaines pages pour éviter trop de boutons
-                    if (
-                      page === 1 ||
-                      page === totalPages ||
-                      (page >= currentPage - 1 && page <= currentPage + 1)
-                    ) {
-                      return (
-                        <button
-                          key={page}
-                          onClick={() => goToPage(page)}
-                          className={`px-4 py-2 rounded-lg border transition-colors ${
-                            currentPage === page
-                              ? "bg-yellow-600 border-yellow-600 text-white font-semibold"
-                              : "border-gray-600 text-white hover:bg-gray-700 hover:border-yellow-600"
-                          }`}
-                        >
-                          {page}
-                        </button>
-                      );
-                    } else if (
-                      page === currentPage - 2 ||
-                      page === currentPage + 2
-                    ) {
-                      return (
-                        <span key={page} className="px-2 text-gray-400">
-                          ...
-                        </span>
-                      );
-                    }
-                    return null;
-                  }
-                )}
-              </div>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    onClick={() => goToPage(page)}
+                    className={`px-4 py-2 rounded-lg ${
+                      currentPage === page
+                        ? "bg-yellow-600 text-black font-semibold"
+                        : "bg-[#2A2D30] text-white hover:bg-[#363A3D]"
+                    } transition-colors`}
+                  >
+                    {page}
+                  </button>
+                )
+              )}
 
-              {/* Bouton Suivant */}
               <button
                 onClick={goToNextPage}
                 disabled={currentPage === totalPages}
-                className={`px-4 py-2 rounded-lg border transition-colors ${
+                className={`p-2 rounded-lg ${
                   currentPage === totalPages
-                    ? "border-gray-700 text-gray-600 cursor-not-allowed"
-                    : "border-gray-600 text-white hover:bg-gray-700 hover:border-yellow-600"
-                }`}
+                    ? "bg-[#2A2D30] text-gray-600 cursor-not-allowed"
+                    : "bg-[#2A2D30] text-white hover:bg-[#363A3D]"
+                } transition-colors`}
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -565,4 +521,4 @@ const VirtualGame = ({
   );
 };
 
-export default VirtualGame;
+export default CategoryGame;

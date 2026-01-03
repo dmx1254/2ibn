@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectToDatabase } from "@/lib/db";
-import { ReferralCode, User } from "@/lib/models/ibendouma-models";
+import { connectDB } from "@/lib/db";
+import { ibenModels } from "@/lib/models/ibendouma-models";
 
 export async function POST(request: NextRequest) {
   try {
-    await connectToDatabase();
+    await connectDB();
+    const { ReferralCodeModel, UserIbenModel } = await ibenModels;
     const { referralCode } = await request.json();
 
     if (!referralCode) {
@@ -15,7 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Find the referral code
-    const codeDoc = await ReferralCode.findOne({ 
+    const codeDoc = await ReferralCodeModel.findOne({ 
       code: referralCode.toUpperCase(),
       isActive: true 
     });
@@ -36,7 +37,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get referrer information
-    const referrer = await User.findById(codeDoc.userId);
+    const referrer = await UserIbenModel.findById(codeDoc.userId);
     if (!referrer) {
       return NextResponse.json(
         { error: "Referrer not found" },

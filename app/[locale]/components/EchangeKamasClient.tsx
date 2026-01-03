@@ -31,12 +31,10 @@ import {
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import Testimonials from "./Testimonials";
 
 const EchangeKamasClient = () => {
   const { data: session } = useSession();
-  const router = useRouter();
   const tScope = useScopedI18n("exchange");
   const [serversExchange, setServersExchange] = useState<
     ServerExchange[] | null
@@ -95,8 +93,6 @@ const EchangeKamasClient = () => {
     getServerExchange();
   }, []);
 
-
-
   function handleChatClick() {
     //@ts-expect-error
     void window?.Tawk_API.toggle();
@@ -118,6 +114,12 @@ const EchangeKamasClient = () => {
       (s) => s.serverName === serverToReceive
     )?.serverPriceDh;
 
+    // const receive = serversExchange?.find(
+    //   (s) => s.serverName === serverToReceive
+    // )
+
+    // console.log("serverToReceive", receive);
+
     const serverToReceiveRate = serversExchange?.find(
       (s) => s.serverName === serverToReceive
     )?.rate;
@@ -138,15 +140,23 @@ const EchangeKamasClient = () => {
 
     // console.log("serverToReceiveRate: ", serverToReceiveRate);
 
-    console.log(serverToPayPrice, serverToReceivePrice);
+    // console.log(serverToPayPrice, serverToReceivePrice);
     const serverPayCus = Number(serverToPayPrice) * Number(quantityToPay);
     const serverReceiveCus =
-      Number(serverToReceivePrice) * (1 - Number(serverToReceiveRate));
+      Number(serverToReceivePrice) *
+      (1 - Number(serverToReceiveRate === 1 ? 0 : serverToReceiveRate));
+    // console.log(serverPayCus);
     // const total =
     //   ((Number(serverToPayPrice) * Number(quantityToPay)) /
     //     Number(serverToReceivePrice)) *
     //   (1 - Number(serverToReceiveRate));
+
     const totalToReceive = Number(serverPayCus / serverReceiveCus).toFixed(2);
+    // console.log("totalToReceive", totalToReceive);
+    // console.log(
+    //   "serverPayCus / serverReceiveCus",
+    //   serverPayCus / serverReceiveCus
+    // );
     if (totalToReceive)
       setValue("quantityToReceive", totalToReceive.toString());
   }, [serverToPay, serverToReceive, quantityToPay]);

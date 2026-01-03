@@ -69,20 +69,29 @@ export async function POST(req: Request) {
     }
 
     // CASE TYPE ACHAT CREATE AN ORDER ON THE SITE
-    if (data.rowData.type === "Achat") {
+    if (data.rowData.type === "Vente") {
       if (buyCode) {
         const order = await BuyModel.findOne({
-          buyCode: buyCode,
+          numBuy: buyCode,
         });
         if (order) {
-          await BuyModel.findByIdAndUpdate(order._id, {
-            $set: {
-              status: data.rowData.etatCommande
-                ? data.rowData.etatCommande
-                : order.status,
+          // console.log(order);
+          // console.log(data.rowData);
+          await BuyModel.findByIdAndUpdate(
+            order._id,
+            {
+              $set: {
+                status: data.rowData.etatcommande
+                  ? data.rowData.etatcommande
+                  : order.status,
+              },
             },
-          });
-          console.log("✅ Commande d'achat mise à jour avec succès:", order.numBuy);
+            { new: true }
+          );
+          console.log(
+            "✅ Commande de vente mise à jour avec succès:",
+            order.numBuy
+          );
           return NextResponse.json(
             {
               message: "Buy order updated successfully",
@@ -271,8 +280,11 @@ export async function POST(req: Request) {
                 ? data.rowData.etatcommande
                 : exchange.status,
             },
-          });
-          console.log("✅ Échange mise à jour avec succès:", exchange.numExchange);
+          }, { new: true });
+          console.log(
+            "✅ Échange mise à jour avec succès:",
+            exchange.numExchange
+          );
 
           return NextResponse.json(
             {
@@ -462,7 +474,7 @@ export async function POST(req: Request) {
     }
 
     // CASE TYPE VENTE CREATE AN ORDER ON THE SITE
-    else if (data.rowData.type === "Vente") {
+    else if (data.rowData.type === "Achat") {
       const orderCode = buyCode || cleanCode?.split("#")[1] || null;
 
       if (orderCode) {
@@ -476,8 +488,11 @@ export async function POST(req: Request) {
                 ? data.rowData.etatcommande
                 : order.status,
             },
-          });
-          console.log("✅ Commande de vente mise à jour avec succès:", order.orderNum);
+          }, { new: true });
+          console.log(
+            "✅ Commande de vente mise à jour avec succès:",
+            order.orderNum
+          );
           return NextResponse.json(
             {
               message: "Sale order updated successfully",
@@ -720,8 +735,11 @@ export async function POST(req: Request) {
                 ? data.rowData.etatcommande
                 : order.status,
             },
-          });
-          console.log("✅ Commande Marketplace mise à jour avec succès:", order.numOrder);
+          }, { new: true });
+          console.log(
+            "✅ Commande Marketplace mise à jour avec succès:",
+            order.numOrder
+          );
           return NextResponse.json(
             {
               message: "Marketplace order updated successfully",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ServerExchange, codeGenerated, parsedDevise } from "@/lib/utils";
 import { Loader } from "lucide-react";
 import { useScopedI18n } from "@/locales/client";
@@ -19,22 +19,33 @@ import {
 } from "./ui/select";
 import { useSession } from "next-auth/react";
 import { Card } from "./ui/card";
-import { useRouter } from "next/navigation";
 import { CUR } from "@/lib/types/types";
 import { FaDiscord, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
 const SellKamasComponents = ({
   servers,
+  euro,
+  dollar,
+  aed,
+  mad,
 }: {
   servers: ServerExchange[] | null;
+  euro: number;
+  dollar: number;
+  aed: number;
+  mad: number;
 }) => {
-  const { devise, addNewDevise, addBuyInfo, buyInfo } = useStore();
+  const { addBuyInfo, buyInfo } = useStore();
   const { data: session } = useSession();
+  const [activeCurrency, setActiveCurrency] = useState<{
+    currencyName: string;
+    curencyVal: number;
+  }>({ currencyName: "mad", curencyVal: mad || 1 });
   // console.log(servers);
 
   // console.log(devise);
 
-  const router = useRouter();
+  console.log(activeCurrency);
 
   const tScope = useScopedI18n("dialogsell");
 
@@ -73,6 +84,7 @@ const SellKamasComponents = ({
     facebook: "",
     discord: "",
   });
+  const [total, setTotal] = useState<number>(0);
   const [selectedContactMethod, setSelectedContactMethod] =
     useState<string>("");
 
@@ -84,8 +96,11 @@ const SellKamasComponents = ({
     setFormData((prev) => ({ ...prev, [field]: value }));
 
     if (value === "Paypal" || value === "Skrill" || value === "Sepa") {
-      if (devise.currencyName === "euro") return;
-      await fetchCurrency("euro");
+      if (activeCurrency?.currencyName === "euro") return;
+      setActiveCurrency({
+        currencyName: "euro",
+        curencyVal: euro,
+      });
     }
     if (
       value === "CIH Bank" ||
@@ -95,16 +110,22 @@ const SellKamasComponents = ({
       value === "Crédit agricole" ||
       value === "Wafacash"
     ) {
-      if (devise.currencyName === "mad") return;
-      await fetchCurrency("mad");
+      if (activeCurrency.currencyName === "mad") return;
+      setActiveCurrency({
+        currencyName: "mad",
+        curencyVal: mad,
+      });
     }
     if (
       value === "Aed" ||
       value === "Usdt(TRC20/ERC20) " ||
       value === "USDT/USDC (TRC20/ERC20/USDC/Binance ID)"
     ) {
-      if (devise.currencyName === "dollar") return;
-      await fetchCurrency("dollar");
+      if (activeCurrency.currencyName === "dollar") return;
+      setActiveCurrency({
+        currencyName: "dollar",
+        curencyVal: dollar,
+      });
     }
   };
 
@@ -189,18 +210,20 @@ const SellKamasComponents = ({
     }
   };
 
-  const calculateTotal = () => {
+  useEffect(() => {
     const amount = parseFloat(formData.amount) || 0;
-    const total = Number((amount * (server?.serverPriceDh || 0)).toFixed(2));
-    return total;
-  };
+    const total = Number(
+      (amount * (server?.serverPriceDh || 0)) / activeCurrency.curencyVal
+    ).toFixed(2);
+    setTotal(Number(total));
+  }, [activeCurrency, formData.amount, server]);
 
   const handleSubmit = async () => {
     if (!session?.user.id) {
       toast.error(tScope("sellOrderErrorLogin"), {
         style: { color: "#dc2626" },
       });
-    } else if ((server?.serverPriceDh || 1) * Number(formData.amount) < 20) {
+    } else if ((server?.serverPriceDh || 1) * Number(formData.amount) < 200) {
       toast.error("Le montant minimum de vente est de 200 DH", {
         style: { color: "#dc2626" },
         position: "top-right",
@@ -211,7 +234,7 @@ const SellKamasComponents = ({
 
       const qty = Number(formData.amount);
 
-      const unitPrice = (server?.serverPriceDh || 1).toFixed(2);
+      const unitPrice = ((server?.serverPriceDh || 1)/activeCurrency.curencyVal).toFixed(2);
 
       if (
         !formData.gameName ||
@@ -282,11 +305,11 @@ const SellKamasComponents = ({
         server: server?.serverName,
         pu: Number(unitPrice),
         qte: qty,
-        totalPrice: calculateTotal(),
+        totalPrice: Number(total),
         paymentMethod: formData.paymentMethod,
         gameName: formData.gameName,
         paymentInfoDetails: paymentInfoDetails,
-        currencymethod: "dollar",
+        currencymethod: activeCurrency.currencyName,
         lastname: formData.lastname,
         firstname: "",
         buyCode: buyCode,
@@ -334,30 +357,6 @@ const SellKamasComponents = ({
     );
     if (serverSelected) {
       setServer(serverSelected);
-    }
-  };
-
-  const fetchCurrency = async (currency: string) => {
-    const response = await fetch(`/api/iben/currency/${currency}`, {
-      method: "GET",
-      cache: "no-store",
-    });
-    if (!response.ok) {
-      throw new Error("Fetching currency failed: ");
-    }
-
-    const data: CUR[] = await response.json();
-    // console.log(data);
-    if (data && data.length > 0) {
-      const keys = Object.keys(data[0]);
-      const values = Object.values(data[0]);
-      const name = keys[1];
-      const val = values[1];
-      const dev = {
-        currencyName: name,
-        curencyVal: val,
-      };
-      addNewDevise(dev);
     }
   };
 
@@ -511,14 +510,16 @@ const SellKamasComponents = ({
             <div className="flex justify-between text-sm">
               <span>{tScope("pricedesc")}:</span>
               <span className="font-semibold text-amber-600">
-                {(server?.serverPriceDh || 0).toFixed(2)}{" "}
-                {parsedDevise("dollar")}
+                {(
+                  (server?.serverPriceDh || 0) / activeCurrency.curencyVal
+                ).toFixed(2)}{" "}
+                {parsedDevise(activeCurrency.currencyName)}
               </span>
             </div>
             <div className="flex justify-between text-sm">
               <span>{tScope("total")}:</span>
               <span className="font-semibold text-amber-600">
-                {calculateTotal()} {parsedDevise("dollar")}
+                {total} {parsedDevise(activeCurrency.currencyName)}
               </span>
             </div>
           </div>

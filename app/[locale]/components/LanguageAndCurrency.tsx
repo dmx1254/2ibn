@@ -28,7 +28,9 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
   const locale = useCurrentLocale();
   const curr = currencies.find((c) => c.slug === devise.currencyName);
 
-  const [isActiveCurrency, setIsActiveCurrency] = useState<string>("euro");
+  console.log(devise);
+
+  const [isActiveCurrency, setIsActiveCurrency] = useState<string>("dollar");
   // const [language, setLanguage] = useState(languages[0]);
   const [currency, setCurrency] = useState(currencies[0]);
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +54,6 @@ const LanguageAndCurrency = ({ isShowBg = true }: { isShowBg?: boolean }) => {
   const fetchCurrency = async (currency: string): Promise<CUR[]> => {
     const response = await fetch(`/api/iben/currency/${currency}`, {
       method: "GET",
-      
     });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");

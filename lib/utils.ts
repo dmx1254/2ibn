@@ -84,21 +84,37 @@ export const games: DofusItemNav[] = [
     slug: "gift-cards",
     traduc: "gift-cards",
   },
-  // {
-  //   id: "w56xql",
-  //   name: "Fortnite",
-  //   slug: "fortnite",
-  // },
-  // {
-  //   id: "klz67u",
-  //   name: "Mobile Legends",
-  //   slug: "mobile-legends",
-  // },
-  // {
-  //   id: "yxg82e",
-  //   name: "Pasha Fencer Diamonds",
-  //   slug: "pasha-fencer-diamonds",
-  // },
+  {
+    id: "laawus",
+    name: "Game coins",
+    slug: "game-coins",
+    traduc: "game-coins",
+  },
+  {
+    id: "alsj12",
+    name: "Item",
+    slug: "item",
+    traduc: "item",
+  },
+  {
+    id: "lkj123",
+    name: "Software and App",
+    slug: "software-and-app",
+    traduc: "software-and-app",
+  },
+  {
+    id: "peceow",
+    name: "Carte prepayees",
+    slug: "carte-prepayees",
+    traduc: "carte-prepayees",
+  },
+  {
+    id: "peceow",
+    name: "Game",
+    slug: "game",
+    traduc: "game-name",
+  },
+
 ];
 
 export const dofusItemNavSheetMenu: SheetMenuNav[] = [
@@ -132,7 +148,7 @@ export interface ServerBuy {
   serverStatus: string;
   serverPrice: number;
   serverMinQty: number;
-  createdAt: Date;  
+  createdAt: Date;
   updatedAt: Date;
 }
 
@@ -1085,4 +1101,9 @@ export interface IGamerResp {
   orderIdPaid?: string;
   createdAt: string;
   updatedAt: string;
+}
+
+
+export function removeAccents(str: string) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }

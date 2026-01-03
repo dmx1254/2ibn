@@ -28,7 +28,7 @@ const useStore = create<MyStore>()(
     (set) => ({
       user: null,
       servers: [],
-      devise: { currencyName: "mad", curencyVal: 1 },
+      devise: { currencyName: "dollar", curencyVal: 1 },
       carts: [],
       totalItems: 0,
       activeServerRequest: "dofus-kamas",

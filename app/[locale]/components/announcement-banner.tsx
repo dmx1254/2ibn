@@ -13,7 +13,7 @@ export const AnnouncementBanner = () => {
     update: { update: boolean; message: string };
   } | null>(null);
 
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     const fetchData = async () => {

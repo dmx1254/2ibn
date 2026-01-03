@@ -8,13 +8,25 @@ export async function POST(req: Request) {
   headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   const data = await req.json();
-  // console.log(data);
+  console.log(data);
+
   if (!data) {
     return NextResponse.json(
       { error: "Data is required" },
       { status: 400, headers }
     );
   }
+
+  const category = data.rowData.category.trim().toLowerCase();
+
+  const newCategory = category.replace(/\s+/g, "-");
+
+  const licenceModified = data.rowData.licence.trim().toLowerCase();
+  const newLicence = licenceModified.replace(/\s+/g, "-");
+
+  // console.log(newCategory);
+  // console.log(newLicence);
+  // return;
   const { AccountModel } = await goapiModels;
   try {
     if (!data.rowData.description) {
@@ -29,11 +41,11 @@ export async function POST(req: Request) {
     });
 
     if (checkIsProductExits) {
-      checkIsProductExits.category = data.rowData.category
-        ? data.rowData.category.toLowerCase()
+      checkIsProductExits.category = newCategory
+        ? newCategory
         : checkIsProductExits.category;
-      checkIsProductExits.licence = data.rowData.licence
-        ? data.rowData.licence.toLowerCase()
+      checkIsProductExits.licence = newLicence
+        ? newLicence
         : checkIsProductExits.licence;
       checkIsProductExits.stock =
         data.rowData.stock && typeof data.rowData.stock === "number"
@@ -41,7 +53,7 @@ export async function POST(req: Request) {
           : checkIsProductExits.stock;
       checkIsProductExits.price =
         data.rowData.price && typeof data.rowData.price === "number"
-          ? Number(data.rowData.price)
+          ? parseFloat(data.rowData.price)
           : checkIsProductExits.price;
       checkIsProductExits.minQ =
         data.rowData.minQ && typeof data.rowData.minQ === "number"
@@ -83,8 +95,8 @@ export async function POST(req: Request) {
         );
       }
       const newProduct = await AccountModel.create({
-        category: data.rowData.category.toLowerCase(),
-        licence: data.rowData.licence.toLowerCase(),
+        category: newCategory,
+        licence: newLicence,
         description: data.rowData.description,
         minQ: Number(data.rowData.minQ),
         stock: Number(data.rowData.stock),
@@ -118,5 +130,38 @@ export async function DELETE() {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json({ error: errorMessage }, { status: 500, headers });
+  }
+}
+
+export async function GET() {
+  const { AccountModel } = await goapiModels;
+  try {
+    const products = await AccountModel.find();
+    return NextResponse.json(products, { status: 200 });
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
+  }
+}
+
+export async function PUT(req: Request) {
+  const { AccountModel } = await goapiModels;
+  const { id, dataToUpdate } = await req.json();
+  try {
+    const products = await AccountModel.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          category: dataToUpdate,
+        },
+      },
+      { new: true }
+    );
+    return NextResponse.json(products, { status: 200 });
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

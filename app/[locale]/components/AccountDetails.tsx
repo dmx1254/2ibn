@@ -64,6 +64,7 @@ const AccountDetails = ({
   hasMoreRelated = false,
 }: AccountDetailsProps) => {
   const t = useScopedI18n("accountDetails");
+  const tScope2 = useScopedI18n("navbar");
   const { devise } = useStore();
   const { data: session } = useSession();
   const router = useRouter();
@@ -89,7 +90,7 @@ const AccountDetails = ({
   // console.log(account);
 
   // Calcul du prix total (prix en dirham, convertir en devise actuelle)
-  const totalPrice = (account.price * quantity) / devise.curencyVal;
+  const totalPrice = account.price * quantity * (devise.curencyVal || 1);
   const isAvailable =
     account.stock > 0 && account.status !== "rupture de stock";
 
@@ -145,10 +146,7 @@ const AccountDetails = ({
   const handleShareWhatsApp = () => {
     const shareText = encodeURIComponent(text);
     const shareUrl = encodeURIComponent(url);
-    window.open(
-      `https://wa.me/?text=${shareText}%20${shareUrl}`,
-      "_blank"
-    );
+    window.open(`https://wa.me/?text=${shareText}%20${shareUrl}`, "_blank");
     setIsShareMenuOpen(false);
   };
 
@@ -190,7 +188,7 @@ const AccountDetails = ({
     // Désactiver temporairement le partage natif pour éviter les erreurs
     // Utiliser directement le menu déroulant qui est plus fiable
     setIsShareMenuOpen(true);
-    
+
     // Code commenté pour référence future si besoin d'activer le partage natif
     // if (typeof window !== "undefined" && typeof navigator !== "undefined" && "share" in navigator) {
     //   const shareFn = (navigator as { share?: (data: ShareData) => Promise<void> }).share;
@@ -222,17 +220,22 @@ const AccountDetails = ({
           </Link>
           <ChevronRight className="w-4 h-4" />
           <Link
-            href="/video-game"
+            href="/marketplace"
             className="hover:text-yellow-600 transition-colors"
           >
-            {t("videoGames")}
+            {tScope2("game")}
           </Link>
           <ChevronRight className="w-4 h-4" />
           <Link
-            href={`/video-game/${gamename}`}
+            href={`/marketplace/${gamename}`}
             className="hover:text-yellow-600 transition-colors"
           >
-            {licenceName}
+            {gamename.includes("-")
+              ? gamename
+                  .split("-")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" ")
+              : gamename.toUpperCase()}
           </Link>
           <ChevronRight className="w-4 h-4" />
           <span className="text-white">{account.description}</span>
@@ -337,9 +340,7 @@ const AccountDetails = ({
                 <div className="flex items-center gap-3">
                   <Zap className="w-5 h-5 text-yellow-600" />
                   <div>
-                    <span className="text-gray-400">
-                      {t("deliverySpeed")}{" "}
-                    </span>
+                    <span className="text-gray-400">{t("deliverySpeed")} </span>
                     <span className="text-white font-semibold">
                       {account.deliveryDelay === 0
                         ? t("instant")
@@ -359,13 +360,17 @@ const AccountDetails = ({
                   </div>
                 </div>
                 <div>
-                  <span className="text-gray-400">{t("nominalComplement")} </span>
+                  <span className="text-gray-400">
+                    {t("nominalComplement")}{" "}
+                  </span>
                   <span className="text-white font-semibold">
                     {account.description}
                   </span>
                 </div>
                 <div className="space-y-2 text-sm text-gray-300">
-                  <p>• {t("totalAmount")} {account.description}</p>
+                  <p>
+                    • {t("totalAmount")} {account.description}
+                  </p>
                   <p>◆ {t("whyChooseUs")}</p>
                   <p>
                     ➤ Chez ibendouma, nous nous engageons à offrir un service de
@@ -402,18 +407,28 @@ const AccountDetails = ({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {relatedAccounts.map((relatedAccount) => {
                     const relatedPrice =
-                      (relatedAccount.price * (relatedAccount.minQ || 1)) /
-                      devise.curencyVal;
+                      relatedAccount.price *
+                      (relatedAccount.minQ || 1) *
+                      (devise.curencyVal || 1);
 
                     return (
                       <Link
                         key={relatedAccount._id}
-                        href={`/video-game/${gamename}/${relatedAccount._id}`}
+                        href={`/marketplace/${gamename}/${relatedAccount._id}`}
                       >
                         <Card className="bg-[#2A2D30] border border-gray-700 rounded-lg p-4 hover:border-yellow-600 transition-colors cursor-pointer">
                           <div className="bg-black rounded p-3 mb-3">
                             <p className="text-white text-sm text-center font-semibold">
-                              {licenceName.toUpperCase()}
+                              {gamename.includes("-")
+                                ? gamename
+                                    .split("-")
+                                    .map(
+                                      (word) =>
+                                        word.charAt(0).toUpperCase() +
+                                        word.slice(1)
+                                    )
+                                    .join(" ")
+                                : gamename.toUpperCase()}
                             </p>
                             <p className="text-white text-xs text-center mt-1">
                               {relatedAccount.description}
@@ -593,13 +608,19 @@ const AccountDetails = ({
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                      {recentPurchases[currentPurchaseIndex].name.charAt(0).toUpperCase()}
+                      {recentPurchases[currentPurchaseIndex].name
+                        .charAt(0)
+                        .toUpperCase()}
                     </div>
                     <div className="flex-1">
-                      <p className="text-white text-sm">{recentPurchases[currentPurchaseIndex].name}</p>
+                      <p className="text-white text-sm">
+                        {recentPurchases[currentPurchaseIndex].name}
+                      </p>
                       <div className="flex items-center gap-2 text-green-400 text-xs">
                         <ThumbsUp className="w-3 h-3" />
-                        <span>{recentPurchases[currentPurchaseIndex].date}</span>
+                        <span>
+                          {recentPurchases[currentPurchaseIndex].date}
+                        </span>
                       </div>
                     </div>
                   </div>

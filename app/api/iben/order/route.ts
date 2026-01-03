@@ -46,7 +46,7 @@ export async function POST(req: Request) {
         [${newTime}]
         `,
         // code: "#" + newOrder.orderNum,
-        type: "Vente",
+        type: "Achat",
         produit: product.server,
         qte: parseInt(product.amount),
         montant: Number(product.totalPrice) + cur,

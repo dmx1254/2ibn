@@ -46,28 +46,22 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
   const [amount, setAmount] = useState<number | string>();
   const [bonus, setBonus] = useState<number | string>();
   const [servers, setServers] = useState<ServerBuy[] | null>(null);
-  const [promotionValue, setPromotionValue] = useState<number>(2);
 
-  useEffect(() => {
-    const getPromotion = async () => {
-      const response = await fetch(`/api/gsheet/webhook/getpromo`);
-      const data = await response.json();
-      setPromotionValue(data.promotion);
-    };
-    getPromotion();
-  }, []);
+  // useEffect(() => {
+  //   const getPromotion = async () => {
+  //     const response = await fetch(`/api/gsheet/webhook/getpromo`);
+  //     const data = await response.json();
+  //     setPromotionValue(data.promotion);
+  //   };
+  //   getPromotion();
+  // }, []);
 
   useEffect(() => {
     const getServerBuy = async () => {
       try {
-        const response = await fetch(`/api/iben/server`, {
-          method: "POST",
-          body: JSON.stringify({ server: "Imagiro" }),
-        });
+        const response = await fetch(`/api/iben/server`);
         const res = await response.json();
-        if (res) {
-          setServers(res);
-        }
+        setServers(res);
       } catch (error) {
         console.log(error);
       }
@@ -136,15 +130,13 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
   const returTotalValue = useMemo(() => {
     const serverValue = Number(amount);
     if (!serverValue) return 0;
-    const actualPriceCur = (activeServer?.serverPrice || 1) / devise.curencyVal;
+    const actualPriceCur = (activeServer?.serverPrice || 1) * (devise.curencyVal || 1);
     const total = (serverValue * actualPriceCur).toFixed(2);
 
-    if(promotionValue > 2){
-      return (Number(total) * (1 - promotionValue / 100)).toFixed(2);
-    } else {
+   
       return Number(total).toFixed(2);
-    }
-  }, [amount, activeServer, devise.curencyVal, promotionValue]);
+    
+  }, [amount, activeServer, devise.curencyVal]);
 
   const handleAddToCart = () => {
     const actualPriceCur = (activeServer?.serverPrice || 1) / devise.curencyVal;
@@ -387,7 +379,7 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
                           {returTotalValue}
                         </span>
                         <span className="text-xs px-2 py-1 bg-red-100 text-red-500 rounded-lg font-medium">
-                          -{promotionValue}%
+                          -{5}%
                         </span>
                       </div>
                       <span className="text-sm text-[#a1a0a0] line-through">

@@ -9,9 +9,9 @@ export async function POST(req: Request) {
 
   try {
     const data = await req.json();
-    const { ServerModel, EuroModel, MadModel, CadModel, AedModel } =
+    const { ServerModel, EuroModel, AedModel, DollarModel } =
       await goapiModels;
-    const { ServerModelIben, EuroModelIben, DollarModelIben, CadModelIben } =
+    const { ServerModelIben, EuroModelIben, MadModelIben, CadModelIben } =
       await ibenModels;
 
     // console.log(data);
@@ -34,31 +34,15 @@ export async function POST(req: Request) {
     }
 
     if (data.sheetName === "servers" && data.column === 15) {
-      const mad = await MadModel.find();
-      await MadModel.findByIdAndUpdate(mad[0]._id, {
+      const dollar = await DollarModel.find();
+      await DollarModel.findByIdAndUpdate(dollar[0]._id, {
         $set: {
-          mad: Number(data.rowData.row15),
+          dollar: Number(data.rowData.row15),
         },
       });
       return NextResponse.json(
         {
-          message: "Mad updated successfully",
-          received: true,
-        },
-        { headers }
-      );
-    }
-
-    if (data.sheetName === "servers" && data.column === 16) {
-      const cad = await CadModel.find();
-      await CadModel.findByIdAndUpdate(cad[0]._id, {
-        $set: {
-          cad: Number(data.rowData.row16),
-        },
-      });
-      return NextResponse.json(
-        {
-          message: "Cad updated successfully",
+          message: "Dollar updated successfully",
           received: true,
         },
         { headers }
@@ -81,11 +65,11 @@ export async function POST(req: Request) {
       );
     }
 
-    if (data.sheetName === "servers" && data.column === 23) {
+    if (data.sheetName === "servers" && data.column === 19) {
       const euroiben = await EuroModelIben.find();
       await EuroModelIben.findByIdAndUpdate(euroiben[0]._id, {
         $set: {
-          euro: Number(data.rowData.row23),
+          euro: Number(data.rowData.row19),
         },
       });
       return NextResponse.json(
@@ -97,27 +81,27 @@ export async function POST(req: Request) {
       );
     }
 
-    if (data.sheetName === "servers" && data.column === 25) {
-      const dollariben = await DollarModelIben.find();
-      await DollarModelIben.findByIdAndUpdate(dollariben[0]._id, {
+    if (data.sheetName === "servers" && data.column === 21) {
+      const mad = await MadModelIben.find();
+      await MadModelIben.findByIdAndUpdate(mad[0]._id, {
         $set: {
-          dollar: Number(data.rowData.row25),
+          mad: Number(data.rowData.row21),
         },
       });
       return NextResponse.json(
         {
-          message: "Dollariben updated successfully",
+          message: "Madiben updated successfully",
           received: true,
         },
         { headers }
       );
     }
 
-    if (data.sheetName === "servers" && data.column === 26) {
+    if (data.sheetName === "servers" && data.column === 22) {
       const cadiben = await CadModelIben.find();
       await CadModelIben.findByIdAndUpdate(cadiben[0]._id, {
         $set: {
-          cad: Number(data.rowData.row26),
+          cad: Number(data.rowData.row22),
         },
       });
       return NextResponse.json(
@@ -137,12 +121,13 @@ export async function POST(req: Request) {
     const serverVenteConcerned = await ServerModel.findOne({
       serverName: serverDetail.server,
     });
+
     if (serverVenteConcerned) {
       const updatedServer = await ServerModel.findByIdAndUpdate(
         serverVenteConcerned._id,
         {
-          serverPriceDh: serverDetail.prixvente
-            ? Number(serverDetail.prixvente)
+          serverPriceDh: serverDetail.prixachat
+            ? Number(serverDetail.prixachat)
             : serverVenteConcerned.serverPriceDh,
           serverStatus: serverDetail.status
             ? serverDetail.status
@@ -159,8 +144,8 @@ export async function POST(req: Request) {
         serverDetail.server &&
         serverDetail.category &&
         serverDetail.status &&
-        serverDetail.prixvente &&
-        typeof serverDetail.prixvente === "number" &&
+        serverDetail.prixachat &&
+        typeof serverDetail.prixachat === "number" &&
         serverDetail.tauxchange &&
         typeof serverDetail.tauxchange === "number"
       ) {
@@ -168,8 +153,8 @@ export async function POST(req: Request) {
           serverName: serverDetail.server,
           serverCategory: serverDetail.category,
           serverStatus: serverDetail.status,
-          serverPriceDh: serverDetail.prixvente
-            ? Number(serverDetail.prixvente)
+          serverPriceDh: serverDetail.prixachat
+            ? Number(serverDetail.prixachat)
             : 0,
           serverMinQty: 1000000,
           rate: serverDetail.tauxchange,
@@ -196,8 +181,8 @@ export async function POST(req: Request) {
       const updatedServer = await ServerModelIben.findByIdAndUpdate(
         serverAchatConcerned._id,
         {
-          serverPrice: serverDetail.prixachat
-            ? Number(serverDetail.prixachat)
+          serverPrice: serverDetail.prixvente
+            ? Number(serverDetail.prixvente)
             : serverAchatConcerned.serverPrice,
           serverStatus: serverDetail.status
             ? serverDetail.status
@@ -211,15 +196,15 @@ export async function POST(req: Request) {
         serverDetail.server &&
         serverDetail.category &&
         serverDetail.status &&
-        serverDetail.prixachat &&
-        typeof serverDetail.prixachat === "number"
+        serverDetail.prixvente &&
+        typeof serverDetail.prixvente === "number"
       ) {
         await ServerModelIben.create({
           serverName: serverDetail.server,
           serverCategory: serverDetail.category,
           serverStatus: serverDetail.status,
-          serverPrice: serverDetail.prixachat
-            ? Number(serverDetail.prixachat)
+          serverPrice: serverDetail.prixvente
+            ? Number(serverDetail.prixvente)
             : 0,
           serverMinQty: 1000000,
         });

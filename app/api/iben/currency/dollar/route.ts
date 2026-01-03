@@ -11,3 +11,23 @@ export async function GET() {
     return NextResponse.json(error, { status: 500 });
   }
 }
+
+// export async function POST(req: Request) {
+//   try {
+//     const { DollarModelIben } = await ibenModels;
+//     const data = await req.json();
+
+//     const dollar = await DollarModelIben.find();
+//     const updatedDollar = await DollarModelIben.findByIdAndUpdate(
+//       dollar[0]._id,
+//       {
+//         $set: {
+//           dollar: Number(data.dollar),
+//         },
+//       }
+//     );
+//     return NextResponse.json(updatedDollar, { status: 200 });
+//   } catch (error) {
+//     return NextResponse.json(error, { status: 500 });
+//   }
+// }

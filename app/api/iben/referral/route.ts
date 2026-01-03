@@ -72,6 +72,8 @@ export async function POST(request: NextRequest) {
 }
 
 // Get referral information for a user
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const { ReferralCodeModel, UserIbenModel, ReferralModel } = await ibenModels;
