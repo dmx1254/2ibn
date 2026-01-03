@@ -55,7 +55,7 @@ export async function POST(req: Request) {
       produit: newExchange.serverOut,
       qtyToPay: newExchange.qtyToPay,
       montant: newExchange.qtyToReceive,
-      puV: data.puV + "$",
+      puV: data.puV + "MAD",
       personnage: ` 
        Personnage à payer: ${newExchange.characterToPay}
        Personnage à recevoir: ${newExchange.characterToReceive}
