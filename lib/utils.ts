@@ -59,7 +59,7 @@ export const dofusItemNav: DofusItemNav[] = [
   },
   {
     id: "erst14",
-    name: "Dofus 2.0 (pc)",
+    name: "Dofus 3.0 (pc)",
     slug: "dofus-kamas",
     traduc: "dofus-kamas",
   },

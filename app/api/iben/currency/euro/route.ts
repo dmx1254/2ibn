@@ -4,7 +4,9 @@ import { NextResponse } from "next/server";
 // import { connectDB } from "@/lib/db";
 import { ibenModels } from "@/lib/models/ibendouma-models";
 
-export async function GET() {
+export async function POST(req: Request) {
+  const data = await req.json();
+  const { currency } = data;
   try {
     const { EuroModelIben } = await ibenModels;
     const euro = await EuroModelIben.find();

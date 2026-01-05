@@ -64,10 +64,7 @@ export async function POST(request: Request) {
       etatCommande: "En attente",
       platform: "iBendouma",
       methodContact: newContact,
-      userInfo: `
-          ${user.firstname} ${user.lastname}
-          email: ${user.email}
-          phone: ${user.phone}
+      userInfo: `${user.firstname} ${user.lastname} email: ${user.email} phone: ${user.phone}
         `,
       email: user.email,
     };
@@ -85,7 +82,30 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(orderbuy, { status: 200 });
-  } catch (error: any) {
+  } catch (error) {
+    return NextResponse.json(error, { status: 500 });
+  }
+}
+
+export async function GET() {
+  try {
+    const { BuyModel } = await goapiModels;
+    const orders = await BuyModel.find();
+    return NextResponse.json(orders, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(error, { status: 500 });
+  }
+}
+
+export async function DELETE() {
+  try {
+    const { BuyModel } = await goapiModels;
+    await BuyModel.deleteMany();
+    return NextResponse.json(
+      { message: "Orders deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
     return NextResponse.json(error, { status: 500 });
   }
 }

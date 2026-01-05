@@ -79,7 +79,10 @@ const EchangeKamasClient = () => {
     const getServerExchange = async () => {
       try {
         const response = await fetch(`/api/go/server`, {
-          method: "GET",
+          method: "POST",
+          body: JSON.stringify({
+            serverCategory: "dofus-kamas",
+          }),
         });
         const res = await response.json();
 

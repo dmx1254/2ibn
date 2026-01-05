@@ -2,7 +2,9 @@ import { NextResponse } from "next/server";
 
 import { goapiModels } from "@/lib/models/ibytrade-models";
 
-export async function GET() {
+export async function POST(req: Request) {
+  const data = await req.json();
+  const { currency } = data;
   try {
     const { UsdtModel } = await goapiModels;
     const usdt = await UsdtModel.find();

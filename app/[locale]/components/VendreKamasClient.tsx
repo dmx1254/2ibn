@@ -27,14 +27,12 @@ const VendreKamasClient = () => {
   // const tScopeFooter = useScopedI18n("footer");
   const [serversSell, setServersSell] = useState<ServerExchange[] | null>(null);
   // const [selectedServer, setSelectedServer] = useState("");
-  const [serverPriceEuro, setServerPriceEuro] = useState<number | null>();
-  const [serverPriceAed, setServerPriceAed] = useState<number | null>();
+  const [serverPriceEuro, setServerPriceEuro] = useState<number>(0);
+  const [serverPriceAed, setServerPriceAed] = useState<number>(0);
   // const [serverPriceUsdt, setServerPriceUsdt] = useState<number | null>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [serverPriceDollar, setServerPriceDollar] = useState<number | null>(
-    null
-  );
-  const [serverPriceMad, setServerPriceMad] = useState<number | null>(null);
+  const [serverPriceDollar, setServerPriceDollar] = useState<number>(0);
+  const [serverPriceMad, setServerPriceMad] = useState<number>(0);
   // const [serverPriceSkrillSepa, setServerPriceSkrillSepa] = useState<
   //   number | null
   // >(null);
@@ -46,7 +44,12 @@ const VendreKamasClient = () => {
     const getServer = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("/api/go/server");
+        const response = await fetch("/api/go/server", {
+          method: "POST",
+          body: JSON.stringify({
+            serverCategory: "dofus-kamas",
+          }),
+        });
         const res = await response.json();
         if (res) {
           setServersSell(res);
@@ -65,7 +68,12 @@ const VendreKamasClient = () => {
   // EURO CURRENCY FETCHING
 
   const fetchCurrencyEuro = async () => {
-    const response = await fetch("/api/go/currency/euro");
+    const response = await fetch("/api/go/currency/euro", {
+      method: "POST",
+      body: JSON.stringify({
+        currency: "euro",
+      }),
+    });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }
@@ -85,7 +93,12 @@ const VendreKamasClient = () => {
   // DOLLAR CURRENCY FETCHING
 
   const fetchCurrencyDollar = async () => {
-    const response = await fetch("/api/go/currency/dollar");
+    const response = await fetch("/api/go/currency/dollar", {
+      method: "POST",
+      body: JSON.stringify({
+        currency: "dollar",
+      }),
+    });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }
@@ -103,7 +116,12 @@ const VendreKamasClient = () => {
   });
 
   const fetchCurrencyAed = async () => {
-    const response = await fetch("/api/go/currency/aed");
+    const response = await fetch("/api/go/currency/aed", {
+      method: "POST",
+      body: JSON.stringify({
+        currency: "aed",
+      }),
+    });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }
@@ -112,7 +130,12 @@ const VendreKamasClient = () => {
   };
 
   const fetchCurrencyMad = async () => {
-    const response = await fetch("/api/go/currency/mad");
+    const response = await fetch("/api/go/currency/mad", {
+      method: "POST",
+      body: JSON.stringify({
+        currency: "mad",
+      }),
+    });
     if (!response.ok) {
       throw new Error("Fetching currency failed: ");
     }
@@ -138,14 +161,14 @@ const VendreKamasClient = () => {
     queryFn: () => fetchCurrencyAed(),
   });
 
-  const fetchCurrencySkrillSepa = async () => {
-    const response = await fetch("/api/go/currency/skrillsepa");
-    if (!response.ok) {
-      throw new Error("Fetching currency failed: ");
-    }
+  // const fetchCurrencySkrillSepa = async () => {
+  //   const response = await fetch("/api/go/currency/skrillsepa");
+  //   if (!response.ok) {
+  //     throw new Error("Fetching currency failed: ");
+  //   }
 
-    return response.json();
-  };
+  //   return response.json();
+  // };
 
   // const {
   //   // isLoading: IsLoadingSkrillSepa,
@@ -258,8 +281,14 @@ const VendreKamasClient = () => {
         </div>
       </Card>
 
-      <Card className="w-full bg-[#1A1D21] my-6">
-        <SellKamasComponents servers={serversSell} euro={serverPriceEuro} dollar={serverPriceDollar} aed={serverPriceAed} mad={serverPriceMad} />
+      <Card className="w-full bg-[#1A1D21] my-6 border-none">
+        <SellKamasComponents
+          servers={serversSell}
+          euro={serverPriceEuro}
+          dollar={serverPriceDollar}
+          aed={serverPriceAed}
+          mad={serverPriceMad}
+        />
       </Card>
 
       <Card className="w-full mt-6 bg-transparent border-none border-[#45494e]">
@@ -330,12 +359,12 @@ const VendreKamasClient = () => {
                         <span
                           className={`px-3 py-2 rounded-lg text-sm font-medium shadow-none border-none ${
                             server.serverStatus === "Disponible"
-                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                              ? "bg-[#1A1D21] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                                ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                                ? "bg-[#1A1D21] text-green-700 border-green-200 shadow-green-100"
                                 : server.serverStatus === "Vendre rapidement"
-                                  ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
-                                  : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
+                                  ? "bg-[#1A1D21] text-sky-700 border-sky-200 shadow-sky-100"
+                                  : "bg-[#1A1D21] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
@@ -420,12 +449,12 @@ const VendreKamasClient = () => {
                         <span
                           className={`px-3 py-2 rounded-lg text-sm font-medium shadow-none border-none ${
                             server.serverStatus === "Disponible"
-                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                              ? "bg-[#1A1D21] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                                ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                                ? "bg-[#1A1D21] text-green-700 border-green-200 shadow-green-100"
                                 : server.serverStatus === "Vendre rapidement"
-                                  ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
-                                  : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
+                                  ? "bg-[#1A1D21] text-sky-700 border-sky-200 shadow-sky-100"
+                                  : "bg-[#1A1D21] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
@@ -510,12 +539,12 @@ const VendreKamasClient = () => {
                         <span
                           className={`px-3 py-2 rounded-lg text-sm font-medium shadow-none border-none ${
                             server.serverStatus === "Disponible"
-                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                              ? "bg-[#1A1D21] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                                ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                                ? "bg-[#1A1D21] text-green-700 border-green-200 shadow-green-100"
                                 : server.serverStatus === "Vendre rapidement"
-                                  ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
-                                  : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
+                                  ? "bg-[#1A1D21] text-sky-700 border-sky-200 shadow-sky-100"
+                                  : "bg-[#1A1D21] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"
@@ -600,12 +629,12 @@ const VendreKamasClient = () => {
                         <span
                           className={`px-3 py-2 rounded-lg text-sm font-medium shadow-none border-none ${
                             server.serverStatus === "Disponible"
-                              ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                              ? "bg-[#1A1D21] text-green-700 border-green-200 shadow-green-100"
                               : server.serverStatus === "Incomplet"
-                                ? "bg-[#363A3D] text-green-700 border-green-200 shadow-green-100"
+                                ? "bg-[#1A1D21] text-green-700 border-green-200 shadow-green-100"
                                 : server.serverStatus === "Vendre rapidement"
-                                  ? "bg-[#363A3D] text-sky-700 border-sky-200 shadow-sky-100"
-                                  : "bg-[#363A3D] text-red-700 border-red-200 shadow-red-100"
+                                  ? "bg-[#1A1D21] text-sky-700 border-sky-200 shadow-sky-100"
+                                  : "bg-[#1A1D21] text-red-700 border-red-200 shadow-red-100"
                           }`}
                         >
                           {server.serverStatus === "Disponible"

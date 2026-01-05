@@ -59,7 +59,12 @@ const PurchaseForm = ({ cat }: { cat?: string }) => {
   useEffect(() => {
     const getServerBuy = async () => {
       try {
-        const response = await fetch(`/api/iben/server`);
+        const response = await fetch(`/api/iben/server`, {
+          method: "POST",
+          body: JSON.stringify({
+            serverCategory: "dofus-kamas",
+          }),
+        });
         const res = await response.json();
         setServers(res);
       } catch (error) {

@@ -557,7 +557,7 @@ const Checkout = () => {
 
         setTimeout(() => {
           handleChatClick();
-          // router.push("/order-success");
+          router.push("/order-success");
         }, 1000);
       }
     } catch (error) {

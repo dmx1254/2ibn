@@ -361,9 +361,9 @@ const SellKamasComponents = ({
   };
 
   return (
-    <Card className="w-full bg-transparent p-6 border-[#45494e]">
-      <div className="w-full overflow-y-scroll scroll-thumb">
-        <div className="grid gap-4 py-4">
+    <Card className="w-full bg-transparent p-6 border-none">
+      <div className="w-full border-none overflow-y-scroll scroll-thumb">
+        <div className="grid gap-4 py-4 border-none">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="server" className="text-white/90">

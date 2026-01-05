@@ -181,7 +181,7 @@ const ProfilePage = () => {
         <h1 className="text-2xl font-bold text-gray-900">
           {tScope("headerTitle")}, {user?.firstname}!
         </h1>
-        <p className="text-gray-500">{tScope("headerDesc")}</p>
+        <p className="text-gray-700">{tScope("headerDesc")}</p>
       </div>
 
       {/* Stats Overview */}

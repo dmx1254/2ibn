@@ -49,11 +49,8 @@ export async function POST(req: Request) {
           qte: parseInt(product.qty),
           montant: Number(product.totalPrice) + cur,
           puV: product.price + cur,
-          personnage: `
-          produit: ${product.product}
-          category: ${product.category}
-          licence: ${product.licence}
-          deliveryDelay: ${product.deliveryDelay}
+          personnage: `produit: ${product.product} category: ${product.category}
+          licence: ${product.licence} deliveryDelay: ${product.deliveryDelay}
           `,
           payment: newOrder.paymentMethod,
           etatCommande: "En attente",
@@ -80,7 +77,7 @@ export async function POST(req: Request) {
               type: "Commande de vente vers google sheet",
             }),
           });
-        } catch (error: any) {
+        } catch (error) {
           console.log(error);
         } finally {
           return NextResponse.json(newOrder, { status: 200 });
@@ -90,13 +87,13 @@ export async function POST(req: Request) {
     } catch (error) {
       return NextResponse.json(error, { status: 500 });
     }
-  } catch (error: any) {
+  } catch (error) {
     console.log(error);
     return NextResponse.json({ error: error }, { status: 500 });
   }
 }
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
     const { OrderAccountModel } = await goapiModels;
 
@@ -106,3 +103,14 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: error }, { status: 500 });
   }
 }
+
+
+// export async function DELETE() {
+//   try {
+//     const { OrderAccountModel } = await goapiModels;
+//     await OrderAccountModel.deleteMany();
+//     return NextResponse.json({ message: "Orders deleted successfully" }, { status: 200 });
+//   } catch (error) {
+//     return NextResponse.json(error, { status: 500 });
+//   }
+// }

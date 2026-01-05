@@ -93,6 +93,7 @@ body::-webkit-scrollbar-thumb {
   .text-balance {
     text-wrap: balance;
   }
+  
   .home-all::before {
     content: "";
     position: absolute;
@@ -100,7 +101,6 @@ body::-webkit-scrollbar-thumb {
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-image: url("../../public/bg-dofus.png"); */
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.05;
@@ -146,13 +146,14 @@ body::-webkit-scrollbar-thumb {
   }
 
   .home-all {
-    background: url("/whitefiltre.jpeg") no-repeat center center fixed;
+    /* background: url("/whitefiltre.jpeg") no-repeat center center fixed;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+    background: #82868b;
   }
 }
 

@@ -12,7 +12,7 @@ export async function GET() {
     const { ExchangeModel } = await goapiModels;
     const exchanges = await ExchangeModel.find();
     return NextResponse.json(exchanges, { status: 200 });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(error, { status: 500 });
   }
 }
@@ -56,10 +56,8 @@ export async function POST(req: Request) {
       qtyToPay: newExchange.qtyToPay,
       montant: newExchange.qtyToReceive,
       puV: data.puV + "MAD",
-      personnage: ` 
-       Personnage à payer: ${newExchange.characterToPay}
-       Personnage à recevoir: ${newExchange.characterToReceive}
-       Code d'échange: ${newExchange.codeToExchange}
+      personnage: `Personnage à payer: ${newExchange.characterToPay}
+       Personnage à recevoir: ${newExchange.characterToReceive}  Code d'échange: ${newExchange.codeToExchange}
         `,
       payment: newExchange.serverIn,
       statutPayment: "En attente",
@@ -83,7 +81,21 @@ export async function POST(req: Request) {
       }),
     });
     return NextResponse.json(newExchange, { status: 200 });
-  } catch (error: any) {
+  } catch (error) {
+    return NextResponse.json(error, { status: 500 });
+  }
+}
+
+export async function DELETE() {
+  try {
+    const { ExchangeModel } = await goapiModels;
+
+    await ExchangeModel.deleteMany();
+    return NextResponse.json(
+      { message: "Exchange deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
     return NextResponse.json(error, { status: 500 });
   }
 }

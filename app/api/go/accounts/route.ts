@@ -1,12 +1,12 @@
 import { goapiModels } from "@/lib/models/ibytrade-models";
 import { NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
     const { AccountModel } = await goapiModels;
-    const  data  = await req.json();
+    const data = await req.json();
 
     // console.log(data);
 
@@ -21,7 +21,8 @@ export async function POST(req: Request) {
       return NextResponse.json(error, { status: 500 });
     }
   } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
@@ -45,7 +46,21 @@ export async function GET(request: Request) {
     const accounts = await AccountModel.find(query);
     return NextResponse.json(accounts, { status: 200 });
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
+
+// export async function DELETE() {
+//   try {
+//     const { AccountModel } = await goapiModels;
+//     await AccountModel.deleteMany();
+//     return NextResponse.json(
+//       { message: "Accounts deleted successfully" },
+//       { status: 200 }
+//     );
+//   } catch (error) {
+//     return NextResponse.json(error, { status: 500 });
+//   }
+// }

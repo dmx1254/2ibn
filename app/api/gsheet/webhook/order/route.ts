@@ -77,6 +77,12 @@ export async function POST(req: Request) {
         if (order) {
           // console.log(order);
           // console.log(data.rowData);
+          // return;
+          const puA = data.rowData.puA ? parseFloat(data.rowData.puA) : 0;
+          const qte = data.rowData.qte ? parseInt(data.rowData.qte) : 0;
+
+          const totalPrice = (qte * puA).toFixed(2);
+
           await BuyModel.findByIdAndUpdate(
             order._id,
             {
@@ -84,6 +90,12 @@ export async function POST(req: Request) {
                 status: data.rowData.etatcommande
                   ? data.rowData.etatcommande
                   : order.status,
+                pu: Number(puA) && Number(puA) > 0 ? Number(puA) : order.pu,
+                qte: Number(qte) && Number(qte) > 0 ? Number(qte) : order.qte,
+                totalPrice:
+                  Number(totalPrice) && Number(totalPrice) > 0
+                    ? Number(totalPrice)
+                    : order.totalPrice,
               },
             },
             { new: true }
@@ -274,13 +286,17 @@ export async function POST(req: Request) {
           numExchange: numExchange,
         });
         if (exchange) {
-          await ExchangeModel.findByIdAndUpdate(exchange._id, {
-            $set: {
-              status: data.rowData.etatcommande
-                ? data.rowData.etatcommande
-                : exchange.status,
+          await ExchangeModel.findByIdAndUpdate(
+            exchange._id,
+            {
+              $set: {
+                status: data.rowData.etatcommande
+                  ? data.rowData.etatcommande
+                  : exchange.status,
+              },
             },
-          }, { new: true });
+            { new: true }
+          );
           console.log(
             "✅ Échange mise à jour avec succès:",
             exchange.numExchange
@@ -482,13 +498,17 @@ export async function POST(req: Request) {
           orderNum: orderCode,
         });
         if (order) {
-          await OrderModelIben.findByIdAndUpdate(order._id, {
-            $set: {
-              status: data.rowData.etatcommande
-                ? data.rowData.etatcommande
-                : order.status,
+          await OrderModelIben.findByIdAndUpdate(
+            order._id,
+            {
+              $set: {
+                status: data.rowData.etatcommande
+                  ? data.rowData.etatcommande
+                  : order.status,
+              },
             },
-          }, { new: true });
+            { new: true }
+          );
           console.log(
             "✅ Commande de vente mise à jour avec succès:",
             order.orderNum
@@ -729,13 +749,17 @@ export async function POST(req: Request) {
           numOrder: orderCode,
         });
         if (order) {
-          await OrderAccountModel.findByIdAndUpdate(order._id, {
-            $set: {
-              status: data.rowData.etatcommande
-                ? data.rowData.etatcommande
-                : order.status,
+          await OrderAccountModel.findByIdAndUpdate(
+            order._id,
+            {
+              $set: {
+                status: data.rowData.etatcommande
+                  ? data.rowData.etatcommande
+                  : order.status,
+              },
             },
-          }, { new: true });
+            { new: true }
+          );
           console.log(
             "✅ Commande Marketplace mise à jour avec succès:",
             order.numOrder

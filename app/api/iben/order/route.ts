@@ -56,10 +56,9 @@ export async function POST(req: Request) {
         etatCommande: newOrder.status,
         platform: "iBendouma",
         userInfo: `
-          ${newOrder.billing.firstname} ${newOrder.billing.lastname}
-          adresse: ${newOrder.billing.address}
-          email: ${newOrder.billing.email}
-          phone: ${newOrder.billing.phone}`,
+          ${newOrder.billing.firstname} ${newOrder.billing.lastname} adresse: ${newOrder.billing.address}
+          email: ${newOrder.billing.email} phone: ${newOrder.billing.phone}
+          `,
 
         email: newOrder.billing.email,
       };
@@ -114,10 +113,7 @@ export async function GET() {
     const orders = await OrderModelIben.find();
     return NextResponse.json(orders, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { error: "Error fetching orders" },
-      { status: 500 }
-    );
+    return NextResponse.json(error, { status: 500 });
   }
 }
 
@@ -132,7 +128,7 @@ export async function DELETE() {
     );
   } catch (error) {
     return NextResponse.json(
-      { error: "Error deleting orders" },
+      error,
       { status: 500 }
     );
   }
