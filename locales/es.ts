@@ -264,6 +264,7 @@ export default {
     "Pedido realizado con éxito. Abre el chat para proceder con el intercambio",
   "dialogsell.error": "Algo salió mal, por favor inténtalo de nuevo más tarde",
   "dialogsell.serverError": "Seleccionar un servidor",
+  "dialogsell.serverStockError": "Lo sentimos, no necesitamos el servidor: {server} en este momento",
 
   "dialogsell.server": "Servidor",
   "dialogsell.sellOrderErrorLogin":

@@ -32,8 +32,10 @@ import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { useSession } from "next-auth/react";
 import Testimonials from "./Testimonials";
+import { useRouter } from "next/navigation";
 
 const EchangeKamasClient = () => {
+  const router = useRouter();
   const { data: session } = useSession();
   const tScope = useScopedI18n("exchange");
   const [serversExchange, setServersExchange] = useState<
@@ -221,9 +223,9 @@ const EchangeKamasClient = () => {
           toast.success(tScope("success"), {
             style: { color: "#16a34a" },
           });
+          handleChatClick();
           setTimeout(() => {
-            handleChatClick();
-            // router.push("/order-success");
+            router.push("/order-success");
           }, 1000);
         }
       } catch (error) {

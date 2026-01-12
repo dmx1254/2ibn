@@ -9,7 +9,6 @@ import { parsedDevise } from "@/lib/utils";
 import useStore from "@/lib/store-manage";
 import { GamePaymentDialog } from "./game-payment-dialog";
 import { useScopedI18n } from "@/locales/client";
-import axios from "axios";
 
 interface Account {
   _id: string;
@@ -58,10 +57,10 @@ const VirtualGame = ({
     const fetchCategories = async () => {
       try {
         setLoadingCategories(true);
-        const response = await axios.get(
+        const response = await fetch(
           `/api/go/accounts/categories?licence=${gamename}`
         );
-        const data = response.data;
+        const data = await response.json();
         setCategories(data);
       } catch (error) {
         console.error("Error fetching categories:", error);

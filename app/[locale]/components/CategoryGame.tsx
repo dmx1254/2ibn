@@ -58,10 +58,11 @@ const CategoryGame = ({
     const fetchLicences = async () => {
       try {
         setLoadingLicences(true);
-        const response = await axios.get(
+        const response = await fetch(
           `/api/go/accounts/category-licences?category=${categoryname}`
         );
-        const data = response.data;
+        const data = await response.json();
+        console.log(data);
         setLicences(data);
       } catch (error) {
         console.error("Error fetching licences:", error);

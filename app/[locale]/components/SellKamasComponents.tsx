@@ -21,6 +21,7 @@ import { useSession } from "next-auth/react";
 import { Card } from "./ui/card";
 import { CUR } from "@/lib/types/types";
 import { FaDiscord, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const SellKamasComponents = ({
   servers,
@@ -37,6 +38,7 @@ const SellKamasComponents = ({
 }) => {
   const { addBuyInfo, buyInfo } = useStore();
   const { data: session } = useSession();
+  const router = useRouter();
   const [activeCurrency, setActiveCurrency] = useState<{
     currencyName: string;
     curencyVal: number;
@@ -45,7 +47,7 @@ const SellKamasComponents = ({
 
   // console.log(devise);
 
-  console.log(activeCurrency);
+  // console.log(activeCurrency);
 
   const tScope = useScopedI18n("dialogsell");
 
@@ -234,7 +236,9 @@ const SellKamasComponents = ({
 
       const qty = Number(formData.amount);
 
-      const unitPrice = ((server?.serverPriceDh || 1)/activeCurrency.curencyVal).toFixed(2);
+      const unitPrice = (
+        (server?.serverPriceDh || 1) / activeCurrency.curencyVal
+      ).toFixed(2);
 
       if (
         !formData.gameName ||
@@ -243,7 +247,7 @@ const SellKamasComponents = ({
         !formData.paymentDetails ||
         !formData.lastname ||
         !formData.firstname ||
-        !server
+        !server || server.serverStatus.toLowerCase() === "stock complet" || server.serverStatus.toLowerCase() === "complet"
       ) {
         if (!formData.gameName) {
           setGameNameError(tScope("gameNameError"));
@@ -287,7 +291,12 @@ const SellKamasComponents = ({
         if (!server) {
           setServerError(tScope("serverError"));
           return;
-        } else {
+        } else if (server.serverStatus.toLowerCase() === "stock complet" || server.serverStatus.toLowerCase() === "stock complet") {
+          setServerError(tScope("serverStockError", { server: server.serverName }));
+          return;
+        }
+        
+        else {
           setServerError("");
         }
       } else {
@@ -334,9 +343,10 @@ const SellKamasComponents = ({
           toast.success(tScope("success"), {
             style: { color: "#16a34a" },
           });
+
+          handleChatClick();
           setTimeout(() => {
-            handleChatClick();
-            // router.push("/order-success");
+            router.push("/order-success");
           }, 1000);
         }
       } catch (error) {

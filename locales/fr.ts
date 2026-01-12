@@ -222,6 +222,7 @@ export default {
   "dialogsell.desc":
     "Veuillez remplir vos informations pour procéder à la vente.",
   "dialogsell.IngameName": "Nom dans le jeu",
+  "dialogsell.serverStockError": "Desolé, nous n'avons pas besoin du serveur: {server} pour le moment",
   "dialogsell.IngameInput": "Entrez votre nom de jeu",
   "dialogsell.contactEmail": "Email de contact",
   "dialogsell.contactEmailInput": "Entrez votre email",

@@ -207,6 +207,7 @@ export default {
   "sellkamas.linkdofs": "انقر هنا لتبادل الكاماس",
 
   "dialogsell.btnSell": "بيع الآن",
+  "dialogsell.serverStockError": "للأسف، لا نحتاج إلى الخادم: {server} في الوقت الحالي",
   "dialogsell.title": "بيع الكاماس على {الخادم}",
   "dialogsell.buyCode": "رمز الشراء",
   "dialogsell.buyCodeInput": "أدخل رمز الشراء، أقصى 6 أحرف",

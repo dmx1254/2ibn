@@ -18,7 +18,6 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import useStore from "@/lib/store-manage";
 import { Loader } from "lucide-react";
 import { useSession } from "next-auth/react";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 interface Account {
@@ -54,6 +53,7 @@ export const GamePaymentDialog = ({
   account,
   quantity,
 }: GamePaymentDialogProps) => {
+  const router = useRouter();
   const t = useScopedI18n("paymentMode");
   const tsCope = useScopedI18n("paymentMode");
   const tScope = useScopedI18n("cartpage");
@@ -76,14 +76,15 @@ export const GamePaymentDialog = ({
   // Récupérer les informations utilisateur
   const getUser = async () => {
     if (!session?.user.id) return null;
-    const response = await axios.get(`/api/iben/user/${session.user.id}`);
-    return response.data;
+    const response = await fetch(`/api/iben/user/${session.user.id}`);
+    const data = await response.json();
+    return data;
   };
 
   const handleChatClick = () => {
     //@ts-expect-error - Tawk_API is not defined in the global scope
     void window?.Tawk_API.toggle();
-  };  
+  };
 
   const { data: userData } = useQuery({
     queryKey: ["userOrder", session?.user.id],
@@ -157,15 +158,19 @@ export const GamePaymentDialog = ({
     // Créer la commande (tous les paiements se font via le chat)
     try {
       setIsPaying(true);
-      const result = await axios.post("/api/go/accounts/order", orderData);
-      if (result.data) {
+      const response = await fetch("/api/go/accounts/order", {
+        method: "POST",
+        body: JSON.stringify(orderData),
+      });
+      const data = await response.json();
+      if (data) {
         toast.success(tScope("success"), {
           style: { color: "#16a34a" },
         });
 
+        handleChatClick();
         setTimeout(() => {
-          handleChatClick();
-          // router.push("/order-success");
+          router.push("/order-success");
         }, 1000);
       }
     } catch (error) {

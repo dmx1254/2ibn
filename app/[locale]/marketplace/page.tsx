@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Search, Gamepad2 } from "lucide-react";
 import { Card } from "../components/ui/card";
-import axios from "axios";
 import { useScopedI18n } from "@/locales/client";
 import { useSearchParams } from "next/navigation";
 
@@ -69,8 +68,8 @@ const VideoGamePage = () => {
     const fetchLicences = async () => {
       try {
         setLoadingLicences(true);
-        const response = await axios.get("/api/go/accounts/licences");
-        const data = response.data;
+        const response = await fetch("/api/go/accounts/licences");
+        const data = await response.json();
         setAllLicencesList(data);
         setFilteredAllLicences(data);
       } catch (error) {
@@ -88,8 +87,8 @@ const VideoGamePage = () => {
     const fetchCategories = async () => {
       try {
         setLoadingCategories(true);
-        const response = await axios.get("/api/go/accounts/all-categories");
-        const data = response.data;
+        const response = await fetch("/api/go/accounts/all-categories");
+        const data = await response.json();
         setAllCategoriesList(data);
         setFilteredAllCategories(data);
       } catch (error) {
@@ -106,8 +105,8 @@ const VideoGamePage = () => {
     const fetchAccounts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("/api/go/accounts");
-        const data = response.data;
+        const response = await fetch("/api/go/accounts");
+        const data = await response.json();
 
         // Regrouper par licence
         const grouped = data.reduce(

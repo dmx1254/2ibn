@@ -269,6 +269,7 @@ export default {
     "Order successfully placed. Open the chat to proceed with the exchange",
   "dialogsell.error": "Something went wrong, please try again later",
   "dialogsell.serverError": "Select a server",
+  "dialogsell.serverStockError": "Sorry, we don't need the server: {server} at the moment",
 
   "dialogsell.server": "Server",
   "dialogsell.selectServer": "Select a server",
