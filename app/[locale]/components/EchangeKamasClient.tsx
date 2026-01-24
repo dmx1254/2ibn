@@ -167,13 +167,20 @@ const EchangeKamasClient = () => {
   }, [serverToPay, serverToReceive, quantityToPay]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const getStatusServer = serversExchange?.find(
+    const getStatusServerToPay = serversExchange?.find(
       (s) => s.serverName === values.serverToPay
     )?.serverStatus;
 
+
+    const getStatusServerToReceieceive = serversExchange?.find(
+      (s) => s.serverName === values.serverToReceive
+    )?.serverStatus;
+
     if (
-      getStatusServer?.toLocaleLowerCase() === "stock complet" ||
-      getStatusServer?.toLocaleLowerCase() === "complet"
+      getStatusServerToPay?.toLocaleLowerCase() === "stock complet" ||
+      getStatusServerToPay?.toLocaleLowerCase() === "complet" ||
+      getStatusServerToReceieceive?.toLocaleLowerCase() === "stock complet" ||
+      getStatusServerToReceieceive?.toLocaleLowerCase() === "complet"
     ) {
       toast.error(
         `desolé, nous n'avons pas besoin du serveur: ${values.serverToPay} pour le moment`,
